@@ -120,7 +120,9 @@ Route::group([
         'prefix' => 'office'
     ], function() {
         Route::get('/', 'OfficeController@index');
+        Route::get('robot', 'OfficeController@robotClearAfterMonthProfit');
         Route::get('user', 'OfficeController@showAddUserOffice');
+        Route::get('user/{id}', 'OfficeController@showAddUserOffice');
         Route::post('user', 'OfficeController@addUserOffice');
         Route::delete('{id}', 'OfficeController@deleteUserOffice');
     });
@@ -157,9 +159,7 @@ Route::group([
         Route::get('/', 'BalanceController@index');
         Route::post('add', 'BalanceController@addBalance');
     });
-
     
-
     Route::get('document', 'UserDocumentController@index');
     Route::get('document/{user_id}', 'UserDocumentController@index');
     Route::get('presentation', 'PresentationController@index');

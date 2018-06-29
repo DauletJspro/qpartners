@@ -202,11 +202,11 @@ class UserRequestController extends Controller
 
     public function sendResponseAddRequest(Request $request)
     {
-       /* if(Auth::user()->is_valid_document == 0){
+        if(Auth::user()->is_valid_document == 0){
             $result['message'] = 'Вы не прошли верификацию';
             $result['status'] = false;
             return response()->json($result);
-        }*/
+        }
 
         if($request->money <= 0){
             $result['message'] = 'Укажите корректную сумму';

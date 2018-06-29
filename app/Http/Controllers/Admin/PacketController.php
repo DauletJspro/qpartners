@@ -499,6 +499,29 @@ class PacketController extends Controller
 
         }
 
+        //офисный доход
+        $parent = Users::where('user_id', $user->recommend_user_id)->first();
+        if ($parent != null && $parent->is_director_office == 1 && $packet->office_procent > 0) {
+
+            if($parent->office_limit > $parent->office_month_profit){
+                $parent->user_money = $parent->user_money + ($packet->packet_price * $packet->office_procent / 100);
+                $parent->office_month_profit = $parent->office_month_profit + ($packet->packet_price * $packet->office_procent / 100);
+                $parent->save();
+
+                $operation = new UserOperation();
+                $operation->author_id = $user->user_id;
+                $operation->recipient_id = $parent->user_id;
+                $operation->money = $packet->packet_price * $packet->office_procent / 100;
+                $operation->operation_id = 1;
+                $operation->operation_type_id = 8;
+                $operation->operation_comment = 'Офисный доход';
+                $operation->save();
+
+                $send_money = $send_money + $packet->packet_price * $packet->office_procent / 100;
+            }
+
+        }
+
         //пополнение фонда компании
         $company_money = $user_packet->packet_price - $send_money - ($user_packet->packet_price / 10);
 

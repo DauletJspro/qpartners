@@ -30,7 +30,9 @@
                                             <th>Директор</th>
                                             <th>Спонсор</th>
                                             <th>Офис</th>
+                                            <th>Лимит</th>
                                             <th>Страна/Город</th>
+                                            <th style="width: 20px"></th>
                                             <th style="width: 20px"></th>
                                         </tr>
                                         </thead>
@@ -43,7 +45,9 @@
                                             <td><input value="{{$request->user_name}}" type="text" class="form-control" name="user_name" placeholder="Поиск"></td>
                                             <td><input value="{{$request->sponsor_name}}" type="text" class="form-control" name="sponsor_name" placeholder="Поиск"></td>
                                             <td></td>
+                                            <td></td>
                                             <td><input value="{{$request->city_name}}" type="text" class="form-control" name="city_name" placeholder="Поиск"></td>
+                                            <td></td>
                                             <td></td>
                                         </tr>
                                         
@@ -72,11 +76,21 @@
                                                 </td>
                                                 <td class="arial-font">
                                                     <div>
+                                                        {{ $val->office_limit }}
+                                                    </div>
+                                                </td>
+                                                <td class="arial-font">
+                                                    <div>
                                                         {{ $val->country_name_ru }}
                                                     </div>
                                                     <div>
                                                         {{ $val->city_name_ru }}
                                                     </div>
+                                                </td>
+                                                <td style="text-align: center">
+                                                    <a href="/admin/office/user/{{ $val->user_id }}">
+                                                        <li class="fa fa-pencil" style="font-size: 20px;"></li>
+                                                    </a>
                                                 </td>
                                                 <td style="text-align: center">
                                                     <a href="javascript:void(0)" onclick="delItem(this,'{{ $val->user_id }}','office')">

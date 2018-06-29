@@ -21,7 +21,7 @@ class OfficeController extends Controller
     {
         $this->middleware('admin');
         
-        $users = Users::orderBy('user_id','asc')->get();
+        $users = Users::orderBy('user_id','asc')->where('status_id','>',3)->where('is_director_office',0)->where('status_id','!=',11)->get();
         View::share('users_row', $users);
     }
 
@@ -76,15 +76,16 @@ class OfficeController extends Controller
         ]);
     }
 
-    public function showAddUserOffice(Request $request)
+    public function showAddUserOffice(Request $request,$user_id = null)
     {
-        if($request->user_id > 0)
-             $row = Users::find($request->user_id);
+        if($user_id > 0)
+             $row = Users::find($user_id);
         else $row = new Users();
 
         return  view('admin.office.office-add', [
-            'title' => 'Добавить офис',
-            'row' => $row
+            'title' => 'Офис',
+            'row' => $row,
+            'user_id' => $user_id
         ]);
     }
 
@@ -98,16 +99,35 @@ class OfficeController extends Controller
             $messages = $validator->errors();
             $error = $messages->all();
             return  view('admin.office.office-add', [
-                'title' => 'Добавить офис',
+                'title' => 'Офис',
                 'row' => (object) $request->all(),
                 'error' => $error[0]
             ]);
         }
 
         $user = Users::where('user_id',$request->user_id)->first();
+        $is_office_director = $user->is_director_office;
+
         $user->is_director_office = 1;
         $user->office_name = $request->office_name;
+        $user->office_limit = is_numeric($request->office_limit)?$request->office_limit:0;
+
+        if($request->edit_user_id == null){
+            $user->office_register_date = date("Y-m-d H:i:s");
+        }
+
         $user->save();
+
+        if($is_office_director == 0){
+            $operation = new UserOperation();
+            $operation->author_id = null;
+            $operation->recipient_id = $request->user_id;
+            $operation->money = null;
+            $operation->operation_id = 1;
+            $operation->operation_type_id = 10;
+            $operation->operation_comment = 'Поздравляю! Вы стали директорам офиса "' .$request->office_name .'"';
+            $operation->save();
+        }
 
         return redirect('/admin/office');
     }
@@ -116,5 +136,24 @@ class OfficeController extends Controller
         $user = Users::find($id);
         $user->is_director_office = 0;
         $user->save();
+    }
+
+    public function robotClearAfterMonthProfit()
+    {
+        $users = Users::where('is_director_office',1)->get();
+        foreach ($users as $key => $item){
+            $user = Users::where('user_id',$item->user_id)->first();
+            $diff = abs(strtotime(date("Y-m-d",strtotime($user->office_register_date))) - strtotime(date("Y-m-d")));
+            $years = floor($diff / (365*60*60*24));
+            $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+            $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+
+            if($months > 0){
+                $user->office_register_date = date("Y-m-d");
+                $user->office_month_profit = 0;
+                $user->save();
+            }
+        }
+        echo 'Успешно выполнено';
     }
 }
