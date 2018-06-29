@@ -33,6 +33,9 @@ class PacketController extends Controller
         $result['status'] = false;
         $result['title'] = $packet->packet_name_ru;
         $result['desc'] = $packet->packet_desc_ru;
+        $result['image'] = '<a class="fancybox" href="'.$packet->packet_image.'">
+                                     <img src="'.$packet->packet_image.'" style="width:100%">
+                                 </a>';
         return response()->json($result);
     }
 

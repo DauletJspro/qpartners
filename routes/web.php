@@ -217,6 +217,8 @@ Route::group([
     Route::post('user/is_show', 'UserController@changeIsBan');
     Route::resource('user', 'UserController');
     Route::any('password', 'UserController@password');
+
+    Route::resource('packet-item', 'PacketItemController');
 });
 
 /******* Main page *******/

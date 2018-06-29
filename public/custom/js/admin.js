@@ -316,10 +316,15 @@ function getReadMorePacket(id) {
         type: 'GET',
         url: "/admin/packet/" + id,
         success: function(data){
-            $('#modal_desc').html(data.desc);
+            $('#modal_desc').html(data.image);
             $('#modal_title').html(data.title);
-            $('#shop_modal').fadeIn(0);
-            $('#blur').fadeIn(0);
+            //$('#shop_modal').fadeIn(0);
+            //$('#blur').fadeIn(0);
+
+            $('a.fancybox').fancybox({
+                padding: 10
+            });
+            $('.fancybox').click();
         }
     });
 }
