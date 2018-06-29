@@ -156,6 +156,7 @@ class IndexController extends Controller
                     $parent_packet = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
                         ->where('user_packet.user_id', $parent->user_id)
                         ->where('user_packet.is_active', 1)
+                        ->where('user_packet.packet_type', 1)
                         ->orderBy('packet.sort_num', 'desc')
                         ->first();
 
@@ -222,14 +223,20 @@ class IndexController extends Controller
     {
         $users = Users::where('user_id',$user_id)
                         ->where('status_id','>=',3)
-                        ->where('qualification_profit','>=',10000)
+                        ->where('qualification_profit','>=',2500)
                         ->get();
 
         foreach ($users as $key => $item){
             $user = Users::where('user_id',$item->user_id)->first();
-            $status_list = UserStatus::where('user_status_id','>',$user->status_id)->orderBy('user_status_id','asc')->get();
+
+            $user_status =  UserStatus::where('user_status_id',$user->status_id)->first();
+
+            if($user_status == null) continue;
+
+            $status_list = UserStatus::where('sort_num','>',$user_status->sort_num)->orderBy('sort_num','asc')->get();
+
             foreach ($status_list as $status_item){
-                if($status_item->user_status_minimum_money <= $user->qualification_profit){
+                if($status_item->user_status_minimum_money <= $user->qualification_profit && $status_item->user_status_binar_limit_money_in_week <= $user->week_qualification_profit){
                     $user->status_id = $status_item->user_status_id;
                     $user->user_money = $user->user_money + $status_item->user_status_money;
                     $user->user_share = $user->user_share + $status_item->user_status_share;
@@ -289,9 +296,12 @@ class IndexController extends Controller
             $user->left_child_profit = $user->left_child_profit - $minus_profit;
             $user->right_child_profit = $user->right_child_profit - $minus_profit;
             $user->qualification_profit = $user->qualification_profit + $minus_profit;
+            $user->week_qualification_profit = $minus_profit;
+
             $user->save();
 
             $this->setUserStatus($user->user_id);
+
             $user = Users::where('user_id', $item->user_id)->first();
             $user_status = UserStatus::where('user_status_id',$user->status_id)->first();
 

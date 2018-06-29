@@ -367,6 +367,7 @@ class PacketController extends Controller
             ->where('packet_id','>',2)
             ->where('is_active',1)
             ->where('is_portfolio',$user_packet->is_portfolio)
+            ->where('packet_type',$user_packet->packet_type)
             ->sum('packet_price');
 
         $share_old_price = UserPacket::leftJoin('packet','packet.packet_id','=','user_packet.packet_id')
@@ -374,6 +375,7 @@ class PacketController extends Controller
             ->where('user_packet.packet_id','>',2)
             ->where('user_packet.is_active',1)
             ->where('user_packet.is_portfolio',$user_packet->is_portfolio)
+            ->where('user_packet.packet_type',$user_packet->packet_type)
             ->max('packet.packet_share');
 
         $packet = Packet::find($user_packet->packet_id);
@@ -389,7 +391,7 @@ class PacketController extends Controller
         $send_money = 0;
 
         $parent = Users::where('user_id', $user->recommend_user_id)->first();
-        if ($parent != null) {
+        if ($parent != null && $packet->packet_type == 1) {
             $operation = new UserOperation();
             $operation->author_id = $user_packet->user_id;
             $operation->recipient_id = $parent->user_id;
@@ -410,7 +412,7 @@ class PacketController extends Controller
             $user->user_share = $user->user_share + $packet->packet_share - $share_old_price;
 
             $share_minus = 0;
-            if($packet->is_portfolio == 0){
+            /*if($packet->is_portfolio == 0){
                 $share_count = UserPacket::where('user_id',$user_packet->user_id)
                     ->where('user_packet.packet_id',3)
                     ->where('user_packet.is_active',1)
@@ -424,7 +426,7 @@ class PacketController extends Controller
                 if($share_count > 0) $share_minus += 60;
 
                 $user->user_share -= $share_minus;
-            }
+            }*/
 
             $user->save();
 
@@ -458,72 +460,80 @@ class PacketController extends Controller
             $operation->save();
         }
 
-        //пополнение акционерного фонда
-        $operation = new UserOperation();
-        $operation->author_id = $user->user_id;
-        $operation->money = $user_packet->packet_price / 10;
-        $operation->operation_id = 1;
-        $operation->fond_id = 2;
-        $operation->operation_type_id = 5;
-        $operation->operation_comment = 'За покупку пакета "'.$packet->packet_name_ru.'"';
-        $operation->save();
+        if ($packet->packet_type == 1) {
 
-        $fond = Fond::where('fond_id',2)->first();
-        $fond->fond_money = $fond->fond_money + $packet->packet_price / 10;
-        $fond->save();
+            //пополнение акционерного фонда
+            $operation = new UserOperation();
+            $operation->author_id = $user->user_id;
+            $operation->money = $user_packet->packet_price / 10;
+            $operation->operation_id = 1;
+            $operation->fond_id = 2;
+            $operation->operation_type_id = 5;
+            $operation->operation_comment = 'За покупку пакета "' . $packet->packet_name_ru . '"';
+            $operation->save();
 
-        if($user_packet->is_portfolio == 0){
-            //спикерский доход
+            $fond = Fond::where('fond_id', 2)->first();
+            $fond->fond_money = $fond->fond_money + $packet->packet_price / 10;
+            $fond->save();
 
-            $check_speaker = UserPacket::where('is_portfolio',0)->where('is_active',1)->where('user_id',$user->user_id)->count();
+            if ($user_packet->is_portfolio == 0) {
+                //спикерский доход
 
-            if($check_speaker <= 1){
-                $speaker = Users::where('user_id',$user->speaker_id)->where('is_activated',1)->first();
-                if($speaker != null && $speaker->is_speaker == 1 && $speaker->is_activated == 1){
+                $check_speaker = UserPacket::where('is_portfolio', 0)->where('is_active', 1)->where('user_id', $user->user_id)->count();
 
-                    $speaker->user_money = $speaker->user_money + ($packet->packet_price * $packet->speaker_procent / 100);
-                    $speaker->save();
+                if ($check_speaker <= 1) {
+                    $speaker = Users::where('user_id', $user->speaker_id)->where('is_activated', 1)->first();
+                    if ($speaker != null && $speaker->is_speaker == 1 && $speaker->is_activated == 1) {
+
+                        $speaker->user_money = $speaker->user_money + ($packet->packet_price * $packet->speaker_procent / 100);
+                        $speaker->save();
+
+                        $operation = new UserOperation();
+                        $operation->author_id = $user->user_id;
+                        $operation->recipient_id = $speaker->user_id;
+                        $operation->money = $packet->packet_price * $packet->speaker_procent / 100;
+                        $operation->operation_id = 1;
+                        $operation->operation_type_id = 7;
+                        $operation->operation_comment = 'Спикерский доход';
+                        $operation->save();
+
+                        $send_money = $send_money + $packet->packet_price * $packet->speaker_procent / 100;;
+                    }
+                }
+
+            }
+
+            //офисный доход
+            $parent = Users::where('user_id', $user->recommend_user_id)->first();
+            if ($parent != null && $parent->is_director_office == 1 && $packet->office_procent > 0) {
+
+                if ($parent->office_limit > $parent->office_month_profit) {
+                    $parent->user_money = $parent->user_money + ($packet->packet_price * $packet->office_procent / 100);
+                    $parent->office_month_profit = $parent->office_month_profit + ($packet->packet_price * $packet->office_procent / 100);
+                    $parent->save();
 
                     $operation = new UserOperation();
                     $operation->author_id = $user->user_id;
-                    $operation->recipient_id = $speaker->user_id;
-                    $operation->money = $packet->packet_price * $packet->speaker_procent / 100;
+                    $operation->recipient_id = $parent->user_id;
+                    $operation->money = $packet->packet_price * $packet->office_procent / 100;
                     $operation->operation_id = 1;
-                    $operation->operation_type_id = 7;
-                    $operation->operation_comment = 'Спикерский доход';
+                    $operation->operation_type_id = 8;
+                    $operation->operation_comment = 'Офисный доход';
                     $operation->save();
 
-                    $send_money = $send_money + $packet->packet_price * $packet->speaker_procent / 100;;
+                    $send_money = $send_money + $packet->packet_price * $packet->office_procent / 100;
                 }
+
             }
-
-        }
-
-        //офисный доход
-        $parent = Users::where('user_id', $user->recommend_user_id)->first();
-        if ($parent != null && $parent->is_director_office == 1 && $packet->office_procent > 0) {
-
-            if($parent->office_limit > $parent->office_month_profit){
-                $parent->user_money = $parent->user_money + ($packet->packet_price * $packet->office_procent / 100);
-                $parent->office_month_profit = $parent->office_month_profit + ($packet->packet_price * $packet->office_procent / 100);
-                $parent->save();
-
-                $operation = new UserOperation();
-                $operation->author_id = $user->user_id;
-                $operation->recipient_id = $parent->user_id;
-                $operation->money = $packet->packet_price * $packet->office_procent / 100;
-                $operation->operation_id = 1;
-                $operation->operation_type_id = 8;
-                $operation->operation_comment = 'Офисный доход';
-                $operation->save();
-
-                $send_money = $send_money + $packet->packet_price * $packet->office_procent / 100;
-            }
-
         }
 
         //пополнение фонда компании
-        $company_money = $user_packet->packet_price - $send_money - ($user_packet->packet_price / 10);
+        if ($packet->packet_type == 1) {
+            $company_money = $user_packet->packet_price - $send_money - ($user_packet->packet_price / 10);
+        }
+        else {
+            $company_money = $user_packet->packet_price - $send_money;
+        }
 
         $operation = new UserOperation();
         $operation->author_id = $user_packet->user_id;
@@ -559,46 +569,49 @@ class PacketController extends Controller
             $user->save();
         }
 
-        //стать спикером
-        $check_count = Users::where('recommend_user_id',$user->recommend_user_id)->where('status_id','>',1)->count();
+        if ($packet->packet_type == 1) {
+            //стать спикером
+            $check_count = Users::where('recommend_user_id',$user->recommend_user_id)->where('status_id','>',1)->count();
 
-        if($check_count > 4){
-            $parent = Users::where('user_id', $user->recommend_user_id)->first();
+            if($check_count > 4){
+                $parent = Users::where('user_id', $user->recommend_user_id)->first();
 
-            if($parent->status_id > 1 && $parent->is_speaker == 0) {
-                $parent->is_speaker = 1;
-                $parent->save();
+                if($parent->status_id > 1 && $parent->is_speaker == 0) {
+                    $parent->is_speaker = 1;
+                    $parent->save();
 
-                $operation = new UserOperation();
-                $operation->author_id = null;
-                $operation->recipient_id = $parent->user_id;
-                $operation->money = null;
-                $operation->operation_id = 1;
-                $operation->operation_type_id = 10;
-                $operation->operation_comment = 'Вы стали Спикером';
-                $operation->save();
-            }
-        }
-        
-        $check = false;
-        $child_user = $user;
-        
-        while($check != true){
-            $parent_user = Users::where('user_id',$child_user->parent_id)->first();
-            if($parent_user == null){
-                $check = true;
-                break;
-            }
-            else {
-                if($parent_user->is_activated == 1 && $parent_user->status_id > 0){
-                    if($child_user->is_left_part == 1)
-                        $parent_user->left_child_profit += $user_packet->packet_price;
-                    else $parent_user->right_child_profit += $user_packet->packet_price;
-
-                    $parent_user->save();
+                    $operation = new UserOperation();
+                    $operation->author_id = null;
+                    $operation->recipient_id = $parent->user_id;
+                    $operation->money = null;
+                    $operation->operation_id = 1;
+                    $operation->operation_type_id = 10;
+                    $operation->operation_comment = 'Вы стали Спикером';
+                    $operation->save();
                 }
-                $child_user = $parent_user;
+            }
+
+            $check = false;
+            $child_user = $user;
+
+            while($check != true){
+                $parent_user = Users::where('user_id',$child_user->parent_id)->first();
+                if($parent_user == null){
+                    $check = true;
+                    break;
+                }
+                else {
+                    if($parent_user->is_activated == 1 && $parent_user->status_id > 0){
+                        if($child_user->is_left_part == 1)
+                            $parent_user->left_child_profit += $user_packet->packet_price;
+                        else $parent_user->right_child_profit += $user_packet->packet_price;
+
+                        $parent_user->save();
+                    }
+                    $child_user = $parent_user;
+                }
             }
         }
+
     }
 }

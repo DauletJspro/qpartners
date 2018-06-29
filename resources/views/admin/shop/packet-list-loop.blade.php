@@ -2,7 +2,7 @@
 
     @foreach($row->packet as $key => $item)
 
-        @if($item->is_portfolio == 0 && ($packet_type != 'share' || ($packet_type == 'share' && $item->packet_share > 0)))
+        @if($item->is_portfolio == 0 && (($packet_type != 'share' && ($item->packet_thing != '' || $item->packet_lection != ''))  || ($packet_type == 'share' && $item->packet_share > 0)))
 
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
@@ -18,9 +18,9 @@
                                 <h4 style="font-size: 22px; font-weight: 800">&ensp;</h4>
                             @endif
                         @elseif($packet_type == 'item')
-                            <h4 style="font-size: 22px; font-weight: 800">{{$item->packet_item}}</h4>
+                            <h4 style="font-size: 22px; font-weight: 800">{{$item->packet_thing}}</h4>
                         @elseif($packet_type == 'service')
-                            <h4 style="font-size: 22px; font-weight: 800">{{$item->packet_service}}</h4>
+                            <h4 style="font-size: 22px; font-weight: 800">{{$item->packet_lection}}</h4>
                         @endif
 
                         <input class="packet_type" type="hidden" value="{{$packet_type}}"/>

@@ -21,14 +21,18 @@
 
     </div>--}}
 
-    {{--<div class="row">
-        <div class="col-lg-12 col-xs-12">
-            <h2 class="page-header">Доступные пакеты (доля) </h2>
+   @if(Auth::user()->status_id > 3)
+
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <h2 class="page-header">Доступные пакеты (доля) </h2>
+            </div>
+
+            {!! view('admin.shop.packet-list-loop',['row' => $row, 'max_packet_user_number' => $max_packet_user_number,'packet_type' => 'share']) !!}
+
         </div>
 
-        {!! view('admin.shop.packet-list-loop',['row' => $row, 'max_packet_user_number' => $max_packet_user_number,'packet_type' => 'share']) !!}
-
-    </div>--}}
+    @endif
 
     <div class="row">
         <div class="col-lg-12 col-xs-12">
