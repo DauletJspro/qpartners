@@ -106,15 +106,15 @@ Route::group([
     Route::group([
         'prefix' => 'ajax'
     ], function() {
-        Route::get('document', 'DocController@getUserDocumentList');
-        Route::post('document', 'DocController@saveDocumentList');
-        Route::post('document/confirm', 'DocController@confirmUserDocument');
-        Route::post('document/confirm-by-admin', 'DocController@confirmUserDocumentByAdmin');
-        Route::post('user/confirm/valid-document', 'DocController@confirmUserDocument');
-        Route::delete('document/confirm', 'DocController@deleteConfirmUserDocument');
+        Route::get('document', 'UserDocumentController@getUserDocumentList');
+        Route::post('document', 'UserDocumentController@saveDocumentList');
+        Route::post('document/confirm', 'UserDocumentController@confirmUserDocument');
+        Route::post('document/confirm-by-admin', 'UserDocumentController@confirmUserDocumentByAdmin');
+        Route::post('user/confirm/valid-document', 'UserDocumentController@confirmUserDocument');
+        Route::delete('document/confirm', 'UserDocumentController@deleteConfirmUserDocument');
     });
 
-    Route::get('document/confirm', 'DocController@getConfirmDocumentList');
+    Route::get('document/confirm', 'UserDocumentController@getConfirmDocumentList');
 
     Route::group([
         'prefix' => 'office'
@@ -160,6 +160,8 @@ Route::group([
 
     
 
+    Route::get('document', 'UserDocumentController@index');
+    Route::get('document/{user_id}', 'UserDocumentController@index');
     Route::get('presentation', 'PresentationController@index');
     Route::get('our-document', 'PresentationController@showDocumentList');
 
