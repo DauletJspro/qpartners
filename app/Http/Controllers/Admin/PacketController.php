@@ -643,7 +643,7 @@ class PacketController extends Controller
         if($user_parent == null){
             $user_parent = new UserParent();
             $user_parent->user_id = $user->user_id;
-            $user_parent->packet_id = $user->packet_id;
+            $user_parent->packet_id = $packet->packet_id;
             $user_parent->parent_id = $user->recommend_user_id;
             $user_parent->save();
         }
