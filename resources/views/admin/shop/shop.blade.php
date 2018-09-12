@@ -12,28 +12,6 @@
 
 @section('content')
 
-   {{-- <div class="row">
-        <div class="col-lg-12 col-xs-12">
-            <h2 class="page-header">Портфель</h2>
-        </div>
-
-        @include('admin.shop.portfolio-list-loop')
-
-    </div>--}}
-
-   @if(Auth::user()->status_id > 3)
-
-        <div class="row">
-            <div class="col-lg-12 col-xs-12">
-                <h2 class="page-header">Доступные пакеты (доля) </h2>
-            </div>
-
-            {!! view('admin.shop.packet-list-loop',['row' => $row, 'max_packet_user_number' => $max_packet_user_number,'packet_type' => 'share']) !!}
-
-        </div>
-
-    @endif
-
     <div class="row">
         <div class="col-lg-12 col-xs-12">
             <h2 class="page-header">Доступные пакеты (товары) </h2>
@@ -45,12 +23,15 @@
 
     <div class="row">
         <div class="col-lg-12 col-xs-12">
-            <h2 class="page-header">Доступные пакеты (услуга) </h2>
+            <h2 class="page-header">Доступные пакеты (Promotion) </h2>
+
         </div>
 
-        {!! view('admin.shop.packet-list-loop',['row' => $row, 'max_packet_user_number' => $max_packet_user_number,'packet_type' => 'service']) !!}
+        {!! view('admin.shop.auto-home-list-loop',['row' => $row, 'max_packet_user_number' => $max_packet_user_number,'packet_type' => 'service']) !!}
 
     </div>
+
+
 
     <div class="modal-dialog" id="shop_modal">
         <div class="modal-content">

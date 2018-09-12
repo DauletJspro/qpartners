@@ -1,24 +1,16 @@
 
 
-    @foreach($row->packet as $key => $item)
-
-        @if($item->is_portfolio == 0 && (($packet_type != 'share' && ($item->packet_thing != '' || $item->packet_lection != ''))  || ($packet_type == 'share' && $item->packet_share > 0)))
+    @foreach($row->packet_auto_home as $key => $item)
 
 
                 <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
                 <div class="small-box packet-item-list" style="background-color: #{{$item->packet_css_color}}">
                     <div class="inner">
-                        <h3 style="font-family: cursive; font-size: 30px"> {{$item->packet_name_ru}}</h3>
-                        <h4 style="font-size: 25px">{{$item->packet_price - $row['packet_old_price_'.$item->packet_id]}} $ ({{($item->packet_price - $row['packet_old_price_'.$item->packet_id]) * \App\Models\Currency::where('currency_name','тенге')->first()->money}}тг) </h4>
+                        <h3 style="font-family: cursive; font-size: 30px">{{$item->packet_name_ru}}</h3>
+                        <h4 style="font-size: 25px">{{$item->packet_price}} $ ({{($item->packet_price) * \App\Models\Currency::where('currency_name','тенге')->first()->money}}тг) </h4>
 
-                        @if($packet_type == 'share')
-                            @if($item->packet_share > 0)
-                                <h4 style="font-size: 22px; font-weight: 800">{{$item->packet_share}} доля</h4>
-                            @else
-                                <h4 style="font-size: 22px; font-weight: 800">&ensp;</h4>
-                            @endif
-                        @elseif($packet_type == 'item')
+                        @if($packet_type == 'item')
                             <h4 style="font-size: 22px; font-weight: 800">{{$item->packet_thing}}</h4>
                         @elseif($packet_type == 'service')
                             <h4 style="font-size: 22px; font-weight: 800">{{$item->packet_lection}}</h4>
@@ -52,6 +44,5 @@
                 </div>
             </div>
 
-        @endif
 
     @endforeach

@@ -279,7 +279,7 @@ class IndexController extends Controller
 
     public function robotBinarProfit()
     {
-        $users = Users::where('is_activated',1)->where('status_id','>',0)->where('left_child_profit','>',0)->where('right_child_profit','>',0)->get();
+        $users = Users::where('is_activated',1)->where('status_id','>',1)->where('left_child_profit','>',0)->where('right_child_profit','>',0)->get();
 
         foreach ($users as $key => $item) {
             $user = Users::where('user_id', $item->user_id)->first();
