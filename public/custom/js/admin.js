@@ -334,3 +334,9 @@ function closeModal() {
     $('#blur').css('display','none');
 }
 
+function getReadMoreProduct(ob) {
+    $('#modal_title').html($(ob).closest('.info-box-content').find('.info-box-text').html());
+    $('#modal_desc').html($(ob).closest('.info-box-content').find('.info-box-desc').html());
+    $('#shop_modal').fadeIn(0);
+    $('#blur').fadeIn(0);
+}

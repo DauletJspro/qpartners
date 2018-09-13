@@ -159,7 +159,7 @@
 <script src="/custom/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
 <!-- page script -->
-<script src="/custom/js/admin.js?v=9"></script>
+<script src="/custom/js/admin.js?v=10"></script>
 <script src="/admin/js/bootstrap-select.js"></script>
 <script type="text/javascript" src="{{URL('/')}}/share42/share42.js"></script>
 
