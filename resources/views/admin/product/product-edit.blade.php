@@ -40,6 +40,10 @@
                                            <input value="{{ $row->product_price }}" type="number" class="form-control" name="product_price" placeholder="Введите">
                                        </div>
                                        <div class="form-group">
+                                           <label>Cach Back (%)</label>
+                                           <input min="0" max="100" value="{{ $row->product_cash }}" type="number" class="form-control" name="product_cash" placeholder="Введите">
+                                       </div>
+                                       <div class="form-group">
                                            <label>Краткое описание</label>
                                            <textarea class="form-control" name="product_desc_ru" >{{ $row->product_desc_ru }}</textarea>
                                        </div>

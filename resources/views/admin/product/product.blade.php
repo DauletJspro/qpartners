@@ -22,6 +22,7 @@
                 <th></th>
                 <th>Название</th>
                 <th>Цена</th>
+                <th>Cach (%)</th>
                 <th>Краткое описание</th>
                 <th style="width: 15px"></th>
                 <th style="width: 15px"></th>
@@ -47,6 +48,9 @@
                         </td>
                         <td>
                             {{ $val['product_price']}}
+                        </td>
+                         <td>
+                            {{ $val['product_cash']}}
                         </td>
                          <td>
                             {{ $val['product_desc_ru']}}

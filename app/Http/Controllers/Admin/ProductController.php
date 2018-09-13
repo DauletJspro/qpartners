@@ -70,6 +70,7 @@ class ProductController extends Controller
         $product = new Product();
         $product->product_name_ru = $request->product_name_ru;
         $product->product_price = is_numeric($request->product_price)?$request->product_price:0;
+        $product->product_cash = is_numeric($request->product_cash)?$request->product_cash:0;
         $product->product_desc_ru = $request->product_desc_ru;
         $product->product_image = $request->product_image;
         $product->sort_num = ($request->sort_num=='')?1000:$request->sort_num;
@@ -113,6 +114,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->product_name_ru = $request->product_name_ru;
         $product->product_price = is_numeric($request->product_price)?$request->product_price:0;
+        $product->product_cash = is_numeric($request->product_cash)?$request->product_cash:0;
         $product->product_desc_ru = $request->product_desc_ru;
         $product->product_image = $request->product_image;
         $product->sort_num = ($request->sort_num=='')?1000:$request->sort_num;
