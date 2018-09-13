@@ -60,6 +60,17 @@
             <span>Профиль</span>
         </a>
     </li>
+    <li class="treeview balance-btn" style="background-color: #F9BF3B;">
+        <a href="/admin/balance" style="color: black">
+            <i class="fa fa-user"></i>
+            <span>Пополнить баланс</span>
+        </a>
+        <style>
+            .balance-btn:hover {
+                background-color: #F9BF3B !important;
+            }
+        </style>
+    </li>
     <li class="treeview">
         <a href="/admin/document">
             <i class="fa fa-user"></i>
