@@ -72,7 +72,7 @@ class OnlineController extends Controller
         $request->basket = UserBasket::leftJoin('product','product.product_id','=','user_basket.product_id')
                                     ->where('user_id',Auth::user()->user_id)
                                     ->where('user_basket.is_active',0)
-                                    ->select('product.*')
+                                    ->select('product.*','user_basket.unit')
                                     ->get();
 
         $request->basket_count = UserBasket::where('user_id',Auth::user()->user_id)->where('is_active',0)->count();
@@ -94,10 +94,52 @@ class OnlineController extends Controller
 
         $user_basket = UserBasket::where('user_id',Auth::user()->user_id)->where('product_id',$product_id)->where('is_active',0)->first();
         $user_basket->delete();
+
+        $sum = 0;
+        $products = UserBasket::where('user_id',Auth::user()->user_id)->where('is_active',0)->get();
+        foreach ($products as $item){
+            $product_price = Product::where('product_id',$item->product_id)->first();
+            $sum += $product_price->product_price * $item->unit;
+        }
         
         $result['message'] = 'Вы успешно отправили запрос';
         $result['count'] =  $request->basket_count = UserBasket::where('user_id',Auth::user()->user_id)->where('is_active',0)->count();
         $result['status'] = true;
+        $result['sum'] = $sum;
+        return response()->json($result);
+    }
+
+    public function setProductUnit(Request $request,$product_id)
+    {
+        $product = Product::where('product_id',$product_id)->first();
+
+        if($product == null){
+            $result['error'] = 'Такого товара не существует';
+            $result['status'] = false;
+            return response()->json($result);
+        }
+
+        $user_basket = UserBasket::where('user_id',Auth::user()->user_id)->where('product_id',$product_id)->where('is_active',0)->first();
+        if($user_basket == null){
+            $result['error'] = 'Такого товара не существует';
+            $result['status'] = false;
+            return response()->json($result);
+        }
+
+        $user_basket->unit = $request->unit;
+        $user_basket->save();
+
+        $sum = 0;
+        $products = UserBasket::where('user_id',Auth::user()->user_id)->where('is_active',0)->get();
+        foreach ($products as $item){
+            $product_price = Product::where('product_id',$item->product_id)->first();
+            $sum += $product_price->product_price * $item->unit;
+        }
+        
+        $result['message'] = 'Вы успешно отправили запрос';
+        $result['count'] =  $request->basket_count = UserBasket::where('user_id',Auth::user()->user_id)->where('is_active',0)->count();
+        $result['status'] = true;
+        $result['sum'] = $sum;
         return response()->json($result);
     }
 }

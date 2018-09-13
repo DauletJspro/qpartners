@@ -348,6 +348,27 @@ function addProductToBasket(id) {
     });
 }
 
+function setBasketUnit(ob,id) {
+    $.ajax({
+        type: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: "/admin/online/unit/" + id,
+        data:{
+            unit: $(ob).val()
+        },
+        success: function(data){
+            if(data.status == true){
+                $('#sum').html(data.sum);
+            }
+            else {
+                showError(data.error);
+            }
+        }
+    });
+}
+
 
 
 function delProductFromBasket(id) {
@@ -361,6 +382,7 @@ function delProductFromBasket(id) {
             if(data.status == true){
                 showMessage('Успешно удалено');
                 $('#basket_count').html(data.count);
+                $('#sum').html(data.sum);
             }
             else {
                 showError(data.error);

@@ -35,7 +35,7 @@
                 </td>
                 <td>
                     <input class="basket_product_id" type="hidden" value="{{ $val->product_id }}"/>
-                    <input placeholder="Количество" style="padding: 3px 10px" class="basket_product_unit" type="number" value="1"/>
+                    <input onchange="setBasketUnit(this,'{{ $val->product_id }}')" placeholder="Количество" style="padding: 3px 10px" class="basket_product_unit" type="number" value="{{ $val->unit }}"/>
                 </td>
                 <td style="text-align: center">
                     <a href="javascript:void(0)" onclick="delProductFromBasket('{{ $val->product_id }}')">
@@ -49,7 +49,7 @@
         @endforeach
 
         <tr>
-            <td colspan="4" style="text-align: right"><b>Общая сумма:</b> </td>
+            <td colspan="5" style="text-align: right"><b>Общая сумма:</b> </td>
             <td colspan="1"><b id="sum">{{$sum}}</b></td>
         </tr>
 

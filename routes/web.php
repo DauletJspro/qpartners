@@ -165,6 +165,7 @@ Route::group([
         'prefix' => 'online'
     ], function() {
         Route::get('/', 'OnlineController@index');
+        Route::post('unit/{id}', 'OnlineController@setProductUnit');
         Route::post('{id}', 'OnlineController@addProductToBasket');
         Route::delete('{id}', 'OnlineController@deleteProductFromBasket');
     });
