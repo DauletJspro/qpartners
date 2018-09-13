@@ -10,6 +10,10 @@
             <p style="color:red;margin:0px;font-weight: bold">Ваш баланс: {{Auth::user()->user_money * \App\Models\Currency::where('currency_name','тенге')->first()->money}}тг</p>
         </li>
 
+        <li class="header" style="text-align: center; padding:5px 25px 0px">
+            <p style="color:red;margin:0px;font-weight: bold">Ваш cash: {{Auth::user()->user_cash}}$</p>
+        </li>
+
         <?php $user_parent = \App\Models\UserParent::leftJoin('packet','packet.packet_id','=','user_parent.packet_id')->where('user_id',Auth::user()->user_id)->get(); ?>
 
         @foreach($user_parent as $item)
