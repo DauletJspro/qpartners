@@ -24,6 +24,7 @@
                 <th>Цена</th>
                 <th>Краткое описание</th>
                 <th style="width: 15px"></th>
+                <th style="width: 15px"></th>
               </tr>
             </thead>
 
@@ -55,6 +56,11 @@
                                 <li class="fa fa-pencil" style="font-size: 20px;"></li>
                             </a>
                         </td>
+                         <td style="text-align: center">
+                             <a href="javascript:void(0)" onclick="delItem(this,'{{ $val->product_id }}','product')">
+                                 <li class="fa fa-trash-o" style="font-size: 20px; color: red;"></li>
+                             </a>
+                         </td>
                      </tr>
 
                   @endforeach
