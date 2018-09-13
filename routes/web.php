@@ -226,6 +226,7 @@ Route::group([
     Route::any('password', 'UserController@password');
 
     Route::resource('packet-item', 'PacketItemController');
+    Route::resource('product', 'ProductController');
 });
 
 /******* Main page *******/
