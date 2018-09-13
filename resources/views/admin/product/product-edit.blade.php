@@ -37,7 +37,7 @@
                                        </div>
                                        <div class="form-group">
                                            <label>Цена</label>
-                                           <input value="{{ $row->product_price }}" type="number" class="form-control" name="product_price" placeholder="Введите">
+                                           <input value="{{ $row->product_price }}" type="text" class="form-control" name="product_price" placeholder="Введите">
                                        </div>
                                        <div class="form-group">
                                            <label>Cach Back (%)</label>
