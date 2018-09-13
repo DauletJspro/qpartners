@@ -8,7 +8,7 @@
         </h1>
 
         <div style="text-align: right">
-            <a href="/admin/basket">Корзина <span id="basket_count" class="label label-primary pull-right" style=" background-color: rgb(253, 58, 53) ! important;">{{$row->basket_count}}</span></a>
+            <a style="font-size: 20px;text-decoration: underline;" href="/admin/basket">Корзина <span id="basket_count" class="label label-primary pull-right" style=" background-color: rgb(253, 58, 53) ! important; font-size: 15px; border-radius: 50%">{{$row->basket_count}}</span></a>
         </div>
     </section>
 
