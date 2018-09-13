@@ -10,7 +10,7 @@
         <div class="box-body">
             <div class="box-header">
                 <h1 class="box-title main-title">
-                    {{$title}}
+                    {{$title}} <span style="color: red">TELEGRAMга регистрация жасанызшы и маган жазынызшы. Мен соткамды умытып кеттим офиста</span>
                 </h1>
             </div>
             <div class="nav-tabs-custom">
