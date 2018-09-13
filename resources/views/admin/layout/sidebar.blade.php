@@ -62,7 +62,7 @@
     </li>
     <li class="treeview balance-btn" style="background-color: #F9BF3B;">
         <a href="/admin/balance" style="color: black" class="balance-btn">
-            <i class="fa fa-user"></i>
+            <i class="fa fa-money"></i>
             <span>Пополнить баланс</span>
         </a>
         <style>
