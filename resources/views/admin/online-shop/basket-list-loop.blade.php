@@ -38,7 +38,7 @@
                     <input onchange="setBasketUnit(this,'{{ $val->product_id }}')" placeholder="Количество" style="padding: 3px 10px" class="basket_product_unit" type="number" value="{{ $val->unit }}"/>
                 </td>
                 <td style="text-align: center">
-                    <a href="javascript:void(0)" onclick="delProductFromBasket('{{ $val->product_id }}')">
+                    <a href="javascript:void(0)" onclick="delProductFromBasket(this,'{{ $val->product_id }}')">
                         <li class="fa fa-trash-o" style="font-size: 20px; color: red;"></li>
                     </a>
                 </td>

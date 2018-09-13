@@ -371,7 +371,9 @@ function setBasketUnit(ob,id) {
 
 
 
-function delProductFromBasket(id) {
+function delProductFromBasket(ob,id) {
+    $(ob).closest('tr').remove();
+
     $.ajax({
         type: 'DELETE',
         headers: {
