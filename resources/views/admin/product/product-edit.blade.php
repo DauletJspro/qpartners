@@ -18,7 +18,7 @@
                                </div>
                            @endif
 
-                               @if($row->product_шв > 0)
+                               @if($row->product_id > 0)
                                    <form action="/admin/product/{{$row->product_id}}" method="POST">
                                        <input type="hidden" name="_method" value="PUT">
                                        @else
