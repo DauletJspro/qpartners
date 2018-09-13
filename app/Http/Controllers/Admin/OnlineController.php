@@ -76,7 +76,8 @@ class OnlineController extends Controller
                                     ->get();
 
         $request->basket_count = UserBasket::where('user_id',Auth::user()->user_id)->where('is_active',0)->count();
-        return  view('admin.online-shop.product',[
+
+        return  view('admin.online-shop.basket',[
             'row' => $request
         ]);
     }
