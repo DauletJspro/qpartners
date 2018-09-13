@@ -166,7 +166,10 @@ Route::group([
     ], function() {
         Route::get('/', 'OnlineController@index');
         Route::post('{id}', 'OnlineController@addProductToBasket');
+        Route::delete('{id}', 'OnlineController@deleteProductFromBasket');
     });
+
+    Route::get('basket', 'OnlineController@showBasket');
     
     Route::get('document', 'UserDocumentController@index');
     Route::get('document/{user_id}', 'UserDocumentController@index');

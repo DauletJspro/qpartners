@@ -348,6 +348,27 @@ function addProductToBasket(id) {
     });
 }
 
+
+
+function delProductFromBasket(id) {
+    $.ajax({
+        type: 'DELETE',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: "/admin/online/" + id,
+        success: function(data){
+            if(data.status == true){
+                showMessage('Успешно удалено');
+                $('#basket_count').html(data.count);
+            }
+            else {
+                showError(data.error);
+            }
+        }
+    });
+}
+
 function closeModal() {
     $('.modal-dialog').css('display','none');
     $('#blur').css('display','none');
