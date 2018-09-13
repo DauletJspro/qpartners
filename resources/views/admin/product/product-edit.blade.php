@@ -25,6 +25,7 @@
                                            <form action="/admin/product" method="POST">
                                                @endif
 
+
                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                    <input type="hidden" name="product_id" value="{{ $row->product_id }}">
                                    <input type="hidden" value="{{ $row->product_image }}" name="product_image" class="image-name">
