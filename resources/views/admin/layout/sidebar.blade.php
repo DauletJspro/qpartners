@@ -50,6 +50,12 @@
         </a>
     </li>
     <li class="treeview">
+        <a href="/admin/online/history">
+            <i class="fa fa-user"></i>
+            <span>Мои покупки</span>
+        </a>
+    </li>
+    <li class="treeview">
         <a href="/admin/our-document">
             <i class="fa fa-user"></i>
             <span>Договор</span>
