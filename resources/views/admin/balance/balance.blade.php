@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-group">
                     <label>Укажите сумму ($)</label>
-                    <input id="money" min="0" required value="" type="numeric" class="form-control" name="money" placeholder="Введите">
+                    <input id="balance" min="0" required value="" type="numeric" class="form-control" name="money" placeholder="Введите">
                 </div>
                 <div class="box-footer">
                     <button type="button" class="btn btn-primary" onclick="addBalance()">Пополнить баланс</button>

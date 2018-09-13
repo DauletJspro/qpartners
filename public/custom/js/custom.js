@@ -625,3 +625,24 @@ function deleteUserDocumentRequest(ob,id){
         });
     }
 }
+
+function addBalance(user_packet_type,id) {
+    if(confirm('Действительно хотите пополнить баланс?')) {
+        $.ajax({
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "/admin/balance/paybox",
+            data: {
+                balance: $('#balance').val()
+            },
+            success: function(data){
+                if(data.status == false){
+                    showError(data.error);
+                }
+                else window.location.href = "https://www.paybox.kz/payment.php?" + data.href;
+            }
+        });
+    }
+}

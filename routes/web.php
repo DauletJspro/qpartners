@@ -157,7 +157,8 @@ Route::group([
         'prefix' => 'balance'
     ], function() {
         Route::get('/', 'BalanceController@index');
-        Route::post('add', 'BalanceController@addBalance');
+        Route::get('{url}', 'BalanceController@index');
+        Route::post('paybox', 'BalanceController@addBalance');
     });
 
 
