@@ -9,6 +9,9 @@
           <h3 class="box-title box-title-first">
             <a class="menu-tab active-page">Активные товары</a>
           </h3>
+          <a href="/admin/product/create" style="float: right">
+             <button class="btn btn-primary box-add-btn">Добавить товар</button>
+          </a>
           <div class="clear-float"></div>
         </div>
         <div class="box-body">
