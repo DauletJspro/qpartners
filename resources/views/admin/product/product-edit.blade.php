@@ -18,14 +18,13 @@
                                </div>
                            @endif
 
-                               @if($row->news_id > 0)
+                               @if($row->product_шв > 0)
                                    <form action="/admin/product/{{$row->product_id}}" method="POST">
                                        <input type="hidden" name="_method" value="PUT">
                                        @else
                                            <form action="/admin/product" method="POST">
                                                @endif
 
-                                   <input type="hidden" name="_method" value="PUT">
                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                    <input type="hidden" name="product_id" value="{{ $row->product_id }}">
                                    <input type="hidden" value="{{ $row->product_image }}" name="product_image" class="image-name">
