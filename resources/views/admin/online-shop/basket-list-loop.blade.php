@@ -54,7 +54,9 @@
         </tr>
 
         <tr>
-            <a href="javascript:void(0)" onclick="showBasketModal()" class="btn btn-primary btn-block" style="background-color: rgb(253, 58, 53) !important"><b>Подтвердить заказ</b></a>
+            <td colspan="6" style="text-align: right">
+                <a href="javascript:void(0)" onclick="showBasketModal()" class="btn btn-primary btn-block" style="background-color: rgb(253, 58, 53) !important"><b>Подтвердить заказ</b></a>
+                </td>
         </tr>
 
         </tbody>
