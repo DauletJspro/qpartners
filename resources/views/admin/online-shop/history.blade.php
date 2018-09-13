@@ -55,7 +55,7 @@
                                     {{ $val['product_name_ru']}}
                                 </td>
                                 <td>
-                                    {{ $val['product_price']}}тг
+                                    {{ $val['product_price']}}$
                                 </td>
                                 <td>
                                     {{ $val['unit']}}

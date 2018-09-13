@@ -31,7 +31,7 @@
                     {{ $val['product_name_ru']}}
                 </td>
                 <td>
-                    {{ $val['product_price']}}тг
+                    {{ $val['product_price']}}$
                 </td>
                 <td>
                     <input class="basket_product_id" type="hidden" value="{{ $val->product_id }}"/>
@@ -50,7 +50,7 @@
 
         <tr>
             <td colspan="5" style="text-align: right"><b>Общая сумма:</b> </td>
-            <td colspan="1"><b id="sum">{{$sum}}</b></td>
+            <td colspan="1"><b id="sum">{{$sum}}$</b></td>
         </tr>
 
         <tr>
