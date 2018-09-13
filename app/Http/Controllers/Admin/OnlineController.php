@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Blog;
 use App\Models\Packet;
 use App\Models\Product;
+use App\Models\UserBasket;
 use App\Models\UserPacket;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -26,10 +27,41 @@ class OnlineController extends Controller
         $request->products = Product::where('is_show',1)
                                             ->orderBy('sort_num','asc')
                                             ->select('*')
-                                            ->paginate(2);
+                                            ->paginate(20);
 
         return  view('admin.online-shop.product',[
             'row' => $request
         ]);
+    }
+
+
+    public function addProductToBasket(Request $request,$product_id)
+    {
+        $product = Product::where('product_id',$product_id)->first();
+
+        if($product == null){
+            $result['error'] = 'Такого товара не существует';
+            $result['status'] = false;
+            return response()->json($result);
+        }
+
+        $user_basket = UserBasket::where('user_id',Auth::user()->user_id)->where('product_id',$product_id)->where('is_active',0)->first();
+
+        if($user_basket != null){
+            $result['error'] = 'Этот товар уже добавлен в корзину!';
+            $result['status'] = false;
+            return response()->json($result);
+        }
+
+        $user_basket = new UserBasket();
+        $user_basket->user_id = Auth::user()->user_id;
+        $user_basket->product_price = $product->product_price;
+        $user_basket->product_id = $product->product_id;
+        $user_basket->is_active = 0;
+        $user_basket->save();
+
+        $result['message'] = 'Вы успешно отправили запрос';
+        $result['status'] = true;
+        return response()->json($result);
     }
 }

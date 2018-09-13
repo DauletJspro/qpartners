@@ -329,6 +329,24 @@ function getReadMorePacket(id) {
     });
 }
 
+function addProductToBasket(id) {
+    $.ajax({
+        type: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: "/admin/online/" + id,
+        success: function(data){
+            if(data.success == true){
+                showMessage('Успешно добавлено');
+            }
+            else {
+                showError(data.error);
+            }
+        }
+    });
+}
+
 function closeModal() {
     $('.modal-dialog').css('display','none');
     $('#blur').css('display','none');
