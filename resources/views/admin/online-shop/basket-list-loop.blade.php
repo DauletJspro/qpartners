@@ -8,11 +8,12 @@
             <th>Цена</th>
             <th>Количество</th>
             <th>Удалить</th>
-            <th style="width: 15px"></th>
         </tr>
         </thead>
 
         <tbody>
+
+        <?php $sum = 0; ?>
 
         @foreach($row->basket as $key => $val)
 
@@ -30,20 +31,27 @@
                     {{ $val['product_name_ru']}}
                 </td>
                 <td>
-                    {{ $val['product_price']}}
+                    {{ $val['product_price']}}тг
                 </td>
                 <td>
                     <input class="basket_product_id" type="hidden" value="{{ $val->product_id }}"/>
                     <input placeholder="Количество" style="padding: 3px 10px" class="basket_product_unit" type="number" value="1"/>
                 </td>
                 <td style="text-align: center">
-                    <a href="javascript:void(0)" onclick="delProductFromBasket(this,'{{ $val->product_id }}')">
+                    <a href="javascript:void(0)" onclick="delProductFromBasket('{{ $val->product_id }}')">
                         <li class="fa fa-trash-o" style="font-size: 20px; color: red;"></li>
                     </a>
                 </td>
             </tr>
 
+            <?php $sum += $val->product_price; ?>
+
         @endforeach
+
+        <tr>
+            <td colspan="4" style="text-align: right"><b>Общая сумма:</b> </td>
+            <td colspan="1"><b id="sum">{{$sum}}</b></td>
+        </tr>
 
         </tbody>
 
