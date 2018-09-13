@@ -27,6 +27,22 @@
         </div>
     </div>
 
+    <div class="modal-dialog" id="shop_modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" onclick="closeModal()"><span aria-hidden="true">×</span></button>
+                <h2 class="modal-title" id="modal_title">Подтвердить заказ</h2>
+            </div>
+            <div class="modal-body">
+                <p><span>Общая сумма: </span><span id="modal_desc"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button  style="width: 100%; margin-bottom: 20px" type="button" onclick="closeModal()" class="btn btn-default pull-left">Закрыть</button>
+                <button onclick="confirmBasket()" style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px" type="button" class="btn btn-default pull-left">Купить онлайн</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div>
+
 @endsection
 
 

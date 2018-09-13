@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Packet;
 use App\Models\Product;
 use App\Models\UserBasket;
+use App\Models\UserOperation;
 use App\Models\UserPacket;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -140,6 +141,47 @@ class OnlineController extends Controller
         $result['count'] =  $request->basket_count = UserBasket::where('user_id',Auth::user()->user_id)->where('is_active',0)->count();
         $result['status'] = true;
         $result['sum'] = $sum;
+        return response()->json($result);
+    }
+
+    public function confirmBasket()
+    {
+        $sum = 0;
+        $products = UserBasket::where('user_id',Auth::user()->user_id)->where('is_active',0)->get();
+        foreach ($products as $item){
+            $product_price = Product::where('product_id',$item->product_id)->first();
+            $sum += $product_price->product_price * $item->unit;
+        }
+
+        if(Auth::user()->user_money  < $sum){
+            $result['error'] = 'У вас недостаточно средств';
+            $result['status'] = false;
+            return response()->json($result);
+        }
+
+        $products = UserBasket::where('user_id',Auth::user()->user_id)->where('is_active',0)->get();
+        foreach ($products as $item){
+            $product_price = Product::where('product_id',$item->product_id)->first();
+            $user_basket = UserBasket::where('user_basket_id',$item->user_basket_id)->first();
+            $user_basket->product_price = $product_price->product_price;
+            $user_basket->is_active = 1;
+            $user_basket->save();
+        }
+
+        $user = Auth::user();
+        $user->user_money = $user->user_money - $sum;
+        $user->save();
+
+        $operation = new UserOperation();
+        $operation->author_id = null;
+        $operation->recipient_id = $user->user_id;
+        $operation->money = $sum * -1;
+        $operation->operation_id = 2;
+        $operation->operation_type_id = 21;
+        $operation->operation_comment = '';
+        $operation->save();
+
+        $result['status'] = true;
         return response()->json($result);
     }
 }

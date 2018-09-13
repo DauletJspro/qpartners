@@ -369,6 +369,24 @@ function setBasketUnit(ob,id) {
     });
 }
 
+function confirmBasket() {
+    $.ajax({
+        type: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: "/admin/online/confirm",
+        success: function(data){
+            if(data.status == true){
+                window.location.href = 'admin/online/history';
+            }
+            else {
+                showError(data.error);
+            }
+        }
+    });
+}
+
 
 
 function delProductFromBasket(ob,id) {
@@ -401,6 +419,12 @@ function closeModal() {
 function getReadMoreProduct(ob) {
     $('#modal_title').html($(ob).closest('.info-box-content').find('.info-box-text').html());
     $('#modal_desc').html($(ob).closest('.info-box-content').find('.info-box-desc').html());
+    $('#shop_modal').fadeIn(0);
+    $('#blur').fadeIn(0);
+}
+
+function showBasketModal() {
+    $('#modal_desc').html($('#sum').html());
     $('#shop_modal').fadeIn(0);
     $('#blur').fadeIn(0);
 }

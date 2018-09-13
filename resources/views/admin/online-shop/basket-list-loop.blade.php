@@ -53,6 +53,10 @@
             <td colspan="1"><b id="sum">{{$sum}}</b></td>
         </tr>
 
+        <tr>
+            <a href="javascript:void(0)" onclick="showBasketModal()" class="btn btn-primary btn-block" style="background-color: rgb(253, 58, 53) !important"><b>Подтвердить заказ</b></a>
+        </tr>
+
         </tbody>
 
     </table>
