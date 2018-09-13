@@ -407,7 +407,7 @@ class PacketController extends Controller
                 $user_id = $user->recommend_user_id;
 
                 $counter = 0;
-                $money = 1000;
+                $money = 0;
                 while ($user_id != null) {
                     $counter++;
                     $parent = Users::where('user_id', $user_id)->first();
@@ -426,51 +426,54 @@ class PacketController extends Controller
 
                     if ($parent_packet->packet_available_level < $counter) continue;
 
-                    if ($counter == 1){
-                        $money = $user_packet->packet_price / 10;
-                        $co_profit = $user_packet->packet_price;
+                    if($packet->packet_id == 3){
+                        if ($counter == 1){
+                            $money = $user_packet->packet_price * 10 / 100;
+                        }
+                        elseif ($counter >= 2 && $counter <= 5){
+                            $money = $user_packet->packet_price * 2 / 100;
+                        }
                     }
-                    elseif ($counter >= 2 && $counter <= 5){
-                        $money = $user_packet->packet_price * 2 / 100;
-                        $co_profit = $user_packet->packet_price * 50 / 100;
+                    elseif($packet->packet_id == 4){
+                        if ($counter == 1){
+                            $money = $user_packet->packet_price * 5 / 100;
+                        }
+                        elseif ($counter >= 2 && $counter <= 5){
+                            $money = $user_packet->packet_price * 1 / 100;
+                        }
+                        elseif ($counter >= 6 && $counter <= 10){
+                            $money = $user_packet->packet_price * 0.5 / 100;
+                        }
                     }
-
-                    elseif ($counter == 3){
-                        $money = $user_packet->packet_price * 3 / 100;
-                        $co_profit = $user_packet->packet_price * 30 / 100;
-                    }
-
-                    elseif ($counter == 4){
-                        $money = $user_packet->packet_price * 2 / 100;
-                        $co_profit = $user_packet->packet_price * 20 / 100;
-                    }
-
-                    elseif ($counter >= 5){
-                        $money = $user_packet->packet_price * 1 / 100;
-                        $co_profit = $user_packet->packet_price * 10 / 100;
-                    }
-
-                    
-                    $operation = new UserOperation();
-                    $operation->author_id = $user_packet->user_id;
-                    $operation->recipient_id = $parent->user_id;
-                    $operation->money = $money;
-                    $operation->operation_id = 1;
-                    $operation->operation_type_id = 1;
-                    $operation->operation_comment = 'Рекрутинговый доход. "'.$packet->packet_name_ru.'". Уровень - ' .$counter;
-                    $operation->save();
-
-                    $parent->user_money = $parent->user_money + $money;
-                    $parent->save();
-
-                    if($counter <= 5 && $parent->is_activated == 1) {
-                        $parent->child_profit = $parent->child_profit + $co_profit;
-                        $this->setCareerManager($parent);
+                    elseif($packet->packet_id == 5){
+                        if ($counter == 1){
+                            $money = $user_packet->packet_price * 4 / 100;
+                        }
+                        elseif ($counter >= 2 && $counter <= 5){
+                            $money = $user_packet->packet_price * 0.6 / 100;
+                        }
+                        elseif ($counter >= 6 && $counter <= 10){
+                            $money = $user_packet->packet_price * 0.4 / 100;
+                        }elseif ($counter >= 11){
+                            $money = $user_packet->packet_price * 0.2 / 100;
+                        }
                     }
 
-                    $parent->save();
+                    if($money > 0){
+                        $operation = new UserOperation();
+                        $operation->author_id = $user_packet->user_id;
+                        $operation->recipient_id = $parent->user_id;
+                        $operation->money = $money;
+                        $operation->operation_id = 1;
+                        $operation->operation_type_id = 1;
+                        $operation->operation_comment = 'Рекрутинговый доход. "'.$packet->packet_name_ru.'". Уровень - ' .$counter;
+                        $operation->save();
 
-                    $send_money = $send_money + $money;
+                        $parent->user_money = $parent->user_money + $money;
+                        $parent->save();
+
+                        $send_money = $send_money + $money;
+                    }
 
                     if ($counter >= $packet->packet_available_level) break;
                 }
