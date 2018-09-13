@@ -159,6 +159,13 @@ Route::group([
         Route::get('/', 'BalanceController@index');
         Route::post('add', 'BalanceController@addBalance');
     });
+
+
+    Route::group([
+        'prefix' => 'online'
+    ], function() {
+        Route::get('/', 'OnlineController@index');
+    });
     
     Route::get('document', 'UserDocumentController@index');
     Route::get('document/{user_id}', 'UserDocumentController@index');
