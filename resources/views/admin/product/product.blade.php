@@ -22,7 +22,7 @@
                 <th></th>
                 <th>Название</th>
                 <th>Цена</th>
-                <th>Cach (%)</th>
+                <th>Cash (%)</th>
                 <th>Краткое описание</th>
                 <th style="width: 15px"></th>
                 <th style="width: 15px"></th>
