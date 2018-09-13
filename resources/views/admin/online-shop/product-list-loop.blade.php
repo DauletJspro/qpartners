@@ -8,11 +8,11 @@
                 </a>
             </div>
             <div class="info-box-content">
-                <span class="info-box-text">{{$item->product_name_ru}}</span>
+                <span class="info-box-text" style="font-weight: bold; color: red">{{$item->product_name_ru}}</span>
+                <span class="info-box-number">{{$item->product_price}}тг</span>
                 <span class="info-box-desc">{{$item->product_desc_ru}}</span>
-                <span class="info-box-number">{{$item->product_price}}</span>
-            </div><!-- /.info-box-content -->
-        </div><!-- /.info-box -->
+            </div>
+        </div>
     </div>
 
 @endforeach
