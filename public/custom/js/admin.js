@@ -378,7 +378,7 @@ function confirmBasket() {
         url: "/admin/online/confirm",
         success: function(data){
             if(data.status == true){
-                window.location.href = 'admin/online/history';
+                window.location.href = '/admin/online/history';
             }
             else {
                 showError(data.error);

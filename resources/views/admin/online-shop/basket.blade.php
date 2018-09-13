@@ -38,7 +38,7 @@
             </div>
             <div class="modal-footer">
                 <button  style="width: 100%; margin-bottom: 20px" type="button" onclick="closeModal()" class="btn btn-default pull-left">Закрыть</button>
-                <button onclick="confirmBasket()" style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px" type="button" class="btn btn-default pull-left">Купить онлайн</button>
+                <button onclick="confirmBasket()" style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px" type="button" class="btn btn-default pull-left">Купить</button>
             </div>
         </div><!-- /.modal-content -->
     </div>

@@ -184,4 +184,23 @@ class OnlineController extends Controller
         $result['status'] = true;
         return response()->json($result);
     }
+
+    public function showHistory(Request $request)
+    {
+        $request->basket = UserBasket::leftJoin('product','product.product_id','=','user_basket.product_id')
+                                    ->where('user_id',Auth::user()->user_id)
+                                    ->where('user_basket.is_active',1)
+                                    ->orderBy('user_backet_id','desc')
+                                    ->select('product.*',
+                                             'user_basket.unit',
+                                             'user_basket.product_price',
+                                              DB::raw('DATE_FORMAT(user_basket.created_at,"%d.%m.%Y %H:%i") as date'))
+                                    ->get();
+
+        $request->basket_count = UserBasket::where('user_id',Auth::user()->user_id)->where('is_active',0)->count();
+
+        return  view('admin.online-shop.history',[
+            'row' => $request
+        ]);
+    }
 }
