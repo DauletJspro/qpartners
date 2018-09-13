@@ -118,7 +118,7 @@ class ProductController extends Controller
         $product->sort_num = ($request->sort_num=='')?1000:$request->sort_num;
         $product->save();
         
-        return redirect('/admin/product-item');
+        return redirect('/admin/product');
     }
 
   
