@@ -21,6 +21,9 @@
 
     </div>
 
+    <div class="text-center">
+        {!! $row->products->links() !!}
+    </div>
 
     <div class="modal-dialog" id="shop_modal">
         <div class="modal-content">

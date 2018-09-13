@@ -73,3 +73,12 @@
     </div>
 
 @endsection
+
+@section('js')
+
+    <script>
+        $('a.fancybox').fancybox({
+            padding: 10
+        });
+    </script>
+@endsection
