@@ -121,5 +121,9 @@ class ProductController extends Controller
         return redirect('/admin/product');
     }
 
-  
+    public function destroy($id)
+    {
+        $news = Product::find($id);
+        $news->delete();
+    }
 }
