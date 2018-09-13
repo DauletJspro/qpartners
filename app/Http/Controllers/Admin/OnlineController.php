@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\UserBasket;
 use App\Models\UserOperation;
 use App\Models\UserPacket;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -159,6 +160,7 @@ class OnlineController extends Controller
             return response()->json($result);
         }
 
+        $user = Auth::user();
         $products = UserBasket::where('user_id',Auth::user()->user_id)->where('is_active',0)->get();
         foreach ($products as $item){
             $product_price = Product::where('product_id',$item->product_id)->first();
@@ -166,6 +168,48 @@ class OnlineController extends Controller
             $user_basket->product_price = $product_price->product_price;
             $user_basket->is_active = 1;
             $user_basket->save();
+
+            $user_id = $user->recommend_user_id;
+
+            $cash = ($product_price->product_price * $product_price->unit) * $product_price->product_cash / 100;
+            $user->user_cash += $cash;
+            $user->save();
+
+            $operation = new UserOperation();
+            $operation->author_id = null;
+            $operation->recipient_id = $user->user_id;
+            $operation->money = null;
+            $operation->operation_id = 1;
+            $operation->operation_type_id = 22;
+            $operation->operation_comment = $cash.'$ Cash';
+            $operation->save();
+
+            $counter = 0;
+            while ($user_id != null) {
+                $counter++;
+
+                $parent = Users::where('user_id', $user_id)->first();
+                if ($parent == null) break;
+                $user_id = $parent->recommend_user_id;
+
+                $cash = ($product_price->product_price * $product_price->unit) * $product_price->product_cash / 100;
+                $parent->user_cash += $cash;
+                $parent->save();
+
+                $operation = new UserOperation();
+                $operation->author_id =  $user->user_id;
+                $operation->recipient_id = $parent->user_id;
+                $operation->money = null;
+                $operation->operation_id = 1;
+                $operation->operation_type_id = 22;
+                $operation->operation_comment = $cash.'$ Cash';
+                $operation->save();
+
+                if($counter == 5){
+                    break;
+                }
+            }
+
         }
 
         $user = Auth::user();
@@ -180,6 +224,7 @@ class OnlineController extends Controller
         $operation->operation_type_id = 21;
         $operation->operation_comment = '';
         $operation->save();
+
 
         $result['status'] = true;
         return response()->json($result);
