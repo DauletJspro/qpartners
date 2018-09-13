@@ -6,6 +6,10 @@
         <h1>
             Магазин
         </h1>
+
+        <div style="text-align: right">
+            <a href="/admin/basket">Корзина <span id="basket_count" class="label label-primary pull-right" style=" background-color: rgb(253, 58, 53) ! important;">{{$row->basket_count}}</span></a>
+        </div>
     </section>
 
 @endsection

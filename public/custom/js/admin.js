@@ -337,8 +337,9 @@ function addProductToBasket(id) {
         },
         url: "/admin/online/" + id,
         success: function(data){
-            if(data.success == true){
+            if(data.status == true){
                 showMessage('Успешно добавлено');
+                $('#basket_count').html(data.count);
             }
             else {
                 showError(data.error);

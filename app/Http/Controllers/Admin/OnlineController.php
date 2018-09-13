@@ -28,7 +28,8 @@ class OnlineController extends Controller
                                             ->orderBy('sort_num','asc')
                                             ->select('*')
                                             ->paginate(20);
-
+        
+        $request->basket_count = UserBasket::where('user_id',Auth::user()->user_id)->where('is_active',0)->count();
         return  view('admin.online-shop.product',[
             'row' => $request
         ]);
@@ -61,6 +62,7 @@ class OnlineController extends Controller
         $user_basket->save();
 
         $result['message'] = 'Вы успешно отправили запрос';
+        $result['count'] =  $request->basket_count = UserBasket::where('user_id',Auth::user()->user_id)->where('is_active',0)->count();
         $result['status'] = true;
         return response()->json($result);
     }

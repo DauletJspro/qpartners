@@ -7,7 +7,7 @@
                     <img style="width: 100%; border-radius: 5px" src="{{$item->product_image}}"/>
                 </a>
             </div>
-            <div class="info-box-content" style="margin-left: 0px; text-align: center">
+            <div class="info-box-content" style="margin-left: 0px; text-align: center; padding-bottom: 14px">
                 <span class="info-box-text" style="font-weight: bold; color: red">{{$item->product_name_ru}}</span>
                 <span class="info-box-number">{{$item->product_price}}тг</span>
                 <a style="text-decoration: underline" href="javascript:void(0)" onclick="getReadMoreProduct(this)">Подробнее</a>
