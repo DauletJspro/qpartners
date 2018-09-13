@@ -47,7 +47,7 @@
                             {{ $val['product_name_ru']}}
                         </td>
                         <td>
-                            {{ $val['product_price']}} ({{round($val->product_price * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}тг)
+                            {{ $val['product_price']}}$ ({{round($val->product_price * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}тг)
                         </td>
                          <td>
                             {{ $val['product_cash']}}
