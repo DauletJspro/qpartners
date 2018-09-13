@@ -171,7 +171,7 @@ class OnlineController extends Controller
 
             $user_id = $user->recommend_user_id;
 
-            $cash = ($product_price->product_price * $product_price->unit) * $product_price->product_cash / 100;
+            $cash = ($product_price->product_price * $item->unit) * $product_price->product_cash / 100;
 
             if($cash > 0){
                 $user->user_cash += $cash;
@@ -196,7 +196,7 @@ class OnlineController extends Controller
                 if ($parent == null) break;
                 $user_id = $parent->recommend_user_id;
 
-                $cash = ($product_price->product_price * $product_price->unit) * $product_price->product_cash / 100;
+                $cash = ($product_price->product_price * $item->unit) * $product_price->product_cash / 100;
                 if($cash > 0){
                     $parent->user_cash += $cash;
                     $parent->save();
