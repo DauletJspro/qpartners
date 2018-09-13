@@ -15,7 +15,7 @@
         @foreach($user_parent as $item)
 
             <li class="header" style="text-align: center; padding:5px 25px 0px">
-                <p style="color:#009551;margin:0px;font-weight: bold">{{$item->star_status}} STAR</p>
+                <p style="color:#009551;margin:0px;font-weight: bold">{{$item->star_status}} STAR ({{$item->packet_name_ru}})</p>
             </li>
 
         @endforeach
