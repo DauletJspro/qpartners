@@ -378,6 +378,7 @@ class PacketController extends Controller
             $packet_old_price = UserPacket::where('user_id',$user_packet->user_id)
                 ->where('packet_id','>',2)
                 ->where('is_active',1)
+                ->where('is_recruite_profit',1)
                 ->where('is_portfolio',$user_packet->is_portfolio)
                 ->where('packet_type',$user_packet->packet_type)
                 ->sum('packet_price');
@@ -386,6 +387,7 @@ class PacketController extends Controller
                 ->where('user_id',$user_packet->user_id)
                 ->where('user_packet.packet_id','>',2)
                 ->where('user_packet.is_active',1)
+                ->where('is_recruite_profit',1)
                 ->where('user_packet.is_portfolio',$user_packet->is_portfolio)
                 ->where('user_packet.packet_type',$user_packet->packet_type)
                 ->max('packet.packet_share');
@@ -400,21 +402,79 @@ class PacketController extends Controller
 
             $send_money = 0;
 
-            $parent = Users::where('user_id', $user->recommend_user_id)->first();
-            if ($parent != null && $packet->packet_type == 1) {
-                $operation = new UserOperation();
-                $operation->author_id = $user_packet->user_id;
-                $operation->recipient_id = $parent->user_id;
-                $operation->money = $user_packet->packet_price / 10;
-                $operation->operation_id = 1;
-                $operation->operation_type_id = 1;
-                $operation->operation_comment = 'Рекрутинговый доход. "'.$packet->packet_name_ru.'". Уровень - 1';
-                $operation->save();
 
-                $parent->user_money = $parent->user_money + $user_packet->packet_price / 10;
-                $parent->save();
+            if($packet->packet_available_level > 1) {
+                $user_id = $user->recommend_user_id;
 
-                $send_money += $user_packet->packet_price / 10;
+                $counter = 0;
+                $money = 1000;
+                while ($user_id != null) {
+                    $counter++;
+                    $parent = Users::where('user_id', $user_id)->first();
+                    if ($parent == null) break;
+                    $user_id = $parent->recommend_user_id;
+
+                    $parent_packet = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
+                        ->where('user_packet.user_id', $parent->user_id)
+                        ->where('user_packet.is_active', 1)
+                        ->where('user_packet.is_recruite_profit', 1)
+                        ->where('user_packet.packet_id','!=', 1)
+                        ->orderBy('packet.sort_num', 'desc')
+                        ->first();
+
+                    if ($parent_packet == null) continue;
+
+                    if ($parent_packet->packet_available_level < $counter) continue;
+
+                    if ($counter == 1){
+                        $money = $user_packet->packet_price / 10;
+                        $co_profit = $user_packet->packet_price;
+                    }
+                    elseif ($counter >= 2 && $counter <= 5){
+                        $money = $user_packet->packet_price * 2 / 100;
+                        $co_profit = $user_packet->packet_price * 50 / 100;
+                    }
+
+                    elseif ($counter == 3){
+                        $money = $user_packet->packet_price * 3 / 100;
+                        $co_profit = $user_packet->packet_price * 30 / 100;
+                    }
+
+                    elseif ($counter == 4){
+                        $money = $user_packet->packet_price * 2 / 100;
+                        $co_profit = $user_packet->packet_price * 20 / 100;
+                    }
+
+                    elseif ($counter >= 5){
+                        $money = $user_packet->packet_price * 1 / 100;
+                        $co_profit = $user_packet->packet_price * 10 / 100;
+                    }
+
+                    
+                    $operation = new UserOperation();
+                    $operation->author_id = $user_packet->user_id;
+                    $operation->recipient_id = $parent->user_id;
+                    $operation->money = $money;
+                    $operation->operation_id = 1;
+                    $operation->operation_type_id = 1;
+                    $operation->operation_comment = 'Рекрутинговый доход. "'.$packet->packet_name_ru.'". Уровень - ' .$counter;
+                    $operation->save();
+
+                    $parent->user_money = $parent->user_money + $money;
+                    $parent->save();
+
+                    if($counter <= 5 && $parent->is_activated == 1) {
+                        $parent->child_profit = $parent->child_profit + $co_profit;
+                        $this->setCareerManager($parent);
+                    }
+
+                    $parent->save();
+
+                    $send_money = $send_money + $money;
+
+                    if ($counter >= $packet->packet_available_level) break;
+                }
+
             }
 
             //выдача доли за покупку пакета
@@ -699,32 +759,16 @@ class PacketController extends Controller
                         $operation->operation_comment = 'Поздравляем! Ваш новый статус - "3 STAR". '.$packet->packet_status_name;
                         $operation->save();
 
-                        $parent_status->star_status = 3;
-                        $parent_status->save();
-                    }
-                }
-                elseif($parent_status->star_status == 3){
-                    $child_count = UserParent::where('parent_id',$parent->user_id)->where('packet_id',$user_packet->packet_id)->where('star_status',3)->count();
-                    if($child_count >= 4){
-                        $operation = new UserOperation();
-                        $operation->author_id = null;
-                        $operation->recipient_id = $parent->user_id;
-                        $operation->money = 0;
-                        $operation->operation_id = 1;
-                        $operation->operation_type_id = 10;
-                        $operation->operation_comment = 'Поздравляем! Ваш новый статус - "4 STAR". '.$packet->packet_status_name;
-                        $operation->save();
-
                         $operation = new UserOperation();
                         $operation->author_id = null;
                         $operation->recipient_id = $parent->user_id;
                         $operation->money = 0;
                         $operation->operation_id = 1;
                         $operation->operation_type_id = 20;
-                        $operation->operation_comment = 'За переход на "4 STAR" статус Вы получаете '.$packet->packet_status_thing .'. '.$packet->packet_status_name;
+                        $operation->operation_comment = 'За переход на "3 STAR" статус Вы получаете '.$packet->packet_status_thing .'. '.$packet->packet_status_name;
                         $operation->save();
 
-                        $parent_status->star_status = 4;
+                        $parent_status->star_status = 3;
                         $parent_status->save();
                     }
                 }
