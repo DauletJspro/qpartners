@@ -37,6 +37,10 @@ class BalanceController extends Controller
 
         $row = $row->paginate(20);
 
+        if($url != null && $url != 'success'){
+            abort(404);
+        }
+
         if($url == 'success'){
             $user = Auth::user();
             $user->user_money = $user->user_money + $user->paybox_balance;
