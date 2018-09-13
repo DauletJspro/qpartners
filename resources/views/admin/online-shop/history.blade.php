@@ -71,7 +71,7 @@
 
                         <tr>
                             <td colspan="5" style="text-align: right"><b>Общая сумма:</b> </td>
-                            <td colspan="1"><b id="sum">{{$sum}}</b></td>
+                            <td colspan="1"><b id="sum">{{$sum}}$</b></td>
                         </tr>
 
 

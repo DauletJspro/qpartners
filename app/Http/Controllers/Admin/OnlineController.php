@@ -172,17 +172,21 @@ class OnlineController extends Controller
             $user_id = $user->recommend_user_id;
 
             $cash = ($product_price->product_price * $product_price->unit) * $product_price->product_cash / 100;
-            $user->user_cash += $cash;
-            $user->save();
 
-            $operation = new UserOperation();
-            $operation->author_id = null;
-            $operation->recipient_id = $user->user_id;
-            $operation->money = null;
-            $operation->operation_id = 1;
-            $operation->operation_type_id = 22;
-            $operation->operation_comment = $cash.'$ Cash';
-            $operation->save();
+            if($cash > 0){
+                $user->user_cash += $cash;
+                $user->save();
+
+                $operation = new UserOperation();
+                $operation->author_id = null;
+                $operation->recipient_id = $user->user_id;
+                $operation->money = null;
+                $operation->operation_id = 1;
+                $operation->operation_type_id = 22;
+                $operation->operation_comment = $cash.'$ Cash';
+                $operation->save();
+            }
+
 
             $counter = 0;
             while ($user_id != null) {
@@ -193,17 +197,20 @@ class OnlineController extends Controller
                 $user_id = $parent->recommend_user_id;
 
                 $cash = ($product_price->product_price * $product_price->unit) * $product_price->product_cash / 100;
-                $parent->user_cash += $cash;
-                $parent->save();
+                if($cash > 0){
+                    $parent->user_cash += $cash;
+                    $parent->save();
 
-                $operation = new UserOperation();
-                $operation->author_id =  $user->user_id;
-                $operation->recipient_id = $parent->user_id;
-                $operation->money = null;
-                $operation->operation_id = 1;
-                $operation->operation_type_id = 22;
-                $operation->operation_comment = $cash.'$ Cash';
-                $operation->save();
+                    $operation = new UserOperation();
+                    $operation->author_id =  $user->user_id;
+                    $operation->recipient_id = $parent->user_id;
+                    $operation->money = null;
+                    $operation->operation_id = 1;
+                    $operation->operation_type_id = 22;
+                    $operation->operation_comment = $cash.'$ Cash';
+                    $operation->save();
+                }
+
 
                 if($counter == 5){
                     break;
