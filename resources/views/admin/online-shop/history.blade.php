@@ -55,7 +55,7 @@
                                     {{ $val['product_name_ru']}}
                                 </td>
                                 <td>
-                                    {{ $val['product_price']}}$
+                                    {{ $val['product_price']}}$ ({{round($val->product_price * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}тг)
                                 </td>
                                 <td>
                                     {{ $val['unit']}}
@@ -71,7 +71,7 @@
 
                         <tr>
                             <td colspan="5" style="text-align: right"><b>Общая сумма:</b> </td>
-                            <td colspan="1"><b id="sum">{{$sum}}$</b></td>
+                            <td colspan="1"><b id="sum">{{$sum}}$ ({{round($sum * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}тг)</b></td>
                         </tr>
 
 
