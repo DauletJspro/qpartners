@@ -435,28 +435,87 @@ class PacketController extends Controller
                         }
                     }
                     elseif($packet->packet_id == 4){
-                        if ($counter == 1){
-                            $money = $user_packet->packet_price * 5 / 100;
+
+                        $check = UserPacket::where('user_packet.user_id', $user->user_id)
+                                            ->where('user_packet.packet_id', 3)
+                                            ->where('user_packet.is_active', 1)
+                                            ->count();
+
+                        if($check == 0){
+                            if ($counter == 1){
+                                $money = $user_packet->packet_price * 5 / 100;
+                            }
+                            elseif ($counter >= 2 && $counter <= 5){
+                                $money = $user_packet->packet_price * 1 / 100;
+                            }
+                            elseif ($counter >= 6 && $counter <= 10){
+                                $money = $user_packet->packet_price * 0.5 / 100;
+                            }
                         }
-                        elseif ($counter >= 2 && $counter <= 5){
-                            $money = $user_packet->packet_price * 1 / 100;
-                        }
-                        elseif ($counter >= 6 && $counter <= 10){
-                            $money = $user_packet->packet_price * 0.5 / 100;
+                        else {
+                            if ($counter == 1){
+                                $money = $user_packet->packet_price * 3.334 / 100;
+                            }
+                            elseif ($counter >= 2 && $counter <= 5){
+                                $money = $user_packet->packet_price * 0.667 / 100;
+                            }
+                            elseif ($counter >= 6 && $counter <= 10){
+                                $money = $user_packet->packet_price * 0.667 / 100;
+                            }
                         }
                     }
                     elseif($packet->packet_id == 5){
-                        if ($counter == 1){
-                            $money = $user_packet->packet_price * 4 / 100;
+
+                        $check = UserPacket::where('user_packet.user_id', $user->user_id)
+                                    ->where('user_packet.packet_id', 4)
+                                    ->where('user_packet.is_active', 1)
+                                    ->count();
+
+                        $check2 = UserPacket::where('user_packet.user_id', $user->user_id)
+                                    ->where('user_packet.packet_id', 3)
+                                    ->where('user_packet.is_active', 1)
+                                    ->count();
+
+                        if($check == 1){
+                            if ($counter == 1){
+                                $money = $user_packet->packet_price * 3.334 / 100;
+                            }
+                            elseif ($counter >= 2 && $counter <= 5){
+                                $money = $user_packet->packet_price * 0.334 / 100;
+                            }
+                            elseif ($counter >= 6 && $counter <= 10){
+                                $money = $user_packet->packet_price * 0.334 / 100;
+                            }elseif ($counter >= 11){
+                                $money = $user_packet->packet_price * 0.334 / 100;
+                            }
                         }
-                        elseif ($counter >= 2 && $counter <= 5){
-                            $money = $user_packet->packet_price * 0.6 / 100;
+                        elseif($check2 == 1){
+                            if ($counter == 1){
+                                $money = $user_packet->packet_price * 3.334 / 100;
+                            }
+                            elseif ($counter >= 2 && $counter <= 5){
+                                $money = $user_packet->packet_price * 0.445 / 100;
+                            }
+                            elseif ($counter >= 6 && $counter <= 10){
+                                $money = $user_packet->packet_price * 0.445 / 100;
+                            }elseif ($counter >= 11){
+                                $money = $user_packet->packet_price * 0.223 / 100;
+                            }
                         }
-                        elseif ($counter >= 6 && $counter <= 10){
-                            $money = $user_packet->packet_price * 0.4 / 100;
-                        }elseif ($counter >= 11){
-                            $money = $user_packet->packet_price * 0.2 / 100;
+                        else {
+                            if ($counter == 1){
+                                $money = $user_packet->packet_price * 4 / 100;
+                            }
+                            elseif ($counter >= 2 && $counter <= 5){
+                                $money = $user_packet->packet_price * 0.6 / 100;
+                            }
+                            elseif ($counter >= 6 && $counter <= 10){
+                                $money = $user_packet->packet_price * 0.4 / 100;
+                            }elseif ($counter >= 11){
+                                $money = $user_packet->packet_price * 0.2 / 100;
+                            }
                         }
+
                     }
 
                     if($money > 0){
