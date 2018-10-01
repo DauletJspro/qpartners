@@ -418,7 +418,7 @@ class PacketController extends Controller
                     $parent_packet = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
                         ->where('user_packet.user_id', $parent->user_id)
                         ->where('user_packet.is_active', 1)
-                        ->where('user_packet.is_recruite_profit', 1)
+                        ->where('packet.is_recruite_profit', 1)
                         ->where('user_packet.packet_id','!=', 1)
                         ->orderBy('packet.sort_num', 'desc')
                         ->first();
