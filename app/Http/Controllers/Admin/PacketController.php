@@ -375,13 +375,14 @@ class PacketController extends Controller
             $this->acceptAutoPacket($user_packet_id);
         }
         else {
-            $packet_old_price = UserPacket::where('user_id',$user_packet->user_id)
-                ->where('packet_id','>',2)
-                ->where('is_active',1)
+            $packet_old_price = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
+                ->where('user_id',$user_packet->user_id)
+                ->where('user_packet.packet_id','>',2)
+                ->where('user_packet.is_active',1)
                 ->where('is_recruite_profit',1)
-                ->where('is_portfolio',$user_packet->is_portfolio)
-                ->where('packet_type',$user_packet->packet_type)
-                ->sum('packet_price');
+                ->where('user_packet.is_portfolio',$user_packet->is_portfolio)
+                ->where('user_packet.packet_type',$user_packet->packet_type)
+                ->sum('packet.packet_price');
 
             $share_old_price = UserPacket::leftJoin('packet','packet.packet_id','=','user_packet.packet_id')
                 ->where('user_id',$user_packet->user_id)
