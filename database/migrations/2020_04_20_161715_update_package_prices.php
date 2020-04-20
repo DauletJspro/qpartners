@@ -15,24 +15,24 @@ class UpdatePackagePrices extends Migration
     public function up()
     {
         DB::table('packet')
-            ->where('id', 23)
+            ->where('packet_id', 23)
             ->update([
                 "packet_price" => 10,
             ]);
 
         DB::table('packet')
-            ->where('id', 24)
+            ->where('packet_id', 24)
             ->update([
                 "packet_price" => 50,
             ]);
 
         DB::table('packet')
-            ->where('id', 25)
+            ->where('packet_id', 25)
             ->update([
                 "packet_price" => 100,
             ]);
         DB::table('packet')
-            ->where('id', 26)
+            ->where('packet_id', 26)
             ->update([
                 "packet_price" => 400,
             ]);
