@@ -976,7 +976,6 @@ class PacketController extends Controller
                         $operation->operation_comment = 'Ваш статус Менеджер';
 
                     $operation->save();
-
                     $user->status_id = $packet->packet_status_id;
                     $user->save();
                 }
