@@ -1,38 +1,19 @@
 @extends('admin.layout.layout')
-
 @section('breadcrump')
-
     <section class="content-header">
         <h1>
             Магазин
         </h1>
     </section>
-
 @endsection
-
 @section('content')
-
     <div class="row">
         <div class="col-lg-12 col-xs-12">
             <h2 class="page-header">Новые пакеты (товары) </h2>
         </div>
-
-        {!! view('admin.shop.packet-list-loop',['row' => $row, 'max_packet_user_number' => $max_packet_user_number,'packet_type' => 'item']) !!}
+                    {!! view('admin.shop.packet-list-loop',['row' => $row, 'max_packet_user_number' => $max_packet_user_number,'packet_type' => 'item']) !!}
 
     </div>
-
-   {{-- <div class="row">
-        <div class="col-lg-12 col-xs-12">
-            <h2 class="page-header">Старые пакеты (товары)</h2>
-
-        </div>
-
-        {!! view('admin.shop.old-packet-list-loop',['row' => $row, 'max_packet_user_number' => $max_packet_user_number,'packet_type' => 'service']) !!}
-
-    </div>--}}
-
-
-
     <div class="modal-dialog" id="shop_modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -56,10 +37,19 @@
             </div>
 
             <div class="modal-footer">
-                <button  style="width: 100%; margin-bottom: 20px" type="button" onclick="closeModal()" class="btn btn-default pull-left">Закрыть</button>
-                <button id="buy_btn" style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px" type="button" class="btn btn-default pull-left">Купить онлайн</button>
-                <button style="margin-left:0px; background-color: #38b9ea; width: 100%; margin-bottom: 20px" type="button" id="send_request_btn" class="btn btn-default pull-left">Отправить запрос</button>
-                <button style="margin-left:0px; background-color: #38b9ea; width: 100%; margin-bottom: 20px" type="button" id="buy_packet_from_balance_btn" class="btn btn-default pull-left">Снять с баланса</button>
+                <button style="width: 100%; margin-bottom: 20px" type="button" onclick="closeModal()"
+                        class="btn btn-default pull-left">Закрыть
+                </button>
+                <button id="buy_btn"
+                        style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
+                        type="button" class="btn btn-default pull-left">Купить онлайн
+                </button>
+                <button style="margin-left:0px; background-color: #38b9ea; width: 100%; margin-bottom: 20px"
+                        type="button" id="send_request_btn" class="btn btn-default pull-left">Отправить запрос
+                </button>
+                <button style="margin-left:0px; background-color: #38b9ea; width: 100%; margin-bottom: 20px"
+                        type="button" id="buy_packet_from_balance_btn" class="btn btn-default pull-left">Снять с баланса
+                </button>
             </div>
         </div><!-- /.modal-content -->
     </div>

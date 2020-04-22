@@ -1,5 +1,4 @@
 
-
     @foreach($row->packet as $key => $item)
 
         @if($item->is_portfolio == 0)
