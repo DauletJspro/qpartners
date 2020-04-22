@@ -19,10 +19,10 @@ class ChangePreviusParentStatusIdInTableUser extends Migration
         foreach ($parents as $parent) {
             $parentFollowers = Users::parentFollowers($parent->user_id);
             $needNumber = 5; // Necessary number of followers for update parent status
-//            if (count($parentFollowers) >= $needNumber) {
-//                if ($parent->status_id == UserStatus::MANAGER && Users::isEnoughStatuses($parent->user_id, UserStatus::MANAGER)) {
-//                    $parent->status_id = UserStatus::BRONZE_MANAGER;
-//                }
+            if (count($parentFollowers) >= $needNumber) {
+                if ($parent->status_id == UserStatus::MANAGER && Users::isEnoughStatuses($parent->user_id, UserStatus::MANAGER)) {
+                    $parent->status_id = UserStatus::BRONZE_MANAGER;
+                }
 //                if ($parent->status_id == UserStatus::BRONZE_MANAGER && Users::isEnoughStatuses($parent->user_id, UserStatus::BRONZE_MANAGER)) {
 //                    $parent->status_id = UserStatus::SILVER_MANAGER;
 //                }
@@ -36,7 +36,7 @@ class ChangePreviusParentStatusIdInTableUser extends Migration
 //                    $parent->status_id = UserStatus::DIAMOND_DIRECTOR;
 //                }
 //                $parent->save();
-//            }
+            }
         }
     }
 
