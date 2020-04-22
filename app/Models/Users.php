@@ -30,17 +30,18 @@ class Users extends Model implements AuthenticatableContract
 
     public static function isEnoughStatuses($parent_id, $status_id)
     {
+        $followerStatusIds = [];
         $followers = Users::where(['recommend_user_id' => $parent_id])->get();
-//        $followerStatusIds = array_map(function ($user) use ($status_id) {
-//            if ($user['status_id'] >= $status_id) {
-//                return $user['status_id'];
-//            }
-//        }, $followers->toArray());
-//        $followerStatusIds = array_filter($followerStatusIds);
-//        if (count($followerStatusIds) >= 5) {
-//            return true;
-//        }
-//        return false;
-        return true;
+
+        foreach ($followers as $follower) {
+            if ($follower->status_id >= $status_id) {
+                array_push($followerStatusIds, $follower->status_id);
+            }
+        }
+        $followerStatusIds = array_filter($followerStatusIds);
+        if (count($followerStatusIds) >= 5) {
+            return true;
+        }
+        return false;
     }
 }
