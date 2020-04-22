@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Blog;
 use App\Models\Packet;
 use App\Models\UserPacket;
+use App\Models\Users;
+use App\Models\UserStatus;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;

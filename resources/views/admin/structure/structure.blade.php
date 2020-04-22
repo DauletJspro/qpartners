@@ -52,15 +52,6 @@
                                                 <div>
                                                     <p style="font-weight: 900; margin: 0px">ЛО: {{ $lo_profit }} $ ({{round($lo_profit * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}тг)</p>
                                                 </div>
-                                               {{-- <div>
-                                                    <p style="font-weight: 900; margin: 0px">ЛКО: {{ $user->left_child_profit }} PV</p>
-                                                </div>
-                                                <div>
-                                                    <p style="font-weight: 900; margin: 0px">ПКО: {{ $user->right_child_profit }} PV</p>
-                                                </div>
-                                                <div>
-                                                    <p style="font-weight: 900; margin: 0px">КВО: {{ $user->qualification_profit }} PV </p>
-                                                </div>--}}
                                             </div>
                                         </div>
                                         <div class="clear-float"></div>
@@ -82,15 +73,6 @@
                                                 <div>
                                                     <p style="font-weight: 900; margin: 0px">ЛО: {{ $lo_profit }} $ ({{round($lo_profit * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}тг)</p>
                                                 </div>
-                                               {{-- <div>
-                                                    <p style="font-weight: 900; margin: 0px">ЛКО: {{ $user->left_child_profit }} PV </p>
-                                                </div>
-                                                <div>
-                                                    <p style="font-weight: 900; margin: 0px">ПКО: {{ $user->right_child_profit }} PV</p>
-                                                </div>
-                                                <div>
-                                                    <p style="font-weight: 900; margin: 0px">КВО: {{ $user->qualification_profit }} PV</p>
-                                                </div>--}}
                                             </div>
                                         </div>
                                         <div class="clear-float"></div>
@@ -98,7 +80,6 @@
                                 @endif
                             </li>
                         </ul>
-                        {{--   {!! view('admin.structure.structure-list-loop',compact('user_id','first_item')) !!}--}}
                     </div>
                 </div>
             </div>

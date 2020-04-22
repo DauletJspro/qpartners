@@ -353,7 +353,8 @@ class PacketController extends Controller
         $operation->save();
 
         $users = Users::find(Auth::user()->user_id);
-        $users->user_money -= $packet->packet_price - $packet_old_price;
+        $rest_mooney = $users->user_money - $packet->packet_price - $packet_old_price;
+        $users->user_money = $rest_mooney;
         $users->save();
 
         $accept = $this->acceptPacketFunction($user_packet->user_packet_id);
@@ -764,7 +765,6 @@ class PacketController extends Controller
                                 ->first();
 
                             if ($check_parent_packet != null) {
-                                //$parent->auto_bonus = $parent->auto_bonus + $auto_bonus;
                                 $parent->user_money = $parent->user_money + $auto_bonus;
                                 $parent->save();
 
@@ -851,11 +851,11 @@ class PacketController extends Controller
 
                     $money = 0;
 
-
                     if ($counter >= $packet->packet_available_level) break;
                 }
 
             }
+
 
             //выдача доли за покупку пакета
             if ($packet->packet_share > 0 && $user_packet->user_packet_type == 'share' && 2 == 1) {
@@ -965,7 +965,6 @@ class PacketController extends Controller
                     $operation->operation_id = 1;
                     $operation->operation_type_id = 10;
 
-
                     if ($packet->packet_status_id == 21)
                         $operation->operation_comment = 'Ваш статус Клиент';
                     elseif ($packet->packet_status_id == 22)
@@ -974,13 +973,29 @@ class PacketController extends Controller
                         $operation->operation_comment = 'Ваш статус Агент';
                     elseif ($packet->packet_status_id == 24)
                         $operation->operation_comment = 'Ваш статус Менеджер';
-
                     $operation->save();
                     $user->status_id = $packet->packet_status_id;
                     $user->save();
+
+                    $parentFollowers = Users::parentFollowers($user->recommend_user_id);
+                    $parent = Users::where('user_id', $user->recommend_user_id)->first();
+                    $needNumber = 5; // Necessary number of followers for update parent status
+                    if (count($parentFollowers) >= $needNumber) {
+                        if ($user->status_id = UserStatus::MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::MANAGER)) {
+                            $parent->status_id = UserStatus::BRONZE_MANAGER;
+                        } elseif ($user->status_id = UserStatus::BRONZE_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::BRONZE_MANAGER)) {
+                            $parent->status_id = UserStatus::SILVER_MANAGER;
+                        } elseif ($user->status_id = UserStatus::SILVER_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SILVER_MANAGER)) {
+                            $parent->status_id = UserStatus::GOLD_MANAGER;
+                        } elseif ($user->status_id = UserStatus::GOLD_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GOLD_MANAGER)) {
+                            $parent->status_id = UserStatus::SAPPHIRE_DIRECTOR;
+                        } elseif ($user->status_id = UserStatus::SAPPHIRE_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SAPPHIRE_DIRECTOR)) {
+                            $parent->status_id = UserStatus::DIAMOND_DIRECTOR;
+                        }
+                        $parent->save();
+                    }
                 }
             }
-
             if ($packet->packet_type == 1 && $packet->packet_id != 23 && $packet->packet_id != 24 && $packet->packet_id != 25 && $packet->packet_id != 15 && $packet->packet_id != 9 && $packet->packet_id != 16 && $packet->packet_id != 20 && $packet->packet_id != 21) {
 
                 $check = false;
