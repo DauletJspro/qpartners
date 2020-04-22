@@ -36,7 +36,7 @@ class Users extends Model implements AuthenticatableContract
                 return $user['status_id'];
             }
         }, $followers->toArray());
-        $followerStatusIds = array_filter($followerStatusIds);
+//        $followerStatusIds = array_filter($followerStatusIds);
         if (count($followerStatusIds) >= 5) {
             return true;
         }
