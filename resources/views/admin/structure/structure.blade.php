@@ -31,13 +31,13 @@
                             <li class="parent">
 
                                 <?php
-                                $lo_profit_id = \App\Models\UserPacket::where('is_active', 1)
+                                $LOProfitId = UserPacket::where('is_active', 1)
                                     ->where('user_id', Auth::user()->user_id)
                                     ->whereIn('packet_id', [23, 24, 25, 26, 27])
                                     ->max('packet_id');
 
-                                $lo_profit = Packet::where('packet_id', $lo_profit_id)->first();
-                                $lo_profit = $lo_profit->packet_price;
+                                $LOProfit = Packet::where('packet_id', $LOProfitId)->first();
+                                $LOProfit = $LOProfit ? $LOProfit->packet_price : 0;
 
                                 $gaps = UserPacket::where('is_active', 1)
                                     ->where('user_id', Auth::user()->user_id)
