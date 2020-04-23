@@ -69,8 +69,8 @@
                                                     Квалификация: {{$user->user_status_name}}</p>
                                                 <div>
                                                     <p style="font-weight: 900; margin: 0px">
-                                                        ЛО: {{ $lo_profit + $gaps }} $
-                                                        ({{round(($lo_profit+$gaps) * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
+                                                        ЛО: {{ $LOProfit + $gaps }} $
+                                                        ({{round(($LOProfit+$gaps) * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
                                                         тг)</p>
                                                 </div>
                                             </div>
@@ -94,8 +94,8 @@
                                                 <p style="color: #009551; margin: 0px">
                                                     Квалификация: {{$user->user_status_name}}</p>
                                                 <div>
-                                                    <p style="font-weight: 900; margin: 0px">ЛО: {{ $lo_profit }} $
-                                                        ({{round($lo_profit * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
+                                                    <p style="font-weight: 900; margin: 0px">ЛО: {{ $LOProfit }} $
+                                                        ({{round($LOProfit * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
                                                         тг)</p>
                                                 </div>
                                             </div>
