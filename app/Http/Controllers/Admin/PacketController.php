@@ -977,22 +977,37 @@ class PacketController extends Controller
                     $user->status_id = $packet->packet_status_id;
                     $user->save();
 
+
                     $parentFollowers = Users::parentFollowers($user->recommend_user_id);
                     $parent = Users::where('user_id', $user->recommend_user_id)->first();
                     $needNumber = 5; // Necessary number of followers for update parent status
                     if (count($parentFollowers) >= $needNumber) {
-                        if ($user->status_id = UserStatus::MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::MANAGER)) {
+
+                        $operation = new UserOperation();
+                        $operation->author_id = null;
+                        $operation->recipient_id = $parent->user_id;
+                        $operation->money = null;
+                        $operation->operation_id = 1;
+                        $operation->operation_type_id = 10;
+
+                        if ($parent->status_id == UserStatus::MANAGER && $user->status_id == UserStatus::MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::MANAGER)) {
                             $parent->status_id = UserStatus::BRONZE_MANAGER;
-                        } elseif ($user->status_id = UserStatus::BRONZE_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::BRONZE_MANAGER)) {
+                            $operation->operation_comment = "Ваш статус Бронзовый Менеджер";
+                        } elseif ($parent->status_id == UserStatus::BRONZE_MANAGER && $user->status_id == UserStatus::BRONZE_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::BRONZE_MANAGER)) {
                             $parent->status_id = UserStatus::SILVER_MANAGER;
-                        } elseif ($user->status_id = UserStatus::SILVER_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SILVER_MANAGER)) {
+                            $operation->operation_comment = "Ваш статус Серебряный Менеджер";
+                        } elseif ($parent->status_id == UserStatus::SILVER_MANAGER && $user->status_id == UserStatus::SILVER_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SILVER_MANAGER)) {
                             $parent->status_id = UserStatus::GOLD_MANAGER;
-                        } elseif ($user->status_id = UserStatus::GOLD_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GOLD_MANAGER)) {
+                            $operation->operation_comment = "Ваш статус Золотой Менеджер";
+                        } elseif ($parent->status_id == UserStatus::GOLD_MANAGER && $user->status_id == UserStatus::GOLD_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GOLD_MANAGER)) {
                             $parent->status_id = UserStatus::SAPPHIRE_DIRECTOR;
-                        } elseif ($user->status_id = UserStatus::SAPPHIRE_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SAPPHIRE_DIRECTOR)) {
+                            $operation->operation_comment = "Ваш статус Сапфировый Директор";
+                        } elseif ($parent->status_id == UserStatus::SAPPHIRE_DIRECTOR && $user->status_id == UserStatus::SAPPHIRE_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SAPPHIRE_DIRECTOR)) {
                             $parent->status_id = UserStatus::DIAMOND_DIRECTOR;
+                            $operation->operation_comment = "Ваш статус Бриллиантовый Директор";
                         }
                         $parent->save();
+                        $operation->save();
                     }
                 }
             }

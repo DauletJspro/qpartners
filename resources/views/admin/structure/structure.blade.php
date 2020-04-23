@@ -18,22 +18,36 @@
                 <div class="obsdiv" style="padding: 0 10px">
                     <div class="ulist">
                         <?php
-                        $user_id = Auth::user()->user_id;
-                        if(Auth::user()->role_id == 1)  $user_id = 1;
-                        $user_list = \App\Models\Users::where('recommend_user_id',$user_id)->take(20)->get();
+                        use App\Models\Packet;use App\Models\UserPacket;use Illuminate\Support\Facades\Auth;$user_id = Auth::user()->user_id;
+                        if (Auth::user()->role_id == 1) $user_id = 1;
+                        $user_list = \App\Models\Users::where('recommend_user_id', $user_id)->take(20)->get();
 
-                        $user = \App\Models\Users::leftJoin('user_status','user_status.user_status_id','=','users.status_id')
-                                                ->where('user_id',$user_id)
-                                                ->first();
+                        $user = \App\Models\Users::leftJoin('user_status', 'user_status.user_status_id', '=', 'users.status_id')
+                            ->where('user_id', $user_id)
+                            ->first();
                         ?>
 
                         <ul class="level_1">
                             <li class="parent">
 
                                 <?php
-                                $lo_profit = \App\Models\UserPacket::where('is_active',1)
-                                        ->where('user_id',Auth::user()->user_id)
-                                        ->max('packet_price');
+                                $lo_profit_id = \App\Models\UserPacket::where('is_active', 1)
+                                    ->where('user_id', Auth::user()->user_id)
+                                    ->whereIn('packet_id', [23, 24, 25, 26, 27])
+                                    ->max('packet_id');
+
+                                $lo_profit = Packet::where('packet_id', $lo_profit_id)->first();
+                                $lo_profit = $lo_profit->packet_price;
+
+                                $gaps = UserPacket::where('is_active', 1)
+                                    ->where('user_id', Auth::user()->user_id)
+                                    ->whereIn('packet_id', [28, 29])
+                                    ->max('packet_price');
+
+                                if (!$gaps) {
+                                    $gaps = 0;
+                                }
+
                                 ?>
 
 
@@ -41,16 +55,23 @@
                                     <span onclick="opUl(this)">+</span>
                                     <div class="dval act user-name">
                                         <div class="object-image client-image">
-                                            <a @if(Auth::user()->role_id == 1) href="/admin/profile/{{$user->user_id}}" target="_blank" @endif>
+                                            <a @if(Auth::user()->role_id == 1) href="/admin/profile/{{$user->user_id}}"
+                                               target="_blank" @endif>
                                                 <img src="{{$user->avatar}}">
                                             </a>
                                         </div>
                                         <div class="left-float client-name">
-                                            {{$user->login}}  @if(Auth::user()->user_id == 1) ({{$user->name}} {{$user->last_name}}) @endif @include('admin.structure.user_packet_list_loop')
+                                            {{$user->login}}  @if(Auth::user()->user_id == 1)
+                                                ({{$user->name}} {{$user->last_name}}
+                                                ) @endif @include('admin.structure.user_packet_list_loop')
                                             <div style="padding-top: 5px; color: rgb(58, 58, 58);">
-                                                <p style="color: #009551; margin: 0px">Квалификация: {{$user->user_status_name}}</p>
+                                                <p style="color: #009551; margin: 0px">
+                                                    Квалификация: {{$user->user_status_name}}</p>
                                                 <div>
-                                                    <p style="font-weight: 900; margin: 0px">ЛО: {{ $lo_profit }} $ ({{round($lo_profit * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}тг)</p>
+                                                    <p style="font-weight: 900; margin: 0px">
+                                                        ЛО: {{ $lo_profit + $gaps }} $
+                                                        ({{round(($lo_profit+$gaps) * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
+                                                        тг)</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -62,16 +83,20 @@
                                 @else
                                     <div class="dval act user-name">
                                         <div class="object-image client-image">
-                                            <a @if(Auth::user()->role_id == 1) href="/admin/profile/{{$user->user_id}}" target="_blank" @endif>
+                                            <a @if(Auth::user()->role_id == 1) href="/admin/profile/{{$user->user_id}}"
+                                               target="_blank" @endif>
                                                 <img src="{{$user->avatar}}">
                                             </a>
                                         </div>
                                         <div class="left-float client-name">
                                             {{$user->login}}  @if(Auth::user()->user_id == 1) {{$user->name}} {{$user->last_name}} @endif @include('admin.structure.user_packet_list_loop')
                                             <div style="padding-top: 5px; color: rgb(58, 58, 58);">
-                                                <p style="color: #009551; margin: 0px">Квалификация: {{$user->user_status_name}}</p>
+                                                <p style="color: #009551; margin: 0px">
+                                                    Квалификация: {{$user->user_status_name}}</p>
                                                 <div>
-                                                    <p style="font-weight: 900; margin: 0px">ЛО: {{ $lo_profit }} $ ({{round($lo_profit * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}тг)</p>
+                                                    <p style="font-weight: 900; margin: 0px">ЛО: {{ $lo_profit }} $
+                                                        ({{round($lo_profit * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
+                                                        тг)</p>
                                                 </div>
                                             </div>
                                         </div>
