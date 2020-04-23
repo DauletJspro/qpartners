@@ -17,7 +17,7 @@
             <?php
             $lo_profit = \App\Models\UserPacket::where('is_active',1)
                     ->where('user_id',$item->user_id)
-                    ->sum('packet_price');
+                    ->max('packet_price');
             ?>
 
             @if(count($child_user_list) > 0)
@@ -35,15 +35,6 @@
                             <div>
                                 <p style="font-weight: 900; margin: 0px">ЛО: {{ $lo_profit }} $ ({{round($lo_profit * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}тг)</p>
                             </div>
-                           {{-- <div>
-                                <p style="font-weight: 900; margin: 0px">ЛКО: {{ $user->left_child_profit }} PV</p>
-                            </div>
-                            <div>
-                                <p style="font-weight: 900; margin: 0px">ПКО: {{ $user->right_child_profit }} PV </p>
-                            </div>
-                            <div>
-                                <p style="font-weight: 900; margin: 0px">КВО: {{ $user->qualification_profit }} PV </p>
-                            </div>--}}
                         </div>
                     </div>
                     <div class="clear-float"></div>

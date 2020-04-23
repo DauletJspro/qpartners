@@ -33,7 +33,7 @@
                                 <?php
                                 $lo_profit = \App\Models\UserPacket::where('is_active',1)
                                         ->where('user_id',Auth::user()->user_id)
-                                        ->sum('packet_price');
+                                        ->max('packet_price');
                                 ?>
 
 
