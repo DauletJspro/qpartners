@@ -7,6 +7,11 @@
             Магазин
         </h1>
 
+        <div class="alert alert-warning">
+            <h4>* Активный Партнер - это Партнер совершающий покупку продукции не менее 10$ каждый месяц</h4>
+            <h4>** Cash Back бонус получает со статуса AGENT и выше</h4>
+        </div>
+
         <div style="text-align: right">
             <a style="font-size: 20px;text-decoration: underline;" href="/admin/basket">Посмотреть корзину <span id="basket_count" class="label label-primary pull-right" style=" background-color: rgb(253, 58, 53) ! important; font-size: 15px; border-radius: 50%">{{$row->basket_count}}</span></a>
         </div>

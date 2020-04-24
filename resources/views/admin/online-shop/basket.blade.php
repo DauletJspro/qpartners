@@ -8,7 +8,9 @@
         </h1>
 
         <div style="text-align: right">
-            <a style="font-size: 20px;text-decoration: underline;" href="/admin/online">Перейти в магазин<span id="basket_count" class="label label-primary pull-right" style=" background-color: rgb(253, 58, 53) ! important; font-size: 15px; border-radius: 50%">{{$row->basket_count}}</span></a>
+            <a style="font-size: 20px;text-decoration: underline;" href="/admin/online">Перейти в магазин<span
+                        id="basket_count" class="label label-primary pull-right"
+                        style=" background-color: rgb(253, 58, 53) ! important; font-size: 15px; border-radius: 50%">{{$row->basket_count}}</span></a>
         </div>
     </section>
 
@@ -37,10 +39,15 @@
                 <p><span>Общая сумма: </span><span id="modal_desc"></span></p>
             </div>
             <div class="modal-footer">
-                <button  style="width: 100%; margin-bottom: 20px" type="button" onclick="closeModal()" class="btn btn-default pull-left">Закрыть</button>
-                <button onclick="confirmBasket()" style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px" type="button" class="btn btn-default pull-left">Купить</button>
+                <button style="width: 100%; margin-bottom: 20px" type="button" onclick="closeModal()"
+                        class="btn btn-default pull-left">Закрыть
+                </button>
+                <button onclick="confirmBasket()"
+                        style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
+                        type="button" class="btn btn-default pull-left">Купить
+                </button>
             </div>
-        </div><!-- /.modal-content -->
+        </div>
     </div>
 
 @endsection
