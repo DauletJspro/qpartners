@@ -361,6 +361,7 @@ function setBasketUnit(ob,id) {
         success: function(data){
             if(data.status == true){
                 $('#sum').html(data.sum);
+                $('#ballSum').html(data.ballSum);
             }
             else {
                 showError(data.error);

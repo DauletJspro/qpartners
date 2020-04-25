@@ -63,10 +63,9 @@
             <td colspan="1"><b id="sum">{{$sum}}$
                     ({{round($sum * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}тг)</b>
             </td>
-            <td colspan="1"><b>+ {{ $ballSum }}
-                    ({{round($ballSum * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}тг)</b>
+            <td colspan="1"><b id="ballSum">+ {{ $ballSum }}</b>
             </td>
-        <td></td>
+            <td></td>
         <tr>
             <td colspan="7" style="text-align: right">
                 <a href="javascript:void(0)" onclick="showBasketModal()" class="btn btn-primary btn-block"

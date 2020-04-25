@@ -132,16 +132,19 @@ class OnlineController extends Controller
         $user_basket->save();
 
         $sum = 0;
+        $ballSum = 0;
         $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
         foreach ($products as $item) {
             $product_price = Product::where('product_id', $item->product_id)->first();
             $sum += $product_price->product_price * $item->unit;
+            $ballSum += $product_price->ball * $item->unit;
         }
 
         $result['message'] = 'Вы успешно отправили запрос';
         $result['count'] = $request->basket_count = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->count();
         $result['status'] = true;
         $result['sum'] = $sum;
+        $result['ballSum'] = $ballSum;
         return response()->json($result);
     }
 

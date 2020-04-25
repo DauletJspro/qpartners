@@ -22,14 +22,7 @@
         $LOProfit = Packet::where('packet_id', $LOProfitId)->first();
         $LOProfit = $LOProfit ? $LOProfit->packet_price : 0;
 
-        $gaps = UserPacket::where('is_active', 1)
-            ->where('user_id', $item->user_id)
-            ->whereIn('packet_id', [28, 29])
-            ->max('packet_price');
-
-        if (!$gaps) {
-            $gaps = 0;
-        }
+        $gaps = 0;
         ?>
 
         @if(count($child_user_list) > 0)
