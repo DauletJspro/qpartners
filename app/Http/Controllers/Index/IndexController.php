@@ -103,7 +103,7 @@ class IndexController extends Controller
 
         $standart_packet_count = UserPacket::where('is_active',1)->where('packet_id','>',2)->groupBy('user_id')->count();
     
-        return  view('index.index.index',
+        return  view('index_updated.index.index',
             [
                 'menu' => 'index',
                 'news' => $news,
