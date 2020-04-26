@@ -5,7 +5,7 @@ h1{
 
 .fancy-cards{
   text-align: center;
-  margin: 0px auto;
+  /*margin: 0px auto;*/
 }
 .fancy-cards .fancy-card{
   display: inline-block;
@@ -94,3 +94,46 @@ h1{
   color: #fff;
   border: 0px;
 }
+
+
+
+.fancy-box{
+  margin-top: 5rem;
+}
+
+@media (max-width: 575.98px) {
+  .fancy-card .top,
+  .fancy-card .middle,
+  .fancy-card .bottom{
+    margin-top:5rem !important;
+  }
+  .fancy-box{
+    margin-top: 0 !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) { }
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .fancy-card .top,
+  .fancy-card .middle,
+  .fancy-card .bottom{
+    margin-top:4rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+  .fancy-card .top,
+  .fancy-card .middle,
+  .fancy-card .bottom{
+    width: 300px !important;
+    height: 250px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+
+}
+
+

@@ -6243,8 +6243,8 @@ a:hover {
 }
 
 .product-3 .txt {
-	overflow: hidden;
-	min-height: 77px;
+	/*overflow: hidden;*/
+	min-height: 1px;
 }
 
 .product-3 .title {
