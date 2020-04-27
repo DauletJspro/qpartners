@@ -226,7 +226,7 @@ class AuthController extends Controller
 
         $error = 'Вы успешно зарегистрировались';
         
-        return  view('admin.auth.login_update', [
+        return  view('admin.auth.login_updated', [
             'error' => $error,
             'ok' => $ok
         ]);
