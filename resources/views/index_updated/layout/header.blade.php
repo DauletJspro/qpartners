@@ -27,7 +27,19 @@
                             <a href="#" class="drop-link">Страна/Город</a>
                         </li>
                         <li>
-                            <a href="#" class="drop-link">Личный кабинет</a>
+{{--                            <a href="#" class="drop-link">Личный кабинет</a>--}}
+                            <div class="dropdown">
+                                <span>Личный кабинет</span>
+                                <div class="dropdown-content">
+                                    @if(!Auth::check())
+                                        <a href="/register">Регистрация</a>
+                                        <a href="/login">Войти</a>
+                                    @else
+                                        <a href="/admin/index">Личный кабинет</a>
+                                    @endif
+
+                                </div>
+                            </div>
                         </li>
                     </ul><!-- mt-top-list end here -->
                 </div>
@@ -197,3 +209,26 @@
         </div>
     </div>
 </header>
+
+<style>
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        margin-top: 0.9rem;
+        cursor: pointer;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: black;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+        color: black;
+    }
+</style>

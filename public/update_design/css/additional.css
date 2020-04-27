@@ -58,15 +58,14 @@
     box-shadow: 0px 1px 3px rgba(25, 25, 25, 0.30);
 }
 
-/*.fancy-card .top, .fancy-card-product .top{*/
-/*    z-index: 3;*/
-/*    transform: scale(1.0);*/
-/*    transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);*/
-/*    background-image: url('http://local.qpartners.club/update_design/images/car_image.png');*/
-/*    background-size: cover;*/
-/*    background-position: center;*/
-/*    box-shadow: 0px 1px 3px rgba(25, 25, 25, 0.30);*/
-/*}*/
+.fancy-card .top, .fancy-card-product .top{
+    z-index: 3;
+    transform: scale(1.0);
+    transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 1px 3px rgba(25, 25, 25, 0.30);
+}
 .fancy-card .middle, .fancy-card-instagram .middle, .fancy-card-product .middle {
     position: absolute;
     background: #aaa;

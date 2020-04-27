@@ -15,17 +15,6 @@
             <div class="centerslider-1">
                 <div class="holder">
                     <div class="img">
-                        <img src="/update_design/images/carusel-image-3.jpg" alt="image description">
-                    </div>
-                    <div class="caption">
-                        <div class="c1">
-                            <div class="c2">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="holder">
-                    <div class="img">
                         <img src="/update_design/images/carusel-image-2.jpeg" alt="image description">
                     </div>
                     <div class="caption">
@@ -349,14 +338,8 @@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <div class=" fancy-box-product">
                             <div class="fancy-cards">
-                                <div class="fancy-card-product" style="
-    z-index: 3;
-    transform: scale(1.0);
-    transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
-    background-image: url('{{asset('assets/update_design/images/home_image.png')}}');
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0px 1px 3px rgba(25, 25, 25, 0.30);">
+                                <div class="fancy-card-product"
+                                     style="background-image: url('public/update_design/images/home_image.png');">
                                     <div class="top col-12">
                                         <div class="caption">
                                             <h2></h2>
