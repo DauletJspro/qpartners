@@ -120,12 +120,10 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid text-center catalog-section" style="padding: 3rem 0 8rem 0;">
+        <div class="container-fluid text-center catalog-section" style="padding: 3rem 0 3rem 0;">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <!-- banner-frame start here -->
-                        <!-- mt producttabs style2 start here -->
                         <div class="mt-producttabs style2 wow fadeInUp" data-wow-delay="0.6s">
                             <!-- producttabs start here -->
                             <ul class="producttabs">
@@ -146,7 +144,13 @@
                                                 <div class="product-3">
                                                     <!-- img start here -->
                                                     <div class="img">
-                                                        <img alt="image description" src="{{$product->product_image}}">
+                                                        @if($product->product_image)
+                                                            <img alt="image description"
+                                                                 src="{{$product->product_image}}">
+                                                        @else
+                                                            <img alt="image description"
+                                                                 src="https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101065/112815953-stock-vector-no-image-available-icon-flat-vector.jpg?ver=6">
+                                                        @endif
                                                     </div>
                                                     <!-- txt start here -->
                                                     <div class="txt">
@@ -155,9 +159,9 @@
                                                         &nbsp;({{ $product->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money }} 	&#8376;)</span>
                                                     </div>
                                                     <!-- color start here -->
-                                                    <p>Excepteur occaecat <br> consectetur adipisicing elit <br>sed
-                                                        eiusmod
-                                                        tempor incididunt ut <br>labore <br>magna aliqua.</p>
+                                                    <p>
+                                                        {{$product->product_desc_ru}}
+                                                    </p>
                                                     <!-- links start here -->
                                                     <ul class="links">
                                                         <li><a href="#"><i class="icon-handbag"></i></a></li>
@@ -168,10 +172,172 @@
                                                 </div><!-- mt product 3 end here -->
                                             </div><!-- slide end here -->
                                         @endforeach
-                                    </div><!-- tabs slider end here -->
+                                    </div>
                                 </div>
                             </div>
-                        </div><!-- mt producttabs end here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid text-center instagram-section" style="padding: 3rem 0 8rem 0;">
+            <div class="col-12 text-center row">
+                <div class="col-6 col-lg-offset-1">
+                    <h1 style="font-family: 'Arial Black'; font-weight: bolder; color: white; font-size:350%;">МЫ В
+                        INSTAGRAM</h1>
+                    <div class="col-12">
+                        <div class="col-lg-3">
+                            <div class="fancy-box-instagram">
+                                <div class="fancy-cards-instagram ">
+                                    <div class="fancy-card-instagram">
+                                        <div class="top">
+                                            <div class="caption">
+                                                <a href="" class="button">Посмотреть</a>
+                                            </div>
+                                        </div>
+                                        <div class="middle"></div>
+                                        <div class="bottom"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class=" fancy-box-instagram">
+                                <div class="fancy-cards-instagram">
+                                    <div class="fancy-card-instagram">
+                                        <div class="top">
+                                            <div class="caption">
+                                                <a href="" class="button">Посмотреть</a>
+                                            </div>
+                                        </div>
+                                        <div class="middle"></div>
+                                        <div class="bottom"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class=" fancy-box-instagram">
+                                <div class="fancy-cards-instagram ">
+                                    <div class="fancy-card-instagram">
+                                        <div class="top">
+                                            <div class="caption">
+                                                <a href="" class="button">Посмотреть</a>
+                                            </div>
+                                        </div>
+                                        <div class="middle"></div>
+                                        <div class="bottom"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class=" fancy-box-instagram">
+                                <div class="fancy-cards-instagram">
+                                    <div class="fancy-card-instagram">
+                                        <div class="top">
+                                            <div class="caption">
+                                                <a href="" class="button">Посмотреть</a>
+                                            </div>
+                                        </div>
+                                        <div class="middle"></div>
+                                        <div class="bottom"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="col-lg-3">
+                            <div class="fancy-box-instagram">
+                                <div class="fancy-cards-instagram ">
+                                    <div class="fancy-card-instagram">
+                                        <div class="top">
+                                            <div class="caption">
+                                                <a href="" class="button">Посмотреть</a>
+                                            </div>
+                                        </div>
+                                        <div class="middle"></div>
+                                        <div class="bottom"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class=" fancy-box-instagram">
+                                <div class="fancy-cards-instagram">
+                                    <div class="fancy-card-instagram">
+                                        <div class="top">
+                                            <div class="caption">
+                                                <a href="" class="button">Посмотреть</a>
+                                            </div>
+                                        </div>
+                                        <div class="middle"></div>
+                                        <div class="bottom"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class=" fancy-box-instagram">
+                                <div class="fancy-cards">
+                                    <div class="fancy-card-instagram">
+                                        <div class="top">
+                                            <div class="caption">
+                                                <a href="" class="button">Посмотреть</a>
+                                            </div>
+                                        </div>
+                                        <div class="middle"></div>
+                                        <div class="bottom"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class=" fancy-box-instagram">
+                                <div class="fancy-cards-instagram">
+                                    <div class="fancy-card-instagram">
+                                        <div class="top">
+                                            <div class="caption">
+                                                <a href="" class="button">Посмотреть</a>
+                                            </div>
+                                        </div>
+                                        <div class="middle"></div>
+                                        <div class="bottom"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="col-12" style="width: 100%; height: 100%; padding: 92px 0 1px 0;">
+                        <div class="col-12 text-center"
+                             style="width: 100%; height: 100%; background-color: white; padding: 5rem 0 5rem 0;">
+                            <h1 style="font-family: 'Arial Black'; font-weight: bolder;  color: black; font-size:230%;">
+                                ПОДПИСЫВАЙСЯ</h1>
+                            <h4 style="font-family: 'Arial';   color: black; ">Будь в курсе всего,
+                                <br>
+                                что у нас происходит.</h4>
+                                <div class="row col-12"  style="padding: 5rem 0 0 0;">
+                                    <div class="col-2 col-lg-offset-1" >
+                                       <i style="font-size: 400%; color: black;" class="fa fa-facebook-square"></i>
+                                    </div>
+                                    <div class="col-2" >
+                                        <i style="font-size: 400%; color: black;" class="fa fa-whatsapp"></i>
+                                    </div>
+                                    <div class="col-2" >
+                                        <i style="font-size: 400%; color: black;" class="fa fa-instagram"></i>
+                                    </div>
+                                    <div class="col-2" >
+                                        <i style="font-size: 400%; color: black;" class="fa fa-youtube"></i>
+                                    </div>
+                                    <div class="col-2">
+                                        <i style="font-size: 400%; color: black;" class="fa fa-telegram"></i>
+                                    </div>
+                                </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

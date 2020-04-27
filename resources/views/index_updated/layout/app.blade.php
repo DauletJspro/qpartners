@@ -15,7 +15,8 @@
     <!-- include the site stylesheet -->
     <link rel="stylesheet" href="/update_design/css/animate.css">
     <!-- include the site stylesheet -->
-    <link rel="stylesheet" href="/update_design/css/icon-fonts.css">
+{{--    <link rel="stylesheet" href="/update_design/css/icon-fonts.css">--}}
+    <script src="https://kit.fontawesome.com/e2bf4b3ddf.js" crossorigin="anonymous"></script>
     <!-- include the site stylesheet -->
     <link rel="stylesheet" href="/update_design/css/main.css">
     <!-- include the site stylesheet -->

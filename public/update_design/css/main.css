@@ -12635,3 +12635,7 @@ a:focus {
 .catalog-section{
 		background: linear-gradient(148deg, rgba(255,237,56,1) 0%, white 10%, white 89%, rgba(255,237,56,1) 100%);
 }
+.instagram-section{
+	background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);;
+}
+

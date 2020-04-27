@@ -31,7 +31,7 @@
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading">Account</h3>
-                        <ul class="list-unstyled f-widget-nav">s
+                        <ul class="list-unstyled f-widget-nav">
                             <li><a href="#">My Account</a></li>
                             <li><a href="#">Order Tracking</a></li>
                             <li><a href="#">Wish List</a></li>
