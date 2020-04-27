@@ -319,25 +319,71 @@
                             <h4 style="font-family: 'Arial';   color: black; ">Будь в курсе всего,
                                 <br>
                                 что у нас происходит.</h4>
-                                <div class="row col-12"  style="padding: 5rem 0 0 0;">
-                                    <div class="col-2 col-lg-offset-1" >
-                                       <i style="font-size: 400%; color: black;" class="fa fa-facebook-square"></i>
-                                    </div>
-                                    <div class="col-2" >
-                                        <i style="font-size: 400%; color: black;" class="fa fa-whatsapp"></i>
-                                    </div>
-                                    <div class="col-2" >
-                                        <i style="font-size: 400%; color: black;" class="fa fa-instagram"></i>
-                                    </div>
-                                    <div class="col-2" >
-                                        <i style="font-size: 400%; color: black;" class="fa fa-youtube"></i>
-                                    </div>
-                                    <div class="col-2">
-                                        <i style="font-size: 400%; color: black;" class="fa fa-telegram"></i>
-                                    </div>
+                            <div class="row col-12" style="padding: 5rem 0 0 0;">
+                                <div class="col-2 col-lg-offset-1">
+                                    <i style="font-size: 400%; color: black;" class="fa fa-facebook-square"></i>
                                 </div>
+                                <div class="col-2">
+                                    <i style="font-size: 400%; color: black;" class="fa fa-whatsapp"></i>
+                                </div>
+                                <div class="col-2">
+                                    <i style="font-size: 400%; color: black;" class="fa fa-instagram"></i>
+                                </div>
+                                <div class="col-2">
+                                    <i style="font-size: 400%; color: black;" class="fa fa-youtube"></i>
+                                </div>
+                                <div class="col-2">
+                                    <i style="font-size: 400%; color: black;" class="fa fa-telegram"></i>
+                                </div>
+                            </div>
                         </div>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid text-center product-section" style="padding: 3rem 0 8rem 0;">
+            <div class="container" style="padding: 0;">
+                <h1 class="font-weight-bold" style="color:rgba(145,26,18,1); font-size:4rem;">Наши продукты</h1>
+                <div class="col-12 text-center row" style="padding: 0; margin: 0;">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class=" fancy-box-product">
+                            <div class="fancy-cards">
+                                <div class="fancy-card-product" style="
+    z-index: 3;
+    transform: scale(1.0);
+    transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    background-image: url('{{asset('assets/update_design/images/home_image.png')}}');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 1px 3px rgba(25, 25, 25, 0.30);">
+                                    <div class="top col-12">
+                                        <div class="caption">
+                                            <h2></h2>
+                                            <a href="" class="button">Посмотреть</a>
+                                        </div>
+                                    </div>
+                                    <div class="middle"></div>
+                                    <div class="bottom"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class=" fancy-box-product">
+                            <div class="fancy-cards">
+                                <div class="fancy-card-product">
+                                    <div class="top col-12">
+                                        <div class="caption">
+                                            <h2></h2>
+                                            <a href="" class="button">Посмотреть</a>
+                                        </div>
+                                    </div>
+                                    <div class="middle"></div>
+                                    <div class="bottom"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,140 +1,189 @@
-.fancy-cards{
-  text-align: center;
-  /*margin: 0px auto;*/
+.fancy-cards {
+    text-align: center;
+    /*margin: 0px auto;*/
 }
-.fancy-cards .fancy-card, .fancy-card-instagram{
-  display: inline-block;
-  position: relative;
-  top: 0px;
-  /*left: 20px;*/
-  box-sizing: border-box;
+
+.fancy-cards .fancy-card, .fancy-card-instagram, .fancy-card-product {
+    display: inline-block;
+    position: relative;
+    top: 0px;
+    /*left: 20px;*/
+    box-sizing: border-box;
+}
+
+.fancy-card-product {
+    width: 100%;
 }
 
 .fancy-card .top,
 .fancy-card .middle,
 .fancy-card .bottom {
-  position: relative;
-  border-radius: 3px;
-  overflow: hidden;
-  width: 250px;
-  height: 250px;
-  transition: transform 300ms linear-out;
+    position: relative;
+    border-radius: 3px;
+    overflow: hidden;
+    width: 250px;
+    height: 250px;
+    transition: transform 300ms linear-out;
 }
 
 .fancy-card-instagram .top,
 .fancy-card-instagram .middle,
 .fancy-card-instagram .bottom {
-  position: relative;
-  border-radius: 3px;
-  overflow: hidden;
-  width: 160px;
-  height: 160px;
-  transition: transform 300ms linear-out;
+    position: relative;
+    border-radius: 3px;
+    overflow: hidden;
+    width: 160px;
+    height: 160px;
+    transition: transform 300ms linear-out;
+}
+
+.fancy-card-product .top,
+.fancy-card-product .middle,
+.fancy-card-product .bottom {
+    position: relative;
+    border-radius: 3px;
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+    transition: transform 300ms linear-out;
 }
 
 .fancy-card .top, .fancy-card-instagram .top{
-  z-index: 3;
-  transform: scale(1.0);
-  transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
-  background-image: url('https://static-1.gumroad.com/res/gumroad/assets/collections/food_and_cooking_thumb-34fb9ef316a7b01177529839891c3a03.jpg');
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0px 1px 3px rgba(25,25,25,0.30);
-}
-.fancy-card .middle, .fancy-card-instagram .middle{
-  position: absolute;
-  background: #aaa;
-  top: 0px;
-  z-index: 2;
-  transform: rotate(0deg);
-  transition: transform 250ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-.fancy-card .bottom, .fancy-card-instagram .bottom{
-  position: absolute;
-  background: #ccc;
-  top: 0px;
-  z-index: 1;
-  transform: rotate(0deg);
-  transition: transform 250ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    z-index: 3;
+    transform: scale(1.0);
+    transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    background-image: url('https://static-1.gumroad.com/res/gumroad/assets/collections/food_and_cooking_thumb-34fb9ef316a7b01177529839891c3a03.jpg');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 1px 3px rgba(25, 25, 25, 0.30);
 }
 
-.fancy-card .caption, .fancy-card-instagram .caption{
-  overflow: hidden;
-  background: rgba(255,255,255,0.75);
-  padding: 5px;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  width: 100%;
+/*.fancy-card .top, .fancy-card-product .top{*/
+/*    z-index: 3;*/
+/*    transform: scale(1.0);*/
+/*    transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);*/
+/*    background-image: url('http://local.qpartners.club/update_design/images/car_image.png');*/
+/*    background-size: cover;*/
+/*    background-position: center;*/
+/*    box-shadow: 0px 1px 3px rgba(25, 25, 25, 0.30);*/
+/*}*/
+.fancy-card .middle, .fancy-card-instagram .middle, .fancy-card-product .middle {
+    position: absolute;
+    background: #aaa;
+    top: 0px;
+    z-index: 2;
+    transform: rotate(0deg);
+    transition: transform 250ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
-.fancy-card .caption .title,.fancy-card-instagram .caption .title {
-  color: #222;
-  margin: 0px 0px 15px 0px;
-  font-size: 1.4rem;
+
+.fancy-card .bottom, .fancy-card-instagram .bottom, .fancy-card-product .bottom {
+    position: absolute;
+    background: #ccc;
+    top: 0px;
+    z-index: 1;
+    transform: rotate(0deg);
+    transition: transform 250ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
-.fancy-card .caption .button,.fancy-card-instagram .caption .button {
-  display: inline-block;
-  color: #333;
-  text-decoration: none;
-  border: solid 1px #555;
-  padding: 7px 13px;
-  background-color: transparent;
-  transition: all 300ms ease-in;
+
+.fancy-card .caption, .fancy-card-instagram .caption, .fancy-card-product .caption {
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 5px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
 }
-.fancy-card:hover .top, .fancy-card-instagram:hover .top{
-  transform: scale(1.05);
+
+.fancy-card .caption .title, .fancy-card-instagram .caption .title, .fancy-card-product .caption .title {
+    color: #222;
+    margin: 0px 0px 15px 0px;
+    font-size: 1.4rem;
 }
-.fancy-card:hover .middle, .fancy-card-instagram:hover .middle{
- transform: rotate(-7deg);
- box-shadow: 1px 1px 2px rgba(74, 74, 74, 0.35);
+
+.fancy-card .caption .button, .fancy-card-instagram .caption .button, .fancy-card-product .caption .button {
+    display: inline-block;
+    color: #333;
+    text-decoration: none;
+    border: solid 1px #555;
+    padding: 7px 13px;
+    background-color: transparent;
+    transition: all 300ms ease-in;
 }
-.fancy-card:hover .bottom, .fancy-card-instagram:hover .bottom{
-  transform: rotate(7deg);
+
+.fancy-card:hover .top, .fancy-card-instagram:hover .top, .fancy-card-product:hover .top {
+    transform: scale(1.05);
+}
+
+.fancy-card:hover .middle, .fancy-card-instagram:hover .middle {
+    transform: rotate(-7deg);
+    box-shadow: 1px 1px 2px rgba(74, 74, 74, 0.35);
+}
+
+.fancy-card:hover .bottom, .fancy-card-instagram:hover .bottom, .fancy-card-product:hover .bottom {
+    transform: rotate(7deg);
+    box-shadow: 1px 1px 2px rgba(113, 113, 113, 0.35);
+}
+
+.fancy-card:hover .button, .fancy-card-instagram:hover .button, .fancy-card:hover .button {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border: 0px;
+}
+
+.fancy-card-product:hover .middle {
+    transform: rotate(-1deg);
+    box-shadow: 1px 1px 2px rgba(74, 74, 74, 0.35);
+}
+.fancy-card-product:hover .bottom{
+  transform: rotate(1deg);
   box-shadow: 1px 1px 2px rgba(113, 113, 113, 0.35);
 }
 
-.fancy-card:hover .button, .fancy-card-instagram:hover .button{
-  background: rgba(0,0,0,0.8);
-  color: #fff;
-  border: 0px;
+.fancy-box {
+    margin-top: 5rem;
 }
-.fancy-box{
-  margin-top: 5rem;
+
+.fancy-box-instagram {
+    margin-top: 1rem;
 }
-.fancy-box-instagram{
-  margin-top: 1rem;
+
+.fancy-box-product {
+    margin-top: 1rem;
 }
 
 
 @media (max-width: 575.98px) {
-  .fancy-card .top,
-  .fancy-card .middle,
-  .fancy-card .bottom{
-    margin-top:5rem !important;
-  }
-  .fancy-box{
-    margin-top: 0 !important;
-  }
+    .fancy-card .top,
+    .fancy-card .middle,
+    .fancy-card .bottom {
+        margin-top: 5rem !important;
+    }
+
+    .fancy-box {
+        margin-top: 0 !important;
+    }
 }
 
-@media (min-width: 576px) and (max-width: 767.98px) { }
+@media (min-width: 576px) and (max-width: 767.98px) {
+}
 
 @media (min-width: 768px) and (max-width: 991.98px) {
-  .fancy-card .top,
-  .fancy-card .middle,
-  .fancy-card .bottom{
-    margin-top:4rem;
-  }
+    .fancy-card .top,
+    .fancy-card .middle,
+    .fancy-card .bottom {
+        margin-top: 4rem;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
 
-  .fancy-card .top,
-  .fancy-card .middle,
-  .fancy-card .bottom{
-    width: 300px !important;
-    height: 250px !important;
-  }
+    .fancy-card .top,
+    .fancy-card .middle,
+    .fancy-card .bottom {
+        width: 300px !important;
+        height: 250px !important;
+    }
 }
 
 @media (min-width: 1200px) {
