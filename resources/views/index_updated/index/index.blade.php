@@ -139,12 +139,12 @@
         </div>
         <div class="container-fluid text-center instagram-section" style="padding: 3rem 0 8rem 0;">
 
-            <div class="col-12 text-center row">
-                <div class="col-6 col-lg-offset-1">
+            <div class="col-12  row insta-photos" style="">
+                <div class="col-12 col-lg-8 col-xl-8 col-md-12 col-sm-12 col-12 insta-photos" style="">
                     <h1 style="font-family: 'Arial Black'; font-weight: bolder; color: white; font-size:350%;">МЫ В
                         INSTAGRAM</h1>
-                    <div class="col-12">
-                        <div class="col-lg-3">
+                    <div class="col-12  row" style="padding: 0;margin: 0;">
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 ">
                             <div class="fancy-box-instagram">
                                 <div class="fancy-cards-instagram ">
                                     <div class="fancy-card-instagram">
@@ -159,7 +159,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 ">
                             <div class=" fancy-box-instagram">
                                 <div class="fancy-cards-instagram">
                                     <div class="fancy-card-instagram">
@@ -174,7 +174,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 ">
                             <div class=" fancy-box-instagram">
                                 <div class="fancy-cards-instagram ">
                                     <div class="fancy-card-instagram">
@@ -189,7 +189,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="d-none d-sm-none d-md-block col-md-3">
                             <div class=" fancy-box-instagram">
                                 <div class="fancy-cards-instagram">
                                     <div class="fancy-card-instagram">
@@ -204,9 +204,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="col-lg-3">
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 ">
                             <div class="fancy-box-instagram">
                                 <div class="fancy-cards-instagram ">
                                     <div class="fancy-card-instagram">
@@ -221,7 +219,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 ">
                             <div class=" fancy-box-instagram">
                                 <div class="fancy-cards-instagram">
                                     <div class="fancy-card-instagram">
@@ -236,7 +234,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 ">
                             <div class=" fancy-box-instagram">
                                 <div class="fancy-cards">
                                     <div class="fancy-card-instagram">
@@ -251,7 +249,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="d-none d-sm-none d-md-block col-md-3">
                             <div class=" fancy-box-instagram">
                                 <div class="fancy-cards-instagram">
                                     <div class="fancy-card-instagram">
@@ -268,7 +266,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
                     <div class="col-12" style="width: 100%; height: 100%; padding: 92px 0 1px 0;">
                         <div class="col-12 text-center"
                              style="width: 100%; height: 100%; background-color: white; padding: 5rem 0 5rem 0;">
@@ -278,20 +276,20 @@
                                 <br>
                                 что у нас происходит.</h4>
                             <div class="row col-12" style="padding: 5rem 0 0 0;">
-                                <div class="col-2 col-lg-offset-1">
-                                    <i style="font-size: 400%; color: black;" class="fa fa-facebook-square"></i>
+                                <div class="col-2  col-md-offset-1 col-lg-offset-1 col-xl-offset-1 col-sm-offset-1 offset-1">
+                                    <i style="font-size: 380%; padding: 0 5px; ; color: black;" class="fa fa-facebook-square"></i>
                                 </div>
                                 <div class="col-2">
-                                    <i style="font-size: 400%; color: black;" class="fa fa-whatsapp"></i>
+                                    <i style="font-size: 380%; padding: 0 5px; color: black;" class="fa fa-whatsapp"></i>
                                 </div>
                                 <div class="col-2">
-                                    <i style="font-size: 400%; color: black;" class="fa fa-instagram"></i>
+                                    <i style="font-size: 380%; padding: 0 5px; color: black;" class="fa fa-instagram"></i>
                                 </div>
                                 <div class="col-2">
-                                    <i style="font-size: 400%; color: black;" class="fa fa-youtube"></i>
+                                    <i style="font-size: 350%; margin-top: 0.25rem; padding: 0 5px; color: black;" class="fa fa-youtube"></i>
                                 </div>
                                 <div class="col-2">
-                                    <i style="font-size: 400%; color: black;" class="fa fa-telegram"></i>
+                                    <i style="font-size: 380%; padding: 0 5px; color: black;" class="fa fa-telegram"></i>
                                 </div>
                             </div>
                         </div>

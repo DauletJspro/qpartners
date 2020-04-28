@@ -1,6 +1,6 @@
 .fancy-cards {
     text-align: center;
-    margin-top: 3rem;
+    /*margin-top: 3rem;*/
 }
 
 .fancy-cards .fancy-card, .fancy-card-instagram, .fancy-card-product {
@@ -161,6 +161,10 @@
 
     .fancy-box {
         margin-top: 0 !important;
+    }
+    .insta-photos{
+        margin: 0;
+        padding: 0;
     }
 }
 
