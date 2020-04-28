@@ -315,7 +315,8 @@
                             <div class=" fancy-box-product">
                                 <div class="fancy-cards">
                                     <div class="fancy-card-product">
-                                        <div class="top col-12"  style='background-image:url("{{$item->project_image}}")'>
+                                        <div class="top col-12"
+                                             style='background-image:url("{{$item->project_image}}")'>
                                             <div class="caption">
                                                 <h2 style="color: black;">{{$item['project_name_'.$lang]}}</h2>
                                                 <a href="/project/{{\App\Http\Helpers::getTranslatedSlugRu($item['project_name_'.$lang])}}-u{{$item->project_id}}"
@@ -332,7 +333,7 @@
 
                 </div>
             </div>
-
+        </div>
     </main>
 @endsection
 <!-- footer of the Page end -->

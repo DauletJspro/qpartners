@@ -1,4 +1,3 @@
-
 <footer id="mt-footer" class="style5 wow fadeInUp" data-wow-delay="0.4s">
     <!-- Footer Holder of the Page -->
     <div class="footer-holder black">
@@ -7,36 +6,30 @@
                 <nav class="col-xs-12 col-sm-8 col-md-9">
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
-                        <h3 class="f-widget-heading">Categories</h3>
+                        <h3 class="f-widget-heading">Категорий</h3>
                         <ul class="list-unstyled f-widget-nav">
-                            <li><a href="#">Watches</a></li>
-                            <li><a href="#">Glasses</a></li>
-                            <li><a href="#">Bags</a></li>
-                            <li><a href="#">Shoes</a></li>
-                            <li><a href="#">Accessories</a></li>
+                            <li><a href="#">Super gel</a></li>
+                            <li><a href="#">Super elixer</a></li>
+                            <li><a href="#">Super cream</a></li>
+                            <li><a href="#">Super spray</a></li>
                         </ul>
                     </div><!-- Footer Nav of the Page end -->
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
-                        <h3 class="f-widget-heading">Information</h3>
+                        <h3 class="f-widget-heading">Информация</h3>
                         <ul class="list-unstyled f-widget-nav">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#"> Terms &amp; Conditions</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Customer Service</a></li>
-                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">О нас</a></li>
+                            <li><a href="#">Контакты</a></li>
+                            <li><a href="#">Новости</a></li>
                         </ul>
                     </div><!-- Footer Nav of the Page end -->
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
-                        <h3 class="f-widget-heading">Account</h3>
+                        <h3 class="f-widget-heading">Аккаунт</h3>
                         <ul class="list-unstyled f-widget-nav">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Order Tracking</a></li>
-                            <li><a href="#">Wish List</a></li>
-                            <li><a href="#">Shopping Cart</a></li>
-                            <li><a href="#">Checkout</a></li>
+                            <li><a href="#">Мой аккаунт</a></li>
+                            <li><a href="#">Моя карзина</a></li>
+                            <li><a href="#">Мои пакеты</a></li>
                         </ul>
                     </div><!-- Footer Nav of the Page end -->
                 </nav>
@@ -71,10 +64,10 @@
     <div class="footer-area">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-12 text-center">
-                    <p>© <a href="index.html">schön.</a> - All rights Reserved</p>
-                    <div class="bank-card align-center">
-                        <img src="images/bank-card.png" alt="bank-card">
+                <div class="col-xs-12 text-center align-center">
+                    <p>© <a href="index.html">QPartners.club.</a> - All rights Reserved</p>
+                    <div class="bank-card align-center text-center">
+                        <img src="/update_design/images/qyran_logo.png" width="50" alt="bank-card">
                     </div>
                 </div>
             </div>
