@@ -109,6 +109,7 @@
                 </div>
             </div>
         </div>
+
         <div class="container-fluid text-center catalog-section" style="padding: 3rem 0 3rem 0;">
             <div class="container">
                 <div class="row">
@@ -153,7 +154,7 @@
                                                     </p>
                                                     <!-- links start here -->
                                                     <ul class="links">
-                                                        <li><a href="#"><i class="icon-handbag"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-shopping-basket"></i></a></li>
                                                         <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
                                                         </li>
                                                         <li><a href="#"><i class="icomoon fa fa-eye"></i></a></li>
@@ -170,6 +171,7 @@
             </div>
         </div>
         <div class="container-fluid text-center instagram-section" style="padding: 3rem 0 8rem 0;">
+
             <div class="col-12 text-center row">
                 <div class="col-6 col-lg-offset-1">
                     <h1 style="font-family: 'Arial Black'; font-weight: bolder; color: white; font-size:350%;">МЫ В

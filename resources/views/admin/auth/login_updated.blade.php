@@ -8,7 +8,7 @@
 
 @endsection
 @section('content')
-    <section class="mt-detail-sec toppadding-zero">
+    <section class="mt-detail-sec toppadding-zero" style="margin-top: 6rem;">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-push-2">
@@ -28,18 +28,18 @@
                                     <input class="input" required type="text" name="login" value="@if(isset($login)){{$login}}@endif" class="form-control" placeholder="E-mail"/>
                                     <input class="input" required type="password" name="password" class="form-control" placeholder="Пароль"/>
                                     <div class="box">
-                                        Если вы еще не зарегистрированы на нашем сайте, вы можете сделать это перейдя по ссылке <a href="/register" style="font-weight: bold; text-decoration: underline">регистрация</a>
+                                        Если вы еще не зарегистрированы на нашем сайте, вы можете сделать это перейдя по ссылке <a href="/register" style="font-weight: bold; text-decoration: none; color: #0d6aad;">регистрация</a>
                                     </div>
-                                    <button type="submit" class="btn-type1" style="width: 100%;">Войти</button>
+                                    <button type="submit" class="btn-type1" style="width: 100%;text-underline: none;font-weight: bold; font-size: 130%;">Войти</button>
                                 </fieldset>
 
                                 <div class="footer" style="margin-top: 3rem;">
                                     <div class="form-group" style="text-align: center">
                                         <div class="col-md-6">
-                                            <a style="font-weight: bold; text-decoration: underline" href="/reset-password">Забыли пароль?</a>
+                                            <a style="font-weight: bold; font-size: 130%; text-decoration: none; color: #0d6aad;" href="/reset-password">Забыли пароль?</a>
                                         </div>
                                         <div class="col-md-6">
-                                            <a style="font-weight: bold; text-decoration: underline" href="/">главная страница</a>
+                                            <a style="font-weight: bold; font-size: 130%;  text-decoration: none; color: #0d6aad;" href="/">Главная страница</a>
                                         </div>
                                         <div style="clear:both"></div>
                                     </div>

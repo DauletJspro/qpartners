@@ -19,7 +19,7 @@
                             </header>
                             <form method="post" action="/register">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <p style="color:red; font-weight: bold;">@if(isset($error)){{$error}}@endif</p>
+                                <p style="color:red; font-weight: bold; font-size: 120%:">@if(isset($error)){{$error}}@endif</p>
                                 <fieldset>
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-6">
@@ -27,16 +27,22 @@
                                                    class="form-control" placeholder="Имя"/>
                                         </div>
                                         <div class="col-xs-12 col-sm-6">
-                                            <input required class="input" type="text" name="last_name"
-                                                   value="{{$row->last_name}}" class="form-control"
-                                                   placeholder="Фамилия"/>
+                                            <input required class="input" type="email" name="email" class="form-control"
+                                                   value="{{$row->email}}" placeholder="Email"/>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-6">
-                                            <input required class="input" type="email" name="email" class="form-control"
-                                                   value="{{$row->email}}" placeholder="Email"/>
+                                            <input required class="input" type="text" name="login"
+                                                   value="{{$row->login}}" class="form-control"
+                                                   placeholder="Логин"/>
                                         </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <input class="input" required type="password" value="{{$row->password}}"
+                                                   name="password" class="form-control" placeholder="Пароль"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-xs-12 col-sm-6 form-group">
                                             <select class="input" required name="recommend_user_id"
                                                     data-placeholder="Выберите спонсора"
@@ -47,52 +53,33 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-xs-12 col-sm-6">
-                                            <input class="input" required type="password" value="{{$row->password}}"
-                                                   name="password" class="form-control" placeholder="Пароль"/>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6">
-                                            <input class="input" required type="password" value="{{$row->confirm_password}}"
+                                            <input class="input" required type="password"
+                                                   value="{{$row->confirm_password}}"
                                                    name="confirm_password" class="form-control"
                                                    placeholder="Повторите пароль"/>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-6">
-                                            <select class="input" onchange="getCityListByCountry(this)" required name="country_id" data-placeholder="Выберите страну" class="form-control" data-live-search="true">
-                                                <option value="">Выберите страну</option>
-                                                @foreach($country_row as $item)
-                                                    <option @if($row->country_id == $item->country_id) {{'selected'}} @endif value="{{$item->country_id}}">{{$item['country_name_ru']}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6">
-                                            <input class="input" required type="text" name="phone" value="{{$row->phone}}" class="form-control" placeholder="Телефон"/>
-                                        </div>
+                                    <div class="col-md-12 agree-label">
+                                        <input required type="checkbox" value="1" id="agree_checkbox"><span style="font-size: 120%;font-weight: bold;">Регистрируясь на
+                                        сайте вы подтверждаете, что ознакомлены с <a target="_blank"
+                                                                                     style="font-weight: bold; color: #0d6aad;"
+                                                                                     href="/file/dogovor_QT.pdf">Договором</a>
+                                        и <a target="_blank" style="font-weight: bold;color: #0d6aad;" href="/presentation/qaz.pdf?v=1">презентацией</a>.</span>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-6">
-                                            <select class="input" id="city_id" required name="city_id" data-placeholder="Выберите город" class="form-control" data-live-search="true">
-                                                <option value="">Выберите город</option>
-                                                @foreach($city_row as $item)
-                                                    <option @if($row->city_id == $item->city_id) {{'selected'}} @endif value="{{$item->city_id}}">{{$item['city_name_ru']}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn-type1" style="margin-top: 2rem;width:100%;">Зарегистрироваться</button>
+                                    <button type="submit" class="btn-type1" style="margin-top: 2rem;width:100%;font-size: 130%; font-weight: bold;">
+                                        Зарегистрироваться
+                                    </button>
                                 </fieldset>
+                                <div class="footer">
+                                    <div class="form-group" style="text-align: center;font-size: 120%;font-weight: bold;">
+                                        Если Вы уже зарегистрированы на нашем сайте, нажмите <a style="font-weight: bold; color: #0d6aad;" href="/login">«Войти»</a>
+                                    </div>
+                                    <div class="form-group" style="text-align: center">
+                                        <a style="font-weight: bold; font-size: 130%; color: #0d6aad;" href="/">Главная страница</a>
+                                    </div>
+                                </div>
                             </form>
-                            <ul class="mt-socialicons" style="margin-top: 3rem;">
-                                <li class="mt-facebook"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                <li class="mt-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li class="mt-linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li class="mt-dribbble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li class="mt-pinterest"><a href="#"><i class="fa fa-openid"></i></a></li>
-                                <li class="mt-youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>

@@ -11,15 +11,6 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 text-right">
                     <ul class="mt-top-list">
-                        <li>
-                            <a href="#" class="dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown"
-                               data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Русский</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
                         <li class="">
                             <a href="#">Валюта</a>
                         </li>
@@ -27,40 +18,38 @@
                             <a href="#" class="drop-link">Страна/Город</a>
                         </li>
                         <li>
-{{--                            <a href="#" class="drop-link">Личный кабинет</a>--}}
-                            <div class="dropdown">
-                                <span>Личный кабинет</span>
-                                <div class="dropdown-content">
+                            <div class="dropdown" style="margin-top: 0;">
+                                <a class="" data-toggle="dropdown">
+                                    <span>Личный кабинет</span>
+                                </a>
+                                <div class="dropdown-menu">
                                     @if(!Auth::check())
-                                        <a href="/register">Регистрация</a>
-                                        <a href="/login">Войти</a>
+                                        <a href="/register" style="color: black;font-size: 130%; ">Регистрация</a>
+                                        <a href="/login" style="color: black;font-size: 130%; ">Войти</a>
                                     @else
-                                        <a href="/admin/index">Личный кабинет</a>
+                                        <a href="/admin/index" style="color: black;font-size: 130%; ">Личный кабинет</a>
                                     @endif
-
                                 </div>
                             </div>
                         </li>
-                    </ul><!-- mt-top-list end here -->
+                    </ul>
                 </div>
             </div>
         </div>
-    </div><!-- mt-top-bar end here -->
-    <!-- mt-bottom-bar start here -->
+    </div>
     <div class="mt-bottom-bar">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="mt-logo"><a href="#"><img src="/update_design/images/qyran_logo.png" alt="schon"
+                    <div class="mt-logo"><a href="/"><img src="/update_design/images/qyran_logo.png" alt="schon"
                                                           style="width:130px; height:33px; margin-top:2px;"></a>
                     </div>
-                    <!-- mt-icon-list start here -->
                     <ul class="mt-icon-list">
-                        <li><a href="#" class="icon-user"></a></li>
+                        <li><i class="fa fa-user"><a href="#" class="icon-user"></a></i></li>
                         <li class="drop">
-                            <a href="#" class="icon-heart cart-opener"><span style="margin-bottom: -3px;"
-                                                                             class="num">3</span></a>
-                            <!-- mt drop start here -->
+                            <i class="fa fa-heart"><a href="#" class="icon-heart cart-opener"><span
+                                            style="margin-bottom: -3px;"
+                                            class="num">3</span></a></i>
                             <div class="mt-drop">
                                 <!-- mt drop sub start here -->
                                 <div class="mt-drop-sub">
@@ -113,10 +102,10 @@
                             <span class="mt-mdropover"></span>
                         </li>
                         <li class="drop">
-                            <a href="#" class="cart-opener">
-                                <span class="icon-handbag"></span>
-                                <span class="num">3</span>
-                            </a>
+                            <i class="fa fa-shopping-basket"><a href="#" class="cart-opener">
+                                    <span class="icon-handbag"></span>
+                                    <span class="num">3</span>
+                                </a></i>
                             <!-- mt drop start here -->
                             <div class="mt-drop">
                                 <!-- mt drop sub start here -->
@@ -223,7 +212,7 @@
         position: absolute;
         background-color: black;
         min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
     }
 
