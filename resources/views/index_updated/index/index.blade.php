@@ -277,19 +277,24 @@
                                 что у нас происходит.</h4>
                             <div class="row col-12" style="padding: 5rem 0 0 0;">
                                 <div class="col-2  col-md-offset-1 col-lg-offset-1 col-xl-offset-1 col-sm-offset-1 offset-1">
-                                    <i style="font-size: 380%; padding: 0 5px; ; color: black;" class="fa fa-facebook-square"></i>
+                                    <i style="font-size: 380%; padding: 0 5px; ; color: black;"
+                                       class="fa fa-facebook-square"></i>
                                 </div>
                                 <div class="col-2">
-                                    <i style="font-size: 380%; padding: 0 5px; color: black;" class="fa fa-whatsapp"></i>
+                                    <i style="font-size: 380%; padding: 0 5px; color: black;"
+                                       class="fa fa-whatsapp"></i>
                                 </div>
                                 <div class="col-2">
-                                    <i style="font-size: 380%; padding: 0 5px; color: black;" class="fa fa-instagram"></i>
+                                    <i style="font-size: 380%; padding: 0 5px; color: black;"
+                                       class="fa fa-instagram"></i>
                                 </div>
                                 <div class="col-2">
-                                    <i style="font-size: 350%; margin-top: 0.25rem; padding: 0 5px; color: black;" class="fa fa-youtube"></i>
+                                    <i style="font-size: 350%; margin-top: 0.25rem; padding: 0 5px; color: black;"
+                                       class="fa fa-youtube"></i>
                                 </div>
                                 <div class="col-2">
-                                    <i style="font-size: 380%; padding: 0 5px; color: black;" class="fa fa-telegram"></i>
+                                    <i style="font-size: 380%; padding: 0 5px; color: black;"
+                                       class="fa fa-telegram"></i>
                                 </div>
                             </div>
                         </div>
@@ -302,42 +307,31 @@
             <div class="container" style="padding: 0;">
                 <h1 class="font-weight-bold" style="color:rgba(145,26,18,1); font-size:4rem;">Наши продукты</h1>
                 <div class="col-12 text-center row" style="padding: 0; margin: 0;">
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <div class=" fancy-box-product">
-                            <div class="fancy-cards">
-                                <div class="fancy-card-product"
-                                     style="background-image: url('public/update_design/images/home_image.png');">
-                                    <div class="top col-12">
-                                        <div class="caption">
-                                            <h2></h2>
-                                            <a href="" class="button">Посмотреть</a>
+
+
+                    @foreach($project_list as $key => $item)
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                            <div class=" fancy-box-product">
+                                <div class="fancy-cards">
+                                    <div class="fancy-card-product">
+                                        <div class="top col-12"  style='background-image:url("{{$item->project_image}}")'>
+                                            <div class="caption">
+                                                <h2 style="color: black;">{{$item['project_name_'.$lang]}}</h2>
+                                                <a href="/project/{{\App\Http\Helpers::getTranslatedSlugRu($item['project_name_'.$lang])}}-u{{$item->project_id}}"
+                                                   class="button" style="font-weight: bold;">Посмотреть</a>
+                                            </div>
                                         </div>
+                                        <div class="middle"></div>
+                                        <div class="bottom"></div>
                                     </div>
-                                    <div class="middle"></div>
-                                    <div class="bottom"></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <div class=" fancy-box-product">
-                            <div class="fancy-cards">
-                                <div class="fancy-card-product">
-                                    <div class="top col-12">
-                                        <div class="caption">
-                                            <h2></h2>
-                                            <a href="" class="button">Посмотреть</a>
-                                        </div>
-                                    </div>
-                                    <div class="middle"></div>
-                                    <div class="bottom"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
-        </div>
 
     </main>
 @endsection
