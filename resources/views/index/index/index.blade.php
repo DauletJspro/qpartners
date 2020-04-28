@@ -48,7 +48,6 @@
                                     <div class="row_overlay" style=""></div>
 
                                     @foreach($news as $key => $item)
-
                                         <div class="wpb_column vc_column_container vc_col-sm-4">
                                             <div class="vc_column-inner ">
                                                 <div class="wpb_wrapper">
@@ -68,7 +67,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     @endforeach
 
                                 </div>

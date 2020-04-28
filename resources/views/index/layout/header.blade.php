@@ -109,11 +109,8 @@
                   <li id="menu-item-2739" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2739 @if(isset($menu) && $menu == 'about') current-menu-item current_page_item @endif"><a href="#">{{Lang::get('app.about_company')}}</a>
                     <?php $about = \App\Models\About::where('is_show',1)->orderBy('about_id')->get();?>
                      <ul  class="sub-menu">
-
                        @foreach($about as $key => $item)
-
                          <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2740"><a href="/{{\App\Http\Helpers::getTranslatedSlugRu($item['about_name_'.$lang])}}-u{{$item->about_id}}">{{$item['about_name_'.$lang]}}</a></li>
-
                        @endforeach
 
                      </ul>

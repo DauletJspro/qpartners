@@ -51,60 +51,27 @@
             </div>
         </section>
         <div class="container-fluid text-center catalog-section" style="padding: 3rem 0 8rem 0;">
-            <h1 class="font-weight-bold" style="color:rgba(145,26,18,1); font-size:4rem;">Наш каталог</h1>
-            <div class="container">
-                <div class="row" style="margin-top:5rem;">
-                    <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6 fancy-box">
-                        <div class="fancy-cards col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <div class="fancy-card">
-                                <div class="top">
-                                    <div class="caption">
-                                        <h3 class="title" style="font-weight:bold; font-size:3rem;">Super Gel</h3>
-                                        <a href="" class="button">Посмотреть</a>
+            <h1 class="font-weight-bold" style="color:rgba(145,26,18,1); font-size:4rem;">Новости</h1>
+            <div class="container text-center">
+                <div class="row" style="margin-top:-1rem;">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 fancy-box">
+                        @foreach($news as $key => $item)
+                            <div class="fancy-cards col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                                <div class="fancy-card">
+                                    <div class="top" style='background-image:url("{{$item->news_image}}")'>
+                                        <div class="caption">
+                                            <h3 class="title" style="font-weight:bold; font-size:1.8rem;">
+                                                <a href="/news/{{\App\Http\Helpers::getTranslatedSlugRu($item['news_name_'.$lang])}}-u{{$item->news_id}}">{{$item['news_name_'.$lang]}}</a>
+                                            </h3>
+                                            <a href="/news/{{\App\Http\Helpers::getTranslatedSlugRu($item['news_name_'.$lang])}}-u{{$item->news_id}}"
+                                               class="button">Посмотреть</a>
+                                        </div>
                                     </div>
+                                    <div class="middle"></div>
+                                    <div class="bottom"></div>
                                 </div>
-                                <div class="middle"></div>
-                                <div class="bottom"></div>
                             </div>
-                        </div>
-                        <div class="fancy-cards col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <div class="fancy-card">
-                                <div class="top">
-                                    <div class="caption">
-                                        <h3 class="title" style="font-weight:bold; font-size:3rem;">Super Gel</h3>
-                                        <a href="" class="button">Посмотреть</a>
-                                    </div>
-                                </div>
-                                <div class="middle"></div>
-                                <div class="bottom"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-12 col-lg-12 col-xl-6  fancy-box">
-                        <div class="fancy-cards col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <div class="fancy-card">
-                                <div class="top">
-                                    <div class="caption">
-                                        <h3 class="title" style="font-weight:bold; font-size:3rem;">Super Gel</h3>
-                                        <a href="" class="button">Посмотреть</a>
-                                    </div>
-                                </div>
-                                <div class="middle"></div>
-                                <div class="bottom"></div>
-                            </div>
-                        </div>
-                        <div class="fancy-cards col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                            <div class="fancy-card">
-                                <div class="top">
-                                    <div class="caption">
-                                        <h3 class="title" style="font-weight:bold; font-size:3rem;">Super Gel</h3>
-                                        <a href="" class="button">Посмотреть</a>
-                                    </div>
-                                </div>
-                                <div class="middle"></div>
-                                <div class="bottom"></div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

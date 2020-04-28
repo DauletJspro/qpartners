@@ -12,10 +12,30 @@
                 <div class="col-xs-12 col-sm-6 text-right">
                     <ul class="mt-top-list">
                         <li class="">
-                            <a href="#">Валюта</a>
-                        </li>
-                        <li>
-                            <a href="#" class="drop-link">Страна/Город</a>
+                            <div class="dropdown" style="margin-top: 0;">
+                                <a class="" data-toggle="dropdown">
+                                    <img src="/wp-content/plugins/sitepress-multilingual-cms/res/flags/{{$lang}}.png"
+                                         style="display:inline-block;width: 20px; height: 15px;" alt="">
+                                    <span style="display: inline-block; margin-left: 10px;">{{Lang::get('app.lang')}}</span>
+                                </a>
+                                <div class="dropdown-menu" style="width: 165px;">
+                                    <a href="{{\App\Http\Helpers::setSessionLang('ru',$request)}}">
+                                        <img src="/wp-content/plugins/sitepress-multilingual-cms/res/flags/ru.png"
+                                             style="display:inline-block;width: 20px; height: 20px;" alt="">
+                                        <span style="display: inline-block; margin-left: 5px; color: black;">Русcкий</span>
+                                    </a>
+                                    <a href="{{\App\Http\Helpers::setSessionLang('kz',$request)}}">
+                                        <img src="/wp-content/plugins/sitepress-multilingual-cms/res/flags/kz.png"
+                                             style="display:inline-block;width: 20px; height: 15px;" alt="">
+                                        <span style="display: inline-block; margin-left: 5px; color: black;">Қазақша</span>
+                                    </a>
+                                    <a href="{{\App\Http\Helpers::setSessionLang('en',$request)}}">
+                                        <img src="/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png"
+                                             style="display:inline-block;width: 20px; height: 15px;" alt="">
+                                        <span style="display: inline-block; margin-left: 5px; color: black;">English</span>
+                                    </a>
+                                </div>
+                            </div>
                         </li>
                         <li>
                             <div class="dropdown" style="margin-top: 0;">
@@ -45,61 +65,10 @@
                                                           style="width:130px; height:33px; margin-top:2px;"></a>
                     </div>
                     <ul class="mt-icon-list">
-                        <li><i class="fa fa-user"><a href="#" class="icon-user"></a></i></li>
                         <li class="drop">
                             <i class="fa fa-heart"><a href="#" class="icon-heart cart-opener"><span
                                             style="margin-bottom: -3px;"
                                             class="num">3</span></a></i>
-                            <div class="mt-drop">
-                                <!-- mt drop sub start here -->
-                                <div class="mt-drop-sub">
-                                    <!-- mt side widget start here -->
-                                    <div class="mt-side-widget">
-                                        <!-- cart row start here -->
-                                        <div class="cart-row">
-                                            <a href="#" class="img"><img src="http://placehold.it/75x75"
-                                                                         alt="image" class="img-responsive"></a>
-                                            <div class="mt-h">
-                                                        <span class="mt-h-title"><a
-                                                                    href="#">Marvelous Modern 3 Seater</a></span>
-                                                <span class="price"><i class="fa fa-eur" aria-hidden="true"></i> 599,00</span>
-                                            </div>
-                                            <a href="#" class="close fa fa-times"></a>
-                                        </div><!-- cart row end here -->
-                                        <!-- cart row start here -->
-                                        <div class="cart-row">
-                                            <a href="#" class="img"><img src="http://placehold.it/75x75"
-                                                                         alt="image" class="img-responsive"></a>
-                                            <div class="mt-h">
-                                                        <span class="mt-h-title"><a
-                                                                    href="#">Marvelous Modern 3 Seater</a></span>
-                                                <span class="price"><i class="fa fa-eur" aria-hidden="true"></i> 599,00</span>
-                                            </div>
-                                            <a href="#" class="close fa fa-times"></a>
-                                        </div><!-- cart row end here -->
-                                        <!-- cart row start here -->
-                                        <div class="cart-row">
-                                            <a href="#" class="img"><img src="http://placehold.it/75x75"
-                                                                         alt="image" class="img-responsive"></a>
-                                            <div class="mt-h">
-                                                        <span class="mt-h-title"><a
-                                                                    href="#">Marvelous Modern 3 Seater</a></span>
-                                                <span class="price"><i class="fa fa-eur" aria-hidden="true"></i> 599,00</span>
-                                            </div>
-                                            <a href="#" class="close fa fa-times"></a>
-                                        </div><!-- cart row end here -->
-                                        <!-- cart row total start here -->
-                                        <div class="cart-row-total">
-                                            <span class="mt-total">Add them all</span>
-                                            <span class="mt-total-txt"><a href="#"
-                                                                          class="btn-type2">add to CART</a></span>
-                                        </div>
-                                        <!-- cart row total end here -->
-                                    </div><!-- mt side widget end here -->
-                                </div>
-                                <!-- mt drop sub end here -->
-                            </div><!-- mt drop end here -->
-                            <span class="mt-mdropover"></span>
                         </li>
                         <li class="drop">
                             <i class="fa fa-shopping-basket"><a href="#" class="cart-opener">
@@ -107,62 +76,6 @@
                                     <span class="num">3</span>
                                 </a></i>
                             <!-- mt drop start here -->
-                            <div class="mt-drop">
-                                <!-- mt drop sub start here -->
-                                <div class="mt-drop-sub">
-                                    <!-- mt side widget start here -->
-                                    <div class="mt-side-widget">
-                                        <!-- cart row start here -->
-                                        <div class="cart-row">
-                                            <a href="#" class="img"><img src="http://placehold.it/80x80"
-                                                                         alt="image" class="img-responsive"></a>
-                                            <div class="mt-h">
-                                                        <span class="mt-h-title"><a
-                                                                    href="#">Marvelous Modern 3 Seater</a></span>
-                                                <span class="price"><i class="fa fa-eur" aria-hidden="true"></i> 599,00</span>
-                                                <span class="mt-h-title">Qty: 1</span>
-                                            </div>
-                                            <a href="#" class="close fa fa-times"></a>
-                                        </div><!-- cart row end here -->
-                                        <!-- cart row start here -->
-                                        <div class="cart-row">
-                                            <a href="#" class="img"><img src="http://placehold.it/80x80"
-                                                                         alt="image" class="img-responsive"></a>
-                                            <div class="mt-h">
-                                                        <span class="mt-h-title"><a
-                                                                    href="#">Marvelous Modern 3 Seater</a></span>
-                                                <span class="price"><i class="fa fa-eur" aria-hidden="true"></i> 599,00</span>
-                                                <span class="mt-h-title">Qty: 1</span>
-                                            </div>
-                                            <a href="#" class="close fa fa-times"></a>
-                                        </div><!-- cart row end here -->
-                                        <!-- cart row start here -->
-                                        <div class="cart-row">
-                                            <a href="#" class="img"><img src="http://placehold.it/80x80"
-                                                                         alt="image" class="img-responsive"></a>
-                                            <div class="mt-h">
-                                                        <span class="mt-h-title"><a
-                                                                    href="#">Marvelous Modern 3 Seater</a></span>
-                                                <span class="price"><i class="fa fa-eur" aria-hidden="true"></i> 599,00</span>
-                                                <span class="mt-h-title">Qty: 1</span>
-                                            </div>
-                                            <a href="#" class="close fa fa-times"></a>
-                                        </div><!-- cart row end here -->
-                                        <!-- cart row total start here -->
-                                        <div class="cart-row-total">
-                                            <span class="mt-total">Sub Total</span>
-                                            <span class="mt-total-txt"><i class="fa fa-eur"
-                                                                          aria-hidden="true"></i> 799,00</span>
-                                        </div>
-                                        <!-- cart row total end here -->
-                                        <div class="cart-btn-row">
-                                            <a href="#" class="btn-type2">VIEW CART</a>
-                                            <a href="#" class="btn-type3">CHECKOUT</a>
-                                        </div>
-                                    </div><!-- mt side widget end here -->
-                                </div>
-                                <!-- mt drop sub end here -->
-                            </div><!-- mt drop end here -->
                             <span class="mt-mdropover"></span>
                         </li>
                         <li class="hidden-lg hidden-md">
@@ -176,19 +89,51 @@
                     <nav id="nav">
                         <ul>
                             <li>
-                                <a href="#" class="drop-link">Главная</a>
+                                <a href="/" class="active">{{Lang::get('app.home')}}</a>
                             </li>
                             <li>
-                                <a href="#" class="drop-link">О нас</a>
+                                <div class="dropdown" style="margin-top: 0;">
+                                    <a class="drop-link" href="#" data-toggle="dropdown">
+                                        {{Lang::get('app.about_company')}}
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <?php $about = \App\Models\About::where('is_show', 1)->orderBy('about_id')->get();?>
+                                        @foreach($about as $key => $item)
+                                            <a class="dropdown-item dropdown-a"
+                                               href="/{{\App\Http\Helpers::getTranslatedSlugRu($item['about_name_'.$lang])}}-u{{$item->about_id}}">{{$item['about_name_'.$lang]}}</a>
+                                            <br>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </li>
                             <li>
-                                <a href="#" class="drop-link">Галерея</a>
+                                <div class="dropdown" style="margin-top: 0;">
+                                    <a href="#" class="drop-link">{{Lang::get('app.gallery')}}</a>
+                                    <div class="dropdown-menu">
+                                        <?php $about = \App\Models\About::where('is_show', 1)->orderBy('about_id')->get();?>
+                                        <a href="/gallery"
+                                           class="dropdown-a dropdown-item">{{Lang::get('app.photo')}}</a>
+                                        <a href="/video" class="dropdown-item dropdown-a">{{Lang::get('app.video')}}</a>
+                                    </div>
+                                </div>
                             </li>
                             <li>
-                                <a href="#" class="drop-link">Новости</a>
+                                <a href="/news" class="">{{Lang::get('app.news')}}</a>
                             </li>
                             <li>
-                                <a href="#" class="drop-link">Бизнес-обучение</a>
+                                <div class="dropdown" style="margin-top: 0;">
+                                    <a href="#" class="drop-link">{{Lang::get('app.business_education')}}</a>
+                                    <div class="dropdown-menu">
+                                        <?php $education = \App\Models\Education::where('is_show', 1)->orderBy('education_id')->get();?>
+                                        @foreach($education as $key => $item)
+                                            <a class="dropdown-a dropdown-item" href="/education/{{\App\Http\Helpers::getTranslatedSlugRu($item['education_name_'.$lang])}}-u{{$item->education_id}}">{{$item['education_name_'.$lang]}}</a>
+                                        @endforeach
+
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="/contact" class="">{{Lang::get('app.contact')}}</a>
                             </li>
 
                         </ul>
@@ -207,17 +152,19 @@
         cursor: pointer;
     }
 
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: black;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
+    .dropdown:hover > .dropdown-menu {
+        display: block;
     }
 
-    .dropdown:hover .dropdown-content {
-        display: block;
-        color: black;
+
+    .dropdown-a {
+        font-size: 130%;
+        margin: 0;
+        padding: 1rem 1rem;
     }
+
+    .dropdown-a:hover {
+        background-color: grey;
+    }
+
 </style>
