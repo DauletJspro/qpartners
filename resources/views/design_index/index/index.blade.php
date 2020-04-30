@@ -84,8 +84,7 @@
                                 </div>
                             </div><!-- banner 8 start here -->
                         </div>
-                    </div><!-- banner frame end here -->
-                    <!-- banner frame start here -->
+                    </div>
                     <div class="banner-frame mt-paddingsmzero">
                         <!-- banner box third start here -->
                         <div class="banner-box third">
@@ -172,8 +171,7 @@
                                 </div><!-- holder end here -->
                             </div>
                         </div><!-- slider 7 end here -->
-                    </div><!-- banner frame end here -->
-                    <!-- mt producttabs style2 start here -->
+                    </div>
                     <div class="mt-producttabs style2 wow fadeInUp" data-wow-delay="0.4s">
                         <!-- producttabs start here -->
                         <ul class="producttabs">
@@ -192,10 +190,20 @@
                                                 <div class="box">
                                                     <div class="b1">
                                                         <div class="b2">
-                                                            <a href="product-detail.html"><img
-                                                                        src="{{$product->product_image}}"
-                                                                        style="width: 270px; height: 290px;"
-                                                                        alt="image description"></a>
+                                                            {{--                                                            <a href="product-detail.html"><img--}}
+                                                            {{--                                                                        src="{{$product->product_image}}"--}}
+                                                            {{--                                                                        style="width: 270px; height: 290px;"--}}
+                                                            {{--                                                                        alt="image description"></a>--}}
+
+                                                            <a href="#">
+                                                                <div style="width: 270px;
+                                                                        height: 290px;
+                                                                        background-image: url('{{$product->product_image}}');
+                                                                        background-position: center;
+                                                                        background-size: cover;">
+
+                                                                </div>
+                                                            </a>
                                                             <ul class="mt-stars">
                                                                 <li><i class="fa fa-star"></i></li>
                                                                 <li><i class="fa fa-star"></i></li>
@@ -604,11 +612,9 @@
                     </div>
                     <div class="mt-producttabs style3 wow fadeInUp" data-wow-delay="0.4s">
                         <h2 class="heading">Популярные</h2>
-                        <!-- tabs slider start here -->
                         <div class="tabs-slider">
                             @foreach($products as $product)
                                 <div class="slide">
-                                    <!-- mt product1  start here -->
                                     <div class="mt-product1">
                                         <div class="box">
                                             <div class="b1">
@@ -627,7 +633,7 @@
                                                     </ul>
                                                     <ul class="links">
                                                         <li><a href="#"><i
-                                                                        class="icon-handbag"></i><span>Добавить в карзину</span></a>
+                                                                        class="icon-handbag"></i><span>Добавить</span></a>
                                                         </li>
                                                         <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
                                                         </li>
@@ -643,77 +649,65 @@
                                             <span class="price"><i
                                                         class="fa fa-dollar"></i> <span>{{$product->product_price}}</span> 	({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span>
                                         </div>
-                                    </div><!-- mt product1  end here -->
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
-                        <!-- tabs slider end here -->
-                    </div><!-- mt producttabs style3 end here -->
-                    <!-- mt patners start here -->
+                    </div>
                     <div class="mt-patners wow fadeInUp" data-wow-delay="0.4s">
                         <h2 class="heading">Линейка <span>продукции</span></h2>
-                        <!-- patner slider start here -->
                         <div class="patner-slider">
-                            <!-- slide start here -->
                             <div class="slide">
                                 <div class="box1">
                                     <div class="box2"><a href="#"><img src="/new_design/images/logo/img01.jpg"
                                                                        alt="img"></a></div>
                                 </div>
-                            </div><!-- slide end here -->
-                            <!-- slide start here -->
+                            </div>
                             <div class="slide">
                                 <div class="box1">
                                     <div class="box2"><a href="#"><img src="/new_design/images/logo/img02.jpg"
                                                                        alt="img"></a></div>
                                 </div>
-                            </div><!-- slide end here -->
-                            <!-- slide start here -->
+                            </div>
                             <div class="slide">
                                 <div class="box1">
                                     <div class="box2"><a href="#"><img src="/new_design/images/logo/img03.jpg"
                                                                        alt="img"></a></div>
                                 </div>
-                            </div><!-- slide end here -->
-                            <!-- slide start here -->
+                            </div>
                             <div class="slide">
                                 <div class="box1">
                                     <div class="box2"><a href="#"><img src="/new_design/images/logo/img04.jpg"
                                                                        alt="img"></a></div>
                                 </div>
-                            </div><!-- slide end here -->
-                            <!-- slide start here -->
+                            </div>
                             <div class="slide">
                                 <div class="box1">
                                     <div class="box2"><a href="#"><img src="/new_design/images/logo/img05.jpg"
                                                                        alt="img"></a></div>
                                 </div>
-                            </div><!-- slide end here -->
-                            <!-- slide start here -->
+                            </div>
                             <div class="slide">
                                 <div class="box1">
                                     <div class="box2"><a href="#"><img src="/new_design/images/logo/img06.jpg"
                                                                        alt="img"></a></div>
                                 </div>
-                            </div><!-- slide end here -->
-                            <!-- slide start here -->
+                            </div>
                             <div class="slide">
                                 <div class="box1">
                                     <div class="box2"><a href="#"><img src="/new_design/images/logo/img02.jpg"
                                                                        alt="img"></a></div>
                                 </div>
-                            </div><!-- slide end here -->
-                            <!-- slide start here -->
+                            </div>
                             <div class="slide">
                                 <div class="box1">
                                     <div class="box2"><a href="#"><img src="/new_design/images/logo/img03.jpg"
                                                                        alt="img"></a></div>
                                 </div>
-                            </div><!-- slide start here -->
-                        </div><!-- patner slider end here -->
-                    </div><!-- mt patners end here -->
+                            </div>
+                        </div>
+                    </div>
                     <div class="banner-frame nospace wow fadeInUp" data-wow-delay="0.4s">
-                        <!-- banner 9 start here -->
                         <div class="banner-9">
                             <img src="http://placehold.it/400x210" alt="image description">
                             <div class="holder">
@@ -723,8 +717,7 @@
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                             </div>
-                        </div><!-- banner 9 end here -->
-                        <!-- banner 10 start here -->
+                        </div>
                         <div class="banner-10">
                             <img src="http://placehold.it/400x210" alt="image description">
                             <div class="holder">
@@ -734,8 +727,7 @@
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                             </div>
-                        </div><!-- banner 10 end here -->
-                        <!-- banner 11 start here -->
+                        </div>
                         <div class="banner-11">
                             <img src="http://placehold.it/400x210" alt="image description">
                             <div class="holder">
@@ -745,12 +737,10 @@
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                             </div>
-                        </div><!-- banner 11 end here -->
+                        </div>
                     </div>
                     <div class="mt-producttabs style4 wow fadeInUp" data-wow-delay="0.4s">
-                        <!-- producttabs start here -->
                         <h2 class="heading">МЫ В INSTAGRAM</h2>
-                        <!-- producttabs end here -->
                         <div class="tab-content">
                             <div id="tab1">
                                 <!-- tabs slider start here -->
