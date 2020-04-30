@@ -64,14 +64,14 @@
                         </div>
                         <p>Компания по продвижению товаров и услуг
                             через сеть независимых партнеро</p>
-                        <ul class="list-unstyled address-list">
+                        <ul class="list-unstyled address-list" style="color:white;">
                             <li><i class="fa fa-map-marker"></i>
-                                <address>г . Алматы, у л. Пушкина, <br> 36 ТЦ “ Мег атау” офис 4</address>
+                                <address >г . Алматы, у л. Пушкина, <br> 36 ТЦ “ Мег атау” офис 4</address>
                             </li>
-                            <li><i class="fa fa-phone"></i><a href="tel:+7073691771">+7 707 369 17 71</a>
+                            <li><i class="fa fa-phone"></i><a href="tel:+7073691771" style="color: white;">+7 707 369 17 71</a>
                             </li>
                             <li><i class="fa fa-envelope-o"></i><a
-                                        href="mailto:&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#110;&#046;&#099;&#104;&#097;&#105;&#114;">&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#110;&#046;&#099;&#104;&#097;&#105;&#114;</a>
+                                        href="mailto:qazaqmarketing.@gmail.com" style="color: white;">qazaqmarketing.@gmail.com</a>
                             </li>
                         </ul>
                     </div>
@@ -79,40 +79,39 @@
                 </div>
                 <nav class="col-xs-12 col-sm-7 col-md-5 mt-paddingbottomxs">
                     <!-- Footer Nav of the Page -->
-                    <div class="nav-widget-1">
-                        <h3 class="f-widget-heading">Categories</h3>
-                        <ul class="list-unstyled f-widget-nav">
-                            <li><a href="#">Chairs</a></li>
-                            <li><a href="#">Sofas</a></li>
-                            <li><a href="#">Living</a></li>
-                            <li><a href="#">Bedroom</a></li>
-                            <li><a href="#">Tables</a></li>
-                            <li><a href="#">New</a></li>
+                    <div class="nav-widget-1" style="color: white;">
+                        <h3 class="f-widget-heading" style="color: white;">Продукция</h3>
+                        <ul class="list-unstyled f-widget-nav ">
+                            <li><a href="#">Эликсиры</a></li>
+                            <li><a href="#">Крема</a></li>
+                            <li><a href="#">Спреи</a></li>
+                            <li><a href="#">Гели</a></li>
+                            <li><a href="#">Чаи</a></li>
+                            <li><a href="#">Каши</a></li>
                         </ul>
                     </div>
                     <!-- Footer Nav of the Page end -->
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
-                        <h3 class="f-widget-heading">Information</h3>
+                        <h3 class="f-widget-heading" style="color: white;">Программы</h3>
                         <ul class="list-unstyled f-widget-nav">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Terms &amp; Conditions</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Customer Service</a></li>
-                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Жилье</a></li>
+                            <li><a href="#">Автомобиль</a></li>
+                            <li><a href="#">Бизнес</a></li>
+                            <li><a href="#">Путешествие</a></li>
+                            <li><a href="#">Инстаграм</a></li>
                         </ul>
                     </div>
                     <!-- Footer Nav of the Page end -->
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
-                        <h3 class="f-widget-heading">Account</h3>
+                        <h3 class="f-widget-heading" style="color: white;">Информация</h3>
                         <ul class="list-unstyled f-widget-nav">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Order Tracking</a></li>
-                            <li><a href="#">Wish List</a></li>
-                            <li><a href="#">Shopping Cart</a></li>
-                            <li><a href="#">Checkout</a></li>
+                            <li><a href="#">О нас</a></li>
+                            <li><a href="#">Связаться с нами</a></li>
+                            <li><a href="#">Правила и условия</a></li>
+                            <li><a href="#">Конфиденциальность</a></li>
+                            <li><a href="#">Частые вопросы</a></li>
                         </ul>
                     </div>
                     <!-- Footer Nav of the Page end -->
@@ -120,17 +119,17 @@
                 <div class="col-xs-12 col-md-3 text-right hidden-sm">
                     <!-- F Widget Newsletter of the Page -->
                     <div class="f-widget-newsletter">
-                        <h3 class="f-widget-heading">Sing Up Newsletter</h3>
+                        <h3 class="f-widget-heading" style="color: white;">Подписка на новости</h3>
                         <div class="holder">
                             <form class="newsletter-form form2" action="#">
                                 <fieldset>
-                                    <input type="email" class="form-control" placeholder="Your e-mail">
-                                    <button type="submit">Subscribe</button>
+                                    <input type="email" class="form-control" placeholder="Ваш e-mail">
+                                    <button type="submit" style="color:white;">Подписаться</button>
                                 </fieldset>
                             </form>
                         </div>
                         <!-- F Widget Newsletter of the Page end -->
-                        <h4 class="f-widget-heading follow">Follow Us</h4>
+                        <h4 class="f-widget-heading follow" style="color: white;">Следите за нами</h4>
                         <!-- Social Network of the Page -->
                         <ul class="list-unstyled social-network social-icon">
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>

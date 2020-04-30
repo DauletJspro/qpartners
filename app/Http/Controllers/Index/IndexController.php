@@ -9,6 +9,7 @@ use App\Models\City;
 use App\Models\Education;
 use App\Models\News;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\Project;
 use App\Models\Slider;
 use App\Models\Partner;
@@ -34,40 +35,43 @@ class IndexController extends Controller
 {
     public function __construct()
     {
-    
+
     }
 
-    
+
     public function index(Request $request)
     {
-        $news = News::where('is_show',1)
-                      ->orderBy('news_date','desc')
-                      ->take(3)
-                      ->get();
+        $news = News::where('is_show', 1)
+            ->orderBy('news_date', 'desc')
+            ->take(3)
+            ->get();
 
-        $project = Project::where('is_show',1)
-                    ->orderBy('sort_num','asc')
-                    ->take(4)
-                    ->get();
+        $project = Project::where('is_show', 1)
+            ->orderBy('sort_num', 'asc')
+            ->take(4)
+            ->get();
 
-        $user_share = Users::where('user_share','>',0)->count();
+        $user_share = Users::where('user_share', '>', 0)->count();
         $user_count = Users::count();
 
-        $standart_packet_count = UserPacket::where('is_active',1)->where('packet_id','>',2)->groupBy('user_id')->count();
-    
-        return  view('design_index.index.index',
+        $standart_packet_count = UserPacket::where('is_active', 1)->where('packet_id', '>', 2)->groupBy('user_id')->count();
+        $products = Product::all();
+
+        return view('design_index.index.index',
             [
                 'menu' => 'index',
                 'news' => $news,
                 'project_list' => $project,
                 'user_share' => $user_share,
                 'user_count' => $user_count,
+                'products' => $products,
                 'standart_packet_count' => $standart_packet_count
             ]
         );
     }
 
-    public function showFile($url){
+    public function showFile($url)
+    {
         $path = storage_path('app/image/' . $url);
 
         if (!File::exists($path)) {
@@ -83,21 +87,21 @@ class IndexController extends Controller
         return $response;
     }
 
-    public function redirectToRegister($user_id,$user_name)
+    public function redirectToRegister($user_id, $user_name)
     {
         $user = Users::find($user_id);
-        if($user == null) abort(404);
-        $new_url = '/register?id='.$user->user_id;
+        if ($user == null) abort(404);
+        $new_url = '/register?id=' . $user->user_id;
         return redirect($new_url);
     }
 
     public function gallery(Request $request)
     {
-        $gallery = Slider::where('is_show',1)
-                           ->orderBy('slider_id')
-                            ->paginate(9);
+        $gallery = Slider::where('is_show', 1)
+            ->orderBy('slider_id')
+            ->paginate(9);
 
-        return  view('index.index.gallery',
+        return view('index.index.gallery',
             [
                 'menu' => 'gallery',
                 'gallery' => $gallery
@@ -107,25 +111,25 @@ class IndexController extends Controller
 
     public function video(Request $request)
     {
-        $video = Video::where('is_show',1)
-                        ->orderBy('video_id')
-                        ->paginate(9);
+        $video = Video::where('is_show', 1)
+            ->orderBy('video_id')
+            ->paginate(9);
 
-        return  view('index.index.video',
+        return view('index.index.video',
             [
                 'menu' => 'gallery',
                 'video' => $video
             ]
         );
     }
-    
+
     public function news(Request $request)
     {
-        $news = News::where('is_show',1)
-                    ->orderBy('news_date','desc')
-                    ->paginate(6);
+        $news = News::where('is_show', 1)
+            ->orderBy('news_date', 'desc')
+            ->paginate(6);
 
-        return  view('index.index.news',
+        return view('index.index.news',
             [
                 'menu' => 'news',
                 'news' => $news
@@ -135,22 +139,22 @@ class IndexController extends Controller
 
     public function contact(Request $request)
     {
-        return  view('index.index.contact',
+        return view('index.index.contact',
             [
                 'menu' => 'contact'
             ]
         );
     }
 
-    public function getAboutById(Request $request,$url)
+    public function getAboutById(Request $request, $url)
     {
         $id = Helpers::getIdFromUrl($url);
-        $about = About::where('is_show',1)->where('about_id',$id)->first();
-        if($about == null) abort(404);
+        $about = About::where('is_show', 1)->where('about_id', $id)->first();
+        if ($about == null) abort(404);
 
-        $about_list = \App\Models\About::where('is_show',1)->orderBy('about_id')->get();
-        
-        return  view('index.index.about',
+        $about_list = \App\Models\About::where('is_show', 1)->orderBy('about_id')->get();
+
+        return view('index.index.about',
             [
                 'menu' => 'about',
                 'about' => $about,
@@ -159,15 +163,15 @@ class IndexController extends Controller
         );
     }
 
-    public function getEducationById(Request $request,$url)
+    public function getEducationById(Request $request, $url)
     {
         $id = Helpers::getIdFromUrl($url);
-        $education = Education::where('is_show',1)->where('education_id',$id)->first();
-        if($education == null) abort(404);
+        $education = Education::where('is_show', 1)->where('education_id', $id)->first();
+        if ($education == null) abort(404);
 
-        $about_list = \App\Models\Education::where('is_show',1)->orderBy('education_id')->get();
+        $about_list = \App\Models\Education::where('is_show', 1)->orderBy('education_id')->get();
 
-        return  view('index.index.education',
+        return view('index.index.education',
             [
                 'menu' => 'education',
                 'education' => $education,
@@ -176,15 +180,15 @@ class IndexController extends Controller
         );
     }
 
-    public function getProjectById(Request $request,$url)
+    public function getProjectById(Request $request, $url)
     {
         $id = Helpers::getIdFromUrl($url);
-        $project = Project::where('is_show',1)->where('project_id',$id)->first();
-        if($project == null) abort(404);
+        $project = Project::where('is_show', 1)->where('project_id', $id)->first();
+        if ($project == null) abort(404);
 
-        $about_list = \App\Models\Project::where('is_show',1)->orderBy('project_id')->get();
+        $about_list = \App\Models\Project::where('is_show', 1)->orderBy('project_id')->get();
 
-        return  view('index.index.project',
+        return view('index.index.project',
             [
                 'menu' => 'project',
                 'project' => $project,
@@ -193,7 +197,8 @@ class IndexController extends Controller
         );
     }
 
-    public function sendMessage(Request $request){
+    public function sendMessage(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'user_name' => 'required',
@@ -216,9 +221,9 @@ class IndexController extends Controller
         $contact->save();
 
         $message = '<h2>Обратная связь</h2>
-                    <p><b>Имя: </b>'.$request->user_name.'</p>
-                    <p><b>Почта: </b>'.$request->email.'</p>
-                    <p><b>Текст: </b>'.$request->message.'</p>
+                    <p><b>Имя: </b>' . $request->user_name . '</p>
+                    <p><b>Почта: </b>' . $request->email . '</p>
+                    <p><b>Текст: </b>' . $request->message . '</p>
                     ';
 
         $email = 'arman.abdiyev@gmail.com';
@@ -239,7 +244,8 @@ class IndexController extends Controller
         return response()->json($result);
     }
 
-    public function addRequest(Request $request){
+    public function addRequest(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'phone' => 'required',
             'user_name' => 'required'
@@ -264,10 +270,10 @@ class IndexController extends Controller
         $order->save();
 
         $message = '<h2>Онлайн заявка</h2>
-                    <p><b>Имя: </b>'.$request->user_name.'</p>
-                    <p><b>Почта: </b>'.$request->phone.'</p>
-                    <p><b>Тип: </b>'.$request->carriage_id.'</p>
-                    <p><b>Количество вагона: </b>'.$request->count_carriage.'</p>
+                    <p><b>Имя: </b>' . $request->user_name . '</p>
+                    <p><b>Почта: </b>' . $request->phone . '</p>
+                    <p><b>Тип: </b>' . $request->carriage_id . '</p>
+                    <p><b>Количество вагона: </b>' . $request->count_carriage . '</p>
                     ';
 
         $email = 'arman.abdiyev@gmail.com';
@@ -288,20 +294,20 @@ class IndexController extends Controller
         return response()->json($result);
     }
 
-    public function getCityListByCountry(Request $request){
+    public function getCityListByCountry(Request $request)
+    {
         $city = City::orderBy('sort_num', 'asc')->orderBy('city_name_ru');
 
-        if($request->country_id > 0) $city->where('country_id',$request->country_id);
-        
+        if ($request->country_id > 0) $city->where('country_id', $request->country_id);
+
         $city = $city->get();
 
         $row = array();
-        foreach ($city as $key => $val)
-        {
+        foreach ($city as $key => $val) {
             $row[$key]['city_id'] = $val['city_id'];
             $row[$key]['city_name'] = $val['city_name_ru'];
         }
-        
+
         $result['data'] = $row;
         $result['status'] = true;
         return response()->json($result);

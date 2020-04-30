@@ -185,190 +185,48 @@
                         <!-- producttabs end here -->
                         <div class="tab-content">
                             <div id="tab1">
-                                <!-- tabs slider start here -->
                                 <div class="tabs-sliderlg">
-                                    <!-- slide start here -->
-                                    <div class="slide">
-                                        <!-- mt product1 large start here -->
-                                        <div class="mt-product1 large">
-                                            <div class="box">
-                                                <div class="b1">
-                                                    <div class="b2">
-                                                        <a href="product-detail.html"><img
-                                                                    src="http://placehold.it/275x290"
-                                                                    alt="image description"></a>
-                                                        <ul class="mt-stars">
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                        </ul>
-                                                        <ul class="links">
-                                                            <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-heart-empty"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-exchange"></i></a>
-                                                            </li>
-                                                        </ul>
+                                    @foreach($products as $product)
+                                        <div class="slide">
+                                            <div class="mt-product1 large">
+                                                <div class="box">
+                                                    <div class="b1">
+                                                        <div class="b2">
+                                                            <a href="product-detail.html"><img
+                                                                        src="{{$product->product_image}}"
+                                                                        style="width: 270px; height: 290px;"
+                                                                        alt="image description"></a>
+                                                            <ul class="mt-stars">
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star-o"></i></li>
+                                                            </ul>
+                                                            <ul class="links">
+                                                                <li><a href="#"><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
+                                                                </li>
+                                                                <li><a href="#"><i
+                                                                                class="icomoon icon-heart-empty"></i></a>
+                                                                </li>
+                                                                <li><a href="#"><i
+                                                                                class="icomoon icon-exchange"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="txt">
-                                                <strong class="title"><a href="product-detail.html">Bombi
-                                                        Chair</a></strong>
-                                                <span class="price"><i
-                                                            class="fa fa-eur"></i> <span>399,00</span></span>
-                                            </div>
-                                        </div><!-- mt product1 center end here -->
-                                    </div>
-                                    <!-- slide end here -->
-                                    <!-- slide start here -->
-                                    <div class="slide">
-                                        <!-- mt product1 large start here -->
-                                        <div class="mt-product1 large">
-                                            <div class="box">
-                                                <div class="b1">
-                                                    <div class="b2">
-                                                        <a href="product-detail.html"><img
-                                                                    src="http://placehold.it/275x290"
-                                                                    alt="image description"></a>
-                                                        <ul class="links">
-                                                            <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-heart-empty"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-exchange"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                                <div class="txt">
+                                                    <strong class="title"><a
+                                                                href="product-detail.html">{{$product->product_name_ru}}</a></strong>
+                                                    <p>{{$product->product_desc_ru}}</p>
+                                                    <span class="price"><i
+                                                                class="fa fa-dollar"></i> <span>{{$product->product_price}}
+                                                               ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1 ])->first())->money}}   &#8376;) </span></span>
                                                 </div>
                                             </div>
-                                            <div class="txt">
-                                                <strong class="title"><a href="product-detail.html">Marvelous
-                                                        Modern 3 Seater</a></strong>
-                                                <span class="price"><i
-                                                            class="fa fa-eur"></i> <span>599,00</span></span>
-                                            </div>
-                                        </div><!-- mt product1 center end here -->
-                                    </div>
-                                    <!-- slide end here -->
-                                    <!-- slide start here -->
-                                    <div class="slide">
-                                        <!-- mt product1 large start here -->
-                                        <div class="mt-product1 large">
-                                            <div class="box">
-                                                <div class="b1">
-                                                    <div class="b2">
-                                                        <a href="product-detail.html"><img
-                                                                    src="http://placehold.it/275x290"
-                                                                    alt="image description"></a>
-                                                        <span class="caption">
-																	<span class="off">15% Off</span>
-																</span>
-                                                        <ul class="mt-stars">
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                        </ul>
-                                                        <ul class="links">
-                                                            <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-heart-empty"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-exchange"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="txt">
-                                                <strong class="title"><a href="product-detail.html">Chair with
-                                                        armrests</a></strong>
-                                                <span class="price"><i
-                                                            class="fa fa-eur"></i> <span>200,00</span></span>
-                                            </div>
-                                        </div><!-- mt product1 center end here -->
-                                    </div>
-                                    <!-- slide end here -->
-                                    <!-- slide start here -->
-                                    <div class="slide">
-                                        <!-- mt product1 large start here -->
-                                        <div class="mt-product1 large">
-                                            <div class="box">
-                                                <div class="b1">
-                                                    <div class="b2">
-                                                        <a href="product-detail.html"><img
-                                                                    src="http://placehold.it/275x290"
-                                                                    alt="image description"></a>
-                                                        <ul class="mt-stars">
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                        </ul>
-                                                        <ul class="links">
-                                                            <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-heart-empty"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-exchange"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="txt">
-                                                <strong class="title"><a href="product-detail.html">Bombi
-                                                        Chair</a></strong>
-                                                <span class="price"><i
-                                                            class="fa fa-eur"></i> <span>399,00</span></span>
-                                            </div>
-                                        </div><!-- mt product1 center end here -->
-                                    </div>
-                                    <!-- slide end here -->
-                                    <!-- slide start here -->
-                                    <div class="slide">
-                                        <!-- mt product1 large start here -->
-                                        <div class="mt-product1 large">
-                                            <div class="box">
-                                                <div class="b1">
-                                                    <div class="b2">
-                                                        <a href="product-detail.html"><img
-                                                                    src="http://placehold.it/275x290"
-                                                                    alt="image description"></a>
-                                                        <ul class="links">
-                                                            <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-heart-empty"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-exchange"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="txt">
-                                                <strong class="title"><a href="product-detail.html">Marvelous
-                                                        Modern 3 Seater</a></strong>
-                                                <span class="price"><i
-                                                            class="fa fa-eur"></i> <span>599,00</span></span>
-                                            </div>
-                                        </div><!-- mt product1 center end here -->
-                                    </div>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <!-- tabs slider end here -->
                             </div>
                             <div id="tab2">
                                 <!-- tabs slider start here -->
@@ -748,193 +606,46 @@
                         <h2 class="heading">Популярные</h2>
                         <!-- tabs slider start here -->
                         <div class="tabs-slider">
-                            <!-- slide start here -->
-                            <div class="slide">
-                                <!-- mt product1  start here -->
-                                <div class="mt-product1">
-                                    <div class="box">
-                                        <div class="b1">
-                                            <div class="b2">
-                                                <a href="product-detail.html"><img
-                                                            src="http://placehold.it/215x215"
-                                                            alt="image description"></a>
-                                                <span class="caption">
+                            @foreach($products as $product)
+                                <div class="slide">
+                                    <!-- mt product1  start here -->
+                                    <div class="mt-product1">
+                                        <div class="box">
+                                            <div class="b1">
+                                                <div class="b2">
+                                                    <a href="product-detail.html"><img
+                                                                src="{{$product->product_image}}"
+                                                                style="width: 215px; height: 215px;"></a>
+                                                    <span class="caption">
 															<span class="new">new</span>
 														</span>
-                                                <ul class="mt-stars">
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                                <ul class="links">
-                                                    <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                    </li>
-                                                    <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
-                                                    </li>
-                                                    <li><a href="#"><i class="icomoon icon-exchange"></i></a>
-                                                    </li>
-                                                </ul>
+                                                    <ul class="mt-stars">
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                    </ul>
+                                                    <ul class="links">
+                                                        <li><a href="#"><i
+                                                                        class="icon-handbag"></i><span>Добавить в карзину</span></a>
+                                                        </li>
+                                                        <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
+                                                        </li>
+                                                        <li><a href="#"><i class="icomoon icon-exchange"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="txt">
-                                        <strong class="title"><a href="product-detail.html">Puff
-                                                Chair</a></strong>
-                                        <span class="price"><i class="fa fa-eur"></i> <span>287,00</span></span>
-                                    </div>
-                                </div><!-- mt product1  end here -->
-                            </div>
-                            <!-- slide end here -->
-                            <!-- slide start here -->
-                            <div class="slide">
-                                <!-- mt product1 start here -->
-                                <div class="mt-product1">
-                                    <div class="box">
-                                        <div class="b1">
-                                            <div class="b2">
-                                                <a href="product-detail.html"><img
-                                                            src="http://placehold.it/215x215"
-                                                            alt="image description"></a>
-                                                <ul class="links">
-                                                    <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                    </li>
-                                                    <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
-                                                    </li>
-                                                    <li><a href="#"><i class="icomoon icon-exchange"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                        <div class="txt">
+                                            <strong class="title"><a
+                                                        href="product-detail.html">{{$product->product_name}}</a></strong>
+                                            <span class="price"><i
+                                                        class="fa fa-dollar"></i> <span>{{$product->product_price}}</span> 	({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span>
                                         </div>
-                                    </div>
-                                    <div class="txt">
-                                        <strong class="title"><a href="product-detail.html">Bombi
-                                                Chair</a></strong>
-                                        <span class="price"><i class="fa fa-eur"></i> <span>399,00</span></span>
-                                    </div>
-                                </div><!-- mt product1 center end here -->
-                            </div>
-                            <!-- slide end here -->
-                            <!-- slide start here -->
-                            <div class="slide">
-                                <!-- mt product1 start here -->
-                                <div class="mt-product1">
-                                    <div class="box">
-                                        <div class="b1">
-                                            <div class="b2">
-                                                <a href="product-detail.html"><img
-                                                            src="http://placehold.it/215x215"
-                                                            alt="image description"></a>
-                                                <ul class="links">
-                                                    <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                    </li>
-                                                    <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
-                                                    </li>
-                                                    <li><a href="#"><i class="icomoon icon-exchange"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="txt">
-                                        <strong class="title"><a href="product-detail.html">Wood
-                                                Chair</a></strong>
-                                        <span class="price"><i class="fa fa-eur"></i> <span>198,00</span></span>
-                                    </div>
-                                </div><!-- mt product1 end here -->
-                            </div>
-                            <!-- slide end here -->
-                            <!-- slide start here -->
-                            <div class="slide">
-                                <!-- mt product1 start here -->
-                                <div class="mt-product1">
-                                    <div class="box">
-                                        <div class="b1">
-                                            <div class="b2">
-                                                <a href="product-detail.html"><img
-                                                            src="http://placehold.it/215x215"
-                                                            alt="image description"></a>
-                                                <span class="caption">
-															<span class="off">15% Off</span>
-															<span class="new">new</span>
-														</span>
-                                                <ul class="links">
-                                                    <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                    </li>
-                                                    <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
-                                                    </li>
-                                                    <li><a href="#"><i class="icomoon icon-exchange"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="txt">
-                                        <strong class="title"><a href="product-detail.html">Bombi
-                                                Chair</a></strong>
-                                        <span class="price"><i class="fa fa-eur"></i> <span>200,00</span></span>
-                                    </div>
-                                </div><!-- mt product1 end here -->
-                            </div>
-                            <!-- slide end here -->
-                            <!-- slide start here -->
-                            <div class="slide">
-                                <!-- mt product1 start here -->
-                                <div class="mt-product1">
-                                    <div class="box">
-                                        <div class="b1">
-                                            <div class="b2">
-                                                <a href="product-detail.html"><img
-                                                            src="http://placehold.it/215x215"
-                                                            alt="image description"></a>
-                                                <ul class="links">
-                                                    <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                    </li>
-                                                    <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
-                                                    </li>
-                                                    <li><a href="#"><i class="icomoon icon-exchange"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="txt">
-                                        <strong class="title"><a href="product-detail.html">Bombi
-                                                Chair</a></strong>
-                                        <span class="price"><i class="fa fa-eur"></i> <span>200,00</span></span>
-                                    </div>
-                                </div><!-- mt product1 end here -->
-                            </div>
-                            <!-- slide end here -->
-                            <!-- slide start here -->
-                            <div class="slide">
-                                <!-- mt product1 start here -->
-                                <div class="mt-product1">
-                                    <div class="box">
-                                        <div class="b1">
-                                            <div class="b2">
-                                                <a href="product-detail.html"><img
-                                                            src="http://placehold.it/215x215"
-                                                            alt="image description"></a>
-                                                <ul class="links">
-                                                    <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                    </li>
-                                                    <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
-                                                    </li>
-                                                    <li><a href="#"><i class="icomoon icon-exchange"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="txt">
-                                        <strong class="title"><a href="product-detail.html">Wood
-                                                Chair</a></strong>
-                                        <span class="price"><i class="fa fa-eur"></i> <span>198,00</span></span>
-                                    </div>
-                                </div><!-- mt product1 end here -->
-                            </div>
-                            <!-- slide end here -->
+                                    </div><!-- mt product1  end here -->
+                                </div>
+                            @endforeach
                         </div>
                         <!-- tabs slider end here -->
                     </div><!-- mt producttabs style3 end here -->

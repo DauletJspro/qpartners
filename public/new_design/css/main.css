@@ -6776,9 +6776,7 @@ a:hover {
 }
 
 .mt-producttabs.style2 .mt-product1 .links {
-	left: 8%;
-	right: 8%;
-	width: 84%;
+	width: 100%;
 }
 
 .mt-producttabs.style3 {
@@ -12625,4 +12623,7 @@ a:focus {
 
 .changer-active #style-changer {
 	margin: 0;
+}
+.f-widget-nav > li > a{
+	color: white !important;
 }
