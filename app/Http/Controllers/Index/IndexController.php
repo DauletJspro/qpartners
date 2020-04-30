@@ -40,54 +40,6 @@ class IndexController extends Controller
     
     public function index(Request $request)
     {
-        if($request->ok == 1){
-            
-
-
-           /* $users = Users::where('status_id',14)->get();
-            foreach($users as $item){
-                $user_packet = UserPacket::where('is_active',1)->where('packet_id',15)->where('user_id',$item->user_id)->first();
-                if($user_packet != null){
-                    $user = Users::where('user_id',$item->user_id)->first();
-                    $user->status_id = 14;
-                    $user->save();
-                }
-            }
-            dd($users);*/
-
-
-
-            //5 статус беру
-
-           /* $user_packet = UserPacket::leftJoin('users','users.user_id','=','user_packet.user_id')
-                                    ->where('user_packet.is_active',1)
-                                    ->where('user_packet.packet_id',15)
-                                    ->groupBy('user_packet.user_id')
-                                    ->select('user_packet.user_id','name','login')
-                                    ->get();
-
-            foreach($user_packet as $item){
-                $user = Users::where('user_id',$item->user_id)->first();
-                $user->status_id = 3;
-                $user->save();
-            }
-            dd($user_packet);*/
-
-
-
-            //жогаргы статустарды беру
-
-           /* $users = Users::where('status_id','>=',3)->where('qualification_profit','>=',250000)->get();
-            foreach ($users as $key => $item){
-                $user = Users::where('user_id',$item->user_id)->first();
-                $user->status_id = 9;
-                $user->save();
-            }
-
-            dd($users);*/
-
-        }
-
         $news = News::where('is_show',1)
                       ->orderBy('news_date','desc')
                       ->take(3)
@@ -103,7 +55,7 @@ class IndexController extends Controller
 
         $standart_packet_count = UserPacket::where('is_active',1)->where('packet_id','>',2)->groupBy('user_id')->count();
     
-        return  view('index.index.index',
+        return  view('design_index.index.index',
             [
                 'menu' => 'index',
                 'news' => $news,

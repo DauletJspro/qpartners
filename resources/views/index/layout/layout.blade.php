@@ -22,13 +22,11 @@
 </div>
 
 
-<script type='text/javascript' src='/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.8'></script>
-<script type='text/javascript' src='/wp-content/themes/fo/js/all.js'></script>
-<script type='text/javascript' src='/wp-content/plugins/themesflat/assets/3rd/owl.carousel.js?ver=1.0'></script>
-<script type='text/javascript' src='/wp-includes/js/wp-embed.min.js?ver=4.8'></script>
-
-<script src="/admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<script type='text/javascript' src='/custom/js/main-page.js?ver=3'></script>
+<script src="/new_design/js/jquery.js"></script>
+<!-- include jQuery -->
+<script src="/new_design/js/plugins.js"></script>
+<!-- include jQuery -->
+<script src="/new_design/js/jquery.main.js"></script>
 
 @yield('js')
 

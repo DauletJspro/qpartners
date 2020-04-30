@@ -72,7 +72,7 @@
                                     @endforeach
 
                                 </div>
-                           
+
                                 <div class="vc_row wpb_row vc_row-fluid themesflat_1501148697">
                                     <div class="row_overlay" style=""></div>
                                     <div class="wpb_column vc_column_container vc_col-sm-12">
