@@ -25,8 +25,20 @@
                                 </div>
                             </div>
                         </li>
-                        <li><a href="#">Страна</a></li>
-                        <li class="active"><a href="#">Кабинет</a></li>
+                        <li class="">
+                            <div class="dropdown">
+                                <a class="" href="/login">{{Lang::get('app.cabinet')}}</a>
+                                <div class="dropdown-content">
+                                    @if(!Auth::check())
+                                        <a href="/register">Регистрация</a>
+                                        <a href="/login">Войти</a>
+                                    @else
+                                        <a href="/admin/index">Личный кабинет</a>
+                                    @endif
+
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -36,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="mt-logo"><a href="#"><img src="/new_design/images/mt-logo.png" alt="schon"></a></div>
+                    <div class="mt-logo"><a href="/"><img src="/new_design/images/mt-logo.png" alt="schon"></a></div>
                     <div class="mt-sh-cart">
                         <span class="icon-handbag"></span>
                         <strong>Ваша корзина</strong>
@@ -55,23 +67,19 @@
                     <nav id="nav">
                         <ul>
                             <li>
-                                <a href="#">О НАС</a>
-                                {{--                <a class="drop-link" href="homepage1.html">HOME <i--}}
-                                {{--                          class="fa fa-angle-down hidden-lg hidden-md"--}}
-                                {{--                          aria-hidden="true"></i></a>--}}
-                                {{--                <div class="s-drop">--}}
-                                {{--                  <ul>--}}
-                                {{--                    <li><a href="homepage1.html">Homepage1</a></li>--}}
-                                {{--                    <li><a href="homepage2.html">homepage2</a></li>--}}
-                                {{--                    <li><a href="homepage3.html">homepage3</a></li>--}}
-                                {{--                    <li><a href="homepage4.html">homepage4</a></li>--}}
-                                {{--                    <li><a href="homepage5.html">Homepage5</a></li>--}}
-                                {{--                    <li><a href="homepage6.html">homepage6</a></li>--}}
-                                {{--                    <li><a href="homepage7.html">homepage7</a></li>--}}
-                                {{--                    <li><a href="homepage8.html">homepage8</a></li>--}}
-                                {{--                    <li><a href="homepage9.html">homepage9</a></li>--}}
-                                {{--                  </ul>--}}
-                                {{--                </div>--}}
+                                <a class="drop-link" href="homepage1.html">{{Lang::get('app.about_company')}}<i
+                                            class="fa fa-angle-down hidden-lg hidden-md"
+                                            aria-hidden="true"></i></a>
+                                <div class="s-drop">
+                                    <?php $about = \App\Models\About::where('is_show', 1)->orderBy('about_id')->get();?>
+                                    <ul>
+                                        @foreach($about as $key => $item)
+                                            <li class="">
+                                                <a href="/{{\App\Http\Helpers::getTranslatedSlugRu($item['about_name_'.$lang])}}-u{{$item->about_id}}">{{$item['about_name_'.$lang]}}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </li>
                             <li class="drop">
                                 <a href="#">ПРОДУКЦИЯ<i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -84,25 +92,30 @@
                                             <div class="mt-col-3">
                                                 <div class="sub-dropcont">
                                                     <strong class="title"><a href="product-grid-view.html"
-                                                                             class="mt-subopener">PRODUCTS</a></strong>
+                                                                             class="mt-subopener">Эликсиры</a></strong>
                                                     <div class="sub-drop">
                                                         <ul>
-                                                            <li><a href="product-grid-view.html">Product
-                                                                    Grid View</a></li>
-                                                            <li><a href="product-list-view.html">Product
-                                                                    List View</a></li>
-                                                            <li><a href="product-detail.html">Product
-                                                                    Detail</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">404
-                                                            Pages</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="404-page.html">404 Page</a></li>
-                                                            <li><a href="404-page2.html">404 Page2</a></li>
+                                                            <li><a href="product-grid-view.html">Super Elixir
+                                                                    Anti-Stress</a></li>
+                                                            <li><a href="product-grid-view.html">Super Elixir Immuno</a>
+                                                            </li>
+                                                            <li><a href="product-grid-view.html">Super Elixir Energy</a>
+                                                            </li>
+                                                            <li><a href="product-grid-view.html">Super Elixir Gastro</a>
+                                                            </li>
+                                                            <li><a href="product-grid-view.html">Super Elixir Hepato</a>
+                                                            </li>
+                                                            <li><a href="product-grid-view.html">Super Elixir Clean</a>
+                                                            </li>
+                                                            <li><a href="product-grid-view.html">Super Elixir for
+                                                                    man</a></li>
+                                                            <li><a href="product-grid-view.html">Super Elixir for
+                                                                    woman</a></li>
+                                                            <li><a href="product-grid-view.html">Super Elixir
+                                                                    Bronchi</a></li>
+                                                            <li><a href="product-grid-view.html">Super Elixir Nephro</a>
+                                                            </li>
+
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -112,34 +125,28 @@
                                             <!-- mt col3 start here -->
                                             <div class="mt-col-3">
                                                 <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">About
-                                                            US</a></strong>
+                                                    <strong class="title"><a href="#"
+                                                                             class="mt-subopener">Гели</a></strong>
                                                     <div class="sub-drop">
                                                         <ul>
-                                                            <li><a href="about-us.html">About</a></li>
+                                                            <li><a href="about-us.html">Super Gel Fresh face</a></li>
+                                                            <li><a href="about-us.html">Super Gel Face&body</a></li>
+                                                            <li><a href="about-us.html">Super Gel Regeneration</a></li>
+                                                            <li><a href="about-us.html">Super Gel Masto</a></li>
+                                                            <li><a href="about-us.html">Super Gel Grippo</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                                 <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">Contact
+                                                    <strong class="title"><a href="#" class="mt-subopener">Крема
                                                             US</a></strong>
                                                     <div class="sub-drop">
                                                         <ul>
-                                                            <li><a href="contact-us.html">Contact</a></li>
-                                                            <li><a href="contact-us2.html">Contact 2</a>
+                                                            <li><a href="contact-us.html">Super cream Spasm</a></li>
+                                                            <li><a href="contact-us.html">Super cream Anti-cellulite</a>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">Coming
-                                                            Soon</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="coming-soon.html">Coming Soon</a>
-                                                            </li>
-                                                            <li><a href="coming-soon2.html">Coming Soon2</a>
-                                                            </li>
+                                                            <li><a href="contact-us.html">Super cream for man</a></li>
+                                                            <li><a href="contact-us.html">Super cream for woman</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -149,21 +156,19 @@
                                             <!-- mt col3 start here -->
                                             <div class="mt-col-3">
                                                 <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">KITCHEN
-                                                            FURNITURE</a></strong>
+                                                    <strong class="title"><a href="#"
+                                                                             class="mt-subopener">Спреи</a></strong>
                                                     <div class="sub-drop">
                                                         <ul>
-                                                            <li><a href="#">Kitchen Taps</a></li>
-                                                            <li><a href="#">Breakfast time</a></li>
-                                                            <li><a href="#">Cooking</a></li>
-                                                            <li><a href="#">Food Storage Boxes</a></li>
-                                                            <li><a href="#">Spice Jars</a></li>
-                                                            <li><a href="#">Napskins</a></li>
-                                                            <li><a href="#">Oven Gloves</a></li>
-                                                            <li><a href="#">Placemats</a></li>
-                                                            <li><a href="#">Cooking</a></li>
-                                                            <li><a href="#">Food Storage Boxes</a></li>
-                                                            <li><a href="#">Spice Jars</a></li>
+                                                            <li><a href="#">Super Spray Grippo</a></li>
+                                                            <li><a href="#">Super Spray Castro</a></li>
+                                                            <li><a href="#">Super Spray Hepato</a></li>
+                                                            <li><a href="#">Super Spray Clean</a></li>
+                                                            <li><a href="#">Super Spray for man</a></li>
+                                                            <li><a href="#">Super Spray for woman</a></li>
+                                                            <li><a href="#">Super Spray Bronchi</a></li>
+                                                            <li><a href="#">Super Spray Propolis&herb</a></li>
+                                                            <li><a href="#">Super Spray Nephro</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -197,61 +202,27 @@
                                             <div class="mt-col-3">
                                                 <div class="sub-dropcont">
                                                     <strong class="title"><a href="product-grid-view.html"
-                                                                             class="mt-subopener">PRODUCTS</a></strong>
+                                                                             class="mt-subopener">Жилье</a></strong>
                                                     <div class="sub-drop">
                                                         <ul>
-                                                            <li><a href="product-grid-view.html">Product
-                                                                    Grid View</a></li>
-                                                            <li><a href="product-list-view.html">Product
-                                                                    List View</a></li>
-                                                            <li><a href="product-detail.html">Product
-                                                                    Detail</a></li>
+                                                            <li><a href="product-grid-view.html">Стоимость жилья от
+                                                                    16000$</a></li>
+                                                            <li><a href="product-grid-view.html">Рассрочка до 44
+                                                                    месяцев </a></li>
+                                                            <li><a href="product-grid-view.html">Без процентов и
+                                                                    комиссии</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                                 <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">404
-                                                            Pages</a></strong>
+                                                    <strong class="title"><a href="#"
+                                                                             class="mt-subopener">Автомобиль</a></strong>
                                                     <div class="sub-drop">
                                                         <ul>
-                                                            <li><a href="404-page.html">404 Page</a></li>
-                                                            <li><a href="404-page2.html">404 Page2</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- mt col3 end here -->
-
-                                            <!-- mt col3 start here -->
-                                            <div class="mt-col-3">
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">About
-                                                            US</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="about-us.html">About</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">Contact
-                                                            US</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="contact-us.html">Contact</a></li>
-                                                            <li><a href="contact-us2.html">Contact 2</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">Coming
-                                                            Soon</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="coming-soon.html">Coming Soon</a>
-                                                            </li>
-                                                            <li><a href="coming-soon2.html">Coming Soon2</a>
+                                                            <li><a href="404-page.html">Стоимость автомобиля от
+                                                                    6000$</a></li>
+                                                            <li><a href="404-page.html">Рассрочка до 15 месяцев</a></li>
+                                                            <li><a href="404-page.html">Без процентов и комиссии</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -262,21 +233,58 @@
                                             <!-- mt col3 start here -->
                                             <div class="mt-col-3">
                                                 <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">KITCHEN
-                                                            FURNITURE</a></strong>
+                                                    <strong class="title"><a href="#"
+                                                                             class="mt-subopener">Ьизнес</a></strong>
                                                     <div class="sub-drop">
                                                         <ul>
-                                                            <li><a href="#">Kitchen Taps</a></li>
-                                                            <li><a href="#">Breakfast time</a></li>
-                                                            <li><a href="#">Cooking</a></li>
-                                                            <li><a href="#">Food Storage Boxes</a></li>
-                                                            <li><a href="#">Spice Jars</a></li>
-                                                            <li><a href="#">Napskins</a></li>
-                                                            <li><a href="#">Oven Gloves</a></li>
-                                                            <li><a href="#">Placemats</a></li>
-                                                            <li><a href="#">Cooking</a></li>
-                                                            <li><a href="#">Food Storage Boxes</a></li>
-                                                            <li><a href="#">Spice Jars</a></li>
+                                                            <li><a href="about-us.html">Грант на бизнес от 4000$</a>
+                                                            </li>
+                                                            <li><a href="about-us.html">Рассрочка до 10 месяцев</a></li>
+                                                            <li><a href="about-us.html">Без процентов и комиссии</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="sub-dropcont">
+                                                    <strong class="title"><a href="#"
+                                                                             class="mt-subopener">Путешествие</a></strong>
+                                                    <div class="sub-drop">
+                                                        <ul>
+                                                            <li><a href="contact-us.html">Путевки на сумму от 1000$</a>
+                                                            </li>
+                                                            <li><a href="contact-us.html">Рассрочка до 6 месяцев</a>
+                                                            </li>
+                                                            <li><a href="contact-us.html">Без процентов и комиссии</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- mt col3 end here -->
+
+                                            <!-- mt col3 start here -->
+                                            <div class="mt-col-3">
+                                                <div class="sub-dropcont">
+                                                    <strong class="title"><a href="#"
+                                                                             class="mt-subopener">INSTART</a></strong>
+                                                    <div class="sub-drop">
+                                                        <ul>
+                                                            <li><a href="#">Продвижение в Instagram</a></li>
+                                                            <li><a href="#">Более 1 млн подписчиков</a></li>
+                                                            <li><a href="#">В период от 6 до 15 недель</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="sub-dropcont">
+                                                    <strong class="title"><a href="#"
+                                                                             class="mt-subopener">Profile</a></strong>
+                                                    <div class="sub-drop">
+                                                        <ul>
+                                                            <li><a href="coming-soon.html">Скидки на товары и услуги</a>
+                                                            </li>
+                                                            <li><a href="coming-soon.html">Более 100 компании</a></li>
+                                                            <li><a href="coming-soon.html">Более 2000 товаров и
+                                                                    услуг</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -304,16 +312,16 @@
                                             class="fa fa-angle-down hidden-lg hidden-md"
                                             aria-hidden="true"></i></a>
                                 <div class="s-drop">
-                                    <ul>
-                                        <li><a href="blog-fullwidth-page.html">Blog Fullwidth Page</a></li>
-                                        <li><a href="blog-right-sidebar2.html">blog right sidebar2</a></li>
-                                        <li><a href="blog-postlist-3-masonry.html">blog postlist masonry</a>
-                                        </li>
-                                        <li><a href="blog-post-detail-sidebar.html">blog post detail
-                                                sidebar</a></li>
-                                        <li><a href="blog-post-detail-full-width.html">blog post detail full
-                                                width</a></li>
-                                    </ul>
+{{--                                    <ul>--}}
+{{--                                        <li><a href="blog-fullwidth-page.html">Blog Fullwidth Page</a></li>--}}
+{{--                                        <li><a href="blog-right-sidebar2.html">blog right sidebar2</a></li>--}}
+{{--                                        <li><a href="blog-postlist-3-masonry.html">blog postlist masonry</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li><a href="blog-post-detail-sidebar.html">blog post detail--}}
+{{--                                                sidebar</a></li>--}}
+{{--                                        <li><a href="blog-post-detail-full-width.html">blog post detail full--}}
+{{--                                                width</a></li>--}}
+{{--                                    </ul>--}}
                                 </div>
                             </li>
                             <li>
@@ -321,10 +329,10 @@
                                             class="fa fa-angle-down hidden-lg hidden-md"
                                             aria-hidden="true"></i></a>
                                 <div class="s-drop">
-                                    <ul>
-                                        <li><a href="contact-us.html">Contact</a></li>
-                                        <li><a href="contact-us2.html">Contact 2</a></li>
-                                    </ul>
+{{--                                    <ul>--}}
+{{--                                        <li><a href="contact-us.html">Contact</a></li>--}}
+{{--                                        <li><a href="contact-us2.html">Contact 2</a></li>--}}
+{{--                                    </ul>--}}
                                 </div>
                             </li>
                         </ul>

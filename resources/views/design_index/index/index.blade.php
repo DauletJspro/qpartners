@@ -190,11 +190,6 @@
                                                 <div class="box">
                                                     <div class="b1">
                                                         <div class="b2">
-                                                            {{--                                                            <a href="product-detail.html"><img--}}
-                                                            {{--                                                                        src="{{$product->product_image}}"--}}
-                                                            {{--                                                                        style="width: 270px; height: 290px;"--}}
-                                                            {{--                                                                        alt="image description"></a>--}}
-
                                                             <a href="#">
                                                                 <div style="width: 270px;
                                                                         height: 290px;
@@ -619,9 +614,11 @@
                                         <div class="box">
                                             <div class="b1">
                                                 <div class="b2">
-                                                    <a href="product-detail.html"><img
-                                                                src="{{$product->product_image}}"
-                                                                style="width: 215px; height: 215px;"></a>
+                                                    <a href="product-detail.html">
+                                                        <div style="background-position: center; background-size: cover; width: 215px; height: 215px; background-image: url('{{$product->product_image}}')">
+                                                            
+                                                        </div>
+                                                    </a>
                                                     <span class="caption">
 															<span class="new">new</span>
 														</span>
