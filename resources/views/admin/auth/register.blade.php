@@ -112,7 +112,7 @@
                 Если Вы уже зарегистрированы на нашем сайте, нажмите <a style="font-weight: bold; text-decoration: underline" href="/login">«Войти»</a>
             </div>
             <div class="form-group" style="text-align: center">
-               <a style="font-weight: bold; text-decoration: underline" href="/">Главная страница</a>
+               <a style="font-weight: bold; text-decoration: underline;" href="/">Главная страница</a>
             </div>
         </div>
 

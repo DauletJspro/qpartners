@@ -1,4 +1,3 @@
-
 <ul class="sidebar-menu">
     @if(Auth::user()->status_id > 0)
         <li class="header"
@@ -6,8 +5,8 @@
             <p style="color:#009551;margin:0px;font-weight: bold">
 
                 @if(isset($status_name->user_status_name))
-                    
-                {{ $status_name->user_status_name }}
+
+                    {{ $status_name->user_status_name }}
 
                 @endif
 
@@ -15,11 +14,10 @@
         </li>
     @endif
 
-        <li class="header" style="text-align: center; padding:5px 25px 0px">
-            <p style="color:red;margin:0px;font-weight: bold">Ваш баланс: {{Auth::user()->user_money}}$ ( {{Auth::user()->user_money * \App\Models\Currency::where('currency_name','тенге')->first()->money}}тг)</p>
-        </li>
-
-
+    <li class="header" style="text-align: center; padding:5px 25px 0px">
+        <p style="color:red;margin:0px;font-weight: bold">Ваш баланс: {{Auth::user()->user_money}}$
+            ( {{Auth::user()->user_money * \App\Models\Currency::where('currency_name','тенге')->first()->money}}тг)</p>
+    </li>
 
 
     <li class="header" style="text-align: center; padding:5px 25px 0px">@if(Auth::user()->is_activated == 1) <p
@@ -39,12 +37,12 @@
     </li>
 
 
-        <li class="treeview" style="background-color: #F9BF3B;">
-            <a href="/admin/call-friend" style="color: black" class="balance-btn">
-                <i class="fa fa-reply-all"></i>
-                <span style="color: black">Пригласить друга</span>
-            </a>
-        </li>
+    <li class="treeview" style="background-color: #F9BF3B;">
+        <a href="/admin/call-friend" style="color: black" class="balance-btn">
+            <i class="fa fa-reply-all"></i>
+            <span style="color: black">Пригласить друга</span>
+        </a>
+    </li>
 
     <li class="treeview">
         <a href="/admin/profile">
@@ -81,7 +79,7 @@
             <span>Мои подписчики</span>
         </a>
     </li>
-        
+
     @if(Auth::user()->role_id == 1)
 
         <li class="treeview">
@@ -198,12 +196,12 @@
                 <span>Пакеты</span>
             </a>
         </li>
-            <li class="treeview">
-                <a href="/admin/product">
-                    <i class="fa fa-list"></i>
-                    <span>Товары</span>
-                </a>
-            </li>
+        <li class="treeview">
+            <a href="/admin/product">
+                <i class="fa fa-list"></i>
+                <span>Товары</span>
+            </a>
+        </li>
         <li class="treeview">
             <a href="/admin/accounting">
                 <i class="fa fa-money"></i>
@@ -223,12 +221,12 @@
             <span>Структура</span>
         </a>
     </li>
-   {{-- <li class="treeview">
-        <a href="/admin/binar/config">
-            <i class="fa fa-sitemap"></i>
-            <span>Настройка авторегистрации</span>
-        </a>
-    </li>--}}
+    {{-- <li class="treeview">
+         <a href="/admin/binar/config">
+             <i class="fa fa-sitemap"></i>
+             <span>Настройка авторегистрации</span>
+         </a>
+     </li>--}}
     <li class="treeview">
         <a href="/admin/shop">
             <i class="fa fa-shopping-cart"></i>

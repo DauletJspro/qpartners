@@ -71,7 +71,7 @@ class AuthController extends Controller
                     if (!Auth::attempt($userdata))
                     {
                         $error = 'Неправильный логин или пароль';
-                        return  view('admin.auth.login', [
+                        return  view('admin.new_design_auth.login', [
                             'login' => $request->login,
                             'error' => $error
                         ]);
@@ -84,7 +84,7 @@ class AuthController extends Controller
             if(Auth::user()->is_ban == 1){
                 $error = 'Вас заблокировали';
                 Auth::logout();
-                return  view('admin.auth.login', [
+                return  view('admin.new_design_auth.login', [
                     'login' => $request->login,
                     'error' => $error
                 ]);
@@ -93,7 +93,7 @@ class AuthController extends Controller
             return redirect('/admin/index');
         }
 
-        return  view('admin.auth.login',['login'=>'']);
+        return  view('admin.new_design_auth.login',['login'=>'']);
     }
 
     public function showRegister(Request $request)
@@ -112,7 +112,7 @@ class AuthController extends Controller
         
         $user = new Users();
 
-        return  view('admin.auth.register', [
+        return  view('admin.new_design_auth.register', [
             'row' => $user
         ]);
     }
@@ -121,22 +121,22 @@ class AuthController extends Controller
     {
        $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'last_name' => 'required',
-            'city_id' => 'required|numeric',
+//            'last_name' => 'required',
+//            'city_id' => 'required|numeric',
             'password' => 'required|min:5',
             'recommend_user_id' => 'required',
             'confirm_password' => 'required|same:password',
             'email' => 'required|email|unique:users,email,NULL,user_id,deleted_at,NULL',
             'login' => 'required|unique:users,login,NULL,user_id,deleted_at,NULL',
-            'phone' => 'required|unique:users,phone,NULL,user_id,deleted_at,NULL',
-            'iin' => 'required|unique:users,iin,NULL,user_id,deleted_at,NULL',
-            'address' => 'required',
+//            'phone' => 'required|unique:users,phone,NULL,user_id,deleted_at,NULL',
+//            'iin' => 'required|unique:users,iin,NULL,user_id,deleted_at,NULL',
+//            'address' => 'required',
         ]);
 
         if ($validator->fails()) {
             $messages = $validator->errors();
             $error = $messages->all();
-            return  view('admin.auth.register', [
+            return  view('admin.new_design_auth.register', [
                 'title' => '',
                 'row' => (object) $request->all(),
                 'error' => $error[0]
@@ -224,10 +224,10 @@ class AuthController extends Controller
             view('mail.confirm-email',['hash' => $hash_email,'email' => $request->email]),
             true);
 
-        $error = 'Вы успешно зарегистрировались';
+        $success = 'Поздравляю, Вы успешно зарегистрировались!';
         
-        return  view('admin.auth.login', [
-            'error' => $error,
+        return  view('admin.new_design_auth.login', [
+            'success' => $success,
             'ok' => $ok
         ]);
     }
