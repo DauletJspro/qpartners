@@ -4720,6 +4720,8 @@ a:hover {
     letter-spacing: 4.6px;
     font-size: 24px;
     line-height: 28px;
+    background-color: rgba(0,0,0,0.5);
+
 }
 
 .banner-frame .mt-stars {
@@ -4745,7 +4747,7 @@ a:hover {
 }
 
 .banner-frame .btn-shop {
-    color: #878787;
+    color: white;
     font-size: 14px;
     margin: 40px 0 0;
     line-height: 16px;
@@ -4761,21 +4763,25 @@ a:hover {
 
 .banner-frame .btn-shop span,
 .banner-frame .btn-shop .fa {
-    color: #878787;
+    color: black;
     -webkit-transition: all .4s linear;
     transition: all .4s linear;
     display: inline-block;
     vertical-align: middle;
+    font-weight: bold;
 }
 
 .banner-frame .btn-shop span {
     margin: 0 11px 0 0;
+    color: black;
+    font-weight: bold;
+    font-size: 130%;
 }
 
 .banner-frame .btn-shop .fa {
     text-align: center;
     border-radius: 100%;
-    border: 1px solid #878787;
+    border: 1px solid black;
     width: 24px;
     height: 24px;
     font-size: 17px;
@@ -5153,13 +5159,16 @@ a:hover {
 }
 
 .banner-7 .price {
-    color: #991015;
-    padding: 10px 0 11px;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    font-weight: bold;
+    background-color:  rgba(0,0,0,0.5);
     font-size: 27px;
     line-height: 30px;
 }
 
 .banner-7 .shop-now {
+    margin-top: 1rem;
     color: #fff;
     background: #2e2d32;
     text-transform: uppercase;
@@ -5229,17 +5238,18 @@ a:hover {
 }
 
 .banner-8 .btn-shop {
-    margin: 16px 0 0 -3px;
+    margin: -1.3rem 0 0 -3px;
 }
 
 .banner-8 .btn-shop span {
-    color: #2c3d65;
+    font-weight: bold;
+    color: white;
     text-transform: uppercase;
 }
 
 .banner-8 .btn-shop .fa {
-    color: #2c3d65;
-    border-color: #2c3d65;
+    color: white;
+    border-color:white;
 }
 
 /*------------------------------------------------------------------
@@ -5326,6 +5336,7 @@ a:hover {
     text-transform: none;
     font-size: 16px;
     line-height: 18px;
+    background-color: gold;
 }
 
 .banner-12 .btn-shop {
@@ -5337,11 +5348,13 @@ a:hover {
 .banner-12 .btn-shop span,
 .banner-12 .btn-shop .fa {
     color: #fff;
+    font-weight: bold;
+    font-size: 120%;
 }
 
 .banner-12 .btn-shop .fa {
     border-color: #fff;
-    background: #b1de89;
+    background: gold;
 }
 
 .banner-12 .btn-shop .fa:hover {

@@ -17,28 +17,31 @@
                 <div class="col-xs-12">
                     <div class="banner-frame toppadding-zero">
                         <div class="banner-5 white wow fadeInLeft" data-wow-delay="0.4s">
-                            <img src="http://placehold.it/590x565" alt="image description">
+                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/home.jpg'); background-size: cover; background-position: center;"></div>
                             <div class="holder">
-                                <div class="texts">
-                                    <strong class="title">FURNITURE DESIGNS IDEAS</strong>
-                                    <h3><strong>New</strong> Collection</h3>
-                                    <p>Consectetur adipisicing elit. Beatae accusamus, optio, repellendus
-                                        inventore</p>
-                                    <span class="price-add">$ 79.00</span>
+                                <div class="texts" style="background-color: rgba(0,0,0,0.5); padding: 2rem 4rem;">
+                                    <strong class="title">жилищная программа</strong>
+                                    <h3 style="font-weight: bold;">Купи жилье за 200$</h3>
+                                    <p>Собственное жилье в рассрочку без процентов, коммисси, перепат и подтверждения
+                                        дохода</p>
+                                    <span class="price-add">$ 200.00</span>
+                                    <a href="product-detail.html" class="btn-shop">
+                                        <span><strong style="color: white;">забрать сейчас</strong></span>
+                                        <i class="fa fa-angle-right" style="color: white;"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div class="banner-6 white wow fadeInRight" data-wow-delay="0.4s">
-                            <img src="http://placehold.it/275x565" alt="image description">
+                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/car.jpg'); background-size: cover; background-position: center;background-repeat: no-repeat;"></div>
                             <div class="holder">
-                                <strong class="sub-title">SOFAS &amp; ARMCHAIRS</strong>
-                                <h3>3 Seater Leather Sofa</h3>
-                                <span class="offer">
-											<span class="price-less">$ 659.00</span>
-											<span class="prices">$ 499.00</span>
-										</span>
+                                <div style="background-color: rgba(0,0,0,0.5); width: 100%; padding: 2rem 1rem">
+                                    <strong class="sub-title"
+                                            style="font-size: 110%; font-weight: bold;">Автопрограмма</strong>
+                                    <h3>Забирай свой автомобиль</h3>
+                                </div>
                                 <a href="product-detail.html" class="btn-shop">
-                                    <span>shop now</span>
+                                    <span><strong>забрать сейчас</strong></span>
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                             </div>
@@ -47,40 +50,34 @@
                         <div class="banner-box two">
                             <!-- banner 7 right start here -->
                             <div class="banner-7 right wow fadeInUp" data-wow-delay="0.4s">
-                                <img src="http://placehold.it/295x275" alt="image description">
+                                <div style="background-image: url('/new_design/images/businnes.jpg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
                                 <div class="holder">
-                                    <h2><strong>ACRYLIC FABRIC <br>BEAN BAG</strong></h2>
-                                    <ul class="mt-stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star-o"></i></li>
-                                    </ul>
+                                    <div class="text-center" style="background-color: rgba(0,0,0,0.5); width: 100%; padding: 2rem 1rem;">
+                                        <h2><strong style="color: white; font-weight: bold;">МСБ программа</strong></h2>
+                                        <h2 style="margin-top: 2rem;"><strong style="color: white;">Даем грант для
+                                                бизнеса</strong></h2>
+                                    </div>
                                     <div class="price-tag">
-                                        <span class="price">$ 99.00</span>
-                                        <a class="shop-now" href="product-detail.html">SHOP NOW</a>
+                                        <span class="price">$ 400000</span>
+                                        <a class="shop-now" href="product-detail.html">получить</a>
                                     </div>
                                 </div>
                             </div><!-- banner 7 right end here -->
                             <!-- banner 8 start here -->
                             <div class="banner-8 wow fadeInDown" data-wow-delay="0.4s">
-                                <img src="http://placehold.it/295x275" alt="image description">
-                                <div class="holder">
-                                    <h2><strong>CHAIR WITH <br>ARMRESTS</strong></h2>
-                                    <ul class="mt-stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star-o"></i></li>
-                                    </ul>
-                                    <div class="price-tag">
-                                        <span class="price-off">$ 129.00</span>
-                                        <span class="price">$ 99.00</span>
-                                        <a class="btn-shop" href="product-detail.html">
-                                            <span>HURRY UP!</span>
-                                            <i class="fa fa-angle-right"></i>
-                                        </a>
+                                <div style="background-image: url('/new_design/images/travel.jpg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
+                                <div class="holder text-center">
+                                    <div style="background-color: rgba(0,0,0,0.5); width: 100%; padding: 2rem 1rem;">
+                                        <h2><strong style="color: white; font-weight: bold;">тут программа</strong></h2>
+                                        <h2 style="margin-top: 2rem;"><strong style="color: white;">Выбирай куда полетишь</strong></h2>
+                                        <div class="price-tag text-left" style="padding-top: 0; margin-left: 0.8rem;">
+                                            <a class="btn-shop" href="product-detail.html">
+                                                <span>Выбрать</span>
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div><!-- banner 8 start here -->
                         </div>
@@ -90,23 +87,25 @@
                         <div class="banner-box third">
                             <!-- banner 12 right white start here -->
                             <div class="banner-12 right white wow fadeInUp" data-wow-delay="0.4s">
-                                <img src="http://placehold.it/415x225" alt="image description">
+                                <img src="/new_design/images/income.jpg" alt="image description" style="height: 260px;  width: 420px;">
+{{--                                <div style="background-image: url('/new_design/images/income.jpg'); background-position: center; background-size: cover; height: 230px;  width: 420px;"></div>--}}
                                 <div class="holder">
-                                    <h2><span>Chairs</span><strong>ZIO DINING CHAIR</strong></h2>
+                                    <h2 style="padding-bottom: 1rem;"><span>Заработок</span><strong>Начни зарабатывать от 200$ в месяц</strong></h2>
                                     <a class="btn-shop" href="product-detail.html">
-                                        <span>SHOP NOW</span>
+                                        <span>начать</span>
                                         <i class="fa fa-angle-right"></i>
                                     </a>
                                 </div>
                             </div><!-- banner 12 right white end here -->
                             <!-- banner 13 right start here -->
                             <div class="banner-13 right wow fadeInDown" data-wow-delay="0.4s">
-                                <img src="http://placehold.it/415x335" alt="image description">
+                                <img src="/new_design/images/marketing.png" alt="image description" style="height: 295px;  width: 420px;">
                                 <div class="holder">
-                                    <h2><span>Accessories / Lighting</span><strong>TOTEM FLOOR LAMP</strong>
-                                    </h2>
+                                    <h3 style="background-color: lightgreen; padding-right: 1rem;margin: 0;">Бизнес</h3>
+                                    <h3 style="background-color: rgba(0,0,0,0.5);padding-right: 1rem;"><strong style="color: white;">Построй свой бизнес с обооротом 100000$</strong>
+                                    </h3>
                                     <a class="btn-shop" href="product-detail.html">
-                                        <span>SHOP NOW</span>
+                                        <span>строить</span>
                                         <i class="fa fa-angle-right"></i>
                                     </a>
                                 </div>
@@ -120,12 +119,12 @@
                                 <div class="s-holder">
                                     <img src="http://placehold.it/765x580" alt="image description">
                                     <div class="s-box">
-                                        <strong class="s-title">FURNITURE DESIGNS IDEAS</strong>
-                                        <span class="heading">Upholstered fabric</span>
-                                        <span class="heading add">Counter stool</span>
+                                        <strong class="s-title">Жилищная программа для лидеров</strong>
+                                        <span class="heading">Закройте Diamond Director</span>
+                                        <span class="heading add">и получите ключи от <br> собственного дома</span>
                                         <div class="s-txt">
-                                            <p>Consectetur adipisicing elit. Beatae accusamus, optio,
-                                                repellendus inventore</p>
+                                            <p>Закройте статус Diamond Director в течений 180 дней <br>
+                                                и получите ключи от собственного жилья досрочно </p>
                                         </div>
                                     </div>
                                 </div><!-- holder end here -->
@@ -616,7 +615,7 @@
                                                 <div class="b2">
                                                     <a href="product-detail.html">
                                                         <div style="background-position: center; background-size: cover; width: 215px; height: 215px; background-image: url('{{$product->product_image}}')">
-                                                            
+
                                                         </div>
                                                     </a>
                                                     <span class="caption">
