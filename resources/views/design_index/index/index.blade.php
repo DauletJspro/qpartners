@@ -127,8 +127,7 @@
                             <div class="slider banner-slider">
                                 <!-- holder start here -->
                                 <div class="s-holder">
-                                    <img src="/new_design/images/promotion_home.png" alt="image description"
-                                         style="width: 765px; height: 580px;">
+                                    <img src="/new_design/images/promotion_home.png" alt="image description">
                                     <div class="s-box">
                                         <strong class="s-title">Промоушен</strong>
                                         <span class="heading"
@@ -143,12 +142,12 @@
                                 <!-- holder start here -->
                                 <div class="s-holder">
                                     <img src="/new_design/images/promotion_tour.png" alt="image description">
-                                    <div class="s-box" style="background-color: rgba(0,0,0,0.1);">
+                                    <div class="s-box" style="background-color: rgba(0,0,0,0.3);">
                                         <strong class="s-title">Промоушен</strong>
                                         <span class="heading" style="color: white;">Закрой <span style="color: gold;">Gold Director</span></span>
                                         <span class="heading add"
                                               style="color: white;"> получи путевку <br> в Турцию</span>
-                                        <div class="s-txt" style="margin-top: 2rem;">
+                                        <div class="s-txt" style="margin-top: 2rem;color: white; !important;">
                                             <p>Закрой статус Gold Director <br> в течений 60 дней <br> и получи путевку
                                                 на Gold camp в Турции</p>
                                         </div>
@@ -170,10 +169,10 @@
                                 <!-- holder star here -->
                                 <div class="s-holder">
                                     <img src="/new_design/images/promotion_business.png" alt="image description">
-                                    <div class="s-box" style="background-color: transparent !important;">
-                                        <strong class="s-title">Промоушен</strong>
+                                    <div class="s-box" style="background-color: rgba(0,0,0,0.4);">
+                                        <strong class="s-title" style="color: white;">Промоушен</strong>
                                         <span class="heading"><span
-                                                    style="color: white;">Закрой</span> Silver Manager</span>
+                                                    style="color: white;">Закрой Silver Manager</span> </span>
                                         <span class="heading add" style="color: white;">и открой представительство <br> Natural Market</span>
                                         <div class="s-txt" style="max-width: 100%;">
                                             <p style="color: white;">Закрой статус Silver Manager в течений 30 дней <br>
