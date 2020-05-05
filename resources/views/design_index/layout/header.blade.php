@@ -165,7 +165,7 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                                                             <li><a href="#">Super Spray Nephro</a></li>
                                                         </ul>
                                                     </div>
-                                                </div>
+                                               c </div>
                                             </div>
                                             <!-- mt col3 end here -->
 

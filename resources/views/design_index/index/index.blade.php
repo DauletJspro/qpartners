@@ -21,7 +21,7 @@
                             <div class="holder" style="background-color: rgba(0,0,0,0.3)">
                                 <div class="texts" style="background-color:transparent; padding: 2rem 4rem -5rem 4rem;">
                                     <strong class="title">жилищная программа</strong>
-                                    <h3 style="font-weight: bold;">Купи <br> жилье за 200$</h3>
+                                    <h3 style="font-weight: bold;word-break:keep-all;">Купи <br> <span style="word-break: keep-all;">жилье за 200$</span></h3>
                                     <p>Собственное жилье в рассрочку без процентов, коммисси, перепат и подтверждения
                                         дохода</p>
                                     <span class="price-add">$ 200.00</span>
@@ -38,8 +38,9 @@
                             <div class="holder" style="background-color: rgba(0,0,0,0.3);">
                                 <div style=" width: 100%; padding: 2rem 1rem">
                                     <strong class="sub-title"
-                                            style="font-size: 150%; font-weight: 500;">Автопрограмма</strong>
-                                    <h3>Забирай свой автомобиль</h3>
+                                            style="font-size: 130%; font-weight: 500;">Автопрограмма</strong>
+                                    <h3><span style="font-size:140%;">Забирай</span> <br> <span style="font-size: 90%;word-break:keep-all;">свой автомобиль</span>
+                                        <br> <span style="font-size:140%;">за 200 $</span></h3>
                                 </div>
                                 <a href="product-detail.html" class="btn-shop">
                                     <span><strong>забрать сейчас</strong></span>
@@ -61,7 +62,7 @@
                                                 грант <br> для бизнеса</strong></h3>
                                     </div>
                                     <div class="price-tag">
-                                        <span class="price">$ 400000</span>
+                                        <span class="price">$ 4000.00</span>
                                         <a class="shop-now" href="product-detail.html">получить</a>
                                     </div>
                                 </div>
@@ -71,7 +72,7 @@
                                 <div style="background-image: url('/new_design/images/travel.png'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
                                 <div class="holder text-left" style="background-color: rgba(0,0,0,0.3);">
                                     <div style="width: 100%; padding: 0 1rem;">
-                                        <h2><strong style="color: white; font-weight: bold;">тут программа</strong></h2>
+                                        <h2><strong style="color: white; font-weight: bold;">тур программа</strong></h2>
                                         <h2 style="margin-bottom:100px !important;"><strong style="color: white;">Выбирай
                                                 куда
                                                 полетишь</strong></h2>
@@ -109,9 +110,9 @@
                                 <img src="/new_design/images/marketing.png" alt="image description"
                                      style="height: 295px;  width: 420px;">
                                 <div class="holder" style="background-color: rgba(0,0,0,0.3);">
-                                    <h3 style="padding-right: 1rem;margin: 0; color: white;">Бизнес</h3>
+                                    <h3 style="padding-right: 1rem;margin: 0; color: white;">Возможность</h3>
                                     <h3 style="padding-right: 1rem;"><strong
-                                                style="color: gold;">Построй свой бизнес с обооротом 100000$</strong>
+                                                style="color: gold;">Построй свой бизнес с доходом 100 000$</strong>
                                     </h3>
                                     <a class="btn-shop" href="product-detail.html">
                                         <span style="color:gold;">строить</span>

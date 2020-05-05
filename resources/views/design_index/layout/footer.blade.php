@@ -63,7 +63,7 @@
                             <a href="index.html"><img src="/new_design/images/logo.png" alt="Schon"></a>
                         </div>
                         <p>Компания по продвижению товаров и услуг
-                            через сеть независимых партнеро</p>
+                            через сеть независимых партнеров</p>
                         <ul class="list-unstyled address-list" style="color:white;">
                             <li><i class="fa fa-map-marker"></i>
                                 <address >г . Алматы, у л. Пушкина, <br> 36 ТЦ “ Мег атау” офис 4</address>
