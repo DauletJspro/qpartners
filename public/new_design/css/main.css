@@ -3103,7 +3103,8 @@ a:hover {
 #mt-footer .footer-area .logo {
     margin: 0 auto 20px;
 }
-.already-registered-div, .main-page-div{
+
+.already-registered-div, .main-page-div {
     font-size: 120%;
     font-weight: bold;
     margin-top: 2rem;
@@ -4614,16 +4615,19 @@ a:hover {
     left: 7.6%;
     right: 5%;
     top: 12%;
+    background-color: rgba(255,255,255,0.4);
+    padding: 1rem 1rem;
 }
 
 .slider-7 .slider .s-title {
     display: block;
-    font-weight: 600;
+    font-weight: 700;
     color: #6a6a6a;
     font-size: 14px;
     line-height: 16px;
     margin: 0 0 10px;
     letter-spacing: 4px;
+    font-size: 150%;
 }
 
 .slider-7 .slider .heading {
@@ -4632,22 +4636,23 @@ a:hover {
     font-weight: 600;
     margin: 0 0 3px -7px;
     letter-spacing: -1px;
-    font-size: 59px;
+    font-size: 50px;
     line-height: 59px;
 }
 
 .slider-7 .slider .heading.add {
-    font-weight: 200;
+    font-weight: 400;
     letter-spacing: -2px;
     margin: 0 0 6px -5px;
 }
 
 .slider-7 .slider .s-txt {
     max-width: 50%;
-    color: #6a6a6a;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: bold;
     line-height: 21px;
-    margin: 0 0 0 -3px;
+    margin: 1rem 0 0 -3px;
+    color: black;
 }
 
 .slider-7 .slider .s-shop {
@@ -4714,13 +4719,13 @@ a:hover {
 }
 
 .banner-frame h2 {
-    margin: 0 0 3px;
+    /*margin: -5px 0 3px;*/
     text-transform: uppercase;
     font-weight: 300;
     letter-spacing: 4.6px;
     font-size: 24px;
     line-height: 28px;
-    background-color: rgba(0,0,0,0.5);
+    /*background-color: rgba(0, 0, 0, 0.5);*/
 
 }
 
@@ -4864,7 +4869,7 @@ a:hover {
 
 .banner-frame h3 {
     margin: 0 0 10px;
-    font: 700 21px/28px "Montserrat", sans-serif;
+    font: 700 20px "Montserrat", sans-serif;
 }
 
 .banner-frame.nospace {
@@ -5038,7 +5043,7 @@ a:hover {
 
 .banner-5 .texts h3 {
     margin: 0 0 8px;
-    font: 300 55px/60px "Source Sans Pro", sans-serif;
+    font: 200 40px "Source Sans Pro", sans-serif;
 }
 
 .banner-5 .texts h3 strong {
@@ -5052,7 +5057,7 @@ a:hover {
 
 .banner-5 .texts .price-add {
     display: block;
-    font: 30px/35px "Montserrat", sans-serif;
+    font:600 35px "Montserrat", sans-serif;
 }
 
 /*------------------------------------------------------------------
@@ -5146,7 +5151,7 @@ a:hover {
 }
 
 .banner-7 h2 {
-    margin: 0 0 1px;
+    margin: -20px 0 1px;
     color: #939393;
     font-size: 18px;
     line-height: 28px;
@@ -5159,10 +5164,10 @@ a:hover {
 }
 
 .banner-7 .price {
-    color: white;
+    color: red;
     padding: 0.5rem 1.5rem;
-    font-weight: bold;
-    background-color:  rgba(0,0,0,0.5);
+    font-weight: 300;
+    /*background-color: rgba(0, 0, 0, 0.5);*/
     font-size: 27px;
     line-height: 30px;
 }
@@ -5170,6 +5175,7 @@ a:hover {
 .banner-7 .shop-now {
     margin-top: 1rem;
     color: #fff;
+    font-weight: 600;
     background: #2e2d32;
     text-transform: uppercase;
     display: inline-block;
@@ -5199,7 +5205,7 @@ a:hover {
 
 .banner-8 h2 {
     color: #2b3d66;
-    margin: 0 0 46px;
+    margin: 0 0 15px;
     font-size: 18px;
     line-height: 28px;
 }
@@ -5249,7 +5255,7 @@ a:hover {
 
 .banner-8 .btn-shop .fa {
     color: white;
-    border-color:white;
+    border-color: white;
 }
 
 /*------------------------------------------------------------------
@@ -5336,7 +5342,6 @@ a:hover {
     text-transform: none;
     font-size: 16px;
     line-height: 18px;
-    background-color: gold;
 }
 
 .banner-12 .btn-shop {

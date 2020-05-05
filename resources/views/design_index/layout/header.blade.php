@@ -1,3 +1,8 @@
+<?php
+use App\Models\Category;
+
+$categories = Category::where(['is_show' => true])->limit(15)->get();
+?>
 <header id="mt-header" class="style3">
     <div class="mt-top-bar">
         <div class="container">
@@ -48,7 +53,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="mt-logo"><a href="/"><img src="/new_design/images/mt-logo.png" alt="schon"></a></div>
+                    <div class="mt-logo"><a href="/"><img src="/new_design/images/logo/logo.png" alt="schon"
+                                                          style="height: 45px; width: 135px;margin-top: -4px;"></a>
+                    </div>
                     <div class="mt-sh-cart">
                         <span class="icon-handbag"></span>
                         <strong>Ваша корзина</strong>
@@ -84,74 +91,61 @@
                             <li class="drop">
                                 <a href="#">ПРОДУКЦИЯ<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                 <div class="mt-dropmenu text-left">
-                                    <!-- mt frame start here -->
                                     <div class="mt-frame">
-                                        <!-- mt f box start here -->
                                         <div class="mt-f-box">
-                                            <!-- mt col3 start here -->
-                                            <div class="mt-col-3">
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="product-grid-view.html"
-                                                                             class="mt-subopener">Эликсиры</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="product-grid-view.html">Super Elixir
-                                                                    Anti-Stress</a></li>
-                                                            <li><a href="product-grid-view.html">Super Elixir Immuno</a>
-                                                            </li>
-                                                            <li><a href="product-grid-view.html">Super Elixir Energy</a>
-                                                            </li>
-                                                            <li><a href="product-grid-view.html">Super Elixir Gastro</a>
-                                                            </li>
-                                                            <li><a href="product-grid-view.html">Super Elixir Hepato</a>
-                                                            </li>
-                                                            <li><a href="product-grid-view.html">Super Elixir Clean</a>
-                                                            </li>
-                                                            <li><a href="product-grid-view.html">Super Elixir for
-                                                                    man</a></li>
-                                                            <li><a href="product-grid-view.html">Super Elixir for
-                                                                    woman</a></li>
-                                                            <li><a href="product-grid-view.html">Super Elixir
-                                                                    Bronchi</a></li>
-                                                            <li><a href="product-grid-view.html">Super Elixir Nephro</a>
-                                                            </li>
+{{--                                            @foreach($categories as $category)--}}
+{{--                                                @if(count($category->product))--}}
+{{--                                                    <div class="mt-col-3">--}}
+{{--                                                        <div class="sub-dropcont">--}}
+{{--                                                            <strong class="title"><a href="product-grid-view.html"--}}
+{{--                                                                                     class="mt-subopener">Эликсиры</a></strong>--}}
+{{--                                                            <div class="sub-drop">--}}
+{{--                                                                @foreach($category->product as $product)--}}
+{{--                                                                    <ul>--}}
+{{--                                                                        <li><a href="product-grid-view.html">--}}
+{{--                                                                                {{$product->product_name}}</a></li>--}}
+{{--                                                                    </ul>--}}
+{{--                                                                @endforeach--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                            @endif--}}
+{{--                                        @endforeach--}}
 
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- mt col3 end here -->
+
+
+                                        <!-- mt col3 end here -->
 
                                             <!-- mt col3 start here -->
-                                            <div class="mt-col-3">
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#"
-                                                                             class="mt-subopener">Гели</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="about-us.html">Super Gel Fresh face</a></li>
-                                                            <li><a href="about-us.html">Super Gel Face&body</a></li>
-                                                            <li><a href="about-us.html">Super Gel Regeneration</a></li>
-                                                            <li><a href="about-us.html">Super Gel Masto</a></li>
-                                                            <li><a href="about-us.html">Super Gel Grippo</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#" class="mt-subopener">Крема
-                                                            US</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="contact-us.html">Super cream Spasm</a></li>
-                                                            <li><a href="contact-us.html">Super cream Anti-cellulite</a>
-                                                            </li>
-                                                            <li><a href="contact-us.html">Super cream for man</a></li>
-                                                            <li><a href="contact-us.html">Super cream for woman</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- mt col3 end here -->
+                                        {{--                                            <div class="mt-col-3">--}}
+                                        {{--                                                <div class="sub-dropcont">--}}
+                                        {{--                                                    <strong class="title"><a href="#"--}}
+                                        {{--                                                                             class="mt-subopener">Гели</a></strong>--}}
+                                        {{--                                                    <div class="sub-drop">--}}
+                                        {{--                                                        <ul>--}}
+                                        {{--                                                            <li><a href="about-us.html">Super Gel Fresh face</a></li>--}}
+                                        {{--                                                            <li><a href="about-us.html">Super Gel Face&body</a></li>--}}
+                                        {{--                                                            <li><a href="about-us.html">Super Gel Regeneration</a></li>--}}
+                                        {{--                                                            <li><a href="about-us.html">Super Gel Masto</a></li>--}}
+                                        {{--                                                            <li><a href="about-us.html">Super Gel Grippo</a></li>--}}
+                                        {{--                                                        </ul>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                                <div class="sub-dropcont">--}}
+                                        {{--                                                    <strong class="title"><a href="#" class="mt-subopener">Крема--}}
+                                        {{--                                                            US</a></strong>--}}
+                                        {{--                                                    <div class="sub-drop">--}}
+                                        {{--                                                        <ul>--}}
+                                        {{--                                                            <li><a href="contact-us.html">Super cream Spasm</a></li>--}}
+                                        {{--                                                            <li><a href="contact-us.html">Super cream Anti-cellulite</a>--}}
+                                        {{--                                                            </li>--}}
+                                        {{--                                                            <li><a href="contact-us.html">Super cream for man</a></li>--}}
+                                        {{--                                                            <li><a href="contact-us.html">Super cream for woman</a></li>--}}
+                                        {{--                                                        </ul>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </div>--}}
+                                        <!-- mt col3 end here -->
 
                                             <!-- mt col3 start here -->
                                             <div class="mt-col-3">
@@ -174,6 +168,37 @@
                                                 </div>
                                             </div>
                                             <!-- mt col3 end here -->
+
+
+                                            <ul>
+                                                <li><a href="product-grid-view.html">Super Elixir
+                                                        Anti-Stress</a></li>
+                                                <li><a href="product-grid-view.html">Super Elixir
+                                                        Immuno</a>
+                                                </li>
+                                                <li><a href="product-grid-view.html">Super Elixir
+                                                        Energy</a>
+                                                </li>
+                                                <li><a href="product-grid-view.html">Super Elixir
+                                                        Gastro</a>
+                                                </li>
+                                                <li><a href="product-grid-view.html">Super Elixir
+                                                        Hepato</a>
+                                                </li>
+                                                <li><a href="product-grid-view.html">Super Elixir
+                                                        Clean</a>
+                                                </li>
+                                                <li><a href="product-grid-view.html">Super Elixir for
+                                                        man</a></li>
+                                                <li><a href="product-grid-view.html">Super Elixir for
+                                                        woman</a></li>
+                                                <li><a href="product-grid-view.html">Super Elixir
+                                                        Bronchi</a></li>
+                                                <li><a href="product-grid-view.html">Super Elixir
+                                                        Nephro</a>
+                                                </li>
+
+                                            </ul>
 
                                             <!-- mt col3 start here -->
                                             <div class="mt-col-3 promo">
@@ -312,16 +337,16 @@
                                             class="fa fa-angle-down hidden-lg hidden-md"
                                             aria-hidden="true"></i></a>
                                 <div class="s-drop">
-{{--                                    <ul>--}}
-{{--                                        <li><a href="blog-fullwidth-page.html">Blog Fullwidth Page</a></li>--}}
-{{--                                        <li><a href="blog-right-sidebar2.html">blog right sidebar2</a></li>--}}
-{{--                                        <li><a href="blog-postlist-3-masonry.html">blog postlist masonry</a>--}}
-{{--                                        </li>--}}
-{{--                                        <li><a href="blog-post-detail-sidebar.html">blog post detail--}}
-{{--                                                sidebar</a></li>--}}
-{{--                                        <li><a href="blog-post-detail-full-width.html">blog post detail full--}}
-{{--                                                width</a></li>--}}
-{{--                                    </ul>--}}
+                                    {{--                                    <ul>--}}
+                                    {{--                                        <li><a href="blog-fullwidth-page.html">Blog Fullwidth Page</a></li>--}}
+                                    {{--                                        <li><a href="blog-right-sidebar2.html">blog right sidebar2</a></li>--}}
+                                    {{--                                        <li><a href="blog-postlist-3-masonry.html">blog postlist masonry</a>--}}
+                                    {{--                                        </li>--}}
+                                    {{--                                        <li><a href="blog-post-detail-sidebar.html">blog post detail--}}
+                                    {{--                                                sidebar</a></li>--}}
+                                    {{--                                        <li><a href="blog-post-detail-full-width.html">blog post detail full--}}
+                                    {{--                                                width</a></li>--}}
+                                    {{--                                    </ul>--}}
                                 </div>
                             </li>
                             <li>
@@ -329,10 +354,10 @@
                                             class="fa fa-angle-down hidden-lg hidden-md"
                                             aria-hidden="true"></i></a>
                                 <div class="s-drop">
-{{--                                    <ul>--}}
-{{--                                        <li><a href="contact-us.html">Contact</a></li>--}}
-{{--                                        <li><a href="contact-us2.html">Contact 2</a></li>--}}
-{{--                                    </ul>--}}
+                                    {{--                                    <ul>--}}
+                                    {{--                                        <li><a href="contact-us.html">Contact</a></li>--}}
+                                    {{--                                        <li><a href="contact-us2.html">Contact 2</a></li>--}}
+                                    {{--                                    </ul>--}}
                                 </div>
                             </li>
                         </ul>

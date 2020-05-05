@@ -205,7 +205,6 @@ function delItem(ob,id,model){
             },
             url: "/admin/" + model + "/" + id,
             success: function(data){
-
             }
         });
     }

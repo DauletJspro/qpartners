@@ -12,12 +12,11 @@
 */
 
 
-
 /******* Auth *******/
 Route::group([
     'middleware' => 'web',
     'namespace' => 'Admin',
-], function() {
+], function () {
     Route::any('/', 'AuthController@login');
     Route::any('/login', 'AuthController@login');
     Route::get('/register', 'AuthController@showRegister');
@@ -35,7 +34,7 @@ Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin',
     'middleware' => 'web'
-], function() {
+], function () {
     Route::get('index', 'IndexController@index');
 
     Route::get('world/{packet_url}', 'WorldController@clientList');
@@ -45,7 +44,7 @@ Route::group([
 
     Route::group([
         'prefix' => 'profile'
-    ], function() {
+    ], function () {
         Route::get('/', 'ProfileController@myProfile');
         Route::get('edit', 'ProfileController@edit');
         Route::get('{id}', 'ProfileController@profile');
@@ -59,7 +58,7 @@ Route::group([
 
     Route::group([
         'prefix' => 'packet'
-    ], function() {
+    ], function () {
         Route::get('paybox', 'PacketController@generatePayBoxCode');
         Route::get('paybox/success/{id}', 'PacketController@acceptUserPacketPaybox');
         Route::post('user', 'PacketController@sendResponseAddPacket');
@@ -76,7 +75,7 @@ Route::group([
 
     Route::group([
         'prefix' => 'request'
-    ], function() {
+    ], function () {
         Route::post('/', 'UserRequestController@sendResponseAddRequest');
         Route::post('send-money', 'UserRequestController@sendMoneyToAccount');
         Route::get('/', 'UserRequestController@inactiveUserRequest');
@@ -90,7 +89,7 @@ Route::group([
 
     Route::group([
         'prefix' => 'shareholder'
-    ], function() {
+    ], function () {
         Route::get('/', 'ShareHolderController@index');
         Route::get('user', 'ShareHolderController@showAddUserShare');
         Route::post('user', 'ShareHolderController@addUserShare');
@@ -99,7 +98,7 @@ Route::group([
 
     Route::group([
         'prefix' => 'shareholder2'
-    ], function() {
+    ], function () {
         Route::get('/', 'ShareHolder2Controller@index');
         Route::get('user', 'ShareHolder2Controller@showAddUserShare');
         Route::post('user', 'ShareHolder2Controller@addUserShare');
@@ -108,7 +107,7 @@ Route::group([
 
     Route::group([
         'prefix' => 'speaker'
-    ], function() {
+    ], function () {
         Route::get('/', 'SpeakerController@index');
         Route::get('user', 'SpeakerController@showAddUserSpeaker');
         Route::post('user', 'SpeakerController@addUserSpeaker');
@@ -117,7 +116,7 @@ Route::group([
 
     Route::group([
         'prefix' => 'ajax'
-    ], function() {
+    ], function () {
         Route::get('document', 'UserDocumentController@getUserDocumentList');
         Route::post('document', 'UserDocumentController@saveDocumentList');
         Route::post('document/confirm', 'UserDocumentController@confirmUserDocument');
@@ -132,7 +131,7 @@ Route::group([
 
     Route::group([
         'prefix' => 'office'
-    ], function() {
+    ], function () {
         Route::get('/', 'OfficeController@index');
         Route::get('robot', 'OfficeController@robotClearAfterMonthProfit');
         Route::get('user', 'OfficeController@showAddUserOffice');
@@ -143,7 +142,7 @@ Route::group([
 
     Route::group([
         'prefix' => 'binar'
-    ], function() {
+    ], function () {
         Route::get('robot', 'IndexController@robotBinarProfit');
         Route::get('/', 'BinarStructureController@index');
         Route::get('child', 'BinarStructureController@getChildList');
@@ -153,23 +152,23 @@ Route::group([
 
     Route::group([
         'prefix' => 'speaker'
-    ], function() {
+    ], function () {
         Route::get('/', 'SpeakerController@index');
         Route::get('user', 'SpeakerController@showAddUserSpeaker');
         Route::post('user', 'SpeakerController@addUserSpeaker');
         Route::delete('{id}', 'SpeakerController@deleteUserSpeaker');
     });
-    
+
     Route::group([
         'prefix' => 'structure'
-    ], function() {
+    ], function () {
         Route::get('/', 'StructureController@index');
         Route::get('child/{user_id}/{level}', 'StructureController@getChildList');
     });
 
     Route::group([
         'prefix' => 'balance'
-    ], function() {
+    ], function () {
         Route::get('/', 'BalanceController@index');
         Route::get('{url}', 'BalanceController@index');
         Route::post('paybox', 'BalanceController@addBalance');
@@ -178,7 +177,7 @@ Route::group([
 
     Route::group([
         'prefix' => 'online'
-    ], function() {
+    ], function () {
         Route::get('/', 'OnlineController@index');
         Route::get('history', 'OnlineController@showHistory');
         Route::post('confirm', 'OnlineController@confirmBasket');
@@ -189,7 +188,7 @@ Route::group([
 
     Route::group([
         'prefix' => 'instagram'
-    ], function() {
+    ], function () {
         Route::post('send', 'InstagramController@sendRequest');
         Route::post('send/partner', 'InstagramController@sendRequestPartner');
         Route::post('accept', 'InstagramController@acceptRequest');
@@ -270,12 +269,13 @@ Route::group([
 
     Route::resource('packet-item', 'PacketItemController');
     Route::resource('product', 'ProductController');
+    Route::resource('category', 'CategoryController');
 });
 
 /******* Main page *******/
 Route::group([
     'middleware' => 'web'
-], function() {
+], function () {
     Route::post('image/upload', 'ImageController@uploadImage');
     Route::post('image/upload/doc', 'ImageController@uploadDocument');
     Route::get('media/{file_name}', 'ImageController@getImage')->where('file_name', '.*');
@@ -285,7 +285,7 @@ Route::group([
 Route::group([
     'middleware' => 'web',
     'namespace' => 'Index',
-], function() {
+], function () {
     Route::get('/', 'IndexController@index');
     Route::get('gallery', 'IndexController@gallery');
     Route::get('city', 'IndexController@getCityListByCountry');

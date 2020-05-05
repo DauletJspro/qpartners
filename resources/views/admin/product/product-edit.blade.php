@@ -24,8 +24,6 @@
                                 @else
                                     <form action="/admin/product" method="POST">
                                         @endif
-
-
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="hidden" name="product_id" value="{{ $row->product_id }}">
                                         <input type="hidden" value="{{ $row->product_image }}" name="product_image"
@@ -46,7 +44,8 @@
                                             <div class="form-group">
                                                 <label>Балл проукта</label>
                                                 <input type="number" value="{{ $row->ball }}"
-                                                    class="form-control" name="ball" placeholder="Введите балл продукта">
+                                                       class="form-control" name="ball"
+                                                       placeholder="Введите балл продукта">
                                             </div>
                                             <div class="form-group">
                                                 <label>Cach Back (%)</label>
@@ -63,11 +62,26 @@
                                                 <input value="{{ $row->sort_num }}" type="text" class="form-control"
                                                        name="sort_num" placeholder="Введите">
                                             </div>
+                                            <div class="form-group">
+                                                <div>
+                                                    {!! Form::checkbox('is_popular', 1, $row->is_popular) !!}
+                                                    <label>Входит в категорию "Поулярные"</label>
+                                                </div>
+                                                <div>
+                                                    {!! Form::checkbox('is_new', 1, $row->is_new) !!}
+                                                    <label>Входит в категорию "NEW"</label>
+                                                </div>
+                                                <div>
+                                                    {!! Form::checkbox('is_show_in_header', 1, $row->is_show_in_header) !!}
+                                                    <label>Показывать на главной странице</label>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="box-footer">
                                             <button type="submit" class="btn btn-primary">Сохранить</button>
                                         </div>
                                     </form>
+                            </form>
                     </div>
                 </div>
                 <div class="col-md-4">

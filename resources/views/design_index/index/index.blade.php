@@ -17,32 +17,33 @@
                 <div class="col-xs-12">
                     <div class="banner-frame toppadding-zero">
                         <div class="banner-5 white wow fadeInLeft" data-wow-delay="0.4s">
-                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/home.jpg'); background-size: cover; background-position: center;"></div>
-                            <div class="holder">
-                                <div class="texts" style="background-color: rgba(0,0,0,0.5); padding: 2rem 4rem;">
+                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/home.png'); background-size: cover; background-position: center;"></div>
+                            <div class="holder" style="background-color: rgba(0,0,0,0.3)">
+                                <div class="texts" style="background-color:transparent; padding: 2rem 4rem -5rem 4rem;">
                                     <strong class="title">жилищная программа</strong>
-                                    <h3 style="font-weight: bold;">Купи жилье за 200$</h3>
+                                    <h3 style="font-weight: bold;">Купи <br> жилье за 200$</h3>
                                     <p>Собственное жилье в рассрочку без процентов, коммисси, перепат и подтверждения
                                         дохода</p>
                                     <span class="price-add">$ 200.00</span>
                                     <a href="product-detail.html" class="btn-shop">
-                                        <span><strong style="color: white;">забрать сейчас</strong></span>
-                                        <i class="fa fa-angle-right" style="color: white;"></i>
+                                        <span><strong style="color: white;">Купить сейчас</strong></span>
+                                        <i class="fa fa-angle-right"
+                                           style="color: white;background-color: lightgrey;"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="banner-6 white wow fadeInRight" data-wow-delay="0.4s">
-                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/car.jpg'); background-size: cover; background-position: center;background-repeat: no-repeat;"></div>
-                            <div class="holder">
-                                <div style="background-color: rgba(0,0,0,0.5); width: 100%; padding: 2rem 1rem">
+                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/car.png'); background-size: cover; background-position: center;background-repeat: no-repeat;"></div>
+                            <div class="holder" style="background-color: rgba(0,0,0,0.3);">
+                                <div style=" width: 100%; padding: 2rem 1rem">
                                     <strong class="sub-title"
-                                            style="font-size: 110%; font-weight: bold;">Автопрограмма</strong>
+                                            style="font-size: 150%; font-weight: 500;">Автопрограмма</strong>
                                     <h3>Забирай свой автомобиль</h3>
                                 </div>
                                 <a href="product-detail.html" class="btn-shop">
                                     <span><strong>забрать сейчас</strong></span>
-                                    <i class="fa fa-angle-right"></i>
+                                    <i class="fa fa-angle-right" style="color: white;background-color: lightgrey;"></i>
                                 </a>
                             </div>
                         </div><!-- banner 5 white end here -->
@@ -50,12 +51,14 @@
                         <div class="banner-box two">
                             <!-- banner 7 right start here -->
                             <div class="banner-7 right wow fadeInUp" data-wow-delay="0.4s">
-                                <div style="background-image: url('/new_design/images/businnes.jpg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
+                                <div style="background-image: url('/new_design/images/businnes.png'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
                                 <div class="holder">
-                                    <div class="text-center" style="background-color: rgba(0,0,0,0.5); width: 100%; padding: 2rem 1rem;">
-                                        <h2><strong style="color: white; font-weight: bold;">МСБ программа</strong></h2>
-                                        <h2 style="margin-top: 2rem;"><strong style="color: white;">Даем грант для
-                                                бизнеса</strong></h2>
+                                    <div class="text-center"
+                                         style="width: 100%; padding: 2rem 1rem;">
+                                        <h2 style="float: right;"><strong style="color: white; font-weight: bold;">МСБ
+                                                программа</strong></h2>
+                                        <h3 style="margin-top: 2rem;float: right;"><strong style="color: white;">Даем
+                                                грант <br> для бизнеса</strong></h3>
                                     </div>
                                     <div class="price-tag">
                                         <span class="price">$ 400000</span>
@@ -65,15 +68,18 @@
                             </div><!-- banner 7 right end here -->
                             <!-- banner 8 start here -->
                             <div class="banner-8 wow fadeInDown" data-wow-delay="0.4s">
-                                <div style="background-image: url('/new_design/images/travel.jpg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
-                                <div class="holder text-center">
-                                    <div style="background-color: rgba(0,0,0,0.5); width: 100%; padding: 2rem 1rem;">
+                                <div style="background-image: url('/new_design/images/travel.png'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
+                                <div class="holder text-left" style="background-color: rgba(0,0,0,0.3);">
+                                    <div style="width: 100%; padding: 0 1rem;">
                                         <h2><strong style="color: white; font-weight: bold;">тут программа</strong></h2>
-                                        <h2 style="margin-top: 2rem;"><strong style="color: white;">Выбирай куда полетишь</strong></h2>
+                                        <h2 style="margin-bottom:100px !important;"><strong style="color: white;">Выбирай
+                                                куда
+                                                полетишь</strong></h2>
                                         <div class="price-tag text-left" style="padding-top: 0; margin-left: 0.8rem;">
                                             <a class="btn-shop" href="product-detail.html">
                                                 <span>Выбрать</span>
-                                                <i class="fa fa-angle-right"></i>
+                                                <i style="color: white;background-color: lightgrey;"
+                                                   class="fa fa-angle-right"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -87,10 +93,11 @@
                         <div class="banner-box third">
                             <!-- banner 12 right white start here -->
                             <div class="banner-12 right white wow fadeInUp" data-wow-delay="0.4s">
-                                <img src="/new_design/images/income.jpg" alt="image description" style="height: 260px;  width: 420px;">
-{{--                                <div style="background-image: url('/new_design/images/income.jpg'); background-position: center; background-size: cover; height: 230px;  width: 420px;"></div>--}}
-                                <div class="holder">
-                                    <h2 style="padding-bottom: 1rem;"><span>Заработок</span><strong>Начни зарабатывать от 200$ в месяц</strong></h2>
+                                <img src="/new_design/images/income.png" alt="image description"
+                                     style="height: 260px;  width: 420px;">
+                                <div class="holder" style="background-color: rgba(0,0,0,0.2);">
+                                    <h2 style="padding-bottom: 1rem;"><span>Заработок</span><strong>Начни зарабатывать
+                                            от 200$ в месяц</strong></h2>
                                     <a class="btn-shop" href="product-detail.html">
                                         <span>начать</span>
                                         <i class="fa fa-angle-right"></i>
@@ -99,14 +106,16 @@
                             </div><!-- banner 12 right white end here -->
                             <!-- banner 13 right start here -->
                             <div class="banner-13 right wow fadeInDown" data-wow-delay="0.4s">
-                                <img src="/new_design/images/marketing.png" alt="image description" style="height: 295px;  width: 420px;">
-                                <div class="holder">
-                                    <h3 style="background-color: lightgreen; padding-right: 1rem;margin: 0;">Бизнес</h3>
-                                    <h3 style="background-color: rgba(0,0,0,0.5);padding-right: 1rem;"><strong style="color: white;">Построй свой бизнес с обооротом 100000$</strong>
+                                <img src="/new_design/images/marketing.png" alt="image description"
+                                     style="height: 295px;  width: 420px;">
+                                <div class="holder" style="background-color: rgba(0,0,0,0.3);">
+                                    <h3 style="padding-right: 1rem;margin: 0; color: white;">Бизнес</h3>
+                                    <h3 style="padding-right: 1rem;"><strong
+                                                style="color: gold;">Построй свой бизнес с обооротом 100000$</strong>
                                     </h3>
                                     <a class="btn-shop" href="product-detail.html">
-                                        <span>строить</span>
-                                        <i class="fa fa-angle-right"></i>
+                                        <span style="color:gold;">строить</span>
+                                        <i style="color: white; background-color: gold;" class="fa fa-angle-right"></i>
                                     </a>
                                 </div>
                             </div><!-- banner 13 right end here -->
@@ -117,55 +126,59 @@
                             <div class="slider banner-slider">
                                 <!-- holder start here -->
                                 <div class="s-holder">
-                                    <img src="http://placehold.it/765x580" alt="image description">
+                                    <img src="/new_design/images/promotion_home.png" alt="image description"
+                                         style="width: 765px; height: 580px;">
                                     <div class="s-box">
-                                        <strong class="s-title">Жилищная программа для лидеров</strong>
-                                        <span class="heading">Закройте Diamond Director</span>
-                                        <span class="heading add">и получите ключи от <br> собственного дома</span>
+                                        <strong class="s-title">Промоушен</strong>
+                                        <span class="heading"
+                                              style="font-weight: bold;">Закройте Diamond Director</span>
+                                        <span class="heading add" style="">и забери ключи от жилья досрочно</span>
                                         <div class="s-txt">
-                                            <p>Закройте статус Diamond Director в течений 180 дней <br>
-                                                и получите ключи от собственного жилья досрочно </p>
+                                            <p>Закройте статус Diamond Director <br> в течений 180 дней <br>
+                                                и получите ключи от дома </p>
                                         </div>
                                     </div>
                                 </div><!-- holder end here -->
                                 <!-- holder start here -->
                                 <div class="s-holder">
-                                    <img src="http://placehold.it/765x580" alt="image description">
-                                    <div class="s-box">
-                                        <strong class="s-title">FURNITURE DESIGNS IDEAS</strong>
-                                        <span class="heading">Upholstered fabric</span>
-                                        <span class="heading add">Counter stool</span>
-                                        <div class="s-txt">
-                                            <p>Consectetur adipisicing elit. Beatae accusamus, optio,
-                                                repellendus inventore</p>
+                                    <img src="/new_design/images/promotion_tour.png" alt="image description">
+                                    <div class="s-box" style="background-color: rgba(0,0,0,0.1);">
+                                        <strong class="s-title">Промоушен</strong>
+                                        <span class="heading" style="color: white;">Закрой <span style="color: gold;">Gold Director</span></span>
+                                        <span class="heading add"
+                                              style="color: white;"> получи путевку <br> в Турцию</span>
+                                        <div class="s-txt" style="margin-top: 2rem;">
+                                            <p>Закрой статус Gold Director <br> в течений 60 дней <br> и получи путевку
+                                                на Gold camp в Турции</p>
                                         </div>
                                     </div>
                                 </div><!-- holder end here -->
                                 <!-- holder start here -->
                                 <div class="s-holder">
-                                    <img src="http://placehold.it/765x580" alt="image description">
+                                    <img src="/new_design/images/promotion_auto.png" alt="image description">
                                     <div class="s-box">
-                                        <strong class="s-title">KITCHEN ACCESSORIES</strong>
-                                        <span class="heading">Wooden chopping board</span>
-                                        <span class="heading add">Chopping Boards</span>
+                                        <strong class="s-title">Промоушен</strong>
+                                        <span class="heading">Закрой Sapphire Director</span>
+                                        <span class="heading add">и забери ключи от нового <br> автомобиля</span>
                                         <div class="s-txt">
-                                            <p>Remo is a cutting board in solid oak wood, with an explicit
-                                                reference to the oars of the boats.</p>
+                                            <p>Закрой статус Sapphire Director <br> в течений 90 дней <br> и получи
+                                                ключи от автомобиля</p>
                                         </div>
                                     </div>
                                 </div><!-- holder end here -->
                                 <!-- holder star here -->
                                 <div class="s-holder">
-                                    <img src="http://placehold.it/765x580" alt="image description">
-                                    <div class="s-box">
-                                        <strong class="s-title">FURNITURE DESIGNS IDEAS</strong>
-                                        <span class="heading add">NEW</span>
-                                        <span class="heading add">COLLECTION</span>
-                                        <div class="s-txt">
-                                            <p>Consectetur adipisicing elit. Beatae accusamus, optio,
-                                                repellendus inventore</p>
+                                    <img src="/new_design/images/promotion_business.png" alt="image description">
+                                    <div class="s-box" style="background-color: transparent !important;">
+                                        <strong class="s-title">Промоушен</strong>
+                                        <span class="heading"><span
+                                                    style="color: white;">Закрой</span> Silver Manager</span>
+                                        <span class="heading add" style="color: white;">и открой представительство <br> Natural Market</span>
+                                        <div class="s-txt" style="max-width: 100%;">
+                                            <p style="color: white;">Закрой статус Silver Manager в течений 30 дней <br>
+                                                и получи право открыть представительство Natural Market
+                                                <br> в своем регионе</p>
                                         </div>
-                                        <a href="product-detail.html" class="s-shop">SHOP NOW</a>
                                     </div>
                                 </div><!-- holder end here -->
                             </div>
