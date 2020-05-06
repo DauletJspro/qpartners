@@ -13,11 +13,9 @@ class AddColumnCategoryIdToTableProduct extends Migration
      */
     public function up()
     {
-//        if(!Schema::hasColumn('product', 'category_id')){
-//            Schema::table('product', function (Blueprint $table) {
-//                $table->integer('category_id')->unsigned();
-//            });
-//        }
+        Schema::table('product', function (Blueprint $table) {
+            $table->integer('category_id');
+        });
 
     }
 
