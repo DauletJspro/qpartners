@@ -244,7 +244,7 @@ a:hover {
 }
 
 #mt-header.style3 .tel {
-    color: #a1a1a1;
+    color: white;
     font-size: 12px;
     padding: 9px 12px;
     margin: 0 22px 0 0;
@@ -1360,13 +1360,20 @@ a:hover {
 }
 
 .mt-top-bar .mt-top-list a {
-    color: #a1a1a1;
+    color: white;
+    font-size: 120%;
     display: block;
     padding: 9px 19px;
+    background-color: lightgrey;
+    margin-right: 5px;
+}
+#mt-header > div.mt-top-bar > div > div > div.col-xs-12.col-sm-6.text-right > ul > li:nth-child(3) > div > a{
+    background-color: gold;
+    margin-right: 0px;
 }
 
 .mt-top-bar .mt-top-list a:hover {
-    background: #3f3e43;
+    background: gold;
 }
 
 .mt-top-bar .mt-top-list2 {
@@ -1936,9 +1943,18 @@ a:hover {
     overflow: hidden;
 }
 
+
 #nav .mt-dropmenu .mt-col-3 {
     float: left;
     width: 23.3%;
+}
+
+
+#nav > ul > li:nth-child(2) > div > div > div > div > div.col-4.col-sm-4.col-md-4.xol-lg-4.col-xl-4 > div{
+    width: 100% !important;
+}
+#nav > ul > li:nth-child(2) > div > div > div.mt-f-box.size-67 > .mt-col-3 {
+    width: 33.3%;
 }
 
 #nav .mt-dropmenu .mt-col-3.promo {
@@ -4615,7 +4631,7 @@ a:hover {
     left: 7.6%;
     right: 5%;
     top: 12%;
-    background-color: rgba(255,255,255,0.6);
+    background-color: rgba(255, 255, 255, 0.6);
     padding: 1rem 1rem;
 }
 
@@ -5057,7 +5073,7 @@ a:hover {
 
 .banner-5 .texts .price-add {
     display: block;
-    font:600 35px "Montserrat", sans-serif;
+    font: 600 35px "Montserrat", sans-serif;
 }
 
 /*------------------------------------------------------------------
@@ -11827,6 +11843,7 @@ a:hover {
     height: 110px;
     display: table;
     text-align: center;
+    padding: 0 1rem 0 1rem;
 }
 
 .mt-patners .box2 {

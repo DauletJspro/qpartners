@@ -96,24 +96,43 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                                 <div class="mt-dropmenu text-left">
                                     <div class="mt-frame">
                                         <div class="mt-f-box">
-                                            <?php foreach($categories as $category): ?>
-                                            <div class="mt-col-3">
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="product-grid-view.html"
-                                                                             class="mt-subopener">{{$category->name}}</a></strong>
-                                                    <div class="sub-drop">
-                                                        <?php $products = \App\Models\Product::where(['category_id' => $category->id])->get(); ?>
-                                                        @foreach($products as $product)
-                                                            <ul>
-                                                                <li><a href="product/{{$product->product_id}}">
-                                                                        {{ $product->product_name_ru}}</a></li>
-                                                            </ul>
-                                                        @endforeach
+                                            <div class="row">
+                                                <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                                                    <?php foreach($categories as $category): ?>
+                                                    <div class="mt-col-3">
+                                                        <div class="sub-dropcont">
+                                                            <strong class="title"><a href="product-grid-view.html"
+                                                                                     class="mt-subopener">{{$category->name}}</a></strong>
+                                                            <div class="sub-drop">
+                                                                <?php $products = \App\Models\Product::where(['category_id' => $category->id])->get(); ?>
+                                                                @foreach($products as $product)
+                                                                    <ul>
+                                                                        <li><a href="product/{{$product->product_id}}">
+                                                                                {{ $product->product_name_ru}}</a></li>
+                                                                    </ul>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <?php  endforeach; ?>
+                                                </div>
+                                                <div class="col-4 col-sm-4 col-md-4 xol-lg-4 col-xl-4 ">
+                                                    <div class="mt-col-3 promo">
+                                                        <div class="mt-promobox" style="position: relative;">
+                                                            <a href="register"><img
+                                                                        src="/new_design/images/program_banner.png"
+                                                                        alt="promo banner"
+                                                                        class="img-responsive">
+                                                                <div style="position: absolute; bottom: 8px;right: 16px;">
+                                                                    <a
+                                                                            href="register"
+                                                                            class="btn btn-warning">Регистрация</a>
+                                                                </div>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        <?php  endforeach; ?>
-                                        <!-- mt col3 end here -->
                                         </div>
                                         <!-- mt f box end here -->
                                     </div>
@@ -238,7 +257,8 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                                                                 alt="promo banner"
                                                                 class="img-responsive">
                                                         <div style="position: absolute; bottom: 8px;right: 16px;"><a
-                                                                    href="register" class="btn btn-warning">Регистрация</a></div>
+                                                                    href="register"
+                                                                    class="btn btn-warning">Регистрация</a></div>
                                                     </a>
                                                 </div>
                                             </div>
