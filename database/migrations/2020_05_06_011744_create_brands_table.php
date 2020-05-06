@@ -13,15 +13,15 @@ class CreateBrandsTable extends Migration
      */
     public function up()
     {
-        Schema::create('brands', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->nullable();
-            $table->text('description')->nullable();
-            $table->unsignedInteger('category_id')->nullable();
-            $table->foreign('category_id', 'fk-brands-category_id')->references('id')->on('categories');
-            $table->string('image')->nullable();
-            $table->timestamps();
-        });
+//        Schema::create('brands', function (Blueprint $table) {
+//            $table->increments('id');
+//            $table->string('name')->nullable();
+//            $table->text('description')->nullable();
+//            $table->unsignedInteger('category_id')->nullable();
+//            $table->foreign('category_id', 'fk-brands-category_id')->references('id')->on('categories');
+//            $table->string('image')->nullable();
+//            $table->timestamps();
+//        });
     }
 
     /**
