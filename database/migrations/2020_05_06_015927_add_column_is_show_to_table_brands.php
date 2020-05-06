@@ -13,9 +13,12 @@ class AddColumnIsShowToTableBrands extends Migration
      */
     public function up()
     {
-//        Schema::table('brands', function (Blueprint $table) {
-//            $table->tinyInteger('is_show')->nullable();
-//        });
+        if (Schema::hasColumn('brands', 'is_show')) {
+            Schema::table('brands', function (Blueprint $table) {
+                $table->tinyInteger('is_show')->nullable();
+            });
+        }
+
     }
 
     /**
