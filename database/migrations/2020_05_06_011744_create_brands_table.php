@@ -18,7 +18,7 @@ class CreateBrandsTable extends Migration
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->unsignedInteger('category_id')->nullable();
-            $table->foreign('category_id', 'fk-brands-category_id')->references('id')->on('categories');
+//            $table->foreign('category_id', 'fk-brands-category_id')->references('id')->on('categories');
             $table->string('image')->nullable();
             $table->timestamps();
         });
