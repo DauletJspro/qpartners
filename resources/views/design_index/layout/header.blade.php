@@ -15,6 +15,9 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                 <div class="col-xs-12 col-sm-6 text-right">
                     <ul class="mt-top-list">
                         <li>
+                            <a href="{{route('shop.show')}}">Магазин</a>
+                        </li>
+                        <li>
                             <div class="dropdown">
                                 <a class="icl_lang_sel_current icl_lang_sel_native">{{Lang::get('app.lang')}}</a>
                                 <div class="dropdown-content">
@@ -93,122 +96,24 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                                 <div class="mt-dropmenu text-left">
                                     <div class="mt-frame">
                                         <div class="mt-f-box">
-{{--                                            @foreach($categories as $category)--}}
-{{--                                                @if(count($category->product))--}}
-{{--                                                    <div class="mt-col-3">--}}
-{{--                                                        <div class="sub-dropcont">--}}
-{{--                                                            <strong class="title"><a href="product-grid-view.html"--}}
-{{--                                                                                     class="mt-subopener">Эликсиры</a></strong>--}}
-{{--                                                            <div class="sub-drop">--}}
-{{--                                                                @foreach($category->product as $product)--}}
-{{--                                                                    <ul>--}}
-{{--                                                                        <li><a href="product-grid-view.html">--}}
-{{--                                                                                {{$product->product_name}}</a></li>--}}
-{{--                                                                    </ul>--}}
-{{--                                                                @endforeach--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                            @endif--}}
-{{--                                        @endforeach--}}
-
-
-
-                                        <!-- mt col3 end here -->
-
-                                            <!-- mt col3 start here -->
-                                        {{--                                            <div class="mt-col-3">--}}
-                                        {{--                                                <div class="sub-dropcont">--}}
-                                        {{--                                                    <strong class="title"><a href="#"--}}
-                                        {{--                                                                             class="mt-subopener">Гели</a></strong>--}}
-                                        {{--                                                    <div class="sub-drop">--}}
-                                        {{--                                                        <ul>--}}
-                                        {{--                                                            <li><a href="about-us.html">Super Gel Fresh face</a></li>--}}
-                                        {{--                                                            <li><a href="about-us.html">Super Gel Face&body</a></li>--}}
-                                        {{--                                                            <li><a href="about-us.html">Super Gel Regeneration</a></li>--}}
-                                        {{--                                                            <li><a href="about-us.html">Super Gel Masto</a></li>--}}
-                                        {{--                                                            <li><a href="about-us.html">Super Gel Grippo</a></li>--}}
-                                        {{--                                                        </ul>--}}
-                                        {{--                                                    </div>--}}
-                                        {{--                                                </div>--}}
-                                        {{--                                                <div class="sub-dropcont">--}}
-                                        {{--                                                    <strong class="title"><a href="#" class="mt-subopener">Крема--}}
-                                        {{--                                                            US</a></strong>--}}
-                                        {{--                                                    <div class="sub-drop">--}}
-                                        {{--                                                        <ul>--}}
-                                        {{--                                                            <li><a href="contact-us.html">Super cream Spasm</a></li>--}}
-                                        {{--                                                            <li><a href="contact-us.html">Super cream Anti-cellulite</a>--}}
-                                        {{--                                                            </li>--}}
-                                        {{--                                                            <li><a href="contact-us.html">Super cream for man</a></li>--}}
-                                        {{--                                                            <li><a href="contact-us.html">Super cream for woman</a></li>--}}
-                                        {{--                                                        </ul>--}}
-                                        {{--                                                    </div>--}}
-                                        {{--                                                </div>--}}
-                                        {{--                                            </div>--}}
-                                        <!-- mt col3 end here -->
-
-                                            <!-- mt col3 start here -->
+                                            <?php foreach($categories as $category): ?>
                                             <div class="mt-col-3">
                                                 <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#"
-                                                                             class="mt-subopener">Спреи</a></strong>
+                                                    <strong class="title"><a href="product-grid-view.html"
+                                                                             class="mt-subopener">{{$category->name}}</a></strong>
                                                     <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="#">Super Spray Grippo</a></li>
-                                                            <li><a href="#">Super Spray Castro</a></li>
-                                                            <li><a href="#">Super Spray Hepato</a></li>
-                                                            <li><a href="#">Super Spray Clean</a></li>
-                                                            <li><a href="#">Super Spray for man</a></li>
-                                                            <li><a href="#">Super Spray for woman</a></li>
-                                                            <li><a href="#">Super Spray Bronchi</a></li>
-                                                            <li><a href="#">Super Spray Propolis&herb</a></li>
-                                                            <li><a href="#">Super Spray Nephro</a></li>
-                                                        </ul>
+                                                        <?php $products = \App\Models\Product::where(['category_id' => $category->id])->get(); ?>
+                                                        @foreach($products as $product)
+                                                            <ul>
+                                                                <li><a href="product/{{$product->product_id}}">
+                                                                        {{ $product->product_name_ru}}</a></li>
+                                                            </ul>
+                                                        @endforeach
                                                     </div>
-                                               c </div>
-                                            </div>
-                                            <!-- mt col3 end here -->
-
-
-                                            <ul>
-                                                <li><a href="product-grid-view.html">Super Elixir
-                                                        Anti-Stress</a></li>
-                                                <li><a href="product-grid-view.html">Super Elixir
-                                                        Immuno</a>
-                                                </li>
-                                                <li><a href="product-grid-view.html">Super Elixir
-                                                        Energy</a>
-                                                </li>
-                                                <li><a href="product-grid-view.html">Super Elixir
-                                                        Gastro</a>
-                                                </li>
-                                                <li><a href="product-grid-view.html">Super Elixir
-                                                        Hepato</a>
-                                                </li>
-                                                <li><a href="product-grid-view.html">Super Elixir
-                                                        Clean</a>
-                                                </li>
-                                                <li><a href="product-grid-view.html">Super Elixir for
-                                                        man</a></li>
-                                                <li><a href="product-grid-view.html">Super Elixir for
-                                                        woman</a></li>
-                                                <li><a href="product-grid-view.html">Super Elixir
-                                                        Bronchi</a></li>
-                                                <li><a href="product-grid-view.html">Super Elixir
-                                                        Nephro</a>
-                                                </li>
-
-                                            </ul>
-
-                                            <!-- mt col3 start here -->
-                                            <div class="mt-col-3 promo">
-                                                <div class="mt-promobox">
-                                                    <a href="#"><img src="http://placehold.it/295x320"
-                                                                     alt="promo banner"
-                                                                     class="img-responsive"></a>
                                                 </div>
                                             </div>
-                                            <!-- mt col3 end here -->
+                                        <?php  endforeach; ?>
+                                        <!-- mt col3 end here -->
                                         </div>
                                         <!-- mt f box end here -->
                                     </div>

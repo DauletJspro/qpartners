@@ -1,7 +1,6 @@
 @extends('admin.layout.layout')
 
 @section('content')
-
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
@@ -12,7 +11,7 @@
                         <a class="menu-tab active-page" href="/admin/brand">Все бренды</a>
                     </h3>
                     <div style="float: right;">
-                        <a href="/admin/product/create" >
+                        <a href="/admin/product/create">
                             <button class="btn btn-primary box-add-btn">Добавить товар</button>
                         </a>
                         <a href="/admin/category/create">
@@ -29,83 +28,46 @@
                         <thead>
                         <tr style="border: 1px">
                             <th style="width: 30px">№</th>
-                            <th></th>
                             <th>Название</th>
-                            <th>Цена</th>
-                            <th>Cash (%)</th>
-                            <th>Балл</th>
-                            <th>Краткое описание</th>
+                            <th>Описание</th>
+                            <th>Показывается на главной странице</th>
+                            <th>Изображение</th>
+                            <th>Дата создание</th>
+                            <th>Дата редактирование</th>
+
                             <th style="width: 15px"></th>
                             <th style="width: 15px"></th>
                         </tr>
                         </thead>
-
                         <tbody>
-
-                        @foreach($row as $key => $val)
-
+                        @foreach($brands as $brand)
                             <tr>
-                                <td> {{ $key + 1 }}</td>
-                                <td>
-                                    <div class="object-image">
-                                        <a class="fancybox" href="{{$val->product_image}}">
-                                            <img src="{{$val->product_image}}">
-                                        </a>
-                                    </div>
-                                    <div class="clear-float"></div>
+                                <td>{{ $brand->id }}</td>
+                                <td>{{ $brand->name }}</td>
+                                <td>{{ $brand->description }}</td>
+                                <td><span class="badge"
+                                          style="background-color: {{ $brand->is_show ?  'green': 'red' }};">{{ $brand->is_show ?  'Да': 'Нет' }}</span>
                                 </td>
-                                <td>
-                                    {{ $val['product_name_ru']}}
-                                </td>
-                                <td>
-                                    {{ $val['product_price']}}$
-                                    ({{round($val->product_price * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
-                                    тг)
-                                </td>
-                                <td>
-                                    {{ $val['product_cash']}}
-                                </td>
-                                <td>
-                                    {{ $val['ball'] }}
-                                </td>
-                                <td>
-                                    {{ $val['product_desc_ru']}}
-                                </td>
+                                <td><img src="{{$brand->image}}" style="height: 60px; width: 60px;" alt=""></td>
+                                <td>{{ $brand->created_at}}</td>
+                                <td>{{ $brand->updated_at}}</td>
                                 <td style="text-align: center">
-                                    <a href="/admin/product/{{ $val->product_id }}/edit">
+                                    <a href="/admin/brand/{{ $brand->id }}/edit">
                                         <li class="fa fa-pencil" style="font-size: 20px;"></li>
                                     </a>
                                 </td>
                                 <td style="text-align: center">
                                     <a href="javascript:void(0)"
-                                       onclick="delItem(this,'{{ $val->product_id }}','product')">
+                                       onclick="delItem(this,'{{ $brand->id }}','brand')">
                                         <li class="fa fa-trash-o" style="font-size: 20px; color: red;"></li>
                                     </a>
                                 </td>
                             </tr>
-
                         @endforeach
-
                         </tbody>
-
                     </table>
-
-                    <div style="text-align: center">
-                        {{ $row->appends(\Illuminate\Support\Facades\Input::except('page'))->links() }}
-                    </div>
-
                 </div>
             </div>
         </div>
     </div>
-
-@endsection
-
-@section('js')
-
-    <script>
-        $('a.fancybox').fancybox({
-            padding: 10
-        });
-    </script>
 @endsection

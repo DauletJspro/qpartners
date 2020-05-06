@@ -25,7 +25,7 @@
         </div>
     </div>
     <main id="mt-main">
-        <section class="mt-contact-banner" style="background-color: #faf8ff;">
+        <section class="mt-contact-banner" style="background-image: url('/new_design/images/sign_in.png'); background-size: contain; background-repeat: no-repeat;">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
@@ -92,10 +92,12 @@
                                 <header>
                                     <div class="form-group text-center already-registered-div">
                                         Если Вы уже зарегистрированы на нашем сайте, нажмите <a
-                                                style="font-weight: bold; text-decoration: underline; color: black;" href="/login">«Войти»</a>
+                                                style="font-weight: bold; text-decoration: underline; color: black;"
+                                                href="/login">«Войти»</a>
                                     </div>
                                     <div class="form-group main-page-div" style="text-align: center">
-                                        <a style="font-weight: bold; text-decoration: underline; color: black;" href="/">Главная страница</a>
+                                        <a style="font-weight: bold; text-decoration: underline; color: black;"
+                                           href="/">Главная страница</a>
                                     </div>
                                 </header>
                                 <ul class="mt-socialicons">

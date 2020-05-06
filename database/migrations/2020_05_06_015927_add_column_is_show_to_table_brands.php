@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnCategoryIdToTableProduct extends Migration
+class AddColumnIsShowToTableBrands extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class AddColumnCategoryIdToTableProduct extends Migration
      */
     public function up()
     {
-        if(!Schema::hasColumn('product', 'category_id')){
-            Schema::table('product', function (Blueprint $table) {
-                $table->integer('category_id')->unsigned();
-            });
-        }
-
+        Schema::table('brands', function (Blueprint $table) {
+            $table->tinyInteger('is_show')->nullable();
+        });
     }
 
     /**

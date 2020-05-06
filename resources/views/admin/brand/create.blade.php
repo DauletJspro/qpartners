@@ -1,4 +1,4 @@
-<?php $title = 'Изменить категорию'; ?>
+<?php $title = 'Добавить бренд'; ?>
 @extends('admin.layout.layout')
 
 @section('content')
@@ -19,20 +19,20 @@
                             </div>
                         @endif
                         <div class="box-body">
-                            {{ Form::open(['route' => ['category.update', $category->id], 'method' => 'put']) }}
+                            {{ Form::open(['action' => ['Admin\BrandController@store'], 'method' => 'POST']) }}
                             {{ Form::token() }}
-                            <input type="hidden" name="image"
-                                   class="image-name" value="{{$category->image}}">
+                            <input type="hidden"  name="image"
+                                   class="image-name">
                             <div class="form-group">
-                                {{ Form::label('Название категорий', null, ['class' => 'control-label']) }}
-                                {{ Form::text('name',$category->name, ['class' => 'form-control'])}}
+                                {{ Form::label('Название бренда', null, ['class' => 'control-label']) }}
+                                {{ Form::text('name',null, ['class' => 'form-control'])}}
                             </div>
                             <div class="form-group">
-                                {{ Form::label('Описание категорий', null, ['class' => 'control-label']) }}
-                                {{ Form::textarea('description',$category->description, ['class' => 'form-control'])}}
+                                {{ Form::label('Описание бренда', null, ['class' => 'control-label']) }}
+                                {{ Form::textarea('description',null, ['class' => 'form-control'])}}
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name="is_show" {{ $category->is_show ? 'checked' : ''  }}>
+                                {{ Form::checkbox('is_show')}}
                                 {{ Form::label('Показывать на главной странице', null, ['class' => 'control-label']) }}
                             </div>
                             {{ Form::submit('Создать', ['class'=> 'btn btn-primary']) }}
@@ -43,7 +43,7 @@
                 <div class="col-md-4">
                     <div class="box box-primary" style="padding: 30px; text-align: center">
                         <div style="padding: 20px; border: 1px solid #c2e2f0">
-                            <img class="image-src" src="{{$category->image}}" style="width: 100%; "/>
+                            <img class="image-src" src="/media/default.jpg" style="width: 100%; "/>
                         </div>
                         <div style="background-color: #c2e2f0;height: 40px;margin: 0 auto;width: 2px;"></div>
                         <form id="image_form" enctype="multipart/form-data" method="post" class="image-form">

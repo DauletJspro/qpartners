@@ -8,11 +8,11 @@ class Category extends Model
 {
     protected $table = 'categories';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'description', 'is_show', 'created_at', 'updated_at'];
+    protected $fillable = ['name', 'description', 'is_show','image', 'created_at', 'updated_at'];
 
 
     public function Product()
     {
-        return $this->hasMany('App\Models\Product');
+        return $this->hasMany('Product', 'category_id');
     }
 }

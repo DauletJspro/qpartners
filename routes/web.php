@@ -270,6 +270,7 @@ Route::group([
     Route::resource('packet-item', 'PacketItemController');
     Route::resource('product', 'ProductController');
     Route::resource('category', 'CategoryController');
+    Route::resource('brand', 'BrandController');
 });
 
 /******* Main page *******/
@@ -293,10 +294,14 @@ Route::group([
     Route::get('contact', 'IndexController@contact');
     Route::post('contact', 'IndexController@sendMessage');
     Route::get('news', 'IndexController@news');
+    Route::get('shop', 'ShopController@index')->name('shop.show');
+    Route::get('shop/{category_id}', 'ShopController@index')->name('shop.show.category');
+    Route::get('product/{id}', 'ProductController@detail')->name('product.detail');
     Route::get('education/{url}', 'IndexController@getEducationById');
     Route::get('project/{url}', 'IndexController@getProjectById');
     Route::get('news/{url}', 'NewsController@getNewsById');
     Route::get('file/{file_name}', 'IndexController@showFile')->where('file_name', '.*');
     Route::get('{about_url}', 'IndexController@getAboutById');
     Route::get('{user_id}/{user_name}', 'IndexController@redirectToRegister');
+
 });

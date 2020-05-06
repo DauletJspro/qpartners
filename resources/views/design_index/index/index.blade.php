@@ -21,7 +21,8 @@
                             <div class="holder" style="background-color: rgba(0,0,0,0.3)">
                                 <div class="texts" style="background-color:transparent; padding: 2rem 4rem -5rem 4rem;">
                                     <strong class="title">жилищная программа</strong>
-                                    <h3 style="font-weight: bold;word-break:keep-all;">Купи <br> <span style="word-break: keep-all;">жилье за 200$</span></h3>
+                                    <h3 style="font-weight: bold;word-break:keep-all;">Купи <br> <span
+                                                style="word-break: keep-all;">жилье за 200$</span></h3>
                                     <p>Собственное жилье в рассрочку без процентов, коммисси, перепат и подтверждения
                                         дохода</p>
                                     <span class="price-add">$ 200.00</span>
@@ -39,7 +40,8 @@
                                 <div style=" width: 100%; padding: 2rem 1rem">
                                     <strong class="sub-title"
                                             style="font-size: 130%; font-weight: 500;">Автопрограмма</strong>
-                                    <h3><span style="font-size:140%;">Забирай</span> <br> <span style="font-size: 90%;word-break:keep-all;">свой автомобиль</span>
+                                    <h3><span style="font-size:140%;">Забирай</span> <br> <span
+                                                style="font-size: 90%;word-break:keep-all;">свой автомобиль</span>
                                         <br> <span style="font-size:140%;">за 200 $</span></h3>
                                 </div>
                                 <a href="product-detail.html" class="btn-shop">
@@ -202,7 +204,7 @@
                                                 <div class="box">
                                                     <div class="b1">
                                                         <div class="b2">
-                                                            <a href="#">
+                                                            <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
                                                                 <div style="width: 270px;
                                                                         height: 290px;
                                                                         background-image: url('{{$product->product_image}}');
@@ -232,7 +234,7 @@
                                                 </div>
                                                 <div class="txt">
                                                     <strong class="title"><a
-                                                                href="product-detail.html">{{$product->product_name_ru}}</a></strong>
+                                                                href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name_ru}}</a></strong>
                                                     <p>{{$product->product_desc_ru}}</p>
                                                     <span class="price"><i
                                                                 class="fa fa-dollar"></i> <span>{{$product->product_price}}
@@ -620,13 +622,13 @@
                     <div class="mt-producttabs style3 wow fadeInUp" data-wow-delay="0.4s">
                         <h2 class="heading">Популярные</h2>
                         <div class="tabs-slider">
-                            @foreach($products as $product)
+                            @foreach($popularProducts as $product)
                                 <div class="slide">
                                     <div class="mt-product1">
                                         <div class="box">
                                             <div class="b1">
                                                 <div class="b2">
-                                                    <a href="product-detail.html">
+                                                    <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
                                                         <div style="background-position: center; background-size: cover; width: 215px; height: 215px; background-image: url('{{$product->product_image}}')">
 
                                                         </div>
@@ -654,7 +656,7 @@
                                         </div>
                                         <div class="txt">
                                             <strong class="title"><a
-                                                        href="product-detail.html">{{$product->product_name}}</a></strong>
+                                                        href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name}}</a></strong>
                                             <span class="price"><i
                                                         class="fa fa-dollar"></i> <span>{{$product->product_price}}</span> 	({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span>
                                         </div>
@@ -666,54 +668,20 @@
                     <div class="mt-patners wow fadeInUp" data-wow-delay="0.4s">
                         <h2 class="heading">Линейка <span>продукции</span></h2>
                         <div class="patner-slider">
-                            <div class="slide">
-                                <div class="box1">
-                                    <div class="box2"><a href="#"><img src="/new_design/images/logo/img01.jpg"
-                                                                       alt="img"></a></div>
+                            @foreach($brands as $brand)
+                                <div class="slide">
+                                    <div class="box1">
+                                        <div class="box2">
+                                            <a href="#">
+                                                <img src="{{$brand->image}}" alt="" style="width:180px; height: 120px">
+{{--                                                <div style="background-image: url('{{$brand->image}}'); background-position: center; background-size: contain;background-repeat: no-repeat; width: 150px;height: 50px;">--}}
+
+{{--                                                </div>--}}
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="slide">
-                                <div class="box1">
-                                    <div class="box2"><a href="#"><img src="/new_design/images/logo/img02.jpg"
-                                                                       alt="img"></a></div>
-                                </div>
-                            </div>
-                            <div class="slide">
-                                <div class="box1">
-                                    <div class="box2"><a href="#"><img src="/new_design/images/logo/img03.jpg"
-                                                                       alt="img"></a></div>
-                                </div>
-                            </div>
-                            <div class="slide">
-                                <div class="box1">
-                                    <div class="box2"><a href="#"><img src="/new_design/images/logo/img04.jpg"
-                                                                       alt="img"></a></div>
-                                </div>
-                            </div>
-                            <div class="slide">
-                                <div class="box1">
-                                    <div class="box2"><a href="#"><img src="/new_design/images/logo/img05.jpg"
-                                                                       alt="img"></a></div>
-                                </div>
-                            </div>
-                            <div class="slide">
-                                <div class="box1">
-                                    <div class="box2"><a href="#"><img src="/new_design/images/logo/img06.jpg"
-                                                                       alt="img"></a></div>
-                                </div>
-                            </div>
-                            <div class="slide">
-                                <div class="box1">
-                                    <div class="box2"><a href="#"><img src="/new_design/images/logo/img02.jpg"
-                                                                       alt="img"></a></div>
-                                </div>
-                            </div>
-                            <div class="slide">
-                                <div class="box1">
-                                    <div class="box2"><a href="#"><img src="/new_design/images/logo/img03.jpg"
-                                                                       alt="img"></a></div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="banner-frame nospace wow fadeInUp" data-wow-delay="0.4s">

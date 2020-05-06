@@ -26,41 +26,6 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {
-        /*if(isset($request->ok)){
-            $user_packet = UserPacket::leftJoin('users','users.user_id','=','user_packet.user_id')
-                                    ->where('user_packet.packet_id',3)
-                                    ->where('user_packet.is_active',1)
-                                    ->where('users.status_id','<',2)
-                                    ->select('users.user_id')
-                                    ->get();
-
-            $count = 0;
-
-            foreach($user_packet as $item){
-                $user = Users::where('user_id',$item->user_id)->select('user_id','status_id')->first();
-                if($user->status_id < 2){
-                    $user->status_id = 2;
-                    $user->save();
-                    $count++;
-                }
-            }
-
-            dd($count);
-        }*/
-
-        /*if(isset($request->ok)){
-            $user_operation = UserOperation::where('operation_comment','like','%Рубиновый  менеджер%')->groupBy('recipient_id')->get();
-            foreach($user_operation as $item){
-                $user = Users::where('user_id',$item->recipient_id)->first();
-                $user->status_id = 7;
-                $user->save();
-            }
-            dd($user_operation);
-
-
-            dd($user_operation);
-        }*/
-        
         $request->profit_all = UserOperation::where('recipient_id',Auth::user()->user_id)
             ->where('operation_id',1)
             ->where('operation_type_id','!=',2)

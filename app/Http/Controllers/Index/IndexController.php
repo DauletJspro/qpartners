@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Index;
 
 use App\Http\Helpers;
 use App\Models\About;
+use App\Models\Brand;
 use App\Models\Carriage;
 use App\Models\City;
 use App\Models\Education;
@@ -56,6 +57,8 @@ class IndexController extends Controller
 
         $standart_packet_count = UserPacket::where('is_active', 1)->where('packet_id', '>', 2)->groupBy('user_id')->count();
         $products = Product::all();
+        $popularProducts = Product::where(['is_popular' => true])->get();
+        $brands = Brand::where(['is_show' => true])->get();
 
         return view('design_index.index.index',
             [
@@ -65,6 +68,8 @@ class IndexController extends Controller
                 'user_share' => $user_share,
                 'user_count' => $user_count,
                 'products' => $products,
+                'popularProducts' => $popularProducts,
+                'brands' => $brands,
                 'standart_packet_count' => $standart_packet_count
             ]
         );

@@ -60,7 +60,7 @@
                     <!-- F Widget About of the Page -->
                     <div class="f-widget-about" style="color: white;">
                         <div class="logo">
-                            <a href="index.html"><img src="/new_design/images/logo.png" alt="Schon"></a>
+                            <a href="index.html"><img src="/new_design/images/logo/logo-white.png" alt="Qpartners"></a>
                         </div>
                         <p>Компания по продвижению товаров и услуг
                             через сеть независимых партнеров</p>
@@ -132,11 +132,8 @@
                         <h4 class="f-widget-heading follow" style="color: white;">Следите за нами</h4>
                         <!-- Social Network of the Page -->
                         <ul class="list-unstyled social-network social-icon">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                             <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                             <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
                         </ul>
                         <!-- Social Network of the Page end -->
@@ -151,7 +148,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
-                    <p>© <a href="index.html">schön.</a> - All rights Reserved</p>
+                    <p>© <a href="index.html">Q|Partners.</a> - Все права защищены</p>
                 </div>
                 <div class="col-xs-12 col-sm-6 text-right">
                     <div class="bank-card">

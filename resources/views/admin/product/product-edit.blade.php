@@ -1,7 +1,17 @@
+<?php
+
+use Illuminate\Support\Facades\DB;
+
+$categories = \App\Models\Category::all();
+$array = [];
+foreach ($categories as $category) {
+    $array[$category->id] = $category->name;
+}
+$categories = $array;
+?>
 @extends('admin.layout.layout')
 
 @section('content')
-
     <section class="content-header">
         <h1>
             {{ $title }}
@@ -71,10 +81,10 @@
                                                     {!! Form::checkbox('is_new', 1, $row->is_new) !!}
                                                     <label>Входит в категорию "NEW"</label>
                                                 </div>
-                                                <div>
-                                                    {!! Form::checkbox('is_show_in_header', 1, $row->is_show_in_header) !!}
-                                                    <label>Показывать на главной странице</label>
-                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Выберите категорию</label>
+                                                {!! Form::select('category',$categories,$row->category_id ? $row->category_id : null,['class' => 'form-control', 'placeholder' => 'Выберите категорию']); !!}
                                             </div>
                                         </div>
                                         <div class="box-footer">
@@ -97,7 +107,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 

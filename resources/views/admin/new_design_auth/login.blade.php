@@ -11,7 +11,7 @@
 
 @section('content')
     <main id="mt-main">
-        <section class="mt-contact-banner" style="background-color:  #faf8ff;  ">
+        <section class="mt-contact-banner" style="background-image: url('/new_design/images/sign_in.png'); background-size: contain; background-repeat: no-repeat;">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
