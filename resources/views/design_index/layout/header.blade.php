@@ -35,7 +35,7 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                         </li>
                         <li class="">
                             <div class="dropdown">
-                                <a class="" href="/login">{{Lang::get('app.cabinet')}}</a>
+                                <a class="" href="#">{{Lang::get('app.cabinet')}}</a>
                                 <div class="dropdown-content">
                                     @if(!Auth::check())
                                         <a href="/register">Регистрация</a>
@@ -77,17 +77,13 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                     <nav id="nav">
                         <ul>
                             <li>
-                                <a class="drop-link" href="homepage1.html">{{Lang::get('app.about_company')}}<i
-                                            class="fa fa-angle-down hidden-lg hidden-md"
-                                            aria-hidden="true"></i></a>
+                                <a class="drop-link" href="">О НАС<i class="fa fa-angle-down"
+                                                                                   aria-hidden="true"></i></a>
                                 <div class="s-drop">
-                                    <?php $about = \App\Models\About::where('is_show', 1)->orderBy('about_id')->get();?>
                                     <ul>
-                                        @foreach($about as $key => $item)
-                                            <li class="">
-                                                <a href="/{{\App\Http\Helpers::getTranslatedSlugRu($item['about_name_'.$lang])}}-u{{$item->about_id}}">{{$item['about_name_'.$lang]}}</a>
-                                            </li>
-                                        @endforeach
+                                        <li><a href="contact-us.html">Руководства компании</a></li>
+                                        <li><a href="contact-us2.html">Админстрация компании</a></li>
+                                        <li><a href="contact-us2.html">Лидеры компании</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -271,33 +267,28 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                                 <span class="mt-mdropover"></span>
                             </li>
                             <li>
-                                <a class="drop-link" href="blog-right-sidebar.html">НОВОСТИ <i
-                                            class="fa fa-angle-down hidden-lg hidden-md"
-                                            aria-hidden="true"></i></a>
+                                <a class="drop-link" href="blog-right-sidebar.html">НОВОСТИ<i class="fa fa-angle-down"
+                                                                                              aria-hidden="true"></i></a>
                                 <div class="s-drop">
-                                    {{--                                    <ul>--}}
-                                    {{--                                        <li><a href="blog-fullwidth-page.html">Blog Fullwidth Page</a></li>--}}
-                                    {{--                                        <li><a href="blog-right-sidebar2.html">blog right sidebar2</a></li>--}}
-                                    {{--                                        <li><a href="blog-postlist-3-masonry.html">blog postlist masonry</a>--}}
-                                    {{--                                        </li>--}}
-                                    {{--                                        <li><a href="blog-post-detail-sidebar.html">blog post detail--}}
-                                    {{--                                                sidebar</a></li>--}}
-                                    {{--                                        <li><a href="blog-post-detail-full-width.html">blog post detail full--}}
-                                    {{--                                                width</a></li>--}}
-                                    {{--                                    </ul>--}}
+                                    <ul>
+                                        <li><a href="contact-us.html">Новости компании</a></li>
+                                        <li><a href="contact-us2.html">Новости команды</a></li>
+                                        <li><a href="contact-us2.html">Фото</a></li>
+                                        <li><a href="contact-us2.html">Видео</a></li>
+                                    </ul>
                                 </div>
                             </li>
                             <li>
-                                <a class="drop-link" href="contact-us.html">КОНТАКТЫ <i
-                                            class="fa fa-angle-down hidden-lg hidden-md"
-                                            aria-hidden="true"></i></a>
+                                <a class="drop-link" href="homepage1.html">КОНТАКТЫ<i class="fa fa-angle-down"
+                                                                                      aria-hidden="true"></i></a>
                                 <div class="s-drop">
-                                    {{--                                    <ul>--}}
-                                    {{--                                        <li><a href="contact-us.html">Contact</a></li>--}}
-                                    {{--                                        <li><a href="contact-us2.html">Contact 2</a></li>--}}
-                                    {{--                                    </ul>--}}
+                                    <ul>
+                                        <li><a href="contact-us.html">Головной офис</a></li>
+                                        <li><a href="contact-us2.html">Представители</a></li>
+                                    </ul>
                                 </div>
                             </li>
+
                         </ul>
                     </nav>
                 </div>
