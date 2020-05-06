@@ -673,10 +673,7 @@
                                     <div class="box1">
                                         <div class="box2">
                                             <a href="#">
-                                                <img src="{{$brand->image}}" alt="" style="width:180px; height: 120px">
-                                                {{--                                                <div style="background-image: url('{{$brand->image}}'); background-position: center; background-size: contain;background-repeat: no-repeat; width: 150px;height: 50px;">--}}
-
-                                                {{--                                                </div>--}}
+                                                <img src="{{$brand->image}}" alt="">
                                             </a>
                                         </div>
                                     </div>
