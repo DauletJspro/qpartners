@@ -682,34 +682,37 @@
                         </div>
                     </div>
                     <div class="banner-frame nospace wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="banner-9">
-                            <img src="http://placehold.it/400x210" alt="image description">
-                            <div class="holder">
-                                <h2><span>Wall Decor</span><strong>CLOCKs</strong></h2>
-                                <a class="btn-shop" href="product-detail.html">
-                                    <span>VIEW</span>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
+                        <h2 class="heading" style="letter-spacing: 1px; ">ПРОДВИЖЕНИЕ В INSTAGRAM</h2>
+                        <div style="margin-top: 3rem;">
+                            <div class="banner-9">
+                                <img src="/new_design/images/insta_1.png" alt="image description">
+                                <div class="holder">
+                                    <h2><span>Хочешь</span><strong>1 млн. подписчиков?</strong></h2>
+                                    <a class="btn-shop" href="product-detail.html">
+                                        <span>Хочу</span>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="banner-10">
-                            <img src="http://placehold.it/400x210" alt="image description">
-                            <div class="holder">
-                                <h2><span>Coffee Tables</span><strong>S.O.S. BLOCKS</strong></h2>
-                                <a class="btn-shop" href="product-detail.html">
-                                    <span>VIEW</span>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
+                            <div class="banner-10">
+                                <img src="/new_design/images/insta_2.png" alt="image description">
+                                <div class="holder">
+                                    <h2><span>Продвигай</span><strong>свой аккаунт</strong></h2>
+                                    <a class="btn-shop" href="product-detail.html">
+                                        <span>Продвигать</span>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="banner-11">
-                            <img src="http://placehold.it/400x210" alt="image description">
-                            <div class="holder">
-                                <h2><span>Floor Lamps</span><strong>ROCKING LAMP</strong></h2>
-                                <a class="btn-shop" href="product-detail.html">
-                                    <span>VIEW</span>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
+                            <div class="banner-11">
+                                <img src="/new_design/images/insta_3.png" alt="image description">
+                                <div class="holder">
+                                    <h2><span>Зарабатывай</span><strong>от 1000$ за 1 пост</strong></h2>
+                                    <a class="btn-shop" href="product-detail.html">
+                                        <span>Зарабатывать</span>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

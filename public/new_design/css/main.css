@@ -5295,7 +5295,8 @@ a:hover {
     padding: 4px 0 0;
     letter-spacing: 2px;
     text-transform: uppercase;
-    font: 700 24px/26px "Montserrat", sans-serif;
+    font: 700 18px "Montserrat", sans-serif;
+    letter-spacing: 0.2px;
 }
 
 .banner-9 .btn-shop,
@@ -5311,6 +5312,7 @@ a:hover {
     height: 18px;
     font-size: 14px;
     line-height: 18px;
+    background-color: lightgrey;
 }
 
 .banner-9 .btn-shop span,
@@ -6742,7 +6744,7 @@ a:hover {
     transition: all .4s linear;
 }
 
-.mt-producttabs .heading {
+.mt-producttabs .heading, #mt-main > div > div > div > div.banner-frame.nospace.wow.fadeInUp > h2 {
     color: #3a3a3a;
     margin: 0 0 7px;
     text-transform: uppercase;
