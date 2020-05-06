@@ -164,7 +164,7 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                                             <div class="mt-col-3">
                                                 <div class="sub-dropcont">
                                                     <strong class="title"><a href="#"
-                                                                             class="mt-subopener">Ьизнес</a></strong>
+                                                                             class="mt-subopener">Бизнес</a></strong>
                                                     <div class="sub-drop">
                                                         <ul>
                                                             <li><a href="about-us.html">Грант на бизнес от 4000$</a>
@@ -196,10 +196,10 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                                             <div class="mt-col-3">
                                                 <div class="sub-dropcont">
                                                     <strong class="title"><a href="#"
-                                                                             class="mt-subopener">INSTART</a></strong>
+                                                                             class="mt-subopener">Продвижение в
+                                                            INSTAGRAM</a></strong>
                                                     <div class="sub-drop">
                                                         <ul>
-                                                            <li><a href="#">Продвижение в Instagram</a></li>
                                                             <li><a href="#">Более 1 млн подписчиков</a></li>
                                                             <li><a href="#">В период от 6 до 15 недель</a></li>
                                                         </ul>
@@ -207,14 +207,23 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                                                 </div>
                                                 <div class="sub-dropcont">
                                                     <strong class="title"><a href="#"
-                                                                             class="mt-subopener">Profile</a></strong>
+                                                                             class="mt-subopener">Дисконтная
+                                                            программа</a></strong>
                                                     <div class="sub-drop">
                                                         <ul>
-                                                            <li><a href="coming-soon.html">Скидки на товары и услуги</a>
+                                                            <li><a href="#">Скидки на товары и услуги</a></li>
+                                                            <li><a href="#">Более 100 компании</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="sub-dropcont">
+                                                    <strong class="title"><a href="#"
+                                                                             class="mt-subopener">Программа обучения</a></strong>
+                                                    <div class="sub-drop">
+                                                        <ul>
+                                                            <li><a href="coming-soon.html">Интернет грамотность</a></li>
+                                                            <li><a href="coming-soon.html">Финансовая грамотность</a>
                                                             </li>
-                                                            <li><a href="coming-soon.html">Более 100 компании</a></li>
-                                                            <li><a href="coming-soon.html">Более 2000 товаров и
-                                                                    услуг</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -223,10 +232,14 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
 
                                             <!-- mt col3 start here -->
                                             <div class="mt-col-3 promo">
-                                                <div class="mt-promobox">
-                                                    <a href="#"><img src="http://placehold.it/295x320"
-                                                                     alt="promo banner"
-                                                                     class="img-responsive"></a>
+                                                <div class="mt-promobox" style="position: relative;">
+                                                    <a href="register"><img
+                                                                src="/new_design/images/program_banner.png"
+                                                                alt="promo banner"
+                                                                class="img-responsive">
+                                                        <div style="position: absolute; bottom: 8px;right: 16px;"><a
+                                                                    href="register" class="btn btn-warning">Регистрация</a></div>
+                                                    </a>
                                                 </div>
                                             </div>
                                             <!-- mt col3 end here -->

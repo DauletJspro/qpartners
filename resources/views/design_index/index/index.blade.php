@@ -36,7 +36,7 @@
                         </div>
                         <div class="banner-6 white wow fadeInRight" data-wow-delay="0.4s">
                             <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/car.png'); background-size: cover; background-position: center;background-repeat: no-repeat;"></div>
-                            <div class="holder" style="background-color: rgba(0,0,0,0.3);">
+                            <div class="holder" style="background-color: rgba(0,0,0,0.1);">
                                 <div style=" width: 100%; padding: 2rem 1rem">
                                     <strong class="sub-title"
                                             style="font-size: 130%; font-weight: 500;">Автопрограмма</strong>
@@ -72,7 +72,7 @@
                             <!-- banner 8 start here -->
                             <div class="banner-8 wow fadeInDown" data-wow-delay="0.4s">
                                 <div style="background-image: url('/new_design/images/travel.png'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
-                                <div class="holder text-left" style="background-color: rgba(0,0,0,0.3);">
+                                <div class="holder text-left" style="background-color: rgba(0,0,0,0.2);">
                                     <div style="width: 100%; padding: 0 1rem;">
                                         <h2><strong style="color: white; font-weight: bold;">тур программа</strong></h2>
                                         <h2 style="margin-bottom:100px !important;"><strong style="color: white;">Выбирай
@@ -111,7 +111,7 @@
                             <div class="banner-13 right wow fadeInDown" data-wow-delay="0.4s">
                                 <img src="/new_design/images/marketing.png" alt="image description"
                                      style="height: 295px;  width: 420px;">
-                                <div class="holder" style="background-color: rgba(0,0,0,0.3);">
+                                <div class="holder" style="background-color: rgba(0,0,0,0.1);">
                                     <h3 style="padding-right: 1rem;margin: 0; color: white;">Возможность</h3>
                                     <h3 style="padding-right: 1rem;"><strong
                                                 style="color: gold;">Построй свой бизнес с доходом 100 000$</strong>
@@ -674,9 +674,9 @@
                                         <div class="box2">
                                             <a href="#">
                                                 <img src="{{$brand->image}}" alt="" style="width:180px; height: 120px">
-{{--                                                <div style="background-image: url('{{$brand->image}}'); background-position: center; background-size: contain;background-repeat: no-repeat; width: 150px;height: 50px;">--}}
+                                                {{--                                                <div style="background-image: url('{{$brand->image}}'); background-position: center; background-size: contain;background-repeat: no-repeat; width: 150px;height: 50px;">--}}
 
-{{--                                                </div>--}}
+                                                {{--                                                </div>--}}
                                             </a>
                                         </div>
                                     </div>
@@ -720,160 +720,62 @@
                         <h2 class="heading">МЫ В INSTAGRAM</h2>
                         <div class="tab-content">
                             <div id="tab1">
-                                <!-- tabs slider start here -->
                                 <div class="tabs-sliderlg">
-                                    <!-- slide start here -->
                                     <div class="slide">
-                                        <!-- mt product1 large start here -->
                                         <div class="mt-product1 large">
                                             <div class="box">
                                                 <div class="b1">
                                                     <div class="b2">
-                                                        <a href="product-detail.html"><img
-                                                                    src="http://placehold.it/275x290"
-                                                                    alt="image description"></a>
-                                                        <ul class="mt-stars">
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                        </ul>
+                                                        <a href="">
+                                                            <div style="border: 1px solid lightgrey;width: 275px;height: 290px; background-image: url('/new_design/images/insta_1.png'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+                                                        </a>
                                                         <ul class="links">
-                                                            <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                            </li>
                                                             <li><a href="#"><i
-                                                                            class="icomoon icon-heart-empty"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-exchange"></i></a>
+                                                                            class="fa fa-search"></i><span>Подробнее</span></a>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div><!-- mt product1 center end here -->
+                                        </div>
                                     </div>
-                                    <!-- slide end here -->
-                                    <!-- slide start here -->
                                     <div class="slide">
-                                        <!-- mt product1 large start here -->
                                         <div class="mt-product1 large">
                                             <div class="box">
                                                 <div class="b1">
                                                     <div class="b2">
-                                                        <a href="product-detail.html"><img
-                                                                    src="http://placehold.it/275x290"
-                                                                    alt="image description"></a>
+                                                        <a href="">
+                                                            <div style="border: 1px solid lightgrey;width: 275px;height: 290px; background-image: url('/new_design/images/insta_2.png'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+                                                        </a>
                                                         <ul class="links">
-                                                            <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                            </li>
                                                             <li><a href="#"><i
-                                                                            class="icomoon icon-heart-empty"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-exchange"></i></a>
+                                                                            class="fa fa-search"></i><span>Подробнее</span></a>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div><!-- mt product1 center end here -->
+                                        </div>
                                     </div>
-                                    <!-- slide end here -->
-                                    <!-- slide start here -->
                                     <div class="slide">
-                                        <!-- mt product1 large start here -->
                                         <div class="mt-product1 large">
                                             <div class="box">
                                                 <div class="b1">
                                                     <div class="b2">
-                                                        <a href="product-detail.html"><img
-                                                                    src="http://placehold.it/275x290"
-                                                                    alt="image description"></a>
-                                                        <span class="caption">
-																	<span class="off">15% Off</span>
-																</span>
-                                                        <ul class="mt-stars">
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                        </ul>
+                                                        <a href="">
+                                                            <div style="border: 1px solid lightgrey;width: 275px;height: 290px; background-image: url('/new_design/images/insta_3.png'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+                                                        </a>
                                                         <ul class="links">
-                                                            <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                            </li>
                                                             <li><a href="#"><i
-                                                                            class="icomoon icon-heart-empty"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-exchange"></i></a>
+                                                                            class="fa fa-search"></i><span>Подробнее</span></a>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div><!-- mt product1 center end here -->
-                                    </div>
-                                    <!-- slide end here -->
-                                    <!-- slide start here -->
-                                    <div class="slide">
-                                        <!-- mt product1 large start here -->
-                                        <div class="mt-product1 large">
-                                            <div class="box">
-                                                <div class="b1">
-                                                    <div class="b2">
-                                                        <a href="product-detail.html"><img
-                                                                    src="http://placehold.it/275x290"
-                                                                    alt="image description"></a>
-                                                        <ul class="mt-stars">
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star"></i></li>
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                        </ul>
-                                                        <ul class="links">
-                                                            <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-heart-empty"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-exchange"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- mt product1 center end here -->
-                                    </div>
-                                    <!-- slide end here -->
-                                    <!-- slide start here -->
-                                    <div class="slide">
-                                        <!-- mt product1 large start here -->
-                                        <div class="mt-product1 large">
-                                            <div class="box">
-                                                <div class="b1">
-                                                    <div class="b2">
-                                                        <a href="product-detail.html"><img
-                                                                    src="http://placehold.it/275x290"
-                                                                    alt="image description"></a>
-                                                        <ul class="links">
-                                                            <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-heart-empty"></i></a>
-                                                            </li>
-                                                            <li><a href="#"><i
-                                                                            class="icomoon icon-exchange"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- mt product1 center end here -->
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- tabs slider end here -->
                             </div>
                         </div>
                     </div>
