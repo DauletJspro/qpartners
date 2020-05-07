@@ -13,11 +13,9 @@ class AddColumnItemIdToTableProduct extends Migration
      */
     public function up()
     {
-        if (!Schema::hasColumn('product', 'item_id')) {
-            Schema::table('product', function (Blueprint $table) {
-                $table->integer('id')->after('category_id')->nullable();
-            });
-        }
+        Schema::table('product', function (Blueprint $table) {
+            $table->integer('id')->after('category_id')->nullable();
+        });
     }
 
     /**
