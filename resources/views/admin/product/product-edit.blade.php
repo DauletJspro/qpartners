@@ -8,6 +8,7 @@ foreach ($categories as $category) {
     $array[$category->id] = $category->name;
 }
 $categories = $array;
+$items = \App\Models\Product::ITEM;
 ?>
 @extends('admin.layout.layout')
 
@@ -85,6 +86,10 @@ $categories = $array;
                                             <div class="form-group">
                                                 <label>Выберите категорию</label>
                                                 {!! Form::select('category',$categories,$row->category_id ? $row->category_id : null,['class' => 'form-control', 'placeholder' => 'Выберите категорию']); !!}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Выберите назначение</label>
+                                                {!! Form::select('item_id',$items,$row->item_id ? $row->item_id : null,['class' => 'form-control', 'placeholder' => 'Выберите назначение']); !!}
                                             </div>
                                         </div>
                                         <div class="box-footer">

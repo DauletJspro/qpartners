@@ -77,6 +77,7 @@ class ProductController extends Controller
         $product->is_new = isset($request->is_new) ? true : false;
         $product->is_popular = isset($request->is_popular) ? true : false;
         $product->is_show_in_header = $request->is_show_in_header ? true : false;
+        $product->item_id = $request->item_id;
         $product->sort_num = ($request->sort_num == '') ? 1000 : $request->sort_num;
         $product->category_id = $request->category;
         $product->save();
@@ -124,6 +125,7 @@ class ProductController extends Controller
         $product->is_new = isset($request->is_new) ? true : false;
         $product->is_popular = isset($request->is_popular) ? true : false;
         $product->is_show_in_header = $request->is_show_in_header ? true : false;
+        $product->item_id = $request->item_id;
         $product->sort_num = ($request->sort_num == '') ? 1000 : $request->sort_num;
         $product->category_id = $request->category;
         $product->save();

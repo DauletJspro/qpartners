@@ -1,5 +1,6 @@
 <?php
 use App\Models\Category;
+use App\Models\Product;
 ?>
 @extends('design_index.layout.layout')
 
@@ -17,7 +18,7 @@ use App\Models\Category;
         <?php
         /** @var Category $category */
         /** @var Category $category_id */
-            $category = Category::where(['id' => $category_id])->first();
+        $category = Category::where(['id' => $category_id])->first();
         if ($category_id) {
             $image_url = $category->image;
         } else {
@@ -60,75 +61,29 @@ use App\Models\Category;
                         </ul>
                     </section>
                     <section class="shop-widget filter-widget bg-grey">
-                        <h2>FILTER</h2>
-                        <span class="sub-title">Filter by Brands</span>
+                        <h2>Фильтр</h2>
+                        <span class="sub-title">Фильтр по назначению</span>
                         <!-- nice-form start here -->
                         <ul class="list-unstyled nice-form">
-                            <li>
-                                <label for="check-1">
-                                    <input id="check-1" type="checkbox">
-                                    <span class="fake-input"></span>
-                                    <span class="fake-label">Casali</span>
-                                </label>
-                                <span class="num">2</span>
-                            </li>
-                            <li>
-                                <label for="check-2">
-                                    <input id="check-2" type="checkbox">
-                                    <span class="fake-input"></span>
-                                    <span class="fake-label">Decar</span>
-                                </label>
-                                <span class="num">12</span>
-                            </li>
-                            <li>
-                                <label for="check-3">
-                                    <input id="check-3" checked="checked" type="checkbox">
-                                    <span class="fake-input"></span>
-                                    <span class="fake-label">Fantini</span>
-                                </label>
-                                <span class="num">4</span>
-                            </li>
-                            <li>
-                                <label for="check-4">
-                                    <input id="check-4" type="checkbox">
-                                    <span class="fake-input"></span>
-                                    <span class="fake-label">Flamentstyle</span>
-                                </label>
-                                <span class="num">4</span>
-                            </li>
-                            <li>
-                                <label for="check-5">
-                                    <input id="check-5" type="checkbox">
-                                    <span class="fake-input"></span>
-                                    <span class="fake-label">Heerenhuis</span>
-                                </label>
-                                <span class="num">6</span>
-                            </li>
-                            <li>
-                                <label for="check-6">
-                                    <input id="check-6" type="checkbox">
-                                    <span class="fake-input"></span>
-                                    <span class="fake-label">Hoffmann</span>
-                                </label>
-                                <span class="num">10</span>
-                            </li>
-                            <li>
-                                <label for="check-7">
-                                    <input id="check-7" type="checkbox">
-                                    <span class="fake-input"></span>
-                                    <span class="fake-label">Italfloor</span>
-                                </label>
-                                <span class="num">3</span>
-                            </li>
+                            @foreach(\App\Models\Product::ITEM as $item)
+                                <li>
+                                    <label for="check-1">
+                                        <input id="check-1" type="checkbox">
+                                        <span class="fake-input"></span>
+                                        <span class="fake-label">{{$item}}</span>
+                                    </label>
+                                    <span class="num"></span>
+                                </li>
+                            @endforeach
                         </ul><!-- nice-form end here -->
-                        <span class="sub-title">Filter by Price</span>
+                        <span class="sub-title">Фильтр по цене</span>
                         <div class="price-range">
                             <div class="range-slider">
                                 <span class="dot"></span>
                                 <span class="dot dot2"></span>
                             </div>
-                            <span class="price">Price &nbsp;   $ 10  &nbsp;  -  &nbsp;   $ 599</span>
-                            <a href="#" class="filter-btn">Filter</a>
+                            <span class="price">Price &nbsp;   $ 1 &nbsp;  -  &nbsp;   $ 1000</span>
+                            <a href="#" class="filter-btn">Пременить</a>
                         </div>
                     </section>
                 </aside>

@@ -10,7 +10,7 @@
                         <span class="widget-icon"><i class="fa fa-plane"></i></span>
                         <div class="txt-holder">
                             <h1 class="f-promo-box-heading">БЫСТРАЯ ДОСТАВКА</h1>
-                            <p>Доставка от 1 до 3 рабочих дней</p>
+                            <p>Доставка от 1 до 10 рабочих дней</p>
                         </div>
                     </div>
                     <!-- F Widget Item of the Page end -->
@@ -21,7 +21,7 @@
                         <span class="widget-icon"><i class="fa fa-life-ring"></i></span>
                         <div class="txt-holder">
                             <h1 class="f-promo-box-heading">Поддержка 24/7</h1>
-                            <p>Оперативная Поддержка 24/7</p>
+                            <p>Информационная и техническая поддержка</p>
                         </div>
                     </div>
                     <!-- F Widget Item of the Page -->

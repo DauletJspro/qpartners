@@ -23,8 +23,7 @@
                                     <strong class="title">жилищная программа</strong>
                                     <h3 style="font-weight: bold;word-break:keep-all;">Купи <br> <span
                                                 style="word-break: keep-all;">жилье за 200$</span></h3>
-                                    <p>Собственное жилье в рассрочку без процентов, коммисси, перепат и подтверждения
-                                        дохода</p>
+                                    <p>Собственное жилье в рассрочку, без процентов, без комиссии, без переплат и без подтверждения дохода</p>
                                     <span class="price-add">$ 200.00</span>
                                     <a href="product-detail.html" class="btn-shop">
                                         <span><strong style="color: white;">Купить сейчас</strong></span>
@@ -38,11 +37,11 @@
                             <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/car.png'); background-size: cover; background-position: center;background-repeat: no-repeat;"></div>
                             <div class="holder" style="background-color: rgba(0,0,0,0.1);">
                                 <div style=" width: 100%; padding: 2rem 1rem">
-                                    <strong class="sub-title"
+                                    <strong class="sub-title text-uppercase"
                                             style="font-size: 130%; font-weight: 500;">Автопрограмма</strong>
                                     <h3><span style="font-size:140%;">Забирай</span> <br> <span
                                                 style="font-size: 90%;word-break:keep-all;">свой автомобиль</span>
-                                        <br> <span style="font-size:140%;">за 200 $</span></h3>
+                                    </h3>
                                 </div>
                                 <a href="product-detail.html" class="btn-shop">
                                     <span><strong>забрать сейчас</strong></span>
@@ -99,7 +98,7 @@
                                 <img src="/new_design/images/income.png" alt="image description"
                                      style="height: 260px;  width: 420px;">
                                 <div class="holder" style="background-color: rgba(0,0,0,0.2);">
-                                    <h2 style="padding-bottom: 1rem;"><span>Заработок</span><strong>Начни зарабатывать
+                                    <h2 style="padding-bottom: 1rem;"><span class="text-uppercase">ЗАРАБОТОК</span><strong>Начни зарабатывать
                                             от 200$ в месяц</strong></h2>
                                     <a class="btn-shop" href="product-detail.html">
                                         <span>начать</span>
@@ -112,7 +111,7 @@
                                 <img src="/new_design/images/marketing.png" alt="image description"
                                      style="height: 295px;  width: 420px;">
                                 <div class="holder" style="background-color: rgba(0,0,0,0.1);">
-                                    <h3 style="padding-right: 1rem;margin: 0; color: white;">Возможность</h3>
+                                    <h3 style="padding-right: 1rem;margin: 0; color: white;" class="text-uppercase">Возможность</h3>
                                     <h3 style="padding-right: 1rem;"><strong
                                                 style="color: gold;">Построй свой бизнес с доходом 100 000$</strong>
                                     </h3>
@@ -131,13 +130,12 @@
                                 <div class="s-holder">
                                     <img src="/new_design/images/promotion_home.png" alt="image description">
                                     <div class="s-box">
-                                        <strong class="s-title">Промоушен</strong>
+                                        <strong class="s-title text-uppercase">Промоушен</strong>
                                         <span class="heading"
-                                              style="font-weight: bold;">Закройте Diamond Director</span>
+                                              style="font-weight: bold;font-size: 40px;">Закрой статус Diamond Director</span>
                                         <span class="heading add" style="">и забери ключи от жилья досрочно</span>
                                         <div class="s-txt">
-                                            <p>Закройте статус Diamond Director <br> в течений 180 дней <br>
-                                                и получите ключи от дома </p>
+                                            <p>Закрой статус Diamond Director <br> в течений 180 дней  <br> и получи ключи от дома </p>
                                         </div>
                                     </div>
                                 </div><!-- holder end here -->
@@ -145,7 +143,7 @@
                                 <div class="s-holder">
                                     <img src="/new_design/images/promotion_tour.png" alt="image description">
                                     <div class="s-box" style="background-color: rgba(0,0,0,0.3);">
-                                        <strong class="s-title">Промоушен</strong>
+                                        <strong class="s-title text-uppercase">Промоушен</strong>
                                         <span class="heading" style="color: white;">Закрой <span style="color: gold;">Gold Director</span></span>
                                         <span class="heading add"
                                               style="color: white;"> получи путевку <br> в Турцию</span>
@@ -159,7 +157,7 @@
                                 <div class="s-holder">
                                     <img src="/new_design/images/promotion_auto.png" alt="image description">
                                     <div class="s-box">
-                                        <strong class="s-title">Промоушен</strong>
+                                        <strong class="s-title text-uppercase">Промоушен</strong>
                                         <span class="heading">Закрой Sapphire Director</span>
                                         <span class="heading add">и забери ключи от нового <br> автомобиля</span>
                                         <div class="s-txt">
@@ -172,7 +170,7 @@
                                 <div class="s-holder">
                                     <img src="/new_design/images/promotion_business.png" alt="image description">
                                     <div class="s-box" style="background-color: rgba(0,0,0,0.4);">
-                                        <strong class="s-title" style="color: white;">Промоушен</strong>
+                                        <strong class="s-title text-uppercase" style="color: white;">Промоушен</strong>
                                         <span class="heading"><span
                                                     style="color: white;">Закрой Silver Manager</span> </span>
                                         <span class="heading add" style="color: white;">и открой представительство <br> Natural Market</span>
@@ -666,7 +664,7 @@
                         </div>
                     </div>
                     <div class="mt-patners wow fadeInUp" data-wow-delay="0.4s">
-                        <h2 class="heading">Линейка <span>продукции</span></h2>
+                        <h2 class="heading">Наши <span style="font-weight: bold;">бренды</span></h2>
                         <div class="patner-slider">
                             @foreach($brands as $brand)
                                 <div class="slide">
