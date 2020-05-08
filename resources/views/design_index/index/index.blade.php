@@ -225,7 +225,7 @@
                                                                 <li>
                                                                     <a style="cursor: pointer;"
                                                                        data-item-id="{{$product->product_id}}"
-                                                                       data-user-id="{{Auth::user()->user_id}}"
+                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
                                                                        data-method="add"
                                                                        onclick="addItemToBasket(this)"
                                                                     ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
@@ -655,7 +655,7 @@
                                                             <a      style="cursor: pointer;"
                                                                     data-item-id="{{$product->product_id}}"
                                                                     data-method="add"
-                                                                    data-user-id="{{Auth::user()->user_id}}"
+                                                                    data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
                                                                     onclick="addItemToBasket(this)"
                                                             >
                                                                 <i class="icon-handbag"></i><span>Добавить</span></a>

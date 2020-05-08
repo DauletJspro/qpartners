@@ -60,15 +60,16 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                                                           style="height: 45px; width: 135px;margin-top: -4px;"></a>
                     </div>
                     <?php $totalPrice = 0;?>
-                    <?php $items = \App\Models\UserBasket::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->user_id])->get(); ?>
-                    <?php foreach ($items as $item): ?>
+                    @if(Auth::user())
+                        <?php $items = \App\Models\UserBasket::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->user_id])->get(); ?>
+                        <?php foreach ($items as $item): ?>
                         <?php $totalPrice += (\App\Models\Product::where(['product_id' => $item->product_id])->first())->product_price; ?>
                     <?php endforeach ?>
-
+                    @endif
                     <a href="{{ route('basket.show') }}" class="mt-sh-cart" id="basket-box">
                         <span class="icon-handbag"></span>
                         <strong>Ваша корзина</strong>
-                        <span>{{count($items)}} продукта &nbsp; <i class="fa fa-dollar"></i>{{$totalPrice}}</span>
+                        <span>{{isset($items) ? count($items) : 0}} продукта &nbsp; <i class="fa fa-dollar"></i>{{$totalPrice}}</span>
                     </a>
                     <ul class="mt-icon-list">
                         <li class="hidden-lg hidden-md">
