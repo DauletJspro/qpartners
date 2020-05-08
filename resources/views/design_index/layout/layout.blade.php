@@ -64,7 +64,7 @@
         ajax(method, item_id, user_id);
     }
 
-
+    
     function ajax(method, item_id, user_id) {
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
