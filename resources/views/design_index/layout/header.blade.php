@@ -59,16 +59,16 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                     <div class="mt-logo"><a href="/"><img src="/new_design/images/logo/logo.png" alt="schon"
                                                           style="height: 45px; width: 135px;margin-top: -4px;"></a>
                     </div>
-                    <?php $totalPrice = 0;?>
-                    <?php $items = \App\Models\UserBasket::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->user_id])->get(); ?>
-                    <?php foreach ($items as $item): ?>
-                        <?php $totalPrice += (\App\Models\Product::where(['product_id' => $item->product_id])->first())->product_price; ?>
-                    <?php endforeach ?>
+{{--                    <?php $totalPrice = 0;?>--}}
+{{--                    <?php $items = \App\Models\UserBasket::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->user_id])->get(); ?>--}}
+{{--                    <?php foreach ($items as $item): ?>--}}
+{{--                        <?php $totalPrice += (\App\Models\Product::where(['product_id' => $item->product_id])->first())->product_price; ?>--}}
+{{--                    <?php endforeach ?>--}}
 
                     <a href="{{ route('basket.show') }}" class="mt-sh-cart">
                         <span class="icon-handbag"></span>
                         <strong>Ваша корзина</strong>
-                        <span>{{count($items)}} продукта &nbsp; <i class="fa fa-dolla"></i>{{$totalPrice}}</span>
+{{--                        <span>{{count($items)}} продукта &nbsp; <i class="fa fa-dolla"></i>{{$totalPrice}}</span>--}}
                     </a>
                     <ul class="mt-icon-list">
                         <li class="hidden-lg hidden-md">
