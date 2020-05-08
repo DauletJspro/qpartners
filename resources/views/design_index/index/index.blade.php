@@ -223,11 +223,13 @@
                                                             </ul>
                                                             <ul class="links">
                                                                 <li>
-                                                                    <a style="cursor: pointer;"
-                                                                            data-item-id="{{$product->product_id}}"
-                                                                            data-user-id="{{Auth::user()->user_id}}"
-                                                                            data-method="add"
-                                                                            onclick="addItemToBasket(this)"
+                                                                    <a
+{{--                                                                            style="cursor: pointer;"--}}
+{{--                                                                            data-item-id="{{$product->product_id}}"--}}
+{{--                                                                            data-user-id="{{Auth::user()->user_id}}"--}}
+{{--                                                                            data-method="add"--}}
+{{--                                                                            onclick="addItemToBasket(this)"--}}
+
                                                                     ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
                                                                 </li>
                                                                 <li><a href="#"><i
@@ -652,12 +654,12 @@
                                                     </ul>
                                                     <ul class="links">
                                                         <li>
-                                                            <a      style="cursor: pointer;"
-                                                                    data-item-id="{{$product->product_id}}"
-                                                                    data-method="add"
-                                                                    data-user-id="{{Auth::user()->user_id}}"
-                                                                    onclick="addItemToBasket(this)"
-                                                            >
+{{--                                                            <a      style="cursor: pointer;"--}}
+{{--                                                                    data-item-id="{{$product->product_id}}"--}}
+{{--                                                                    data-method="add"--}}
+{{--                                                                    data-user-id="{{Auth::user()->user_id}}"--}}
+{{--                                                                    onclick="addItemToBasket(this)"--}}
+{{--                                                            >--}}
                                                                 <i class="icon-handbag"></i><span>Добавить</span></a>
                                                         </li>
                                                         <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
