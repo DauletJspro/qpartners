@@ -7641,13 +7641,14 @@ a:hover {
     padding: 51px 45px 34px;
 }
 
-.mt-detail-sec .block.cart .txt span {
+.mt-detail-sec .block.cart .txt span #total_price, .mt-detail-sec .block.cart .txt span #total_price_kzt {
     font-size: 24px;
     line-height: 18px;
     margin: -3px 8px 0 0;
+    display: inline-block;
 }
 
-.mt-detail-sec .block.cart .txt span .fa {
+.mt-detail-sec .block.cart .txt span span #total_price .fa,  .mt-detail-sec .block.cart .txt span span #total_price_kzt .fa{
     font-size: 18px;
 }
 
