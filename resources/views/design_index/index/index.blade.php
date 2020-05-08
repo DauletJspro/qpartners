@@ -23,7 +23,8 @@
                                     <strong class="title">жилищная программа</strong>
                                     <h3 style="font-weight: bold;word-break:keep-all;">Купи <br> <span
                                                 style="word-break: keep-all;">жилье за 200$</span></h3>
-                                    <p>Собственное жилье в рассрочку, без процентов, без комиссии, без переплат и без подтверждения дохода</p>
+                                    <p>Собственное жилье в рассрочку, без процентов, без комиссии, без переплат и без
+                                        подтверждения дохода</p>
                                     <span class="price-add">$ 200.00</span>
                                     <a href="product-detail.html" class="btn-shop">
                                         <span><strong style="color: white;">Купить сейчас</strong></span>
@@ -98,7 +99,8 @@
                                 <img src="/new_design/images/income.png" alt="image description"
                                      style="height: 260px;  width: 420px;">
                                 <div class="holder" style="background-color: rgba(0,0,0,0.2);">
-                                    <h2 style="padding-bottom: 1rem;"><span class="text-uppercase">ЗАРАБОТОК</span><strong>Начни зарабатывать
+                                    <h2 style="padding-bottom: 1rem;"><span
+                                                class="text-uppercase">ЗАРАБОТОК</span><strong>Начни зарабатывать
                                             от 200$ в месяц</strong></h2>
                                     <a class="btn-shop" href="product-detail.html">
                                         <span>начать</span>
@@ -111,7 +113,8 @@
                                 <img src="/new_design/images/marketing.png" alt="image description"
                                      style="height: 295px;  width: 420px;">
                                 <div class="holder" style="background-color: rgba(0,0,0,0.1);">
-                                    <h3 style="padding-right: 1rem;margin: 0; color: white;" class="text-uppercase">Возможность</h3>
+                                    <h3 style="padding-right: 1rem;margin: 0; color: white;" class="text-uppercase">
+                                        Возможность</h3>
                                     <h3 style="padding-right: 1rem;"><strong
                                                 style="color: gold;">Построй свой бизнес с доходом 100 000$</strong>
                                     </h3>
@@ -135,7 +138,8 @@
                                               style="font-weight: bold;font-size: 40px;">Закрой статус Diamond Director</span>
                                         <span class="heading add" style="">и забери ключи от жилья досрочно</span>
                                         <div class="s-txt">
-                                            <p>Закрой статус Diamond Director <br> в течений 180 дней  <br> и получи ключи от дома </p>
+                                            <p>Закрой статус Diamond Director <br> в течений 180 дней <br> и получи
+                                                ключи от дома </p>
                                         </div>
                                     </div>
                                 </div><!-- holder end here -->
@@ -218,7 +222,13 @@
                                                                 <li><i class="fa fa-star-o"></i></li>
                                                             </ul>
                                                             <ul class="links">
-                                                                <li><a href="#"><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
+                                                                <li>
+                                                                    <a style="cursor: pointer;"
+                                                                            data-item-id="{{$product->product_id}}"
+                                                                            data-user-id="{{Auth::user()->user_id}}"
+                                                                            data-method="add"
+                                                                            onclick="addItemToBasket(this)"
+                                                                    ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
                                                                 </li>
                                                                 <li><a href="#"><i
                                                                                 class="icomoon icon-heart-empty"></i></a>
@@ -626,11 +636,11 @@
                                         <div class="box">
                                             <div class="b1">
                                                 <div class="b2">
-                                                    <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
-                                                        <div style="background-position: center; background-size: cover; width: 215px; height: 215px; background-image: url('{{$product->product_image}}')">
+                                                    {{--                                                    <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">--}}
+                                                    <div style="background-position: center; background-size: cover; width: 215px; height: 215px; background-image: url('{{$product->product_image}}')">
 
-                                                        </div>
-                                                    </a>
+                                                    </div>
+                                                    {{--                                                    </a>--}}
                                                     <span class="caption">
 															<span class="new">new</span>
 														</span>
@@ -641,8 +651,14 @@
                                                         <li><i class="fa fa-star-o"></i></li>
                                                     </ul>
                                                     <ul class="links">
-                                                        <li><a href="#"><i
-                                                                        class="icon-handbag"></i><span>Добавить</span></a>
+                                                        <li>
+                                                            <a      style="cursor: pointer;"
+                                                                    data-item-id="{{$product->product_id}}"
+                                                                    data-method="add"
+                                                                    data-user-id="{{Auth::user()->user_id}}"
+                                                                    onclick="addItemToBasket(this)"
+                                                            >
+                                                                <i class="icon-handbag"></i><span>Добавить</span></a>
                                                         </li>
                                                         <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
                                                         </li>
@@ -724,7 +740,8 @@
                                             <div class="box">
                                                 <div class="b1">
                                                     <div class="b2">
-                                                        <a href="https://www.instagram.com/p/B_17-MYJDaU/?igshid=1jr9c3tss0z8q" target="_blank">
+                                                        <a href="https://www.instagram.com/p/B_17-MYJDaU/?igshid=1jr9c3tss0z8q"
+                                                           target="_blank">
                                                             <div style="border: 1px solid lightgrey;
                                                             width: 275px;
                                                             height: 290px;
@@ -733,7 +750,9 @@
                                                                center; background-repeat: no-repeat;"></div>
                                                         </a>
                                                         <ul class="links">
-                                                            <li><a href="https://www.instagram.com/p/B_17-MYJDaU/?igshid=1jr9c3tss0z8q" target="_blank"><i
+                                                            <li>
+                                                                <a href="https://www.instagram.com/p/B_17-MYJDaU/?igshid=1jr9c3tss0z8q"
+                                                                   target="_blank"><i
                                                                             class="fa fa-search"></i><span>Подробнее</span></a>
                                                             </li>
                                                         </ul>
@@ -747,7 +766,8 @@
                                             <div class="box">
                                                 <div class="b1">
                                                     <div class="b2">
-                                                        <a href="https://www.instagram.com/p/B_yso1ygEKe/?igshid=1w9pvg8ny5dy3" target="_blank">
+                                                        <a href="https://www.instagram.com/p/B_yso1ygEKe/?igshid=1w9pvg8ny5dy3"
+                                                           target="_blank">
                                                             <div style="border: 1px solid lightgrey;
                                                             width: 275px;
                                                             height: 290px;
@@ -756,7 +776,9 @@
                                                                center; background-repeat: no-repeat;"></div>
                                                         </a>
                                                         <ul class="links">
-                                                            <li><a href="https://www.instagram.com/p/B_yso1ygEKe/?igshid=1w9pvg8ny5dy3" target="_blank"><i
+                                                            <li>
+                                                                <a href="https://www.instagram.com/p/B_yso1ygEKe/?igshid=1w9pvg8ny5dy3"
+                                                                   target="_blank"><i
                                                                             class="fa fa-search"></i><span>Подробнее</span></a>
                                                             </li>
                                                         </ul>
@@ -770,7 +792,8 @@
                                             <div class="box">
                                                 <div class="b1">
                                                     <div class="b2">
-                                                        <a href="https://www.instagram.com/p/B_l0FblJOE2/?igshid=1o1kyh6pyy8fj" target="_blank">
+                                                        <a href="https://www.instagram.com/p/B_l0FblJOE2/?igshid=1o1kyh6pyy8fj"
+                                                           target="_blank">
                                                             <div style="border: 1px solid lightgrey;
                                                             width: 275px;
                                                             height: 290px;
@@ -779,7 +802,9 @@
                                                                center; background-repeat: no-repeat;"></div>
                                                         </a>
                                                         <ul class="links">
-                                                            <li><a href="https://www.instagram.com/p/B_l0FblJOE2/?igshid=1o1kyh6pyy8fj" target="_blank"><i
+                                                            <li>
+                                                                <a href="https://www.instagram.com/p/B_l0FblJOE2/?igshid=1o1kyh6pyy8fj"
+                                                                   target="_blank"><i
                                                                             class="fa fa-search"></i><span>Подробнее</span></a>
                                                             </li>
                                                         </ul>
@@ -793,7 +818,8 @@
                                             <div class="box">
                                                 <div class="b1">
                                                     <div class="b2">
-                                                        <a href="https://www.instagram.com/p/B_hM0fdpGXv/?igshid=1dp0gvsveld2f" target="_blank">
+                                                        <a href="https://www.instagram.com/p/B_hM0fdpGXv/?igshid=1dp0gvsveld2f"
+                                                           target="_blank">
                                                             <div style="border: 1px solid lightgrey;
                                                             width: 275px;
                                                             height: 290px;
@@ -802,7 +828,9 @@
                                                                center; background-repeat: no-repeat;"></div>
                                                         </a>
                                                         <ul class="links">
-                                                            <li><a href="https://www.instagram.com/p/B_hM0fdpGXv/?igshid=1dp0gvsveld2f" target="_blank"><i
+                                                            <li>
+                                                                <a href="https://www.instagram.com/p/B_hM0fdpGXv/?igshid=1dp0gvsveld2f"
+                                                                   target="_blank"><i
                                                                             class="fa fa-search"></i><span>Подробнее</span></a>
                                                             </li>
                                                         </ul>
@@ -816,7 +844,8 @@
                                             <div class="box">
                                                 <div class="b1">
                                                     <div class="b2">
-                                                        <a href="https://www.instagram.com/p/B_ePhRGpXP7/?igshid=ueow4438kns0" target="_blank">
+                                                        <a href="https://www.instagram.com/p/B_ePhRGpXP7/?igshid=ueow4438kns0"
+                                                           target="_blank">
                                                             <div style="border: 1px solid lightgrey;
                                                             width: 275px;
                                                             height: 290px;
@@ -825,7 +854,9 @@
                                                                center; background-repeat: no-repeat;"></div>
                                                         </a>
                                                         <ul class="links">
-                                                            <li><a href="https://www.instagram.com/p/B_ePhRGpXP7/?igshid=ueow4438kns0" target="_blank"><i
+                                                            <li>
+                                                                <a href="https://www.instagram.com/p/B_ePhRGpXP7/?igshid=ueow4438kns0"
+                                                                   target="_blank"><i
                                                                             class="fa fa-search"></i><span>Подробнее</span></a>
                                                             </li>
                                                         </ul>
@@ -839,7 +870,8 @@
                                             <div class="box">
                                                 <div class="b1">
                                                     <div class="b2">
-                                                        <a href="https://www.instagram.com/p/B_TygfspnQ5/?igshid=mhn1mobymsvz" target="_blank">
+                                                        <a href="https://www.instagram.com/p/B_TygfspnQ5/?igshid=mhn1mobymsvz"
+                                                           target="_blank">
                                                             <div style="border: 1px solid lightgrey;
                                                             width: 275px;
                                                             height: 290px;
@@ -848,7 +880,9 @@
                                                                center; background-repeat: no-repeat;"></div>
                                                         </a>
                                                         <ul class="links">
-                                                            <li><a href="https://www.instagram.com/p/B_TygfspnQ5/?igshid=mhn1mobymsvz" target="_blank"><i
+                                                            <li>
+                                                                <a href="https://www.instagram.com/p/B_TygfspnQ5/?igshid=mhn1mobymsvz"
+                                                                   target="_blank"><i
                                                                             class="fa fa-search"></i><span>Подробнее</span></a>
                                                             </li>
                                                         </ul>
