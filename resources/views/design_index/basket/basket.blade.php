@@ -163,6 +163,7 @@ $basketIds = [];
             var item_id = $(tag_object).data('item-id');
             var user_id = $(tag_object).data('user-id');
             ajax(method, item_id, user_id);
+            $("#basket-box").load(location.href + " #basket-box");
         }
 
         function changeNumber(tag_object, price) {
