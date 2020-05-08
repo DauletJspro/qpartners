@@ -65,10 +65,10 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                         <?php $totalPrice += (\App\Models\Product::where(['product_id' => $item->product_id])->first())->product_price; ?>
                     <?php endforeach ?>
 
-                    <a href="{{ route('basket.show') }}" class="mt-sh-cart">
+                    <a href="{{ route('basket.show') }}" class="mt-sh-cart" id="basket-box">
                         <span class="icon-handbag"></span>
                         <strong>Ваша корзина</strong>
-                        <span>{{count($items)}} продукта &nbsp; <i class="fa fa-dolla"></i>{{$totalPrice}}</span>
+                        <span>{{count($items)}} продукта &nbsp; <i class="fa fa-dollar"></i>{{$totalPrice}}</span>
                     </a>
                     <ul class="mt-icon-list">
                         <li class="hidden-lg hidden-md">

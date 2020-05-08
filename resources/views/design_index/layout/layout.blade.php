@@ -88,6 +88,7 @@
           } else if (data.success == 0) {
             $.notify(data.message, "error");
           }
+          $("#basket-box").load(location.href + " #basket-box");
         }
       }
     });
