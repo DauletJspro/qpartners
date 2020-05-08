@@ -295,6 +295,8 @@ Route::group([
     Route::post('contact', 'IndexController@sendMessage');
     Route::get('news', 'IndexController@news');
     Route::get('shop', 'ShopController@index')->name('shop.show');
+//    Route::get('basket', 'BasketController@show')->name('basket.show');
+//    Route::post('basket/is-ajax', 'BasketController@isAjax')->name('basket.isAjax');
     Route::get('shop/{category_id}', 'ShopController@index')->name('shop.show.category');
     Route::get('product/{id}', 'ProductController@detail')->name('product.detail');
     Route::get('education/{url}', 'IndexController@getEducationById');
@@ -303,5 +305,4 @@ Route::group([
     Route::get('file/{file_name}', 'IndexController@showFile')->where('file_name', '.*');
     Route::get('{about_url}', 'IndexController@getAboutById');
     Route::get('{user_id}/{user_name}', 'IndexController@redirectToRegister');
-
 });

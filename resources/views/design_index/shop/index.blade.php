@@ -113,7 +113,6 @@ use App\Models\Product;
                         <!-- mt-textbox start here -->
                         <div class="mt-textbox">
                             <p>Показано <strong>1–9</strong> из <strong>65</strong></p>
-                            </p>
                         </div><!-- mt-textbox end here -->
                     </header><!-- mt shoplist header end here -->
                     <!-- mt productlisthold start here -->
@@ -131,7 +130,15 @@ use App\Models\Product;
                                                 {{--														<span class="best-price">Best Price</span>--}}
                                                 {{--													</span>--}}
                                                 <ul class="links add">
-                                                    <li><a href="#"><i class="icon-handbag"></i><span></span></a></li>
+                                                    <li>
+{{--                                                        <a--}}
+{{--                                                                style="cursor: pointer;"--}}
+{{--                                                                data-item-id="{{$product->product_id}}"--}}
+{{--                                                                data-user-id="{{Auth::user()->user_id}}"--}}
+{{--                                                                data-method="add"--}}
+{{--                                                                onclick="addItemToBasket(this)"--}}
+{{--                                                        >--}}
+                                                            <i class="icon-handbag"></i><span></span></a></li>
                                                     <li><a href="#"><i class="icomoon icon-heart-empty"></i></a></li>
                                                     <li><a href="#"><i class="icomoon icon-exchange"></i></a></li>
                                                 </ul>
