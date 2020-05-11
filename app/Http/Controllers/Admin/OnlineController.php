@@ -172,7 +172,7 @@ class OnlineController extends Controller
             $user_basket->is_active = 1;
             $user_basket->save();
 
-                $user_id = $user->recommend_user_id;
+            $user_id = $user->recommend_user_id;
 
 
             $counter = 0;

@@ -66,10 +66,12 @@
                             через сеть независимых партнеров</p>
                         <ul class="list-unstyled address-list" style="color:white;">
                             <li><i class="fa fa-map-marker"></i>
-                                <address >г. &nbsp; Алматы, &nbsp;  ул.  &nbsp; Пушкина, &nbsp; 36 <br>
-                                    БЦ &nbsp; "Мегатау", &nbsp; 4-этаж, &nbsp; 408-офис</address>
+                                <address>г. &nbsp; Алматы, &nbsp; ул. &nbsp; Пушкина, &nbsp; 36 <br>
+                                    БЦ &nbsp; "Мегатау", &nbsp; 4-этаж, &nbsp; 408-офис
+                                </address>
                             </li>
-                            <li><i class="fa fa-phone"></i><a href="tel:+77073691777" style="color: white;">+7 707 369 17 77</a>
+                            <li><i class="fa fa-phone"></i><a href="tel:+77073691777" style="color: white;">+7 707 369
+                                    17 77</a>
                             </li>
                             <li><i class="fa fa-envelope-o"></i><a
                                         href="mailto:qazaqmarketing.@gmail.com" style="color: white;">qpartners.club@mail.ru</a>
@@ -101,6 +103,8 @@
                             <li><a href="#">Бизнес</a></li>
                             <li><a href="#">Путешествие</a></li>
                             <li><a href="#">Инстаграм</a></li>
+                            <li><a href="#">Обучение</a></li>
+                            <li><a href="#">Скидки</a></li>
                         </ul>
                     </div>
                     <!-- Footer Nav of the Page end -->
@@ -149,12 +153,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
-                    <p>© <a href="index.html">Q|Partners.</a> - Все права защищены</p>
+                    <p>© <a href="index.html">Q|Partners</a> - Все права защищены</p>
                 </div>
                 <div class="col-xs-12 col-sm-6 text-right">
-                    <div class="bank-card">
-                        <img src="/new_design/images/bank-card.png" alt="bank-card">
-                    </div>
+                    <img src="" alt="">
                 </div>
             </div>
         </div>

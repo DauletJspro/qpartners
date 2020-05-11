@@ -66,6 +66,8 @@
                                             <div class="col-xs-12 col-sm-6 form-group">
                                                 <input required type="text" name="name" value="{{$row->name}}"
                                                        class="form-control input" placeholder="Имя"/>
+                                                <input type="text" name="last_name" value="{{$row->last_name}}"
+                                                       class="form-control input" placeholder="Фамилия"/>
                                                 <input type="text" name="login" value="{{$row->login}}"
                                                        class="form-control input" placeholder="Логин"/>
                                                 <div>
@@ -75,7 +77,9 @@
                                                             data-live-search="true">
                                                         <option value="">Выберите спонсора</option>
                                                         @foreach($recommend_row as $item)
-                                                            <option @if($row->recommend_user_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id) ) {{'selected'}} @endif value="{{$item->user_id}}">{{$item['login']}} </option>
+                                                            <option @if($row->recommend_user_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id) ) {{'selected'}} @endif value="{{$item->user_id}}">
+                                                                {{sprintf('%s (%s)',$item['login'], $item['last_name'])}}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -83,6 +87,8 @@
                                             <div class="col-xs-12 col-sm-6 form-group">
                                                 <input required type="email" name="email" class="form-control input"
                                                        value="{{$row->email}}" placeholder="Email"/>
+                                                <input required type="tel" name="phone" class="form-control input"
+                                                       value="{{$row->phone}}" placeholder="Номер телефона"/>
                                                 <input required type="password" value="{{$row->password}}"
                                                        name="password" class="form-control input"
                                                        placeholder="Пароль"/>
@@ -110,7 +116,8 @@
                                     </header>
                                     <ul class="mt-socialicons">
                                         <li class="mt-facebook"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                        <li style="background-color: lightgreen;"><a href="#"><i class="fa fa-whatsapp"></i></a></li>
+                                        <li style="background-color: lightgreen;"><a href="#"><i
+                                                        class="fa fa-whatsapp"></i></a></li>
                                         <li class="mt-youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
                                     </ul>
                                 </div>
