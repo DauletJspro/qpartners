@@ -11218,6 +11218,8 @@ a:hover {
     background-size: cover;
     text-transform: capitalize;
     background-position: 50% 50%;
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
 }
 
 .mt-contact-banner.style4 {
