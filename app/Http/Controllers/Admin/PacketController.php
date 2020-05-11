@@ -258,24 +258,10 @@ class PacketController extends Controller
 
         $packet_old_price = 0;
 
-        if ($packet->packet_id == 27) {
-            $is_check = UserPacket::where('user_id', Auth::user()->user_id)
-                ->where('user_packet.is_active', '=', '1')
-                ->where('packet_id', '=', 25)
-                ->count();
-
-            if ($is_check == 0) {
-                $result['message'] = 'Чтобы приобрести этот пакет, Вам следует купить ELITE';
-                $result['status'] = false;
-                return response()->json($result);
-            }
-        }
 
         if ($packet->condition_minimum_status_id > 0) {
-
             $status = UserStatus::where('user_status_id', Auth::user()->status_id)->first();
             $status_condition = UserStatus::where('user_status_id', $packet->condition_minimum_status_id)->first();
-
             if ($status == null || $status->sort_num < $status_condition->sort_num) {
                 $result['message'] = 'У вас должно быть статус - ' . $status_condition->user_status_name . " и выше";
                 $result['status'] = false;

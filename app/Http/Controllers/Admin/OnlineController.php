@@ -172,17 +172,15 @@ class OnlineController extends Controller
             $user_basket->is_active = 1;
             $user_basket->save();
 
-            $user_id = $user->recommend_user_id;
+                $user_id = $user->recommend_user_id;
 
 
             $counter = 0;
             while ($user_id != null) {
                 $counter++;
-
                 $parent = Users::where('user_id', $user_id)->first();
                 if ($parent == null) break;
                 $user_id = $parent->recommend_user_id;
-
                 $percent = 0;
                 if ($counter == 1) $percent = 20;
                 elseif ($counter == 2) $percent = 5;
@@ -190,10 +188,10 @@ class OnlineController extends Controller
                 elseif ($counter == 4) $percent = 10;
                 elseif ($counter == 5) $percent = 10;
 
-                $cash = ($product->ball * $item->unit) * $percent / 100;
+                $cash = ($product->product_price * $item->unit) * $percent / 100;
 
                 if ($cash > 0) {
-                    $parent->money += $cash;
+                    $parent->user_money += $cash;
                     $parent->save();
 
                     $operation = new UserOperation();
