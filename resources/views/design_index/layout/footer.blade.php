@@ -66,7 +66,7 @@
                             через сеть независимых партнеров</p>
                         <ul class="list-unstyled address-list" style="color:white;">
                             <li><i class="fa fa-map-marker"></i>
-                                <address >г. &nbsp; Алматы, ул. &nbsp; Пушкина, &nbsp; 36 <br>
+                                <address >г. &nbsp; Алматы, &nbsp;  ул.Пушкина, &nbsp; 36 <br>
                                     БЦ &nbsp; "Мегатау", &nbsp; 4-этаж, &nbsp; 408-офис</address>
                             </li>
                             <li><i class="fa fa-phone"></i><a href="tel:+77073691777" style="color: white;">+7 707 369 17 77</a>
