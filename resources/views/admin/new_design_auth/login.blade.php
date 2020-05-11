@@ -11,7 +11,8 @@
 
 @section('content')
     <main id="mt-main">
-        <section class="mt-contact-banner" style="background-image: url('/new_design/images/sign_in.png'); background-size: contain; background-repeat: no-repeat;">
+        <section class="mt-contact-banner"
+                 style="background-image: url('/new_design/images/sign_in.png'); background-size: contain; background-repeat: no-repeat;">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
@@ -43,18 +44,16 @@
                                 </div>
                                 <form method="post" action="/login">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <fieldset>
-                                        <input required type="text" name="login"
-                                               value="@if(isset($login)){{$login}}@endif" class="form-control input"
-                                               placeholder="ID,Email или логин"/>
-                                        <input required type="password" name="password" class="form-control input"
-                                               placeholder="Пароль"/>
-                                        <div class="box">
-                                            <span class="left"></span>
-                                            <a href="#" class="help">Помошь?</a>
-                                        </div>
-                                        <button type="submit" class="btn btn-danger btn-type1">Войти</button>
-                                    </fieldset>
+                                    <input required type="text" name="login"
+                                           value="@if(isset($login)){{$login}}@endif" class="form-control input"
+                                           placeholder="ID,Email или логин"/>
+                                    <input required type="password" name="password" class="form-control input"
+                                           placeholder="Пароль"/>
+                                    <div class="box">
+                                        <span class="left"></span>
+                                        <a href="#" class="help">Помошь?</a>
+                                    </div>
+                                    <button type="submit" class="btn btn-danger btn-type1">Войти</button>
                                 </form>
                                 <header>
                                     <div class="form-group already-registered-div">

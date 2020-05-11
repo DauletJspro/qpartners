@@ -2204,7 +2204,7 @@ a:hover {
 
 .mt-side-widget {
     color: #7d7d7d;
-    overflow: hidden;
+    overflow: initial;
     padding: 43px 32px 37px 34px;
     font: 300 14px/20px "Source Sans Pro", sans-serif;
 }
@@ -2232,7 +2232,7 @@ a:hover {
 }
 
 .mt-side-widget form {
-    overflow: hidden;
+    /*overflow: hidden;*/
     position: relative;
     margin: 0 0 0 -6px;
 }
@@ -12015,9 +12015,17 @@ a:hover {
     vertical-align: middle;
 }
 
+#mt-main > section.mt-detail-sec.toppadding-zero > div.container > div > div > div > div > div > form > div.row > div:nth-child(1) > div > div > button{
+    border: 1.5px solid lightgrey;
+    height: 100%;
+    font-size: 1.4rem;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+}
+
 .mt-socialicons li a {
     color: #fff;
-    height: 62px;
+    padding: 30px;
     display: block;
     line-height: 62px;
 }
