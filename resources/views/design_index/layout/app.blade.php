@@ -13,9 +13,10 @@
     <!-- include the site stylesheet -->
     <link rel="stylesheet" href="/new_design/css/icon-fonts.css">
     <!-- include the site stylesheet -->
-    <link rel="stylesheet" href="/new_design/css/responsive.css">
-    <!-- include the site stylesheet -->
     <link rel="stylesheet" href="/new_design/css/main.css">
+    <!-- include the site stylesheet -->
+    <link rel="stylesheet" href="/new_design/css/responsive.css">
+
 
 
 </head>
