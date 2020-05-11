@@ -10,7 +10,7 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                 <div class="col-xs-12 col-sm-6 hidden-xs">
                     <span class="tel active"> <i class="fa fa-phone" aria-hidden="true"></i> +7(707)-369-17-77</span>
                     <a class="tel" href="#"> <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                        qazaqmarketing@gmail.com</a>
+                        qpartners.club@mail.ru</a>
                 </div>
                 <div class="col-xs-12 col-sm-6 text-right">
                     <ul class="mt-top-list">

@@ -66,12 +66,13 @@
                             через сеть независимых партнеров</p>
                         <ul class="list-unstyled address-list" style="color:white;">
                             <li><i class="fa fa-map-marker"></i>
-                                <address >г . Алматы, у л. Пушкина, <br> 36 ТЦ “ Мег атау” офис 4</address>
+                                <address >г. Алматы, ул. Пушкина, 36 <br>
+                                    БЦ "Мегатау", 4-этаж, 408-офи</address>
                             </li>
-                            <li><i class="fa fa-phone"></i><a href="tel:+7073691771" style="color: white;">+7 707 369 17 71</a>
+                            <li><i class="fa fa-phone"></i><a href="tel:+77073691777" style="color: white;">+7 707 369 17 77</a>
                             </li>
                             <li><i class="fa fa-envelope-o"></i><a
-                                        href="mailto:qazaqmarketing.@gmail.com" style="color: white;">qazaqmarketing.@gmail.com</a>
+                                        href="mailto:qazaqmarketing.@gmail.com" style="color: white;">qpartners.club@mail.ru</a>
                             </li>
                         </ul>
                     </div>
