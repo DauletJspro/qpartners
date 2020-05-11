@@ -14,7 +14,7 @@ class BrandController extends Controller
     {
         $this->middleware('admin');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -65,7 +65,7 @@ class BrandController extends Controller
             return redirect('admin/brand/');
         }
     }
-
+    
     /**
      * Display the specified resource.
      *

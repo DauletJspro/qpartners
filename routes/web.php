@@ -41,6 +41,7 @@ Route::group([
     Route::get('standart', 'WorldController@standart');
 
     Route::resource('shop', 'ShopController');
+    Route::resource('faq', 'FaqController');
 
     Route::group([
         'prefix' => 'profile'
@@ -296,6 +297,7 @@ Route::group([
     Route::get('news', 'IndexController@news');
     Route::get('shop', 'ShopController@index')->name('shop.show');
     Route::get('basket', 'BasketController@show')->name('basket.show');
+    Route::get('faq', 'FaqController@show')->name('faq.show');
     Route::post('basket/is-ajax', 'BasketController@isAjax')->name('basket.isAjax');
     Route::get('shop/{category_id}', 'ShopController@index')->name('shop.show.category');
     Route::get('product/{id}', 'ProductController@detail')->name('product.detail');
