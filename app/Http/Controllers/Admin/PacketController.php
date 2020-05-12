@@ -617,7 +617,7 @@ class PacketController extends Controller
 
                     if ($parent_packet->packet_available_level < $counter) continue;
 
-                    if ($packet->packet_id == 23 || $packet->packet_id == 24 || $packet->packet_id == 25) {
+                    if ($packet->packet_id == 23 || $packet->packet_id == 24 || $packet->packet_id == 25 ||$packet->packet_id == 26 ||$packet->packet_id == 27 ) {
                         if ($counter == 1) {
                             $money = $user_packet->packet_price * 20 / 100;
                         } elseif ($counter == 2) {
@@ -646,30 +646,31 @@ class PacketController extends Controller
                             }
 
                         }
-                    } elseif ($packet->packet_id == 26 || $packet->packet_id == 27) {
-                        if ($counter == 1) {
-                            $money = $user_packet->packet_price * 20 / 100;
-                            //пополнение акционерного фонда 2
-                            $operation = new UserOperation();
-                            $operation->author_id = $user->user_id;
-                            $operation->money = $user_packet->packet_price * 2.5 / 100;
-                            $operation->operation_id = 1;
-                            $operation->fond_id = 1;
-                            $operation->operation_type_id = 25;
-                            $operation->operation_comment = 'За покупку пакета "' . $packet->packet_name_ru . '"';
-                            $operation->save();
-                            $send_money += $user_packet->packet_price * 2.5 / 100;
-
-                        } elseif ($counter == 2) {
-                            $money = $user_packet->packet_price * 5 / 100;
-                        } elseif ($counter == 3) {
-                            $money = $user_packet->packet_price * 5 / 100;
-                        } elseif ($counter == 4) {
-                            $money = $user_packet->packet_price * 15 / 100;
-                        } elseif ($counter == 5) {
-                            $money = $user_packet->packet_price * 20 / 100;
-                        }
-                    } elseif ($packet->packet_id == 20 || $packet->packet_id == 21) {
+                    }
+//                    elseif ($packet->packet_id == 26 || $packet->packet_id == 27) {
+//                        if ($counter == 1) {
+//                            $money = $user_packet->packet_price * 20 / 100;
+//                            $operation = new UserOperation();
+//                            $operation->author_id = $user->user_id;
+//                            $operation->money = $user_packet->packet_price * 2.5 / 100;
+//                            $operation->operation_id = 1;
+//                            $operation->fond_id = 1;
+//                            $operation->operation_type_id = 25;
+//                            $operation->operation_comment = 'За покупку пакета "' . $packet->packet_name_ru . '"';
+//                            $operation->save();
+//                            $send_money += $user_packet->packet_price * 2.5 / 100;
+//
+//                        } elseif ($counter == 2) {
+//                            $money = $user_packet->packet_price * 5 / 100;
+//                        } elseif ($counter == 3) {
+//                            $money = $user_packet->packet_price * 5 / 100;
+//                        } elseif ($counter == 4) {
+//                            $money = $user_packet->packet_price * 15 / 100;
+//                        } elseif ($counter == 5) {
+//                            $money = $user_packet->packet_price * 20 / 100;
+//                        }
+//                    }
+                    elseif ($packet->packet_id == 20 || $packet->packet_id == 21) {
                         $check_parent_packet = UserPacket::where('user_id', $parent->user_id)
                             ->where(function ($query) use ($packet) {
                                 $query->where('packet_id', $packet->packet_id)
@@ -828,10 +829,8 @@ class PacketController extends Controller
                         $operation->operation_type_id = 1;
                         $operation->operation_comment = 'Рекрутинговый бонус. "' . $packet->packet_name_ru . '". Уровень - ' . $counter;
                         $operation->save();
-
                         $parent->user_money = $parent->user_money + $money;
                         $parent->save();
-
                         $send_money = $send_money + $money;
                     }
 
@@ -839,10 +838,7 @@ class PacketController extends Controller
 
                     if ($counter >= $packet->packet_available_level) break;
                 }
-
             }
-
-
             //выдача доли за покупку пакета
             if ($packet->packet_share > 0 && $user_packet->user_packet_type == 'share' && 2 == 1) {
                 $user->user_share = $user->user_share + $packet->packet_share - $share_old_price;
