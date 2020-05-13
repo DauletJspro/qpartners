@@ -159,19 +159,6 @@ class PacketController extends Controller
 
         $packet_old_price = 0;
 
-//        if ($packet->packet_id == 27) {
-//            $is_check = UserPacket::where('user_id', Auth::user()->user_id)
-//                ->where('user_packet.is_active', '=', '1')
-//                ->where('packet_id', '=', 25)
-//                ->count();
-//
-//            if ($is_check == 0) {
-//                $result['message'] = 'Чтобы приобрести этот пакет, Вам следует купить ELITE';
-//                $result['status'] = false;
-//                return response()->json($result);
-//            }
-//        }
-
 
         if ($packet->condition_minimum_status_id > 0) {
 
@@ -220,7 +207,6 @@ class PacketController extends Controller
                 ->sum('user_packet.packet_price');
         }
 
-
         $is_check = UserPacket::where('user_id', Auth::user()->user_id)->where('packet_id', '=', $request->packet_id)->count();
         if ($is_check > 0) {
             $result['message'] = 'Вы уже отправили запрос на этот пакет';
@@ -235,7 +221,7 @@ class PacketController extends Controller
         $user_packet->user_id = Auth::user()->user_id;
         $user_packet->packet_id = $request->packet_id;
         $user_packet->user_packet_type = $request->user_packet_type;
-        $user_packet->packet_price = $packet->packet_price - $packet_old_price;
+        $user_packet->packet_price = $packet->packet_price;
         $user_packet->is_active = 0;
         $user_packet->is_portfolio = $packet->is_portfolio;
         $user_packet->save();
@@ -322,7 +308,7 @@ class PacketController extends Controller
         $user_packet->user_id = Auth::user()->user_id;
         $user_packet->packet_id = $request->packet_id;
         $user_packet->user_packet_type = $request->user_packet_type;
-        $user_packet->packet_price = $packet->packet_price - $packet_old_price;
+        $user_packet->packet_price = $packet->packet_price;
         $user_packet->is_active = 0;
         $user_packet->is_portfolio = $packet->is_portfolio;
         $user_packet->save();
@@ -660,7 +646,7 @@ class PacketController extends Controller
 
         $packet = Packet::find($userPacket->packet_id);
 
-        if ($packet->is_upgrade_packet == true) {
+        if ($packet->is_upgrade_packet) {
             $packet_old_price = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
                 ->where('user_id', $userPacket->user_id)
                 ->where('user_packet.is_active', 1)

@@ -30,9 +30,6 @@
                     </div>
 
                     {{--@if(($item->has_packet > 0 && $item->is_active > 0) || $max_packet_user_number[$item->is_portfolio] == null || $max_packet_user_number[$item->is_portfolio]->packet_id <= $item->packet_id)--}}
-
-
-
                             @if($item->has_packet > 0)
                                 @if($item->is_active > 0)
                                     <a class="small-box-footer shop_buy_btn" style="font-size: 18px">Вы уже приобрели</a>
@@ -42,8 +39,6 @@
                             @else
                                 <a href="javascript:void(0)" onclick="showBuyModal(this,'{{$item->packet_id}}')" class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn" style="font-size: 18px">Купить пакет <i class="fa fa-arrow-circle-right"></i></a>
                             @endif
-                    
-
                     {{--@else
 
                         <a class="small-box-footer" style="font-size: 18px">&ensp;</a>
