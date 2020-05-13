@@ -298,6 +298,9 @@ Route::group([
     Route::get('shop', 'ShopController@index')->name('shop.show');
     Route::get('basket', 'BasketController@show')->name('basket.show');
     Route::get('faq', 'FaqController@show')->name('faq.show');
+    Route::get('about_us/administration', 'AboutController@showCompanyAdministration');
+    Route::get('about_us/guide', 'AboutController@showCompanyGuide');
+    Route::get('about_us/leaders', 'AboutController@showCompanyLeaders');
     Route::post('basket/is-ajax', 'BasketController@isAjax')->name('basket.isAjax');
     Route::get('shop/{category_id}', 'ShopController@index')->name('shop.show.category');
     Route::get('product/{id}', 'ProductController@detail')->name('product.detail');

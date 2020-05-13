@@ -164,18 +164,18 @@ class PacketController extends Controller
 
         $packet_old_price = 0;
 
-        if ($packet->packet_id == 27) {
-            $is_check = UserPacket::where('user_id', Auth::user()->user_id)
-                ->where('user_packet.is_active', '=', '1')
-                ->where('packet_id', '=', 25)
-                ->count();
-
-            if ($is_check == 0) {
-                $result['message'] = 'Чтобы приобрести этот пакет, Вам следует купить ELITE';
-                $result['status'] = false;
-                return response()->json($result);
-            }
-        }
+//        if ($packet->packet_id == 27) {
+//            $is_check = UserPacket::where('user_id', Auth::user()->user_id)
+//                ->where('user_packet.is_active', '=', '1')
+//                ->where('packet_id', '=', 25)
+//                ->count();
+//
+//            if ($is_check == 0) {
+//                $result['message'] = 'Чтобы приобрести этот пакет, Вам следует купить ELITE';
+//                $result['status'] = false;
+//                return response()->json($result);
+//            }
+//        }
 
 
         if ($packet->condition_minimum_status_id > 0) {
@@ -403,18 +403,18 @@ class PacketController extends Controller
 
         $packet_old_price = 0;
 
-        if ($packet->packet_id == 27) {
-            $is_check = UserPacket::where('user_id', Auth::user()->user_id)
-                ->where('user_packet.is_active', '=', '1')
-                ->where('packet_id', '=', 25)
-                ->count();
-
-            if ($is_check == 0) {
-                $result['message'] = 'Чтобы приобрести этот пакет, Вам следует купить ELITE';
-                $result['status'] = false;
-                return response()->json($result);
-            }
-        }
+//        if ($packet->packet_id == 27) {
+//            $is_check = UserPacket::where('user_id', Auth::user()->user_id)
+//                ->where('user_packet.is_active', '=', '1')
+//                ->where('packet_id', '=', 25)
+//                ->count();
+//
+//            if ($is_check == 0) {
+//                $result['message'] = 'Чтобы приобрести этот пакет, Вам следует купить ELITE';
+//                $result['status'] = false;
+//                return response()->json($result);
+//            }
+//        }
 
         if ($packet->condition_minimum_status_id > 0) {
 

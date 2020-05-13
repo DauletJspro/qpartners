@@ -102,7 +102,7 @@ class FaqController extends Controller
 
         $messages = [
             'required' => 'Необходимо заполнить поле :attribute',
-            'min:5' => 'Минимальное количество символов должно быть 5'
+            'min:5' => 'Минимальное количество символов должно быть 5',
         ];
 
         $validator = Validator::make($request->all(), [

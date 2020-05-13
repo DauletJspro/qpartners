@@ -88,9 +88,9 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                                                                      aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
-                                        <li><a href="contact-us.html">Руководство компании</a></li>
-                                        <li><a href="contact-us2.html">Админстрация компании</a></li>
-                                        <li><a href="contact-us2.html">Лидеры компании</a></li>
+                                        <li><a href="/about_us/guide">Руководство компании</a></li>
+                                        <li><a href="/about_us/administration">Админстрация компании</a></li>
+                                        <li><a href="/about_us/leaders">Лидеры компании</a></li>
                                     </ul>
                                 </div>
                             </li>

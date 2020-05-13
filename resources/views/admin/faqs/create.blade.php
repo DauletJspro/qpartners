@@ -29,6 +29,10 @@
                                 {{ Form::label('Ответ на вопрос', null, ['class' => 'control-label']) }}
                                 {{ Form::textarea('answer',null, ['class' => 'form-control'])}}
                             </div>
+{{--                            <div class="form-group">--}}
+{{--                                {{ Form::label('Порядковый номер', null, ['class' => 'control-label']) }}--}}
+{{--                                {{ Form::text('order', null, ['class' => 'form-control', 'type'=> 'number'])}}--}}
+{{--                            </div>--}}
                             <div class="form-group">
                                 {{ Form::checkbox('is_active')}}
                                 {{ Form::label('Активный (показывать на странице FAQ)', null, ['class' => 'control-label']) }}
