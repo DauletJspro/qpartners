@@ -2,26 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Blog;
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use App\Models\Currency;
 use App\Models\Fond;
-use App\Models\Operation;
 use App\Models\Packet;
 use App\Models\UserOperation;
 use App\Models\UserPacket;
-use App\Models\UserParent;
 use App\Models\Users;
 use App\Models\UserStatus;
-use http\Client\Curl\User;
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use Mockery\CountValidator\Exception;
-use View;
 use DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Mockery\CountValidator\Exception;
 use URL;
+use View;
 
 class PacketController extends Controller
 {
@@ -669,7 +664,6 @@ class PacketController extends Controller
             $packet_old_price = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
                 ->where('user_id', $userPacket->user_id)
                 ->where('user_packet.is_active', 1)
-                ->where('upgrade_type', '=', $packet->upgrade_type)
                 ->sum('user_packet.packet_price');
 
 //            $share_old_price = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
@@ -678,6 +672,7 @@ class PacketController extends Controller
 //                ->where('upgrade_type', '=', $packet->upgrade_type)
 //                ->max('packet.packet_share');
         }
+
 
         $userPacket->is_active = 1;
         $userPacket->packet_price = $userPacket->packet_price - $packet_old_price;
