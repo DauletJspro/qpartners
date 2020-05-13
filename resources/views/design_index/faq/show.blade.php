@@ -34,16 +34,22 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="txt wow fadeInUp" data-wow-delay="0.4s">
-                            <h2>FAQ's</h2>
-                            <p>Morbi in erat malesuada, sollicitudin massa at, tristique nisl. Maecenas id eros
-                                scelerisque, vulputate tortor quis, efficitur arcu sed do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua. Umco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit sse cillum dolore eu fugiat
-                                nulla pariatur. Excepteur sint occaecat cupidatat <strong>Vestibulum sit amet metus
-                                    euismod, condimentum lectus id, ultrices sem.</strong></p>
-                            <p>Fusce mattis nunc lacus, vulputate facilisis dui efficitur ut. Vestibulum sit amet metus
-                                euismod, condimentum lectus id, ultrices sem. Morbi in erat malesuada, sollicitudin
-                                massa at, </p>
+                            <h2>СПИСОК ЧАСТО ЗАДАВАЕМЫХ ВОПРОСОВ</h2>
+                            <p>
+                                Основная функция данного раздела является предотвращение дезинформации касательно
+                                дейятельности и в целом самой компании
+                                <br>
+                                Учитывая частотность и важность задаваемых вопросов от наших Партнеров и Клиентов, мы
+                                составили список самых основных и важных вопросов
+                                <br>
+                                Здесь Вы можете получить исчерпывающие ответы на интересующие Вас вопросы.
+                                <br>
+                                В будущем список часто задаваемых вопросов будет пополняться другими вопросами и
+                                ответами на них
+                                <br>
+                                Если Вы не нашли вопроса с ответом который Вас интересует, то можете обратиться по
+                                телефону указаным в разделе контакты
+                            </p>
                         </div>
                     </div>
                 </div>

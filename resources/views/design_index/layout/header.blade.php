@@ -292,6 +292,7 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                                     <ul>
                                         <li><a href="contact-us.html">Головной офис</a></li>
                                         <li><a href="contact-us2.html">Представители</a></li>
+                                        <li><a href="{{route('faq.show')}}">Часто задавемые вопросы </a></li>
                                     </ul>
                                 </div>
                             </li>
