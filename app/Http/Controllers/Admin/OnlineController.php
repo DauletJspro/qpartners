@@ -188,7 +188,7 @@ class OnlineController extends Controller
                 elseif ($counter == 4) $percent = 10;
                 elseif ($counter == 5) $percent = 10;
 
-                $cash = ($product->product_price * $item->unit) * $percent / 100;
+                $cash = ($product->ball * $item->unit) * $percent / 100;
 
                 if ($cash > 0) {
                     $parent->user_money += $cash;
