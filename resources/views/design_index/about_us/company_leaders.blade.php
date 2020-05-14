@@ -57,11 +57,9 @@
                             <span class="title">Follow Us</span>
                             <!-- Social Network of the Page -->
                             <ul class="list-unstyled social-network">
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                 <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
                             </ul>
                             <!-- Social Network of the Page end -->
@@ -76,31 +74,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3>OUR TEAM</h3>
+                        <h3>Лидерский совет</h3>
                         <div class="holder">
-                            <div class="col wow fadeInLeft" data-wow-delay="0.4s">
-                                <div class="img-holder">
-                                    <a href="#">
-                                        <div style="
-                                            background-image: url('/new_design/images/leader_image/leader-1.jpg');
-                                            background-size: cover;
-                                            background-repeat: no-repeat;
-                                            background-position: center;
-                                            width: 280px;
-                                            height: 290px;
-                                        "></div>
-                                        <ul class="list-unstyled social-icon">
-                                            <li><i class="fa fa-twitter"></i></li>
-                                            <li><i class="fa fa-facebook"></i></li>
-                                            <li><i class="fa fa-linkedin"></i></li>
-                                        </ul>
-                                    </a>
-                                </div>
-                                <div class="mt-txt">
-                                    <h4><a href="#">Жаныл ҢУРХОЖЕВА </a></h4>
-                                    <span class="sub-title">г. Алматы / КАЗАХСТАН </span>
-                                </div>
-                            </div>
                             <div class="col wow fadeInLeft" data-wow-delay="0.4s">
                                 <div class="img-holder">
                                     <a href="#">
@@ -121,6 +96,29 @@
                                 </div>
                                 <div class="mt-txt">
                                     <h4><a href="#">Майя АЙТКУЛОВА</a></h4>
+                                    <span class="sub-title">г. Алматы / КАЗАХСТАН </span>
+                                </div>
+                            </div>
+                            <div class="col wow fadeInLeft" data-wow-delay="0.4s">
+                                <div class="img-holder">
+                                    <a href="#">
+                                        <div style="
+                                            background-image: url('/new_design/images/leader_image/leader-1.jpg');
+                                            background-size: cover;
+                                            background-repeat: no-repeat;
+                                            background-position: center;
+                                            width: 280px;
+                                            height: 290px;
+                                        "></div>
+                                        <ul class="list-unstyled social-icon">
+                                            <li><i class="fa fa-twitter"></i></li>
+                                            <li><i class="fa fa-facebook"></i></li>
+                                            <li><i class="fa fa-linkedin"></i></li>
+                                        </ul>
+                                    </a>
+                                </div>
+                                <div class="mt-txt">
+                                    <h4><a href="#">Жаныл ҢУРХОЖЕВА </a></h4>
                                     <span class="sub-title">г. Алматы / КАЗАХСТАН </span>
                                 </div>
                             </div>

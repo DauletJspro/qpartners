@@ -272,6 +272,7 @@ Route::group([
     Route::resource('product', 'ProductController');
     Route::resource('category', 'CategoryController');
     Route::resource('brand', 'BrandController');
+    Route::resource('representative', 'RepresentativeController');
 });
 
 /******* Main page *******/
