@@ -200,7 +200,7 @@ class OnlineController extends Controller
                     $operation->money = $cash;
                     $operation->operation_id = 1;
                     $operation->operation_type_id = 22;
-                    $operation->operation_comment = $cash . '$';
+                    $operation->operation_comment = sprintf('Cash Back. %s $ Уровень - %s', $cash, $counter);
                     $operation->save();
                 }
 
