@@ -15,7 +15,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
-                        <h1>Администарция</h1>
+                        <h1>Администрация</h1>
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
                                 {{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}

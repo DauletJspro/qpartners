@@ -7648,7 +7648,7 @@ a:hover {
     display: inline-block;
 }
 
-.mt-detail-sec .block.cart .txt span span #total_price .fa,  .mt-detail-sec .block.cart .txt span span #total_price_kzt .fa{
+.mt-detail-sec .block.cart .txt span span #total_price .fa, .mt-detail-sec .block.cart .txt span span #total_price_kzt .fa {
     font-size: 18px;
 }
 
@@ -11342,6 +11342,10 @@ a:hover {
     font-weight: 600;
 }
 
+.representative {
+    font-size: 18px !important;
+}
+
 .mt-about-sec h2 {
     font-size: 30px;
     line-height: 33px;
@@ -12017,7 +12021,7 @@ a:hover {
     vertical-align: middle;
 }
 
-#mt-main > section.mt-detail-sec.toppadding-zero > div.container > div > div > div > div > div > form > div.row > div:nth-child(1) > div > div > button{
+#mt-main > section.mt-detail-sec.toppadding-zero > div.container > div > div > div > div > div > form > div.row > div:nth-child(1) > div > div > button {
     border: 1.5px solid lightgrey;
     height: 100%;
     font-size: 1.4rem;

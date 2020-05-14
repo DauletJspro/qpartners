@@ -57,12 +57,14 @@ class RepresentativeController extends Controller
         $validator = Validator::make($request->all(), [
             'city_id' => 'required',
             'full_name' => 'required|min:5',
-            'phone_number' => 'required',
+            'phone_number' => 'required|min:5',
+            'whatsapp' => 'min:5',
         ], $messages);
 
 
         $representative = new Representative();
         $representative->fill($request->all());
+        $representative->is_active = isset($request->is_active) ? 1 : 0;
         if ($representative->save()) {
             return redirect('admin/representative');
         }
@@ -87,9 +89,9 @@ class RepresentativeController extends Controller
      */
     public function edit($id)
     {
-        $faq = Faq::find($id);
+        $representative = Representative::find($id);
 
-        return view('admin.faqs.edit', ['faq' => $faq]);
+        return view('admin.representative.edit', ['representative' => $representative]);
     }
 
     /**
@@ -108,8 +110,10 @@ class RepresentativeController extends Controller
         ];
 
         $validator = Validator::make($request->all(), [
-            'answer' => 'required|min:5',
-            'question' => 'required|min:5',
+            'city_id' => 'required',
+            'full_name' => 'required|min:5',
+            'phone_number' => 'required|min:5',
+            'whatsapp' => 'min:5',
         ], $messages);
 
 
@@ -124,18 +128,17 @@ class RepresentativeController extends Controller
             $request->session()->flash('danger', $errorResults);
             return back();
         }
-        $faq = Faq::where(['id' => $id])->first();
+        $representative = Representative::where(['id' => $id])->first();
 
-        $faq->is_active = false;
+
+        $representative->is_active = false;
         if ($request->is_active) {
-            $faq->is_active = true;
+            $representative->is_active = true;
         }
-        $faq->answer = $request->answer;
-        $faq->question = $request->question;
-        $faq->order = $request->order;
-        if ($faq->save()) {
-            $request->session()->flash('success', 'Вы успешно изменили FAQ');
-            return redirect('admin/faq');
+        $representative->fill($request->all());
+        if ($representative->save()) {
+            $request->session()->flash('success', 'Вы успешно изменили представителя');
+            return redirect('admin/representative');
         }
 
     }
@@ -148,7 +151,7 @@ class RepresentativeController extends Controller
      */
     public function destroy($id)
     {
-        $faq = Faq::find($id);
-        $faq->delete();
+        $representative = Representative::find($id);
+        $representative->delete();
     }
 }

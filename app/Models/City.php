@@ -14,4 +14,10 @@ class City extends Model
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+
+
+    public function representatives()
+    {
+        return $this->hasMany('App\Models\Representative');
+    }
 }

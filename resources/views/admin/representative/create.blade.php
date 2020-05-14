@@ -30,20 +30,22 @@ $cities = Arr::pluck($cities, 'city_name_ru', 'city_id');
                         <div class="box-body">
                             {{ Form::open(['action' => ['Admin\RepresentativeController@store'], 'method' => 'POST']) }}
                             {{ Form::token() }}
-                            {{ Form::label('Выберите город', null, ['class' => 'control-label']) }}
-                            {{Form::select("city_id",$cities, null,
-                                 [
-                                    "class" => "form-group form-control",
-                                    "placeholder" => "Выберите город"
-                                 ])
-                             }}
+                            <div class="form-group">
+                                {{ Form::label('Выберите город', null, ['class' => 'control-label']) }}
+                                {{Form::select("city_id",$cities, null,
+                                     [
+                                        "class" => "form-group form-control",
+                                        "placeholder" => "Выберите город"
+                                     ])
+                                 }}
+                            </div>
                             <div class="form-group">
                                 {{ Form::label('ФИО', null, ['class' => 'control-label']) }}
                                 {{ Form::text('full_name',null, ['class' => 'form-control'])}}
                             </div>
                             <div class="form-group">
                                 {{ Form::label('Номер телефона', null, ['class' => 'control-label']) }}
-                                {{ Form::text('answer',null, ['class' => 'form-control'])}}
+                                {{ Form::text('phone_number',null, ['class' => 'form-control'])}}
                             </div>
                             <div class="form-group">
                                 {{ Form::label('Whatsapp номер', null, ['class' => 'control-label']) }}

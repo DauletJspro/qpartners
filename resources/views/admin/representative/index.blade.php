@@ -1,3 +1,12 @@
+<?php
+
+use Illuminate\Support\Arr;
+
+$cities = \App\Models\City::all();
+$cities = collect($cities);
+$cities = $cities->all();
+$cities = Arr::pluck($cities, 'city_name_ru', 'city_id');
+?>
 @extends('admin.layout.layout')
 
 @section('content')
@@ -37,7 +46,7 @@
                         @foreach($representatives as $representative)
                             <tr>
                                 <td>{{ $representative->id }}</td>
-                                <td><p>{{ $representative->city }}</p></td>
+                                <td><p>{{ $cities[$representative->city_id] }}</p></td>
                                 <td><p>{{ $representative->full_name }}</p></td>
                                 <td><p>{{ $representative->phone_number }}</p></td>
                                 <td><p>{{ $representative->whatsapp }}</p></td>

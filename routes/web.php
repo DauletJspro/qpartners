@@ -299,6 +299,7 @@ Route::group([
     Route::get('shop', 'ShopController@index')->name('shop.show');
     Route::get('basket', 'BasketController@show')->name('basket.show');
     Route::get('faq', 'FaqController@show')->name('faq.show');
+    Route::get('representative', 'RepresentativeController@show')->name('representative.show');
     Route::get('about_us/administration', 'AboutController@showCompanyAdministration');
     Route::get('about_us/guide', 'AboutController@showCompanyGuide');
     Route::get('about_us/leaders', 'AboutController@showCompanyLeaders');
