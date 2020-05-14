@@ -11,7 +11,8 @@
 @section('content')
     <main id="mt-main">
         <!-- Mt Content Banner of the Page -->
-        <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s" style="background-image: url(http://placehold.it/1920x205);">
+        <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"
+                 style="background-image: url(http://placehold.it/1920x205);">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
@@ -33,9 +34,24 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="txt">
-                            <h2>WHO WE ARE?</h2>
-                            <p>Morbi in erat malesuada, sollicitudin massa at, tristique nisl. Maecenas id eros scelerisque, vulputate tortor quis, efficitur arcu sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Umco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit sse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat <strong>Vestibulum sit amet metus euismod, condimentum lectus id, ultrices sem.</strong></p>
-                            <p>Fusce mattis nunc lacus, vulputate facilisis dui efficitur ut. Vestibulum sit amet metus euismod, condimentum lectus id, ultrices sem. Morbi in erat malesuada, sollicitudin massa at, </p>
+                            <h2>Лидеры </h2>
+                            <p>Если посмотреть, то можно увидеть, что за успехом каждой крупной компании стоят Лидеры,
+                                те люди, которые вложили душу в пути развития компании.
+                                Успешность любой компании напрямую зависит от Лидера и от его профессиональных качеств.
+                                Принимая эту ответственную роль лидер, делает первый шаг к успеху и доказывает свои
+                                Лидерские качества.
+                                Во многом масштабные преобразования в компании начинается с правильных действий Лидера
+                                или группы Лидеров.
+                                Главная задача Лидера это собрать профессиональную команду единомышленников в группу.
+                                Сейчас не время одиночек, а время больших и сильных команд.
+                                Чем слаженнее и активнее выполняет свои функции Лидер, тем быстрее развивается команда и
+                                соответственно компания.
+                                Другими словами Лидер является не просто человеком, который делает все на пути развития
+                                компании, в тоже время он является и лицом этой компании.
+                                Ниже Вы можете ознакомиться с Лидерами компании Qyran Partners Club, которые внесли
+                                большой вклад в развитие компании.
+                                Пришло Ваше время, стать настоящим Лидером и занять почетное место в компании!
+                            </p>
                         </div>
                         <div class="mt-follow-holder">
                             <span class="title">Follow Us</span>
@@ -62,11 +78,17 @@
                     <div class="col-xs-12">
                         <h3>OUR TEAM</h3>
                         <div class="holder">
-                            <!-- col of the Page -->
                             <div class="col wow fadeInLeft" data-wow-delay="0.4s">
                                 <div class="img-holder">
                                     <a href="#">
-                                        <img src="http://placehold.it/280x290" alt="CLARA WOODEN">
+                                        <div style="
+                                            background-image: url('/new_design/images/leader_image/leader-1.jpg');
+                                            background-size: cover;
+                                            background-repeat: no-repeat;
+                                            background-position: center;
+                                            width: 280px;
+                                            height: 290px;
+                                        "></div>
                                         <ul class="list-unstyled social-icon">
                                             <li><i class="fa fa-twitter"></i></li>
                                             <li><i class="fa fa-facebook"></i></li>
@@ -75,16 +97,21 @@
                                     </a>
                                 </div>
                                 <div class="mt-txt">
-                                    <h4><a href="#">CLARA WOODEN</a></h4>
-                                    <span class="sub-title">DESIGNER</span>
+                                    <h4><a href="#">Жаныл ҢУРХОЖЕВА </a></h4>
+                                    <span class="sub-title">г. Алматы / КАЗАХСТАН </span>
                                 </div>
                             </div>
-                            <!-- col of the Page end -->
-                            <!-- col of the Page -->
                             <div class="col wow fadeInLeft" data-wow-delay="0.4s">
                                 <div class="img-holder">
                                     <a href="#">
-                                        <img src="http://placehold.it/280x290" alt="JOHN WICK">
+                                        <div style="
+                                            background-image: url('/new_design/images/leader_image/leader-2.jpg');
+                                            background-size: cover;
+                                            background-repeat: no-repeat;
+                                            background-position: center;
+                                            width: 280px;
+                                            height: 290px;
+                                        "></div>
                                         <ul class="list-unstyled social-icon">
                                             <li><i class="fa fa-twitter"></i></li>
                                             <li><i class="fa fa-facebook"></i></li>
@@ -93,16 +120,21 @@
                                     </a>
                                 </div>
                                 <div class="mt-txt">
-                                    <h4><a href="#">JOHN WICK</a></h4>
-                                    <span class="sub-title">FOUNDER</span>
+                                    <h4><a href="#">Майя АЙТКУЛОВА</a></h4>
+                                    <span class="sub-title">г. Алматы / КАЗАХСТАН </span>
                                 </div>
                             </div>
-                            <!-- col of the Page end -->
-                            <!-- col of the Page -->
-                            <div class="col wow fadeInRight" data-wow-delay="0.4s">
+                            <div class="col wow fadeInLeft" data-wow-delay="0.4s">
                                 <div class="img-holder">
                                     <a href="#">
-                                        <img src="http://placehold.it/280x290" alt="HARRY KANE">
+                                        <div style="
+                                            background-image: url('/new_design/images/leader_image/leader-3.jpeg');
+                                            background-size: cover;
+                                            background-repeat: no-repeat;
+                                            background-position: center;
+                                            width: 280px;
+                                            height: 290px;
+                                        "></div>
                                         <ul class="list-unstyled social-icon">
                                             <li><i class="fa fa-twitter"></i></li>
                                             <li><i class="fa fa-facebook"></i></li>
@@ -111,82 +143,39 @@
                                     </a>
                                 </div>
                                 <div class="mt-txt">
-                                    <h4><a href="#">HARRY KANE</a></h4>
-                                    <span class="sub-title">DESIGNER</span>
+                                    <h4><a href="#">Кокул МУСАЕВА </a></h4>
+                                    <span class="sub-title">г. Бишкек / КЫРГЫЗСТАН </span>
+                                </div>
+                            </div>
+                            <div class="col wow fadeInLeft" data-wow-delay="0.4s">
+                                <div class="img-holder">
+                                    <a href="#">
+                                        <div style="
+                                            background-image: url('/new_design/images/leader_image/leader-4.jpeg');
+                                            background-size: cover;
+                                            background-repeat: no-repeat;
+                                            background-position: center;
+                                            width: 280px;
+                                            height: 290px;
+                                        "></div>
+                                        <ul class="list-unstyled social-icon">
+                                            <li><i class="fa fa-twitter"></i></li>
+                                            <li><i class="fa fa-facebook"></i></li>
+                                            <li><i class="fa fa-linkedin"></i></li>
+                                        </ul>
+                                    </a>
+                                </div>
+                                <div class="mt-txt">
+                                    <h4><a href="#">Мейрам КОЖАБЕРГЕНОВ</a></h4>
+                                    <span class="sub-title">г. Алматы / КАЗАХСТАН </span>
                                 </div>
                             </div>
 
-                            <div class="col wow fadeInLeft" data-wow-delay="0.4s">
-                                <div class="img-holder">
-                                    <a href="#">
-                                        <img src="http://placehold.it/280x290" alt="CLARA WOODEN">
-                                    </a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="mt-workspace-sec wow fadeInUp" data-wow-delay="0.4s">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h2>OUR WORKSPACE</h2>
-                    </div>
-                </div>
-            </div>
-            <ul class="list-unstyled work-slider">
-                <li>
-                    <div class="img-holder">
-                        <img src="http://placehold.it/545x545" alt="image description">
-                    </div>
-                    <div class="img-holder">
-                        <div class="coll1">
-                            <img src="http://placehold.it/245x310" alt="image description">
-                        </div>
-                        <div class="coll2">
-                            <img src="http://placehold.it/385x310" alt="image description">
-                        </div>
-                        <div class="coll3">
-                            <img src="http://placehold.it/640x220" alt="image description">
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="img-holder">
-                        <img src="http://placehold.it/545x545" alt="image description">
-                    </div>
-                    <div class="img-holder">
-                        <div class="coll1">
-                            <img src="http://placehold.it/245x310" alt="image description">
-                        </div>
-                        <div class="coll2">
-                            <img src="http://placehold.it/385x310" alt="image description">
-                        </div>
-                        <div class="coll3">
-                            <img src="http://placehold.it/640x220" alt="image description">
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="img-holder">
-                        <img src="http://placehold.it/545x545" alt="image description">
-                    </div>
-                    <div class="img-holder">
-                        <div class="coll1">
-                            <img src="http://placehold.it/245x310" alt="image description">
-                        </div>
-                        <div class="coll2">
-                            <img src="http://placehold.it/385x310" alt="image description">
-                        </div>
-                        <div class="coll3">
-                            <img src="http://placehold.it/640x220" alt="image description">
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </section>
     </main>
 @endsection

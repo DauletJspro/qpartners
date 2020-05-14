@@ -18,8 +18,8 @@
                         <h1>Администарция</h1>
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
-{{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
-{{--                                <li>About Us</li>--}}
+                                {{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
+                                {{--                                <li>About Us</li>--}}
                             </ul>
                         </nav>
                     </div>
@@ -70,13 +70,21 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3>OUR TEAM</h3>
+                        <h3>Администарция</h3>
                         <div class="holder">
-                            <!-- col of the Page -->
                             <div class="col wow fadeInLeft" data-wow-delay="0.4s">
                                 <div class="img-holder">
                                     <a href="#">
-                                        <img src="http://placehold.it/280x290" alt="CLARA WOODEN">
+                                        <div style="
+                                        background-image: url('/new_design/images/managers/manager-3.jpg');
+                                        background-size: cover;
+                                        background-repeat: no-repeat;
+                                        background-position: center;
+                                        width: 280px;
+                                        height: 290px;
+                                        ">
+
+                                        </div>
                                         <ul class="list-unstyled social-icon">
                                             <li><i class="fa fa-twitter"></i></li>
                                             <li><i class="fa fa-facebook"></i></li>
@@ -85,16 +93,23 @@
                                     </a>
                                 </div>
                                 <div class="mt-txt">
-                                    <h4><a href="#">CLARA WOODEN</a></h4>
-                                    <span class="sub-title">DESIGNER</span>
+                                    <h4><a href="#">Марат МАУЛЕН </a></h4>
+                                    <span class="sub-title">Основатель и Президент компании Qazaq International Holding</span>
                                 </div>
                             </div>
-                            <!-- col of the Page end -->
-                            <!-- col of the Page -->
                             <div class="col wow fadeInLeft" data-wow-delay="0.4s">
                                 <div class="img-holder">
                                     <a href="#">
-                                        <img src="http://placehold.it/280x290" alt="JOHN WICK">
+                                        <div style="
+                                        background-image: url('/new_design/images/managers/manager-2.jpg');
+                                        background-size: cover;
+                                        background-repeat: no-repeat;
+                                        background-position: center;
+                                        width: 280px;
+                                        height: 290px;
+                                        ">
+
+                                        </div>
                                         <ul class="list-unstyled social-icon">
                                             <li><i class="fa fa-twitter"></i></li>
                                             <li><i class="fa fa-facebook"></i></li>
@@ -103,16 +118,23 @@
                                     </a>
                                 </div>
                                 <div class="mt-txt">
-                                    <h4><a href="#">JOHN WICK</a></h4>
-                                    <span class="sub-title">FOUNDER</span>
+                                    <h4><a href="#">Жанар Ермаханқызы </a></h4>
+                                    <span class="sub-title">Генеральный директор компании Qyran Partners Club</span>
                                 </div>
                             </div>
-                            <!-- col of the Page end -->
-                            <!-- col of the Page -->
-                            <div class="col wow fadeInRight" data-wow-delay="0.4s">
+                            <div class="col wow fadeInLeft" data-wow-delay="0.4s">
                                 <div class="img-holder">
                                     <a href="#">
-                                        <img src="http://placehold.it/280x290" alt="HARRY KANE">
+                                        <div style="
+                                        background-image: url('/new_design/images/managers/manager-1.jpg');
+                                        background-size: cover;
+                                        background-repeat: no-repeat;
+                                        background-position: center;
+                                        width: 280px;
+                                        height: 290px;
+                                        ">
+
+                                        </div>
                                         <ul class="list-unstyled social-icon">
                                             <li><i class="fa fa-twitter"></i></li>
                                             <li><i class="fa fa-facebook"></i></li>
@@ -121,20 +143,10 @@
                                     </a>
                                 </div>
                                 <div class="mt-txt">
-                                    <h4><a href="#">HARRY KANE</a></h4>
-                                    <span class="sub-title">DESIGNER</span>
+                                    <h4><a href="#">Асылжан Торехан </a></h4>
+                                    <span class="sub-title">Генеральный директор компании Natural Market</span>
                                 </div>
                             </div>
-                            <!-- col of the Page end -->
-                            <!-- col of the Page -->
-                            <div class="col wow fadeInLeft" data-wow-delay="0.4s">
-                                <div class="img-holder">
-                                    <a href="#">
-                                        <img src="http://placehold.it/280x290" alt="CLARA WOODEN">
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- col of the Page end -->
                         </div>
                     </div>
                 </div>

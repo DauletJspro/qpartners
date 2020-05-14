@@ -285,7 +285,7 @@ class PacketController extends Controller
                 ->where('user_packet.user_id', Auth::user()->user_id)
                 ->where('user_packet.is_active', 1)
                 ->where('upgrade_type', '=', $packet->upgrade_type)
-                ->sum('user_packet.packet_price');
+                ->sum('packet.packet_price');
         }
 
 
@@ -650,7 +650,7 @@ class PacketController extends Controller
             $packet_old_price = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
                 ->where('user_id', $userPacket->user_id)
                 ->where('user_packet.is_active', 1)
-                ->sum('user_packet.packet_price');
+                ->sum('packet.packet_price');
 
 //            $share_old_price = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
 //                ->where('user_id', $userPacket->user_id)
