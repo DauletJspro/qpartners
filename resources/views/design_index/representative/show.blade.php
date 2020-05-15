@@ -74,8 +74,11 @@
                                 <div id="collapse{{$city->city_id}}" class="panel-collapse collapse" role="tabpanel"
                                      aria-labelledby="heading{{$city->city_id}}">
                                     <div class="panel-body">
-                                        <?php $subCounter = 0;?>
-                                        @foreach($city->representatives as $representative)
+                                        <?php
+                                        $subCounter = 0;
+                                        $representatives = \App\Models\Representative::where(['city_id' => $city->city_id])->get();
+                                        ?>
+                                        @foreach($representatives as $representative)
                                             <?php $subCounter++; ?>
                                             <div class="container" style="margin-top: 1rem;">
                                                 <div class="row">
@@ -95,12 +98,14 @@
                                                             </li>
                                                             <li>
                                                                 <strong class="representative">
-                                                                    <i class="fa fa-whatsapp"></i>  &emsp;{{$representative->whatsapp}}
+                                                                    <i class="fa fa-whatsapp"></i>
+                                                                    &emsp;{{$representative->whatsapp}}
                                                                 </strong>
                                                             </li>
                                                             <li>
                                                                 <strong class="representative">
-                                                                    <i class="fa fa-instagram"></i>  &emsp;{{$representative->instagram}}
+                                                                    <i class="fa fa-instagram"></i>
+                                                                    &emsp;{{$representative->instagram}}
                                                                 </strong>
                                                             </li>
                                                         </ul>
