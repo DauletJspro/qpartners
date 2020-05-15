@@ -15,11 +15,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
-                        <h1>ABOUT US</h1>
+                        <h1>Руководство компании</h1>
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
-                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>
-                                <li>About Us</li>
+{{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
+{{--                                <li>About Us</li>--}}
                             </ul>
                         </nav>
                     </div>

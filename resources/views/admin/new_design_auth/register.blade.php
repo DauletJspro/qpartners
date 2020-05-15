@@ -30,15 +30,17 @@
     </div>
     <main id="mt-main">
         <section class="mt-contact-banner"
-                 style="background-image: url('/new_design/images/sign_in.png'); background-size: contain; background-repeat: no-repeat;">
+                 {{--                 style="background-image: url('/new_design/images/sign_in.png'); background-size: contain; background-repeat: no-repeat;"--}}
+                 style="background-color: lightgrey" ;
+        >
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
                         <h1>Регистрация</h1>
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
-                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>
-                                <li>register</li>
+{{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
+{{--                                <li>register</li>--}}
                             </ul>
                         </nav>
                     </div>
@@ -57,9 +59,11 @@
                                         <h1>Регистрация</h1>
                                         <p>Еще нету аккаунта?</p>
                                     </header>
-                                    <div class="col-md-12">
-                                        <p style="color:red">@if(isset($error)){{$error}}@endif</p>
-                                    </div>
+                                    @if(isset($error))
+                                        <div class="alert alert-danger">
+                                            <p style="color:red">{{$error}}</p>
+                                        </div>
+                                    @endif
                                     <form method="post" action="/register">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="row">
@@ -97,10 +101,8 @@
                                                        placeholder="Повторите пароль"/>
                                             </div>
                                         </div>
-                                        <div class="box">
-                                            <a href="#" class="help">Помошь?</a>
-                                        </div>
-                                        <button type="submit" class="btn btn-danger btn-type1">Зарегистрироватся
+                                        <br>
+                                        <button type="submit" class="btn btn-danger btn-type1">Зарегистрироваться
                                         </button>
                                     </form>
                                     <header>
