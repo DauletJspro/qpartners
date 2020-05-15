@@ -104,21 +104,25 @@ class IndexController extends Controller
     {
         $gallery = Slider::where('is_show', 1)
             ->orderBy('slider_id')
-            ->paginate(9);
+            ->paginate(6);
 
-        return view('index.index.gallery',
+        $videos = Video::where('is_show', 1)
+            ->orderBy('video_id')
+            ->paginate(3);
+
+
+        return view('design_index.gallery.index',
             [
                 'menu' => 'gallery',
-                'gallery' => $gallery
+                'gallery' => $gallery,
+                'videos' => $videos,
             ]
         );
     }
 
     public function video(Request $request)
     {
-        $video = Video::where('is_show', 1)
-            ->orderBy('video_id')
-            ->paginate(9);
+
 
         return view('index.index.video',
             [

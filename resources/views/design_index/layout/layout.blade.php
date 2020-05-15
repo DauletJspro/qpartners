@@ -55,14 +55,17 @@
 <script src="/notify/notify.min.js"></script>
 
 
-
 @yield('js')
 <script>
     function addItemToBasket(tag_object) {
         var method = $(tag_object).data('method');
         var item_id = $(tag_object).data('item-id');
         var user_id = $(tag_object).data('user-id');
-        ajax(method, item_id, user_id);
+        if (user_id) {
+            ajax(method, item_id, user_id);
+        } else {
+            window.location.href = 'http://local.qpartners.club/kz/login';
+        }
     }
 
 

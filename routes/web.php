@@ -290,7 +290,8 @@ Route::group([
     'namespace' => 'Index',
 ], function () {
     Route::get('/', 'IndexController@index');
-    Route::get('gallery', 'IndexController@gallery');
+    Route::get('gallery', 'IndexController@gallery')->name('gallery.show');
+    Route::get('gallery-detail/{id}', 'IndexController@galleryDetail')->name('gallery-detail.show');
     Route::get('city', 'IndexController@getCityListByCountry');
     Route::get('video', 'IndexController@video');
     Route::get('contact', 'IndexController@contact')->name('contact.show');
