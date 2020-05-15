@@ -86,7 +86,8 @@
                                                         <strong class="representative">{{$subCounter .'&emsp;'.  $representative->full_name}}</strong>
                                                     </div>
                                                     <div class="col-sm-4">
-{{--                                                        <strong class="representative">{{'г. ' .  $representative->city ? $representative->city->city_name_ru : 'NULL'}}</strong>--}}
+                                                        <?php $city = \App\Models\City::where(['city_id' => $representative->city_id])->first(); ?>
+                                                        <strong class="representative">{{'г. ' .  $city ? $city->city_name_ru : 'NULL'}}</strong>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <ul style="list-style: none;">

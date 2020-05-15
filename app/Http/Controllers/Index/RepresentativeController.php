@@ -20,7 +20,6 @@ class RepresentativeController extends Controller
         }, $representatives);
         $cities = array_unique($cities);
 
-
         $cities = City::whereIn('city_id', $cities)->get();
 
 
