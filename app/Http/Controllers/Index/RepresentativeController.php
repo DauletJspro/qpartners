@@ -23,7 +23,9 @@ class RepresentativeController extends Controller
 
         $cities = City::whereIn('city_id', $cities)->get();
 
-        return view('design_index.representative.show', ['cities' => $cities]);
+        var_dump($cities);
+
+//        return view('design_index.representative.show', ['cities' => $cities]);
 
     }
 }
