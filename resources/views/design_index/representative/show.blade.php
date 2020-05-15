@@ -73,47 +73,47 @@
                                 </div>
                                 <div id="collapse{{$city->city_id}}" class="panel-collapse collapse" role="tabpanel"
                                      aria-labelledby="heading{{$city->city_id}}">
-                                    <div class="panel-body">
-                                        <?php
-                                        $subCounter = 0;
-                                        $representatives = \App\Models\Representative::where(['city_id' => $city->city_id])->get();
-                                        ?>
-                                        @foreach($representatives as $representative)
-                                            <?php $subCounter++; ?>
-                                            <div class="container" style="margin-top: 1rem;">
-                                                <div class="row">
-                                                    <div class="col-sm-4">
-                                                        <strong class="representative">{{$subCounter .'&emsp;'.  $representative->full_name}}</strong>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <strong class="representative">{{'г. ' .  $representative->city ? $representative->city->city_name_ru : 'NULL'}}</strong>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <ul style="list-style: none;">
-                                                            <li>
-                                                                <strong class="representative">
-                                                                    <i class="fa fa-phone"></i>
-                                                                    &emsp; {{$representative->phone_number}}
-                                                                </strong>
-                                                            </li>
-                                                            <li>
-                                                                <strong class="representative">
-                                                                    <i class="fa fa-whatsapp"></i>
-                                                                    &emsp;{{$representative->whatsapp}}
-                                                                </strong>
-                                                            </li>
-                                                            <li>
-                                                                <strong class="representative">
-                                                                    <i class="fa fa-instagram"></i>
-                                                                    &emsp;{{$representative->instagram}}
-                                                                </strong>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
+{{--                                    <div class="panel-body">--}}
+{{--                                        <?php--}}
+{{--                                        $subCounter = 0;--}}
+{{--                                        $representatives = \App\Models\Representative::where(['city_id' => $city->city_id])->get();--}}
+{{--                                        ?>--}}
+{{--                                        @foreach($representatives as $representative)--}}
+{{--                                            <?php $subCounter++; ?>--}}
+{{--                                            <div class="container" style="margin-top: 1rem;">--}}
+{{--                                                <div class="row">--}}
+{{--                                                    <div class="col-sm-4">--}}
+{{--                                                        <strong class="representative">{{$subCounter .'&emsp;'.  $representative->full_name}}</strong>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="col-sm-4">--}}
+{{--                                                        <strong class="representative">{{'г. ' .  $representative->city ? $representative->city->city_name_ru : 'NULL'}}</strong>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="col-sm-4">--}}
+{{--                                                        <ul style="list-style: none;">--}}
+{{--                                                            <li>--}}
+{{--                                                                <strong class="representative">--}}
+{{--                                                                    <i class="fa fa-phone"></i>--}}
+{{--                                                                    &emsp; {{$representative->phone_number}}--}}
+{{--                                                                </strong>--}}
+{{--                                                            </li>--}}
+{{--                                                            <li>--}}
+{{--                                                                <strong class="representative">--}}
+{{--                                                                    <i class="fa fa-whatsapp"></i>--}}
+{{--                                                                    &emsp;{{$representative->whatsapp}}--}}
+{{--                                                                </strong>--}}
+{{--                                                            </li>--}}
+{{--                                                            <li>--}}
+{{--                                                                <strong class="representative">--}}
+{{--                                                                    <i class="fa fa-instagram"></i>--}}
+{{--                                                                    &emsp;{{$representative->instagram}}--}}
+{{--                                                                </strong>--}}
+{{--                                                            </li>--}}
+{{--                                                        </ul>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        @endforeach--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
                         @endforeach
