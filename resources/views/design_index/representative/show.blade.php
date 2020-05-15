@@ -58,21 +58,21 @@
                 <div class="col-xs-12">
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <?php $counter = 0; ?>
-                        @foreach($cities as $city)
-                            <?php $counter++; ?>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="heading{{$city->city_id}}">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse"
-                                           data-parent="#accordion"
-                                           href="#collapse{{$city->city_id}}" aria-expanded="false"
-                                           aria-controls="collapse{{$city->city_id}}">
-                                            {{ sprintf('%s &emsp; г. %s', $counter,$city->city_name_ru)}}
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapse{{$city->city_id}}" class="panel-collapse collapse" role="tabpanel"
-                                     aria-labelledby="heading{{$city->city_id}}">
+{{--                        @foreach($cities as $city)--}}
+{{--                            <?php $counter++; ?>--}}
+{{--                            <div class="panel panel-default">--}}
+{{--                                <div class="panel-heading" role="tab" id="heading{{$city->city_id}}">--}}
+{{--                                    <h4 class="panel-title">--}}
+{{--                                        <a class="collapsed" role="button" data-toggle="collapse"--}}
+{{--                                           data-parent="#accordion"--}}
+{{--                                           href="#collapse{{$city->city_id}}" aria-expanded="false"--}}
+{{--                                           aria-controls="collapse{{$city->city_id}}">--}}
+{{--                                            {{ sprintf('%s &emsp; г. %s', $counter,$city->city_name_ru)}}--}}
+{{--                                        </a>--}}
+{{--                                    </h4>--}}
+{{--                                </div>--}}
+{{--                                <div id="collapse{{$city->city_id}}" class="panel-collapse collapse" role="tabpanel"--}}
+{{--                                     aria-labelledby="heading{{$city->city_id}}">--}}
 {{--                                    <div class="panel-body">--}}
 {{--                                        <?php--}}
 {{--                                        $subCounter = 0;--}}
@@ -114,9 +114,9 @@
 {{--                                            </div>--}}
 {{--                                        @endforeach--}}
 {{--                                    </div>--}}
-                                </div>
-                            </div>
-                        @endforeach
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        @endforeach--}}
                     </div>
                 </div>
             </div>
