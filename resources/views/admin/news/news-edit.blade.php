@@ -35,11 +35,13 @@
                                        </div>
                                        <div class="form-group">
                                            <label>Краткий текст (Рус)</label>
-                                           <textarea name="news_desc_ru" class="form-control">{!! $row->news_desc_ru  !!}</textarea>
+                                           <textarea name="news_desc_ru" class="form-control">{!! $row->news_desc_ru  !!}
+                                           </textarea>
                                        </div>
                                        <div class="form-group">
-                                           <label>Текст (Рус)</label>
-                                           <textarea name="news_text_ru" class="form-control text_editor">{!! $row->news_text_ru  !!}</textarea>
+                                           <label>Описание (Рус)</label>
+                                           <textarea value="{!!  $row->full_description_ru !!}" type="text" rows="15" class="form-control" name="full_description_ru" placeholder="Введите">
+                                           </textarea>
                                        </div>
                                        <div class="form-group">
                                            <label>Название (Каз)</label>
@@ -50,20 +52,25 @@
                                            <textarea name="news_desc_kz" class="form-control">{!! $row->news_desc_kz  !!}</textarea>
                                        </div>
                                        <div class="form-group">
-                                           <label>Текст (Каз)</label>
-                                           <textarea name="news_text_kz" class="form-control text_editor">{!! $row->news_text_kz  !!}</textarea>
+                                           <label>Описание (Каз)</label>
+                                           <textarea value="{!!  $row->full_description_kz !!}" type="text" rows="15" class="form-control" name="full_description_kz" placeholder="Введите">
+                                           </textarea>
                                        </div>
+{{--                                       <div class="form-group">--}}
+{{--                                           <label>Название (Анг)</label>--}}
+{{--                                           <input value="{{ $row->news_name_en }}" type="text" class="form-control" name="news_name_en" placeholder="Введите">--}}
+{{--                                       </div>--}}
+{{--                                       <div class="form-group">--}}
+{{--                                           <label>Краткий текст (Анг)</label>--}}
+{{--                                           <textarea name="news_desc_en" class="form-control">{!! $row->news_desc_en  !!}</textarea>--}}
+{{--                                       </div>--}}
+{{--                                       <div class="form-group">--}}
+{{--                                           <label>Текст (Анг)</label>--}}
+{{--                                           <textarea name="news_text_en" class="form-control text_editor">{!! $row->news_text_en  !!}</textarea>--}}
+{{--                                       </div>--}}
                                        <div class="form-group">
-                                           <label>Название (Анг)</label>
-                                           <input value="{{ $row->news_name_en }}" type="text" class="form-control" name="news_name_en" placeholder="Введите">
-                                       </div>
-                                       <div class="form-group">
-                                           <label>Краткий текст (Анг)</label>
-                                           <textarea name="news_desc_en" class="form-control">{!! $row->news_desc_en  !!}</textarea>
-                                       </div>
-                                       <div class="form-group">
-                                           <label>Текст (Анг)</label>
-                                           <textarea name="news_text_en" class="form-control text_editor">{!! $row->news_text_en  !!}</textarea>
+                                           <label for="">Показывать на главной странице</label>
+
                                        </div>
                                        <div class="form-group">
                                            <label>Дата</label>

@@ -13,9 +13,9 @@ class NewsController extends Controller
 {
     public function getNewsList()
     {
-        $row = News::where('is_show',1)->orderBy('news_date','desc')->paginate(4);
+        $row = News::where('is_show', 1)->orderBy('news_date', 'desc')->paginate(4);
 
-        return  view('index.news.news',
+        return view('design_index.news.news-list',
             [
                 'menu' => 'news',
                 'row' => $row,
@@ -25,16 +25,14 @@ class NewsController extends Controller
         );
     }
 
-    public function getNewsById($url)
+    public function getNewsById($id)
     {
-        $id = Helpers::getIdFromUrl($url);
-
-        $row = News::where('is_show',1)->where('news_id',$id)->first();
+        $row = News::where('is_show', 1)->where('news_id', $id)->first();
 
         if($row == null)
             return response()->view('errors.404', [], 404);
-        
-        return  view('index.index.news-detail',
+
+        return  view('design_index.news.news-detail',
             [
                 'menu' => 'news',
                 'news' => $row,

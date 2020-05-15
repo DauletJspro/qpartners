@@ -19,24 +19,24 @@ class NewsController extends Controller
 
     public function index(Request $request)
     {
-        $row = News::where(function($query) use ($request){
-            $query->where('news_name_kz','like','%' .$request->search .'%')
-                ->orWhere('news_name_ru','like','%' .$request->search .'%')
-                ->orWhere('news_name_en','like','%' .$request->search .'%');
+        $row = News::where(function ($query) use ($request) {
+            $query->where('news_name_kz', 'like', '%' . $request->search . '%')
+                ->orWhere('news_name_ru', 'like', '%' . $request->search . '%')
+                ->orWhere('news_name_en', 'like', '%' . $request->search . '%');
         })
-            ->orderBy('news_id','desc')
+            ->orderBy('news_id', 'desc')
             ->select('news.*',
                 DB::raw('DATE_FORMAT(news.created_at,"%d.%m.%Y %H:%i") as date'));
 
-        if(isset($request->active))
-            $row->where('is_show',$request->active);
-        else $row->where('is_show','1');
+        if (isset($request->active))
+            $row->where('is_show', $request->active);
+        else $row->where('is_show', '1');
 
-        $row->where('news.parent_id',$request->parent_id);
-        
+        $row->where('news.parent_id', $request->parent_id);
+
         $row = $row->paginate(20);
 
-        return  view('admin.news.news',[
+        return view('admin.news.news', [
             'row' => $row,
             'request' => $request
         ]);
@@ -47,7 +47,7 @@ class NewsController extends Controller
         $row = new News();
         $row->news_image = '/media/default.jpg';
         $row->news_date = date("d.m.Y H:i");
-        return  view('admin.news.news-edit', [
+        return view('admin.news.news-edit', [
             'title' => 'Добавить новость',
             'row' => $row
         ]);
@@ -62,9 +62,9 @@ class NewsController extends Controller
         if ($validator->fails()) {
             $messages = $validator->errors();
             $error = $messages->all();
-            return  view('admin.news.news-edit', [
+            return view('admin.news.news-edit', [
                 'title' => 'Добавить новость',
-                'row' => (object) $request->all(),
+                'row' => (object)$request->all(),
                 'error' => $error[0]
             ]);
         }
@@ -81,41 +81,44 @@ class NewsController extends Controller
         $news->news_desc_en = $request->news_desc_en;
         $news->news_image = $request->news_image;
         $news->news_redirect = $request->news_redirect;
+        $news->full_description_ru = $request->full_description_ru;
+        $news->full_description_kz = $request->full_description_kz;
 
         $url = '';
-        if($request->parent_id == '') $request->parent_id = null;
+        if ($request->parent_id == '') $request->parent_id = null;
         else {
-            $level = News::where('news_id',$request->parent_id)->first();
+            $level = News::where('news_id', $request->parent_id)->first();
             $level = $level->parent_level + 1;
             $news->parent_level = $level;
-            $url = '?parent_id=' .$request->parent_id;
+            $url = '?parent_id=' . $request->parent_id;
         }
         $news->parent_id = $request->parent_id;
         $timestamp = strtotime($request->news_date);
         $news->news_date = date("Y-m-d H:i", $timestamp);
         $news->save();
-        
-        return redirect('/admin/news'.$url);
+
+        return redirect('/admin/news' . $url);
     }
 
     public function edit($id)
     {
         $row = News::select('news.*',
-                DB::raw('DATE_FORMAT(news.news_date,"%d.%m.%Y %H:%i") as news_date'))
-            ->where('news.news_id',$id)
+            DB::raw('DATE_FORMAT(news.news_date,"%d.%m.%Y %H:%i") as news_date'))
+            ->where('news.news_id', $id)
             ->first();
-     
-        return  view('admin.news.news-edit', [
+
+        return view('admin.news.news-edit', [
             'title' => 'Изменить новость',
             'row' => $row
         ]);
     }
 
-    public function show(Request $request,$id){
+    public function show(Request $request, $id)
+    {
 
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'news_name_ru' => 'required',
@@ -124,9 +127,9 @@ class NewsController extends Controller
         if ($validator->fails()) {
             $messages = $validator->errors();
             $error = $messages->all();
-            return  view('admin.news.news-edit', [
+            return view('admin.news.news-edit', [
                 'title' => 'Изменить новость',
-                'row' => (object) $request->all(),
+                'row' => (object)$request->all(),
                 'error' => $error[0]
             ]);
         }
@@ -141,16 +144,18 @@ class NewsController extends Controller
         $news->news_desc_ru = $request->news_desc_ru;
         $news->news_desc_kz = $request->news_desc_kz;
         $news->news_desc_en = $request->news_desc_en;
+        $news->full_description_ru = $request->full_description_ru;
+        $news->full_description_kz = $request->full_description_kz;
         $news->news_image = $request->news_image;
         $news->news_redirect = $request->news_redirect;
         $timestamp = strtotime($request->news_date);
         $news->news_date = date("Y-m-d H:i", $timestamp);
         $news->save();
-        
-        if($request->parent_id == '') $url = '';
-        else $url = '?parent_id=' .$request->parent_id;
-        
-        return redirect('/admin/news'.$url);
+
+        if ($request->parent_id == '') $url = '';
+        else $url = '?parent_id=' . $request->parent_id;
+
+        return redirect('/admin/news' . $url);
     }
 
     public function destroy($id)
@@ -159,7 +164,8 @@ class NewsController extends Controller
         $news->delete();
     }
 
-    public function changeIsShow(Request $request){
+    public function changeIsShow(Request $request)
+    {
         $news = News::find($request->id);
         $news->is_show = $request->is_show;
         $news->save();

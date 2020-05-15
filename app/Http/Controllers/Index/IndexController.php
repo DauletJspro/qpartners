@@ -134,7 +134,7 @@ class IndexController extends Controller
             ->orderBy('news_date', 'desc')
             ->paginate(6);
 
-        return view('index.index.news',
+        return view('design_index.news.news-list',
             [
                 'menu' => 'news',
                 'news' => $news

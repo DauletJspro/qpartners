@@ -279,7 +279,7 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                                                                                               aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
-                                        <li><a href="contact-us.html">Новости компании</a></li>
+                                        <li><a href="/news">Новости компании</a></li>
                                         <li><a href="contact-us2.html">Новости команды</a></li>
                                         <li><a href="contact-us2.html">Фото</a></li>
                                         <li><a href="contact-us2.html">Видео</a></li>

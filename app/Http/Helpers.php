@@ -47,9 +47,9 @@ class Helpers {
 
     public static function getIdFromUrl($url){
         $url = strrev($url);
-        $id = strstr($url,'u',true);
+        $id = strstr($url,'/',true);
         $id = strrev($id);
-        return $id;
+        return $url;
     }
 
     public static function getUserId(){

@@ -12,15 +12,13 @@
 @section('content')
     <main id="mt-main">
         <!-- Mt Content Banner of the Page -->
-        <section class="mt-contact-banner" style="background-image: url(http://placehold.it/1920x205);">
+        <section class="mt-contact-banner">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
-                        <h1></h1>
+                        <h1>СПИСОК ПРЕДСТАВИТЕЛЕЙ</h1>
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
-                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>
-                                <li>FAQ's</li>
                             </ul>
                         </nav>
                     </div>
