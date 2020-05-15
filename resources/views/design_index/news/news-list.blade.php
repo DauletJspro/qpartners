@@ -12,19 +12,19 @@
 @section('content')
     <main id="mt-main">
         <section class="mt-contact-banner style4 wow fadeInUp" data-wow-delay="0.4s"
-                 style="background-image: url(http://placehold.it/1920x205);">
+                 style="background-color: lightgrey;">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
-                        <h1>BLOG LIST SIDEBAR</h1>
+                        <h1>Новости</h1>
                         <!-- Breadcrumbs of the Page -->
-                        <nav class="breadcrumbs">
-                            <ul class="list-unstyled">
-                                <li><a href="index.html">Home <i class="fa fa-angle-right"></i></a></li>
-                                <li><a href="#">Blog <i class="fa fa-angle-right"></i></a></li>
-                                <li>Category</li>
-                            </ul>
-                        </nav>
+{{--                        <nav class="breadcrumbs">--}}
+{{--                            <ul class="list-unstyled">--}}
+{{--                                <li><a href="index.html">Home <i class="fa fa-angle-right"></i></a></li>--}}
+{{--                                <li><a href="#">Blog <i class="fa fa-angle-right"></i></a></li>--}}
+{{--                                <li>Category</li>--}}
+{{--                            </ul>--}}
+{{--                        </nav>--}}
                         <!-- Breadcrumbs of the Page end -->
                     </div>
                 </div>
