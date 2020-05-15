@@ -156,7 +156,6 @@
                     <p>© <a href="index.html">Q|Partners</a> - Все права защищены</p>
                 </div>
                 <div class="col-xs-12 col-sm-6 text-right">
-                    <img src="" alt="">
                 </div>
             </div>
         </div>

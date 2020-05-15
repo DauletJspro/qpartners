@@ -19,8 +19,8 @@
                         <h1>Войти</h1>
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
-{{--                                <li><a href="index.html"> <i class="fa fa-angle-right"></i></a></li>--}}
-{{--                                <li></li>--}}
+                                {{--                                <li><a href="index.html"> <i class="fa fa-angle-right"></i></a></li>--}}
+                                {{--                                <li></li>--}}
                             </ul>
                         </nav>
                     </div>
@@ -87,7 +87,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </section>
 @endsection

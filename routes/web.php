@@ -293,7 +293,7 @@ Route::group([
     Route::get('gallery', 'IndexController@gallery');
     Route::get('city', 'IndexController@getCityListByCountry');
     Route::get('video', 'IndexController@video');
-    Route::get('contact', 'IndexController@contact');
+    Route::get('contact', 'IndexController@contact')->name('contact.show');
     Route::post('contact', 'IndexController@sendMessage');
     Route::get('news', 'IndexController@news');
     Route::get('shop', 'ShopController@index')->name('shop.show');

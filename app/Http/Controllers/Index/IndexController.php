@@ -144,7 +144,7 @@ class IndexController extends Controller
 
     public function contact(Request $request)
     {
-        return view('index.index.contact',
+        return view('design_index.index.contact',
             [
                 'menu' => 'contact'
             ]

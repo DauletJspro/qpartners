@@ -291,7 +291,7 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                                                                                       aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
-                                        <li><a href="contact-us.html">Головной офис</a></li>
+                                        <li><a href="{{route('contact.show')}}">Головной офис</a></li>
                                         <li><a href="{{route('representative.show')}}">Представители</a></li>
                                     </ul>
                                 </div>
