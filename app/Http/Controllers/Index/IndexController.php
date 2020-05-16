@@ -60,19 +60,21 @@ class IndexController extends Controller
         $popularProducts = Product::where(['is_popular' => true])->get();
         $brands = Brand::where(['is_show' => true])->get();
 
-        return view('design_index.index.index',
-            [
-                'menu' => 'index',
-                'news' => $news,
-                'project_list' => $project,
-                'user_share' => $user_share,
-                'user_count' => $user_count,
-                'products' => $products,
-                'popularProducts' => $popularProducts,
-                'brands' => $brands,
-                'standart_packet_count' => $standart_packet_count
-            ]
-        );
+        return view('design_index.index.coming-soon');
+
+//        return view('design_index.index.index',
+//            [
+//                'menu' => 'index',
+//                'news' => $news,
+//                'project_list' => $project,
+//                'user_share' => $user_share,
+//                'user_count' => $user_count,
+//                'products' => $products,
+//                'popularProducts' => $popularProducts,
+//                'brands' => $brands,
+//                'standart_packet_count' => $standart_packet_count
+//            ]
+//        );
     }
 
     public function showFile($url)

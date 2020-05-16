@@ -12418,8 +12418,9 @@ a:hover {
 }
 
 .coming-soon .mt-logo {
-    width: 140px;
+    width: 400px;
     margin: 0 auto 60px;
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .coming-soon .title {
