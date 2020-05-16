@@ -120,17 +120,17 @@ class IndexController extends Controller
         );
     }
 
-    public function video(Request $request)
+    public function galleryDetail($id)
     {
+        $item = Slider::where(['is_show' => 1])->where(['slider_id' => $id])->first();
+        $items = Slider::where(['is_show' => 1])->where('slider_id', '!=', $id)->get();
 
-
-        return view('index.index.video',
-            [
-                'menu' => 'gallery',
-                'video' => $video
-            ]
-        );
+        return view('design_index.gallery.detail', [
+            'item' => $item,
+            'items' => $items,
+        ]);
     }
+
 
     public function news(Request $request)
     {

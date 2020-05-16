@@ -63,7 +63,7 @@
                             @foreach($gallery as $item)
                                 <article class="post-blog wow fadeInLeft">
                                     <div class="img-holder" style=" position: relative;">
-                                        <a href="blog-right-sidebar.html">
+                                        <a href="{{route('gallery-detail.show', ['id' => $item->slider_id])}}">
                                             <div style="
                                                     background-image: url('{{$item->slider_image}}');
                                                     background-position: center;
