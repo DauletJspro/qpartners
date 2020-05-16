@@ -60,7 +60,7 @@ class IndexController extends Controller
         $popularProducts = Product::where(['is_popular' => true])->get();
         $brands = Brand::where(['is_show' => true])->get();
 
-        return view('design_index.index.coming-soon');
+//        return view('design_index.index.coming-soon');
 
 //        return view('design_index.index.index',
 //            [
