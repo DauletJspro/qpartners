@@ -636,11 +636,8 @@
                                         <div class="box">
                                             <div class="b1">
                                                 <div class="b2">
-                                                    {{--                                                    <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">--}}
                                                     <div style="background-position: center; background-size: cover; width: 215px; height: 215px; background-image: url('{{$product->product_image}}')">
-
                                                     </div>
-                                                    {{--                                                    </a>--}}
                                                     <span class="caption">
 															<span class="new">new</span>
 														</span>

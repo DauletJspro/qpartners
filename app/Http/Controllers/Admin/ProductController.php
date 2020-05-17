@@ -87,9 +87,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $row = Product::select('product.*')
-            ->where('product.product_id', $id)
-            ->first();
+        $row = Product::where(['product_id' =>$id])->first();
 
         return view('admin.product.product-edit', [
             'title' => 'Изменить продукт',

@@ -14,7 +14,7 @@ class Product extends Model
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-
+    
     const ITEM = [1 => 'Очищение', 2 => 'Восполнение', 3 => 'Укрепление', 4 => 'Профилактика'];
 
 
