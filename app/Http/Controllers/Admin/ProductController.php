@@ -87,10 +87,8 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $row = Product::where(['product_id' =>$id])->first();
+        $row = Product::where(['product_id' => $id])->first();
 
-        var_dump($row->is_popular);
-        die();
 
         return view('admin.product.product-edit', [
             'title' => 'Изменить продукт',
