@@ -75,7 +75,7 @@ $items = \App\Models\Product::ITEM;
                                             </div>
                                             <div class="form-group">
                                                 <div>
-                                                    {!! Form::checkbox('is_popular', 1, $row->is_popular) !!}
+                                                    {!! Form::checkbox('is_popular', 1, isset($row->is_popular) ? $row->is_popular : false) !!}
                                                     <label>Входит в категорию "Поулярные"</label>
                                                 </div>
                                                 <div>

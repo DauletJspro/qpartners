@@ -93,6 +93,8 @@ class ProductController extends Controller
             'title' => 'Изменить продукт',
             'row' => $row
         ]);
+
+        var_dump($row->is_popular);
     }
 
 
