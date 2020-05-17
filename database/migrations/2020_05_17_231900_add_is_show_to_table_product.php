@@ -14,7 +14,7 @@ class AddIsShowToTableProduct extends Migration
     public function up()
     {
         Schema::table('product', function (Blueprint $table) {
-            $table->tinyInteger('is_show')->default(0);
+            $table->tinyInteger('is_show');
         });
     }
 
