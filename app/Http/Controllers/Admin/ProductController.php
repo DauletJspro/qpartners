@@ -89,12 +89,14 @@ class ProductController extends Controller
     {
         $row = Product::where(['product_id' =>$id])->first();
 
+        var_dump($row->is_popular);
+        die();
+
         return view('admin.product.product-edit', [
             'title' => 'Изменить продукт',
             'row' => $row
         ]);
 
-        var_dump($row->is_popular);
     }
 
 
