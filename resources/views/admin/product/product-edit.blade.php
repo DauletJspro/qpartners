@@ -75,17 +75,17 @@ $items = \App\Models\Product::ITEM;
                                             </div>
                                             <div class="form-group">
                                                 <div>
-                                                    {!! Form::checkbox('is_popular', 1, isset($row->is_popular) ? $row->is_popular : false) !!}
+                                                    {!! Form::checkbox('is_popular', 1, (isset($row->is_popular) ? $row->is_popular : false)); !!}
                                                     <label>Входит в категорию "Поулярные"</label>
                                                 </div>
                                                 <div>
-                                                    {!! Form::checkbox('is_new', 1, $row->is_new) !!}
+                                                    {!! Form::checkbox('is_new', 1, isset($row->is_new) ? $row->is_new : false); !!}
                                                     <label>Входит в категорию "NEW"</label>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Выберите категорию</label>
-                                                {!! Form::select('category',$categories,$row->category_id ? $row->category_id : null,['class' => 'form-control', 'placeholder' => 'Выберите категорию']); !!}
+                                                {!! Form::select('category',$categories,(isset($row->category_id) ? $row->category_id : null),['class' => 'form-control', 'placeholder' => 'Выберите категорию']); !!}
                                             </div>
                                             <div class="form-group">
                                                 <label>Выберите назначение</label>

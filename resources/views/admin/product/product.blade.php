@@ -12,7 +12,7 @@
                         <a class="menu-tab active-page" href="/admin/brand">Все бренды</a>
                     </h3>
                     <div style="float: right;">
-                        <a href="/admin/product/create" >
+                        <a href="/admin/product/create">
                             <button class="btn btn-primary box-add-btn">Добавить товар</button>
                         </a>
                         <a href="/admin/category/create">
@@ -32,7 +32,10 @@
                             <th></th>
                             <th>Название</th>
                             <th>Цена</th>
-                            <th>Cash (%)</th>
+                            <th>Новый</th>
+                            <th>Популярный</th>
+                            <th>Категория</th>
+                            <th>Назначения</th>
                             <th>Балл</th>
                             <th>Краткое описание</th>
                             <th style="width: 15px"></th>
@@ -63,7 +66,20 @@
                                     тг)
                                 </td>
                                 <td>
-                                    {{ $val['product_cash']}}
+                                    <span class="badge"
+                                          style="background-color: {{ $row['is_new']  ? 'green' : 'red' }}">{{$row['is_new'] ? 'Да' : 'Нет'}}</span>
+                                </td>
+                                <td>
+                                    <span class="badge"
+                                          style="background-color: {{ $row['is_popular']  ? 'green' : 'red' }}">{{$row['is_popular'] ? 'Да' : 'Нет'}}</span>
+                                </td>
+                                <td>
+                                    <?php $category = \App\Models\Category::where(['id' => $row['category_id']])->first(); ?>
+                                    {{ $category ? $category->category_name : 'Не указано' }}
+                                </td>
+                                <td>
+                                    {{ $row['item_id'] ? \App\Models\Product::ITEM[$row['item_id']] :
+                                    'Не указано'}}
                                 </td>
                                 <td>
                                     {{ $val['ball'] }}

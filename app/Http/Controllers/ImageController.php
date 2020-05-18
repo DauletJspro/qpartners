@@ -21,6 +21,7 @@ class ImageController extends Controller
 {
     public function getImage(Request $request, $fileName)
     {
+
         $path = storage_path('app/image/'). $fileName;
 
         if(!File::exists($path)){

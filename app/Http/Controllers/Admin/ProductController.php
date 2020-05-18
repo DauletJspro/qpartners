@@ -45,6 +45,9 @@ class ProductController extends Controller
         $row = new Product();
         $row->product_image = '/media/default.jpg';
 
+        $row->is_new = 0;
+        $row->is_popular = 0;
+
         return view('admin.product.product-edit', [
             'title' => 'Добавить товар',
             'row' => $row
