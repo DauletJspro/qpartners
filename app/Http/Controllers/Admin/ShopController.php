@@ -102,6 +102,8 @@ class ShopController extends Controller
             ->orderBy('packet_id', 'desc')
             ->first();
 
+        var_dump($request);
+        die();
         return view('admin.shop.shop', [
             'row' => $request,
             'max_packet_user_number' => $max_packet_user_number
