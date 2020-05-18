@@ -12,7 +12,7 @@ class BrandController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('adminWebsite');
     }
 
     /**
@@ -65,7 +65,7 @@ class BrandController extends Controller
             return redirect('admin/brand/');
         }
     }
-    
+
     /**
      * Display the specified resource.
      *

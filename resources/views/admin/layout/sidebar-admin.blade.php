@@ -34,7 +34,7 @@
     </li>
     <li class="treeview">
         <a href="/admin/product">
-            <i href="fa fa-item"></i>
+            <i class="fa fa-tag"></i>
             <span>Продукты</span>
         </a>
     </li>
