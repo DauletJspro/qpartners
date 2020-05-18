@@ -145,4 +145,9 @@ class Packet extends Model
             'success' => $success,
         ];
     }
+
+    public function userPacket()
+    {
+        $this->hasMany('App\Models\UserPacket');
+    }
 }
