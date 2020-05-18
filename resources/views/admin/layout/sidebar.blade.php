@@ -208,6 +208,12 @@
                 <span>Учет</span>
             </a>
         </li>
+        <li>
+            <a href="/admin/representative">
+                <i class="fa fa-user"></i>
+                <span>Добавить представителей</span>
+            </a>
+        </li>
     @endif
     <li class="treeview">
         <a href="/admin/operation">
@@ -278,12 +284,7 @@
             <span>Сменить пароль</span>
         </a>
     </li>
-    <li>
-        <a href="/admin/representative">
-            <i class="fa fa-user"></i>
-            <span>Добавить представителей</span>
-        </a>
-    </li>
+
     <li class="treeview">
         <a href="/admin/faq">
             <i class="fa fa-question"></i>

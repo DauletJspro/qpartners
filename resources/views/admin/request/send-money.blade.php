@@ -18,16 +18,14 @@
                         <div class="form-group">
                             <label style="font-weight: 400; font-size: 18px">Ваша текущая сумма:
                                 <b>{{Auth::user()->user_money}} $</b>
-                                ({{Auth::user()->user_money * (\App\Models\Currency::where(['currency_id'  => \App\Models\Currency::DOLLAR])->first())->money}}
-                                тг) </label></br>
-                            {{--<label style="font-weight: 400; font-size: 18px">Активация за месяц: <b>{{$status->user_month_activation_money}}</b> ({{($status->user_month_activation_money * 300)}} тг) </label></br>--}}
-                            {{--<label style="font-weight: 400; font-size: 18px">Доступная сумма: <b>@if(Auth::user()->user_money - $status->user_month_activation_money > 0){{Auth::user()->user_money - $status->user_month_activation_money}} $</b> ({{(Auth::user()->user_money - $status->user_month_activation_money) * 400}} тг)@else 0$ @endif </label>--}}
+                                {{Auth::user()->user_money * (\App\Models\Currency::where(['currency_id'  => \App\Models\Currency::DOLLAR])->first())->money}}
+                                тг </label>
+                            </br>
                         </div>
                         <div class="form-group">
                             <label>Укажите сумму ($)</label>
                             <input id="money" min="0" onchange="changeMoney()" required value="" type="numeric"
                                    class="form-control" name="money" placeholder="Введите">
-                            {{--<p style="font-family: Tahoma; font-weight: 700; margin-top: 9px; font-size: 13px; color: rgb(253, 58, 53);">Комиссия 10%: <span id="money_label" style="color: black"></span></p>--}}
                         </div>
                         <div class="form-group">
                             <label>Напишите логин получателя</label>
