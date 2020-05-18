@@ -531,6 +531,8 @@ class PacketController extends Controller
         $inviter_order = 1;
         $userPacket = UserPacket::find($userPacketId);
         $actualPackets = [Packet::CLASSIC, Packet::ELITE, Packet::PREMIUM, Packet::VIP2, Packet::VIP];
+        $actualStatuses = [UserStatus::CONSULTANT, UserStatus::AGENT, UserStatus::MANAGER, UserStatus::BRONZE_MANAGER,
+            UserStatus::SILVER_MANAGER, UserStatus::SAPPHIRE_DIRECTOR, UserStatus::DIAMOND_DIRECTOR,UserStatus::GOLD_MANAGER];
 
         if (!$userPacket) {
             $result['message'] = 'Ошибка';
@@ -565,8 +567,7 @@ class PacketController extends Controller
                 });
                 $inviterPacketId = max($inviterPacketId->all());
                 $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
-
-                if ($inviter_order == 1 && in_array($inviter->status_id, $actualPackets)) {
+                if ($inviter_order == 1 && in_array($inviter->status_id, $actualStatuses)) {
                     $bonusPercentage = (20 / 100);
                     $bonus = $packetPrice * $bonusPercentage;
                 } elseif (($inviter_order == 2 || $inviter_order == 3) && $this->hasNeedPackets($packet->packet_id, $inviterPacketId)) {
