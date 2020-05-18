@@ -3,8 +3,9 @@
         <a href="/admin/contact?active=0">
             <i class="fa fa-envelope-o"></i>
             <span>Обратная связь</span>
-            <?php $feedback_count = \App\Models\Contact::where('is_show','0')->count();?>
-            <span class="label label-primary pull-right" id="feedback_count" style="@if($feedback_count == 0) display: none; @endif background-color: rgb(253, 58, 53) ! important;">{{$feedback_count}}</span>
+            <?php $feedback_count = \App\Models\Contact::where('is_show', '0')->count();?>
+            <span class="label label-primary pull-right" id="feedback_count"
+                  style="@if($feedback_count == 0) display: none; @endif background-color: rgb(253, 58, 53) ! important;">{{$feedback_count}}</span>
         </a>
     </li>
     <li class="treeview">
@@ -29,6 +30,12 @@
         <a href="/admin/project">
             <i class="fa fa-file-text"></i>
             <span>Проекты</span>
+        </a>
+    </li>
+    <li class="treeview">
+        <a href="/admin/product">
+            <i href="fa fa-item"></i>
+            <span>Продукты</span>
         </a>
     </li>
     <li class="treeview">
@@ -74,16 +81,16 @@
         </a>
     </li>
     <li class="treeview">
-    <a href="/admin/password">
-      <i class="fa fa-key"></i>
-      <span>Сменить пароль</span>
-    </a>
+        <a href="/admin/password">
+            <i class="fa fa-key"></i>
+            <span>Сменить пароль</span>
+        </a>
     </li>
 
     <li class="treeview">
-    <a href="/logout">
-        <i class="fa fa-sign-out"></i>
-        <span>Выйти</span>
-    </a>
+        <a href="/logout">
+            <i class="fa fa-sign-out"></i>
+            <span>Выйти</span>
+        </a>
     </li>
 </ul>
