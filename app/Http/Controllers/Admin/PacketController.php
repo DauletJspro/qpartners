@@ -243,17 +243,17 @@ class PacketController extends Controller
         $packet_old_price = 0;
 
 
-        if ($packet->condition_minimum_status_id > 0) {
-            $status = UserStatus::where('user_status_id', Auth::user()->status_id)->first();
-            $status_condition = UserStatus::where('user_status_id', $packet->condition_minimum_status_id)->first();
-            if ($status == null || $status->sort_num < $status_condition->sort_num) {
-                $result['message'] = 'У вас должно быть статус - ' . $status_condition->user_status_name . " и выше";
-                $result['status'] = false;
-                return response()->json($result);
-            }
-        }
+//        if ($packet->condition_minimum_status_id > 0) {
+//            $status = UserStatus::where('user_status_id', Auth::user()->status_id)->first();
+//            $status_condition = UserStatus::where('user_status_id', $packet->condition_minimum_status_id)->first();
+//            if ($status == null || $status->sort_num < $status_condition->sort_num) {
+//                $result['message'] = 'У вас должно быть статус - ' . $status_condition->user_status_name . " и выше";
+//                $result['status'] = false;
+//                return response()->json($result);
+//            }
+//        }
 
-        if ($packet->is_upgrade_packet == 1) {
+        if (in_array($packet->is_upgrade_packet, [1, 3])) {
             $is_check = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
                 ->where('user_id', Auth::user()->user_id)
                 ->where('is_active', '=', '0')
@@ -280,11 +280,9 @@ class PacketController extends Controller
                     return response()->json($result);
                 }
             }
-
             $packet_old_price = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
                 ->where('user_packet.user_id', Auth::user()->user_id)
                 ->where('user_packet.is_active', 1)
-                ->where('upgrade_type', '=', $packet->upgrade_type)
                 ->sum('packet.packet_price');
         }
 
@@ -296,7 +294,8 @@ class PacketController extends Controller
             return response()->json($result);
         }
 
-        if (Auth::user()->user_money < $packet->packet_price - $packet_old_price) {
+
+        if (Auth::user()->user_money <= $packet->packet_price - $packet_old_price) {
             $result['message'] = 'У вас не хватает баланса чтобы купить этот пакет';
             $result['status'] = false;
             return response()->json($result);
@@ -532,7 +531,7 @@ class PacketController extends Controller
         $userPacket = UserPacket::find($userPacketId);
         $actualPackets = [Packet::CLASSIC, Packet::ELITE, Packet::PREMIUM, Packet::VIP2, Packet::VIP];
         $actualStatuses = [UserStatus::CONSULTANT, UserStatus::AGENT, UserStatus::MANAGER, UserStatus::BRONZE_MANAGER,
-            UserStatus::SILVER_MANAGER, UserStatus::SAPPHIRE_DIRECTOR, UserStatus::DIAMOND_DIRECTOR,UserStatus::GOLD_MANAGER];
+            UserStatus::SILVER_MANAGER, UserStatus::SAPPHIRE_DIRECTOR, UserStatus::DIAMOND_DIRECTOR, UserStatus::GOLD_MANAGER];
 
         if (!$userPacket) {
             $result['message'] = 'Ошибка';
