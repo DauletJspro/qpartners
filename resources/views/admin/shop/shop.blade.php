@@ -11,7 +11,7 @@
         <div class="col-lg-12 col-xs-12">
             <h2 class="page-header">Новые пакеты (товары) </h2>
         </div>
-{{--                    {!! view('admin.shop.packet-list-loop',['row' => $row, 'max_packet_user_number' => $max_packet_user_number,'packet_type' => 'item']) !!}--}}
+                    {!! view('admin.shop.packet-list-loop',['row' => $row, 'max_packet_user_number' => $max_packet_user_number,'packet_type' => 'item']) !!}
 
     </div>
     <div class="modal-dialog" id="shop_modal">
