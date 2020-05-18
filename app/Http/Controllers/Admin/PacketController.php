@@ -172,7 +172,7 @@ class PacketController extends Controller
             }
         }
 
-        if ($packet->is_upgrade_packet == 1) {
+        if (in_array($packet->is_upgrade_packet, [1,3])) {
             $is_check = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
                 ->where('user_id', Auth::user()->user_id)
                 ->where('user_packet.is_active', '=', '0')
@@ -202,7 +202,6 @@ class PacketController extends Controller
 
             $packet_old_price = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
                 ->where('user_packet.user_id', Auth::user()->user_id)
-                ->where('upgrade_type', '=', $packet->upgrade_type)
                 ->where('user_packet.is_active', 1)
                 ->sum('user_packet.packet_price');
         }
@@ -283,7 +282,7 @@ class PacketController extends Controller
             $packet_old_price = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
                 ->where('user_packet.user_id', Auth::user()->user_id)
                 ->where('user_packet.is_active', 1)
-                ->sum('packet.packet_price');
+                ->sum('user_packet.packet_price');
         }
 
 
@@ -322,7 +321,7 @@ class PacketController extends Controller
         $operation->save();
 
         $users = Users::find(Auth::user()->user_id);
-        $rest_mooney = $users->user_money - $packet->packet_price - $packet_old_price;
+        $rest_mooney = $users->user_money - ($packet->packet_price - $packet_old_price);
         $users->user_money = $rest_mooney;
         $users->save();
 
