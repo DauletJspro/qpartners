@@ -11,4 +11,6 @@ class Currency extends Model
 {
     protected $table = 'currency';
     protected $primaryKey = 'currency_id';
+
+    const DOLLAR = 1;
 }
