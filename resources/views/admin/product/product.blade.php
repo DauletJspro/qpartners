@@ -58,34 +58,34 @@
                                     <div class="clear-float"></div>
                                 </td>
                                 <td>
-                                    {{ $val['product_name_ru']}}
+                                    {{ $val->product_name_ru}}
                                 </td>
                                 <td>
-                                    {{ $val['product_price']}}$
+                                    {{ $val->product_price}}$
                                     ({{round($val->product_price * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
                                     тг)
                                 </td>
                                 <td>
                                     <span class="badge"
-                                          style="background-color: {{ $row['is_new']  ? 'green' : 'red' }}">{{$row['is_new'] ? 'Да' : 'Нет'}}</span>
+                                          style="background-color: {{ $val->is_new   ? 'green' : 'red' }}">{{$val->is_new  ? 'Да' : 'Нет'}}</span>
                                 </td>
                                 <td>
                                     <span class="badge"
-                                          style="background-color: {{ $row['is_popular']  ? 'green' : 'red' }}">{{$row['is_popular'] ? 'Да' : 'Нет'}}</span>
+                                          style="background-color: {{ $val->is_popular ? 'green' : 'red' }}">{{$val->is_popular ? 'Да' : 'Нет'}}</span>
                                 </td>
                                 <td>
-                                    <?php $category = \App\Models\Category::where(['id' => $row['category_id']])->first(); ?>
-                                    {{ $category ? $category->category_name : 'Не указано' }}
+                                    <?php $category = \App\Models\Category::where(['id' => $val->category_id])->first(); ?>
+                                    <strong>{{ isset($category) && !empty($category) ? $category->name : 'Не указано' }}</strong>
                                 </td>
                                 <td>
-                                    {{ $row['item_id'] ? \App\Models\Product::ITEM[$row['item_id']] :
+                                    {{ $val->item_id ? \App\Models\Product::ITEM[$val->item_id] :
                                     'Не указано'}}
                                 </td>
                                 <td>
-                                    {{ $val['ball'] }}
+                                    {{ $val->ball }}
                                 </td>
                                 <td>
-                                    {{ $val['product_desc_ru']}}
+                                    {{ $val->product_desc_ru}}
                                 </td>
                                 <td style="text-align: center">
                                     <a href="/admin/product/{{ $val->product_id }}/edit">

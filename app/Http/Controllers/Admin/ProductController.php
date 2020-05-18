@@ -19,20 +19,7 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        $row = Product::where(function ($query) use ($request) {
-            $query->where('product_name_kz', 'like', '%' . $request->search . '%')
-                ->orWhere('product_name_ru', 'like', '%' . $request->search . '%')
-                ->orWhere('product_name_en', 'like', '%' . $request->search . '%');
-        })
-            ->orderBy('product_id', 'desc')
-            ->select('product.*',
-                DB::raw('DATE_FORMAT(product.created_at,"%d.%m.%Y %H:%i") as date'));
-
-        if (isset($request->active))
-            $row->where('is_show', $request->active);
-        else $row->where('is_show', '1');
-
-        $row = $row->paginate(20);
+        $row = Product::paginate(20);
 
         return view('admin.product.product', [
             'row' => $row,
