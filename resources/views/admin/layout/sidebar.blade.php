@@ -214,6 +214,12 @@
                 <span>Добавить представителей</span>
             </a>
         </li>
+            <li class="treeview">
+                <a href="/admin/faq">
+                    <i class="fa fa-question"></i>
+                    <span>Часта задаваемые вопросы</span>
+                </a>
+            </li>
     @endif
     <li class="treeview">
         <a href="/admin/operation">
@@ -285,12 +291,7 @@
         </a>
     </li>
 
-    <li class="treeview">
-        <a href="/admin/faq">
-            <i class="fa fa-question"></i>
-            <span>Часта задаваемые вопросы</span>
-        </a>
-    </li>
+
 
     <li class="treeview">
         <a href="/logout">

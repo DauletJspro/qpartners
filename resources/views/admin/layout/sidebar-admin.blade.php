@@ -87,6 +87,12 @@
         </a>
     </li>
     <li class="treeview">
+        <a href="/admin/faq">
+            <i class="fa fa-question"></i>
+            <span>Часта задаваемые вопросы</span>
+        </a>
+    </li>
+    <li class="treeview">
         <a href="/admin/password">
             <i class="fa fa-key"></i>
             <span>Сменить пароль</span>
