@@ -68,6 +68,25 @@ $items = \App\Models\Product::ITEM;
                                                 <textarea class="form-control"
                                                           name="product_desc_ru">{{ $row->product_desc_ru }}</textarea>
                                             </div>
+
+                                            <div class="form-group">
+                                                <label>Полное описание</label>
+                                                <textarea rows="10" class="form-control"
+                                                          name="full_description_ru">{{ $row->full_description_ru }}</textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Информация</label>
+                                                <textarea rows="5" class="form-control"
+                                                          name="information">{{ $row->information }}</textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Состав</label>
+                                                <textarea rows="5" class="form-control"
+                                                          name="composition">{{ $row->composition }}</textarea>
+                                            </div>
+
                                             <div class="form-group">
                                                 <label>Порядковый номер сортировки</label>
                                                 <input value="{{ $row->sort_num }}" type="text" class="form-control"

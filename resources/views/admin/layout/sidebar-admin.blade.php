@@ -80,6 +80,12 @@
             <span>Администратор</span>
         </a>
     </li>
+    <li>
+        <a href="/admin/representative">
+            <i class="fa fa-user"></i>
+            <span>Добавить представителей</span>
+        </a>
+    </li>
     <li class="treeview">
         <a href="/admin/password">
             <i class="fa fa-key"></i>
