@@ -13,7 +13,6 @@
     <!-- include the site stylesheet -->
     <link rel="stylesheet" href="/new_design/css/icon-fonts.css">
 
-
     <link rel="stylesheet" href="/new_design/css/main.css">
     <link rel="stylesheet" href="/new_design/css/responsive.css">
 
