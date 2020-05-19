@@ -22,10 +22,10 @@
                                 <div class="texts" style="background-color:transparent; padding: 2rem 4rem -5rem 4rem;">
                                     <strong class="title">жилищная программа</strong>
                                     <h3 style="font-weight: bold;word-break:keep-all;">Купи <br> <span
-                                                style="word-break: keep-all;">жилье за 200$</span></h3>
+                                                style="word-break: keep-all;">жилье за 400$</span></h3>
                                     <p>Собственное жилье в рассрочку, без процентов, без комиссии, без переплат и без
                                         подтверждения дохода</p>
-                                    <span class="price-add">$ 200.00</span>
+                                    <span class="price-add">$ 400.00</span>
                                     <a href="product-detail.html" class="btn-shop">
                                         <span><strong style="color: white;">Купить сейчас</strong></span>
                                         <i class="fa fa-angle-right"
@@ -42,6 +42,7 @@
                                             style="font-size: 130%; font-weight: 500;">Автопрограмма</strong>
                                     <h3><span style="font-size:140%;">Забирай</span> <br> <span
                                                 style="font-size: 90%;word-break:keep-all;">свой автомобиль</span>
+                                        <br> <span style="font-size: 130%; font-weightword-break:keep-all;"> за 200$</span>
                                     </h3>
                                 </div>
                                 <a href="product-detail.html" class="btn-shop">
@@ -305,7 +306,7 @@
                         </div>
                     </div>
                     <div class="mt-patners wow fadeInUp" data-wow-delay="0.4s">
-                        <h2 class="heading">Наши <span style="font-weight: bold;">бренды</span></h2>
+                        <h2 class="heading">Наши бренды</h2>
                         <div class="patner-slider">
                             @foreach($brands as $brand)
                                 <div class="slide">

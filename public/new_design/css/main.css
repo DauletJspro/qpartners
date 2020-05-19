@@ -1954,16 +1954,30 @@ a:hover {
 
 
 #nav > ul > li:nth-child(2) > div > div > div > div > div.col-4.col-sm-4.col-md-4.xol-lg-4.col-xl-4 > div {
-    width: 100% !important;
+    width: 95% !important;
 }
 
 #nav > ul > li:nth-child(2) > div > div > div.mt-f-box.size-67 > .mt-col-3 {
     width: 33.3%;
 }
 
+#tab1 > div > div > div > div.slide.slick-slide.slick-current.slick-active > div > div.txt > p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
 #nav .mt-dropmenu .mt-col-3.promo {
     width: 30%;
-    padding: 0 0 0 1.9%;
+    padding: 0px 0px 0px 35px;
+}
+#mt-main > div > div > div > div.mt-producttabs.style4.wow.fadeInUp > div{
+    margin-top: 2.5rem;
+}
+#mt-main > div > div > div > div.mt-producttabs.style3.wow.fadeInUp > div{
+    margin-top: 1.5rem;
 }
 
 #nav .mt-dropmenu .mt-col-3.coll5 {
@@ -2324,7 +2338,8 @@ a:hover {
 .mt-side-widget form .help:hover {
     color: #ff6060;
 }
-#mt-main > section.mt-detail-sec.toppadding-zero > div > div > div > div > form > .input{
+
+#mt-main > section.mt-detail-sec.toppadding-zero > div > div > div > div > form > .input {
     border: 1.5px solid lightgrey;
     height: 4rem;
     font-size: 1.4rem;
@@ -2332,6 +2347,7 @@ a:hover {
     font-family: "Montserrat", sans-serif;
     margin-top: 1.2rem;
 }
+
 .mt-side-widget .input {
     border: 1.5px solid lightgrey;
     height: 4rem;
