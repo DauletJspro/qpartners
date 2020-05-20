@@ -1961,7 +1961,11 @@ a:hover {
     width: 33.3%;
 }
 
-#tab1 > div > div > div > div.slide.slick-slide > div > div.txt > p{
+#tab1 > div > div > div > div.slide.slick-slide > div > div.txt > p,
+#tab2 > div > div > div > div.slide.slick-slide > div > div.txt > p,
+#tab3 > div > div > div > div.slide.slick-slide > div > div.txt > p,
+#tab4 > div > div > div > div.slide.slick-slide > div > div.txt > p
+{
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
