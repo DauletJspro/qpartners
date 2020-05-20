@@ -12,4 +12,27 @@ class Review extends Model
 
     const PRODUCT_REVIEW = 1;
     const NEWS_REVIEW = 2;
+
+    public static function ratingCalculator($item_id, $review_type_id)
+    {
+        $rating = Review::where(['item_id' => $item_id])->where(['review_type_id' => $review_type_id])->get();
+
+
+        if (!count($rating)) {
+            return 0;
+        }
+        $rating = collect($rating)->all();
+        $rating = array_map(function ($item) {
+            return $item['rating'];
+        }, $rating);
+
+        $ratingSum = array_sum($rating);
+        $ratingCount = count($rating);
+
+        $rating = $ratingSum / $ratingCount;
+
+        return intval(round($rating));
+
+
+    }
 }

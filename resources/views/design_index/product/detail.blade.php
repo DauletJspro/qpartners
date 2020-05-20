@@ -36,7 +36,7 @@ $tab = (explode('tab=', URL::current()));
                             <div class="product-slider">
                                 <div class="slide">
                                     <div style="
-                                        background-image: url('{{$product->product_image}}');
+                                            background-image: url('{{$product->product_image}}');
                                             background-size: contain;
                                             background-position: center;
                                             background-repeat: no-repeat;
@@ -44,7 +44,7 @@ $tab = (explode('tab=', URL::current()));
                                             height: 490px;
                                             border: 1px solid lightgrey;
                                             border-radius: 5px;
-                                    ">
+                                            ">
 
                                     </div>
                                 </div>
@@ -63,10 +63,13 @@ $tab = (explode('tab=', URL::current()));
                             <!-- Rank Rating of the Page -->
                             <div class="rank-rating">
                                 <ul class="list-unstyled rating-list">
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                    @for($i = 0; $i <  5; $i++)
+                                        @if($i < \App\Models\Review::ratingCalculator($product->product_id, \App\Models\Review::PRODUCT_REVIEW))
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        @else
+                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                        @endif
+                                    @endfor
                                 </ul>
                                 <span class="total-price">Отзывы ({{count($reviews)}})</span>
                             </div>

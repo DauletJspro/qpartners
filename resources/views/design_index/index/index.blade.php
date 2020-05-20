@@ -218,10 +218,14 @@
                                                                 </div>
                                                             </a>
                                                             <ul class="mt-stars">
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
+                                                                @for($i = 0; $i<5;$i++)
+                                                                    @if($i < \App\Models\Review::ratingCalculator($product->product_id, \App\Models\Review::PRODUCT_REVIEW))
+                                                                        <li><i class="fa fa-star"></i></li>
+                                                                    @else
+                                                                        <li><i class="fa fa-star-o"></i></li>
+                                                                    @endif
+                                                                @endfor
+
                                                             </ul>
                                                             <ul class="links">
                                                                 <li>
@@ -434,13 +438,18 @@
                                                     <div style="background-position: center; background-size: cover; width: 215px; height: 215px; background-image: url('{{$product->product_image}}')">
                                                     </div>
                                                     <span class="caption">
-															<span class="new">new</span>
+                                                        @if($product->is_new)
+                                                            <span class="new">new</span>
+                                                        @endif
 														</span>
                                                     <ul class="mt-stars">
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        @for($i = 0; $i<5;$i++)
+                                                            @if($i < \App\Models\Review::ratingCalculator($product->product_id, \App\Models\Review::PRODUCT_REVIEW))
+                                                                <li><i class="fa fa-star"></i></li>
+                                                            @else
+                                                                <li><i class="fa fa-star-o"></i></li>
+                                                            @endif
+                                                        @endfor
                                                     </ul>
                                                     <ul class="links">
                                                         <li>

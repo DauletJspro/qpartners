@@ -6034,7 +6034,8 @@ a:hover {
 }
 
 .mt-product1 .mt-stars .fa {
-    color: #c8a760;
+    color: gold;
+    font-size: 120%;
 }
 
 .mt-product1 .mt-stars .fa-star-o {
@@ -6853,6 +6854,7 @@ a:hover {
 .mt-producttabs.style2 .mt-product1 .mt-stars {
     left: 20px;
     bottom: 1px;
+    padding-bottom: 20px;
 }
 
 .mt-producttabs.style2 .mt-product1 .links {
