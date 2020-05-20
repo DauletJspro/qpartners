@@ -58,8 +58,7 @@ class ReviewController extends Controller
         $review->item_id = $request->item_id;
         $review->review_type_id = $request->review_type_id;
         if ($review->save()) {
-//            return redirect('product/' . $id . '&tab=review');
-            return  back();
+            return redirect('product/' . $id . '&tab=review');
         };
 
 
