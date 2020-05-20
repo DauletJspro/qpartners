@@ -16,8 +16,6 @@ $tab = (explode('tab=', URL::current()));
     <meta name="keywords" content="Qpartners"/>
 
 @endsection
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 @section('content')
     <main id="mt-main">
         <!-- Mt Product Detial of the Page -->
@@ -30,15 +28,25 @@ $tab = (explode('tab=', URL::current()));
                             <!-- Comment List of the Page -->
                             <ul class="list-unstyled comment-list">
                                 <li><a href="#"><i class="fa fa-heart"></i>27</a></li>
-                                <li><a href="#"><i class="fa fa-comments"></i>12</a></li>
+                                <li><a href="#"><i class="fa fa-comments"></i>{{count($reviews)}}</a></li>
                                 <li><a href="#"><i class="fa fa-share-alt"></i>14</a></li>
                             </ul>
                             <!-- Comment List of the Page end -->
                             <!-- Product Slider of the Page -->
                             <div class="product-slider">
                                 <div class="slide">
-                                    <img src="{{$product->product_image}}" style="width: 610px; height: 490px;"
-                                         alt="image descrption">
+                                    <div style="
+                                        background-image: url('{{$product->product_image}}');
+                                            background-size: contain;
+                                            background-position: center;
+                                            background-repeat: no-repeat;
+                                            width: 610px;
+                                            height: 490px;
+                                            border: 1px solid lightgrey;
+                                            border-radius: 5px;
+                                    ">
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +68,7 @@ $tab = (explode('tab=', URL::current()));
                                     <li><a href="#"><i class="fa fa-star"></i></a></li>
                                     <li><a href="#"><i class="fa fa-star-o"></i></a></li>
                                 </ul>
-                                <span class="total-price">Отзывы (12)</span>
+                                <span class="total-price">Отзывы ({{count($reviews)}})</span>
                             </div>
                             <!-- Rank Rating of the Page end -->
                             <ul class="list-unstyled list">
@@ -100,7 +108,8 @@ $tab = (explode('tab=', URL::current()));
                         <ul class="mt-tabs text-center text-uppercase">
                             <li><a href="#tab1" class="{{!isset($tab[1]) ? 'active' : ''}}">Описание</a></li>
                             <li><a href="#tab2">Информация</a></li>
-                            <li><a href="#tab3" class="{{isset($tab[1]) && $tab[1] == 'review' ? 'active' : ''}}">Отзывы({{count($reviews)}})</a>
+                            <li><a href="#tab3" class="{{isset($tab[1]) && $tab[1] == 'review' ? 'active' : ''}}">Отзывы({{count($reviews)}}
+                                    )</a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -159,7 +168,7 @@ $tab = (explode('tab=', URL::current()));
                                         <h2>Добавить комментарий</h2>
 
                                         <div class="mt-row">
-                                            <label style="color: black;">Rating</label>
+                                            <label style="color: black;">Рейтинг</label>
                                             <div class="rating">
                                                 <input id="demo-1" type="radio" name="rating" value="1">
                                                 <label for="demo-1">1 star</label>
@@ -280,61 +289,3 @@ $tab = (explode('tab=', URL::current()));
         </div>
     </main>
 @endsection
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<style type="text/css">
-    /*
-        Use :not with impossible condition so inputs are only hidden
-        if pseudo selectors are supported. Otherwise the user would see
-        no inputs and no highlighted stars.
-    */
-    .rating input[type="radio"]:not(:nth-of-type(0)) {
-        /* hide visually */
-        border: 0;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px;
-    }
-
-    .rating [type="radio"]:not(:nth-of-type(0)) + label {
-        display: none;
-    }
-
-    label[for]:hover {
-        cursor: pointer;
-    }
-
-    .rating .stars label:before {
-        content: "★";
-    }
-
-    .stars label {
-        color: lightgray;
-        width: 20px !important;
-    }
-
-    .stars label:hover {
-        text-shadow: 0 0 1px #000;
-    }
-
-    .rating [type="radio"]:nth-of-type(1):checked ~ .stars label:nth-of-type(-n+1),
-    .rating [type="radio"]:nth-of-type(2):checked ~ .stars label:nth-of-type(-n+2),
-    .rating [type="radio"]:nth-of-type(3):checked ~ .stars label:nth-of-type(-n+3),
-    .rating [type="radio"]:nth-of-type(4):checked ~ .stars label:nth-of-type(-n+4),
-    .rating [type="radio"]:nth-of-type(5):checked ~ .stars label:nth-of-type(-n+5) {
-        color: orange;
-    }
-
-    .rating [type="radio"]:nth-of-type(1):focus ~ .stars label:nth-of-type(1),
-    .rating [type="radio"]:nth-of-type(2):focus ~ .stars label:nth-of-type(2),
-    .rating [type="radio"]:nth-of-type(3):focus ~ .stars label:nth-of-type(3),
-    .rating [type="radio"]:nth-of-type(4):focus ~ .stars label:nth-of-type(4),
-    .rating [type="radio"]:nth-of-type(5):focus ~ .stars label:nth-of-type(5) {
-        color: darkorange;
-    }
-</style>

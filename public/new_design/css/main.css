@@ -1964,8 +1964,7 @@ a:hover {
 #tab1 > div > div > div > div.slide.slick-slide > div > div.txt > p,
 #tab2 > div > div > div > div.slide.slick-slide > div > div.txt > p,
 #tab3 > div > div > div > div.slide.slick-slide > div > div.txt > p,
-#tab4 > div > div > div > div.slide.slick-slide > div > div.txt > p
-{
+#tab4 > div > div > div > div.slide.slick-slide > div > div.txt > p {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -1977,10 +1976,12 @@ a:hover {
     width: 30%;
     padding: 0px 0px 0px 35px;
 }
-#mt-main > div > div > div > div.mt-producttabs.style4.wow.fadeInUp > div{
+
+#mt-main > div > div > div > div.mt-producttabs.style4.wow.fadeInUp > div {
     margin-top: 2.5rem;
 }
-#mt-main > div > div > div > div.mt-producttabs.style3.wow.fadeInUp > div{
+
+#mt-main > div > div > div > div.mt-producttabs.style3.wow.fadeInUp > div {
     margin-top: 1.5rem;
 }
 
@@ -7172,7 +7173,7 @@ a:hover {
 .mt-product-detial {
     overflow: hidden;
     padding: 0 0 25px;
-    background: #f6f6f6;
+    /*background: #f6f6f6;*/
 }
 
 .mt-product-detial .slider {
@@ -7340,7 +7341,13 @@ a:hover {
 }
 
 .mt-product-detial .rank-rating .rating-list .fa-star {
-    color: #e6c376;
+    color: gold;
+    font-size: 130%;
+}
+
+.mt-product-detial .rank-rating .rating-list .fa-star-o {
+    color: gold;
+    font-size: 130%;
 }
 
 .mt-product-detial .rank-rating .total-price {
@@ -7393,6 +7400,9 @@ a:hover {
 
 .mt-product-detial .txt-wrap p {
     margin: 0 0 41px;
+    color: black;
+    font-size: 110%;
+    font-weight: 500;
 }
 
 .mt-product-detial .text-holder {
@@ -7433,10 +7443,10 @@ a:hover {
     float: left;
     text-transform: uppercase;
     font-family: "Montserrat", sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     margin: 0 32px 0 0;
     padding: 11px 0 0;
-    color: #a9a9a9;
+    color: grey;
 }
 
 .mt-product-detial .product-form select,
@@ -7448,7 +7458,7 @@ a:hover {
     padding: 0 0 0 20px;
     border-radius: 25px;
     outline: none;
-    border: none;
+    border: 1px solid grey;
     width: 72px;
     height: 42px;
     color: #a9a9a9;
@@ -7456,7 +7466,7 @@ a:hover {
 }
 
 .mt-product-detial .product-form button {
-    width: 173px;
+    width: auto;
     padding: 12px 10px 10px;
     text-align: center;
     text-transform: uppercase;
@@ -7470,7 +7480,7 @@ a:hover {
     border-radius: 25px;
     -webkit-transition: all .25s linear;
     transition: all .25s linear;
-    background: #ff8283;
+    background: #ff151d;
     color: #fff;
 }
 
@@ -7983,7 +7993,7 @@ a:hover {
 .product-detail-tab {
     color: #aaa;
     overflow: hidden;
-    padding: 74px 0 85px;
+    padding: 70px 0 85px;
     font: 300 16px/21px "Source Sans Pro", sans-serif;
 }
 
@@ -8017,6 +8027,7 @@ a:hover {
 
 .product-detail-tab p {
     margin: 0 0 20px;
+    color: black;
 }
 
 /*------------------------------------------------------------------
@@ -8042,8 +8053,8 @@ a:hover {
 
 .product-comment .mt-star {
     padding: 0;
-    color: #e6c376;
-    font-size: 14px;
+    color: gold;
+    font-size: 16px;
     overflow: hidden;
     list-style: none;
     margin: 0 17px 0 0;
@@ -8061,7 +8072,7 @@ a:hover {
 }
 
 .product-comment .name {
-    color: #aaa;
+    color: black;
     margin: 0 24px 0 0;
     display: inline-block;
     vertical-align: middle;
@@ -8071,11 +8082,15 @@ a:hover {
 .product-comment time {
     display: inline-block;
     vertical-align: middle;
-    font: italic 300 14px/20px "Source Sans Pro", sans-serif;
+    font: italic 400 16px/20px "Source Sans Pro", sans-serif;
+
 }
 
 .product-comment p {
     margin: 0;
+    font-weight: 400;
+    color: black;
+    font-size: 110%;
     letter-spacing: .6px;
 }
 
@@ -8092,9 +8107,9 @@ a:hover {
 }
 
 .product-comment h2 {
-    color: #949494;
+    color: grey;
     margin: 0 0 41px;
-    font: 600 16px/20px "Source Sans Pro", sans-serif;
+    font: 600 23px/20px "Source Sans Pro", sans-serif;
 }
 
 .product-comment label {
@@ -8111,14 +8126,14 @@ a:hover {
     width: 93.3%;
     outline: none;
     color: #000;
-    font-weight: 200;
+    font-weight: 600;
     box-shadow: none;
     background: none;
     overflow: hidden;
     padding: 6px 15px;
     border-radius: 20px;
     border: 1px solid #d1d1d1;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 20px;
 }
 
@@ -8143,14 +8158,21 @@ a:hover {
     color: #000;
 }
 
-.product-comment textarea {
+.product-comment textarea {.product-detail-tab
     resize: none;
     min-height: 122px;
 }
 
 .product-comment .btn-type4 {
     margin: 0 0 0 80px;
+    background-color: #ff151d;
+    color: white;
 }
+
+.product-comment .btn-type4:hover {
+    background-color: black;
+}
+
 
 /*------------------------------------------------------------------
 38. related products / .related-products
@@ -12744,4 +12766,59 @@ a:focus {
 
 .f-widget-nav > li > a {
     color: white !important;
+}
+
+/*
+     Use :not with impossible condition so inputs are only hidden
+     if pseudo selectors are supported. Otherwise the user would see
+     no inputs and no highlighted stars.
+ */
+.rating input[type="radio"]:not(:nth-of-type(0)) {
+    /* hide visually */
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.rating [type="radio"]:not(:nth-of-type(0)) + label {
+    display: none;
+}
+
+label[for]:hover {
+    cursor: pointer;
+}
+
+.rating .stars label:before {
+    content: "★";
+}
+
+.stars label {
+    color: lightgray;
+    width: 20px !important;
+    font-size: 130%;
+}
+
+.stars label:hover {
+    text-shadow: 0 0 1px #000;
+}
+
+.rating [type="radio"]:nth-of-type(1):checked ~ .stars label:nth-of-type(-n+1),
+.rating [type="radio"]:nth-of-type(2):checked ~ .stars label:nth-of-type(-n+2),
+.rating [type="radio"]:nth-of-type(3):checked ~ .stars label:nth-of-type(-n+3),
+.rating [type="radio"]:nth-of-type(4):checked ~ .stars label:nth-of-type(-n+4),
+.rating [type="radio"]:nth-of-type(5):checked ~ .stars label:nth-of-type(-n+5) {
+    color: gold;
+}
+
+.rating [type="radio"]:nth-of-type(1):focus ~ .stars label:nth-of-type(1),
+.rating [type="radio"]:nth-of-type(2):focus ~ .stars label:nth-of-type(2),
+.rating [type="radio"]:nth-of-type(3):focus ~ .stars label:nth-of-type(3),
+.rating [type="radio"]:nth-of-type(4):focus ~ .stars label:nth-of-type(4),
+.rating [type="radio"]:nth-of-type(5):focus ~ .stars label:nth-of-type(5) {
+    color: darkorange;
 }
