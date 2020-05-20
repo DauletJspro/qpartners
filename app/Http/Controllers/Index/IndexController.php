@@ -6,6 +6,7 @@ use App\Http\Helpers;
 use App\Models\About;
 use App\Models\Brand;
 use App\Models\Carriage;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\Education;
 use App\Models\News;
@@ -42,36 +43,25 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {
-        $news = News::where('is_show', 1)
-            ->orderBy('news_date', 'desc')
-            ->take(3)
-            ->get();
 
-        $project = Project::where('is_show', 1)
-            ->orderBy('sort_num', 'asc')
-            ->take(4)
-            ->get();
-
-        $user_share = Users::where('user_share', '>', 0)->count();
-        $user_count = Users::count();
-
-        $standart_packet_count = UserPacket::where('is_active', 1)->where('packet_id', '>', 2)->groupBy('user_id')->count();
         $products = Product::all();
         $popularProducts = Product::where(['is_popular' => true])->get();
         $brands = Brand::where(['is_show' => true])->get();
+        $elixirs = Product::where(['category_id' => Category::ELIXIR])->get();
+        $gels = Product::where(['category_id' => Category::GEL])->get();
+        $sprays = Product::where(['category_id' => Category::SPRAY])->get();
+        $creams = Product::where(['category_id' => Category::CREAM])->get();
 
 
         return view('design_index.index.index',
             [
-                'menu' => 'index',
-                'news' => $news,
-                'project_list' => $project,
-                'user_share' => $user_share,
-                'user_count' => $user_count,
                 'products' => $products,
                 'popularProducts' => $popularProducts,
                 'brands' => $brands,
-                'standart_packet_count' => $standart_packet_count
+                'elixirs' => $elixirs,
+                'gels' => $gels,
+                'sprays' => $sprays,
+                'creams' => $creams,
             ]
         );
     }

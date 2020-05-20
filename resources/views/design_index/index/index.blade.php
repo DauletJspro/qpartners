@@ -42,7 +42,8 @@
                                             style="font-size: 130%; font-weight: 500;">Автопрограмма</strong>
                                     <h3><span style="font-size:140%;">Забирай</span> <br> <span
                                                 style="font-size: 90%;word-break:keep-all;">свой автомобиль</span>
-                                        <br> <span style="font-size: 130%; font-weightword-break:keep-all;"> за 200$</span>
+                                        <br> <span
+                                                style="font-size: 130%; font-weightword-break:keep-all;"> за 200$</span>
                                     </h3>
                                 </div>
                                 <a href="product-detail.html" class="btn-shop">
@@ -201,7 +202,160 @@
                         <div class="tab-content">
                             <div id="tab1">
                                 <div class="tabs-sliderlg">
-                                    @foreach($products as $product)
+                                    @foreach($elixirs as $product)
+                                        <div class="slide">
+                                            <div class="mt-product1 large">
+                                                <div class="box">
+                                                    <div class="b1">
+                                                        <div class="b2">
+                                                            <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
+                                                                <div style="width: 270px;
+                                                                        height: 290px;
+                                                                        background-image: url('{{$product->product_image}}');
+                                                                        background-position: center;
+                                                                        background-size: cover;">
+
+                                                                </div>
+                                                            </a>
+                                                            <ul class="mt-stars">
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star-o"></i></li>
+                                                            </ul>
+                                                            <ul class="links">
+                                                                <li>
+                                                                    <a style="cursor: pointer;"
+                                                                       data-item-id="{{$product->product_id}}"
+                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                                                       data-method="add"
+                                                                       onclick="addItemToBasket(this)"
+                                                                    ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
+                                                                </li>
+                                                                <li><a href="#"><i
+                                                                                class="icomoon icon-heart-empty"></i></a>
+                                                                </li>
+                                                                <li><a href="#"><i
+                                                                                class="icomoon icon-exchange"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="txt">
+                                                    <strong class="title"><a
+                                                                href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name_ru}}</a></strong>
+                                                    <p>{{$product->product_desc_ru}}</p>
+                                                    <span class="price"><i
+                                                                class="fa fa-dollar"></i> <span>{{$product->product_price}}
+                                                               ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1 ])->first())->money}}   &#8376;) </span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    @foreach($sprays as $product)
+                                        <div class="slide">
+                                            <div class="mt-product1 large">
+                                                <div class="box">
+                                                    <div class="b1">
+                                                        <div class="b2">
+                                                            <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
+                                                                <div style="width: 270px;
+                                                                        height: 290px;
+                                                                        background-image: url('{{$product->product_image}}');
+                                                                        background-position: center;
+                                                                        background-size: cover;">
+
+                                                                </div>
+                                                            </a>
+                                                            <ul class="mt-stars">
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star-o"></i></li>
+                                                            </ul>
+                                                            <ul class="links">
+                                                                <li>
+                                                                    <a style="cursor: pointer;"
+                                                                       data-item-id="{{$product->product_id}}"
+                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                                                       data-method="add"
+                                                                       onclick="addItemToBasket(this)"
+                                                                    ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
+                                                                </li>
+                                                                <li><a href="#"><i
+                                                                                class="icomoon icon-heart-empty"></i></a>
+                                                                </li>
+                                                                <li><a href="#"><i
+                                                                                class="icomoon icon-exchange"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="txt">
+                                                    <strong class="title"><a
+                                                                href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name_ru}}</a></strong>
+                                                    <p>{{$product->product_desc_ru}}</p>
+                                                    <span class="price"><i
+                                                                class="fa fa-dollar"></i> <span>{{$product->product_price}}
+                                                               ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1 ])->first())->money}}   &#8376;) </span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    @foreach($gels as $product)
+                                        <div class="slide">
+                                            <div class="mt-product1 large">
+                                                <div class="box">
+                                                    <div class="b1">
+                                                        <div class="b2">
+                                                            <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
+                                                                <div style="width: 270px;
+                                                                        height: 290px;
+                                                                        background-image: url('{{$product->product_image}}');
+                                                                        background-position: center;
+                                                                        background-size: cover;">
+
+                                                                </div>
+                                                            </a>
+                                                            <ul class="mt-stars">
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star-o"></i></li>
+                                                            </ul>
+                                                            <ul class="links">
+                                                                <li>
+                                                                    <a style="cursor: pointer;"
+                                                                       data-item-id="{{$product->product_id}}"
+                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                                                       data-method="add"
+                                                                       onclick="addItemToBasket(this)"
+                                                                    ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
+                                                                </li>
+                                                                <li><a href="#"><i
+                                                                                class="icomoon icon-heart-empty"></i></a>
+                                                                </li>
+                                                                <li><a href="#"><i
+                                                                                class="icomoon icon-exchange"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="txt">
+                                                    <strong class="title"><a
+                                                                href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name_ru}}</a></strong>
+                                                    <p>{{$product->product_desc_ru}}</p>
+                                                    <span class="price"><i
+                                                                class="fa fa-dollar"></i> <span>{{$product->product_price}}
+                                                               ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1 ])->first())->money}}   &#8376;) </span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    @foreach($creams as $product)
                                         <div class="slide">
                                             <div class="mt-product1 large">
                                                 <div class="box">
@@ -278,11 +432,11 @@
                                                     </ul>
                                                     <ul class="links">
                                                         <li>
-                                                            <a      style="cursor: pointer;"
-                                                                    data-item-id="{{$product->product_id}}"
-                                                                    data-method="add"
-                                                                    data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
-                                                                    onclick="addItemToBasket(this)"
+                                                            <a style="cursor: pointer;"
+                                                               data-item-id="{{$product->product_id}}"
+                                                               data-method="add"
+                                                               data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                                               onclick="addItemToBasket(this)"
                                                             >
                                                                 <i class="icon-handbag"></i><span>Добавить</span></a>
                                                         </li>
