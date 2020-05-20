@@ -82,7 +82,8 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                             </a>
                         </li>
                         <li><a href="#" class="icon-magnifier"></a></li>
-                        <li><a style="color: red;" href="#" class="icon-heart"></a><span>3</span></li>
+                        <li><a style="color: red;" href="{{route('favorite.showUserItem')}}"
+                               class="icon-heart"></a><span>3</span></li>
                     </ul>
                     <nav id="nav">
                         <ul>

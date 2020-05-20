@@ -4,21 +4,67 @@ namespace App\Http\Controllers\Index;
 
 use App\Models\Favorite;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
 
+    function get_ip()
+    {
+        /*
+         * get current client ip address
+         */
+
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
+
+    }
+
+    public function get_mac_address()
+    {
+        $MAC = exec('getmac');
+        $MAC = strtok($MAC, ' ');
+
+        return $MAC;
+
+    }
+
+
     /**
      * Display a list of the items, checked by user
      * @param int user_id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      *
      */
 
-    public function showUserItems($user_id)
+    public function showUserItems()
     {
-        return view('');
+
+
+        if (!Auth::user()) {
+            $favorites = Favorite::where(['ip_address' => $this->get_mac_address()])->get();
+        } else {
+            $favorites = Favorite::where(['user_id' => Auth::user()->user_id])->get();
+        }
+
+        $favorites = collect($favorites)->all();
+        $favorites = array_map(function ($item) {
+            return $item['item_id'];
+        }, $favorites);
+
+
+        $products = Product::whereIn('product_id', $favorites)->get();
+
+
+        return view('design_index.favorite.user_items', ['favorites' => $favorites, 'products' => $products]);
     }
 
     /**
@@ -100,18 +146,19 @@ class FavoriteController extends Controller
     private function addItemToFavorites($user_id, $session_id, $item_id)
     {
         $favorite = Favorite::where(function ($query) use ($user_id, $session_id) {
-            $query->where(['user_id' => $user_id])->orWhere(['session_id' => $session_id]);
+            $query->where(['user_id' => $user_id])->orWhere(['ip_address' => $this->get_mac_address()]);
         })->where(['item_id' => $item_id])->first();
 
         if (count($favorite) && $favorite->delete()) {
             return 2; // successfully remove item from favorite
         }
 
-
+        $ip_address = $user_id ? null : $this->get_mac_address();
         $is_auth = $user_id ? true : false;
         $favorite = new Favorite();
         $favorite->user_id = $user_id;
-        $favorite->session_id = $session_id;
+//        $favorite->session_id = $session_id;
+        $favorite->ip_address = $this->get_mac_address();
         $favorite->item_id = $item_id;
         $favorite->is_authorized = $is_auth;
         $favorite->is_active = true;

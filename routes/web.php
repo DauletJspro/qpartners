@@ -301,6 +301,7 @@ Route::group([
     Route::get('basket', 'BasketController@show')->name('basket.show');
     Route::get('faq', 'FaqController@show')->name('faq.show');
     Route::get('representative', 'RepresentativeController@show')->name('representative.show');
+    Route::get('favorite/show-user-item', 'FavoriteController@showUserItems')->name('favorite.showUserItem');
     Route::resource('review', 'ReviewController');
     Route::get('about_us/administration', 'AboutController@showCompanyAdministration');
     Route::get('about_us/guide', 'AboutController@showCompanyGuide');
