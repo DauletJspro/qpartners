@@ -60,10 +60,12 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                                                           style="height: 45px; width: 135px;margin-top: -4px;"></a>
                     </div>
                     <?php $totalPrice = 0;?>
+                    <?php $total = 0;?>
                     @if(Auth::user())
                         <?php $items = \App\Models\UserBasket::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->user_id])->get(); ?>
                         <?php foreach ($items as $item): ?>
-                        <?php $totalPrice += (\App\Models\Product::where(['product_id' => $item->product_id])->first())->product_price; ?>
+                        <?php $total = (\App\Models\Product::where(['product_id' => $item->product_id])->first()); ?>
+                        <?php $totalPrice += $total ? $total->product_price : 0; ?>
                     <?php endforeach ?>
                     @endif
                     <a href="{{ route('basket.show') }}" class="mt-sh-cart" id="basket-box">

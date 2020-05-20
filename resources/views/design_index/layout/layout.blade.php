@@ -13,13 +13,12 @@
         </div>
     </div>
 
-
     <div id="wrapper">
-        {{--    <div id="pre-loader" class="loader-container">--}}
-        {{--      <div class="loader">--}}
-        {{--        <img src="/new_design/images/svg/rings.svg" alt="loader">--}}
-        {{--      </div>--}}
-        {{--    </div>--}}
+        <div id="pre-loader" class="loader-container text-center">
+            <div class="loader text-center" style="width: 15%;">
+                <img src="/new_design/images/logo/logo.png" style="width: 100%;" alt="loader">
+            </div>
+        </div>
         <div class="w1">
             @include('design_index.layout.header')
             <div class="mt-search-popup">
@@ -44,6 +43,7 @@
 </div>
 
 
+
 <script src="/new_design/js/jquery.js"></script>
 <!-- include jQuery -->
 <script src="/new_design/js/plugins.js"></script>
@@ -53,7 +53,6 @@
 <!-- include notify -->
 <script src="/notify/notify.js"></script>
 <script src="/notify/notify.min.js"></script>
-
 
 @yield('js')
 <script>
@@ -102,3 +101,4 @@
 
 </body>
 </html>
+

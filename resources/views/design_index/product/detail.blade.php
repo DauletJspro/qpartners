@@ -1,3 +1,11 @@
+<?php
+
+use Illuminate\Support\Facades\URL;
+
+
+$tab = (explode('tab=', URL::current()));
+
+?>
 @extends('design_index.layout.layout')
 
 @section('meta-tags')
@@ -8,6 +16,7 @@
     <meta name="keywords" content="Qpartners"/>
 
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 @section('content')
     <main id="mt-main">
@@ -28,29 +37,20 @@
                             <!-- Product Slider of the Page -->
                             <div class="product-slider">
                                 <div class="slide">
-                                    <img src="{{$product->product_image}}" style="width: 610px; height: 490px;"  alt="image descrption">
+                                    <img src="{{$product->product_image}}" style="width: 610px; height: 490px;"
+                                         alt="image descrption">
                                 </div>
                             </div>
-                            <!-- Product Slider of the Page end -->
-                            <!-- Pagg Slider of the Page -->
-                            <ul class="list-unstyled slick-slider pagg-slider">
-                                <li><div class="img"><img src="http://placehold.it/105x105" alt="image description"></div></li>
-                                <li><div class="img"><img src="http://placehold.it/105x105" alt="image description"></div></li>
-                                <li><div class="img"><img src="http://placehold.it/105x105" alt="image description"></div></li>
-                                <li><div class="img"><img src="http://placehold.it/105x105" alt="image description"></div></li>
-                                <li><div class="img"><img src="http://placehold.it/105x105" alt="image description"></div></li>
-                            </ul>
-                            <!-- Pagg Slider of the Page end -->
                         </div>
                         <!-- Slider of the Page end -->
                         <!-- Detail Holder of the Page -->
                         <div class="detial-holder">
                             <!-- Breadcrumbs of the Page -->
-                            <ul class="list-unstyled breadcrumbs">
-                                <li><a href="#">Chairs <i class="fa fa-angle-right"></i></a></li>
-                                <li>Products</li>
-                            </ul>
-                            <!-- Breadcrumbs of the Page end -->
+                        {{--                            <ul class="list-unstyled breadcrumbs">--}}
+                        {{--                                <li><a href="#">Chairs <i class="fa fa-angle-right"></i></a></li>--}}
+                        {{--                                <li>Products</li>--}}
+                        {{--                            </ul>--}}
+                        <!-- Breadcrumbs of the Page end -->
                             <h2>{{ $product->product_name_ru }}</h2>
                             <!-- Rank Rating of the Page -->
                             <div class="rank-rating">
@@ -60,29 +60,29 @@
                                     <li><a href="#"><i class="fa fa-star"></i></a></li>
                                     <li><a href="#"><i class="fa fa-star-o"></i></a></li>
                                 </ul>
-                                <span class="total-price">Reviews (12)</span>
+                                <span class="total-price">Отзывы (12)</span>
                             </div>
                             <!-- Rank Rating of the Page end -->
                             <ul class="list-unstyled list">
-                                <li><a href="#"><i class="fa fa-share-alt"></i>SHARE</a></li>
-                                <li><a href="#"><i class="fa fa-exchange"></i>COMPARE</a></li>
-                                <li><a href="#"><i class="fa fa-heart"></i>ADD TO WISHLIST</a></li>
+                                <li><a href="#"><i class="fa fa-share-alt"></i>Поделиться</a></li>
+                                <li><a href="#"><i class="fa fa-exchange"></i>Сравнить</a></li>
+                                <li><a href="#"><i class="fa fa-heart"></i>Добавить в избранные</a></li>
                             </ul>
                             <div class="txt-wrap">
-                                <p>{{$product->prdouct_description}}</p>
+                                <p>{{$product->product_desc_ru}}</p>
                             </div>
                             <div class="text-holder">
-                                <span class="price">$ {{$product->product_desc_ru}} ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span>
+                                <span class="price">Цена: &nbsp; ${{$product->product_price}} &nbsp; ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span>
                             </div>
                             <!-- Product Form of the Page -->
                             <form action="#" class="product-form">
                                 <fieldset>
                                     <div class="row-val">
-                                        <label for="qty">qty</label>
+                                        <label for="qty">Кол-во</label>
                                         <input type="number" id="qty" placeholder="1">
                                     </div>
                                     <div class="row-val">
-                                        <button type="submit">ADD TO CART</button>
+                                        <button type="submit">Добавить в корзину</button>
                                     </div>
                                 </fieldset>
                             </form>
@@ -98,74 +98,105 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <ul class="mt-tabs text-center text-uppercase">
-                            <li><a href="#tab1" class="active">DESCRIPTION</a></li>
-                            <li><a href="#tab2">INFORMATION</a></li>
-                            <li><a href="#tab3">REVIEWS (12)</a></li>
+                            <li><a href="#tab1" class="{{!isset($tab[1]) ? 'active' : ''}}">Описание</a></li>
+                            <li><a href="#tab2">Информация</a></li>
+                            <li><a href="#tab3" class="{{isset($tab[1]) && $tab[1] == 'review' ? 'active' : ''}}">Отзывы(12)</a>
+                            </li>
                         </ul>
                         <div class="tab-content">
                             <div id="tab1">
-                                <p>Koila is a chair designed for restaurants and food lovers in general. Designed in collaboration with restaurant professionals, it ensures comfort and an ideal posture, as there are armrests on both sides of the chair. </p>
-                                <p>Koila is a seat designed for restaurants and gastronomic places in general. Designed in collaboration with professional of restaurants and hotels field, this armchair is composed of a curved shell with a base in oak who has pinched the back upholstered in fabric or leather. It provides comfort and holds for ideal sitting position,the arms may rest on the sides ofthe armchair. <br>Solid oak construction.<br> Back in plywood (2  faces oak veneer) or upholstered in fabric, leather or eco-leather.<br> Seat upholstered in fabric, leather or eco-leather. <br> H 830 x L 585 x P 540 mm.</p>
+                                <p style="white-space: pre-line;font-weight: 400;font-size: 110%;">
+                                    {{$product->full_description_ru}}
+                                </p>
                             </div>
                             <div id="tab2">
-                                <p>Koila is a chair designed for restaurants and food lovers in general. Designed in collaboration with restaurant professionals, it ensures comfort and an ideal posture, as there are armrests on both sides of the chair. </p>
-                                <p>Koila is a seat designed for restaurants and gastronomic places in general. Designed in collaboration with professional of restaurants and hotels field, this armchair is composed of a curved shell with a base in oak who has pinched the back upholstered in fabric or leather. It provides comfort and holds for ideal sitting position,the arms may rest on the sides ofthe armchair. <br>Solid oak construction.<br> Back in plywood (2  faces oak veneer) or upholstered in fabric, leather or eco-leather.<br> Seat upholstered in fabric, leather or eco-leather. <br> H 830 x L 585 x P 540 mm.</p>
+                                <p style="white-space: pre-line;font-weight: 400;font-size: 110%;">
+                                    {{$product->information}}
+                                </p>
                             </div>
                             <div id="tab3">
                                 <div class="product-comment">
-                                    <div class="mt-box">
-                                        <div class="mt-hold">
-                                            <ul class="mt-star">
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star-o"></i></li>
-                                            </ul>
-                                            <span class="name">John Wick</span>
-                                            <time datetime="2016-01-01">09:10 Nov, 19 2016</time>
-                                        </div>
-                                        <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit sse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non</p>
-                                    </div>
-                                    <div class="mt-box">
-                                        <div class="mt-hold">
-                                            <ul class="mt-star">
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star-o"></i></li>
-                                                <li><i class="fa fa-star-o"></i></li>
-                                            </ul>
-                                            <span class="name">John Wick</span>
-                                            <time datetime="2016-01-01">09:10 Nov, 19 2016</time>
-                                        </div>
-                                        <p>Usmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit sse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non</p>
-                                    </div>
-                                    <form action="#" class="p-commentform">
-                                        <fieldset>
-                                            <h2>Add  Comment</h2>
-                                            <div class="mt-row">
-                                                <label>Rating</label>
+                                    @foreach($reviews as $review)
+                                        <div class="mt-box">
+                                            <div class="mt-hold">
                                                 <ul class="mt-star">
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star-o"></i></li>
-                                                    <li><i class="fa fa-star-o"></i></li>
+                                                    @for($i = 0; $i <= 5; $i++)
+                                                        @if($i < $review->rating)
+                                                            <li><i class="fa fa-star"></i></li>
+                                                        @elseif($i > $review->rating)
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                        @endif
+                                                    @endfor
+                                                </ul>
+                                                <span class="name">{{$review->user_name}}</span>
+                                                <?php $time = date('H:m d.m.Y', strtotime($review->created_at)) ?>
+                                                <time datetime="2016-01-01">{{$time}}</time>
+                                            </div>
+                                            <p style="white-space: pre-line;">
+                                                {{$review->review_text}}
+                                            </p>
+                                        </div>
+                                    @endforeach
+
+
+
+
+                                    {{ Form::open(['action' => ['Index\ReviewController@store'], 'method' => 'POST']) }}
+                                    {{ Form::token() }}
+                                    {{ Form::hidden('item_id', $product->product_id) }}
+                                    {{ Form::hidden('review_type_id', \App\Models\Review::PRODUCT_REVIEW) }}
+                                    <fieldset>
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger" style="color: red;">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
-                                            <div class="mt-row">
-                                                <label>Name</label>
-                                                <input type="text" class="form-control">
+                                        @endif
+
+                                        <h2>Добавить комментарий</h2>
+
+                                        <div class="mt-row">
+                                            <label style="color: black;">Rating</label>
+                                            <div class="rating">
+                                                <input id="demo-1" type="radio" name="rating" value="1">
+                                                <label for="demo-1">1 star</label>
+                                                <input id="demo-2" type="radio" name="rating" value="2">
+                                                <label for="demo-2">2 stars</label>
+                                                <input id="demo-3" type="radio" name="rating" value="3">
+                                                <label for="demo-3">3 stars</label>
+                                                <input id="demo-4" type="radio" name="rating" value="4">
+                                                <label for="demo-4">4 stars</label>
+                                                <input id="demo-5" type="radio" name="rating" value="5">
+                                                <label for="demo-5">5 stars</label>
+
+                                                <div class="stars">
+                                                    <label for="demo-1" aria-label="1 star" title="1 star"></label>
+                                                    <label for="demo-2" aria-label="2 stars" title="2 stars"></label>
+                                                    <label for="demo-3" aria-label="3 stars" title="3 stars"></label>
+                                                    <label for="demo-4" aria-label="4 stars" title="4 stars"></label>
+                                                    <label for="demo-5" aria-label="5 stars" title="5 stars"></label>
+                                                </div>
+
                                             </div>
-                                            <div class="mt-row">
-                                                <label>E-Mail</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="mt-row">
-                                                <label>Review</label>
-                                                <textarea class="form-control"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn-type4">ADD REVIEW</button>
-                                        </fieldset>
-                                    </form>
+                                        </div>
+                                        <div class="mt-row">
+                                            {{ Form::label('Имя', null, ['class' => 'control-label', 'style'=> 'font-weight:bold;color:black;']) }}
+                                            {{ Form::text('user_name',(Auth::user() ? Auth::user()->name : ''), ['class' => 'form-control'])}}
+                                        </div>
+                                        <div class="mt-row">
+                                            {{ Form::label('E-mail', null, ['class' => 'control-label', 'style'=> 'font-weight:bold;color:black;']) }}
+                                            {{ Form::text('user_email',(Auth::user() ? Auth::user()->email : '') , ['class' => 'form-control'])}}
+                                        </div>
+                                        <div class="mt-row">
+                                            {{ Form::label('Отзыв', null, ['class' => 'control-label', 'style'=> 'font-weight:bold;color:black;']) }}
+                                            {{ Form::textarea('review_text',null, ['class' => 'form-control'])}}
+                                        </div>
+                                        {{ Form::submit('Добавить отзыв', ['class'=> 'btn-type4']) }}
+                                    </fieldset>
+                                    {{ Form::close() }}
                                 </div>
                             </div>
                         </div>
@@ -173,133 +204,137 @@
                 </div>
             </div>
         </div>
+
+
         <!-- related products start here -->
         <div class="related-products wow fadeInUp" data-wow-delay="0.4s">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h2>RELATED PRODUCTS</h2>
+                        <h2>ПОХОЖАЯ ПРДУКЦИЯ</h2>
                         <div class="row">
                             <div class="col-xs-12">
-                                <!-- mt product1 center start here -->
-                                <div class="mt-product1 mt-paddingbottom20">
-                                    <div class="box">
-                                        <div class="b1">
-                                            <div class="b2">
-                                                <a href="product-detail.html"><img src="http://placehold.it/215x215" alt="image description"></a>
-                                                <span class="caption">
-															<span class="new">NEW</span>
+                                @foreach($relatedProducts as $product)
+                                    <div class="mt-product1 mt-paddingbottom20">
+                                        <div class="box">
+                                            <div class="b1">
+                                                <div class="b2">
+                                                    <a href="{{route('product.detail', ['id' => $product->product_id])}}">
+                                                        <div style="
+                                                                background-image: url('{{$product->product_image}}');
+                                                                background-position: center;
+                                                                background-repeat: no-repeat;
+                                                                background-size: cover;
+                                                                width: 215px;
+                                                                height: 215px;
+                                                                ">
+
+                                                        </div>
+                                                    </a>
+                                                    <span class="caption">
+{{--															<span class="new">NEW</span>--}}
 														</span>
-                                                <ul class="mt-stars">
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                                <ul class="links">
-                                                    <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a></li>
-                                                    <li><a href="#"><i class="icomoon icon-heart-empty"></i></a></li>
-                                                    <li><a href="#"><i class="icomoon icon-exchange"></i></a></li>
-                                                </ul>
+                                                    <ul class="mt-stars">
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                    </ul>
+                                                    <ul class="links">
+                                                        <li>
+                                                            <a style="cursor: pointer;"
+                                                               data-item-id="{{$product->product_id}}"
+                                                               data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                                               data-method="add"
+                                                               onclick="addItemToBasket(this)">
+                                                                <i class="icon-handbag"></i><span>Добавить</span>
+                                                            </a>
+                                                        </li>
+                                                        <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
+                                                        </li>
+                                                        <li><a href="#"><i class="icomoon icon-exchange"></i></a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="txt">
-                                        <strong class="title"><a href="product-detail.html">Puff Chair</a></strong>
-                                        <span class="price"><i class="fa fa-eur"></i> <span>287,00</span></span>
-                                    </div>
-                                </div><!-- mt product1 center end here -->
-                                <!-- mt product1 center start here -->
-                                <div class="mt-product1 mt-paddingbottom20">
-                                    <div class="box">
-                                        <div class="b1">
-                                            <div class="b2">
-                                                <a href="product-detail.html"><img src="http://placehold.it/215x215" alt="image description"></a>
-                                                <ul class="links">
-                                                    <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a></li>
-                                                    <li><a href="#"><i class="icomoon icon-heart-empty"></i></a></li>
-                                                    <li><a href="#"><i class="icomoon icon-exchange"></i></a></li>
-                                                </ul>
-                                            </div>
+                                        <div class="txt">
+                                            <strong class="title">
+                                                <a href="{{route('product.detail', ['id' => $product->product_id])}}">
+                                                    {{$product->product_name_ru}}
+                                                </a>
+                                            </strong>
+                                            <span class="price"><i class="fa fa-dollar"></i>
+                                                <span>
+                                                    {{$product->product_price}} &nbsp;
+                                                    ({{$product->product_price * \App\Models\Currency::usdToKzt()}} тг)
+                                                </span>
+                                            </span>
                                         </div>
                                     </div>
-                                    <div class="txt">
-                                        <strong class="title"><a href="product-detail.html">Bombi Chair</a></strong>
-                                        <span class="price"><i class="fa fa-eur"></i> <span>399,00</span></span>
-                                    </div>
-                                </div><!-- mt product1 center end here -->
-                                <!-- mt product1 center start here -->
-                                <div class="mt-product1 mt-paddingbottom20">
-                                    <div class="box">
-                                        <div class="b1">
-                                            <div class="b2">
-                                                <a href="product-detail.html"><img src="http://placehold.it/215x215" alt="image description"></a>
-                                                <ul class="links">
-                                                    <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a></li>
-                                                    <li><a href="#"><i class="icomoon icon-heart-empty"></i></a></li>
-                                                    <li><a href="#"><i class="icomoon icon-exchange"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="txt">
-                                        <strong class="title"><a href="product-detail.html">Wood Chair</a></strong>
-                                        <span class="price"><i class="fa fa-eur"></i> <span>198,00</span></span>
-                                    </div>
-                                </div><!-- mt product1 center end here -->
-                                <!-- mt product1 center start here -->
-                                <div class="mt-product1 mt-paddingbottom20">
-                                    <div class="box">
-                                        <div class="b1">
-                                            <div class="b2">
-                                                <a href="product-detail.html"><img src="http://placehold.it/215x215" alt="image description"></a>
-                                                <span class="caption">
-															<span class="off">15% Off</span>
-															<span class="new">NEW</span>
-														</span>
-                                                <ul class="mt-stars">
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                                <ul class="links">
-                                                    <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a></li>
-                                                    <li><a href="#"><i class="icomoon icon-heart-empty"></i></a></li>
-                                                    <li><a href="#"><i class="icomoon icon-exchange"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="txt">
-                                        <strong class="title"><a href="product-detail.html">Bombi Chair</a></strong>
-                                        <span class="price"><i class="fa fa-eur"></i> <span>200,00</span></span>
-                                    </div>
-                                </div><!-- mt product1 center end here -->
-                                <!-- mt product1 center start here -->
-                                <div class="mt-product1 mt-paddingbottom20">
-                                    <div class="box">
-                                        <div class="b1">
-                                            <div class="b2">
-                                                <a href="product-detail.html"><img src="http://placehold.it/215x215" alt="image description"></a>
-                                                <ul class="links">
-                                                    <li><a href="#"><i class="icon-handbag"></i><span>Add to Cart</span></a></li>
-                                                    <li><a href="#"><i class="icomoon icon-heart-empty"></i></a></li>
-                                                    <li><a href="#"><i class="icomoon icon-exchange"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="txt">
-                                        <strong class="title"><a href="product-detail.html">Bombi Chair</a></strong>
-                                        <span class="price"><i class="fa fa-eur"></i> <span>200,00</span></span>
-                                    </div>
-                                </div><!-- mt product1 center end here -->
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
-            </div><!-- related products end here -->
+            </div>
         </div>
     </main>
 @endsection
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style type="text/css">
+    /*
+        Use :not with impossible condition so inputs are only hidden
+        if pseudo selectors are supported. Otherwise the user would see
+        no inputs and no highlighted stars.
+    */
+    .rating input[type="radio"]:not(:nth-of-type(0)) {
+        /* hide visually */
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .rating [type="radio"]:not(:nth-of-type(0)) + label {
+        display: none;
+    }
+
+    label[for]:hover {
+        cursor: pointer;
+    }
+
+    .rating .stars label:before {
+        content: "★";
+    }
+
+    .stars label {
+        color: lightgray;
+        width: 20px !important;
+    }
+
+    .stars label:hover {
+        text-shadow: 0 0 1px #000;
+    }
+
+    .rating [type="radio"]:nth-of-type(1):checked ~ .stars label:nth-of-type(-n+1),
+    .rating [type="radio"]:nth-of-type(2):checked ~ .stars label:nth-of-type(-n+2),
+    .rating [type="radio"]:nth-of-type(3):checked ~ .stars label:nth-of-type(-n+3),
+    .rating [type="radio"]:nth-of-type(4):checked ~ .stars label:nth-of-type(-n+4),
+    .rating [type="radio"]:nth-of-type(5):checked ~ .stars label:nth-of-type(-n+5) {
+        color: orange;
+    }
+
+    .rating [type="radio"]:nth-of-type(1):focus ~ .stars label:nth-of-type(1),
+    .rating [type="radio"]:nth-of-type(2):focus ~ .stars label:nth-of-type(2),
+    .rating [type="radio"]:nth-of-type(3):focus ~ .stars label:nth-of-type(3),
+    .rating [type="radio"]:nth-of-type(4):focus ~ .stars label:nth-of-type(4),
+    .rating [type="radio"]:nth-of-type(5):focus ~ .stars label:nth-of-type(5) {
+        color: darkorange;
+    }
+</style>
