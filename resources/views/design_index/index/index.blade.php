@@ -253,6 +253,10 @@
                                             </div>
                                         </div>
                                     @endforeach
+                                </div>
+                            </div>
+                            <div id="tab2">
+                                <div class="tabs-sliderlg">
                                     @foreach($sprays as $product)
                                         <div class="slide">
                                             <div class="mt-product1 large">
@@ -304,6 +308,10 @@
                                             </div>
                                         </div>
                                     @endforeach
+                                </div>
+                            </div>
+                            <div id="tab3">
+                                <div class="tabs-sliderlg">
                                     @foreach($gels as $product)
                                         <div class="slide">
                                             <div class="mt-product1 large">
@@ -355,6 +363,10 @@
                                             </div>
                                         </div>
                                     @endforeach
+                                </div>
+                            </div>
+                            <div id="tab4">
+                                <div class="tabs-sliderlg">
                                     @foreach($creams as $product)
                                         <div class="slide">
                                             <div class="mt-product1 large">
