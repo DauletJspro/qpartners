@@ -533,168 +533,168 @@
                     </div>
                     <div class="mt-producttabs style4 wow fadeInUp" data-wow-delay="0.4s">
                         <h2 class="heading">МЫ В INSTAGRAM</h2>
-{{--                        <div class="tab-content">--}}
-{{--                            <div id="tab1">--}}
-{{--                                <div class="tabs-sliderlg">--}}
-{{--                                    <div class="slide">--}}
-{{--                                        <div class="mt-product1 large">--}}
-{{--                                            <div class="box">--}}
-{{--                                                <div class="b1">--}}
-{{--                                                    <div class="b2">--}}
-{{--                                                        <a href="https://www.instagram.com/p/B_17-MYJDaU/?igshid=1jr9c3tss0z8q"--}}
-{{--                                                           target="_blank">--}}
-{{--                                                            <div style="border: 1px solid lightgrey;--}}
-{{--                                                            width: 275px;--}}
-{{--                                                            height: 290px;--}}
-{{--                                                             background-image: url('https://instagram.fala3-2.fna.fbcdn.net/v/t51.2885-15/e35/95657641_2303869866576706_6369994998186595510_n.jpg?_nc_ht=instagram.fala3-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=gZG0kBrMAdwAX9OPNde&oh=43593ef74c3d8137666bb0319a44de2e&oe=5EDADD0A');--}}
-{{--                                                              background-size: contain; background-position:--}}
-{{--                                                               center; background-repeat: no-repeat;"></div>--}}
-{{--                                                        </a>--}}
-{{--                                                        <ul class="links">--}}
-{{--                                                            <li>--}}
-{{--                                                                <a href="https://www.instagram.com/p/B_17-MYJDaU/?igshid=1jr9c3tss0z8q"--}}
-{{--                                                                   target="_blank"><i--}}
-{{--                                                                            class="fa fa-search"></i><span>Подробнее</span></a>--}}
-{{--                                                            </li>--}}
-{{--                                                        </ul>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="slide">--}}
-{{--                                        <div class="mt-product1 large">--}}
-{{--                                            <div class="box">--}}
-{{--                                                <div class="b1">--}}
-{{--                                                    <div class="b2">--}}
-{{--                                                        <a href="https://www.instagram.com/p/B_yso1ygEKe/?igshid=1w9pvg8ny5dy3"--}}
-{{--                                                           target="_blank">--}}
-{{--                                                            <div style="border: 1px solid lightgrey;--}}
-{{--                                                            width: 275px;--}}
-{{--                                                            height: 290px;--}}
-{{--                                                             background-image: url('https://instagram.fala3-2.fna.fbcdn.net/v/t51.2885-15/e35/95702853_108016164107626_8025010343586722081_n.jpg?_nc_ht=instagram.fala3-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=hQ8eUkZZ0QsAX8yyHNZ&oh=de0aaa1ab659fb51fa69d06968f6ad06&oe=5EDE65D6');--}}
-{{--                                                              background-size: contain; background-position:--}}
-{{--                                                               center; background-repeat: no-repeat;"></div>--}}
-{{--                                                        </a>--}}
-{{--                                                        <ul class="links">--}}
-{{--                                                            <li>--}}
-{{--                                                                <a href="https://www.instagram.com/p/B_yso1ygEKe/?igshid=1w9pvg8ny5dy3"--}}
-{{--                                                                   target="_blank"><i--}}
-{{--                                                                            class="fa fa-search"></i><span>Подробнее</span></a>--}}
-{{--                                                            </li>--}}
-{{--                                                        </ul>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="slide">--}}
-{{--                                        <div class="mt-product1 large">--}}
-{{--                                            <div class="box">--}}
-{{--                                                <div class="b1">--}}
-{{--                                                    <div class="b2">--}}
-{{--                                                        <a href="https://www.instagram.com/p/B_l0FblJOE2/?igshid=1o1kyh6pyy8fj"--}}
-{{--                                                           target="_blank">--}}
-{{--                                                            <div style="border: 1px solid lightgrey;--}}
-{{--                                                            width: 275px;--}}
-{{--                                                            height: 290px;--}}
-{{--                                                             background-image: url('https://instagram.fala3-1.fna.fbcdn.net/v/t51.2885-15/e35/94892539_300129237667488_6843981708310860246_n.jpg?_nc_ht=instagram.fala3-1.fna.fbcdn.net&_nc_cat=100&_nc_ohc=sQsZV6VVGTgAX-ikCMs&oh=909912fcef12e108beefb597432b20cd&oe=5EDE4D8E');--}}
-{{--                                                              background-size: contain; background-position:--}}
-{{--                                                               center; background-repeat: no-repeat;"></div>--}}
-{{--                                                        </a>--}}
-{{--                                                        <ul class="links">--}}
-{{--                                                            <li>--}}
-{{--                                                                <a href="https://www.instagram.com/p/B_l0FblJOE2/?igshid=1o1kyh6pyy8fj"--}}
-{{--                                                                   target="_blank"><i--}}
-{{--                                                                            class="fa fa-search"></i><span>Подробнее</span></a>--}}
-{{--                                                            </li>--}}
-{{--                                                        </ul>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="slide">--}}
-{{--                                        <div class="mt-product1 large">--}}
-{{--                                            <div class="box">--}}
-{{--                                                <div class="b1">--}}
-{{--                                                    <div class="b2">--}}
-{{--                                                        <a href="https://www.instagram.com/p/B_hM0fdpGXv/?igshid=1dp0gvsveld2f"--}}
-{{--                                                           target="_blank">--}}
-{{--                                                            <div style="border: 1px solid lightgrey;--}}
-{{--                                                            width: 275px;--}}
-{{--                                                            height: 290px;--}}
-{{--                                                             background-image: url('https://instagram.fala3-1.fna.fbcdn.net/v/t51.2885-15/e35/94572283_1172373853110569_9032296762147888797_n.jpg?_nc_ht=instagram.fala3-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=4yf5XLNH2xkAX8NoYD_&oh=ef5d752f1da64355c50dfb8db9a81de9&oe=5EDB2E81');--}}
-{{--                                                              background-size: contain; background-position:--}}
-{{--                                                               center; background-repeat: no-repeat;"></div>--}}
-{{--                                                        </a>--}}
-{{--                                                        <ul class="links">--}}
-{{--                                                            <li>--}}
-{{--                                                                <a href="https://www.instagram.com/p/B_hM0fdpGXv/?igshid=1dp0gvsveld2f"--}}
-{{--                                                                   target="_blank"><i--}}
-{{--                                                                            class="fa fa-search"></i><span>Подробнее</span></a>--}}
-{{--                                                            </li>--}}
-{{--                                                        </ul>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="slide">--}}
-{{--                                        <div class="mt-product1 large">--}}
-{{--                                            <div class="box">--}}
-{{--                                                <div class="b1">--}}
-{{--                                                    <div class="b2">--}}
-{{--                                                        <a href="https://www.instagram.com/p/B_ePhRGpXP7/?igshid=ueow4438kns0"--}}
-{{--                                                           target="_blank">--}}
-{{--                                                            <div style="border: 1px solid lightgrey;--}}
-{{--                                                            width: 275px;--}}
-{{--                                                            height: 290px;--}}
-{{--                                                             background-image: url('https://instagram.fala3-1.fna.fbcdn.net/v/t51.2885-15/e35/94353915_543935826558929_8540795428450007274_n.jpg?_nc_ht=instagram.fala3-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=aOpb5G1QqWIAX_XCAmT&oh=afb6ba7d2eb9995a4a11b82a0ebf0d38&oe=5EDE221B');--}}
-{{--                                                              background-size: contain; background-position:--}}
-{{--                                                               center; background-repeat: no-repeat;"></div>--}}
-{{--                                                        </a>--}}
-{{--                                                        <ul class="links">--}}
-{{--                                                            <li>--}}
-{{--                                                                <a href="https://www.instagram.com/p/B_ePhRGpXP7/?igshid=ueow4438kns0"--}}
-{{--                                                                   target="_blank"><i--}}
-{{--                                                                            class="fa fa-search"></i><span>Подробнее</span></a>--}}
-{{--                                                            </li>--}}
-{{--                                                        </ul>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="slide">--}}
-{{--                                        <div class="mt-product1 large">--}}
-{{--                                            <div class="box">--}}
-{{--                                                <div class="b1">--}}
-{{--                                                    <div class="b2">--}}
-{{--                                                        <a href="https://www.instagram.com/p/B_TygfspnQ5/?igshid=mhn1mobymsvz"--}}
-{{--                                                           target="_blank">--}}
-{{--                                                            <div style="border: 1px solid lightgrey;--}}
-{{--                                                            width: 275px;--}}
-{{--                                                            height: 290px;--}}
-{{--                                                             background-image: url('https://instagram.fala3-2.fna.fbcdn.net/v/t51.2885-15/e35/94293622_236641154115475_9026847502459268977_n.jpg?_nc_ht=instagram.fala3-2.fna.fbcdn.net&_nc_cat=107&_nc_ohc=lv-hIRANBJ8AX-6q9us&oh=a64c7c453740255ca49a36c30cb5cac0&oe=5EDCEC22');--}}
-{{--                                                              background-size: contain; background-position:--}}
-{{--                                                               center; background-repeat: no-repeat;"></div>--}}
-{{--                                                        </a>--}}
-{{--                                                        <ul class="links">--}}
-{{--                                                            <li>--}}
-{{--                                                                <a href="https://www.instagram.com/p/B_TygfspnQ5/?igshid=mhn1mobymsvz"--}}
-{{--                                                                   target="_blank"><i--}}
-{{--                                                                            class="fa fa-search"></i><span>Подробнее</span></a>--}}
-{{--                                                            </li>--}}
-{{--                                                        </ul>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        <div class="tab-content">
+                            <div id="tab1">
+                                <div class="tabs-sliderlg">
+                                    <div class="slide">
+                                        <div class="mt-product1 large">
+                                            <div class="box">
+                                                <div class="b1">
+                                                    <div class="b2">
+                                                        <a href="https://www.instagram.com/p/B_17-MYJDaU/?igshid=1jr9c3tss0z8q"
+                                                           target="_blank">
+                                                            <div style="border: 1px solid lightgrey;
+                                                            width: 275px;
+                                                            height: 290px;
+                                                             background-image: url('https://instagram.fala3-2.fna.fbcdn.net/v/t51.2885-15/e35/95657641_2303869866576706_6369994998186595510_n.jpg?_nc_ht=instagram.fala3-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=gZG0kBrMAdwAX9OPNde&oh=43593ef74c3d8137666bb0319a44de2e&oe=5EDADD0A');
+                                                              background-size: contain; background-position:
+                                                               center; background-repeat: no-repeat;"></div>
+                                                        </a>
+                                                        <ul class="links">
+                                                            <li>
+                                                                <a href="https://www.instagram.com/p/B_17-MYJDaU/?igshid=1jr9c3tss0z8q"
+                                                                   target="_blank"><i
+                                                                            class="fa fa-search"></i><span>Подробнее</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slide">
+                                        <div class="mt-product1 large">
+                                            <div class="box">
+                                                <div class="b1">
+                                                    <div class="b2">
+                                                        <a href="https://www.instagram.com/p/B_yso1ygEKe/?igshid=1w9pvg8ny5dy3"
+                                                           target="_blank">
+                                                            <div style="border: 1px solid lightgrey;
+                                                            width: 275px;
+                                                            height: 290px;
+                                                             background-image: url('https://instagram.fala3-2.fna.fbcdn.net/v/t51.2885-15/e35/95702853_108016164107626_8025010343586722081_n.jpg?_nc_ht=instagram.fala3-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=hQ8eUkZZ0QsAX8yyHNZ&oh=de0aaa1ab659fb51fa69d06968f6ad06&oe=5EDE65D6');
+                                                              background-size: contain; background-position:
+                                                               center; background-repeat: no-repeat;"></div>
+                                                        </a>
+                                                        <ul class="links">
+                                                            <li>
+                                                                <a href="https://www.instagram.com/p/B_yso1ygEKe/?igshid=1w9pvg8ny5dy3"
+                                                                   target="_blank"><i
+                                                                            class="fa fa-search"></i><span>Подробнее</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slide">
+                                        <div class="mt-product1 large">
+                                            <div class="box">
+                                                <div class="b1">
+                                                    <div class="b2">
+                                                        <a href="https://www.instagram.com/p/B_l0FblJOE2/?igshid=1o1kyh6pyy8fj"
+                                                           target="_blank">
+                                                            <div style="border: 1px solid lightgrey;
+                                                            width: 275px;
+                                                            height: 290px;
+                                                             background-image: url('https://instagram.fala3-1.fna.fbcdn.net/v/t51.2885-15/e35/94892539_300129237667488_6843981708310860246_n.jpg?_nc_ht=instagram.fala3-1.fna.fbcdn.net&_nc_cat=100&_nc_ohc=sQsZV6VVGTgAX-ikCMs&oh=909912fcef12e108beefb597432b20cd&oe=5EDE4D8E');
+                                                              background-size: contain; background-position:
+                                                               center; background-repeat: no-repeat;"></div>
+                                                        </a>
+                                                        <ul class="links">
+                                                            <li>
+                                                                <a href="https://www.instagram.com/p/B_l0FblJOE2/?igshid=1o1kyh6pyy8fj"
+                                                                   target="_blank"><i
+                                                                            class="fa fa-search"></i><span>Подробнее</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slide">
+                                        <div class="mt-product1 large">
+                                            <div class="box">
+                                                <div class="b1">
+                                                    <div class="b2">
+                                                        <a href="https://www.instagram.com/p/B_hM0fdpGXv/?igshid=1dp0gvsveld2f"
+                                                           target="_blank">
+                                                            <div style="border: 1px solid lightgrey;
+                                                            width: 275px;
+                                                            height: 290px;
+                                                             background-image: url('https://instagram.fala3-1.fna.fbcdn.net/v/t51.2885-15/e35/94572283_1172373853110569_9032296762147888797_n.jpg?_nc_ht=instagram.fala3-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=4yf5XLNH2xkAX8NoYD_&oh=ef5d752f1da64355c50dfb8db9a81de9&oe=5EDB2E81');
+                                                              background-size: contain; background-position:
+                                                               center; background-repeat: no-repeat;"></div>
+                                                        </a>
+                                                        <ul class="links">
+                                                            <li>
+                                                                <a href="https://www.instagram.com/p/B_hM0fdpGXv/?igshid=1dp0gvsveld2f"
+                                                                   target="_blank"><i
+                                                                            class="fa fa-search"></i><span>Подробнее</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slide">
+                                        <div class="mt-product1 large">
+                                            <div class="box">
+                                                <div class="b1">
+                                                    <div class="b2">
+                                                        <a href="https://www.instagram.com/p/B_ePhRGpXP7/?igshid=ueow4438kns0"
+                                                           target="_blank">
+                                                            <div style="border: 1px solid lightgrey;
+                                                            width: 275px;
+                                                            height: 290px;
+                                                             background-image: url('https://instagram.fala3-1.fna.fbcdn.net/v/t51.2885-15/e35/94353915_543935826558929_8540795428450007274_n.jpg?_nc_ht=instagram.fala3-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=aOpb5G1QqWIAX_XCAmT&oh=afb6ba7d2eb9995a4a11b82a0ebf0d38&oe=5EDE221B');
+                                                              background-size: contain; background-position:
+                                                               center; background-repeat: no-repeat;"></div>
+                                                        </a>
+                                                        <ul class="links">
+                                                            <li>
+                                                                <a href="https://www.instagram.com/p/B_ePhRGpXP7/?igshid=ueow4438kns0"
+                                                                   target="_blank"><i
+                                                                            class="fa fa-search"></i><span>Подробнее</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slide">
+                                        <div class="mt-product1 large">
+                                            <div class="box">
+                                                <div class="b1">
+                                                    <div class="b2">
+                                                        <a href="https://www.instagram.com/p/B_TygfspnQ5/?igshid=mhn1mobymsvz"
+                                                           target="_blank">
+                                                            <div style="border: 1px solid lightgrey;
+                                                            width: 275px;
+                                                            height: 290px;
+                                                             background-image: url('https://instagram.fala3-2.fna.fbcdn.net/v/t51.2885-15/e35/94293622_236641154115475_9026847502459268977_n.jpg?_nc_ht=instagram.fala3-2.fna.fbcdn.net&_nc_cat=107&_nc_ohc=lv-hIRANBJ8AX-6q9us&oh=a64c7c453740255ca49a36c30cb5cac0&oe=5EDCEC22');
+                                                              background-size: contain; background-position:
+                                                               center; background-repeat: no-repeat;"></div>
+                                                        </a>
+                                                        <ul class="links">
+                                                            <li>
+                                                                <a href="https://www.instagram.com/p/B_TygfspnQ5/?igshid=mhn1mobymsvz"
+                                                                   target="_blank"><i
+                                                                            class="fa fa-search"></i><span>Подробнее</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
