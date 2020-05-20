@@ -1,3 +1,24 @@
+<?php
+
+use Illuminate\Support\Facades\Session;
+
+function get_ip()
+{
+
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+
+
+}
+
+echo get_ip();
+?>
 @extends('design_index.layout.layout')
 
 @section('meta-tags')
@@ -233,6 +254,7 @@
                                                                        data-item-id="{{$product->product_id}}"
                                                                        data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
                                                                        data-method="add"
+                                                                       data-route="{{route('basket.isAjax')}}"
                                                                        onclick="addItemToBasket(this)"
                                                                     ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
                                                                 </li>
@@ -288,6 +310,7 @@
                                                                        data-item-id="{{$product->product_id}}"
                                                                        data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
                                                                        data-method="add"
+                                                                       data-route="{{route('basket.isAjax')}}"
                                                                        onclick="addItemToBasket(this)"
                                                                     ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
                                                                 </li>
@@ -343,6 +366,7 @@
                                                                        data-item-id="{{$product->product_id}}"
                                                                        data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
                                                                        data-method="add"
+                                                                       data-route="{{route('basket.isAjax')}}"
                                                                        onclick="addItemToBasket(this)"
                                                                     ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
                                                                 </li>
@@ -398,6 +422,7 @@
                                                                        data-item-id="{{$product->product_id}}"
                                                                        data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
                                                                        data-method="add"
+                                                                       data-route="{{route('basket.isAjax')}}"
                                                                        onclick="addItemToBasket(this)"
                                                                     ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
                                                                 </li>
@@ -457,11 +482,20 @@
                                                                data-item-id="{{$product->product_id}}"
                                                                data-method="add"
                                                                data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                                               data-route="{{route('basket.isAjax')}}"
                                                                onclick="addItemToBasket(this)"
                                                             >
                                                                 <i class="icon-handbag"></i><span>Добавить</span></a>
                                                         </li>
-                                                        <li><a href="#"><i class="icomoon icon-heart-empty"></i></a>
+                                                        <li><a style="cursor: pointer;"
+                                                               data-item-id="{{$product->product_id}}"
+                                                               data-method="add"
+                                                               data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                                               data-session-id="{{ Session::getId()}}"
+                                                               data-route="{{route('favorite.isAjax')}}"
+                                                               onclick="addItemToFavorites(this)"
+                                                            >
+                                                                <i class="fa fa-heart"></i></a>
                                                         </li>
                                                         <li><a href="#"><i class="icomoon icon-exchange"></i></a>
                                                         </li>

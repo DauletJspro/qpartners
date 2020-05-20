@@ -43,61 +43,77 @@
 </div>
 
 
-
 <script src="/new_design/js/jquery.js"></script>
-<!-- include jQuery -->
 <script src="/new_design/js/plugins.js"></script>
-<!-- include jQuery -->
 <script src="/new_design/js/jquery.main.js"></script>
-
-<!-- include notify -->
 <script src="/notify/notify.js"></script>
 <script src="/notify/notify.min.js"></script>
-
 @yield('js')
+{{--<script src="/new_design/js/main.js"></script>--}}
 <script>
     function addItemToBasket(tag_object) {
         var method = $(tag_object).data('method');
         var item_id = $(tag_object).data('item-id');
         var user_id = $(tag_object).data('user-id');
+        var route = $(tag_object).data('route');
         if (user_id) {
-            ajax(method, item_id, user_id);
+            ajax(route, method, item_id, user_id);
         } else {
             window.location.href = 'http://local.qpartners.club/kz/login';
         }
     }
 
+    function addItemToFavorites(tag_object) {
+        var method = $(tag_object).data('method');
+        var item_id = $(tag_object).data('item-id');
+        var user_id = $(tag_object).data('user-id');
+        var route = $(tag_object).data('route');
+        var session_id = $(tag_object).data('session-id');
+        ajax(route, method, item_id, user_id, session_id);
+    }
 
-    function ajax(method, item_id, user_id) {
+
+    function ajax(route, method, item_id, user_id, session_id = null) {
+        var controllerName = route.split('/')[3];
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
-            url: "{{route('basket.isAjax')}}",
+            url: route,
             type: "POST",
             data: {
                 _token: CSRF_TOKEN,
                 method_name: method,
                 item_id: item_id,
                 user_id: user_id,
+                session_id: session_id
             },
             success: function (data) {
-                if (method == 'delete') {
-                    $("#product-section").load(location.href + " #product-section");
-                    $("#total-price-div").load(location.href + " #total-price-div");
-                } else if (data.method == 'add') {
+                if (controllerName == 'basket') {
+                    if (method == 'delete') {
+                        $("#product-section").load(location.href + " #product-section");
+                        $("#total-price-div").load(location.href + " #total-price-div");
+                    } else if (data.method == 'add') {
+                        if (data.success == 1) {
+                            $.notify(data.message, "success");
+                        } else if (data.success == -1) {
+                            $.notify(data.message, "error");
+                        } else if (data.success == 0) {
+                            $.notify(data.message, "error");
+                        }
+                        $("#basket-box").load(location.href + " #basket-box");
+                    }
+                } else if (controllerName == 'favorite') {
                     if (data.success == 1) {
                         $.notify(data.message, "success");
-                    } else if (data.success == -1) {
-                        $.notify(data.message, "error");
+                    } else if (data.success == 2) {
+                        $.notify(data.message, "warning");
                     } else if (data.success == 0) {
-                        $.notify(data.message, "error");
+                        $.notify(data.message, "danger");
                     }
-                    $("#basket-box").load(location.href + " #basket-box");
                 }
             }
         });
     }
 </script>
-
 
 </body>
 </html>

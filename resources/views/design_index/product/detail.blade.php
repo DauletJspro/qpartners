@@ -247,10 +247,13 @@ $tab = (explode('tab=', URL::current()));
 {{--															<span class="new">NEW</span>--}}
 														</span>
                                                     <ul class="mt-stars">
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        @for($i = 0; $i<5;$i++)
+                                                            @if($i < \App\Models\Review::ratingCalculator($product->product_id, \App\Models\Review::PRODUCT_REVIEW))
+                                                                <li><i class="fa fa-star"></i></li>
+                                                            @else
+                                                                <li><i class="fa fa-star-o"></i></li>
+                                                            @endif
+                                                        @endfor
                                                     </ul>
                                                     <ul class="links">
                                                         <li>

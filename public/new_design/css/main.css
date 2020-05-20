@@ -8160,8 +8160,8 @@ a:hover {
     color: #000;
 }
 
-.product-comment textarea {.product-detail-tab
-    resize: none;
+.product-comment textarea {
+. product-detail-tab resize: none;
     min-height: 122px;
 }
 
@@ -12823,4 +12823,22 @@ label[for]:hover {
 .rating [type="radio"]:nth-of-type(4):focus ~ .stars label:nth-of-type(4),
 .rating [type="radio"]:nth-of-type(5):focus ~ .stars label:nth-of-type(5) {
     color: darkorange;
+}
+
+#mt-header > div.mt-bottom-bar > div > div > div > ul > li:nth-child(3) > span {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 15px;
+    border: 1px solid lightgrey;
+    border-radius: 50%;
+    font-size: 11px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
 }
