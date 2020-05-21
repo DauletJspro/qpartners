@@ -59,7 +59,7 @@
         if (user_id) {
             ajax(route, method, item_id, user_id);
         } else {
-            window.location.href = 'http://local.qpartners.club/kz/login';
+            window.location.href = '{{route('login.show')}}';
         }
     }
 

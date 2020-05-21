@@ -18,7 +18,7 @@ Route::group([
     'namespace' => 'Admin',
 ], function () {
     Route::any('/', 'AuthController@login');
-    Route::any('/login', 'AuthController@login');
+    Route::any('/login', 'AuthController@login')->name('login.show');
     Route::get('/register', 'AuthController@showRegister');
     Route::get('/confirm', 'AuthController@confirmEmail');
     Route::get('/confirm-email', 'AuthController@showSendConfirm');
