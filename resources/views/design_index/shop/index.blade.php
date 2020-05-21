@@ -127,9 +127,6 @@ use App\Models\Product;
                                                 <a href="{{ route('product.detail', ['id' => $product->product_id])}}">
                                                     <div style="width: 276px; height: 286px; background-image: url('@if (isset($product->product_image)){{$product->product_image}} @else{{'/new_design/images/no-images.jpg'}}  @endif '); background-size: cover; background-position: center;"></div>
                                                 </a>
-                                                {{--                                                <span class="caption">--}}
-                                                {{--														<span class="best-price">Best Price</span>--}}
-                                                {{--													</span>--}}
                                                 <ul class="links add">
                                                     <li><a
                                                                 style="cursor: pointer;"
@@ -138,7 +135,14 @@ use App\Models\Product;
                                                                 data-method="add"
                                                                 onclick="addItemToBasket(this)"
                                                         ><i class="icon-handbag"></i><span></span></a></li>
-                                                    <li><a href="#"><i class="icomoon icon-heart-empty"></i></a></li>
+                                                    <li><a style="cursor: pointer;"
+                                                           data-item-id="{{$product->product_id}}"
+                                                           data-method="add"
+                                                           data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                                           data-session-id="{{ Session::getId()}}"
+                                                           data-route="{{route('favorite.isAjax')}}"
+                                                           onclick="addItemToFavorites(this)"
+                                                        ><i class="icomoon icon-heart-empty"></i></a></li>
                                                     <li><a href="#"><i class="icomoon icon-exchange"></i></a></li>
                                                 </ul>
                                             </div>

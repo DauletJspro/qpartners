@@ -15,26 +15,7 @@ use Illuminate\Support\Facades\Session;
 @endsection
 
 @section('content')
-    <main id="mt-main">
-        <!-- Mt Contact Banner of the Page -->
-        <section class="mt-contact-banner style4 wow fadeInUp" data-wow-delay="0.4s"
-                 style="background-image: url(http://placehold.it/1920x205);">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 text-center">
-                        <h1>CHAIRS</h1>
-                        <!-- Breadcrumbs of the Page -->
-                        <nav class="breadcrumbs">
-                            <ul class="list-unstyled">
-                                <li><a href="index.html">Home <i class="fa fa-angle-right"></i></a></li>
-                                <li><a href="product-detail.html">Products <i class="fa fa-angle-right"></i></a></li>
-                                <li>Chairs</li>
-                            </ul>
-                        </nav><!-- Breadcrumbs of the Page end -->
-                    </div>
-                </div>
-            </div>
-        </section><!-- Mt Contact Banner of the Page end -->
+    <main id="mt-main" class="mt-main-reload">
         <div class="container">
             @if(!Auth::user())
                 <div class="text-center">
@@ -49,27 +30,6 @@ use Illuminate\Support\Facades\Session;
                 <div class="col-xs-12 col-sm-12 col-md-12 wow fadeInRight" data-wow-delay="0.4s">
                     <!-- mt shoplist header start here -->
                     <header class="mt-shoplist-header">
-                        <!-- btn-box start here -->
-                    {{--                        <div class="btn-box">--}}
-                    {{--                            <ul class="list-inline">--}}
-                    {{--                                <li>--}}
-                    {{--                                    <a href="#" class="drop-link">--}}
-                    {{--                                        Default Sorting <i aria-hidden="true" class="fa fa-angle-down"></i>--}}
-                    {{--                                    </a>--}}
-                    {{--                                    <div class="drop">--}}
-                    {{--                                        <ul class="list-unstyled">--}}
-                    {{--                                            <li><a href="#">ASC</a></li>--}}
-                    {{--                                            <li><a href="#">DSC</a></li>--}}
-                    {{--                                            <li><a href="#">Price</a></li>--}}
-                    {{--                                            <li><a href="#">Relevance</a></li>--}}
-                    {{--                                        </ul>--}}
-                    {{--                                    </div>--}}
-                    {{--                                </li>--}}
-                    {{--                                <li><a class="mt-viewswitcher" href="#"><i class="fa fa-th-large" aria-hidden="true"></i></a></li>--}}
-                    {{--                                <li><a class="mt-viewswitcher" href="#"><i class="fa fa-th-list" aria-hidden="true"></i></a></li>--}}
-                    {{--                            </ul>--}}
-                    {{--                        </div><!-- btn-box end here -->--}}
-                    <!-- mt-textbox start here -->
                         <div class="mt-textbox">
                             <p>Showing <strong>1–9</strong> of <strong>65</strong> results</p>
                             <p>View <a href="#">9</a> / <a href="#">18</a> / <a href="#">27</a> / <a href="#">All</a>
@@ -77,7 +37,7 @@ use Illuminate\Support\Facades\Session;
                         </div><!-- mt-textbox end here -->
                     </header><!-- mt shoplist header end here -->
                     <!-- mt productlisthold start here -->
-                    <ul class="mt-productlisthold list-inline">
+                    <ul class="mt-productlisthold list-inline" id="reload-items">
                         @foreach($products as $product)
                             <li>
                                 <div class="product-3 marginzero">
@@ -116,7 +76,7 @@ use Illuminate\Support\Facades\Session;
                                                data-session-id="{{ Session::getId()}}"
                                                data-route="{{route('favorite.isAjax')}}"
                                                onclick="addItemToFavorites(this)"
-                                            ><i class="icomoon icon-heart-empty"></i></a></li>
+                                            ><i style="color: red;" class="fa fa-heart"></i></a></li>
                                         <li>
                                             <a href="{{('/product/' . $product->product_id)}}">
                                                 <i class="icomoon fa fa-eye"></i>
@@ -144,6 +104,7 @@ use Illuminate\Support\Facades\Session;
         $MAC = strtok($MAC, ' ');
         $temporaryFavorites = \App\Models\Favorite::where(['ip_address' => $MAC])->where(['is_authorized' => false])->where(['user_id' => false])->get();
         ?>
+
         @if(Auth::user() && count($temporaryFavorites))
             <a id="newsletter-hiddenlink" href="#popup2" class="lightbox" style="display: none;">NEWSLETTER</a>
 
@@ -181,10 +142,25 @@ use Illuminate\Support\Facades\Session;
                                     </div>
                                 @endforeach
                                 <div class="cart-btn-row text-center">
-                                    <a href="#" class="btn-type2">Сохранить в Избранные</a>
+                                    <a
+                                            style="cursor: pointer;"
+                                            data-method="addAfterAuth"
+                                            data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                            data-route="{{route('favorite.isAjax')}}"
+                                            onclick="addAfterAuthToFavorites(this)"
+                                            href="javascript:;"
+
+                                            class="btn-type2 close">Сохранить в Избранные</a>
                                 </div>
                                 <div class="cart-btn-row text-center">
-                                    <a href="" style="font-size: 120%; font-weight: 400;color: blue;">Нет, спасибо</a>
+                                    <a
+                                            style="cursor: pointer;"
+                                            data-method="cancelItem"
+                                            data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                            data-route="{{route('favorite.isAjax')}}"
+                                            onclick="cancelItemAfterAuth(this)"
+                                            href="javascript:;"
+                                            class="close" style="font-size: 120% !important; font-weight: 400;color: blue !important;">Нет, спасибо</a>
                                 </div>
                             </div>
                             <!-- mt side widget end here -->

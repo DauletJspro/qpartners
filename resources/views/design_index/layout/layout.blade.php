@@ -72,8 +72,22 @@
         ajax(route, method, item_id, user_id, session_id);
     }
 
+    function addAfterAuthToFavorites(tag_object) {
+        var method = $(tag_object).data('method');
+        var user_id = $(tag_object).data('user-id');
+        var route = $(tag_object).data('route');
+        ajax(route, method, null, user_id, null);
+    }
 
-    function ajax(route, method, item_id, user_id, session_id = null) {
+    function cancelItemAfterAuth(tag_object) {
+        var method = $(tag_object).data('method');
+        var user_id = $(tag_object).data('user-id');
+        var route = $(tag_object).data('route');
+        ajax(route, method, null, user_id, null);
+    }
+
+
+    function ajax(route, method, item_id = null, user_id, session_id = null) {
         var controllerName = route.split('/')[3];
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
@@ -104,10 +118,15 @@
                 } else if (controllerName == 'favorite') {
                     if (data.success == 1) {
                         $.notify(data.message, "success");
+                        $("#favoriteCount").load(location.href + " #favoriteCount");
+                        $("#reload-items").load(location.href + " #reload-items");
                     } else if (data.success == 2) {
                         $.notify(data.message, "warning");
+                        $("#favoriteCount").load(location.href + " #favoriteCount");
+                        $("#reload-items").load(location.href + " #reload-items");
                     } else if (data.success == 0) {
                         $.notify(data.message, "danger");
+                        $("#favoriteCount").load(location.href + " #favoriteCount");
                     }
                 }
             }

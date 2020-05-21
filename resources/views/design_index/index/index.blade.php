@@ -242,7 +242,14 @@ use Illuminate\Support\Facades\Session;
                                                                        onclick="addItemToBasket(this)"
                                                                     ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
                                                                 </li>
-                                                                <li><a href="#"><i
+                                                                <li><a style="cursor: pointer;"
+                                                                       data-item-id="{{$product->product_id}}"
+                                                                       data-method="add"
+                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                                                       data-session-id="{{ Session::getId()}}"
+                                                                       data-route="{{route('favorite.isAjax')}}"
+                                                                       onclick="addItemToFavorites(this)"
+                                                                    ><i
                                                                                 class="icomoon icon-heart-empty"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
@@ -298,7 +305,14 @@ use Illuminate\Support\Facades\Session;
                                                                        onclick="addItemToBasket(this)"
                                                                     ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
                                                                 </li>
-                                                                <li><a href="#"><i
+                                                                <li><a style="cursor: pointer;"
+                                                                       data-item-id="{{$product->product_id}}"
+                                                                       data-method="add"
+                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                                                       data-session-id="{{ Session::getId()}}"
+                                                                       data-route="{{route('favorite.isAjax')}}"
+                                                                       onclick="addItemToFavorites(this)"
+                                                                    ><i
                                                                                 class="icomoon icon-heart-empty"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
@@ -354,7 +368,13 @@ use Illuminate\Support\Facades\Session;
                                                                        onclick="addItemToBasket(this)"
                                                                     ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
                                                                 </li>
-                                                                <li><a href="#"><i
+                                                                <li><a style="cursor: pointer;"
+                                                                       data-item-id="{{$product->product_id}}"
+                                                                       data-method="add"
+                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                                                       data-session-id="{{ Session::getId()}}"
+                                                                       data-route="{{route('favorite.isAjax')}}"
+                                                                       onclick="addItemToFavorites(this)"><i
                                                                                 class="icomoon icon-heart-empty"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i
@@ -410,7 +430,13 @@ use Illuminate\Support\Facades\Session;
                                                                        onclick="addItemToBasket(this)"
                                                                     ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
                                                                 </li>
-                                                                <li><a href="#"><i
+                                                                <li><a style="cursor: pointer;"
+                                                                       data-item-id="{{$product->product_id}}"
+                                                                       data-method="add"
+                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                                                       data-session-id="{{ Session::getId()}}"
+                                                                       data-route="{{route('favorite.isAjax')}}"
+                                                                       onclick="addItemToFavorites(this)"><i
                                                                                 class="icomoon icon-heart-empty"></i></a>
                                                                 </li>
                                                                 <li><a href="#"><i

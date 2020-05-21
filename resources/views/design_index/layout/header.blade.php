@@ -1,7 +1,15 @@
 <?php
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 $categories = Category::where(['is_show' => true])->limit(15)->get();
+$MAC = exec('getmac');
+$MAC = strtok($MAC, ' ');
+if (Auth::user()) {
+    $favorites = \App\Models\Favorite::where(['user_id' => Auth::user()->user_id])->get();
+} else {
+    $favorites = \App\Models\Favorite::where(['ip_address' => $MAC])->get();
+}
 ?>
 <header id="mt-header" class="style3">
     <div class="mt-top-bar">
@@ -83,7 +91,7 @@ $categories = Category::where(['is_show' => true])->limit(15)->get();
                         </li>
                         <li><a href="#" class="icon-magnifier"></a></li>
                         <li><a style="color: red;" href="{{route('favorite.showUserItem')}}"
-                               class="icon-heart"></a><span>3</span></li>
+                               class="icon-heart"></a><span id="favoriteCount">{{count($favorites)}}</span></li>
                     </ul>
                     <nav id="nav">
                         <ul>

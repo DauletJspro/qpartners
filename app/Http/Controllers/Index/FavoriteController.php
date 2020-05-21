@@ -146,7 +146,13 @@ class FavoriteController extends Controller
     private function addItemToFavorites($user_id, $session_id, $item_id)
     {
         $favorite = Favorite::where(function ($query) use ($user_id, $session_id) {
-            $query->where(['user_id' => $user_id])->orWhere(['ip_address' => $this->get_mac_address()]);
+            if (Auth::user()) {
+                $query->where(['user_id' => $user_id]);
+            } else {
+                $query->where(['ip_address' => $this->get_mac_address()]);
+            }
+
+
         })->where(['item_id' => $item_id])->first();
 
         if (count($favorite) && $favorite->delete()) {
@@ -158,7 +164,7 @@ class FavoriteController extends Controller
         $favorite = new Favorite();
         $favorite->user_id = $user_id;
 //        $favorite->session_id = $session_id;
-        $favorite->ip_address = $this->get_mac_address();
+        $favorite->ip_address = $ip_address;
         $favorite->item_id = $item_id;
         $favorite->is_authorized = $is_auth;
         $favorite->is_active = true;
@@ -168,11 +174,53 @@ class FavoriteController extends Controller
         return 1;
     }
 
-    private function deleteItemFromFavorites()
+    private function addAfterAuthToFavorites($user_id, $item_id)
     {
+        $favorites = Favorite::where(['ip_address' => $this->get_mac_address()])->where(['is_authorized' => false])->get();
 
+        $favoriteIds = collect($favorites)->all();
+        $favoriteIds = array_map(function ($item) {
+            return $item['item_id'];
+        }, $favoriteIds);
+
+
+        $duplicatedAfterAuthItem = Favorite::where(['user_id' => $user_id])
+            ->where(['is_authorized' => true])
+            ->whereIn('item_id', $favoriteIds)
+            ->get();
+
+        foreach ($duplicatedAfterAuthItem as $item) {
+            $item->delete();
+        }
+
+        if (!count($favorites)) {
+            return 0;
+        }
+
+
+        foreach ($favorites as $favorite) {
+            $favorite->user_id = $user_id;
+            $favorite->is_authorized = true;
+            $favorite->ip_address = NULL;
+            if (!$favorite->save()) {
+                return 0;
+            }
+        }
+        return 1;
     }
 
+    public function cancelItemAfterAuth($user_id)
+    {
+        $favorites = Favorite::where(['ip_address' => $this->get_mac_address()])->where(['is_authorized' => false])->get();
+
+        foreach ($favorites as $favorite) {
+            $favorite->is_authorized = true;
+            if (!$favorite->save()) {
+                return 0;
+            }
+        }
+        return 5;
+    }
 
     /**
      *  Redirect to the right method (Adapter method)
@@ -217,6 +265,36 @@ class FavoriteController extends Controller
                     'data' => [],
                 ]);
                 break;
+            case 'addAfterAuth':
+                $check = $this->addAfterAuthToFavorites($user_id, $item_id);
+                if ($check == 0) {
+                    return response()->json([
+                        'success' => 0,
+                        'message' => 'Произошла ошибка',
+                        'data' => []
+                    ]);
+                }
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Вы успешно добавили продукт в избранные',
+                    'data' => [],
+                ]);
+                break;
+            case 'cancelItem':
+                $check = $this->cancelItemAfterAuth($user_id);
+                if ($check == 0) {
+                    return response()->json([
+                        'success' => 0,
+                        'message' => 'Произошла ошибка',
+                        'data' => []
+                    ]);
+                } elseif ($check == 5) {
+                    return response()->json([
+                        'success' => 1,
+                        'message' => 'Вы успешно отменили',
+                        'data' => []
+                    ]);
+                }
         }
     }
 }
