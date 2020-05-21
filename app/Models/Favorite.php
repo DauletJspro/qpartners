@@ -14,4 +14,5 @@ class Favorite extends Model
     {
         return $this->hasOne('App\Models\Product', 'product_id', 'item_id');
     }
+
 }

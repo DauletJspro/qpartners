@@ -8344,8 +8344,8 @@ a:hover {
 /*    vertical-align: top;*/
 /*}*/
 #mt-main > div > div > div > ul > li{
-    width: 24%;
-    padding: 0 0 62px;
+    /*width: 24%;*/
+    padding: 0 10px 62px;
     vertical-align: top;
 }
 

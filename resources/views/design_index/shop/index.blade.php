@@ -113,7 +113,6 @@ use App\Models\Product;
                         <!-- mt-textbox start here -->
                         <div class="mt-textbox">
                             <p>Показано <strong>1–9</strong> из <strong>65</strong></p>
-                            </p>
                         </div><!-- mt-textbox end here -->
                     </header><!-- mt shoplist header end here -->
                     <!-- mt productlisthold start here -->

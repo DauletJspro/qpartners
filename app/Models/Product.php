@@ -22,4 +22,10 @@ class Product extends Model
     {
         return $this->belongsTo('Category');
     }
+
+    public static function getLike($id)
+    {
+        $likes = Favorite::where(['item_id' => $id])->get();
+        return count($likes);
+    }
 }

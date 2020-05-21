@@ -17,7 +17,6 @@ class Review extends Model
     {
         $rating = Review::where(['item_id' => $item_id])->where(['review_type_id' => $review_type_id])->get();
 
-
         if (!count($rating)) {
             return 0;
         }
@@ -32,7 +31,5 @@ class Review extends Model
         $rating = $ratingSum / $ratingCount;
 
         return intval(round($rating));
-
-
     }
 }

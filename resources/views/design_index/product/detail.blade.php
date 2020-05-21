@@ -27,7 +27,7 @@ $tab = (explode('tab=', URL::current()));
                         <div class="slider">
                             <!-- Comment List of the Page -->
                             <ul class="list-unstyled comment-list">
-                                <li><a href="#"><i class="fa fa-heart"></i>27</a></li>
+                                <li><a href="#"><i class="fa fa-heart"></i>{{\App\Models\Product::getLike($product->product_id)}}</a></li>
                                 <li><a href="#"><i class="fa fa-comments"></i>{{count($reviews)}}</a></li>
                                 <li><a href="#"><i class="fa fa-share-alt"></i>14</a></li>
                             </ul>
@@ -294,4 +294,6 @@ $tab = (explode('tab=', URL::current()));
             </div>
         </div>
     </main>
+
+
 @endsection
