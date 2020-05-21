@@ -91,7 +91,7 @@ if (Auth::user()) {
                         </li>
                         <li><a href="#" class="icon-magnifier"></a></li>
                         <li><a style="color: red;" href="{{route('favorite.showUserItem')}}"
-                               class="icon-heart"></a><span id="favoriteCount">{{count($favorites)}}</span></li>
+                               class="icon-heart"><span id="favoriteCount">{{count($favorites)}}</span></a></li>
                     </ul>
                     <nav id="nav">
                         <ul>
