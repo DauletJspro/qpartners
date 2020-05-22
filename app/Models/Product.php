@@ -23,9 +23,40 @@ class Product extends Model
         return $this->belongsTo('Category');
     }
 
+    public function favorite()
+    {
+        $this->hasOne('App\Models\Product');
+    }
+
     public static function getLike($id)
     {
         $likes = Favorite::where(['item_id' => $id])->get();
         return count($likes);
     }
+
+    public function get_mac_address()
+    {
+        $MAC = exec('getmac');
+        $MAC = strtok($MAC, ' ');
+
+        return $MAC;
+    }
+
+    public static function hasLiked($item_id, $user_id)
+    {
+        /** @var Favorite $hasLiked */
+        if ($user_id) {
+            $hasLiked = Favorite::where(['item_id' => $item_id]);
+        } elseif (!$user_id) {
+            $hasLiked = Favorite::where(['ip_address' => self::get_mac_address()]);
+        }
+        $hasLiked = $hasLiked->first();
+
+        if (count($hasLiked)) {
+            return true;
+        }
+        return false;
+    }
+
+
 }

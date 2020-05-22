@@ -30,6 +30,7 @@ class FavoriteController extends Controller
 
     public function get_mac_address()
     {
+
         $MAC = exec('getmac');
         $MAC = strtok($MAC, ' ');
 

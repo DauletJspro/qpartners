@@ -120,10 +120,12 @@
                         $.notify(data.message, "success");
                         $("#favoriteCount").load(location.href + " #favoriteCount");
                         $("#reload-items").load(location.href + " #reload-items");
+                        $("#reload-heart").load(location.href + " #reload-heart");
                     } else if (data.success == 2) {
                         $.notify(data.message, "warning");
                         $("#favoriteCount").load(location.href + " #favoriteCount");
                         $("#reload-items").load(location.href + " #reload-items");
+                        $("#reload-heart").load(location.href + " #reload-heart");
                     } else if (data.success == 0) {
                         $.notify(data.message, "danger");
                         $("#favoriteCount").load(location.href + " #favoriteCount");

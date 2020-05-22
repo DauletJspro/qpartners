@@ -14,6 +14,8 @@ $tab = (explode('tab=', URL::current()));
     <meta name="description"
           content="«Qpartners» - это уникальный медиа проект с широким набором возожностей для взаймодествия с участниками виртуального рынка"/>
     <meta name="keywords" content="Qpartners"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 @endsection
 @section('content')
@@ -21,15 +23,17 @@ $tab = (explode('tab=', URL::current()));
         <!-- Mt Product Detial of the Page -->
         <section class="mt-product-detial wow fadeInUp" data-wow-delay="0.4s">
             <div class="container">
+
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- Slider of the Page -->
                         <div class="slider">
                             <!-- Comment List of the Page -->
                             <ul class="list-unstyled comment-list">
-                                <li><a href="#"><i class="fa fa-heart"></i>{{\App\Models\Product::getLike($product->product_id)}}</a></li>
+                                <li><a href="#"><i
+                                                class="fa fa-heart"></i>{{\App\Models\Product::getLike($product->product_id)}}
+                                    </a></li>
                                 <li><a href="#"><i class="fa fa-comments"></i>{{count($reviews)}}</a></li>
-                                <li><a href="#"><i class="fa fa-share-alt"></i>14</a></li>
                             </ul>
                             <!-- Comment List of the Page end -->
                             <!-- Product Slider of the Page -->
@@ -74,10 +78,20 @@ $tab = (explode('tab=', URL::current()));
                                 <span class="total-price">Отзывы ({{count($reviews)}})</span>
                             </div>
                             <!-- Rank Rating of the Page end -->
-                            <ul class="list-unstyled list">
-                                <li><a href="#"><i class="fa fa-share-alt"></i>Поделиться</a></li>
+                            <ul class="list-unstyled list"  id="reload-heart">
+                                <li><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg"><i
+                                                class="fa fa-share-alt"></i>Поделиться</a></li>
                                 <li><a href="#"><i class="fa fa-exchange"></i>Сравнить</a></li>
-                                <li><a href="#"><i class="fa fa-heart"></i>Добавить в избранные</a></li>
+                                <li class=""><a style="cursor: pointer;"
+                                       data-item-id="{{$product->product_id}}"
+                                       data-method="add"
+                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                       data-session-id="{{ Session::getId()}}"
+                                       data-route="{{route('favorite.isAjax')}}"
+                                       onclick="addItemToFavorites(this)"
+                                    ><i class="fa fa-heart"
+                                        style="color: {{\App\Models\Product::hasLiked($product->product_id, (Auth::user() ? Auth::user()->user_id : null)) ? 'red' : ''}};"></i>Добавить
+                                        в избранные</a></li>
                             </ul>
                             <div class="txt-wrap">
                                 <p>{{$product->product_desc_ru}}</p>
@@ -293,7 +307,98 @@ $tab = (explode('tab=', URL::current()));
                 </div>
             </div>
         </div>
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <div class="title-group"
+                             style="margin-left: 20px; font-size: 120%; color: black; font-weight: 400;">
+                            <h4 class="modal-title">Пригласить друга</h4>
+                            <h5 class="modal-title">Вы можете поделиться со своими друзьями в социальной сети</h5>
+                            <h5 class="modal-title">http://local.qpartners.club/1/admin</h5>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <ul style="list-style: none;">
+                            <li>
+                                <a href="https://api.whatsapp.com/send?text={{$url}}" style="
+                                padding:5px 10px 5px 10px;
+                                border: 2px solid lightgreen;
+                                border-radius: 3px;
+                                font-size: 130%;
+                                ">
+                                    <i style="font-weight: 500;color: lightgreen;" class="fa fa-whatsapp"></i>
+                                    <span style="font-weight: 500;color: black;margin-left: 1rem;">Поделиться через Whatsapp</span>
+                                </a>
+
+                            </li>
+                            <li style="margin-top: 15px;">
+                                <a href="https://telegram.me/share/url?url={{$url}}" style="
+                                padding:5px 10px 5px 10px;
+                                border: 2px solid dodgerblue;
+                                border-radius: 3px;
+                                font-size: 130%;
+                                ">
+                                    <i style="
+                                    background-image: url('https://bitnovosti.com/wp-content/uploads/2017/02/telegram-icon-7.png');
+                                    background-position: center;
+                                    background-size: cover;
+                                    width: 18px;height: 18px;
+                                    bottom: -5px;
+                                    "
+                                       class="fa fa-telegram"
+                                    >
+
+                                    </i>
+                                    <span style="font-weight: 500;color: black;margin-left: 1rem;">Поделиться через Telegram</span>
+                                </a>
+
+                            </li>
+                            <li style="margin-top: 15px;">
+                                <a href="https://www.facebook.com/sharer.php?u={{$url}}" style="
+                                padding:5px 10px 5px 10px;
+                                border: 2px solid dodgerblue;
+                                border-radius: 3px;
+                                font-size: 130%;
+                                ">
+                                    <i style="font-weight: 500;color: dodgerblue;" class="fa fa-facebook"></i>
+                                    <span style="font-weight: 500;color: black;margin-left: 1rem;">Поделиться через Facebook</span>
+                                </a>
+
+                            </li>
+                            <li style="margin-top: 15px;">
+                                <a href="http://vk.com/share.php?url={{$url}}" style="
+                                padding:5px 10px 5px 10px;
+                                border: 2px solid dodgerblue;
+                                border-radius: 3px;
+                                font-size: 130%;
+                                ">
+                                    <i style="font-weight: 500;color: dodgerblue;" class="fa fa-vk"></i>
+                                    <span style="font-weight: 500;color: black;margin-left: 1rem;">Поделиться через VK</span>
+                                </a>
+
+                            </li>
+                            <li style="margin-top: 15px;">
+                                <a href="https://twitter.com/share?url={{$url}}" style="
+                                padding:5px 10px 5px 10px;
+                                border: 2px solid dodgerblue;
+                                border-radius: 3px;
+                                font-size: 130%;
+                                ">
+                                    <i style="font-weight: 500;color: dodgerblue;" class="fa fa-twitter"></i>
+                                    <span style="font-weight: 500;color: black;margin-left: 1rem;">Поделиться через Twiiter</span>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
-
-
 @endsection
