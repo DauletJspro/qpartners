@@ -78,21 +78,24 @@ $tab = (explode('tab=', URL::current()));
                                 <span class="total-price">Отзывы ({{count($reviews)}})</span>
                             </div>
                             <!-- Rank Rating of the Page end -->
-                            <ul class="list-unstyled list"  id="reload-heart">
-                                <li><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg"><i
-                                                class="fa fa-share-alt"></i>Поделиться</a></li>
-                                <li><a href="#"><i class="fa fa-exchange"></i>Сравнить</a></li>
-                                <li class=""><a style="cursor: pointer;"
-                                       data-item-id="{{$product->product_id}}"
-                                       data-method="add"
-                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
-                                       data-session-id="{{ Session::getId()}}"
-                                       data-route="{{route('favorite.isAjax')}}"
-                                       onclick="addItemToFavorites(this)"
-                                    ><i class="fa fa-heart"
-                                        style="color: {{\App\Models\Product::hasLiked($product->product_id, (Auth::user() ? Auth::user()->user_id : null)) ? 'red' : ''}};"></i>Добавить
-                                        в избранные</a></li>
-                            </ul>
+                            <div id="reload-heart">
+                                <ul class="list-unstyled list">
+                                    <li><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg"><i
+                                                    class="fa fa-share-alt"></i>Поделиться</a></li>
+                                    <li><a href="#"><i class="fa fa-exchange"></i>Сравнить</a></li>
+                                    <li class=""><a style="cursor: pointer;"
+                                                    data-item-id="{{$product->product_id}}"
+                                                    data-method="add"
+                                                    data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
+                                                    data-session-id="{{ Session::getId()}}"
+                                                    data-route="{{route('favorite.isAjax')}}"
+                                                    onclick="addItemToFavorites(this)"
+                                        ><i class="fa fa-heart"
+                                            style="color: {{\App\Models\Product::hasLiked($product->product_id, (Auth::user() ? Auth::user()->user_id : null)) ? 'red' : ''}};"></i>Добавить
+                                            в избранные</a></li>
+                                </ul>
+                            </div>
+
                             <div class="txt-wrap">
                                 <p>{{$product->product_desc_ru}}</p>
                             </div>
