@@ -272,6 +272,7 @@ Route::group([
     Route::resource('product', 'ProductController');
     Route::resource('category', 'CategoryController');
     Route::resource('brand', 'BrandController');
+    Route::resource('news-category', 'NewsCategoryController');
     Route::resource('representative', 'RepresentativeController');
 });
 
@@ -279,8 +280,10 @@ Route::group([
 Route::group([
     'middleware' => 'web'
 ], function () {
+    Route::get('image/delete/{file_name}', 'ImageController@deleteImage');
     Route::post('image/upload', 'ImageController@uploadImage');
     Route::post('image/upload/doc', 'ImageController@uploadDocument');
+    Route::post('images/upload', 'ImageController@uploadMultipleImages');
     Route::get('media/{file_name}', 'ImageController@getImage')->where('file_name', '.*');
 });
 

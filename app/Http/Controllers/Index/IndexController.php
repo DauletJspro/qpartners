@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\Education;
 use App\Models\News;
+use App\Models\NewsCategory;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Project;
@@ -129,13 +130,19 @@ class IndexController extends Controller
             ->orderBy('news_date', 'desc')
             ->paginate(6);
 
+        $categories = NewsCategory::where(['is_active' => true])->get();
+
+
         return view('design_index.news.news-list',
             [
                 'menu' => 'news',
-                'news' => $news
+                'news' => $news,
+                'categories' => $categories,
             ]
         );
     }
+
+
 
     public function contact(Request $request)
     {

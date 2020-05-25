@@ -18,14 +18,14 @@
                     <div class="col-xs-12 text-center">
                         <h1>Новости</h1>
                         <!-- Breadcrumbs of the Page -->
-{{--                        <nav class="breadcrumbs">--}}
-{{--                            <ul class="list-unstyled">--}}
-{{--                                <li><a href="index.html">Home <i class="fa fa-angle-right"></i></a></li>--}}
-{{--                                <li><a href="#">Blog <i class="fa fa-angle-right"></i></a></li>--}}
-{{--                                <li>Category</li>--}}
-{{--                            </ul>--}}
-{{--                        </nav>--}}
-                        <!-- Breadcrumbs of the Page end -->
+                    {{--                        <nav class="breadcrumbs">--}}
+                    {{--                            <ul class="list-unstyled">--}}
+                    {{--                                <li><a href="index.html">Home <i class="fa fa-angle-right"></i></a></li>--}}
+                    {{--                                <li><a href="#">Blog <i class="fa fa-angle-right"></i></a></li>--}}
+                    {{--                                <li>Category</li>--}}
+                    {{--                            </ul>--}}
+                    {{--                        </nav>--}}
+                    <!-- Breadcrumbs of the Page end -->
                     </div>
                 </div>
                 <div class="row">
@@ -43,22 +43,24 @@
                             <article class="blog-post style2">
                                 <div class="img-holder">
                                     <a href="/news/{{$item->news_id}}">
-                                    <div style="
-                                            background-image: url('{{$item->news_image}}');
-                                            background-position: center;
-                                            background-size: cover;
-                                            width: 280px;
-                                            height: 170px;
-                                            "></div>
-                                    <ul class="list-unstyled comment-nav">
-                                        <li><a href="#"><i class="fa fa-comments"></i>12</a></li>
-                                        <li><a href="#"><i class="fa fa-share-alt"></i>14</a></li>
-                                    </ul>
+                                        <div style="
+                                                background-image: url('{{$item->news_image}}');
+                                                background-position: center;
+                                                background-size: cover;
+                                                width: 280px;
+                                                height: 170px;
+                                                "></div>
+                                        <ul class="list-unstyled comment-nav">
+                                            <li><a href="#"><i class="fa fa-comments"></i>12</a></li>
+                                            <li><a href="#"><i class="fa fa-share-alt"></i>14</a></li>
+                                        </ul>
                                 </div>
                                 <div class="blog-txt">
                                     <h2><a href="/news/{{$item->news_id}}">{{$item->news_name_ru}}</a></h2>
                                     <ul class="list-unstyled blog-nav">
-                                        <li><a href="#"><i class="fa fa-clock-o"></i>{{date('Y:m:d', strtotime($item->created_at))}}</a></li>
+                                        <li><a href="#"><i
+                                                        class="fa fa-clock-o"></i>{{date('Y:m:d', strtotime($item->created_at))}}
+                                            </a></li>
                                         <li><a href="#"><i class="fa fa-comment"></i>Комментарий</a></li>
                                     </ul>
                                     <p>{{$item->news_desc_ru}}</p>
@@ -82,73 +84,48 @@
                     <div class="col-xs-12 col-sm-4 text-right sidebar wow fadeInRight" data-wow-delay="0.4s">
                         <!-- Category Widget of the Page -->
                         <section class="widget category-widget">
-                            <h3>CATEGORIES</h3>
+                            <h3>Категория</h3>
                             <ul class="list-unstyled widget-nav">
-                                <li><a href="#">Design</a></li>
-                                <li><a href="#">Future</a></li>
-                                <li><a href="#">Kitchen</a></li>
-                                <li><a href="#">Photography</a></li>
+                                @foreach($categories as $category)
+                                    <li><a href="/news?id={{$category->id}}">{{$category->name}}</a></li>
+                                @endforeach
                             </ul>
                         </section>
                         <!-- Category Widget of the Page end -->
                         <!-- Popular Widget of the Page -->
                         <section class="widget popular-widget">
-                            <h3>POPULAR POST</h3>
+                            <h3>Свежие новости</h3>
                             <ul class="list-unstyled text-right popular-post">
-                                <li>
-                                    <div class="img-post">
-                                        <a href="#"><img src="http://placehold.it/60x60" alt="image description"></a>
-                                    </div>
-                                    <div class="info-dscrp">
-                                        <p>Vestibulum sit amet metus euismod amet metus euismod</p>
-                                        <time datetime="2016-02-03 20:00">24.09.2015</time>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="img-post">
-                                        <a href="#"><img src="http://placehold.it/60x60" alt="image description"></a>
-                                    </div>
-                                    <div class="info-dscrp">
-                                        <p>Luctus id risus vel, ultricies dignissim lacus etiam dolor sem</p>
-                                        <time datetime="2016-02-03 20:00">24.09.2015</time>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="img-post">
-                                        <a href="#"><img src="http://placehold.it/60x60" alt="image description"></a>
-                                    </div>
-                                    <div class="info-dscrp">
-                                        <p>Aenean lacus mi, porttitor quis <br>dapibustincidunt</p>
-                                        <time datetime="2016-02-03 20:00">24.09.2015</time>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="img-post">
-                                        <a href="#"><img src="http://placehold.it/60x60" alt="image description"></a>
-                                    </div>
-                                    <div class="info-dscrp">
-                                        <p>Fusce mattis nunc lacus, vulputate facilisis dui efficitur ut</p>
-                                        <time datetime="2016-02-03 20:00">24.09.2015</time>
-                                    </div>
-                                </li>
+                                @foreach($news as $item)
+                                    <li>
+                                        <div class="img-post">
+                                            <a href="/news/{{$item->news_id}}"><img src="{{$item->news_image}}"
+                                                             alt="image description"></a>
+                                        </div>
+                                        <div class="info-dscrp">
+                                            <p>{{$item->news_name_ru}}</p>
+                                            <time datetime="2016-02-03 20:00">{{date('d.m.y',strtotime($item->created_at))}}</time>
+                                        </div>
+                                    </li>
+                                @endforeach
                             </ul>
                         </section>
                         <!-- Popular Widget of the Page end -->
                         <!-- Tag Widget of the Page -->
-                        <section class="widget tag-widget">
-                            <h3>TAGS</h3>
-                            <ul class="list-unstyled text-right tags">
-                                <li><a href="#">Fusce,</a></li>
-                                <li><a href="#">mattis,</a></li>
-                                <li><a href="#">nunc,</a></li>
-                                <li><a href="#">lacus,</a></li>
-                                <li><a href="#">vulputate,</a></li>
-                                <li><a href="#">facilisis,</a></li>
-                                <li><a href="#">dui,</a></li>
-                                <li><a href="#">efficitur,</a></li>
-                                <li><a href="#">ut</a></li>
-                            </ul>
-                        </section>
+{{--                        <section class="widget tag-widget">--}}
+{{--                            <h3>TAGS</h3>--}}
+{{--                            <ul class="list-unstyled text-right tags">--}}
+{{--                                <li><a href="#">Fusce,</a></li>--}}
+{{--                                <li><a href="#">mattis,</a></li>--}}
+{{--                                <li><a href="#">nunc,</a></li>--}}
+{{--                                <li><a href="#">lacus,</a></li>--}}
+{{--                                <li><a href="#">vulputate,</a></li>--}}
+{{--                                <li><a href="#">facilisis,</a></li>--}}
+{{--                                <li><a href="#">dui,</a></li>--}}
+{{--                                <li><a href="#">efficitur,</a></li>--}}
+{{--                                <li><a href="#">ut</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </section>--}}
                         <!-- Tag Widget of the Page end -->
                     </div>
                 </div>

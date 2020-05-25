@@ -292,7 +292,7 @@ if (Auth::user()) {
                                 <div class="s-drop">
                                     <ul>
                                         <li><a href="/news">Новости компании</a></li>
-                                        <li><a href="contact-us2.html">Новости команды</a></li>
+                                        <li><a href="/news">Новости команды</a></li>
                                         <li><a href="{{route('gallery.show')}}">Фото и видео галерея</a></li>
                                     </ul>
                                 </div>

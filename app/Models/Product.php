@@ -34,7 +34,7 @@ class Product extends Model
         return count($likes);
     }
 
-    public function get_mac_address()
+    public static function get_mac_address()
     {
         $MAC = exec('getmac');
         $MAC = strtok($MAC, ' ');

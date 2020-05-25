@@ -15,7 +15,8 @@ class ProductController extends Controller
         $product = Product::where(['product_id' => $id])->first();
         $reviews = Review::where(['item_id' => $id])->where(['review_type_id' => Review::PRODUCT_REVIEW])->get();
         $relatedProducts = Product::where(['category_id' => $product->category_id])->whereNotIn('product_id', [$product->product_id])->limit(5)->get();
-        $url = URL('/') . '/' . Auth::user()->user_id . '/' . \App\Http\Helpers::getTranslatedSlugRu(Auth::user()->login);
+        $url = URL('/') . '/' . (Auth::user() ? Auth::user()->user_id : NULL) . '/' .
+            \App\Http\Helpers::getTranslatedSlugRu((Auth::user() ? Auth::user()->login : null));
         return view('design_index.product.detail', [
             'product' => $product,
             'relatedProducts' => $relatedProducts,

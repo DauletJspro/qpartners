@@ -2,29 +2,29 @@
  * Created by Arman-PC on 21.12.2016.
  */
 
-KindEditor.ready(function(K) {
+KindEditor.ready(function (K) {
     K.create('.text_editor', {
 
-        cssPath : [''],
-        autoHeightMode : true, // это автоматическая высота блока
-        afterCreate : function() {
+        cssPath: [''],
+        autoHeightMode: true, // это автоматическая высота блока
+        afterCreate: function () {
             this.loadPlugin('autoheight');
         },
-        allowFileManager : true,
-        items : [// Вот здесь задаем те кнопки которые хотим видеть
+        allowFileManager: true,
+        items: [// Вот здесь задаем те кнопки которые хотим видеть
             'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
             'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
             'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
             'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
             'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
             'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
-            'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons','deliverybreak',
-            'anchor', 'link',  'unlink','map', '|', 'about'
+            'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'deliverybreak',
+            'anchor', 'link', 'unlink', 'map', '|', 'about'
         ]
     });
     //Ниже инициализируем доп. например выбор цвета или загрузка файла
     var colorpicker;
-    K('#colorpicker').bind('click', function(e) {
+    K('#colorpicker').bind('click', function (e) {
         e.stopPropagation();
         if (colorpicker) {
             colorpicker.remove();
@@ -33,19 +33,19 @@ KindEditor.ready(function(K) {
         }
         var colorpickerPos = K('#colorpicker').pos();
         colorpicker = K.colorpicker({
-            x : colorpickerPos.x,
-            y : colorpickerPos.y + K('#colorpicker').height(),
-            z : 19811214,
-            selectedColor : 'default',
-            noColor : 'Очистить',
-            click : function(color) {
+            x: colorpickerPos.x,
+            y: colorpickerPos.y + K('#colorpicker').height(),
+            z: 19811214,
+            selectedColor: 'default',
+            noColor: 'Очистить',
+            click: function (color) {
                 K('#color').val(color);
                 colorpicker.remove();
                 colorpicker = null;
             }
         });
     });
-    K(document).click(function() {
+    K(document).click(function () {
         if (colorpicker) {
             colorpicker.remove();
             colorpicker = null;
@@ -53,7 +53,7 @@ KindEditor.ready(function(K) {
     });
 
     var editor = K.editor({
-        allowFileManager : true
+        allowFileManager: true
     });
 });
 
@@ -69,11 +69,11 @@ $('.datetimepicker-input').on('dp.show', function () { // Hack datepicker positi
     }
 });
 
-$("#image_form").submit(function(event) {
+$("#image_form").submit(function (event) {
     event.preventDefault();
     var formData = new FormData($(this)[0]);
     $.ajax({
-        url:'/image/upload',
+        url: '/image/upload',
         type: 'POST',
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -84,21 +84,72 @@ $("#image_form").submit(function(event) {
         contentType: false,
         processData: false,
         success: function (data) {
-            $('.ajax-loader').css('display','none');
-            if(data.success == 0){
+            $('.ajax-loader').css('display', 'none');
+            if (data.success == 0) {
                 showError(data.error);
                 return;
             }
             $('.image-name').val(data.file_name);
-            $('.image-src').attr('src',data.file_name);
+            $('.image-src').attr('src', data.file_name);
 
         }
     });
 });
 
-function uploadImage(){
-    $('.ajax-loader').css('display','block');
+$("#images_form").submit(function (event) {
+    event.preventDefault();
+    var formData = new FormData($(this)[0]);
+    $.ajax({
+        url: '/images/upload',
+        type: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: formData,
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            var array = [];
+            $('.ajax-loader').css('display', 'none');
+            if (data.success == 0) {
+                showError(data.error);
+                return;
+            }
+            $.each(data.file_name, function (i) {
+                array.push(data.file_name[i]);
+                $('.multiple-images-list').append(
+                    '         <div class="row row-images-list" >\n' +
+                    '                           <div class="col-sm-3 image-box" style="\n' +
+                    '                                background-image: url(' + data.file_name[i] + ');\n' +
+                    '                                ">\n' +
+                    '                                </div>\n' +
+                    '                                <div class="col-sm-6">\n' +
+                    '                                    <p class="image-name"></p>\n' +
+                    '                                </div>\n' +
+                    '                                <div class=" col-sm-2 image-trash">\n' +
+                    '                                    <a href=""><i class="fa fa-trash" >\n' +
+                    '                                    </i></a>\n' +
+                    '                                </div>  </div> '
+                );
+            });
+            $('#images-name').val(array);
+            // $('.image-src').attr('src', data.file_name);
+
+        }
+    });
+});
+
+function uploadImage() {
+    $('.ajax-loader').css('display', 'block');
     $("#image_form").submit();
+}
+
+function uploadMultipleImages() {
+    $('.ajax-loader').css('display', 'block');
+    $('.images-src').css('display', 'none');
+    $("#images_form").submit();
 }
 
 function searchBySort() {
@@ -106,28 +157,28 @@ function searchBySort() {
     window.location.href = href;
 }
 
-$( "#search_word" ).keyup(function(event) {
+$("#search_word").keyup(function (event) {
     if (!event.ctrlKey && event.which == 13) {
         searchBySort();
     }
 });
 
 function isShowDisabledAll(model) {
-    if(confirm('Действительно хотите сделать неактивным?')){
+    if (confirm('Действительно хотите сделать неактивным?')) {
         $('.ajax-loader').fadeIn(100);
-        $('.select-all').each(function(){
+        $('.select-all').each(function () {
             if ($(this).is(':checked')) {
                 $.ajax({
                     type: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    data :{
+                    data: {
                         is_show: 0,
                         id: $(this).val()
                     },
                     url: "/admin/" + model + "/is_show",
-                    success: function(data){
+                    success: function (data) {
 
                     }
                 });
@@ -139,21 +190,21 @@ function isShowDisabledAll(model) {
 }
 
 function isShowEnabledAll(model) {
-    if(confirm('Действительно хотите сделать активным?')){
+    if (confirm('Действительно хотите сделать активным?')) {
         $('.ajax-loader').fadeIn(100);
-        $('.select-all').each(function(){
+        $('.select-all').each(function () {
             if ($(this).is(':checked')) {
                 $.ajax({
                     type: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    data :{
+                    data: {
                         is_show: 1,
                         id: $(this).val()
                     },
                     url: "/admin/" + model + "/is_show",
-                    success: function(data){
+                    success: function (data) {
 
                     }
                 });
@@ -165,9 +216,9 @@ function isShowEnabledAll(model) {
 }
 
 function deleteAll(model) {
-    if(confirm('Действительно хотите удалить?')){
+    if (confirm('Действительно хотите удалить?')) {
         $('.ajax-loader').fadeIn(100);
-        $('.select-all').each(function(){
+        $('.select-all').each(function () {
             if ($(this).is(':checked')) {
                 $.ajax({
                     type: 'DELETE',
@@ -175,7 +226,7 @@ function deleteAll(model) {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     url: "/admin/" + model + "/" + $(this).val(),
-                    success: function(){
+                    success: function () {
 
                     }
                 });
@@ -189,14 +240,13 @@ function deleteAll(model) {
 function selectAllCheckbox(ob) {
     if ($(ob).is(':checked')) {
         $('.select-all').prop('checked', true);
-    }
-    else {
+    } else {
         $('.select-all').prop('checked', false);
     }
 }
 
-function delItem(ob,id,model){
-    if(confirm('Действительно хотите удалить?')){
+function delItem(ob, id, model) {
+    if (confirm('Действительно хотите удалить?')) {
         $(ob).closest('tr').remove();
         $.ajax({
             type: 'DELETE',
@@ -204,15 +254,15 @@ function delItem(ob,id,model){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             url: "/admin/" + model + "/" + id,
-            success: function(data){
+            success: function (data) {
             }
         });
     }
 }
 
-function isShow(ob,id,model){
+function isShow(ob, id, model) {
     var is_show = 0;
-    if($(ob).is(':checked')) {
+    if ($(ob).is(':checked')) {
         is_show = 1;
     }
     $.ajax({
@@ -220,44 +270,44 @@ function isShow(ob,id,model){
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        data :{
+        data: {
             is_show: is_show,
             id: id
         },
         url: "/admin/" + model + "/is_show",
-        success: function(data){
+        success: function (data) {
 
         }
     });
 }
 
 var cw = $('#avatar_img').width();
-$('#avatar_img').css('height',cw);
+$('#avatar_img').css('height', cw);
 
 $('.news-lang').change(function () {
     $('.lang-item').fadeOut(100);
     $('.add-lang-item').fadeIn(100);
     $('#lang_' + this.value).fadeIn(100);
     $('#add_lang_' + this.value).fadeOut(100);
-    $('.ke-container').css('width','100%');
+    $('.ke-container').css('width', '100%');
 });
 
 function showLang(lang) {
     $('#add_lang_' + lang).fadeOut(100);
     $('#lang_' + lang).fadeIn(100);
-    $('.ke-container').css('width','100%');
+    $('.ke-container').css('width', '100%');
 }
 
 
-function saveNews(){
+function saveNews() {
     $("#news_form").submit();
 }
 
-$("#news_form").submit(function(event) {
+$("#news_form").submit(function (event) {
     event.preventDefault();
 
     $.ajax({
-        url:'/admin/news/save',
+        url: '/admin/news/save',
         type: 'POST',
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -280,17 +330,15 @@ $("#news_form").submit(function(event) {
         },
         success: function (data) {
             $('.ajax-loader').fadeOut(100);
-            if(data.success == 0){
+            if (data.success == 0) {
                 $('#news_error').fadeIn(100);
                 $('#news_error').html(data.result);
                 return;
             }
 
-            if(data.success == true){
+            if (data.success == true) {
                 window.location.href = '/admin/news';
-            }
-
-            else {
+            } else {
                 $('#news_id').val(data.news_id);
             }
 
@@ -302,11 +350,11 @@ $('a.fancybox').fancybox({
     padding: 10
 });
 
-$(function() {
+$(function () {
     $(".phone-mask").mask("+7(999)9999999");
 });
 
-$('.table-css input').change(function(){
+$('.table-css input').change(function () {
     $(this).closest('form').submit();
 });
 
@@ -314,7 +362,7 @@ function getReadMorePacket(id) {
     $.ajax({
         type: 'GET',
         url: "/admin/packet/" + id,
-        success: function(data){
+        success: function (data) {
             $('#modal_desc').html(data.image);
             $('#modal_title').html(data.title);
             //$('#shop_modal').fadeIn(0);
@@ -335,34 +383,32 @@ function addProductToBasket(id) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         url: "/admin/online/" + id,
-        success: function(data){
-            if(data.status == true){
+        success: function (data) {
+            if (data.status == true) {
                 showMessage('Успешно добавлено');
                 $('#basket_count').html(data.count);
-            }
-            else {
+            } else {
                 showError(data.error);
             }
         }
     });
 }
 
-function setBasketUnit(ob,id) {
+function setBasketUnit(ob, id) {
     $.ajax({
         type: 'POST',
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         url: "/admin/online/unit/" + id,
-        data:{
+        data: {
             unit: $(ob).val()
         },
-        success: function(data){
-            if(data.status == true){
+        success: function (data) {
+            if (data.status == true) {
                 $('#sum').html(data.sum);
                 $('#ballSum').html(data.ballSum);
-            }
-            else {
+            } else {
                 showError(data.error);
             }
         }
@@ -376,11 +422,10 @@ function confirmBasket() {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         url: "/admin/online/confirm",
-        success: function(data){
-            if(data.status == true){
+        success: function (data) {
+            if (data.status == true) {
                 window.location.href = '/admin/online/history';
-            }
-            else {
+            } else {
                 showError(data.error);
             }
         }
@@ -388,8 +433,7 @@ function confirmBasket() {
 }
 
 
-
-function delProductFromBasket(ob,id) {
+function delProductFromBasket(ob, id) {
     $(ob).closest('tr').remove();
 
     $.ajax({
@@ -398,13 +442,12 @@ function delProductFromBasket(ob,id) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         url: "/admin/online/" + id,
-        success: function(data){
-            if(data.status == true){
+        success: function (data) {
+            if (data.status == true) {
                 showMessage('Успешно удалено');
                 $('#basket_count').html(data.count);
                 $('#sum').html(data.sum);
-            }
-            else {
+            } else {
                 showError(data.error);
             }
         }
@@ -412,8 +455,8 @@ function delProductFromBasket(ob,id) {
 }
 
 function closeModal() {
-    $('.modal-dialog').css('display','none');
-    $('#blur').css('display','none');
+    $('.modal-dialog').css('display', 'none');
+    $('#blur').css('display', 'none');
 }
 
 function getReadMoreProduct(ob) {
@@ -430,7 +473,7 @@ function showBasketModal() {
 }
 
 
-function subscribeInstagram(ob,user_id,instagram) {
+function subscribeInstagram(ob, user_id, instagram) {
     $.ajax({
         type: 'POST',
         headers: {
@@ -440,20 +483,19 @@ function subscribeInstagram(ob,user_id,instagram) {
         data: {
             user_id: user_id
         },
-        success: function(data){
-            if(data.status == true){
-                $(ob).css('background-color','#F9BF3B');
+        success: function (data) {
+            if (data.status == true) {
+                $(ob).css('background-color', '#F9BF3B');
                 $(ob).html('Отправлено');
                 window.location.href = instagram;
-            }
-            else {
+            } else {
                 showError(data.error);
             }
         }
     });
 }
 
-function subscribeInstagramPartner(ob,instagram_id,instagram) {
+function subscribeInstagramPartner(ob, instagram_id, instagram) {
     $.ajax({
         type: 'POST',
         headers: {
@@ -463,13 +505,12 @@ function subscribeInstagramPartner(ob,instagram_id,instagram) {
         data: {
             instagram_id: instagram_id
         },
-        success: function(data){
-            if(data.status == true){
-                $(ob).css('background-color','#F9BF3B');
+        success: function (data) {
+            if (data.status == true) {
+                $(ob).css('background-color', '#F9BF3B');
                 $(ob).html('Отправлено');
                 window.location.href = instagram;
-            }
-            else {
+            } else {
                 showError(data.error);
             }
         }
@@ -477,7 +518,7 @@ function subscribeInstagramPartner(ob,instagram_id,instagram) {
 }
 
 
-function acceptInstagram(ob,id) {
+function acceptInstagram(ob, id) {
     $.ajax({
         type: 'POST',
         headers: {
@@ -487,19 +528,18 @@ function acceptInstagram(ob,id) {
         data: {
             id: id
         },
-        success: function(data){
-            if(data.status == true){
-                $(ob).css('background-color','#F9BF3B');
+        success: function (data) {
+            if (data.status == true) {
+                $(ob).css('background-color', '#F9BF3B');
                 $(ob).html('Принято');
-            }
-            else {
+            } else {
                 showError(data.error);
             }
         }
     });
 }
 
-function rejectInstagram(ob,id) {
+function rejectInstagram(ob, id) {
     $.ajax({
         type: 'POST',
         headers: {
@@ -509,12 +549,11 @@ function rejectInstagram(ob,id) {
         data: {
             id: id
         },
-        success: function(data){
-            if(data.status == true){
-                $(ob).css('background-color','#F9BF3B');
+        success: function (data) {
+            if (data.status == true) {
+                $(ob).css('background-color', '#F9BF3B');
                 $(ob).html('Отклонено');
-            }
-            else {
+            } else {
                 showError(data.error);
             }
         }

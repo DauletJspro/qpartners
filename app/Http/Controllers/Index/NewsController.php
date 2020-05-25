@@ -15,6 +15,7 @@ class NewsController extends Controller
     {
         $row = News::where('is_show', 1)->orderBy('news_date', 'desc')->paginate(4);
 
+
         return view('design_index.news.news-list',
             [
                 'menu' => 'news',

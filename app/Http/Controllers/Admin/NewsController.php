@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\News;
+use App\Models\NewsImage;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -45,7 +46,8 @@ class NewsController extends Controller
     public function create()
     {
         $row = new News();
-        $row->news_image = '/media/default.jpg';
+        $row->news_image = '/media/default.png';
+        $row->images = '/media/default_images.jpg';
         $row->news_date = date("d.m.Y H:i");
         return view('admin.news.news-edit', [
             'title' => 'Добавить новость',
@@ -69,6 +71,7 @@ class NewsController extends Controller
             ]);
         }
 
+
         $news = new News();
         $news->news_name_ru = $request->news_name_ru;
         $news->news_name_kz = $request->news_name_kz;
@@ -84,6 +87,7 @@ class NewsController extends Controller
         $news->full_description_ru = $request->full_description_ru;
         $news->full_description_kz = $request->full_description_kz;
 
+
         $url = '';
         if ($request->parent_id == '') $request->parent_id = null;
         else {
@@ -97,8 +101,21 @@ class NewsController extends Controller
         $news->news_date = date("Y-m-d H:i", $timestamp);
         $news->save();
 
+        if ($request->news_images) {
+            $news_images = explode(',', $request->news_images[0]);
+        }
+
+        foreach ($news_images as $image) {
+            $newsImages = new NewsImage();
+            $newsImages->news_id = $news->news_id;
+            $newsImages->path = $image;
+            $newsImages->save();
+        }
+
+
         return redirect('/admin/news' . $url);
     }
+
 
     public function edit($id)
     {

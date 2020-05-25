@@ -141,7 +141,9 @@ use App\Models\Product;
                                                            data-session-id="{{ Session::getId()}}"
                                                            data-route="{{route('favorite.isAjax')}}"
                                                            onclick="addItemToFavorites(this)"
-                                                        ><i class="icomoon icon-heart-empty"></i></a></li>
+                                                        ><i
+                                                                    style="color: {{\App\Models\Product::hasLiked($product->product_id, (Auth::user() ? Auth::user()->user_id : null)) ? 'red' : ''}};"
+                                                                    class="icomoon icon-heart-empty"></i></a></li>
                                                     <li><a href="#"><i class="icomoon icon-exchange"></i></a></li>
                                                 </ul>
                                             </div>

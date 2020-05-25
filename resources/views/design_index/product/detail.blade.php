@@ -80,8 +80,10 @@ $tab = (explode('tab=', URL::current()));
                             <!-- Rank Rating of the Page end -->
                             <div id="reload-heart">
                                 <ul class="list-unstyled list">
-                                    <li><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg"><i
-                                                    class="fa fa-share-alt"></i>Поделиться</a></li>
+                                    @if(Auth::user())
+                                        <li><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg"><i
+                                                        class="fa fa-share-alt"></i>Поделиться</a></li>
+                                    @endif
                                     <li><a href="#"><i class="fa fa-exchange"></i>Сравнить</a></li>
                                     <li class=""><a style="cursor: pointer;"
                                                     data-item-id="{{$product->product_id}}"
