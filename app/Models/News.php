@@ -14,4 +14,10 @@ class News extends Model
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+
+
+    public function images()
+    {
+        return $this->hasMany('App\Models\NewsImage', 'news_id', 'news_id');
+    }
 }

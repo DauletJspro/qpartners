@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Index;
 
 use App\Http\Helpers;
 use App\Models\News;
+use App\Models\NewsCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
@@ -29,16 +30,26 @@ class NewsController extends Controller
     public function getNewsById($id)
     {
         $row = News::where('is_show', 1)->where('news_id', $id)->first();
+        $categories = NewsCategory::where(['is_active' => true])->get();
+        $news = News::where('is_show', 1)
+            ->orderBy('news_date', 'desc')
+            ->paginate(6);
 
-        if($row == null)
+
+        if ($row == null)
             return response()->view('errors.404', [], 404);
 
-        return  view('design_index.news.news-detail',
+        $images = $row->images;
+
+        return view('design_index.news.news-detail',
             [
                 'menu' => 'news',
+                'popular_news' => $news,
                 'news' => $row,
+                'images' => $images,
                 'title' => $row->news_name_ru,
-                'meta_description' => $row->news_name_ru .'. QazaqTurizm'
+                'categories' => $categories,
+                'meta_description' => $row->news_name_ru . '. QazaqTurizm'
             ]
         );
     }

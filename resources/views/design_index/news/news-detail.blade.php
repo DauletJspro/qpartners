@@ -75,44 +75,24 @@
                                     <strong>{{$news->full_description_ru}}</strong>
                                 </p>
                                 <div id="blog-isotop" class="img-block">
-                                    <div class="img">
-                                        <a href="http://placehold.it/185x185" class="lightbox">
-                                            <img src="http://placehold.it/185x185" alt="image description">
-                                            <i class="fa fa-search-plus"></i>
-                                        </a>
-                                    </div>
-                                    <div class="img">
-                                        <a href="http://placehold.it/185x135" class="lightbox">
-                                            <img src="http://placehold.it/185x135" alt="image description">
-                                            <i class="fa fa-search-plus"></i>
-                                        </a>
-                                    </div>
-                                    <div class="img">
-                                        <a href="http://placehold.it/1852x2452" class="lightbox">
-                                            <img src="http://placehold.it/185x245" alt="image description">
-                                            <i class="fa fa-search-plus"></i>
-                                        </a>
-                                    </div>
-                                    <div class="img">
-                                        <a href="http://placehold.it/185x120" class="lightbox">
-                                            <img src="http://placehold.it/185x120" alt="image description">
-                                            <i class="fa fa-search-plus"></i>
-                                        </a>
-                                    </div>
-                                    <div class="img">
-                                        <a href="http://placehold.it/185x135" class="lightbox">
-                                            <img src="http://placehold.it/185x135" alt="image description">
-                                            <i class="fa fa-search-plus"></i>
-                                        </a>
-                                    </div>
+                                    @foreach($images  as $image)
+                                        <div class="img">
+                                            <a href="{{$image->path}}" class="lightbox">
+                                                <div style="
+                                                        width: 185px;
+                                                        height: 185px;
+                                                        background-image: url('{{$image->path}}');
+                                                        background-repeat: no-repeat;
+                                                        background-position: center;
+                                                        background-size: cover;
+                                                        ">
+
+                                                </div>
+                                                <i class="fa fa-search-plus"></i>
+                                            </a>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <p>Fusce mattis nunc lacus, vulputate facilisis dui efficitur ut. Vestibulum sit amet
-                                    metus euismod, condimentum lectus id, ultrices sem. Morbi in erat malesuada,
-                                    sollicitudin massa at, tristique nisl. Maecenas id eros scelerisque, vulputate
-                                    tortor quis, efficitur arcu.</p>
-                                <p>Aenean lacus mi, porttitor quis dapibus a, tincidunt vitae arcu. Etiam dolor sem,
-                                    luctus id risus vel, ultricies dignissim lacus. t cupidatat non proident, sunt in
-                                    culpa qui officia deserunt mollit anim id est laborum.</p>
                             </div>
                         </article>
                         <!-- Blog Post of the Page end -->
@@ -192,74 +172,49 @@
                     <div class="col-xs-12 col-sm-4 text-right wow fadeInUp" data-wow-delay="0.4s">
                         <!-- Category Widget of the Page -->
                         <section class="widget category-widget">
-                            <h3>CATEGORIES</h3>
+                            <h3>Категория</h3>
                             <ul class="list-unstyled widget-nav">
-                                <li><a href="#">Design</a></li>
-                                <li><a href="#">Future</a></li>
-                                <li><a href="#">Kitchen</a></li>
-                                <li><a href="#">Photography</a></li>
+                                @foreach($categories as $category)
+                                    <li><a href="/news?id={{$category->id}}">{{$category->name}}</a></li>
+                                @endforeach
                             </ul>
                         </section>
                         <!-- Category Widget of the Page end -->
                         <!-- Popular Widget of the Page -->
                         <section class="widget popular-widget">
-                            <h3>POPULAR POST</h3>
+                            <h3>Свежие новости</h3>
                             <ul class="list-unstyled text-right popular-post">
-                                <li>
-                                    <div class="img-post">
-                                        <a href="#"><img src="http://placehold.it/65x65" alt="image description"></a>
-                                    </div>
-                                    <div class="info-dscrp">
-                                        <p>Vestibulum sit amet metus euismod amet metus euismod</p>
-                                        <time datetime="2016-02-03 20:00">24.09.2015</time>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="img-post">
-                                        <a href="#"><img src="http://placehold.it/65x65" alt="image description"></a>
-                                    </div>
-                                    <div class="info-dscrp">
-                                        <p>Luctus id risus vel, ultricies dignissim lacus etiam dolor sem</p>
-                                        <time datetime="2016-02-03 20:00">24.09.2015</time>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="img-post">
-                                        <a href="#"><img src="http://placehold.it/65x65" alt="image description"></a>
-                                    </div>
-                                    <div class="info-dscrp">
-                                        <p>Aenean lacus mi, porttitor quis <br>dapibustincidunt</p>
-                                        <time datetime="2016-02-03 20:00">24.09.2015</time>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="img-post">
-                                        <a href="#"><img src="http://placehold.it/65x65" alt="image description"></a>
-                                    </div>
-                                    <div class="info-dscrp">
-                                        <p>Fusce mattis nunc lacus, vulputate facilisis dui efficitur ut</p>
-                                        <time datetime="2016-02-03 20:00">24.09.2015</time>
-                                    </div>
-                                </li>
+                                @foreach($popular_news as $item)
+                                    <li>
+                                        <div class="img-post">
+                                            <a href="/news/{{$item->news_id}}"><img src="{{$item->news_image}}"
+                                                                                    alt="image description"></a>
+                                        </div>
+                                        <div class="info-dscrp">
+                                            <p>{{$item->news_name_ru}}</p>
+                                            <time datetime="2016-02-03 20:00">{{date('d.m.y',strtotime($item->created_at))}}</time>
+                                        </div>
+                                    </li>
+                                @endforeach
                             </ul>
                         </section>
                         <!-- Popular Widget of the Page end -->
                         <!-- Tag Widget of the Page -->
-                        <section class="widget tag-widget">
-                            <h3>TAGS</h3>
-                            <ul class="list-unstyled text-right tags">
-                                <li><a href="#">Fusce,</a></li>
-                                <li><a href="#">mattis,</a></li>
-                                <li><a href="#">nunc,</a></li>
-                                <li><a href="#">lacus,</a></li>
-                                <li><a href="#">vulputate,</a></li>
-                                <li><a href="#">facilisis,</a></li>
-                                <li><a href="#">dui,</a></li>
-                                <li><a href="#">efficitur,</a></li>
-                                <li><a href="#">ut</a></li>
-                            </ul>
-                        </section>
-                        <!-- Tag Widget of the Page -->
+                    {{--                        <section class="widget tag-widget">--}}
+                    {{--                            <h3>TAGS</h3>--}}
+                    {{--                            <ul class="list-unstyled text-right tags">--}}
+                    {{--                                <li><a href="#">Fusce,</a></li>--}}
+                    {{--                                <li><a href="#">mattis,</a></li>--}}
+                    {{--                                <li><a href="#">nunc,</a></li>--}}
+                    {{--                                <li><a href="#">lacus,</a></li>--}}
+                    {{--                                <li><a href="#">vulputate,</a></li>--}}
+                    {{--                                <li><a href="#">facilisis,</a></li>--}}
+                    {{--                                <li><a href="#">dui,</a></li>--}}
+                    {{--                                <li><a href="#">efficitur,</a></li>--}}
+                    {{--                                <li><a href="#">ut</a></li>--}}
+                    {{--                            </ul>--}}
+                    {{--                        </section>--}}
+                    <!-- Tag Widget of the Page -->
                     </div>
                 </div>
             </div>

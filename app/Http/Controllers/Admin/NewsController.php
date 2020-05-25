@@ -124,6 +124,8 @@ class NewsController extends Controller
             ->where('news.news_id', $id)
             ->first();
 
+        $row->images = '/media/default_images.jpg';
+
         return view('admin.news.news-edit', [
             'title' => 'Изменить новость',
             'row' => $row
@@ -167,7 +169,18 @@ class NewsController extends Controller
         $news->news_redirect = $request->news_redirect;
         $timestamp = strtotime($request->news_date);
         $news->news_date = date("Y-m-d H:i", $timestamp);
-        $news->save();
+        if ($news->save()) {
+
+            if ($request->news_images) {
+                $news_images = explode(',', $request->news_images[0]);
+            }
+            foreach ($news_images as $image) {
+                $newsImages = new NewsImage();
+                $newsImages->news_id = $news->news_id;
+                $newsImages->path = $image;
+                $newsImages->save();
+            }
+        }
 
         if ($request->parent_id == '') $url = '';
         else $url = '?parent_id=' . $request->parent_id;
