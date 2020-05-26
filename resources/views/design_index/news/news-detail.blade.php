@@ -95,8 +95,6 @@
                                 </div>
                             </div>
                         </article>
-                        <!-- Blog Post of the Page end -->
-                        <!-- Mt Author Box of the Page -->
                         <article class="mt-author-box">
                             <div class="author-img">
                                 <a href="#"><img src="http://placehold.it/150x150" alt="image description"></a>

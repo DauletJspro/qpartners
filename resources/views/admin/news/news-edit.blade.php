@@ -46,9 +46,10 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Описание (Рус)</label>
-                                                <textarea value="{!!  $row->full_description_ru !!}" type="text"
+                                                <textarea value="{{  $row->full_description_ru }}" type="text"
                                                           rows="15" class="form-control" name="full_description_ru"
                                                           placeholder="Введите">
+                                                    {{$row->full_description_ru}}
                                            </textarea>
                                             </div>
                                             <div class="form-group">
@@ -66,6 +67,7 @@
                                                 <textarea value="{!!  $row->full_description_kz !!}" type="text"
                                                           rows="15" class="form-control" name="full_description_kz"
                                                           placeholder="Введите">
+                                                    {!!  $row->full_description_kz !!}
                                            </textarea>
                                             </div>
                                             <div class="form-group">
