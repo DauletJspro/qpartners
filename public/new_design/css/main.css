@@ -8343,7 +8343,7 @@ a:hover {
 /*    padding: 0 0 62px;*/
 /*    vertical-align: top;*/
 /*}*/
-#mt-main > div > div > div > ul > li{
+#mt-main > div > div > div > ul > li {
     /*width: 24%;*/
     padding: 0 10px 62px;
     vertical-align: top;
@@ -10266,20 +10266,20 @@ a:hover {
 }
 
 .mt-comments-section .mt-leave-comment .comment-form .form-control {
-    font-size: 14px;
+    font-size: 17px;
     line-height: 16px;
-    font-weight: 400;
+    font-weight: 600;
     width: 31.5%;
     height: 47px;
     float: left;
-    border: none;
+    border: 1px solid lightgrey;
     outline: none;
     box-shadow: none;
-    border-radius: 0;
+    border-radius: 5px;
     margin: 0 0 0 20px;
     padding: 11px 10px 5px 26px;
-    color: #868686;
-    background: #f7f7f7;
+    color: black;
+    /*background: #f7f7f7;*/
 }
 
 .mt-comments-section .mt-leave-comment .comment-form .form-control:first-child {
@@ -10290,16 +10290,17 @@ a:hover {
     min-height: 108px;
     resize: none;
     width: 100%;
-    font-size: 14px;
+    font-size: 17px;
     line-height: 16px;
-    font-weight: 400;
+    font-weight: 600;
     height: 47px;
-    border: none;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
     outline: none;
     box-shadow: none;
     padding: 20px 10px 5px 26px;
-    color: #868686;
-    background: #f7f7f7;
+    color: black;
+    /*background: #f7f7f7;*/
 }
 
 .mt-comments-section .mt-leave-comment .comment-form .form-btn {
@@ -12830,20 +12831,20 @@ label[for]:hover {
     color: darkorange;
 }
 
-#mt-header > div.mt-bottom-bar > div > div > div > ul > li:nth-child(3) >a> span {
+#mt-header > div.mt-bottom-bar > div > div > div > ul > li:nth-child(3) > a > span {
     position: absolute;
     width: 20px;
     height: 20px;
     left: 15px;
-    top:-5px;
+    top: -5px;
     border: 1px solid lightgrey;
     font-family: Arial;
     border-radius: 50%;
     font-size: 11px;
     display: inline-flex;
     justify-content: center;
-    align-items: center;K
-    line-height: 1;
+    align-items: center;
+    K line-height: 1;
     background-color: black;
     color: white;
     font-weight: 600;

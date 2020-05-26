@@ -99,13 +99,13 @@
                             <div class="author-img">
                                 <a href="#">
                                     <div style="
-                                           background-size: contain;
-                                           background-position: center;
-                                           background-repeat: no-repeat;
-                                           width: 150px;
-                                           height: 150px;
-                                           background-image: url('{{$author ? $author->avatar : '/media/default.png'}}');
-                                    "></div>
+                                            background-size: contain;
+                                            background-position: center;
+                                            background-repeat: no-repeat;
+                                            width: 150px;
+                                            height: 150px;
+                                            background-image: url('{{$author ? $author->avatar : '/media/default.png'}}');
+                                            "></div>
                                 </a>
                             </div>
                             <div class="author-txt">
@@ -122,7 +122,7 @@
                         <!-- Mt Comments Section of the Page -->
                         <div class="mt-comments-section">
                             <div class="mt-comments-heading">
-                                <h2>COMMENTS</h2>
+                                <h2>Комментарий</h2>
                             </div>
                             <ul class="list-unstyled">
                                 <li>
@@ -155,18 +155,21 @@
                             </ul>
                             <!-- Mt Leave Comments of the Page -->
                             <div class="mt-leave-comment">
-                                <h2>LEAVE A COMMENT</h2>
+                                <h2>Оставить комментарий</h2>
                                 <form action="#" class="comment-form">
                                     <fieldset>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Name">
-                                            <input type="email" class="form-control" placeholder="Email">
-                                            <input type="text" class="form-control" placeholder="Website">
+                                            <input type="text" name="name" class="form-control" placeholder="Имя"
+                                                   value="{{Auth::user() ? Auth::user()->name : '' }}">
+                                            <input type="email" name="email" class="form-control" placeholder="E-mail"
+                                                   value="{{Auth::user() ? Auth::user()->email : '' }}">
                                         </div>
                                         <div class="form-group">
-                                            <textarea placeholder="Message"></textarea>
+                                            <textarea placeholder="Комментарий..." name="message_body">
+
+                                            </textarea>
                                         </div>
-                                        <button type="submit" class="form-btn">Submit</button>
+                                        <button type="submit" class="btn btn-warning" style="padding:1rem 2rem;">Оставить</button>
                                     </fieldset>
                                 </form>
                             </div>
