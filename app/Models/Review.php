@@ -32,4 +32,9 @@ class Review extends Model
 
         return intval(round($rating));
     }
+
+    public function user()
+    {
+        return $this->hasOne('App\Models\Users', 'user_id', 'user_id');
+    }
 }

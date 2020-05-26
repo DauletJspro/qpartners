@@ -9841,6 +9841,7 @@ a:hover {
     padding: 60px 0 10px 7px;
     text-transform: uppercase;
     color: #bababa;
+    list-style: none;
 }
 
 .btn-holder .pagination.pagelink {

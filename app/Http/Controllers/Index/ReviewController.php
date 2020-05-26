@@ -42,6 +42,7 @@ class ReviewController extends Controller
 
         $review = new Review();
 
+
         $validator = [
             'user_name' => 'required',
             'user_email' => 'required',
@@ -58,7 +59,11 @@ class ReviewController extends Controller
         $review->item_id = $request->item_id;
         $review->review_type_id = $request->review_type_id;
         if ($review->save()) {
-            return redirect('product/' . $id . '&tab=review');
+            if ($request->review_type_id == Review::NEWS_REVIEW) {
+                return redirect('news/' . $id);
+            } elseif ($request->review_type_id == Review::PRODUCT_REVIEW) {
+                return redirect('product/' . $id . '&tab=review');
+            }
         };
 
 

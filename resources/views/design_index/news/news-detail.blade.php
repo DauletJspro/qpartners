@@ -34,18 +34,13 @@
                 </div>
             </div>
         </section>
-        <!-- Mt Contact Banner of the Page end -->
-
-        <!-- Mt Blog Detail of the Page -->
         <div class="mt-blog-detail style1">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-8 wow fadeInUp" data-wow-delay="0.4s">
-                        <!-- Blog Post of the Page -->
                         <article class="blog-post detail">
-                            <div class="img-holder">
-                                <a href="blog-right-sidebar.html">
-
+                            <div class="img-holder img-post">
+                                <a href="{{$news->news_image}}" class="lightbox">
                                     <div style="
                                             background-image: url('{{$news->news_image}}') ;
                                             background-size: contain;
@@ -53,7 +48,8 @@
                                             background-repeat: no-repeat;
                                             width: 790px;
                                             min-height: 365px;
-                                            "></div>
+                                            ">
+                                    </div>
                                 </a>
                             </div>
                             <time class="time" datetime="2016-02-03 20:00">
@@ -69,7 +65,8 @@
                                     \App\Http\Helpers::getMonthName(date('m', strtotime($news->created_at))) .'&nbsp;'.
                                     date('Y', strtotime($news->created_at))
                                     }}</a></li>
-                                    <li><a href="#"><i class="fa fa-comment"></i>2 Comments</a></li>
+                                    <li><a href="#"><i class="fa fa-comment"></i>{{count($comments)}} коментарий</a>
+                                    </li>
                                 </ul>
                                 <p>
                                     <strong>{{$news->full_description_ru}}</strong>
@@ -125,60 +122,52 @@
                                 <h2>Комментарий</h2>
                             </div>
                             <ul class="list-unstyled">
-                                <li>
-                                    <div class="img-box">
-                                        <img src="http://placehold.it/70x70" alt="image description">
-                                    </div>
-                                    <div class="txt">
-                                        <h3><a href="#">John Wick</a></h3>
-                                        <time class="mt-time" datetime="2016-02-03 20:00">May 24, 2015</time>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum</p>
-                                    </div>
-                                </li>
-                                <li class="second-comment">
-                                    <div class="img-box">
-                                        <img src="http://placehold.it/70x70" alt="image description">
-                                    </div>
-                                    <div class="txt">
-                                        <h3><a href="#">John Wick</a></h3>
-                                        <time class="mt-time" datetime="2016-02-03 20:00">May 24, 2015</time>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor in reprehenderit i</p>
-                                    </div>
-                                </li>
+                                @foreach($comments as $comment)
+                                    <li>
+                                        <div class="img-box">
+                                            <strong style="color: black;">{{$comment->user ? $comment->user->name : 'Не указано' }}</strong>
+                                            <img src="{{$comment->user ? $comment->user->avatar : '/media/default.png'}}"
+                                                 alt="" style="border-radius: 50%;border: 1px solid lightgrey;">
+                                        </div>
+                                        <div class="txt">
+                                            <h3><a href="#"></a></h3>
+                                            <time class="mt-time"
+                                                  datetime="2016-02-03 20:00">{{$comment->created_at}}</time>
+                                            <strong style="color: black;">{{$comment->review_text}}</strong>
+                                        </div>
+                                    </li>
+                                @endforeach
                             </ul>
-                            <!-- Mt Leave Comments of the Page -->
                             <div class="mt-leave-comment">
                                 <h2>Оставить комментарий</h2>
-                                <form action="#" class="comment-form">
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <input type="text" name="name" class="form-control" placeholder="Имя"
-                                                   value="{{Auth::user() ? Auth::user()->name : '' }}">
-                                            <input type="email" name="email" class="form-control" placeholder="E-mail"
-                                                   value="{{Auth::user() ? Auth::user()->email : '' }}">
+                                {{ Form::open(['action' => ['Index\ReviewController@store'], 'method' => 'POST', 'class' => 'comment-form']) }}
+                                {{ Form::token() }}
+                                {{ Form::hidden('item_id', $news->news_id) }}
+                                {{ Form::hidden('review_type_id', \App\Models\Review::NEWS_REVIEW) }}
+                                <fieldset>
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger" style="color: red;">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
                                         </div>
-                                        <div class="form-group">
-                                            <textarea placeholder="Комментарий..." name="message_body">
-
-                                            </textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-warning" style="padding:1rem 2rem;">Оставить</button>
-                                    </fieldset>
-                                </form>
+                                    @endif
+                                    <div class="form-group">
+                                        {{Form::text('user_name', (Auth::user()? Auth::user()->name : ''), ['class'=>  'form-control', 'placeholder' => 'Имя'])}}
+                                        {{Form::text('user_email', (Auth::user()? Auth::user()->email : ''), ['class'=>  'form-control','placeholder' => 'E-mail'])}}
+                                    </div>
+                                    <div class="form-group">
+                                        {{Form::textarea('review_text',null, ['placeholder' => 'Комментарий....'])}}
+                                    </div>
+                                    {{Form::submit('Оставить',['class' => 'btn btn-warning', 'style' => 'padding:1rem 2rem;'])}}
+                                </fieldset>
+                                {{Form::close()}}
                             </div>
-                            <!-- Mt Leave Comments of the Page end -->
                         </div>
-                        <!-- Mt Comments Section of the Page end -->
                     </div>
                     <div class="col-xs-12 col-sm-4 text-right wow fadeInUp" data-wow-delay="0.4s">
-                        <!-- Category Widget of the Page -->
                         <section class="widget category-widget">
                             <h3>Категория</h3>
                             <ul class="list-unstyled widget-nav">
@@ -187,8 +176,6 @@
                                 @endforeach
                             </ul>
                         </section>
-                        <!-- Category Widget of the Page end -->
-                        <!-- Popular Widget of the Page -->
                         <section class="widget popular-widget">
                             <h3>Свежие новости</h3>
                             <ul class="list-unstyled text-right popular-post">

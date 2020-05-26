@@ -25,4 +25,9 @@ class News extends Model
     {
         return $this->hasMany('App\Models\NewsImage', 'news_id', 'news_id');
     }
+
+    public function comment()
+    {
+        return $this->hasMany('App\Models\Review', 'item_id', 'news_id')->where(['review_type_id' => Review::NEWS_REVIEW]);
+    }
 }

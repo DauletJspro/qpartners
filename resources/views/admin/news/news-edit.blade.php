@@ -31,7 +31,7 @@
                                         <input type="hidden" value="{{ $row->news_image }}" name="news_image"
                                                class="image-name">
                                         <input type="hidden" value="{{ $row->news_images }}" name="news_images[]"
-                                                id="images-name" >
+                                               id="images-name">
 
                                         <div class="box-body">
                                             <div class="form-group">
@@ -70,10 +70,10 @@
                                                     {!!  $row->full_description_kz !!}
                                            </textarea>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="">Показывать на главной странице</label>
-
-                                            </div>
+{{--                                            <div class="form-group">--}}
+{{--                                                <label for="">Показывать на главной странице</label>--}}
+{{--                                                <input type="checkbox" >--}}
+{{--                                            </div>--}}
                                             <div class="form-group">
                                                 <label>Дата</label>
                                                 <input id="news_date" value="{{ $row->news_date }}" type="text"

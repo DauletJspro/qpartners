@@ -16,7 +16,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
-                        <h1>Новости</h1>
+                        <?php $category_id = $request->input('category_id'); ?>
+                        <?php if ($category_id): ?>
+                        <?php $category = \App\Models\NewsCategory::where(['id' => $category_id])->first(); ?>
+                        <?php endif ?>
+                        <h1>Новости {{isset($category) ?  ' / '.$category->name : ''}}</h1>
                         <!-- Breadcrumbs of the Page -->
                     {{--                        <nav class="breadcrumbs">--}}
                     {{--                            <ul class="list-unstyled">--}}
@@ -39,6 +43,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-8 wow fadeInLeft" data-wow-delay="0.4s">
+                        @if(!count($news))
+                            <h3>Пока никаких новостей...</h3>
+                        @endif
                         @foreach($news as $item)
                             <article class="blog-post style2">
                                 <div class="img-holder">
@@ -51,8 +58,8 @@
                                                 height: 170px;
                                                 "></div>
                                         <ul class="list-unstyled comment-nav">
-                                            <li><a href="#"><i class="fa fa-comments"></i>12</a></li>
-                                            <li><a href="#"><i class="fa fa-share-alt"></i>14</a></li>
+                                            <li><a href="#"><i class="fa fa-comments"></i>{{count($item->comment)}}</a>
+                                            </li>
                                         </ul>
                                 </div>
                                 <div class="blog-txt">
@@ -61,24 +68,16 @@
                                         <li><a href="#"><i
                                                         class="fa fa-clock-o"></i>{{date('Y:m:d', strtotime($item->created_at))}}
                                             </a></li>
-                                        <li><a href="#"><i class="fa fa-comment"></i>Комментарий</a></li>
+                                        <li><a href="/news/{{$item->news_id}}"><i class="fa fa-comment"></i>{{count($item->comment)}} &emsp;
+                                                Комментарий</a></li>
                                     </ul>
                                     <p>{{$item->news_desc_ru}}</p>
                                     <a href="/news/{{$item->news_id}}" class="btn-more">Читать больше</a>
                                 </div>
                             </article>
                         @endforeach
-                        <div class="btn-holder">
-                            <ul class="list-unstyled pagination">
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#">Next</a></li>
-                            </ul>
+                        <div class="btn-holder" style="list-style: none;">
+                            {{ $news->links() }}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-4 text-right sidebar wow fadeInRight" data-wow-delay="0.4s">
@@ -87,7 +86,7 @@
                             <h3>Категория</h3>
                             <ul class="list-unstyled widget-nav">
                                 @foreach($categories as $category)
-                                    <li><a href="/news?id={{$category->id}}">{{$category->name}}</a></li>
+                                    <li><a href="/news?category_id={{$category->id}}">{{$category->name}}</a></li>
                                 @endforeach
                             </ul>
                         </section>
@@ -100,7 +99,7 @@
                                     <li>
                                         <div class="img-post">
                                             <a href="/news/{{$item->news_id}}"><img src="{{$item->news_image}}"
-                                                             alt="image description"></a>
+                                                                                    alt="image description"></a>
                                         </div>
                                         <div class="info-dscrp">
                                             <p>{{$item->news_name_ru}}</p>
@@ -112,21 +111,21 @@
                         </section>
                         <!-- Popular Widget of the Page end -->
                         <!-- Tag Widget of the Page -->
-{{--                        <section class="widget tag-widget">--}}
-{{--                            <h3>TAGS</h3>--}}
-{{--                            <ul class="list-unstyled text-right tags">--}}
-{{--                                <li><a href="#">Fusce,</a></li>--}}
-{{--                                <li><a href="#">mattis,</a></li>--}}
-{{--                                <li><a href="#">nunc,</a></li>--}}
-{{--                                <li><a href="#">lacus,</a></li>--}}
-{{--                                <li><a href="#">vulputate,</a></li>--}}
-{{--                                <li><a href="#">facilisis,</a></li>--}}
-{{--                                <li><a href="#">dui,</a></li>--}}
-{{--                                <li><a href="#">efficitur,</a></li>--}}
-{{--                                <li><a href="#">ut</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </section>--}}
-                        <!-- Tag Widget of the Page end -->
+                    {{--                        <section class="widget tag-widget">--}}
+                    {{--                            <h3>TAGS</h3>--}}
+                    {{--                            <ul class="list-unstyled text-right tags">--}}
+                    {{--                                <li><a href="#">Fusce,</a></li>--}}
+                    {{--                                <li><a href="#">mattis,</a></li>--}}
+                    {{--                                <li><a href="#">nunc,</a></li>--}}
+                    {{--                                <li><a href="#">lacus,</a></li>--}}
+                    {{--                                <li><a href="#">vulputate,</a></li>--}}
+                    {{--                                <li><a href="#">facilisis,</a></li>--}}
+                    {{--                                <li><a href="#">dui,</a></li>--}}
+                    {{--                                <li><a href="#">efficitur,</a></li>--}}
+                    {{--                                <li><a href="#">ut</a></li>--}}
+                    {{--                            </ul>--}}
+                    {{--                        </section>--}}
+                    <!-- Tag Widget of the Page end -->
                     </div>
                 </div>
             </div>

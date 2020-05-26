@@ -124,26 +124,6 @@ class IndexController extends Controller
     }
 
 
-    public function news(Request $request)
-    {
-        $news = News::where('is_show', 1)
-            ->orderBy('news_date', 'desc')
-            ->paginate(6);
-
-        $categories = NewsCategory::where(['is_active' => true])->get();
-
-
-        return view('design_index.news.news-list',
-            [
-                'menu' => 'news',
-                'news' => $news,
-                'categories' => $categories,
-            ]
-        );
-    }
-
-
-
     public function contact(Request $request)
     {
         return view('design_index.index.contact',
