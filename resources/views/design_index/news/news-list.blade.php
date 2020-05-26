@@ -85,6 +85,7 @@
                         <section class="widget category-widget">
                             <h3>Категория</h3>
                             <ul class="list-unstyled widget-nav">
+                                <li><a href="/news">Все</a></li>
                                 @foreach($categories as $category)
                                     <li><a href="/news?category_id={{$category->id}}">{{$category->name}}</a></li>
                                 @endforeach
