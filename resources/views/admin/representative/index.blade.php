@@ -30,6 +30,7 @@ $cities = Arr::pluck($cities, 'city_name_ru', 'city_id');
                         <tr style="border: 1px">
                             <th style="width: 30px">№</th>
                             <th>Город</th>
+                            <th>Адрес</th>
                             <th>ФИО</th>
                             <th>Номер телефона</th>
                             <th>Whatsapp</th>
@@ -46,7 +47,8 @@ $cities = Arr::pluck($cities, 'city_name_ru', 'city_id');
                         @foreach($representatives as $representative)
                             <tr>
                                 <td>{{ $representative->id }}</td>
-                                <td><p>{{ $cities[$representative->city_id] }}</p></td>
+                                <td><p>{{ $representative->city_id ?  $cities[$representative->city_id] : 'Не указано' }}</p></td>
+                                <td><p>{{ $representative->address  }}</p></td>
                                 <td><p>{{ $representative->full_name }}</p></td>
                                 <td><p>{{ $representative->phone_number }}</p></td>
                                 <td><p>{{ $representative->whatsapp }}</p></td>

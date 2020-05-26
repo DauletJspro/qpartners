@@ -40,6 +40,10 @@ $cities = Arr::pluck($cities, 'city_name_ru', 'city_id');
                                  }}
                             </div>
                             <div class="form-group">
+                                {{Form::label('Укажите адрес', null, ['class' => 'control-label'])}}
+                                {{Form::text('address', $representative->address, ['class' => 'form-control'])}}
+                            </div>
+                            <div class="form-group">
                                 {{ Form::label('ФИО',null, ['class' => 'control-label']) }}
                                 {{ Form::text('full_name', $representative->full_name, ['class' => 'form-control'])}}
                             </div>

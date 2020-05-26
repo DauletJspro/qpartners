@@ -58,6 +58,7 @@ class RepresentativeController extends Controller
             'city_id' => 'required',
             'full_name' => 'required|min:5',
             'phone_number' => 'required|min:5',
+            'address' => 'required',
             'whatsapp' => 'min:5',
         ], $messages);
 
@@ -131,11 +132,11 @@ class RepresentativeController extends Controller
         $representative = Representative::where(['id' => $id])->first();
 
 
+        $representative->fill($request->all());
         $representative->is_active = false;
         if ($request->is_active) {
             $representative->is_active = true;
         }
-        $representative->fill($request->all());
         if ($representative->save()) {
             $request->session()->flash('success', 'Вы успешно изменили представителя');
             return redirect('admin/representative');

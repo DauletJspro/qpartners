@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAuthorIdToTableNews extends Migration
+class AddAddressToTableRepresentative extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddAuthorIdToTableNews extends Migration
      */
     public function up()
     {
-        Schema::table('news', function (Blueprint $table) {
-            $table->integer('author_id')->after('category_id')->comment = 'Ид автора поста';
+        Schema::table('representatives', function (Blueprint $table) {
+            $table->string('address')->after('city_id')->nullable()->comment = 'Адрес представителя';
         });
     }
 

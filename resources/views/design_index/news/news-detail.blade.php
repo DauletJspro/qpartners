@@ -97,13 +97,20 @@
                         </article>
                         <article class="mt-author-box">
                             <div class="author-img">
-                                <a href="#"><img src="http://placehold.it/150x150" alt="image description"></a>
+                                <a href="#">
+                                    <div style="
+                                           background-size: contain;
+                                           background-position: center;
+                                           background-repeat: no-repeat;
+                                           width: 150px;
+                                           height: 150px;
+                                           background-image: url('{{$author ? $author->avatar : '/media/default.png'}}');
+                                    "></div>
+                                </a>
                             </div>
                             <div class="author-txt">
-                                <h3><a href="#">Clara Wooden</a></h3>
-                                <p>Commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <h3><a href="#">{{$author ? $author->name : 'Не указано'}}</a></h3>
+                                <p>{{$author ? \App\Models\UserStatus::getStatusName($author->user_id) : 'Не указано'}}</p>
                                 <ul class="list-unstyled social-network">
                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>

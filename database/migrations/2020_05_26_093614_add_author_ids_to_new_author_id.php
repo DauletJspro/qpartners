@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAuthorIdToTableNews extends Migration
+class AddAuthorIdsToNewAuthorId extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddAuthorIdToTableNews extends Migration
      */
     public function up()
     {
-        Schema::table('news', function (Blueprint $table) {
-            $table->integer('author_id')->after('category_id')->comment = 'Ид автора поста';
-        });
+        $news = \App\Models\News::all();
+        foreach ($news as $item) {
+            $item->author_id = 67;
+            $item->save();
+        }
     }
 
     /**

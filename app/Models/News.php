@@ -16,6 +16,11 @@ class News extends Model
     protected $dates = ['deleted_at'];
 
 
+    public function user()
+    {
+        return $this->hasOne('App\Models\Users', 'user_id', 'author_id');
+    }
+
     public function images()
     {
         return $this->hasMany('App\Models\NewsImage', 'news_id', 'news_id');

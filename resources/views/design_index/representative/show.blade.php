@@ -67,7 +67,7 @@
                                            data-parent="#accordion"
                                            href="#collapse{{$city->city_id}}" aria-expanded="false"
                                            aria-controls="collapse{{$city->city_id}}">
-                                            {{ sprintf('%s &emsp; г. %s', $counter,$city->city_name_ru)}}
+                                            {{ sprintf('%s &emsp; %s', $counter,$city->city_name_ru)}}
                                         </a>
                                     </h4>
                                 </div>
@@ -86,8 +86,9 @@
                                                         <strong class="representative">{{$subCounter .'&emsp;'.  $representative->full_name}}</strong>
                                                     </div>
                                                     <div class="col-sm-4">
-                                                        <?php $city = \App\Models\City::where(['city_id' => $representative->city_id])->first(); ?>
-                                                        <strong class="representative">{{'г. ' .  $city ? $city->city_name_ru : 'NULL'}}</strong>
+                                                        <strong>
+                                                            {{$representative->address ?$representative->address : 'Не указано' }}
+                                                        </strong>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <ul style="list-style: none;">

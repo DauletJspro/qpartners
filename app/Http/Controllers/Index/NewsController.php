@@ -40,12 +40,14 @@ class NewsController extends Controller
             return response()->view('errors.404', [], 404);
 
         $images = $row->images;
+        $author = $row->user;
 
         return view('design_index.news.news-detail',
             [
                 'menu' => 'news',
                 'popular_news' => $news,
                 'news' => $row,
+                'author' => $author,
                 'images' => $images,
                 'title' => $row->news_name_ru,
                 'categories' => $categories,
