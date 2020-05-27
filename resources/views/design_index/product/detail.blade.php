@@ -58,11 +58,11 @@ $tab = (explode('tab=', URL::current()));
                         <!-- Detail Holder of the Page -->
                         <div class="detial-holder">
                             <!-- Breadcrumbs of the Page -->
-                        {{--                            <ul class="list-unstyled breadcrumbs">--}}
-                        {{--                                <li><a href="#">Chairs <i class="fa fa-angle-right"></i></a></li>--}}
-                        {{--                                <li>Products</li>--}}
-                        {{--                            </ul>--}}
-                        <!-- Breadcrumbs of the Page end -->
+                            <ul class="list-unstyled breadcrumbs">
+                                <li><a href="#">Chairs <i class="fa fa-angle-right"></i></a></li>
+                                <li>Products</li>
+                            </ul>
+                            <!-- Breadcrumbs of the Page end -->
                             <h2>{{ $product->product_name_ru }}</h2>
                             <!-- Rank Rating of the Page -->
                             <div class="rank-rating">
@@ -116,7 +116,7 @@ $tab = (explode('tab=', URL::current()));
                                     </div>
                                 </fieldset>
                             </form>
-                            <!-- Product Form of the Page end -->
+                        <!-- Product Form of the Page end -->
                         </div>
                         <!-- Detail Holder of the Page end -->
                     </div>
@@ -234,34 +234,6 @@ $tab = (explode('tab=', URL::current()));
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="mt-leave-comment">
-            <h2>Оставить комментарий</h2>
-            {{ Form::open(['action' => ['Index\ReviewController@store'], 'method' => 'POST', ['class' => 'comment-form']]) }}
-            {{ Form::token() }}
-            {{ Form::hidden('item_id', $news->news_id) }}
-            {{ Form::hidden('review_type_id', \App\Models\Review::NEWS_REVIEW) }}
-            <fieldset>
-                @if ($errors->any())
-                    <div class="alert alert-danger" style="color: red;">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                <div class="form-group">
-                    {{Form::text('name', (Auth::user()? Auth::user()->name : ''), ['class'=>  'form-control', 'placeholder' => 'Имя'])}}
-                    {{Form::text('email', (Auth::user()? Auth::user()->name : ''), ['class'=>  'form-control','placeholder' => 'E-mail'])}}
-                </div>
-                <div class="form-group">
-                    {{Form::textarea('message_body',null, ['placeholder' => 'Комментарий....'])}}
-                </div>
-                {{Form::submit('Оставить',['class' => 'btn btn-warning', 'style' => 'padding:1rem 2rem;'])}}
-            </fieldset>
-            {{Form::close()}}
         </div>
         <div class="related-products wow fadeInUp" data-wow-delay="0.4s">
             <div class="container">

@@ -300,6 +300,7 @@ Route::group([
     Route::get('contact', 'IndexController@contact')->name('contact.show');
     Route::post('contact', 'IndexController@sendMessage');
     Route::get('news', 'NewsController@newsList');
+    Route::post('review/store', 'ReviewController@store');
     Route::get('shop', 'ShopController@index')->name('shop.show');
     Route::get('basket', 'BasketController@show')->name('basket.show');
     Route::get('faq', 'FaqController@show')->name('faq.show');
