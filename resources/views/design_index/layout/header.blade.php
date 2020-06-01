@@ -123,7 +123,7 @@ if (Auth::user()) {
                                                                 <?php $products = \App\Models\Product::where(['category_id' => $category->id])->get(); ?>
                                                                 @foreach($products as $product)
                                                                     <ul>
-                                                                        <li><a href="product/{{$product->product_id}}">
+                                                                        <li><a href="/product/{{$product->product_id}}">
                                                                                 {{ $product->product_name_ru}}</a></li>
                                                                     </ul>
                                                                 @endforeach
