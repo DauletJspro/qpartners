@@ -35,7 +35,7 @@
                         <div class="txt remove-br">
                             <h2>{{$guide_text->title}}</h2>
                             <p style="white-space: pre-line;">
-                                {{nl2br($guide_text->text_body)}}
+                                {{strip_tags($guide_text->text_body)}}
                             </p>
                             <p style="white-space: pre-line;"><strong
                                         style="white-space: pre-line;">{{$guide_text->author_full_name}}</strong>
@@ -69,7 +69,7 @@
     </main>
 @endsection
 <style>
-    .remove-br p br {
+    br {
         display: none;
     }
 </style>
