@@ -14,9 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        $this->call('SocialNetworkSeeder');
-//        $this->call('InsetToAdministration');
-        $this->call('InsertToLeadershipAdvice');
+        $this->call('SocialNetworkSeeder');
+        $this->call('InsetToAdministration');
+//        $this->call('InsertToLeadershipAdvice');
         $this->command->info('Review table seeded successfully!');
     }
 }
