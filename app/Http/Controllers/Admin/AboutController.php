@@ -26,7 +26,7 @@ class AboutController extends Controller
                 $guide = DB::table('guide')->get();
                 return view('admin.about.guide.index', ['guide' => $guide]);
                 break;
-            case ($input == About::ADMINISTRATION):
+            case ($input == About::ADMINISTRATION || $input == About::ADMINISTRATION_PERSONS):
                 $administration = DB::table('administration')
                     ->where(['id' => 1])
                     ->first();
@@ -74,19 +74,6 @@ class AboutController extends Controller
         $category_type = ($request->category_type);
 
         switch ($category_type) {
-            case About::GUIDE:
-                $validated = $this->guideDataValidate($request);
-                if (!$validated['success']) {
-                    return view('admin.about.guide.create', [
-                        'title' => 'Добавить слова руководителя',
-                        'row' => (object)$request->all(),
-                        'errors' => $validated['message'],
-                    ]);
-                }
-                if ($this->insertGuideData($request)) {
-                    return redirect('admin/about?category_type=guide');
-                }
-                break;
             case About::ADMINISTRATION_PERSONS:
                 if ($this->insertAdministrationPersonsData($request)) {
                     if ($errors = $this->administraionPersonsDataValidate($request)) {
@@ -109,7 +96,6 @@ class AboutController extends Controller
                     'row' => (object)$request->all(),
                     'errors' => $validated['message']
                 ]);
-
                 break;
         }
     }
