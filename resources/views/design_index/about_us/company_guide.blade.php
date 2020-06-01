@@ -35,7 +35,7 @@
                         <div class="txt">
                             <h2>{{$guide_text->title}}</h2>
                             <p style="white-space: pre-line;">
-                                {{$guide_text->text_body}}
+                                {{nl2br($guide_text->text_body)}}
                             </p>
                             <p style="white-space: pre-line;"><strong style="white-space: pre-line;">{{$guide_text->author_full_name}}</strong>
                                 {{$guide_text->author_responsibility}}
