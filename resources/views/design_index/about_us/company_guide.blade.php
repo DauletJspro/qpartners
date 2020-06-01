@@ -32,12 +32,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="txt">
+                        <div class="txt remove-br">
                             <h2>{{$guide_text->title}}</h2>
                             <p style="white-space: pre-line;">
                                 {{nl2br($guide_text->text_body)}}
                             </p>
-                            <p style="white-space: pre-line;"><strong style="white-space: pre-line;">{{$guide_text->author_full_name}}</strong>
+                            <p style="white-space: pre-line;"><strong
+                                        style="white-space: pre-line;">{{$guide_text->author_full_name}}</strong>
                                 {{$guide_text->author_responsibility}}
                             </p>
                         </div>
@@ -46,7 +47,8 @@
                             <!-- Social Network of the Page -->
                             <ul class="list-unstyled social-network">
                                 <li>
-                                    <a target="_blank" href="/{{$guide_text->author_twitter_link}}"><i class="fa fa-twitter"></i></a>
+                                    <a target="_blank" href="/{{$guide_text->author_twitter_link}}"><i
+                                                class="fa fa-twitter"></i></a>
                                 </li>
                                 <li>
                                     <a href="{{$guide_text->author_facebook_link}}"><i class="fa fa-facebook"></i></a>
@@ -66,3 +68,8 @@
         </section>
     </main>
 @endsection
+<style>
+    .remove-br p br {
+        display: none;
+    }
+</style>
