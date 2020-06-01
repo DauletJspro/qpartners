@@ -14,10 +14,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call('SocialNetworkSeeder');
-        $this->call('InsetToAdministration');
+//        $this->call('SocialNetworkSeeder');
+//        $this->call('InsetToAdministration');
 //        $this->call('InsertToLeadershipAdvice');
+        $this->call('InsertDataToGuide');
         $this->command->info('Review table seeded successfully!');
+    }
+}
+
+class InsertDataToGuide extends Seeder
+{
+
+    /**
+     * @inheritDoc
+     */
+    public function run()
+    {
+        DB::table('guide')->insert([
+            'id' => 1,
+            'title' => 'default',
+            'author_full_name' => 'default',
+            'author_responsibility' => 'default',
+            'author_instagram_link' => 'default',
+            'author_facebook_link' => 'default',
+            'author_whatsapp_link' => 'default',
+            'author_twitter_link' => 'default',
+            'created_at' => date('Y-m-d H:m:i'),
+            'updated_at' => date('Y-m-d H:m:i'),
+        ]);
     }
 }
 
@@ -33,6 +57,7 @@ class ReviewTypeSeeder extends Seeder
     }
 
 }
+
 
 class SocialNetworkSeeder extends Seeder
 {
@@ -105,4 +130,6 @@ class InsertToLeadershipAdvice extends Seeder
         ]);
     }
 }
+
+
 
