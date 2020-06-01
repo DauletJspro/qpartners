@@ -1,3 +1,8 @@
+<?php
+use App\Admin\SocialNetwork;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
+?>
 @extends('design_index.layout.layout')
 @section('meta-tags')
 
@@ -16,7 +21,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
-                        <h1>ЛИДЕРЫ</h1>
+                        <h1>{{$leader_ship->title}}</h1>
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
                                 {{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
@@ -34,35 +39,21 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="txt">
-                            <h2>Лидеры </h2>
-                            <p>Если посмотреть, то можно увидеть, что за успехом каждой крупной компании стоят Лидеры,
-                                те люди, которые вложили душу в пути развития компании.
-                                Успешность любой компании напрямую зависит от Лидера и от его профессиональных качеств.
-                                Принимая эту ответственную роль лидер, делает первый шаг к успеху и доказывает свои
-                                Лидерские качества.
-                                Во многом масштабные преобразования в компании начинается с правильных действий Лидера
-                                или группы Лидеров.
-                                Главная задача Лидера это собрать профессиональную команду единомышленников в группу.
-                                Сейчас не время одиночек, а время больших и сильных команд.
-                                Чем слаженнее и активнее выполняет свои функции Лидер, тем быстрее развивается команда и
-                                соответственно компания.
-                                Другими словами Лидер является не просто человеком, который делает все на пути развития
-                                компании, в тоже время он является и лицом этой компании.
-                                Ниже Вы можете ознакомиться с Лидерами компании Qyran Partners Club, которые внесли
-                                большой вклад в развитие компании.
-                                Пришло Ваше время, стать настоящим Лидером и занять почетное место в компании!
+                            <h2>{{$leader_ship->title}} </h2>
+                            <p style="white-space: pre-line;">
+                                {{$leader_ship->text_body}}
                             </p>
                         </div>
                         <div class="mt-follow-holder">
-                            <span class="title">Follow Us</span>
-                            <!-- Social Network of the Page -->
-                            <ul class="list-unstyled social-network">
-                                <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                                <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
-                            </ul>
-                            <!-- Social Network of the Page end -->
+                        {{--                            <span class="title">Follow Us</span>--}}
+                        {{--                            <!-- Social Network of the Page -->--}}
+                        {{--                            <ul class="list-unstyled social-network">--}}
+                        {{--                                <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>--}}
+                        {{--                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
+                        {{--                                <li><a href="#"><i class="fa fa-youtube"></i></a></li>--}}
+                        {{--                                <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>--}}
+                        {{--                            </ul>--}}
+                        <!-- Social Network of the Page end -->
                         </div>
                     </div>
                 </div>
@@ -76,99 +67,51 @@
                     <div class="col-xs-12">
                         <h3>Лидерский совет</h3>
                         <div class="holder">
-                            <div class="col wow fadeInLeft" data-wow-delay="0.4s">
-                                <div class="img-holder">
-                                    <a href="#">
-                                        <div style="
-                                            background-image: url('/new_design/images/leader_image/leader-2.jpg');
-                                            background-size: cover;
-                                            background-repeat: no-repeat;
-                                            background-position: center;
-                                            width: 280px;
-                                            height: 290px;
-                                        "></div>
-                                        <ul class="list-unstyled social-icon">
-                                            <li><i class="fa fa-twitter"></i></li>
-                                            <li><i class="fa fa-facebook"></i></li>
-                                            <li><i class="fa fa-linkedin"></i></li>
-                                        </ul>
-                                    </a>
-                                </div>
-                                <div class="mt-txt">
-                                    <h4><a href="#">Майя АЙТКУЛОВА</a></h4>
-                                    <span class="sub-title">г. Алматы / КАЗАХСТАН </span>
-                                </div>
-                            </div>
-                            <div class="col wow fadeInLeft" data-wow-delay="0.4s">
-                                <div class="img-holder">
-                                    <a href="#">
-                                        <div style="
-                                            background-image: url('/new_design/images/leader_image/leader-1.jpg');
-                                            background-size: cover;
-                                            background-repeat: no-repeat;
-                                            background-position: center;
-                                            width: 280px;
-                                            height: 290px;
-                                        "></div>
-                                        <ul class="list-unstyled social-icon">
-                                            <li><i class="fa fa-twitter"></i></li>
-                                            <li><i class="fa fa-facebook"></i></li>
-                                            <li><i class="fa fa-linkedin"></i></li>
-                                        </ul>
-                                    </a>
-                                </div>
-                                <div class="mt-txt">
-                                    <h4><a href="#">Жаныл ҢУРХОЖЕВА </a></h4>
-                                    <span class="sub-title">г. Алматы / КАЗАХСТАН </span>
-                                </div>
-                            </div>
-                            <div class="col wow fadeInLeft" data-wow-delay="0.4s">
-                                <div class="img-holder">
-                                    <a href="#">
-                                        <div style="
-                                            background-image: url('/new_design/images/leader_image/leader-3.jpeg');
-                                            background-size: cover;
-                                            background-repeat: no-repeat;
-                                            background-position: center;
-                                            width: 280px;
-                                            height: 290px;
-                                        "></div>
-                                        <ul class="list-unstyled social-icon">
-                                            <li><i class="fa fa-twitter"></i></li>
-                                            <li><i class="fa fa-facebook"></i></li>
-                                            <li><i class="fa fa-linkedin"></i></li>
-                                        </ul>
-                                    </a>
-                                </div>
-                                <div class="mt-txt">
-                                    <h4><a href="#">Кокул МУСАЕВА </a></h4>
-                                    <span class="sub-title">г. Бишкек / КЫРГЫЗСТАН </span>
-                                </div>
-                            </div>
-                            <div class="col wow fadeInLeft" data-wow-delay="0.4s">
-                                <div class="img-holder">
-                                    <a href="#">
-                                        <div style="
-                                            background-image: url('/new_design/images/leader_image/leader-4.jpeg');
-                                            background-size: cover;
-                                            background-repeat: no-repeat;
-                                            background-position: center;
-                                            width: 280px;
-                                            height: 290px;
-                                        "></div>
-                                        <ul class="list-unstyled social-icon">
-                                            <li><i class="fa fa-twitter"></i></li>
-                                            <li><i class="fa fa-facebook"></i></li>
-                                            <li><i class="fa fa-linkedin"></i></li>
-                                        </ul>
-                                    </a>
-                                </div>
-                                <div class="mt-txt">
-                                    <h4><a href="#">Мейрам КОЖАБЕРГЕНОВ</a></h4>
-                                    <span class="sub-title">г. Алматы / КАЗАХСТАН </span>
-                                </div>
-                            </div>
+                            @foreach($leaders  as $person)
+                                <?php
+                                /** @var Users $person */
+                                $socialNetworks = DB::table('ref_social_network_items')
+                                    ->where(['item_id' => $person->id])
+                                    ->where(['type_id' => \App\Admin\SocialNetwork::LEADERS_PERSON])
+                                    ->get();
 
+
+                                if ($socialNetworks) {
+                                    $socialNetworks = collect($socialNetworks)->all();
+                                    $socialNetworks = Arr::pluck($socialNetworks, 'url', 'social_network_id');
+                                    $faceBook = isset($socialNetworks[SocialNetwork::FACEBOOK]) ? $socialNetworks[SocialNetwork::FACEBOOK] : '';
+                                    $twitter = isset($socialNetworks[SocialNetwork::TWITTER]) ? $socialNetworks[SocialNetwork::TWITTER] : '';
+                                    $instagram = isset($socialNetworks[SocialNetwork::INSTAGRAM]) ? $socialNetworks[SocialNetwork::INSTAGRAM] : '';
+                                }
+                                ?>
+                                <div class="col wow fadeInLeft" data-wow-delay="0.4s">
+                                    <div class="img-holder">
+                                        <a href="#">
+                                            <div style="
+                                                    background-image: url('{{$person->image}}');
+                                                    background-size: cover;
+                                                    background-repeat: no-repeat;
+                                                    background-position: center;
+                                                    width: 280px;
+                                                    height: 290px;
+                                                    "></div>
+                                            <ul class="list-unstyled social-icon">
+                                                <li><i onclick="location.href='{{$twitter}}';"
+                                                       class="fa fa-twitter"></i></li>
+                                                <li><i onclick="location.href='{{$faceBook}}';"
+                                                       class="fa fa-facebook"></i></li>
+                                                <li><i onclick="location.href='{{$instagram}}';"
+                                                       class="fa fa-instagram"></i></li>
+                                            </ul>
+                                        </a>
+                                    </div>
+                                    <div class="mt-txt">
+                                        <h4 style="white-space: pre-line;"><a href="#">{{$person->full_name}}</a></h4>
+                                        <span style="white-space: pre-line;"
+                                              class="sub-title">{{$person->address}} </span>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -1979,7 +1979,7 @@ a:hover {
     padding: 69px 72px 26px;
     background-repeat: no-repeat;
     background-position: 50% 100%;
-    background: white;
+    background: white;c
 }
 
 #nav .mt-dropmenu .mt-frame .mt-f-box {
@@ -11828,7 +11828,7 @@ a:hover {
     transform: translate(-50%, -50%);
 }
 
-.mt-team-sec .img-holder a .social-icon li {
+.mt-team-sec .img-holder a .social-icon li, .mt-team-sec .img-holder a .social-icon li{
     float: left;
     margin: 0 4px 0 0;
     width: 40px;
@@ -11844,6 +11844,7 @@ a:hover {
 .mt-team-sec .img-holder a .social-icon li:hover {
     color: #f53434;
 }
+
 
 .mt-team-sec .img-holder a:before {
     position: absolute;

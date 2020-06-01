@@ -195,7 +195,7 @@ class AboutController extends Controller
                 return view('admin.about.leaders.person-edit', [
                     'row' => $row,
                     'instagramLink' => $instagramLink,
-                    'whatsappLink' => $twitterLink,
+                    'twitterLink' => $twitterLink,
                     'facebookLink' => $facebookLink,
                 ]);
 
@@ -229,15 +229,19 @@ class AboutController extends Controller
                     return redirect('admin/about?category_type=guide');
                 }
                 break;
+
             case About::ADMINISTRATION_PERSONS:
-                if (!$errors = $this->administraionPersonsDataValidate($request) && $this->updateAdministrationPersonsData($request, $id)) {
+                $validated = $this->administraionPersonsDataValidate($request);
+                if (!$this->administraionPersonsDataValidate($request)) {
+                    return view('admin.about.administration.person-edit', [
+                        'title' => 'Добавить администратора',
+                        'row' => (object)$request->all(),
+                        'errors' => $validated['message']
+                    ]);
+                }
+                if ($this->updateAdministrationPersonsData($request, $id)) {
                     return redirect('admin/about?category_type=administration');
                 }
-                return view('admin.about.administration.person-edit', [
-                    'title' => 'Добавить администратора',
-                    'row' => (object)$request->all(),
-                    'errors' => $errors
-                ]);
                 break;
 
             case About::LEADER_PERSONS:
@@ -396,11 +400,12 @@ class AboutController extends Controller
 
     public function updateAdministrationData($request, $id)
     {
+        $text_body = nl2br(str_replace(" ", " &nbsp;", $request->text_body));
         DB::table('administration')
             ->where(['id' => $id])
             ->update([
                 'title' => $request->title,
-                'text_body' => $request->text_body,
+                'text_body' => $text_body,
                 'created_at' => date('Y-m-d H:m:i'),
                 'updated_at' => date('Y-m-d H:m:i'),
             ]);
@@ -454,9 +459,13 @@ class AboutController extends Controller
 
         if ($validator->fails()) {
             $errors = $validator->errors();
-            return $errors;
+            $result['success'] = false;
+            $result['message'] = $errors;
+            return $result;
         }
-        return false;
+        $result['success'] = true;
+        $result['message'] = NULL;
+        return $result;
     }
 
     public function insertAdministrationPersonsData($request)
@@ -510,6 +519,7 @@ class AboutController extends Controller
 
     public function insertLeaderPersonsData($request)
     {
+
         try {
             DB::transaction(function () use ($request) {
                 $person_id = DB::table('leader_persons')->insertGetId([
@@ -560,115 +570,117 @@ class AboutController extends Controller
 
     public function updateAdministrationPersonsData($request, $id)
     {
+        try {
+            DB::transaction(function () use ($request, $id) {
+                DB::table('administration_persons')
+                    ->where(['id' => $id])
+                    ->update([
+                        'full_name' => $request->full_name,
+                        'responsibility' => $request->responsibility,
+                        'image' => $request->image,
+                        'created_at' => date('Y-m-d H:m:i'),
+                        'updated_at' => date('Y-m-d H:m:i'),
+                    ]);
 
-        $transaction = DB::transaction(function () use ($request, $id) {
-            DB::table('administration_persons')
-                ->where(['id' => $id])
-                ->update([
-                    'full_name' => $request->full_name,
-                    'responsibility' => $request->responsibility,
-                    'image' => $request->image,
-                    'created_at' => date('Y-m-d H:m:i'),
-                    'updated_at' => date('Y-m-d H:m:i'),
-                ]);
-
-            if ($request->has_instagram) {
-                $check = DB::table('ref_social_network_items')
-                    ->where([
-                        'item_id' => $id,
-                        'type_id' => SocialNetwork::ADMINISTRATION_PERSON,
-                        'social_network_id' => SocialNetwork::INSTAGRAM
-                    ])->first();
-                if (count($check)) {
-                    DB::table('ref_social_network_items')
+                if ($request->has_instagram) {
+                    $check = DB::table('ref_social_network_items')
                         ->where([
                             'item_id' => $id,
                             'type_id' => SocialNetwork::ADMINISTRATION_PERSON,
                             'social_network_id' => SocialNetwork::INSTAGRAM
-                        ])
-                        ->update([
+                        ])->first();
+                    if (count($check)) {
+                        DB::table('ref_social_network_items')
+                            ->where([
+                                'item_id' => $id,
+                                'type_id' => SocialNetwork::ADMINISTRATION_PERSON,
+                                'social_network_id' => SocialNetwork::INSTAGRAM
+                            ])
+                            ->update([
+                                'url' => $request->person_instagram_link,
+                                'created_at' => date('Y-m-d H:m:i'),
+                                'updated_at' => date('Y-m-d H:m:i'),
+                            ]);
+                    } else {
+                        DB::table('ref_social_network_items')->insert([
+                            'social_network_id' => SocialNetwork::INSTAGRAM,
+                            'item_id' => $id,
+                            'type_id' => SocialNetwork::ADMINISTRATION_PERSON,
                             'url' => $request->person_instagram_link,
                             'created_at' => date('Y-m-d H:m:i'),
                             'updated_at' => date('Y-m-d H:m:i'),
                         ]);
-                } else {
-                    DB::table('ref_social_network_items')->insert([
-                        'social_network_id' => SocialNetwork::INSTAGRAM,
-                        'item_id' => $id,
-                        'type_id' => SocialNetwork::ADMINISTRATION_PERSON,
-                        'url' => $request->person_instagram_link,
-                        'created_at' => date('Y-m-d H:m:i'),
-                        'updated_at' => date('Y-m-d H:m:i'),
-                    ]);
+                    }
                 }
-            }
-            if ($request->has_facebook) {
-                $check = DB::table('ref_social_network_items')
-                    ->where([
-                        'item_id' => $id,
-                        'type_id' => SocialNetwork::ADMINISTRATION_PERSON,
-                        'social_network_id' => SocialNetwork::FACEBOOK
-                    ])->first();
-                if (count($check)) {
-                    DB::table('ref_social_network_items')
+                if ($request->has_facebook) {
+                    $check = DB::table('ref_social_network_items')
                         ->where([
                             'item_id' => $id,
                             'type_id' => SocialNetwork::ADMINISTRATION_PERSON,
                             'social_network_id' => SocialNetwork::FACEBOOK
-                        ])
-                        ->update([
+                        ])->first();
+                    if (count($check)) {
+                        DB::table('ref_social_network_items')
+                            ->where([
+                                'item_id' => $id,
+                                'type_id' => SocialNetwork::ADMINISTRATION_PERSON,
+                                'social_network_id' => SocialNetwork::FACEBOOK
+                            ])
+                            ->update([
+                                'url' => $request->person_facebook_link,
+                                'created_at' => date('Y-m-d H:m:i'),
+                                'updated_at' => date('Y-m-d H:m:i'),
+                            ]);
+                    } else {
+                        DB::table('ref_social_network_items')->insert([
+                            'social_network_id' => SocialNetwork::FACEBOOK,
+                            'item_id' => $id,
+                            'type_id' => SocialNetwork::ADMINISTRATION_PERSON,
                             'url' => $request->person_facebook_link,
                             'created_at' => date('Y-m-d H:m:i'),
                             'updated_at' => date('Y-m-d H:m:i'),
                         ]);
-                } else {
-                    DB::table('ref_social_network_items')->insert([
-                        'social_network_id' => SocialNetwork::FACEBOOK,
-                        'item_id' => $id,
-                        'type_id' => SocialNetwork::ADMINISTRATION_PERSON,
-                        'url' => $request->person_facebook_link,
-                        'created_at' => date('Y-m-d H:m:i'),
-                        'updated_at' => date('Y-m-d H:m:i'),
-                    ]);
+                    }
                 }
-            }
 
-            if ($request->has_whatsapp) {
-                $check = DB::table('ref_social_network_items')
-                    ->where([
-                        'item_id' => $id,
-                        'type_id' => SocialNetwork::ADMINISTRATION_PERSON,
-                        'social_network_id' => SocialNetwork::WHATSAPP
-                    ])->first();
-
-                if (count($check)) {
-                    DB::table('ref_social_network_items')
+                if ($request->has_whatsapp) {
+                    $check = DB::table('ref_social_network_items')
                         ->where([
                             'item_id' => $id,
                             'type_id' => SocialNetwork::ADMINISTRATION_PERSON,
                             'social_network_id' => SocialNetwork::WHATSAPP
-                        ])
-                        ->update([
+                        ])->first();
+
+                    if (count($check)) {
+                        DB::table('ref_social_network_items')
+                            ->where([
+                                'item_id' => $id,
+                                'type_id' => SocialNetwork::ADMINISTRATION_PERSON,
+                                'social_network_id' => SocialNetwork::WHATSAPP
+                            ])
+                            ->update([
+                                'url' => $request->person_whatsapp_link,
+                                'created_at' => date('Y-m-d H:m:i'),
+                                'updated_at' => date('Y-m-d H:m:i'),
+                            ]);
+                    } else {
+                        DB::table('ref_social_network_items')->insert([
+                            'social_network_id' => SocialNetwork::WHATSAPP,
+                            'item_id' => $id,
+                            'type_id' => SocialNetwork::ADMINISTRATION_PERSON,
                             'url' => $request->person_whatsapp_link,
                             'created_at' => date('Y-m-d H:m:i'),
                             'updated_at' => date('Y-m-d H:m:i'),
                         ]);
-                } else {
-                    DB::table('ref_social_network_items')->insert([
-                        'social_network_id' => SocialNetwork::WHATSAPP,
-                        'item_id' => $id,
-                        'type_id' => SocialNetwork::ADMINISTRATION_PERSON,
-                        'url' => $request->person_whatsapp_link,
-                        'created_at' => date('Y-m-d H:m:i'),
-                        'updated_at' => date('Y-m-d H:m:i'),
-                    ]);
+                    }
                 }
-            }
-        });
-        if ($transaction) {
-            return true;
+            });
+        } catch (\PDOException $e) {
+            return false;
+        } catch (\Exception $e) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     public function updateLeaderPersonsData($request, $id)
@@ -746,12 +758,12 @@ class AboutController extends Controller
                     }
                 }
 
-                if ($request->has_whatsapp) {
+                if ($request->has_twitter) {
                     $check = DB::table('ref_social_network_items')
                         ->where([
                             'item_id' => $id,
                             'type_id' => SocialNetwork::LEADERS_PERSON,
-                            'social_network_id' => SocialNetwork::WHATSAPP
+                            'social_network_id' => SocialNetwork::TWITTER
                         ])->first();
 
                     if (count($check)) {
@@ -759,19 +771,19 @@ class AboutController extends Controller
                             ->where([
                                 'item_id' => $id,
                                 'type_id' => SocialNetwork::LEADERS_PERSON,
-                                'social_network_id' => SocialNetwork::WHATSAPP
+                                'social_network_id' => SocialNetwork::TWITTER
                             ])
                             ->update([
-                                'url' => $request->person_whatsapp_link,
+                                'url' => $request->person_twitter_link,
                                 'created_at' => date('Y-m-d H:m:i'),
                                 'updated_at' => date('Y-m-d H:m:i'),
                             ]);
                     } else {
                         DB::table('ref_social_network_items')->insert([
-                            'social_network_id' => SocialNetwork::WHATSAPP,
+                            'social_network_id' => SocialNetwork::TWITTER,
                             'item_id' => $id,
                             'type_id' => SocialNetwork::LEADERS_PERSON,
-                            'url' => $request->person_whatsapp_link,
+                            'url' => $request->person_twitter_link,
                             'created_at' => date('Y-m-d H:m:i'),
                             'updated_at' => date('Y-m-d H:m:i'),
                         ]);
@@ -799,11 +811,12 @@ class AboutController extends Controller
 
     public function editGuideData($id, $request)
     {
+        $text_body = nl2br(str_replace(" ", " &nbsp;", $request->text_body));
         $bdUpdate = DB::table('guide')
             ->where(['id' => $id])
             ->update([
                 'title' => $request->title,
-                'text_body' => $request->text_body,
+                'text_body' => $text_body,
                 'author_full_name' => $request->author_full_name,
                 'author_responsibility' => $request->author_responsibility,
                 'author_instagram_link' => $request->author_instagram_link,
