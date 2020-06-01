@@ -183,3 +183,4 @@
         showMessage('{{$_GET['message']}}');
     </script>
 @endif
+@yield('js')

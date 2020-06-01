@@ -67,6 +67,12 @@ class IndexController extends Controller
         );
     }
 
+    public function opportunity()
+    {
+        return view('design_index.index.opportunity');
+    }
+
+
     public function showFile($url)
     {
         $path = storage_path('app/image/' . $url);

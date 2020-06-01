@@ -89,7 +89,7 @@ if (Auth::user()) {
                                 <span class="bar"></span>
                             </a>
                         </li>
-                        <li><a href="#" class="icon-magnifier"></a></li>
+                        <li></li>
                         <li><a style="color: red;" href="{{route('favorite.showUserItem')}}"
                                class="icon-heart"><span id="favoriteCount">{{count($favorites)}}</span></a></li>
                     </ul>
@@ -298,6 +298,9 @@ if (Auth::user()) {
                                 </div>
                             </li>
                             <li>
+                                <a class="" href="/opportunity">Возможности</a>
+                            </li>
+                            <li>
                                 <a class="drop-link" href="homepage1.html">КОНТАКТЫ<i class="fa fa-angle-down"
                                                                                       aria-hidden="true"></i></a>
                                 <div class="s-drop">
@@ -307,6 +310,7 @@ if (Auth::user()) {
                                     </ul>
                                 </div>
                             </li>
+
 
                         </ul>
                     </nav>

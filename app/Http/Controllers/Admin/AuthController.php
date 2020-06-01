@@ -239,7 +239,7 @@ class AuthController extends Controller
 
     public function showResetPassword(Request $request)
     {
-        return  view('admin.auth.reset-password');
+        return  view('admin.new_design_auth.reset-password');
     }
 
     public function resetPassword(Request $request){

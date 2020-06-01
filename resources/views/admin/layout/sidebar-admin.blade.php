@@ -10,26 +10,32 @@
     </li>
     <li class="treeview">
         <a href="/admin/doc">
-            <i class="fa fa-file-text"></i>
+            <i class="fa fa-file-word-o"></i>
             <span>Документы</span>
         </a>
     </li>
     <li class="treeview">
         <a href="/admin/news">
-            <i class="fa fa-file-text"></i>
+            <i class="fa fa-newspaper-o"></i>
             <span>Новости</span>
         </a>
     </li>
-    <li class="treeview">
-        <a href="/admin/about">
-            <i class="fa fa-file-text"></i>
-            <span>О компании</span>
-        </a>
-    </li>
-    <li class="treeview">
-        <a href="/admin/project">
-            <i class="fa fa-file-text"></i>
-            <span>Проекты</span>
+    {{--    <li class="treeview">--}}
+    {{--        <a href="/admin/about">--}}
+    {{--            <i class="fa fa-file-text"></i>--}}
+    {{--            <span>О компании</span>--}}
+    {{--        </a>--}}
+    {{--    </li>--}}
+    {{--    <li class="treeview">--}}
+    {{--        <a href="/admin/project">--}}
+    {{--            <i class="fa fa-file-text"></i>--}}
+    {{--            <span>Проекты</span>--}}
+    {{--        </a>--}}
+    {{--    </li>--}}
+    <li>
+        <a href="/admin/about?category_type=guide">
+            <i class="fa fa-info"></i>
+            <span>О нас</span>
         </a>
     </li>
     <li class="treeview">
@@ -40,44 +46,38 @@
     </li>
     <li class="treeview">
         <a href="/admin/video">
-            <i class="fa fa-file-text"></i>
+            <i class="fa fa-video-camera"></i>
             <span>Видео</span>
         </a>
     </li>
     <li class="treeview">
         <a href="/admin/slider">
-            <i class="fa fa-file-text"></i>
+            <i class="fa fa-file-image-o"></i>
             <span>Галерея</span>
         </a>
     </li>
-    <li class="treeview">
-        <a href="/admin/education">
-            <i class="fa fa-file-text"></i>
-            <span>Бизнес обучение</span>
-        </a>
-    </li>
-    <li class="treeview">
-        <a href="/admin/page">
-            <i class="fa fa-file-text"></i>
-            <span>Тексты на сайте</span>
-        </a>
-    </li>
+    {{--    <li class="treeview">--}}
+    {{--        <a href="/admin/education">--}}
+    {{--            <i class="fa fa-file-text"></i>--}}
+    {{--            <span>Бизнес обучение</span>--}}
+    {{--        </a>--}}
+    {{--    </li>--}}
+    {{--    <li class="treeview">--}}
+    {{--        <a href="/admin/page">--}}
+    {{--            <i class="fa fa-file-text"></i>--}}
+    {{--            <span>Тексты на сайте</span>--}}
+    {{--        </a>--}}
+    {{--    </li>--}}
     <li class="treeview">
         <a href="/admin/country">
-            <i class="fa fa-file-text"></i>
+            <i class="fa fa-flag"></i>
             <span>Страны</span>
         </a>
     </li>
     <li class="treeview">
         <a href="/admin/city">
-            <i class="fa fa-file-text"></i>
+            <i class="fa fa-home"></i>
             <span>Города</span>
-        </a>
-    </li>
-    <li class="treeview">
-        <a href="/admin/user">
-            <i class="fa fa-user"></i>
-            <span>Администратор</span>
         </a>
     </li>
     <li>

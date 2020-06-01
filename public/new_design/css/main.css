@@ -1598,7 +1598,7 @@ a:hover {
     width: 180px;
     float: right;
     color: #000;
-    margin: 0 0 0 31px;
+    margin: 0 0 0 10px;
     position: relative;
     letter-spacing: 1px;
     padding: 2px 0 0 42px;
@@ -1758,7 +1758,7 @@ a:hover {
 #nav > ul > li {
     position: relative;
     vertical-align: top;
-    margin: 0 36px 0 7px;
+    margin: 0 17px 0 0px;
     display: inline-block;
 }
 
@@ -1779,7 +1779,7 @@ a:hover {
 
 #nav > ul > li.drop {
     position: static;
-    margin: 0 29px 0 0;
+    margin: 0 17px 0 0;
 }
 
 #nav > ul > li.drop > a:after {
@@ -1931,6 +1931,45 @@ a:hover {
     color: #ff6060;
 }
 
+.section-3-holder {
+    min-height: 600px;
+    max-width: 2000px;
+}
+
+.section-3-holder a {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    line-height: 1.2;
+    background: #d30000;
+    padding: 5px 20px;
+}
+
+.section-3-div {
+    width: auto;
+    height: auto;
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+}
+
+.benefit-text {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.slider-3 .container-fluid {
+    padding: 0;
+    max-width: 2000px !important;
+    height: 650px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 #nav .mt-dropmenu .mt-frame {
     margin: 0 auto;
     overflow: hidden;
@@ -1940,6 +1979,7 @@ a:hover {
     padding: 69px 72px 26px;
     background-repeat: no-repeat;
     background-position: 50% 100%;
+    background: transparent;
 }
 
 #nav .mt-dropmenu .mt-frame .mt-f-box {
@@ -4104,10 +4144,216 @@ a:hover {
 /*------------------------------------------------------------------
 79. Mt Mainslider4 / .mt-mainslider4
 -------------------------------------------------------------------*/
+.second-section-title {
+    font-size: 26.31px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.second-section-text {
+    font-size: 23px;
+    line-height: 1.2;
+}
+
+.second-section-button {
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    background-color: white;
+    font-weight: bold;
+    line-height: 1.2;
+    /*-moz-transform: matrix(0.7547243337515, 0, 0, 0.75472433375149, 0, 0);*/
+    /*-webkit-transform: matrix(0.7547243337515, 0, 0, 0.75472433375149, 0, 0);*/
+    /*-ms-transform: matrix(0.7547243337515, 0, 0, 0.75472433375149, 0, 0);*/
+    border-width: 1.5px;
+    border-color: rgb(180, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    padding: 8px 40px;
+}
+
+.br-green {
+    border-color: #05c100;
+
+}
 
 .mt-mainslider4 {
-    background: #e2e2e2;
-    margin: 0 0 40px;
+    background: white;
+    margin: -30px 0px 0px 0px;
+    min-height: 480px;
+    max-width: 2000px;
+}
+
+.mt-section-1 {
+    background: white;
+    margin: 0 0 0 0;
+    min-height: auto;
+    max-width: 2000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mt-section-2 {
+    margin: 0 0 0 0;
+    min-height: 650px;
+    max-width: 2000px;
+    background: #e1e0df;
+}
+
+.section-2-title {
+    padding-left: 41px;
+    padding-top: 57px;
+}
+
+.section-2-title .h1-title {
+    font-size: 80px;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 3px;
+}
+
+.section-2-title .row-1 {
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.section-2-title .row-1 .col-sm-3 {
+    height: 250px;
+    padding: 0;
+}
+
+.section-2-title .row-1 .col-sm-3 .red-border {
+    float: right;
+    width: 3px;
+    height: 100%;
+    background-image: linear-gradient(to top, #e1e0df 1%, #ff0000 50%, #e1e0df 100%);
+}
+
+.img-text-box {
+    padding: 20px 5px;
+}
+
+#mt-main > section.slider-5 > div > div.row {
+    margin-top: 50px !important;
+}
+
+#mt-main > section.slider-5 > div > div.row > div.col-sm-4.text-center {
+    height: auto;
+}
+
+#mt-main > section.slider-5 > div > div.row > div.col-sm-4.text-center > div.red-border {
+    float: right;
+    width: 3px;
+    height: 280px;
+    background-image: linear-gradient(to top, transparent 1%, #ff0000 50%, transparent 100%);
+}
+
+.why-we-are-text h3 {
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.want-to-be-partner-box {
+    margin-top: 50px;
+    padding: 20px 40px 20px 40px;
+}
+
+.want-to-be-partner-box-a {
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
+    background-color: rgb(255, 0, 0);
+    width: 442px;
+    height: 80px;
+    margin-top: 20px;
+    padding: 10px 30px;
+}
+
+
+.red-border {
+    float: right;
+    width: 3px;
+    height: 100%;
+    background-image: linear-gradient(to top, #e1e0df 1%, #ff0000 50%, #e1e0df 100%);
+}
+
+.packet-body {
+    padding: 20px 25px;
+
+}
+
+.packet-name {
+    font-size: 31px;
+    margin-top: 2px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.stars-box {
+    width: auto;
+    height: auto;
+}
+
+.stars-box img {
+    display: inline-block;
+    width: 30px;
+    height: 28px;
+}
+
+.bonus-text ul {
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.bonus-text ul li {
+    font-size: 19px;
+    color: rgb(0, 0, 0);
+    line-height: 1.579;
+}
+
+.section-2-title .h3-title {
+    font-size: 28px;
+    color: rgb(255, 0, 0);
+    text-transform: uppercase;
+    line-height: 1.2;
+    font-weight: 900;
+    margin-top: 5px !important;
+}
+
+.section-2-title p {
+    margin-top: 20px;
+    color: black;
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.download-marketing-div {
+    margin-top: 10px;
+}
+
+.download-marketing {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    line-height: 1.2;
+    background: #d30000;
+    padding: 0px 0px 0px 20px;
+}
+
+.download-marketing span {
+    color: white;
+    background: black;
+    padding: 0 20px;
 }
 
 .mt-mainslider4 .img {
@@ -4451,6 +4697,57 @@ a:hover {
     transition: all .4s linear;
 }
 
+
+#mt-main > section.slider-3.section-video > div > div > div > div > .holder {
+    opacity: 0.1;
+    position: relative;
+    -webkit-transition: all .4s linear;
+    transition: all .4s linear;
+}
+
+#mt-main > section.slider-3.section-video > div > div > div > div > .holder.slick-current {
+    opacity: 1;
+    background-color: transparent !important;
+}
+
+.section-4-holder-div {
+    position: absolute;
+    z-index: 2;
+}
+
+
+#mt-main > section.slider-3.section-video > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.text-center > button {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 250px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+.section-4-text{
+    float: right;
+    padding: 30px !important;
+    /*margin-right: 20px;*/
+}
+.section-4-text h3 {
+    font-size: 54px !important;
+    color: black !important;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.section-4-text p {
+    font-size: 25px !important;
+    color: black !important;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.section-4-button {
+    margin-top: 50px !important;
+}
+
 .slider-3 .holder.slick-current {
     opacity: 1;
 }
@@ -4477,7 +4774,39 @@ a:hover {
     top: 0;
     bottom: 0;
     text-align: center;
-    background: rgba(0, 0, 0, .4);
+    /*background: rgba(0, 0, 0, .4);*/
+}
+
+.section-3-holder h3 {
+    font-size: 54px;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    line-height: 1.2;
+    font-weight: bold;
+    color: white;
+}
+
+.section-3-holder p {
+    font-size: 33px;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+
+.section-3-holder h3 span {
+    font-size: 120px;
+    font-weight: 1000;
+    line-height: 1.2;
+    color: #ff0000;
+}
+
+.section-3-holder-div {
+    padding: 0px 0 0 120px !important;
+}
+
+.section-4-holder-div {
+    padding: 0px 0 0 120px !important;
 }
 
 .slider-3 .c1 {
@@ -5467,7 +5796,7 @@ a:hover {
 }
 
 .banner-15 .holder {
-    padding: 56px 37px 20px 20px;
+    /*padding: 56px 37px 20px 20px;*/
 }
 
 .banner-15 h2 {
@@ -8708,10 +9037,10 @@ a:hover {
 }
 
 .slick-slide {
-    display: none;
+    /*display: none;*/
     float: left;
-    height: 100%;
-    min-height: 1px;
+    width: 1170px;
+    box-sizing: border-box;
 }
 
 [dir="rtl"] .slick-slide {
