@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="form-group">
                                     {{Form::label('Текст (Слова руководителя)', null,['class' => 'control-label'])}}
-                                    {{Form::textarea('text_body', (isset($row) ? $row->text_body : null),['class' => 'form-control', 'rows' => 20])}}
+                                    {{Form::textarea('text_body', (isset($row) ? strip_tags($row->text_body) : null),['class' => 'form-control', 'rows' => 20])}}
                                 </div>
                                 <div class="form-group">
                                     {{Form::label('Фамилия Имя Отчество автора', null,['class' => 'control-label'])}}

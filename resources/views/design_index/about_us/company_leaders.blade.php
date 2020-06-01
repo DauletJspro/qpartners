@@ -41,7 +41,7 @@ use Illuminate\Support\Facades\DB;
                         <div class="txt">
                             <h2>{{$leader_ship->title}} </h2>
                             <p style="white-space: pre-line;">
-                                {{$leader_ship->text_body}}
+                                {{strip_tags($leader_ship->text_body)}}
                             </p>
                         </div>
                         <div class="mt-follow-holder">

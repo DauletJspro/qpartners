@@ -40,7 +40,7 @@ use App\Admin\SocialNetwork;use Illuminate\Support\Arr;use Illuminate\Support\Fa
                         <div class="txt">
                             <h2>{{$administration->title}}</h2>
                             <p style="white-space: pre-line;">
-                                {{$administration->text_body}}
+                                {{strip_tags($administration->text_body)}}
                             </p>
 
                         </div>
