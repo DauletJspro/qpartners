@@ -400,7 +400,7 @@ class AboutController extends Controller
 
     public function updateAdministrationData($request, $id)
     {
-        $text_body = nl2br(str_replace(" ", " &nbsp;", $request->text_body));
+        $text_body = nl2br(str_replace(" ", "&nbsp;", $request->text_body));
         DB::table('administration')
             ->where(['id' => $id])
             ->update([
