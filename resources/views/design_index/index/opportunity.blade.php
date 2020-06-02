@@ -12,7 +12,6 @@
 
 @section('content')
     <main id="mt-main">
-        <!-- mt-mainslider4 add start here -->
         <section class="mt-mainslider4 add" style="
             background-size: cover;
             background-position: center;
@@ -21,8 +20,6 @@
             margin-left: auto;
             margin-right: auto;
             position: relative;
-
-
         ">
             <div style="position: absolute;
              width:auto;
@@ -60,7 +57,7 @@
                         <div class="banner-frame" style="padding-top: 0;">
                             <div class="banner-15 right wow"
                                  style="width: 580px;
-                             height: 250px;
+                             height: 540px;
                              background: white;
                              margin:0;
                              margin-left: 19px;
@@ -77,6 +74,9 @@
                                         бонус от $ 200 в месяц и построить собственный <br>
                                         бизнес с доходом $ 100 000 в месяц
                                     </span>
+                                        <div class="video_box">
+                                            <div class="red_play_button"></div>
+                                        </div>
                                     </div>
                                     <div style="display:block;float: left;width: 95%; margin-top: 40px;">
                                         <div style="float: left;">
@@ -93,17 +93,10 @@
 
                                 </div>
                             </div>
-                            <div style="
-                          height: 250px;
-                          width: 3px;
-                          background-image: linear-gradient(to top, rgba(255, 255, 255, 1) 1%, #ff0000 50%, rgba(255, 255, 255, 1) 100%);
-
-                          display: inline-block;
-                          float: left;
-                        ">
+                            <div class="red_border_video">
                             </div>
                             <div class="banner-15 right wow"
-                                 style="width: 580px; height: 250px;background: white;margin:0;">
+                                 style="width: 580px; height: 540px;background: white;margin:0;">
                                 <div class="holder">
                                     <div style="float: left;" class="second-section-title">
                                         <h3>
@@ -116,9 +109,13 @@
                                     <div style="float: left; " class="second-section-text text-left">
                                     <span style="color: black;">
                                        Широкая линейка натуральной продукции, для <br>
-                                        <span style="font-weight: bold;">укрепления, очищения, востановления и <br>
-                                        профилактики </span> Вашего организма
+                                       укрепления, очищения, востановления и <br>
+                                        профилактики Вашего организма
                                     </span>
+                                        <div class="video_box">
+                                            <div class="green_play_button"></div>
+                                        </div>
+
                                     </div>
                                     <div style="display:block;float: left;width: 95%; margin-top: 40px;">
                                         <div style="float: left;">
@@ -132,7 +129,6 @@
                                             </a>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -140,7 +136,6 @@
                 </div>
             </div>
         </section>
-
         <section class="mt-section-2" style="
             background-size: cover;
             background-position: center;
@@ -150,14 +145,98 @@
             margin-right: auto;
         ">
             <div class="container">
-                <div class="section-2-title">
+                <div class="section-2-title" style="padding-bottom: 80px;">
                     <h1 class="h1-title"><span style="color: black;">Щедрые</span> <span
-                                style="color: #cb0000;">65%</span></h1>
-                    <h3 class="h3-title"><span style="color:#cb0000; ">с уникальным маркетинг планом</span></h3>
+                                style="color: #ff0000;">65%</span></h1>
+                    <h3 class="h3-title"><span style="color:#ff0000; ">с уникальным маркетинг планом</span></h3>
+                    <div style="width: 100%;height: 100px;">
+                        <h3 class="h3-title-what-you-get">Что <span style="color: #ff0000;">Вы получаете</span>?</h3>
+                    </div>
+
                     <p>
-                        Мы предлагаем маркетинг план которая обеспечит Вам высокий и стабильный доход. <br>
+                        Став Партнером Вы получаете полноценный доступ к Маркетинг плану и ко всем его <br>
+                        Инструментам и Возможностям.
+                    </p>
+                    <div class="row what_you_get_icons_div" style="margin-top: 50px;">
+                        <div class="col-sm-2 text-center">
+                            <div class="icon_image_div" style="
+                                background-image: url('/new_design/images/opportunity/book_icon.png');
+                            "></div>
+                            <h2>Каталог <br>
+                                натуральной <br>
+                                продукции
+                            </h2>
+                        </div>
+                        <div class="col-sm-2 text-center">
+                            <div class="icon_image_div" style="
+                                background-image: url('/new_design/images/opportunity/copy_book.png');
+                            "></div>
+                            <h2>Презентация <br>
+                                Маркетинг <br>
+                                плана
+                            </h2>
+                        </div>
+                        <div class="col-sm-2 text-center">
+                            <div class="icon_image_div" style="
+                                background-image: url('/new_design/images/opportunity/debat_card.png');
+                            "></div>
+                            <h2>Онлайн <br>
+                                клубная <br>
+                                карта
+                            </h2>
+                        </div>
+                        <div class="col-sm-2 text-center">
+                            <div class="icon_image_div" style="
+                                background-image: url('/new_design/images/opportunity/had.png');
+                            "></div>
+                            <h2>Обучение <br>
+                                Партнеров <br>
+                                компании
+                            </h2>
+                        </div>
+                        <div class="col-sm-2 text-center">
+                            <div class="icon_image_div" style="
+                                background-image: url('/new_design/images/opportunity/assistmant.png');
+                            "></div>
+                            <h2>
+                                Ассортимент <br>
+                                Натуральной <br>
+                                продукции
+                            </h2>
+                        </div>
+                        <div class="col-sm-2 text-center">
+                            <div class="icon_image_div" style="
+                                background-image: url('/new_design/images/opportunity/home_car.png');
+                            "></div>
+                            <h2>
+                                Участие в <br>
+                                Социальных <br>
+                                программах
+                            </h2>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mt-section-2" style="
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url('/new_design/images/opportunity/image_section_3.png');
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2rem;
+            padding-bottom: 60px;
+        ">
+            <div class="container">
+                <div class="section-2-title">
+                    <h3 class="what-we-offer-text"><span style="color: black;">Что мы</span> предлагаем Вам <span
+                                style="color: black;">?</span></h3>
+                    <p>
+                        Мы предлагаем маркетинг план который обеспечит Вам высокий и стабильный доход. <br>
                         65% дохода от товарооборота, компания отдает в сеть. Вы можете начать получать <br>
-                        доход выбрав один из этих пакетов:
+                        доход от бонусов соответствующего пакета:
                     </p>
                     <div class="row row-1">
                         <div class="col-sm-3">
@@ -173,8 +252,8 @@
                                 </div>
                                 <div class="bonus-text">
                                     <ul style="list-style: none;">
-                                        <li>- Рекрутинговый бонус</li>
-                                        <li>- Командный бонус</li>
+                                        <li>- Рекрутинговый</li>
+                                        <li>- Командный</li>
                                     </ul>
                                 </div>
                             </div>
@@ -193,9 +272,9 @@
                                 </div>
                                 <div class="bonus-text">
                                     <ul style="list-style: none;">
-                                        <li>- Рекрутинговый бонус</li>
-                                        <li>- Командный бонус</li>
-                                        <li>- Кэшбэк бонус</li>
+                                        <li>- Рекрутинговый</li>
+                                        <li>- Командный</li>
+                                        <li>- Кэшбэк</li>
                                     </ul>
                                 </div>
                             </div>
@@ -215,10 +294,10 @@
                                 </div>
                                 <div class="bonus-text">
                                     <ul style="list-style: none;">
-                                        <li>- Рекрутинговый бонус</li>
-                                        <li>- Командный бонус</li>
-                                        <li>- Кэшбэк бонус</li>
-                                        <li>- Квалификационный бонус</li>
+                                        <li>- Рекрутинговый</li>
+                                        <li>- Командный</li>
+                                        <li>- Кэшбэк</li>
+                                        <li>- Квалификационный</li>
                                     </ul>
                                 </div>
                             </div>
@@ -239,27 +318,40 @@
                                 </div>
                                 <div class="bonus-text ">
                                     <ul style="list-style: none;">
-                                        <li>- Рекрутинговый бонус</li>
-                                        <li>- Командный бонус</li>
-                                        <li>- Кэшбэк бонус</li>
-                                        <li>- Квалификационный бонус</li>
-                                        <li>- Накопительный бонус</li>
+                                        <li>- Рекрутинговый</li>
+                                        <li>- Командный</li>
+                                        <li>- Кэшбэк</li>
+                                        <li>- Квалификационный</li>
+                                        <li>- Накопительный</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="download-marketing-div">
-                        <a class="download-marketing" href="">
-                            СКАЧАТЬ МАРКЕТИНГ
-                            <span>PDF</span>
-                        </a>
+                    <div style="margin-top: 90px;">
+                        <div class="download-marketing-div">
+                            <a class="download-marketing" href="">
+                                СКАЧАТЬ МАРКЕТИНГ
+                                <span>PDF</span>
+                            </a>
+                        </div>
+                        <div class="download-marketing-div center-div">
+                            <a class="download-marketing" href="">
+                                СМОТРЕТЬ ПРЕЗЕНТАЦИЮ
+                                <span>MP4</span>
+                            </a>
+                        </div>
+                        <div class="download-marketing-div">
+                            <a class="download-marketing" style="padding-right: 20px;" href="">
+                                СТАТЬ ПАРТНЕРОМ
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="slider-3">
+        <section class="slider-3" style="margin-top: 100px;">
             <div class="container-fluid">
                 <div class="centerslider-1">
                     <div class="holder section-3-holder" style="
@@ -322,98 +414,113 @@
                 </div>
             </div>
         </section>
+        <section class="row" style="padding-bottom: 150px;">
+            <div class="container">
+                <div class="col-xs-12">
+                    <div class="mt-productsc style2 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="row">
+                            <div class="col-xs-12 mt-heading text-uppercase text-center">
+                                <h2 class="mini_video_heading">Истории <span style="color: #ff0000; ">успеха</span> наших партнеров</h2>
+                                <p class="mini_video_p">Люди которые достигли своих целей вместе с нами</p>
+                            </div>
+                        </div>
+                        <div id="mt-productscrollbar" class="row video_scollar">
+                            <div class="mt-holder">
+                                <div class="mt-product1 large">
+                                    <div class="box">
+                                        <div style="
+                                             width: 350px;
+                                             height: 200px;
+                                             position: relative;
+                                             background-color: black;
+                                             display: flex;
+                                             align-items: center;
+                                             justify-content: center;
 
-        <section class="slider-3 section-video">
-            <div class="container-fluid">
-                <div class="centerslider-1">
-                    <div class="holder section-3-holder" style="
-                        background-size: cover;
-                        background-position: center;
-                        background-repeat: no-repeat;
-                        background-image: url('/new_design/images/opportunity/carusel_video.png');
-                        margin-left: auto;
-                        margin-right: auto;
-                     ">
-                        <div class="section-3-holder-div section-4-text" style="background: rgba(255,255,255,0.6);
-                        padding: 20px 40px !important;">
-                            <h3 class="">Истории <span style="color: red;font-size: 54px;">успеха</span> <br>
-                                наших партнеров</h3>
-                            <p>вручение автомомбилей партнерам</p>
-                        </div>
-                        <div class="text-center section-4-button">
-                            <button style="
-                                background-size: cover;
-                                background-position: center;
-                                background-repeat: no-repeat;
-                                background-image: url('/new_design/images/opportunity/play-button.png');
-                                width:100px;
-                                height: 100px;
-                                background-color: transparent;
-                                border: none;
-                            ">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="holder section-3-holder" style="
-                        background-size: cover;
-                        background-position: center;
-                        background-repeat: no-repeat;
-                        background-image: url('/new_design/images/opportunity/carusel_video.png');
-                        margin-left: auto;
-                        margin-right: auto;
-                     ">
-                        <div class="section-3-holder-div section-4-text" style="background: rgba(255,255,255,0.6);
-                        padding: 20px 40px !important;">
-                            <h3 class="">Истории <span style="color: red;font-size: 54px;">успеха</span> <br>
-                                наших партнеров</h3>
-                            <p>вручение автомомбилей партнерам</p>
-                        </div>
-                        <div class="text-center section-4-button">
-                            <button style="
-                                background-size: cover;
-                                background-position: center;
-                                background-repeat: no-repeat;
-                                background-image: url('/new_design/images/opportunity/play-button.png');
-                                width:100px;
-                                height: 100px;
-                                background-color: transparent;
-                                border: none;
-                            ">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="holder section-3-holder" style="
-                        background-size: cover;
-                        background-position: center;
-                        background-repeat: no-repeat;
-                        background-image: url('/new_design/images/opportunity/carusel_video.png');
-                        margin-left: auto;
-                        margin-right: auto;
-                     ">
-                        <div class="section-3-holder-div section-4-text" style="background: rgba(255,255,255,0.6);
-                        padding: 20px 40px !important;">
-                            <h3 class="">Истории <span style="color: red;font-size: 54px;">успеха</span> <br>
-                                наших партнеров</h3>
-                            <p>вручение автомомбилей партнерам</p>
-                        </div>
-                        <div class="text-center section-4-button">
-                            <button style="
-                                background-size: cover;
-                                background-position: center;
-                                background-repeat: no-repeat;
-                                background-image: url('/new_design/images/opportunity/play-button.png');
-                                width:100px;
-                                height: 100px;
-                                background-color: transparent;
-                                border: none;
-                            ">
-                            </button>
+                                        ">
+                                            <div class="red_play_button"></div>
+                                        </div>
+                                    </div>
+                                    <div class="txt text-center" style="margin-top: 30px">
+                                        <strong class="mini_video_title" style="">
+                                            Вручение автомобиля <br>
+                                            партнеру
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="mt-product1 large">
+                                    <div class="box">
+                                        <div style="
+                                             width: 350px;
+                                             height: 200px;
+                                             position: relative;
+                                             background-color: black;
+                                             display: flex;
+                                             align-items: center;
+                                             justify-content: center;
+
+                                        ">
+                                            <div class="red_play_button"></div>
+                                        </div>
+                                    </div>
+                                    <div class="txt text-center" style="margin-top: 30px">
+                                        <strong class="mini_video_title" style="">
+                                            Вручение автомобиля <br>
+                                            партнеру
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="mt-product1 large">
+                                    <div class="box">
+                                        <div style="
+                                             width: 350px;
+                                             height: 200px;
+                                             position: relative;
+                                             background-color: black;
+                                             display: flex;
+                                             align-items: center;
+                                             justify-content: center;
+
+                                        ">
+                                            <div class="red_play_button"></div>
+                                        </div>
+                                    </div>
+                                    <div class="txt text-center" style="margin-top: 30px">
+                                        <strong class="mini_video_title" style="">
+                                            Вручение автомобиля <br>
+                                            партнеру
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="mt-product1 large">
+                                    <div class="box">
+                                        <div style="
+                                             width: 350px;
+                                             height: 200px;
+                                             position: relative;
+                                             background-color: black;
+                                             display: flex;
+                                             align-items: center;
+                                             justify-content: center;
+
+                                        ">
+                                            <div class="red_play_button"></div>
+                                        </div>
+                                    </div>
+                                    <div class="txt text-center" style="margin-top: 30px">
+                                        <strong class="mini_video_title" style="">
+                                            Вручение автомобиля <br>
+                                            партнеру
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
         <section class="slider-5" style="background: transparent !important;">
             <div class="container">
                 <div class="why-we-are-text">
@@ -522,4 +629,9 @@
         </section>
     </main>
 @endsection
+<style>
+    #mCSB_1_dragger_horizontal {
+        background: #ff0000 !important;
+    }
+</style>
 

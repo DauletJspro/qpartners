@@ -178,7 +178,11 @@
 } */
 
 @import url(//db.onlinewebfonts.com/c/36b94f058581f2e0ace7e0017351d5b6?family=adineue+PRO+KZ+Bold);
-@font-face {font-family: "adineue PRO KZ Bold"; src: url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.eot"); src: url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.woff") format("woff"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.svg#adineue PRO KZ Bold") format("svg"); }
+@font-face {
+    font-family: "adineue PRO KZ Bold";
+    src: url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.eot");
+    src: url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.woff") format("woff"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.svg#adineue PRO KZ Bold") format("svg");
+}
 
 
 .ellipsis {
@@ -257,6 +261,101 @@ a:hover {
 #mt-header.style3 .tel .fa {
     font-size: 12px;
     margin: 0 4px 0 0;
+}
+
+.video_box {
+    margin-top: 20px;
+    width: 100%;
+    height: 250px;
+    position: relative;
+    background-color: lightgrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mini_video_heading{
+    font-size: 35px;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+.mini_video_title{
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
+    font-weight: 500;
+}
+.mini_video_p{
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+.video_scollar{
+    margin-top: 60px;
+}
+.red_play_button {
+    background-image: url('/new_design/images/opportunity/red_mini_player_button.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 70px;
+    height: 70px;
+}
+
+.green_play_button {
+    background-image: url('/new_design/images/opportunity/green_mini_player_button.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 70px;
+    height: 70px;
+}
+
+.red_border_video {
+    height: 480px;
+    width: 3px;
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 1) 1%, #ff0000 50%, rgba(255, 255, 255, 1) 100%);
+    display: inline-block;
+    float: left;
+    margin-top: 10px;
+}
+
+.h3-title-what-you-get {
+    font-size: 45px;
+    color: rgb(0, 0, 0);
+    line-height: 1.2;
+    float: right;
+    font-weight: 600;
+    padding-right: 50px;
+}
+.icon_image_div{
+    height: 50px;
+    width: 50px;
+    background-size: contain;
+    background-position: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+.what_you_get_icons_div .col-sm-2{
+    margin-top: 50px;
+}
+.what-we-offer-text{
+    font-size: 45px;
+    color:  #ff0000;
+    line-height: 1.2;
+    font-weight: 600;
+    padding-right: 50px;
+}
+.what_you_get_icons_div h2 {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    line-height: 1;
+    text-align: center;
 }
 
 #mt-header.style3 .tel.active,
@@ -4182,7 +4281,7 @@ a:hover {
 
 }
 
-.qyran_text h1{
+.qyran_text h1 {
     font-weight: 790;
     font-size: 85px;
     line-height: 1.3;
@@ -4190,7 +4289,8 @@ a:hover {
     letter-spacing: 30px;
     font-family: "adineue PRO KZ Bold";
 }
-.qyran_text_div h3{
+
+.qyran_text_div h3 {
     font-size: 20px;
     font-family: "adineue PRO KZ Bold";
     color: white !important;
@@ -4248,7 +4348,7 @@ a:hover {
 .section-2-title .row-1 {
     padding: 0;
     margin: 0;
-    margin-top: 10px;
+    margin-top: 40px;
 }
 
 .section-2-title .row-1 .col-sm-3 {
@@ -4324,7 +4424,7 @@ a:hover {
 
 .packet-name {
     font-size: 31px;
-    margin-top: 2px;
+    margin-top: 3px;
     color: rgb(0, 0, 0);
     font-weight: bold;
     line-height: 1.2;
@@ -4354,25 +4454,29 @@ a:hover {
 }
 
 .section-2-title .h3-title {
-    font-size: 28px;
-    color: rgb(255, 0, 0);
-    text-transform: uppercase;
-    line-height: 1.2;
-    font-weight: 900;
-    margin-top: 5px !important;
+    font-size: 35.31px;
+    color:#cb0000;
+    font-weight: 500;
+    line-height: 0.1;
 }
 
 .section-2-title p {
     margin-top: 20px;
+    font-weight: 500;
     color: black;
-    font-size: 28px;
+    font-size: 30px;
     line-height: 1.2;
+    letter-spacing: 0.2px;
 }
 
 .download-marketing-div {
-    margin-top: 10px;
+    margin-top: 5px;
+    display: inline-block;
 }
-
+.center-div{
+    margin-right: 67px;
+    margin-left: 67px;
+}
 .download-marketing {
     font-size: 25px;
     color: rgb(255, 255, 255);
