@@ -521,7 +521,7 @@
                 </div>
             </div>
         </section>
-        <section class="slider-5" style="background: transparent !important;">
+        <section class="slider-5" style="background: transparent !important;padding-bottom: 100px;">
             <div class="container">
                 <div class="why-we-are-text">
                     <h3>Почему вы должны <span style="color: #ff0000;"> работать с нами </span>?</h3>
