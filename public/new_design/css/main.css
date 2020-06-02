@@ -177,6 +177,10 @@
  }
 } */
 
+@import url(//db.onlinewebfonts.com/c/36b94f058581f2e0ace7e0017351d5b6?family=adineue+PRO+KZ+Bold);
+@font-face {font-family: "adineue PRO KZ Bold"; src: url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.eot"); src: url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.woff") format("woff"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.svg#adineue PRO KZ Bold") format("svg"); }
+
+
 .ellipsis {
     white-space: nowrap; /* 1 */
     text-overflow: ellipsis; /* 2 */
@@ -265,7 +269,7 @@ a:hover {
 }
 
 #mt-header.style3 #nav {
-    margin: 10px 0 0;
+    margin: 10px 0 0 12 opportunitypx;
 }
 
 #mt-header.style4 .mt-bottom-bar {
@@ -4178,10 +4182,37 @@ a:hover {
 
 }
 
+.qyran_text h1{
+    font-weight: 790;
+    font-size: 85px;
+    line-height: 1.3;
+    text-align: left;
+    letter-spacing: 30px;
+    font-family: "adineue PRO KZ Bold";
+}
+.qyran_text_div h3{
+    font-size: 20px;
+    font-family: "adineue PRO KZ Bold";
+    color: white !important;
+    font-weight: 200;
+    letter-spacing: 5px;
+    line-height: 1.2;
+}
+
+.hover-green:hover {
+    background-color: #05c100;
+    color: white;
+}
+
+.hover-red:hover {
+    background-color: rgb(180, 0, 0);
+    color: white;
+}
+
 .mt-mainslider4 {
     background: white;
     margin: -30px 0px 0px 0px;
-    min-height: 480px;
+    min-height: 530px;
     max-width: 2000px;
 }
 
@@ -11880,15 +11911,16 @@ a:hover {
     padding: 10px 30px;
     border: 0;
 }
-.alert-custom-danger{
+
+.alert-custom-danger {
     position: fixed;
     margin-left: auto;
     margin-right: auto;
     width: 300px;
     left: 0;
     right: 0;
-    top:60px;
-    z-index:99;
+    top: 60px;
+    z-index: 99;
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;
@@ -11897,15 +11929,16 @@ a:hover {
     border: 1px solid transparent;
     border-radius: 4px;
 }
-.alert-custom-success{
+
+.alert-custom-success {
     position: fixed;
     margin-left: auto;
     margin-right: auto;
     width: 300px;
     left: 0;
     right: 0;
-    top:60px;
-    z-index:99;
+    top: 60px;
+    z-index: 99;
     color: green;
     background-color: lightgreen;
     border-color: lightgreen;
@@ -11919,6 +11952,9 @@ a:hover {
     color: #f53434;
 }
 
+#mt-header > div.mt-bottom-bar > div > div > div {
+    padding-right: 0 !important;
+}
 
 .mt-team-sec .img-holder a:before {
     position: absolute;

@@ -1,7 +1,8 @@
 @extends('design_index.layout.layout')
 
 @section('meta-tags')
-
+    <link href="//db.onlinewebfonts.com/c/36b94f058581f2e0ace7e0017351d5b6?family=adineue+PRO+KZ+Bold" rel="stylesheet"
+          type="text/css"/>
     <title>Qpartners</title>
     <meta name="description"
           content="«Qpartners» - это уникальный медиа проект с широким набором возожностей для взаймодествия с участниками виртуального рынка"/>
@@ -13,13 +14,44 @@
     <main id="mt-main">
         <!-- mt-mainslider4 add start here -->
         <section class="mt-mainslider4 add" style="
-            background-size: contain;
+            background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-image: url('/new_design/images/opportunity/main_image.png');
             margin-left: auto;
             margin-right: auto;
+            position: relative;
+
+
         ">
+            <div style="position: absolute;
+             width:auto;
+             height: 100%;
+             padding: 80px 0 0 100px ;
+             background-color: rgba(83,28,12, 0.4);
+            " class="qyran_text_div">
+                <div style="
+
+             background: url(/new_design/images/opportunity/gold-background.jpg) no-repeat center center;
+             background-size: cover;
+
+             color: #fff;
+             -webkit-text-fill-color: transparent;
+             -webkit-background-clip: text;
+                " class="qyran_text">
+                    <h1 style="
+                ">
+                        QYRAN <br>
+                        PARTNERS <br>
+                        CLUB
+                    </h1>
+                </div>
+                <h3 style="color: white;" class="">ВЫСОКАЯ
+                    <span style="font-weight: 200 !important;">ДОХОДНОСТЬ</span>,
+                    НАДЕЖНАЯ
+                    <span style="font-weight: 200 !important;">СТАБИЛЬНОСТЬ</span></h3>
+            </div>
+
         </section>
         <section class="mt-section-1">
             <div class="container" style="margin-top: 0;padding-top: 0;">
@@ -46,16 +78,16 @@
                                         бизнес с доходом $ 100 000 в месяц
                                     </span>
                                     </div>
-                                    <div style="display:block;float: left;width: 95%; margin-top: 20px;">
+                                    <div style="display:block;float: left;width: 95%; margin-top: 40px;">
                                         <div style="float: left;">
-                                            <button class="second-section-button">СТАТЬ
+                                            <a href="/register" class="second-section-button hover-red">СТАТЬ
                                                 ПАРТНЕРОМ
-                                            </button>
+                                            </a>
                                         </div>
                                         <div style="float: right;">
-                                            <button class="second-section-button">СКАЧАТЬ
+                                            <a class="second-section-button hover-red">СКАЧАТЬ
                                                 ПРЕЗЕНТАЦИЮ
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
 
@@ -88,16 +120,16 @@
                                         профилактики </span> Вашего организма
                                     </span>
                                     </div>
-                                    <div style="display:block;float: left;width: 95%; margin-top: 20px;">
+                                    <div style="display:block;float: left;width: 95%; margin-top: 40px;">
                                         <div style="float: left;">
-                                            <button class="second-section-button br-green">
+                                            <a href="/shop" class="second-section-button br-green hover-green">
                                                 ПЕРЕЙТИ В МАГАЗИН
-                                            </button>
+                                            </a>
                                         </div>
                                         <div style="float: right;">
-                                            <button class="second-section-button br-green">
+                                            <a class="second-section-button br-green hover-green">
                                                 СКАЧАТЬ КАТАЛОГ
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
 
@@ -460,7 +492,7 @@
                     </div>
                 </div>
                 <div class="want-to-be-partner-box text-center">
-                    <a href="" class="want-to-be-partner-box-a">
+                    <a href="/register" class="want-to-be-partner-box-a">
                         ХОЧУ СТАТЬ ПАРТНЕРОМ
                     </a>
                 </div>
@@ -470,8 +502,8 @@
         <section class="" style="background: rgba(232, 232, 232, 0.5); padding-top: 50px; padding-bottom: 50px;">
             <div class="container">
                 <div class="col-xs-12" style="padding-bottom: 30px;">
-                    <h2 class="have-a-question">Часто задаваемые вопросы?</h2>
-                    <span class="have-a-question-span">Напишите в службу поддержку </span>
+                    <h2 class="have-a-question">Остались вопросы?</h2>
+                    <span class="have-a-question-span">Напишите в любое время! </span>
                     {{Form::open(['action' => ['Index\FaqController@opportunityFaqStore'], 'method' => 'POST', 'class'=> 'contact-form' ])}}
                     {{Form::token()}}
                     <fieldset class="have-a-question-fieldset">

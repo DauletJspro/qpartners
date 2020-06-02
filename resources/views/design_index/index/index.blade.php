@@ -48,7 +48,7 @@ use Illuminate\Support\Facades\Session;
                                     <h3><span style="font-size:140%;">Забирай</span> <br> <span
                                                 style="font-size: 90%;word-break:keep-all;">свой автомобиль</span>
                                         <br> <span
-                                                style="font-size: 130%; font-weightword-break:keep-all;"> за 200$</span>
+                                                style="font-size: 130%; font-weightword-break:keep-all;"> за 400$</span>
                                     </h3>
                                 </div>
                                 <a href="product-detail.html" class="btn-shop">
