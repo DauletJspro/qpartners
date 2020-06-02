@@ -43,6 +43,10 @@ Route::group([
     Route::resource('shop', 'ShopController');
     Route::resource('faq', 'FaqController');
 
+
+    Route::get('support', 'SupportController@index')->name('support.index');
+    Route::get('support/{id}', 'SupportController@edit')->name('support.edit');
+
     Route::group([
         'prefix' => 'profile'
     ], function () {
@@ -305,6 +309,7 @@ Route::group([
     Route::get('shop', 'ShopController@index')->name('shop.show');
     Route::get('basket', 'BasketController@show')->name('basket.show');
     Route::get('faq', 'FaqController@show')->name('faq.show');
+    Route::post('faq/opportunity-faq-store', 'FaqController@opportunityFaqStore')->name('faq.opportunity.save');
     Route::get('representative', 'RepresentativeController@show')->name('representative.show');
     Route::get('favorite/show-user-item', 'FavoriteController@showUserItems')->name('favorite.showUserItem');
     Route::resource('review', 'ReviewController');

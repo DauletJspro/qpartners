@@ -14,11 +14,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call('SocialNetworkSeeder');
-        $this->call('InsetToAdministration');
-        $this->call('InsertToLeadershipAdvice');
+//        $this->call('SocialNetworkSeeder');
+//        $this->call('InsetToAdministration');
+//        $this->call('InsertToLeadershipAdvice');
 //        $this->call('InsertDataToGuide');
+        $this->call('InsertFAQStatusesType');
         $this->command->info('Review table seeded successfully!');
+    }
+}
+
+
+class InsertFAQStatusesType extends Seeder
+{
+
+    /**
+     * @inheritDoc
+     */
+    public function run()
+    {
+        DB::table('faq_statuses')->insert([
+            ['id' => 1, 'type' => 'На рассмотрение'],
+            ['id' => 2, 'type' => 'Завершен'],
+            ['id' => 3, 'type' => 'В ожидании'],
+            ['id' => 4, 'type' => 'Принято'],
+            ['id' => 5, 'type' => 'Отказано'],
+        ]);
     }
 }
 

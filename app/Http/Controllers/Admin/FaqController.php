@@ -135,7 +135,6 @@ class FaqController extends Controller
             $request->session()->flash('success', 'Вы успешно изменили FAQ');
             return redirect('admin/faq');
         }
-
     }
 
     /**

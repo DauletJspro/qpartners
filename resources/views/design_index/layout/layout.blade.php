@@ -12,34 +12,50 @@
             <span></span>
         </div>
     </div>
+</div>
+<?php
+use \Illuminate\Support\Facades\Session;
+?>
+@if(Session::has('danger'))
+    <div class="alert-custom-danger hide-div" style="">
+        {{Session::get('danger')}}
+    </div>
+@endif
 
-    <div id="wrapper">
-        <div id="pre-loader" class="loader-container text-center">
-            <div class="loader text-center" style="width: 15%;">
-                <img src="/new_design/images/logo/logo.png" style="width: 100%;" alt="loader">
-            </div>
+@if(Session::has('success'))
+    <div class="alert-custom-success hide-div" style="">
+        {{Session::get('success')}}
+    </div>
+@endif
+
+<div id="wrapper">
+    <div id="pre-loader" class="loader-container text-center">
+        <div class="loader text-center" style="width: 15%;">
+            <img src="/new_design/images/logo/logo.png" style="width: 100%;" alt="loader">
         </div>
-        <div class="w1">
-            @include('design_index.layout.header')
-            <div class="mt-search-popup">
-                <div class="mt-holder">
-                    <a href="#" class="search-close"><span></span><span></span></a>
-                    <div class="mt-frame">
-                        <form action="#">
-                            <fieldset>
-                                <input type="text" placeholder="Search...">
-                                <span class="icon-microphone"></span>
-                                <button class="icon-magnifier" type="submit"></button>
-                            </fieldset>
-                        </form>
-                    </div>
+    </div>
+    <div class="w1">
+        @include('design_index.layout.header')
+        <div class="mt-search-popup">
+            <div class="mt-holder">
+                <a href="#" class="search-close"><span></span><span></span></a>
+                <div class="mt-frame">
+                    <form action="#">
+                        <fieldset>
+                            <input type="text" placeholder="Search...">
+                            <span class="icon-microphone"></span>
+                            <button class="icon-magnifier" type="submit"></button>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
-            @yield('content')
-            @include('design_index.layout.footer')
         </div>
-        <span id="back-top" class="fa fa-arrow-up"></span>
+
+        @yield('content')
+        @include('design_index.layout.footer')
     </div>
+    <span id="back-top" class="fa fa-arrow-up"></span>
+</div>
 </div>
 
 
@@ -51,6 +67,9 @@
 @yield('js')
 {{--<script src="/new_design/js/main.js"></script>--}}
 <script>
+
+    $('.hide-div').delay(5000).fadeOut('slow');
+
     function addItemToBasket(tag_object) {
         var method = $(tag_object).data('method');
         var item_id = $(tag_object).data('item-id');

@@ -93,6 +93,12 @@
         </a>
     </li>
     <li class="treeview">
+        <a href="/admin/support">
+            <i class="fa fa-support"></i>
+            <span>Служба поддержки</span>
+        </a>
+    </li>
+    <li class="treeview">
         <a href="/admin/password">
             <i class="fa fa-key"></i>
             <span>Сменить пароль</span>

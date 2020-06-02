@@ -1979,7 +1979,8 @@ a:hover {
     padding: 69px 72px 26px;
     background-repeat: no-repeat;
     background-position: 50% 100%;
-    background: white;c
+    background: white;
+    c
 }
 
 #nav .mt-dropmenu .mt-frame .mt-f-box {
@@ -4725,11 +4726,13 @@ a:hover {
     right: 0;
     text-align: center;
 }
-.section-4-text{
+
+.section-4-text {
     float: right;
     padding: 30px !important;
     /*margin-right: 20px;*/
 }
+
 .section-4-text h3 {
     font-size: 54px !important;
     color: black !important;
@@ -11828,7 +11831,7 @@ a:hover {
     transform: translate(-50%, -50%);
 }
 
-.mt-team-sec .img-holder a .social-icon li, .mt-team-sec .img-holder a .social-icon li{
+.mt-team-sec .img-holder a .social-icon li, .mt-team-sec .img-holder a .social-icon li {
     float: left;
     margin: 0 4px 0 0;
     width: 40px;
@@ -11839,6 +11842,77 @@ a:hover {
     -webkit-transition: all .25s linear;
     transition: all .25s linear;
     background: #494949;
+}
+
+.have-a-question {
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.have-a-question-fieldset input {
+    margin-top: 10px;
+    border-radius: 0 !important;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.have-a-question-fieldset textarea {
+    margin-top: 10px;
+    border-radius: 0 !important;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.have-a-question-button {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
+    background-color: rgb(255, 0, 0);
+    margin-top: 20px;
+    padding: 10px 30px;
+    border: 0;
+}
+.alert-custom-danger{
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    left: 0;
+    right: 0;
+    top:60px;
+    z-index:99;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.alert-custom-success{
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    left: 0;
+    right: 0;
+    top:60px;
+    z-index:99;
+    color: green;
+    background-color: lightgreen;
+    border-color: lightgreen;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }
 
 .mt-team-sec .img-holder a .social-icon li:hover {
@@ -11860,6 +11934,14 @@ a:hover {
     -webkit-transition: all .25s linear;
     transition: all .25s linear;
     z-index: 0;
+}
+
+.have-a-question-span {
+    font-size: 15px;
+    color: red;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.2;
 }
 
 .mt-team-sec .img-holder a:hover:before {
