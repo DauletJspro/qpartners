@@ -245,6 +245,9 @@ a:hover {
 #mt-header.style2 #nav ul {
     float: none;
 }
+.second-section-title-h3{
+    text-align: left;
+}
 
 #mt-header.style3 .mt-top-bar {
     padding: 0;
@@ -300,7 +303,7 @@ a:hover {
 }
 
 .share-button-box {
-    margin-top: 20px !important;
+    margin-top: 20px;
 }
 
 .share-button-box a {
@@ -394,7 +397,7 @@ a:hover {
 }
 
 #mt-header.style3 #nav {
-    margin: 10px 0 0 12 opportunitypx;
+    margin: 10px 0 0 12;
 }
 
 #mt-header.style4 .mt-bottom-bar {
@@ -4275,6 +4278,7 @@ a:hover {
 79. Mt Mainslider4 / .mt-mainslider4
 -------------------------------------------------------------------*/
 .second-section-title {
+    float: left;
     font-size: 26.31px;
     font-weight: bold;
     text-transform: uppercase;
@@ -4284,6 +4288,14 @@ a:hover {
 .second-section-text {
     font-size: 23px;
     line-height: 1.2;
+}
+
+.second-section-div-left {
+    float: left;
+}
+
+.second-section-div-right {
+    float: right;
 }
 
 .second-section-button {
@@ -4388,6 +4400,15 @@ a:hover {
     height: 100%;
     background-image: linear-gradient(to top, #e1e0df 1%, #ff0000 50%, #e1e0df 100%);
 }
+#mt-main > section:nth-child(4) > div > div > div.row.row-1 > div{
+    height: 300px;
+}
+.video_buttons {
+    display: block;
+    float: left;
+    width: 95%;
+    margin-top: 40px;
+}
 
 .img-text-box {
     padding: 20px 5px;
@@ -4434,7 +4455,8 @@ a:hover {
     margin-top: 20px;
     padding: 10px 30px;
 }
-.share-button{
+
+.share-button {
     font-size: 30px;
     font-weight: 400;
     text-transform: uppercase;
@@ -4983,7 +5005,7 @@ a:hover {
 }
 
 .section-3-holder-div {
-    padding: 0px 0 0 120px !important;
+    padding: 0px 0 0 120px ;
 }
 
 .section-4-holder-div {

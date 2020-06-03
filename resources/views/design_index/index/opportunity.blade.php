@@ -1,8 +1,7 @@
 @extends('design_index.layout.layout')
 
 @section('meta-tags')
-    <link href="//db.onlinewebfonts.com/c/36b94f058581f2e0ace7e0017351d5b6?family=adineue+PRO+KZ+Bold" rel="stylesheet"
-          type="text/css"/>
+    <link rel="stylesheet" href="/new_design/css/opportunity-responsive.css">
     <title>Qpartners</title>
     <meta name="description"
           content="«Qpartners» - это уникальный медиа проект с широким набором возожностей для взаймодествия с участниками виртуального рынка"/>
@@ -63,9 +62,12 @@
                              margin-left: 19px;
                             ">
                                 <div class="holder">
-                                    <div style="float: left;" class="second-section-title">
-                                        <h3><span style="color: black;font-weight: bold;">Построй</span> <span
-                                                    style="font-weight: bold;color: rgb(255, 0, 0);">свой бизнес</span>
+                                    <div class="second-section-title">
+                                        <h3 class="second-section-title-h3 text-center" >
+                                            <span style="color: black;font-weight: bold;">Построй</span> <span
+                                                    style="font-weight: bold;color: rgb(255, 0, 0);">свой бизнес
+                                            </span>
+
                                         </h3>
                                     </div>
                                     <div style="float: left; " class="second-section-text text-left">
@@ -78,13 +80,13 @@
                                             <div class="red_play_button"></div>
                                         </div>
                                     </div>
-                                    <div style="display:block;float: left;width: 95%; margin-top: 40px;">
-                                        <div style="float: left;">
+                                    <div class="text-center video_buttons">
+                                        <div class="second-section-div-left">
                                             <a href="/register" class="second-section-button hover-red">СТАТЬ
                                                 ПАРТНЕРОМ
                                             </a>
                                         </div>
-                                        <div style="float: right;">
+                                        <div class="second-section-div-right">
                                             <a class="second-section-button hover-red">СКАЧАТЬ
                                                 ПРЕЗЕНТАЦИЮ
                                             </a>
@@ -98,8 +100,8 @@
                             <div class="banner-15 right wow"
                                  style="width: 580px; height: 540px;background: white;margin:0;">
                                 <div class="holder">
-                                    <div style="float: left;" class="second-section-title">
-                                        <h3>
+                                    <div class="second-section-title">
+                                        <h3 class="second-section-title-h3">
                                             <span style="color: black;">БУДЬ</span>
                                             <span style="color: #05c100;">ЗДОРОВЫМ</span>
                                             <span style="color: black">И</span>
@@ -117,15 +119,15 @@
                                         </div>
 
                                     </div>
-                                    <div style="display:block;float: left;width: 95%; margin-top: 40px;">
-                                        <div style="float: left;">
-                                            <a href="/shop" class="second-section-button br-green hover-green">
-                                                ПЕРЕЙТИ В МАГАЗИН
+                                    <div style="" class="text-center video_buttons">
+                                        <div class="second-section-div-left">
+                                            <a href="" class="second-section-button br-green hover-green">
+                                                СКАЧАТЬ КАТАЛОГ
                                             </a>
                                         </div>
-                                        <div style="float: right;">
-                                            <a class="second-section-button br-green hover-green">
-                                                СКАЧАТЬ КАТАЛОГ
+                                        <div class="second-section-div-right">
+                                            <a href="/shop" class="second-section-button br-green hover-green">
+                                                ПЕРЕЙТИ В МАГАЗИН
                                             </a>
                                         </div>
                                     </div>
@@ -158,67 +160,68 @@
                         Инструментам и Возможностям.
                     </p>
                     <div class="row what_you_get_icons_div" style="margin-top: 50px;">
-                        <div class="col-sm-2 text-center">
-                            <div class="icon_image_div" style="
+                        <div class="col-xs-12 col-md-12 col-xs-12">
+                            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2  text-center">
+                                <div class="icon_image_div" style="
                                 background-image: url('/new_design/images/opportunity/book_icon.png');
                             "></div>
-                            <h2>Каталог <br>
-                                натуральной <br>
-                                продукции
-                            </h2>
-                        </div>
-                        <div class="col-sm-2 text-center">
-                            <div class="icon_image_div" style="
+                                <h2>Каталог <br>
+                                    натуральной <br>
+                                    продукции
+                                </h2>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2   text-center">
+                                <div class="icon_image_div" style="
                                 background-image: url('/new_design/images/opportunity/copy_book.png');
                                 width: 50px;
                                 height: 50px;
                             "></div>
-                            <h2>Презентация <br>
-                                Маркетинг <br>
-                                плана
-                            </h2>
-                        </div>
-                        <div class="col-sm-2 text-center">
-                            <div class="icon_image_div" style="
+                                <h2>Презентация <br>
+                                    Маркетинг <br>
+                                    плана
+                                </h2>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2  text-center">
+                                <div class="icon_image_div" style="
                                 background-image: url('/new_design/images/opportunity/debat_card.png');
                             "></div>
-                            <h2>Онлайн <br>
-                                клубная <br>
-                                карта
-                            </h2>
-                        </div>
-                        <div class="col-sm-2 text-center">
-                            <div class="icon_image_div" style="
+                                <h2>Онлайн <br>
+                                    клубная <br>
+                                    карта
+                                </h2>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2  text-center">
+                                <div class="icon_image_div" style="
                                 background-image: url('/new_design/images/opportunity/had.png');
                             "></div>
-                            <h2>Обучение <br>
-                                Партнеров <br>
-                                компании
-                            </h2>
-                        </div>
-                        <div class="col-sm-2 text-center">
-                            <div class="icon_image_div" style="
+                                <h2>Обучение <br>
+                                    Партнеров <br>
+                                    компании
+                                </h2>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2  text-center">
+                                <div class="icon_image_div" style="
                                 background-image: url('/new_design/images/opportunity/assistmant.png');
                             "></div>
-                            <h2>
-                                Ассортимент <br>
-                                Натуральной <br>
-                                продукции
-                            </h2>
-                        </div>
-                        <div class="col-sm-2 text-center">
-                            <div class="icon_image_div" style="
+                                <h2>
+                                    Ассортимент <br>
+                                    Натуральной <br>
+                                    продукции
+                                </h2>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-2  text-center">
+                                <div class="icon_image_div" style="
                                 background-image: url('/new_design/images/opportunity/home_car.png');
                                 width: 50px;
                                 height: 50px;
                             "></div>
-                            <h2>
-                                Участие в <br>
-                                Социальных <br>
-                                программах
-                            </h2>
+                                <h2>
+                                    Участие в <br>
+                                    Социальных <br>
+                                    программах
+                                </h2>
+                            </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -243,7 +246,7 @@
                         доход от бонусов соответствующего пакета:
                     </p>
                     <div class="row row-1">
-                        <div class="col-sm-3">
+                        <div class="col-sm-6 col-md-6  col-lg-3 col-xl-3 col-xs-6">
                             <div class="red-border">
                             </div>
                             <div class="packet-body">
@@ -262,7 +265,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xs-6">
                             <div class="red-border">
                             </div>
                             <div class="packet-body">
@@ -283,7 +286,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xs-6">
                             <div class="red-border">
                             </div>
                             <div class="packet-body">
@@ -306,7 +309,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xs-6">
                             <div class="red-border">
                             </div>
                             <div class="packet-body">
