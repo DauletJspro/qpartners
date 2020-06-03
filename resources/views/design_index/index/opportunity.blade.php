@@ -420,7 +420,8 @@
                     <div class="mt-productsc style2 wow fadeInUp" data-wow-delay="0.4s">
                         <div class="row">
                             <div class="col-xs-12 mt-heading text-uppercase text-center">
-                                <h2 class="mini_video_heading">Истории <span style="color: #ff0000; ">успеха</span> наших партнеров</h2>
+                                <h2 class="mini_video_heading">Истории <span style="color: #ff0000; ">успеха</span>
+                                    наших партнеров</h2>
                                 <p class="mini_video_p">Люди которые достигли своих целей вместе с нами</p>
                             </div>
                         </div>
@@ -515,7 +516,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -603,7 +603,11 @@
                         ХОЧУ СТАТЬ ПАРТНЕРОМ
                     </a>
                 </div>
-
+                <div class="share-button-box text-center">
+                    <a href="/" class="share-button">
+                        поделиться
+                    </a>
+                </div>
             </div>
         </section>
         <section class="" style="background: rgba(232, 232, 232, 0.5); padding-top: 50px; padding-bottom: 50px;">

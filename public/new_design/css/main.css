@@ -273,13 +273,15 @@ a:hover {
     align-items: center;
     justify-content: center;
 }
-.mini_video_heading{
+
+.mini_video_heading {
     font-size: 35px;
     color: rgb(0, 0, 0);
     text-transform: uppercase;
     line-height: 1.2;
 }
-.mini_video_title{
+
+.mini_video_title {
     font-size: 20px;
     color: rgb(0, 0, 0);
     text-transform: uppercase;
@@ -287,7 +289,8 @@ a:hover {
     text-align: center;
     font-weight: 500;
 }
-.mini_video_p{
+
+.mini_video_p {
     margin-top: 20px;
     font-size: 20px;
     font-weight: 400;
@@ -295,9 +298,27 @@ a:hover {
     text-transform: uppercase;
     line-height: 1.2;
 }
-.video_scollar{
+
+.share-button-box {
+    margin-top: 20px !important;
+}
+
+.share-button-box a {
+    background-color: white;
+    border: 1px solid #ff0000;
+    color: #ff0000;
+}
+
+.share-button-box a:hover {
+    background-color: #ff0000;
+    color: white;
+    border: 1px solid white;
+}
+
+.video_scollar {
     margin-top: 60px;
 }
+
 .red_play_button {
     background-image: url('/new_design/images/opportunity/red_mini_player_button.png');
     background-repeat: no-repeat;
@@ -333,24 +354,29 @@ a:hover {
     font-weight: 600;
     padding-right: 50px;
 }
-.icon_image_div{
+
+.icon_image_div {
     height: 50px;
     width: 50px;
     background-size: contain;
     background-position: center;
+    background-repeat: no-repeat;
     margin-right: auto;
     margin-left: auto;
 }
-.what_you_get_icons_div .col-sm-2{
+
+.what_you_get_icons_div .col-sm-2 {
     margin-top: 50px;
 }
-.what-we-offer-text{
+
+.what-we-offer-text {
     font-size: 45px;
-    color:  #ff0000;
+    color: #ff0000;
     line-height: 1.2;
     font-weight: 600;
     padding-right: 50px;
 }
+
 .what_you_get_icons_div h2 {
     font-size: 20px;
     color: rgb(0, 0, 0);
@@ -4408,6 +4434,21 @@ a:hover {
     margin-top: 20px;
     padding: 10px 30px;
 }
+.share-button{
+    font-size: 30px;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.2;
+    width: 442px;
+    height: 80px;
+    padding: 10px 30px;
+}
+
+.want-to-be-partner-box-a:hover {
+    background: white !important;
+    color: #ff0000 !important;
+    border: 1px solid #ff0000 !important;
+}
 
 
 .red-border {
@@ -4455,7 +4496,7 @@ a:hover {
 
 .section-2-title .h3-title {
     font-size: 35.31px;
-    color:#cb0000;
+    color: #cb0000;
     font-weight: 500;
     line-height: 0.1;
 }
@@ -4473,10 +4514,12 @@ a:hover {
     margin-top: 5px;
     display: inline-block;
 }
-.center-div{
+
+.center-div {
     margin-right: 67px;
     margin-left: 67px;
 }
+
 .download-marketing {
     font-size: 25px;
     color: rgb(255, 255, 255);
