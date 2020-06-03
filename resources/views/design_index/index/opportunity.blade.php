@@ -170,6 +170,8 @@
                         <div class="col-sm-2 text-center">
                             <div class="icon_image_div" style="
                                 background-image: url('/new_design/images/opportunity/copy_book.png');
+                                width: 50px;
+                                height: 50px;
                             "></div>
                             <h2>Презентация <br>
                                 Маркетинг <br>
@@ -207,6 +209,8 @@
                         <div class="col-sm-2 text-center">
                             <div class="icon_image_div" style="
                                 background-image: url('/new_design/images/opportunity/home_car.png');
+                                width: 50px;
+                                height: 50px;
                             "></div>
                             <h2>
                                 Участие в <br>
