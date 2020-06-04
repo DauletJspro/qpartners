@@ -41,9 +41,12 @@ class IndexController extends Controller
 
     }
 
-    public function comingSoon()
+    public function comingSoon(Request $request)
     {
-        return view('design_index.index.coming-soon');
+        $logo_id = $request->input('id');
+        $logo = Brand::where(['id' => $logo_id])->first();
+        $logo = $logo ? $logo->image : '';
+        return view('design_index.index.coming-soon', ['logo' => $logo]);
     }
 
     public function index(Request $request)

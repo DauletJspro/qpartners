@@ -36,7 +36,7 @@
                     <div class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
                         <div class="mt-logo">
                             <a href="/">
-                                <img src="/new_design/images/logo/logo.png">
+                                <img src="{{$logo}}">
                             </a>
                         </div>
                         <div class="text2 text-uppercase">
