@@ -132,6 +132,28 @@
 
 /*Mobile  M*/
 @media (min-width: 320px) and (max-width: 576px) {
+
+    #mt-main > section:nth-child(3) > div > div > div.row.what_you_get_icons_div > div > div{
+        padding-top: 20px;
+    }
+    .stars-box img{
+        width: 25px !important;
+        height: 18px !important;
+    }
+    .second-section-text{
+        padding: 0 10px 0 10px !important;
+    }
+    .banner-15 .holder{
+        padding: 24px 1px 1px 1px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(1){
+        margin-left: 0 !important;
+    }
+    #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(3){
+        margin-right: 0 !important;
+    }
     .mini_video_heading{
         font-weight: 800 !important;
         font-size: 35px !important;
@@ -232,7 +254,7 @@
 
     .section-2-title .h3-title {
         font-size: 20px !important;
-        margin-top: 10px !important;
+        margin-top: 20px !important;
     }
 
     .section-2-title {
@@ -320,11 +342,16 @@
     }
 
     .bonus-text ul li {
-        font-size: 17px !important;
+        font-size: 13px !important;
+        font-weight: 500;
+    }
+    #mt-main > section:nth-child(4) > div > div > div.row.row-1 > div{
+        height: 200px !important;
     }
 
     .packet-name {
         margin-top: 20px !important;
+        font-size: 25px !important;
     }
 
     .download-marketing {
@@ -607,12 +634,12 @@
 
     #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(1) {
         float: left !important;
-        margin-left: 5px !important;
+        margin-left: 5px;
     }
 
     #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(3) {
         float: right !important;
-        margin-right: 5px !important;
+        margin-right: 5px ;
     }
 
 }
