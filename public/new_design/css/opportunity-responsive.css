@@ -1,5 +1,6 @@
 /*Mobile S */
 @media (min-width: 0px) and (max-width: 320px) {
+
     #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(1) {
         margin: 0 0 0 0 !important;
     }
@@ -131,7 +132,37 @@
 
 /*Mobile  M*/
 @media (min-width: 320px) and (max-width: 576px) {
+    .mini_video_heading{
+        font-weight: 800 !important;
+        font-size: 35px !important;
+    }
+    .what-we-offer-text{
+        font-weight:600 !important;
+        font-size: 35px !important;
+    }
+    .want-to-be-partner-box-a{
+        font-size: 20px !important;
+    }
+    .share-button{
+        font-size: 20px !important;
+    }
+    #mt-main > section.mt-mainslider4.add {
+        max-height: 300px !important;
+        min-height: 300px !important;
 
+    }
+    .qyran_text h1{
+        font-size: 3rem !important;
+        letter-spacing: 20px !important;
+    }
+    #mt-main > section.mt-mainslider4.add > div{
+        padding: 40px 0 0 50px !important;
+    }
+    .qyran_text_div h3{
+        font-size: 1.5rem !important;
+        margin-top: 30px !important;
+        line-height: 1.6 !important;
+    }
 
     #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(1) {
         margin: 0 0 0 0 !important;
@@ -168,7 +199,7 @@
     }
 
     .second-section-button {
-        font-size: 20px !important;
+        font-size: 15px !important;
     }
 
     .second-section-div-right {
@@ -328,7 +359,8 @@
     .want-to-be-partner-box {
         padding: 0 !important;
     }
-    .share-button-box{
+
+    .share-button-box {
         margin-top: 40px !important;
     }
 }
@@ -348,6 +380,14 @@
     .second-section-title {
         float: none !important;
 
+    }
+
+    .banner-15 .holder {
+        padding: 24px 0px 10px 5px !important;
+    }
+
+    #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(1) > div > div.second-section-text.text-left {
+        margin-top: 5px !important;
     }
 
     #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(1) > div > div.second-section-title > h3,
@@ -534,6 +574,25 @@
     .benefit-text {
         font-size: 20px !important;
     }
+
+    .mt-mainslider4 {
+        min-height: 200px !important;
+        max-height: 700px !important;
+    }
+
+    .qyran_text h1 {
+        font-size: 30px !important;
+    }
+
+    #mt-main > section.mt-mainslider4.add > div {
+        padding: 30px 0 0 40px !important;
+    }
+
+    .qyran_text_div h3 {
+        font-size: 8px !important;
+        letter-spacing: 1px !important;
+        line-height: 1.2 !important;
+    }
 }
 
 @media (max-width: 704px) and (min-height: 576px) {
@@ -543,7 +602,7 @@
 
     #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(1),
     #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(3) {
-        width: 270px !important;
+        width: 270px;
     }
 
     #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(1) {
@@ -555,6 +614,7 @@
         float: right !important;
         margin-right: 5px !important;
     }
+
 }
 
 /*Laptop  */
