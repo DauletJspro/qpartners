@@ -257,8 +257,8 @@ a:hover {
 #mt-header.style3 .tel {
     color: white;
     font-size: 12px;
-    padding: 9px 12px;
-    margin: 0 22px 0 0;
+    padding: 9px 1px;
+    /*margin: 0 22px 0 0;*/
 }
 
 #mt-header.style3 .tel .fa {

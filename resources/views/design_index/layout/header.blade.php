@@ -10,15 +10,30 @@ if (Auth::user()) {
 } else {
     $favorites = \App\Models\Favorite::where(['ip_address' => $MAC])->get();
 }
+$needSubsidiaryIds = [5, 7, 8];
+$subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
+
 ?>
 <header id="mt-header" class="style3">
     <div class="mt-top-bar">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 hidden-xs">
-                    <span class="tel active"> <i class="fa fa-phone" aria-hidden="true"></i> +7(707)-369-17-77</span>
-                    <a class="tel" href="#"> <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                        qpartners.club@mail.ru</a>
+                    @foreach($subsidiaries as $key => $subsidiary)
+                        <a href="{{route('coming-soon')}}" class="tel" style="background-color: white;
+                            {{$key ? 'margin-left:1px;' : ''}}
+                                ">
+                            <div style="
+                                    width: 100px;
+                                    height: 20px;
+                                    background-image: url('{{$subsidiary->image}}');
+                                    background-repeat: no-repeat;
+                                    background-position: center;
+                                    background-size: contain;
+                                    ">
+                            </div>
+                        </a>
+                    @endforeach
                 </div>
                 <div class="col-xs-12 col-sm-6 text-right">
                     <ul class="mt-top-list">

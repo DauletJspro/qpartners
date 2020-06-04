@@ -41,6 +41,10 @@ class IndexController extends Controller
 
     }
 
+    public function comingSoon()
+    {
+        return view('design_index.index.coming-soon');
+    }
 
     public function index(Request $request)
     {

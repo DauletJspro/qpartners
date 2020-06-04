@@ -304,6 +304,7 @@ Route::group([
     Route::get('video', 'IndexController@video');
     Route::get('contact', 'IndexController@contact')->name('contact.show');
     Route::post('contact', 'IndexController@sendMessage');
+    Route::get('coming-soon', 'IndexController@comingSoon')->name('coming-soon');
     Route::get('news', 'NewsController@newsList');
     Route::post('review/store', 'ReviewController@store');
     Route::get('shop', 'ShopController@index')->name('shop.show');
