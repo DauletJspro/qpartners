@@ -20,9 +20,10 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
             <div class="row">
                 <div class="col-xs-12 col-sm-6 hidden-xs">
                     @foreach($subsidiaries as $key => $subsidiary)
-                        <a href="{{route('coming-soon', ['id' => $subsidiary->id])}}" class="tel" style="background-color: white;border-bottom: 1px solid lightgrey;
-                            {{$key ? 'margin-left:1px;' : ''}}
-                                ">
+                        <a href="{{route('coming-soon', ['id' => $subsidiary->id])}}" class="tel"
+                           style="background-color: white;border-bottom: 1px solid lightgrey;
+                           {{$key ? 'margin-left:1px;' : ''}}
+                                   " data-toggle='tooltip' data-placement='bottom' title='{{$subsidiary->name}}'>
                             <div style="
                                     width: 100px;
                                     height: 20px;
@@ -336,6 +337,8 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
     <span class="mt-side-over"></span>
 </header>
 
+@section('js')
+@endsection
 <style>
     .dropbtn {
         color: white;

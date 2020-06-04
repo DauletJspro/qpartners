@@ -390,10 +390,10 @@
                         position:relative;
 
                      ">
-                        <div class="section-3-holder-div">
-                            <h3>АВтопрограмма <span>GAP</span></h3>
+                        <div class="section-3-holder-div section-second-gap">
+                            <h3>Жилищная программа <span>GAP</span></h3>
                             <p>сТАВ ПАРТЕНРОМ ВЫ МОЖЕТЕ УЧАСТВОВАТЬ В ПРОГРАММЕ <br>
-                                ПО ПРИОБРЕТЕНИЮ АВТОМОБИЛЯ ДО 6 000 000 ТГ.</p>
+                                по приобретению жилья от 16 000$.</p>
                         </div>
                         <div class="section-3-div">
                             <a href="">ПОДРОБНЕЕ &emsp; <i class="fa fa-arrow-right"></i></a>
@@ -409,10 +409,10 @@
                         position:relative;
 
                      ">
-                        <div class="section-3-holder-div">
-                            <h3>АВтопрограмма <span>GAP</span></h3>
+                        <div class="section-3-holder-div section-third-gap">
+                            <h3>Тур программа <span>GAP</span></h3>
                             <p>сТАВ ПАРТЕНРОМ ВЫ МОЖЕТЕ УЧАСТВОВАТЬ В ПРОГРАММЕ <br>
-                                ПО ПРИОБРЕТЕНИЮ АВТОМОБИЛЯ ДО 6 000 000 ТГ.</p>
+                               путешествия по всему миру.</p>
                         </div>
                         <div class="section-3-div">
                             <a href="">ПОДРОБНЕЕ &emsp; <i class="fa fa-arrow-right"></i></a>

@@ -13084,13 +13084,32 @@ a:hover {
     background-position: center;
     background-size: cover;
 }
+.section-second-gap{
+    background-color: rgba(255, 255, 255, 0.8);
+    padding-bottom: 20px !important;
+}
+.section-third-gap{
+    background-color: rgba(255, 255, 255, 0.8);
+    padding-bottom: 20px !important;
+}
+#mt-main > section.slider-3 > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.section-3-holder-div.section-second-gap > h3{
+    color: black;
+}
+#mt-main > section.slider-3 > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.section-3-holder-div.section-second-gap > p{
+    color: black;
+}
+#mt-main > section.slider-3 > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.section-3-holder-div.section-third-gap > h3{
+    color: black;
+}
+#mt-main > section.slider-3 > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.section-3-holder-div.section-third-gap > p{
+    color: black;
+}
 
 .coming-soon .mt-logo {
     width: 200px;
     margin: 0 auto 60px;
     background-color: rgba(255, 255, 255, 0.7);
 }
-
 .coming-soon .title {
     font-size: 28px;
     margin: 0 0 19px;
