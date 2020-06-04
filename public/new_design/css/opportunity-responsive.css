@@ -132,6 +132,10 @@
 
 /*Mobile  M*/
 @media (min-width: 320px) and (max-width: 576px) {
+
+    .video_buttons{
+        margin-left: 10px ;
+    }
     #mt-main > section.slider-3 > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.section-3-holder-div.section-second-gap > h3 > span{
         display: block;
     }
