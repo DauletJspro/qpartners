@@ -20,7 +20,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
             <div class="row">
                 <div class="col-xs-12 col-sm-6 hidden-xs">
                     @foreach($subsidiaries as $key => $subsidiary)
-                        <a href="{{route('coming-soon')}}" class="tel" style="background-color: white;
+                        <a href="{{route('coming-soon')}}" class="tel" style="background-color: white;border-bottom: 1px solid lightgrey;
                             {{$key ? 'margin-left:1px;' : ''}}
                                 ">
                             <div style="
