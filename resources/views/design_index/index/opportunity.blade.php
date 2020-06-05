@@ -462,7 +462,7 @@
                      ">
                         <div class="section-3-holder-div section-third-gap">
                             <h3>Тур программа <span>GAP</span></h3>
-                            <p>Став Партнером вы можете получить грант на открытие представительства<br>
+                            <p>Став Партнером вы можете получить грант на открытие представительства  <br>
                                 Natural Market в своем регионе.</p>
                         </div>
                         <div class="section-3-div">

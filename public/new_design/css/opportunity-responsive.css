@@ -320,10 +320,16 @@
     .section-3-holder p {
         color: transparent !important;
     }
+    .section-third-gap{
+        padding-bottom: 0 !important;
+    }
 
     .section-3-holder-div {
-        padding: 0 20px 0 20px !important;
+        padding: 0 0 0 0 !important;
         text-align: center !important;
+    }
+    .section-second-gap{
+        padding-bottom: 0 !important;
     }
 
     .slider-3 .container-fluid {
