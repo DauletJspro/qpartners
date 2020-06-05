@@ -15,7 +15,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-image: url('/new_design/images/opportunity/main_image.png');
+            background-image: url('/new_design/images/opportunity/main_image.jpg');
             margin-left: auto;
             margin-right: auto;
             position: relative;
