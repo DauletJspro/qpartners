@@ -133,60 +133,75 @@
 /*Mobile  M*/
 @media (min-width: 320px) and (max-width: 576px) {
 
-    .video_buttons{
-        margin-left: 10px ;
+    .video_buttons {
+        margin-left: 10px;
     }
-    #mt-main > section.slider-3 > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.section-3-holder-div.section-second-gap > h3 > span{
+
+    #mt-main > section.slider-3 > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.section-3-holder-div.section-second-gap > h3 > span {
         display: block;
     }
-    #mt-main > section:nth-child(3) > div > div > div.row.what_you_get_icons_div > div > div{
+
+    #mt-main > section:nth-child(3) > div > div > div.row.what_you_get_icons_div > div > div {
         padding-top: 20px;
     }
-    .stars-box img{
+
+    .stars-box img {
         width: 25px !important;
         height: 18px !important;
     }
-    .second-section-text{
+
+    .second-section-text {
         padding: 0 10px 0 10px !important;
     }
-    .banner-15 .holder{
+
+    .banner-15 .holder {
         padding: 24px 1px 1px 1px !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
-    #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(1){
+
+    #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(1) {
         margin-left: 0 !important;
     }
-    #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(3){
+
+    #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(3) {
         margin-right: 0 !important;
     }
-    .mini_video_heading{
+
+    .mini_video_heading {
         font-weight: 800 !important;
         font-size: 35px !important;
     }
-    .what-we-offer-text{
-        font-weight:600 !important;
+
+    .what-we-offer-text {
+        font-weight: 600 !important;
         font-size: 35px !important;
     }
-    .want-to-be-partner-box-a{
+
+    .want-to-be-partner-box-a {
         font-size: 20px !important;
     }
-    .share-button{
+
+    .share-button {
         font-size: 20px !important;
     }
+
     #mt-main > section.mt-mainslider4.add {
         max-height: 300px !important;
         min-height: 300px !important;
 
     }
-    .qyran_text h1{
+
+    .qyran_text h1 {
         font-size: 3rem !important;
         letter-spacing: 20px !important;
     }
-    #mt-main > section.mt-mainslider4.add > div{
+
+    #mt-main > section.mt-mainslider4.add > div {
         padding: 40px 0 0 50px !important;
     }
-    .qyran_text_div h3{
+
+    .qyran_text_div h3 {
         font-size: 1.5rem !important;
         margin-top: 30px !important;
         line-height: 1.6 !important;
@@ -351,7 +366,8 @@
         font-size: 13px !important;
         font-weight: 500;
     }
-    #mt-main > section:nth-child(4) > div > div > div.row.row-1 > div{
+
+    #mt-main > section:nth-child(4) > div > div > div.row.row-1 > div {
         height: 200px !important;
     }
 
@@ -645,7 +661,7 @@
 
     #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(3) {
         float: right !important;
-        margin-right: 5px ;
+        margin-right: 5px;
     }
 
 }
@@ -798,6 +814,7 @@
 
 /*Laptop L */
 @media (min-width: 992px) and (max-width: 1200px) {
+
     #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(1),
     #mt-main > section.mt-section-1 > div > div > div > div > div:nth-child(3) {
         width: 450px !important;
@@ -891,4 +908,24 @@
 
 }
 
+@media (min-width: 1200px) {
+    #mt-main > section:nth-child(4) > div > div > div.row.row-1 > div:nth-child(5) > div.red-border {
+        display: none !important;
+    }
+    #mt-main > section:nth-child(4) > div > div > div.row.row-1 > div:nth-child(3) > div.red-border{
+        display: none !important;
+    }
+    #mt-main > section:nth-child(4) > div > div > div.row.row-1 > div.col-sm-6.col-md-6.col-lg-4.col-lg-offset-2.col-xl-3.col-xs-6{
+        margin-top: 30px !important;
+    }
+    #mt-main > section:nth-child(4) > div > div > div:nth-child(4){
+        margin-top: 120px !important;
+    }
+    #mt-main > section:nth-child(4) > div > div > div.row.row-1 > div:nth-child(5){
+        margin-top: 30px !important;
+    }
+    .bonus-text ul li{
+        font-size: 25px !important;
+    }
+}
 

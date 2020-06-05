@@ -246,7 +246,7 @@
                         доход от бонусов соответствующего пакета:
                     </p>
                     <div class="row row-1">
-                        <div class="col-sm-6 col-md-6  col-lg-3 col-xl-3 col-xs-6">
+                        <div class="col-sm-6 col-md-6  col-lg-4 col-xl-3 col-xs-6">
                             <div class="red-border">
                             </div>
                             <div class="packet-body">
@@ -261,11 +261,12 @@
                                     <ul style="list-style: none;">
                                         <li>- Рекрутинговый</li>
                                         <li>- Командный</li>
+                                        <li>- Быстрый</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xs-6">
+                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xs-6">
                             <div class="red-border">
                             </div>
                             <div class="packet-body">
@@ -282,11 +283,12 @@
                                         <li>- Рекрутинговый</li>
                                         <li>- Командный</li>
                                         <li>- Кэшбэк</li>
+                                        <li>- Быстрый</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xs-6">
+                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xs-6">
                             <div class="red-border">
                             </div>
                             <div class="packet-body">
@@ -305,11 +307,12 @@
                                         <li>- Командный</li>
                                         <li>- Кэшбэк</li>
                                         <li>- Квалификационный</li>
+                                        <li>- Быстрый</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xs-6">
+                        <div class="col-sm-6 col-md-6 col-lg-4 col-lg-offset-2 col-xl-3 col-xs-6">
                             <div class="red-border">
                             </div>
                             <div class="packet-body">
@@ -330,12 +333,41 @@
                                         <li>- Кэшбэк</li>
                                         <li>- Квалификационный</li>
                                         <li>- Накопительный</li>
+                                        <li>- Быстрый</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-4  col-xl-3 col-xs-6">
+                            <div class="red-border">
+                            </div>
+                            <div class="packet-body">
+                                <div class="stars-box text-center">
+                                    <img src="/new_design/images/opportunity/star.png" alt="">
+                                    <img src="/new_design/images/opportunity/star.png" alt="">
+                                    <img src="/new_design/images/opportunity/star.png" alt="">
+                                    <img src="/new_design/images/opportunity/star.png" alt="">
+                                    <img src="/new_design/images/opportunity/star.png" alt="">
+                                </div>
+                                <div class="packet-name text-center">
+                                    PRO
+                                </div>
+                                <div class="bonus-text ">
+                                    <ul style="list-style: none;">
+                                        <li>- Рекрутинговый</li>
+                                        <li>- Командный</li>
+                                        <li>- Кэшбэк</li>
+                                        <li>- Квалификационный</li>
+                                        <li>- Накопительный</li>
+                                        <li>- Глобальный</li>
+                                        <li>- Быстрый</li>
+
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div style="margin-top: 90px;">
+                    <div style="margin-top: 110px;">
                         <div class="download-marketing-div">
                             <a class="download-marketing" href="">
                                 СКАЧАТЬ МАРКЕТИНГ
