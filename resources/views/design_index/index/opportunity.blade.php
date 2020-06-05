@@ -416,7 +416,7 @@
                         background-size: cover;
                         background-position: center;
                         background-repeat: no-repeat;
-                        background-image: url('/new_design/images/opportunity/carusel_home.jpg');
+                        background-image: url('/new_design/images/opportunity/carusel_home.png');
                         margin-left: auto;
                         margin-right: auto;
                         position:relative;
@@ -445,6 +445,25 @@
                             <h3>Тур программа <span>GAP</span></h3>
                             <p>сТАВ ПАРТЕНРОМ ВЫ МОЖЕТЕ УЧАСТВОВАТЬ В ПРОГРАММЕ <br>
                                путешествия по всему миру.</p>
+                        </div>
+                        <div class="section-3-div">
+                            <a href="">ПОДРОБНЕЕ &emsp; <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="holder section-3-holder" style="
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-image: url('/new_design/images/opportunity/carusel_natural_market.jpg');
+                        margin-left: auto;
+                        margin-right: auto;
+                        position:relative;
+
+                     ">
+                        <div class="section-3-holder-div section-third-gap">
+                            <h3>Тур программа <span>GAP</span></h3>
+                            <p>Став Партнером вы можете получить грант на открытие представительства<br>
+                                Natural Market в своем регионе.</p>
                         </div>
                         <div class="section-3-div">
                             <a href="">ПОДРОБНЕЕ &emsp; <i class="fa fa-arrow-right"></i></a>
