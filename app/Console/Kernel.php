@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('globalBonus:everyMonth')
-            ->everyMinute();
+            ->cron('0 0 1 * *');
     }
 
     /**
