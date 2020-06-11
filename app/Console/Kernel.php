@@ -2,6 +2,11 @@
 
 namespace App\Console;
 
+use App\Models\Fond;
+use App\Models\Operation;
+use App\Models\UserOperation;
+use App\Models\Users;
+use App\Models\UserStatus;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +18,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\GlobalBonusBeginOfMonth::class,
+        'App\Console\Commands\GlobalBonusBeginOfMonth',
     ];
 
     /**
@@ -25,7 +30,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('globalBonus:everyMonth')
-            ->cron('0 0 1 * *');
+            ->monthlyOn(1, '12:00');
     }
 
     /**

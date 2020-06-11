@@ -52,7 +52,6 @@ class GlobalBonusBeginOfMonth extends Command
             foreach ($diamondUsers as $user) {
                 $user->user_money = $user->user_money + $shareForEach;
                 $user->save();
-
                 $operation = new UserOperation();
                 $operation->author_id = null;
                 $operation->recipient_id = $user->user_id;
@@ -63,8 +62,5 @@ class GlobalBonusBeginOfMonth extends Command
                 $operation->save();
             }
         }
-
-
-
     }
 }
