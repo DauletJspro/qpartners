@@ -15,11 +15,12 @@ class UserStatus extends Model
     const CONSULTANT = 22;
     const AGENT = 23;
     const MANAGER = 24;
-    const BRONZE_MANAGER = 25;
-    const SILVER_MANAGER = 26;
-    const GOLD_MANAGER = 27;
+    const SILVER_MANAGER = 25;
+    const GOLD_DIRECTOR = 26;
+    const RUBIN_DIRECTOR = 27;
     const SAPPHIRE_DIRECTOR = 28;
-    const DIAMOND_DIRECTOR = 29;
+    const EMERALD_DIRECTOR = 29;
+    const DIAMOND_DIRECTOR = 30;
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];

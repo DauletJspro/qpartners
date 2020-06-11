@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Blog;
+use App\Models\Fond;
+use App\Models\Operation;
 use App\Models\Packet;
 use App\Models\Product;
 use App\Models\UserBasket;
@@ -12,10 +14,10 @@ use App\Models\Users;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Support\Facades\Validator;
 use View;
 use DB;
-use Auth;
 
 class OnlineController extends Controller
 {
@@ -200,19 +202,15 @@ class OnlineController extends Controller
                     $operation->money = $cash;
                     $operation->operation_id = 1;
                     $operation->operation_type_id = 22;
-                    $operation->operation_comment = sprintf('Cash Back. %s $ Уровень - %s', $cash, $counter);
+                    $operation->operation_comment = sprintf('Cash Back. %s pv Уровень - %s', $cash, $counter);
                     $operation->save();
                 }
-
-
                 if ($counter == 5) {
                     break;
                 }
             }
-
         }
 
-        $user = Auth::user();
         $user->user_money = $user->user_money - $sum;
         $user->save();
 
@@ -225,11 +223,9 @@ class OnlineController extends Controller
         $operation->operation_comment = '';
         $operation->save();
 
-
         $result['status'] = true;
         return response()->json($result);
     }
-
     public function showHistory(Request $request)
     {
         $request->basket = UserBasket::leftJoin('product', 'product.product_id', '=', 'user_basket.product_id')

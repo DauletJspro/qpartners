@@ -14,4 +14,11 @@ class Operation extends Model
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+
+
+    const CHARGING = 1;
+    const CASH_WITHDRAWAL = 2;
+
+    const RefillGlobalDiamondFound = 33;
+    const GlobalBonus = 34;
 }

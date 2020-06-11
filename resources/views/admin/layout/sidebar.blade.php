@@ -15,8 +15,8 @@
     @endif
 
     <li class="header" style="text-align: center; padding:5px 25px 0px">
-        <p style="color:red;margin:0px;font-weight: bold">Ваш баланс: {{Auth::user()->user_money}}$
-            ( {{Auth::user()->user_money * \App\Models\Currency::where('currency_name','тенге')->first()->money}}тг)</p>
+        <p style="color:red;margin:0px;font-weight: bold">Ваш баланс: {{Auth::user()->user_money}}PV
+            ( {{Auth::user()->user_money * \App\Models\Currency::pvToKzt()}}тг)</p>
     </li>
 
 
@@ -214,12 +214,12 @@
                 <span>Добавить представителей</span>
             </a>
         </li>
-            <li class="treeview">
-                <a href="/admin/faq">
-                    <i class="fa fa-question"></i>
-                    <span>Часта задаваемые вопросы</span>
-                </a>
-            </li>
+        <li class="treeview">
+            <a href="/admin/faq">
+                <i class="fa fa-question"></i>
+                <span>Часта задаваемые вопросы</span>
+            </a>
+        </li>
     @endif
     <li class="treeview">
         <a href="/admin/operation">
@@ -290,7 +290,6 @@
             <span>Сменить пароль</span>
         </a>
     </li>
-
 
 
     <li class="treeview">

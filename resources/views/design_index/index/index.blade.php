@@ -240,7 +240,7 @@ use Illuminate\Support\Facades\Session;
                                                                        data-method="add"
                                                                        data-route="{{route('basket.isAjax')}}"
                                                                        onclick="addItemToBasket(this)"
-                                                                    ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
+                                                                    ><i class="icon-handbag"></i><span>Добавить в корзину</span></a>
                                                                 </li>
                                                                 <li><a style="cursor: pointer;"
                                                                        data-item-id="{{$product->product_id}}"

@@ -14,4 +14,7 @@ class Fond extends Model
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+
+
+    const GLOBAL_DIAMOND_FOUND = 4;
 }

@@ -252,7 +252,6 @@
                             <div class="packet-body">
                                 <div class="stars-box text-center">
                                     <img src="/new_design/images/opportunity/star.png" alt="">
-                                    <img src="/new_design/images/opportunity/star.png" alt="">
                                 </div>
                                 <div class="packet-name text-center">
                                     CLASSIC
@@ -271,7 +270,6 @@
                             </div>
                             <div class="packet-body">
                                 <div class="stars-box text-center">
-                                    <img src="/new_design/images/opportunity/star.png" alt="">
                                     <img src="/new_design/images/opportunity/star.png" alt="">
                                     <img src="/new_design/images/opportunity/star.png" alt="">
                                 </div>
@@ -296,7 +294,6 @@
                                     <img src="/new_design/images/opportunity/star.png" alt="">
                                     <img src="/new_design/images/opportunity/star.png" alt="">
                                     <img src="/new_design/images/opportunity/star.png" alt="">
-                                    <img src="/new_design/images/opportunity/star.png" alt="">
                                 </div>
                                 <div class="packet-name text-center">
                                     ELITE
@@ -317,7 +314,6 @@
                             </div>
                             <div class="packet-body">
                                 <div class="stars-box text-center">
-                                    <img src="/new_design/images/opportunity/star.png" alt="">
                                     <img src="/new_design/images/opportunity/star.png" alt="">
                                     <img src="/new_design/images/opportunity/star.png" alt="">
                                     <img src="/new_design/images/opportunity/star.png" alt="">

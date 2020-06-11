@@ -76,10 +76,16 @@ class ShopController extends Controller
             ->where('user_packet.is_active', 1)
             ->sum('user_packet.packet_price');
 
-        $request['packet_old_price_4'] = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
+        $request['packet_old_price_27'] = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
             ->where('user_packet.user_id', Auth::user()->user_id)
-            ->where('user_packet.packet_id', '>', 2)
-            ->where('user_packet.packet_id', '<', 4)
+            ->where('user_packet.packet_id', '>=', 23)
+            ->where('user_packet.packet_id', '<', 27)
+            ->where('user_packet.is_active', 1)
+            ->sum('user_packet.packet_price');
+
+        $request['packet_old_price_30'] = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
+            ->where('user_packet.user_id', Auth::user()->user_id)
+            ->whereIn('user_packet.packet_id', [Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2])
             ->where('user_packet.is_active', 1)
             ->sum('user_packet.packet_price');
 

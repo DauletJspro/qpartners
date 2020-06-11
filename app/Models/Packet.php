@@ -19,6 +19,7 @@ class Packet extends Model
     const VIP2 = 27;
     const GAP1 = 28;
     const  GAP2 = 29;
+    const PRO = 30;
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];

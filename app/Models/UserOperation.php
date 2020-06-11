@@ -14,4 +14,7 @@ class UserOperation extends Model
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+
+
+
 }

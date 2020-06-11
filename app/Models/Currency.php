@@ -13,6 +13,7 @@ class Currency extends Model
     protected $primaryKey = 'currency_id';
 
     const DOLLAR = 1;
+    const PV = 2;
 
     public static function usdToKzt()
     {
@@ -21,5 +22,14 @@ class Currency extends Model
         $usdToKzt = $currency->money;
         return $usdToKzt;
     }
-    
+
+    public static function pvToKzt()
+    {
+        $pvToKzt = 0;
+        $currency = Currency::where(['currency_id' => self::PV])->first();
+        $pvToKzt = $currency->money;
+        return $pvToKzt;
+    }
+
+
 }

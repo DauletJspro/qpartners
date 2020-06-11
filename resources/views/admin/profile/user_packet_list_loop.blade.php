@@ -5,7 +5,7 @@
         <div class="small-box" style="background-color: #{{$item->packet_css_color}}">
             <div class="inner">
                 <h3 style="font-family: cursive; font-size: 24px">{{$item->packet_name_ru}}</h3>
-                <h4 style="font-size: 22px">{{$item->packet_price}} $</h4>
+                <h4 style="font-size: 22px">{{$item->packet_price}} PV</h4>
             </div>
             <div class="icon">
                 <i class="ion ion-bag" style="font-size: 17px"></i>

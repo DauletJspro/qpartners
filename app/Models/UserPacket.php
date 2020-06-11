@@ -24,41 +24,45 @@ class UserPacket extends Model
         return $this->belongsTo('App\Models\Packet');
     }
 
+    public static function getLessElementsSum($array, $index)
+    {
+        $counter = 0;
+        $sum = 0;
+        while ($counter < $index) {
+            $sum += $array[$counter];
+            $counter++;
+        }
+
+        return $sum;
+    }
+
     public static function beforePurchaseSum($user_id)
     {
         $userPackets = UserPacket::where(['user_packet.user_id' => $user_id])->where('user_packet.is_active', 1)
-            ->join('packet', 'packet.packet_id', '=', 'user_packet.packet_id')->get()->sortByDesc('packet.packet_id');
-
+            ->join('packet', 'packet.packet_id', '=', 'user_packet.packet_id')->get()->sortBy('packet.packet_id');
 
         if (!count($userPackets)) {
             return 0;
         };
 
+
         $userPackets = collect($userPackets);
         $userPackets = Arr::pluck($userPackets, 'packet.packet_price', 'packet.packet_id');
-        $minValue = (min(array_keys($userPackets)));
-        $sum = [];
+        $counter = 0;
+        $array = [];
         foreach ($userPackets as $key => $value) {
-            $temporary = [];
-            if ($key > $minValue) {
-                for ($i = $key; $i >= $minValue; $i--) {
-                    $max = $userPackets[$key];
-                    $num = (isset($userPackets[$i]) ? $userPackets[$i] : 0);
-                    array_push($temporary, $num);
-                }
-                $sumV = $temporary[0];
-                foreach ($temporary as $key => $item) {
-                    if ($key != 0) {
-                        $sumV = $sumV - $temporary[$key];
-                    }
-                }
-                array_push($sum, $sumV);
+            if (empty($array)) {
+                $array[$counter] = $value;
             } else {
-                array_push($sum, $value);
+                $lessElementsSum = self::getLessElementsSum($array, $counter);
+                $lessElementsSum = $value - $lessElementsSum;
+                $array[$counter] = $lessElementsSum;
             }
+            $counter++;
         }
-        return intval(array_sum($sum));
+        return array_sum($array);
 
     }
+
 
 }

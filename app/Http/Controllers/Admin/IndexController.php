@@ -21,181 +21,172 @@ class IndexController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('profile', ['only' => ['index','callFriend']]);
+        $this->middleware('profile', ['only' => ['index', 'callFriend']]);
     }
 
     public function index(Request $request)
     {
-        $request->profit_all = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_type_id','!=',3)
-            ->where('operation_type_id','!=',28)
-            ->where('operation_type_id','!=',29)
-            ->sum('money');
-        
-        $request->profit_today = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_type_id','!=',3)
-            ->where('operation_type_id','!=',28)
-            ->where('operation_type_id','!=',29)
-            ->where('created_at','>',date("Y-m-d"))
+        $request->profit_all = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '!=', 2)
+            ->where('operation_type_id', '!=', 3)
+            ->where('operation_type_id', '!=', 28)
+            ->where('operation_type_id', '!=', 29)
             ->sum('money');
 
-        $request->profit_last_week = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_type_id','!=',3)
-            ->where('operation_type_id','!=',28)
-            ->where('operation_type_id','!=',29)
-            ->where('created_at','>',date("Y-m-d",strtotime("-7 day")))
+        $request->profit_today = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '!=', 2)
+            ->where('operation_type_id', '!=', 3)
+            ->where('operation_type_id', '!=', 28)
+            ->where('operation_type_id', '!=', 29)
+            ->where('created_at', '>', date("Y-m-d"))
             ->sum('money');
 
-        $request->profit_last_month = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_type_id','!=',3)
-            ->where('operation_type_id','!=',28)
-            ->where('operation_type_id','!=',29)
-            ->where('created_at','>',date("Y-m-d",strtotime("-30 day")))
+        $request->profit_last_week = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '!=', 2)
+            ->where('operation_type_id', '!=', 3)
+            ->where('operation_type_id', '!=', 28)
+            ->where('operation_type_id', '!=', 29)
+            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))
             ->sum('money');
 
-        $request->passive_profit_all = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','=',3)
+        $request->profit_last_month = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '!=', 2)
+            ->where('operation_type_id', '!=', 3)
+            ->where('operation_type_id', '!=', 28)
+            ->where('operation_type_id', '!=', 29)
+            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))
             ->sum('money');
 
-        $request->passive_profit_today = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','=',3)
-            ->where('created_at','>',date("Y-m-d"))
+        $request->passive_profit_all = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '=', 3)
             ->sum('money');
 
-        $request->passive_profit_last_week = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','=',3)
-            ->where('created_at','>',date("Y-m-d",strtotime("-7 day")))
+        $request->passive_profit_today = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '=', 3)
+            ->where('created_at', '>', date("Y-m-d"))
             ->sum('money');
 
-        $request->passive_profit_last_month = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','=',3)
-            ->where('created_at','>',date("Y-m-d",strtotime("-30 day")))
+        $request->passive_profit_last_week = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '=', 3)
+            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))
             ->sum('money');
 
-
-
-
-        $request->home_profit_all = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','=',32)
-            ->sum('money');
-
-        $request->home_profit_today = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','=',32)
-            ->where('created_at','>',date("Y-m-d"))
-            ->sum('money');
-
-        $request->home_profit_last_week = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','=',32)
-            ->where('created_at','>',date("Y-m-d",strtotime("-7 day")))
-            ->sum('money');
-
-        $request->home_profit_last_month = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','=',32)
-            ->where('created_at','>',date("Y-m-d",strtotime("-30 day")))
+        $request->passive_profit_last_month = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '=', 3)
+            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))
             ->sum('money');
 
 
-
-
-        $request->auto_profit_all = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','=',27)
+        $request->home_profit_all = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '=', 32)
             ->sum('money');
 
-        $request->auto_profit_today = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','=',27)
-            ->where('created_at','>',date("Y-m-d"))
+        $request->home_profit_today = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '=', 32)
+            ->where('created_at', '>', date("Y-m-d"))
             ->sum('money');
 
-        $request->auto_profit_last_week = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','=',27)
-            ->where('created_at','>',date("Y-m-d",strtotime("-7 day")))
+        $request->home_profit_last_week = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '=', 32)
+            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))
             ->sum('money');
 
-        $request->auto_profit_last_month = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_id',1)
-            ->where('operation_type_id','=',27)
-            ->where('created_at','>',date("Y-m-d",strtotime("-30 day")))
+        $request->home_profit_last_month = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '=', 32)
+            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))
             ->sum('money');
 
 
-
-
-        $request->my_shareholder_money = Users::where('user_id','=',Auth::user()->user_id)->sum('user_share');
-        $request->shareholder_money_all = Users::where('user_share','>',0)->sum('user_share');
-
-        $request->shareholder_profit_today = UserOperation::where('operation_type_id',5)
-          //  ->where('created_at','>',date("Y-m-d"))
+        $request->auto_profit_all = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '=', 27)
             ->sum('money');
 
-        $request->shareholder_count = Users::where('users.user_share','>',0)->count();
+        $request->auto_profit_today = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '=', 27)
+            ->where('created_at', '>', date("Y-m-d"))
+            ->sum('money');
 
-        $request->user_share_sum = Users::where('users.user_share','>',0)->sum('users.user_share');
+        $request->auto_profit_last_week = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '=', 27)
+            ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))
+            ->sum('money');
 
-        if($request->shareholder_profit_today  != 0 && $request->user_share_sum != 0)
-            $request->shareholder_average_mount = round($request->shareholder_profit_today / $request->user_share_sum,2);
+        $request->auto_profit_last_month = UserOperation::where('recipient_id', Auth::user()->user_id)
+            ->where('operation_id', 1)
+            ->where('operation_type_id', '=', 27)
+            ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))
+            ->sum('money');
+
+
+        $request->my_shareholder_money = Users::where('user_id', '=', Auth::user()->user_id)->sum('user_share');
+        $request->shareholder_money_all = Users::where('user_share', '>', 0)->sum('user_share');
+
+        $request->shareholder_profit_today = UserOperation::where('operation_type_id', 5)
+            //  ->where('created_at','>',date("Y-m-d"))
+            ->sum('money');
+
+        $request->shareholder_count = Users::where('users.user_share', '>', 0)->count();
+
+        $request->user_share_sum = Users::where('users.user_share', '>', 0)->sum('users.user_share');
+
+        if ($request->shareholder_profit_today != 0 && $request->user_share_sum != 0)
+            $request->shareholder_average_mount = round($request->shareholder_profit_today / $request->user_share_sum, 2);
         else $request->shareholder_average_mount = 0;
 
 
-        
-        $request->my_shareholder_money2 = Users::where('user_id','=',Auth::user()->user_id)->sum('user_share2');
-        $request->shareholder_money_all2 = Users::where('user_share2','>',0)->sum('user_share2');
+        $request->my_shareholder_money2 = Users::where('user_id', '=', Auth::user()->user_id)->sum('user_share2');
+        $request->shareholder_money_all2 = Users::where('user_share2', '>', 0)->sum('user_share2');
 
-        $request->shareholder_profit_today2 = UserOperation::where('operation_type_id',25)
-           // ->where('created_at','>',date("Y-m-d"))
+        $request->shareholder_profit_today2 = UserOperation::where('operation_type_id', 25)
+            // ->where('created_at','>',date("Y-m-d"))
             ->sum('money');
 
-        $request->shareholder_count2 = Users::where('users.user_share2','>',0)->count();
+        $request->shareholder_count2 = Users::where('users.user_share2', '>', 0)->count();
 
-        $request->user_share_sum2 = Users::where('users.user_share2','>',0)->sum('users.user_share2');
+        $request->user_share_sum2 = Users::where('users.user_share2', '>', 0)->sum('users.user_share2');
 
-        if($request->shareholder_profit_today2  != 0 && $request->user_share_sum2 != 0)
-            $request->shareholder_average_mount2 = round($request->shareholder_profit_today2 / $request->user_share_sum2,2);
+        if ($request->shareholder_profit_today2 != 0 && $request->user_share_sum2 != 0)
+            $request->shareholder_average_mount2 = round($request->shareholder_profit_today2 / $request->user_share_sum2, 2);
         else $request->shareholder_average_mount2 = 0;
 
 
+        $request->currency = Currency::where('currency_id', 2)->first();
 
-
-        $request->currency = Currency::where('currency_name','тенге')->first();
-
-        $request->packet = UserPacket::leftJoin('users','users.user_id','=','user_packet.user_id')
-            ->leftJoin('packet','packet.packet_id','=','user_packet.packet_id')
-            ->where('user_packet.user_id',Auth::user()->user_id)
+        $request->packet = UserPacket::leftJoin('users', 'users.user_id', '=', 'user_packet.user_id')
+            ->leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
+            ->where('user_packet.user_id', Auth::user()->user_id)
             ->orderBy('packet.sort_num')
             ->get();
 
-        $request->out_money = UserOperation::where('operation_type_id',12)
-                                            ->where('recipient_id',Auth::user()->user_id)
-                                            ->sum('money');
+        $request->out_money = UserOperation::where('operation_type_id', 12)
+            ->where('recipient_id', Auth::user()->user_id)
+            ->sum('money');
 
-        $request->send_money = UserOperation::where('operation_type_id',28)->where('recipient_id',Auth::user()->user_id)->sum('money');
+        $request->send_money = UserOperation::where('operation_type_id', 28)->where('recipient_id', Auth::user()->user_id)->sum('money');
 
-        return  view('admin.index.index',['row' => $request]);
+        return view('admin.index.index', ['row' => $request]);
     }
 
     public function callFriend(Request $request)
     {
-        $url = URL('/') .'/'.Auth::user()->user_id.'/'.\App\Http\Helpers::getTranslatedSlugRu(Auth::user()->login);
+        $url = URL('/') . '/' . Auth::user()->user_id . '/' . \App\Http\Helpers::getTranslatedSlugRu(Auth::user()->login);
 
-        return  view('admin.call-friend.call-friend',
+        return view('admin.call-friend.call-friend',
             [
                 'url' => $url
             ]);
@@ -207,16 +198,16 @@ class IndexController extends Controller
 
         $users = Users::get();
 
-        foreach ($users as $key => $item){
-            $user = Users::where('user_id',$item->user_id)->first();
-            $diff = abs(strtotime(date("Y-m-d",strtotime($user->activated_date))) - strtotime(date("Y-m-d")));
-            $years = floor($diff / (365*60*60*24));
-            $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-            $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+        foreach ($users as $key => $item) {
+            $user = Users::where('user_id', $item->user_id)->first();
+            $diff = abs(strtotime(date("Y-m-d", strtotime($user->activated_date))) - strtotime(date("Y-m-d")));
+            $years = floor($diff / (365 * 60 * 60 * 24));
+            $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+            $days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
 
-            $user_status = UserStatus::where('user_status_id',$user->status_id)->first();
+            $user_status = UserStatus::where('user_status_id', $user->status_id)->first();
 
-            if($months > 0 && $user->user_money > 4){
+            if ($months > 0 && $user->user_money > 4) {
                 $activation_money = 5;
 
                 $user->user_money = $user->user_money - $activation_money;
@@ -254,7 +245,7 @@ class IndexController extends Controller
 
                     if ($parent_packet == null) continue;
 
-                    if($counter > 0 && $counter <= 5){
+                    if ($counter > 0 && $counter <= 5) {
                         $money = $activation_money * 10 / 100;
                     }
 
@@ -264,7 +255,7 @@ class IndexController extends Controller
                     $operation->money = $money;
                     $operation->operation_id = 1;
                     $operation->operation_type_id = 14;
-                    $operation->operation_comment = 'Ежемесячная активация. Уровень - ' .$counter;
+                    $operation->operation_comment = 'Ежемесячная активация. Уровень - ' . $counter;
                     $operation->save();
 
                     $parent->user_money = $parent->user_money + $money;
@@ -284,11 +275,10 @@ class IndexController extends Controller
                 $operation->operation_comment = 'Ежемесячная активация. Пополнение фонда компании';
                 $operation->save();
 
-                $company = Users::where('user_id',1)->first();
+                $company = Users::where('user_id', 1)->first();
                 $company->user_money = $company->user_money + $activation_money - $send_money;
                 $company->save();
-            }
-            elseif($months > 0) {
+            } elseif ($months > 0) {
                 $user->is_activated = 0;
                 $user->save();
             }
@@ -298,14 +288,14 @@ class IndexController extends Controller
 
     public function deleteInactiveUserPacketAfterDay()
     {
-        $request = UserPacket::where('is_active',0)->get();
+        $request = UserPacket::where('is_active', 0)->get();
         foreach ($request as $key => $item) {
             $diff = abs(strtotime(date("Y-m-d", strtotime($item->created_at))) - strtotime(date("Y-m-d")));
             $years = floor($diff / (365 * 60 * 60 * 24));
             $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
             $days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
 
-            if ($days > 0) UserPacket::where('user_packet_id',$item->user_packet_id)->delete();
+            if ($days > 0) UserPacket::where('user_packet_id', $item->user_packet_id)->delete();
 
         }
         echo 'Успешно выполнено';
@@ -313,25 +303,25 @@ class IndexController extends Controller
 
     public function setUserStatus($user_id)
     {
-        $users = Users::where('user_id',$user_id)
-                        ->where('status_id','>=',2)
-                        ->where('qualification_profit','>=',500)
-                        ->get();
+        $users = Users::where('user_id', $user_id)
+            ->where('status_id', '>=', 2)
+            ->where('qualification_profit', '>=', 500)
+            ->get();
 
-        foreach ($users as $key => $item){
-            $user = Users::where('user_id',$item->user_id)->first();
+        foreach ($users as $key => $item) {
+            $user = Users::where('user_id', $item->user_id)->first();
 
-            $user_status =  UserStatus::where('user_status_id',$user->status_id)->first();
+            $user_status = UserStatus::where('user_status_id', $user->status_id)->first();
 
-            if($user_status == null) continue;
+            if ($user_status == null) continue;
 
-            $status_list = UserStatus::where('sort_num','>',$user_status->sort_num)->orderBy('sort_num','asc')->get();
+            $status_list = UserStatus::where('sort_num', '>', $user_status->sort_num)->orderBy('sort_num', 'asc')->get();
 
-            foreach ($status_list as $status_item){
-                if($status_item->user_status_minimum_money <= $user->qualification_profit
+            foreach ($status_list as $status_item) {
+                if ($status_item->user_status_minimum_money <= $user->qualification_profit
                     && $status_item->user_status_binar_limit_money_in_week <= $user->week_qualification_profit
                     && $status_item->condition_minumum_status_id <= $user->status_id
-                ){
+                ) {
                     $user->status_id = $status_item->user_status_id;
                     $user->user_money = $user->user_money + $status_item->user_status_money;
                     $user->user_share2 = $user->user_share2 + $status_item->user_status_share;
@@ -343,7 +333,7 @@ class IndexController extends Controller
                     $operation->money = $status_item->user_status_money;
                     $operation->operation_id = 1;
                     $operation->operation_type_id = 10;
-                    $operation->operation_comment = 'Поздравляем! Ваш новый статус - "'.$status_item->user_status_name.'"';
+                    $operation->operation_comment = 'Поздравляем! Ваш новый статус - "' . $status_item->user_status_name . '"';
                     $operation->save();
 
                     $operation = new UserOperation();
@@ -352,7 +342,7 @@ class IndexController extends Controller
                     $operation->money = $status_item->user_status_share;
                     $operation->operation_id = 1;
                     $operation->operation_type_id = 2;
-                    $operation->operation_comment = 'За переход на новый статус- "'.$status_item->user_status_name.'"';
+                    $operation->operation_comment = 'За переход на новый статус- "' . $status_item->user_status_name . '"';
                     $operation->save();
 
                     $operation = new UserOperation();
@@ -361,10 +351,10 @@ class IndexController extends Controller
                     $operation->money = $status_item->user_status_money * -1;
                     $operation->operation_id = 2;
                     $operation->operation_type_id = 12;
-                    $operation->operation_comment = 'За переход на новый статус- "'.$status_item->user_status_name.'"';
+                    $operation->operation_comment = 'За переход на новый статус- "' . $status_item->user_status_name . '"';
                     $operation->save();
 
-                    $company = Users::where('user_id',1)->first();
+                    $company = Users::where('user_id', 1)->first();
                     $company->user_money = $company->user_money - $status_item->user_status_money;
                     $company->save();
                 }
@@ -376,21 +366,21 @@ class IndexController extends Controller
     {
         ini_set('memory_limit', '-1');
 
-        $users = Users::where('left_child_profit','>',0)
-                      ->where('right_child_profit','>',0)
-                        ->select('user_id')
-                        ->get();
+        $users = Users::where('left_child_profit', '>', 0)
+            ->where('right_child_profit', '>', 0)
+            ->select('user_id')
+            ->get();
 
         foreach ($users as $key => $item) {
             $user = Users::where('user_id', $item->user_id)->first();
 
-            $left_child_count = Users::where('recommend_user_id',$item->user_id)->where('is_left_part',0)->count();
-            $right_child_count = Users::where('recommend_user_id',$item->user_id)->where('is_left_part',1)->count();
+            $left_child_count = Users::where('recommend_user_id', $item->user_id)->where('is_left_part', 0)->count();
+            $right_child_count = Users::where('recommend_user_id', $item->user_id)->where('is_left_part', 1)->count();
 
-            if($left_child_count == 0 || $right_child_count == 0) continue;
-            
-            if($user->left_child_profit >= $user->right_child_profit)
-                 $minus_profit = $user->right_child_profit;
+            if ($left_child_count == 0 || $right_child_count == 0) continue;
+
+            if ($user->left_child_profit >= $user->right_child_profit)
+                $minus_profit = $user->right_child_profit;
             else $minus_profit = $user->left_child_profit;
 
             $user->left_child_profit = $user->left_child_profit - $minus_profit;
@@ -405,21 +395,20 @@ class IndexController extends Controller
             $this->setUserStatus($user->user_id);
 
             $user = Users::where('user_id', $item->user_id)->first();
-            $user_status = UserStatus::where('user_status_id',$user->status_id)->first();
+            $user_status = UserStatus::where('user_status_id', $user->status_id)->first();
 
-            if($user_status == null){
+            if ($user_status == null) {
                 continue;
             }
 
             $procent_profit = 0;
-            if($user_status->user_status_binar_procent > 0){
+            if ($user_status->user_status_binar_procent > 0) {
                 $procent_profit = $minus_profit * $user_status->user_status_binar_procent / 100;
-            }
-            else {
+            } else {
                 continue;
             }
 
-            if($procent_profit > $user_status->user_status_binar_limit_money)
+            if ($procent_profit > $user_status->user_status_binar_limit_money)
                 $procent_profit = $user_status->user_status_binar_limit_money;
 
             $operation = new UserOperation();
@@ -428,7 +417,7 @@ class IndexController extends Controller
             $operation->money = $procent_profit;
             $operation->operation_id = 1;
             $operation->operation_type_id = 17;
-            $operation->operation_comment = $minus_profit.'PV';
+            $operation->operation_comment = $minus_profit . 'PV';
             $operation->save();
 
             $user->user_money = $user->user_money + $procent_profit;
@@ -443,7 +432,7 @@ class IndexController extends Controller
             $operation->operation_comment = 'Бинарный доход';
             $operation->save();
 
-            $company = Users::where('user_id',1)->first();
+            $company = Users::where('user_id', 1)->first();
             $company->user_money = $company->user_money - $procent_profit;
             $company->save();
 
@@ -456,11 +445,11 @@ class IndexController extends Controller
                 if ($parent == null) break;
                 $user_id = $parent->recommend_user_id;
 
-                if($parent->is_activated == 0 || $parent->status_id < 1) continue;
+                if ($parent->is_activated == 0 || $parent->status_id < 1) continue;
 
-                $parent_status = UserStatus::where('user_status_id',$parent->status_id)->first();
+                $parent_status = UserStatus::where('user_status_id', $parent->status_id)->first();
 
-                if($parent_status == null) continue;
+                if ($parent_status == null) continue;
 
                 if ($parent_status->user_status_available_level < $counter) continue;
 
@@ -472,7 +461,7 @@ class IndexController extends Controller
                 $operation->money = $money;
                 $operation->operation_id = 1;
                 $operation->operation_type_id = 18;
-                $operation->operation_comment = 'Чек от чека. Уровень - ' .$counter;
+                $operation->operation_comment = 'Чек от чека. Уровень - ' . $counter;
                 $operation->save();
 
                 $parent->user_money = $parent->user_money + $money;
@@ -484,10 +473,10 @@ class IndexController extends Controller
                 $operation->money = $money * -1;
                 $operation->operation_id = 2;
                 $operation->operation_type_id = 12;
-                $operation->operation_comment = 'Чек от чека. Уровень - ' .$counter;
+                $operation->operation_comment = 'Чек от чека. Уровень - ' . $counter;
                 $operation->save();
 
-                $company = Users::where('user_id',1)->first();
+                $company = Users::where('user_id', 1)->first();
                 $company->user_money = $company->user_money - $procent_profit;
                 $company->save();
 
@@ -498,93 +487,89 @@ class IndexController extends Controller
 
     public function robotCareer()
     {
-        $users = Users::where('status_id','>=',23)
-                        ->select('user_id','status_id','created_at')
-                        ->get();
+        $users = Users::where('status_id', '>=', 23)
+            ->select('user_id', 'status_id', 'created_at')
+            ->get();
 
         foreach ($users as $key => $item) {
 
-                $check_child = Users::where('status_id',$item->status_id)->where('recommend_user_id',$item->user_id)->count();
-                if($check_child > 4){
+            $check_child = Users::where('status_id', $item->status_id)->where('recommend_user_id', $item->user_id)->count();
+            if ($check_child > 4) {
 
-                    $operation = new UserOperation();
-                    $operation->author_id = null;
-                    $operation->recipient_id = $item->user_id;
-                    $operation->money = null;
-                    $operation->operation_id = 1;
-                    $operation->operation_type_id = 10;
+                $operation = new UserOperation();
+                $operation->author_id = null;
+                $operation->recipient_id = $item->user_id;
+                $operation->money = null;
+                $operation->operation_id = 1;
+                $operation->operation_type_id = 10;
 
-                    $status_id = 0;
-                    if($item->status_id == 23){
-                        $operation->operation_comment = 'Вы стали Менеджером';
-                        $status_id = 24;
-                    }
-                    elseif($item->status_id == 24){
-                        $operation->operation_comment = 'Вы стали Бронзовым Менеджером';
-                        $status_id = 25;
+                $status_id = 0;
+                if ($item->status_id == 23) {
+                    $operation->operation_comment = 'Вы стали Менеджером';
+                    $status_id = 24;
+                } elseif ($item->status_id == 24) {
+                    $operation->operation_comment = 'Вы стали Бронзовым Менеджером';
+                    $status_id = 25;
 
-                        /*$diff = abs(strtotime(date("Y-m-d",strtotime($item->created_at))) - strtotime(date("Y-m-d")));
-                        $years = floor($diff / (365*60*60*24));
-                        $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-                        $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+                    /*$diff = abs(strtotime(date("Y-m-d",strtotime($item->created_at))) - strtotime(date("Y-m-d")));
+                    $years = floor($diff / (365*60*60*24));
+                    $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+                    $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 
-                        if($days < 15) {
-                            $user = Users::where('user_id',$item->user_id)->first();
-                            $user->user_money += 250;
-                            $user->save();
+                    if($days < 15) {
+                        $user = Users::where('user_id',$item->user_id)->first();
+                        $user->user_money += 250;
+                        $user->save();
 
-                            $operation = new UserOperation();
-                            $operation->author_id = $user->user_id;
-                            $operation->recipient_id = null;
-                            $operation->money = 250;
-                            $operation->operation_id = 1;
-                            $operation->operation_type_id = 20;
-                            $operation->operation_comment = 'За 14 дней успели стать менеджером! Поздравляем!' ;
-                            $operation->save();
-                        }*/
-                    }
-                    elseif($item->status_id == 25){
-                        $operation->operation_comment = 'Вы стали Серебряным Менеджером';
-                        $status_id = 26;
+                        $operation = new UserOperation();
+                        $operation->author_id = $user->user_id;
+                        $operation->recipient_id = null;
+                        $operation->money = 250;
+                        $operation->operation_id = 1;
+                        $operation->operation_type_id = 20;
+                        $operation->operation_comment = 'За 14 дней успели стать менеджером! Поздравляем!' ;
+                        $operation->save();
+                    }*/
+                } elseif ($item->status_id == 25) {
+                    $operation->operation_comment = 'Вы стали Серебряным Менеджером';
+                    $status_id = 26;
 
-                        /*$diff = abs(strtotime(date("Y-m-d",strtotime($item->created_at))) - strtotime(date("Y-m-d")));
-                        $years = floor($diff / (365*60*60*24));
-                        $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-                        $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+                    /*$diff = abs(strtotime(date("Y-m-d",strtotime($item->created_at))) - strtotime(date("Y-m-d")));
+                    $years = floor($diff / (365*60*60*24));
+                    $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+                    $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 
-                        if($days < 31) {
-                            $user = Users::where('user_id',$item->user_id)->first();
-                            $user->user_money += 1000;
-                            $user->save();
+                    if($days < 31) {
+                        $user = Users::where('user_id',$item->user_id)->first();
+                        $user->user_money += 1000;
+                        $user->save();
 
-                            $operation = new UserOperation();
-                            $operation->author_id = $user->user_id;
-                            $operation->recipient_id = null;
-                            $operation->money = 1000;
-                            $operation->operation_id = 1;
-                            $operation->operation_type_id = 20;
-                            $operation->operation_comment = 'За 30 дней успели стать директором! Поздравляем!' ;
-                            $operation->save();
-                        }*/
-                    }
-                    elseif($item->status_id == 26){
-                        $operation->operation_comment = 'Вы стали Золотым директором';
-                        $status_id = 27;
-                    }
-                    elseif($item->status_id == 27){
-                        $operation->operation_comment = 'Вы стали Бриллиантовым директором';
-                        $status_id = 28;
-                    }
-
-
-                    $operation->save();
-
-                    $user = Users::where('user_id',$item->user_id)->first();
-                    $user->status_id = $status_id;
-                    $user->save();
-
+                        $operation = new UserOperation();
+                        $operation->author_id = $user->user_id;
+                        $operation->recipient_id = null;
+                        $operation->money = 1000;
+                        $operation->operation_id = 1;
+                        $operation->operation_type_id = 20;
+                        $operation->operation_comment = 'За 30 дней успели стать директором! Поздравляем!' ;
+                        $operation->save();
+                    }*/
+                } elseif ($item->status_id == 26) {
+                    $operation->operation_comment = 'Вы стали Золотым директором';
+                    $status_id = 27;
+                } elseif ($item->status_id == 27) {
+                    $operation->operation_comment = 'Вы стали Бриллиантовым директором';
+                    $status_id = 28;
                 }
+
+
+                $operation->save();
+
+                $user = Users::where('user_id', $item->user_id)->first();
+                $user->status_id = $status_id;
+                $user->save();
+
             }
+        }
 
     }
 }

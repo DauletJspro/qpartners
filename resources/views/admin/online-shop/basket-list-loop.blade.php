@@ -11,9 +11,7 @@
             <th>Удалить</th>
         </tr>
         </thead>
-
         <tbody>
-
         <?php $sum = 0; ?>
         <?php $ballSum = 0; ?>
 
@@ -39,8 +37,8 @@
                            value="{{ $val->unit }}"/>
                 </td>
                 <td>
-                    {{ $val['product_price']}}$
-                    ({{round($val->product_price * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
+                    {{ $val['product_price']}}PV
+                    ({{round($val->product_price * \App\Models\Currency::pvToKzt(),2)}}
                     тг)
                 </td>
                 <td>
@@ -60,8 +58,8 @@
 
         <tr>
             <td colspan="4" style="text-align: right"><b>Общая сумма:</b></td>
-            <td colspan="1"><b id="sum">{{$sum}}$
-                    ({{round($sum * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}тг)</b>
+            <td colspan="1"><b id="sum">{{$sum}} PV
+                    ({{round($sum * \App\Models\Currency::pvToKzt(),2)}}тг)</b>
             </td>
             <td colspan="1"><b id="ballSum">+ {{ $ballSum }}</b>
             </td>

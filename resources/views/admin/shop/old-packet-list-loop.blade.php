@@ -8,7 +8,7 @@
         <div class="small-box packet-item-list" style="background-color: #{{$item->packet_css_color}}">
             <div class="inner">
                 <h3 style="font-family: cursive; font-size: 30px">{{$item->packet_name_ru}}</h3>
-                <h4 style="font-size: 25px">{{$item->packet_price}} $ ({{($item->packet_price) * \App\Models\Currency::where('currency_name','тенге')->first()->money}}тг) </h4>
+                <h4 style="font-size: 25px">{{$item->packet_price}} pv ({{($item->packet_price) * \App\Models\Currency::pvToKzt() }} тг) </h4>
 
 
                 <h4 style="font-size: 22px; font-weight: 800">{{$item->packet_thing}}</h4>
