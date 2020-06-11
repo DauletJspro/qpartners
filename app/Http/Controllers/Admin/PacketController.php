@@ -644,13 +644,13 @@ class PacketController extends Controller
         $max_queue_start_position = UserPacket::where('packet_id', $userPacket->packet_id)->where('is_active', 1)->where('queue_start_position', '>', 0)->max('queue_start_position');
         $userPacket->queue_start_position = ($max_queue_start_position) ? ($max_queue_start_position + 1) : 1;
         if ($userPacket->save()) {
-            $this->add_share_to_global_diamond_found($packet, $userPacket->user_id);
+            $this->add_share_to_global_diamond_found($userPacket, $userPacket->user_id);
         }
     }
 
-    public function add_share_to_global_diamond_found($packet, $user_id)
+    public function add_share_to_global_diamond_found($userPacket, $user_id)
     {
-        $toGlobalFound = $packet->packet_price * (5 / 100);
+        $toGlobalFound = $userPacket->packet_price * (5 / 100);
         $fond = Fond::where(['fond_id' => Fond::GLOBAL_DIAMOND_FOUND])->first();
         $fond->fond_money = $fond->fond_money + $toGlobalFound;
         if ($fond->save()) {
