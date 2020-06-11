@@ -38,8 +38,43 @@ class UserPacket extends Model
 
     public static function beforePurchaseSum($user_id)
     {
+
         $userPackets = UserPacket::where(['user_packet.user_id' => $user_id])->where('user_packet.is_active', 1)
-            ->join('packet', 'packet.packet_id', '=', 'user_packet.packet_id')->get()->sortBy('packet.packet_id');
+            ->join('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
+            ->whereIn('user_packet.packet_id', Packet::actualPacket())
+            ->get()->sortBy('packet.packet_id');
+
+        if (!count($userPackets)) {
+            return 0;
+        };
+
+
+        $userPackets = collect($userPackets);
+        $userPackets = Arr::pluck($userPackets, 'packet.packet_price', 'packet.packet_id');
+        $counter = 0;
+        $array = [];
+        foreach ($userPackets as $key => $value) {
+            if (empty($array)) {
+                $array[$counter] = $value;
+            } else {
+                $lessElementsSum = self::getLessElementsSum($array, $counter);
+                $lessElementsSum = $value - $lessElementsSum;
+                $array[$counter] = $lessElementsSum;
+            }
+            $counter++;
+        }
+        return array_sum($array);
+
+    }
+
+    public static function beforePurchaseSumWithPacketId($user_id, $packet_id)
+    {
+        $userPackets = UserPacket::where(['user_packet.user_id' => $user_id])->where('user_packet.is_active', 1)
+            ->join('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
+            ->where('user_packet.packet_id', '<', $packet_id);
+
+        $userPackets = $userPackets->whereIn('user_packet.packet_id', Packet::actualPacket());
+        $userPackets = $userPackets->get()->sortBy('packet.packet_id');
 
         if (!count($userPackets)) {
             return 0;

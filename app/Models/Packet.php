@@ -24,6 +24,19 @@ class Packet extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
 
+    public static function actualPacket()
+    {
+        return [
+            self::CLASSIC,
+            self::PREMIUM,
+            self::ELITE,
+            self::PRO,
+            self::VIP2,
+            self::VIP,
+        ];
+    }
+
+
     public static function limit($user)
     {
         $messageBody = '';

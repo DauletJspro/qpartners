@@ -1,6 +1,19 @@
+<?php
+
+use App\Models\Packet;
+use \Illuminate\Support\Facades\Auth;
+use \App\Models\UserPacket;
+
+?>
+
 @foreach($row->packet as $key => $item)
 
     @if($item->is_portfolio == 0)
+
+        <?php $beforeSum = 0; ?>
+        @if(!in_array($item->packet_id, [\App\Models\Packet::GAP2, \App\Models\Packet::GAP1]))
+            <?php $beforeSum = UserPacket::beforePurchaseSumWithPacketId(Auth::user()->user_id, $item->packet_id) ?>
+        @endif
 
 
         <div class="col-lg-3 col-xs-6">
@@ -8,8 +21,10 @@
             <div class="small-box packet-item-list" style="background-color: #{{$item->packet_css_color}}">
                 <div class="inner">
                     <h3 style="font-family: cursive; font-size: 30px"> {{$item->packet_name_ru}}</h3>
-                    <h4 style="font-size: 25px">{{$item->packet_price - $row['packet_old_price_'.$item->packet_id]}} PV
-                        ({{($item->packet_price - $row['packet_old_price_'.$item->packet_id]) * \App\Models\Currency::pvToKzt()}}
+
+                    <h4 style="font-size: 25px">{{$item->packet_price - $beforeSum}}
+                        PV
+                        ({{($item->packet_price - $beforeSum) * \App\Models\Currency::pvToKzt()}}
                         тг) </h4>
 
                     @if($packet_type == 'share')
