@@ -27,6 +27,7 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
@@ -51,7 +52,6 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {
-
         $products = Product::all();
         $popularProducts = Product::where(['is_popular' => true])->get();
         $brands = Brand::where(['is_show' => true])->get();
@@ -76,7 +76,9 @@ class IndexController extends Controller
 
     public function opportunity()
     {
-        return view('design_index.index.opportunity');
+        $url = URL('/') . '/' . (Auth::user() ? Auth::user()->user_id : NULL) . '/' .
+            \App\Http\Helpers::getTranslatedSlugRu((Auth::user() ? Auth::user()->login : null));
+        return view('design_index.index.opportunity', ['url' => $url]);
     }
 
 

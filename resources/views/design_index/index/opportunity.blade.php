@@ -104,8 +104,9 @@
                                             </a>
                                         </div>
                                         <div class="second-section-div-right">
-                                            <a class="second-section-button hover-red">СКАЧАТЬ
-                                                ПРЕЗЕНТАЦИЮ
+                                            <a href="/presentation/marketing_plan.pdf"
+                                               class="second-section-button hover-red" target="_blank">
+                                                СКАЧАТЬ ПРЕЗЕНТАЦИЮ
                                             </a>
                                         </div>
                                     </div>
@@ -144,7 +145,7 @@
                                     </div>
                                     <div style="" class="text-center video_buttons">
                                         <div class="second-section-div-left">
-                                            <a href="" class="second-section-button br-green hover-green">
+                                            <a href="/presentation/normal_product.pdf" target="_blank" class="second-section-button br-green hover-green">
                                                 СКАЧАТЬ КАТАЛОГ
                                             </a>
                                         </div>
@@ -394,13 +395,15 @@
                             </a>
                         </div>
                         <div class="download-marketing-div center-div">
-                            <a class="download-marketing" href="">
+                            <a class="download-marketing" href="presentation/marketing_plan.pdf" target="_blank">
                                 СМОТРЕТЬ ПРЕЗЕНТАЦИЮ
                                 <span>MP4</span>
                             </a>
                         </div>
                         <div class="download-marketing-div">
-                            <a class="download-marketing" style="padding-right: 20px;" href="">
+                            <a class="download-marketing"
+                               style="padding-right: 20px;cursor: pointer;"
+                               href="">
                                 СТАТЬ ПАРТНЕРОМ
                             </a>
                         </div>
@@ -713,7 +716,7 @@
                     </a>
                 </div>
                 <div class="share-button-box text-center">
-                    <a href="/" class="share-button">
+                    <a href="#" class="share-button" data-toggle="modal" data-target="#share_modal">
                         поделиться
                     </a>
                 </div>
@@ -740,6 +743,100 @@
                 </div>
             </div>
         </section>
+
+        <div class="modal fade bs-example-modal-lg" id="share_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <div class="title-group"
+                             style="margin-left: 20px; font-size: 120%; color: black; font-weight: 400;">
+                            <h4 class="modal-title">Пригласить друга</h4>
+                            <h5 class="modal-title">Вы можете поделиться со своими друзьями в социальной сети</h5>
+                            <h5 class="modal-title">http://local.qpartners.club/1/admin</h5>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <ul style="list-style: none;">
+                            <li>
+                                <a href="https://api.whatsapp.com/send?text={{$url}}" style="
+                                padding:5px 10px 5px 10px;
+                                border: 2px solid lightgreen;
+                                border-radius: 3px;
+                                font-size: 130%;
+                                ">
+                                    <i style="font-weight: 500;color: lightgreen;" class="fa fa-whatsapp"></i>
+                                    <span style="font-weight: 500;color: black;margin-left: 1rem;">Поделиться через Whatsapp</span>
+                                </a>
+
+                            </li>
+                            <li style="margin-top: 15px;">
+                                <a href="https://telegram.me/share/url?url={{$url}}" style="
+                                padding:5px 10px 5px 10px;
+                                border: 2px solid dodgerblue;
+                                border-radius: 3px;
+                                font-size: 130%;
+                                ">
+                                    <i style="
+                                    background-image: url('https://bitnovosti.com/wp-content/uploads/2017/02/telegram-icon-7.png');
+                                    background-position: center;
+                                    background-size: cover;
+                                    width: 18px;height: 18px;
+                                    bottom: -5px;
+                                    "
+                                       class="fa fa-telegram"
+                                    >
+
+                                    </i>
+                                    <span style="font-weight: 500;color: black;margin-left: 1rem;">Поделиться через Telegram</span>
+                                </a>
+
+                            </li>
+                            <li style="margin-top: 15px;">
+                                <a href="https://www.facebook.com/sharer.php?u={{$url}}" style="
+                                padding:5px 10px 5px 10px;
+                                border: 2px solid dodgerblue;
+                                border-radius: 3px;
+                                font-size: 130%;
+                                ">
+                                    <i style="font-weight: 500;color: dodgerblue;" class="fa fa-facebook"></i>
+                                    <span style="font-weight: 500;color: black;margin-left: 1rem;">Поделиться через Facebook</span>
+                                </a>
+
+                            </li>
+                            <li style="margin-top: 15px;">
+                                <a href="http://vk.com/share.php?url={{$url}}" style="
+                                padding:5px 10px 5px 10px;
+                                border: 2px solid dodgerblue;
+                                border-radius: 3px;
+                                font-size: 130%;
+                                ">
+                                    <i style="font-weight: 500;color: dodgerblue;" class="fa fa-vk"></i>
+                                    <span style="font-weight: 500;color: black;margin-left: 1rem;">Поделиться через VK</span>
+                                </a>
+
+                            </li>
+                            <li style="margin-top: 15px;">
+                                <a href="https://twitter.com/share?url={{$url}}" style="
+                                padding:5px 10px 5px 10px;
+                                border: 2px solid dodgerblue;
+                                border-radius: 3px;
+                                font-size: 130%;
+                                ">
+                                    <i style="font-weight: 500;color: dodgerblue;" class="fa fa-twitter"></i>
+                                    <span style="font-weight: 500;color: black;margin-left: 1rem;">Поделиться через Twiiter</span>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 @endsection
 
