@@ -1071,7 +1071,8 @@
 			if (previous) {
 				F.trigger('beforeChange', previous);
 
-				previous.wrap.stop(true).removeClass('fancybox-opened')
+				previous.wrap.stop(true).removeClass('' +
+					'fancybox-opened')
 					.find('.fancybox-item, .fancybox-nav')
 					.remove();
 			}

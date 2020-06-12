@@ -2,14 +2,25 @@
 
 @section('meta-tags')
     <link rel="stylesheet" href="/new_design/css/opportunity-responsive.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <title>Qpartners</title>
     <meta name="description"
           content="«Qpartners» - это уникальный медиа проект с широким набором возожностей для взаймодествия с участниками виртуального рынка"/>
     <meta name="keywords" content="Qpartners"/>
 
 @endsection
-
+<div id="myModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="height:700px; width:100%;padding-top: 50px;">
+            <iframe id="myFrame" style="width: 100%; height: 100%;"
+                    frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true">
+            </iframe>
+        </div>
+    </div>
+</div>
 @section('content')
+
     <main id="mt-main">
         <section class="mt-mainslider4 add" style="
             background-size: cover;
@@ -63,7 +74,7 @@
                             ">
                                 <div class="holder">
                                     <div class="second-section-title">
-                                        <h3 class="second-section-title-h3 text-center" >
+                                        <h3 class="second-section-title-h3 text-center">
                                             <span style="color: black;font-weight: bold;">Построй</span> <span
                                                     style="font-weight: bold;color: rgb(255, 0, 0);">свой бизнес
                                             </span>
@@ -76,8 +87,14 @@
                                         бонус от $ 200 в месяц и построить собственный <br>
                                         бизнес с доходом $ 100 000 в месяц
                                     </span>
-                                        <div class="video_box">
-                                            <div class="red_play_button"></div>
+                                        <div class="video_box" style="
+                                            background-image: url('/new_design/images/video/qyran_partners.jpg');
+                                            background-size: cover;
+                                            background-repeat: no-repeat;
+                                            background-position: center;
+                                        ">
+                                            <div class="red_play_button" data-youtube-url="bvdnE6--BCE"
+                                                 onclick="openModal(this)" style="cursor: pointer;"></div>
                                         </div>
                                     </div>
                                     <div class="text-center video_buttons">
@@ -114,10 +131,16 @@
                                        укрепления, очищения, востановления и <br>
                                         профилактики Вашего организма
                                     </span>
-                                        <div class="video_box">
-                                            <div class="green_play_button"></div>
+                                        <div class="video_box" style="
+                                            background-image: url('/new_design/images/video/natural_market.jpg');
+                                            background-size: cover;
+                                            background-repeat: no-repeat;
+                                            background-position: center;
+                                            ">
+                                            <div style="cursor: pointer;" class="green_play_button"
+                                                 data-youtube-url="3zG2nRzF0S4"
+                                                 onclick="openModal(this)"></div>
                                         </div>
-
                                     </div>
                                     <div style="" class="text-center video_buttons">
                                         <div class="second-section-div-left">
@@ -440,7 +463,7 @@
                         <div class="section-3-holder-div section-third-gap">
                             <h3>Тур программа <span>GAP</span></h3>
                             <p>сТАВ ПАРТЕНРОМ ВЫ МОЖЕТЕ УЧАСТВОВАТЬ В ПРОГРАММЕ <br>
-                               путешествия по всему миру.</p>
+                                путешествия по всему миру.</p>
                         </div>
                         <div class="section-3-div">
                             <a href="">ПОДРОБНЕЕ &emsp; <i class="fa fa-arrow-right"></i></a>
@@ -457,8 +480,8 @@
 
                      ">
                         <div class="section-3-holder-div section-third-gap">
-                            <h3>Тур программа <span>GAP</span></h3>
-                            <p>Став Партнером вы можете получить грант на открытие представительства  <br>
+                            <h3>МСБ программа <span>GAP</span></h3>
+                            <p>Став Партнером вы можете получить грант на открытие представительства
                                 Natural Market в своем регионе.</p>
                         </div>
                         <div class="section-3-div">
@@ -491,9 +514,17 @@
                                              display: flex;
                                              align-items: center;
                                              justify-content: center;
-
+                                             background-image: url('/new_design/images/video/marat_and_woman.jpg');
+                                             background-position: center;
+                                             background-size: cover;
+                                             background-repeat: no-repeat;
                                         ">
-                                            <div class="red_play_button"></div>
+                                            <a href="">
+                                                <div data-youtube-url="vf6sX0K4w6E" style="cursor: pointer;"
+                                                     class="red_play_button"
+                                                     onclick="openModal(this)">
+                                                </div>
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="txt text-center" style="margin-top: 30px">
@@ -513,9 +544,17 @@
                                              display: flex;
                                              align-items: center;
                                              justify-content: center;
-
+                                              background-image: url('/new_design/images/video/two_womans.jpg');
+                                             background-position: center;
+                                             background-size: cover;
+                                             background-repeat: no-repeat;
                                         ">
-                                            <div class="red_play_button"></div>
+                                            <a href="">
+                                                <div data-youtube-url="X8YFOThoC9k" style="cursor: pointer;"
+                                                     class="red_play_button"
+                                                     onclick="openModal(this)">
+                                                </div>
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="txt text-center" style="margin-top: 30px">
@@ -535,9 +574,17 @@
                                              display: flex;
                                              align-items: center;
                                              justify-content: center;
-
+                                             background-image: url('/new_design/images/video/mans_and_girls.jpg');
+                                             background-position: center;
+                                             background-size: cover;
+                                             background-repeat: no-repeat;
                                         ">
-                                            <div class="red_play_button"></div>
+                                            <a href="">
+                                                <div data-youtube-url="cBh56bfkwb0" style="cursor: pointer;"
+                                                     class="red_play_button"
+                                                     onclick="openModal(this)">
+                                                </div>
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="txt text-center" style="margin-top: 30px">
@@ -557,9 +604,17 @@
                                              display: flex;
                                              align-items: center;
                                              justify-content: center;
-
+                                             background-image: url('/new_design/images/video/car_with_bubble.jpg');
+                                             background-position: center;
+                                             background-size: cover;
+                                             background-repeat: no-repeat;
                                         ">
-                                            <div class="red_play_button"></div>
+                                            <a href="">
+                                                <div data-youtube-url="5gJmiQKZoTg" style="cursor: pointer;"
+                                                     class="red_play_button"
+                                                     onclick="openModal(this)">
+                                                </div>
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="txt text-center" style="margin-top: 30px">
@@ -687,9 +742,20 @@
         </section>
     </main>
 @endsection
+
 <style>
     #mCSB_1_dragger_horizontal {
         background: #ff0000 !important;
     }
 </style>
+@section('js')
+    <script>
+        function openModal(tag_object) {
+            var videoIdInYouTube = $(tag_object).data('youtube-url');
+            var url = ('https://www.youtube.com/embed/' + videoIdInYouTube);
+            document.getElementById("myFrame").src = url;
+            $('#myModal').modal('toggle');
+        }
+    </script>
+@endsection
 
