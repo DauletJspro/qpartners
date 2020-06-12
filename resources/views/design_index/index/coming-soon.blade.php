@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <!-- set the viewport width and initial-scale on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт в стадии  разработки</title>
+    <title>Сайт в стадии разработки</title>
     <!-- include the site stylesheet -->
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900,900italic%7cMontserrat:400,700%7cOxygen:400,300,700'
           rel='stylesheet' type='text/css'>
@@ -36,11 +36,15 @@
                     <div class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
                         <div class="mt-logo">
                             <a href="/">
-                                <img src="{{$logo}}">
+                                @if(isset($brand->image))
+                                    <img src="{{$brand->image}}">
+                                @else
+                                    <h3 style="font-weight: bold;font-size: 50px; color: black;">{{$brand->name}}</h3>
+                                @endif
                             </a>
                         </div>
                         <div class="text2 text-uppercase">
-                           <p style="color: black;">сайт в стадии разработки</p>
+                            <p style="color: black;">сайт в стадии разработки</p>
                         </div>
                     </div>
                 </div>

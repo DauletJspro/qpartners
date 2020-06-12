@@ -389,13 +389,13 @@
                     </div>
                     <div style="margin-top: 110px;">
                         <div class="download-marketing-div">
-                            <a class="download-marketing" href="">
+                            <a class="download-marketing" href="/presentation/marketing_plan.pdf" target="_blank">
                                 СКАЧАТЬ МАРКЕТИНГ
                                 <span>PDF</span>
                             </a>
                         </div>
                         <div class="download-marketing-div center-div">
-                            <a class="download-marketing" href="presentation/marketing_plan.pdf" target="_blank">
+                            <a href="{{route('coming-soon', ['id' => 9 ])}}" class="download-marketing"  target="_blank">
                                 СМОТРЕТЬ ПРЕЗЕНТАЦИЮ
                                 <span>MP4</span>
                             </a>
@@ -403,7 +403,7 @@
                         <div class="download-marketing-div">
                             <a class="download-marketing"
                                style="padding-right: 20px;cursor: pointer;"
-                               href="">
+                               href="/register">
                                 СТАТЬ ПАРТНЕРОМ
                             </a>
                         </div>

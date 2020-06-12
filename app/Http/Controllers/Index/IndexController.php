@@ -45,9 +45,8 @@ class IndexController extends Controller
     public function comingSoon(Request $request)
     {
         $logo_id = $request->input('id');
-        $logo = Brand::where(['id' => $logo_id])->first();
-        $logo = $logo ? $logo->image : '';
-        return view('design_index.index.coming-soon', ['logo' => $logo]);
+        $brand = Brand::where(['id' => $logo_id])->first();
+        return view('design_index.index.coming-soon', ['brand' => $brand]);
     }
 
     public function index(Request $request)
@@ -74,10 +73,13 @@ class IndexController extends Controller
         );
     }
 
-    public function opportunity()
+    public function opportunity(Request $request)
     {
         $url = URL('/') . '/' . (Auth::user() ? Auth::user()->user_id : NULL) . '/' .
             \App\Http\Helpers::getTranslatedSlugRu((Auth::user() ? Auth::user()->login : null));
+        $logo_id = $request->input('id');
+        $logo = Brand::where(['id' => $logo_id])->first();
+        $logo = $logo ? $logo->image : '';
         return view('design_index.index.opportunity', ['url' => $url]);
     }
 
