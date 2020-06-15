@@ -191,7 +191,6 @@ class OnlineController extends Controller
 
             $user_id = $user->recommend_user_id;
 
-
             $counter = 0;
             while ($user_id) {
                 $counter++;
