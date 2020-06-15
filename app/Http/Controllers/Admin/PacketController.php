@@ -240,9 +240,7 @@ class PacketController extends Controller
             $result['status'] = false;
             return response()->json($result);
         }
-
         $packet_old_price = 0;
-
 
         if (in_array($packet->is_upgrade_packet, [1, 3])) {
             $is_check = UserPacket::leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
@@ -505,7 +503,6 @@ class PacketController extends Controller
     public function acceptUserPacketPaybox(Request $request, $user_packet_id)
     {
         if (isset($request->pg_result) && $request->pg_result == 1) {
-//            $this->acceptPacketFunction($user_packet_id);
             $this->implementPacketBonuses($user_packet_id);
             return redirect('/admin/index?message=Вы успешно купили пакет');
         }
@@ -516,10 +513,10 @@ class PacketController extends Controller
     {
         $inviter_order = 1;
         $userPacket = UserPacket::find($userPacketId);
-        $actualPackets = [Packet::CLASSIC, Packet::ELITE, Packet::PREMIUM, Packet::VIP2, Packet::VIP, Packet::PRO];
         $actualStatuses = [UserStatus::CONSULTANT, UserStatus::AGENT, UserStatus::MANAGER,
             UserStatus::SILVER_MANAGER, UserStatus::GOLD_DIRECTOR, UserStatus::RUBIN_DIRECTOR,
-            UserStatus::SAPPHIRE_DIRECTOR, UserStatus::EMERALD_DIRECTOR, UserStatus::DIAMOND_DIRECTOR,];
+            UserStatus::SAPPHIRE_DIRECTOR, UserStatus::EMERALD_DIRECTOR, UserStatus::DIAMOND_DIRECTOR,
+            UserStatus::FREE_ELITE_OWNER];
 
         if (!$userPacket) {
             $result['message'] = 'Ошибка';
@@ -554,10 +551,13 @@ class PacketController extends Controller
                 });
                 $inviterPacketId = max($inviterPacketId->all());
                 $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
-                if ($inviter_order == 1 && in_array($inviter->status_id, $actualStatuses)) {
+                if ($inviter_order == 1
+                    && in_array($inviter->status_id, $actualStatuses)
+                    && $packet->packet_id != Packet::ELITE_FREE) {
                     $bonusPercentage = (20 / 100);
                     $bonus = $packetPrice * $bonusPercentage;
-                } elseif (($inviter_order == 2 || $inviter_order == 3) && $this->hasNeedPackets($packet->packet_id, $inviterPacketId)) {
+                } elseif (($inviter_order == 2 || $inviter_order == 3)
+                    && $this->hasNeedPackets($packet->packet_id, $inviterPacketId)) {
                     $bonusPercentage = (5 / 100);
                     $bonus = $packetPrice * $bonusPercentage;
                 } elseif ($inviter_order == 4 && $this->hasNeedPackets($packet->packet_id, $inviterPacketId)) {
@@ -571,7 +571,9 @@ class PacketController extends Controller
                         ->whereIn('user_packet.packet_id', [Packet::VIP2, Packet::PRO])
                         ->first();
                     if ($checkForVipOrPro) {
-                        if ($checkForVipOrPro->packet_id == Packet::PRO && $inviterPacketId == Packet::VIP2) {
+                        if ($checkForVipOrPro->packet_id == Packet::PRO
+                            && $inviterPacketId == Packet::VIP2
+                            && $packet->packet_id != Packet::ELITE_FREE) {
                         } else {
                             $operation = new UserOperation();
                             $operation->author_id = $user->user_id;
@@ -643,7 +645,7 @@ class PacketController extends Controller
         $userPacket->packet_price = $userPacket->packet_price - $packet_old_price;
         $max_queue_start_position = UserPacket::where('packet_id', $userPacket->packet_id)->where('is_active', 1)->where('queue_start_position', '>', 0)->max('queue_start_position');
         $userPacket->queue_start_position = ($max_queue_start_position) ? ($max_queue_start_position + 1) : 1;
-        if ($userPacket->save()) {
+        if ($userPacket->save() && $userPacket->packet_id != Packet::ELITE_FREE) {
             $this->add_share_to_global_diamond_found($userPacket, $userPacket->user_id);
         }
     }
@@ -767,7 +769,7 @@ class PacketController extends Controller
     function qualificationUp($packet, $user)
     {
         $willUpdate = false;
-        $actualPackets = [Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2, Packet::VIP, Packet::PRO];
+        $actualPackets = [Packet::ELITE_FREE, Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2, Packet::VIP, Packet::PRO];
         if (in_array($packet->packet_id, $actualPackets)) {
 
             $operation = new UserOperation();
@@ -780,6 +782,8 @@ class PacketController extends Controller
 
             if ($packet->packet_status_id == UserStatus::CONSULTANT)
                 $operation->operation_comment = 'Ваш статус Консультант';
+            if ($packet->packet_status_id == UserStatus::FREE_ELITE_OWNER)
+                $operation->operation_comment = 'Ваш статус владелец Elite free';
             elseif ($packet->packet_status_id == UserStatus::AGENT)
                 $operation->operation_comment = 'Ваш статус Агент';
             elseif ($packet->packet_status_id == UserStatus::MANAGER)
@@ -844,6 +848,10 @@ class PacketController extends Controller
     function hasNeedPackets($packetId, $inviterPacketId)
     {
         $actualPackets = [Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2, Packet::VIP, Packet::GAP1, Packet::GAP2, Packet::PRO];
+        if ($inviterPacketId == Packet::ELITE_FREE) {
+            $inviterPacketId = Packet::ELITE;
+        }
+
         if ($packetId <= $inviterPacketId && in_array($packetId, $actualPackets)) {
             return true;
         }

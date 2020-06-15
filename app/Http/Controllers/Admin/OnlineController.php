@@ -11,6 +11,8 @@ use App\Models\UserBasket;
 use App\Models\UserOperation;
 use App\Models\UserPacket;
 use App\Models\Users;
+use App\Models\UserStatus;
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -152,7 +154,20 @@ class OnlineController extends Controller
 
     public function confirmBasket()
     {
+
         $sum = 0;
+        $actualStatuses = [
+            UserStatus::FREE_ELITE_OWNER,
+            UserStatus::AGENT,
+            UserStatus::MANAGER,
+            UserStatus::SILVER_MANAGER,
+            UserStatus::GOLD_DIRECTOR,
+            UserStatus::RUBIN_DIRECTOR,
+            UserStatus::SAPPHIRE_DIRECTOR,
+            UserStatus::EMERALD_DIRECTOR,
+            UserStatus::DIAMOND_DIRECTOR
+        ];
+
         $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
         foreach ($products as $item) {
             $product_price = Product::where('product_id', $item->product_id)->first();
@@ -178,39 +193,39 @@ class OnlineController extends Controller
 
 
             $counter = 0;
-            while ($user_id != null) {
+            while ($user_id) {
                 $counter++;
                 $parent = Users::where('user_id', $user_id)->first();
                 if ($parent == null) break;
                 $user_id = $parent->recommend_user_id;
-                $percent = 0;
-                if ($counter == 1) $percent = 20;
-                elseif ($counter == 2) $percent = 5;
-                elseif ($counter == 3) $percent = 5;
-                elseif ($counter == 4) $percent = 10;
-                elseif ($counter == 5) $percent = 10;
+                if (in_array($parent->status_id, $actualStatuses)) {
+                    $percent = 0;
+                    if ($counter == 1) $percent = 20;
+                    elseif ($counter == 2) $percent = 5;
+                    elseif ($counter == 3) $percent = 5;
+                    elseif ($counter == 4) $percent = 10;
+                    elseif ($counter == 5) $percent = 10;
 
-                $cash = ($product->ball * $item->unit) * $percent / 100;
+                    $cash = ($product->ball * $item->unit) * $percent / 100;
 
-                if ($cash > 0) {
-                    $parent->user_money += $cash;
-                    $parent->save();
-
-                    $operation = new UserOperation();
-                    $operation->author_id = $user->user_id;
-                    $operation->recipient_id = $parent->user_id;
-                    $operation->money = $cash;
-                    $operation->operation_id = 1;
-                    $operation->operation_type_id = 22;
-                    $operation->operation_comment = sprintf('Cash Back. %s pv Уровень - %s', $cash, $counter);
-                    $operation->save();
+                    if ($cash > 0) {
+                        $parent->user_money += $cash;
+                        $parent->save();
+                        $operation = new UserOperation();
+                        $operation->author_id = $user->user_id;
+                        $operation->recipient_id = $parent->user_id;
+                        $operation->money = $cash;
+                        $operation->operation_id = 1;
+                        $operation->operation_type_id = 22;
+                        $operation->operation_comment = sprintf('Cash Back. %s pv Уровень - %s', $cash, $counter);
+                        $operation->save();
+                    }
                 }
                 if ($counter == 5) {
                     break;
                 }
             }
         }
-
         $user->user_money = $user->user_money - $sum;
         $user->save();
 
@@ -226,6 +241,7 @@ class OnlineController extends Controller
         $result['status'] = true;
         return response()->json($result);
     }
+
     public function showHistory(Request $request)
     {
         $request->basket = UserBasket::leftJoin('product', 'product.product_id', '=', 'user_basket.product_id')

@@ -12,6 +12,8 @@ class UserStatus extends Model
     protected $table = 'user_status';
     protected $primaryKey = 'user_status_id';
 
+    const FREE_ELITE_OWNER = 20;
+    const CLIENT = 21;
     const CONSULTANT = 22;
     const AGENT = 23;
     const MANAGER = 24;

@@ -12,6 +12,7 @@ class Packet extends Model
     protected $table = 'packet';
     protected $primaryKey = 'packet_id';
 
+    const ELITE_FREE = 22;
     const CLASSIC = 23;
     const PREMIUM = 24;
     const ELITE = 25;
