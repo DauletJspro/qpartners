@@ -35,6 +35,7 @@ Route::group([
     'namespace' => 'Admin',
     'middleware' => 'web'
 ], function () {
+
     Route::get('index', 'IndexController@index');
 
     Route::get('world/{packet_url}', 'WorldController@clientList');
@@ -259,17 +260,16 @@ Route::group([
     Route::post('country/is_show', 'CountryController@changeIsShow');
     Route::resource('country', 'CountryController');
 
-    Route::post('order/is_show', 'OrderController@changeIsShow');
-    Route::resource('order', 'OrderController');
 
     Route::post('client/is_show', 'ClientController@changeIsBan');
     Route::resource('client', 'ClientController');
+    Route::post('client/share', 'ClientController@editIntersHolderStatus')->name('client.share');
 
     Route::post('video/is_show', 'VideoController@changeIsBan');
     Route::resource('video', 'VideoController');
-
     Route::post('user/is_show', 'UserController@changeIsBan');
     Route::resource('user', 'UserController');
+
     Route::any('password', 'UserController@password');
 
     Route::resource('packet-item', 'PacketItemController');

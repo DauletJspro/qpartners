@@ -116,6 +116,7 @@
         </a>
     </li>
     @if(Auth::user()->role_id == 1)
+
         <li class="treeview">
             <a href="/admin/packet/user/active">
                 <i class="fa fa-list-ul"></i>
@@ -131,12 +132,7 @@
                       style="@if($user_packet_notice == 0) display: none; @endif background-color: rgb(253, 58, 53) ! important;">{{$user_packet_notice}}</span>
             </a>
         </li>
-        <li class="treeview-menu">
-            <a href="/admin/user/share-user">
-                <i class="fa fa-dollars"></i>
-                <span>Дольщики</span>
-            </a>
-        </li>
+
         <li class="treeview">
             <a href="/admin/packet/user/inactive">
                 <i class="fa fa-list-ul"></i>
