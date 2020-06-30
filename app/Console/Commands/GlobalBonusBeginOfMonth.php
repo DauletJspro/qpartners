@@ -53,8 +53,10 @@ class GlobalBonusBeginOfMonth extends Command
 
 
         $numberDiamondsUsers = count($diamondUsers);
+        $numberInsertHolders = count($interest_holders);
 
-        if ($numberDiamondsUsers) {
+
+        if ($numberDiamondsUsers || $numberInsertHolders) {
             foreach ($diamondUsers as $user) {
                 $shareForEach = $globalDiamondFoundMoney * (1 / $sumShare);
                 $user->user_money = $user->user_money + $shareForEach;
