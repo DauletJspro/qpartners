@@ -11,7 +11,7 @@
 1. import files
 2. Body
 3. Wrapper / #wrapper
-3. Mt Header / #mt-header
+3. Mt Header / #mt-header.banner-5 .texts .title
 4. Mt Top Bar / .mt-top-bar
 4. Main / #main
 5. Mt Bottom Bar / .mt-bottom-bar
@@ -245,7 +245,8 @@ a:hover {
 #mt-header.style2 #nav ul {
     float: none;
 }
-.second-section-title-h3{
+
+.second-section-title-h3 {
     text-align: left;
 }
 
@@ -386,7 +387,8 @@ a:hover {
     line-height: 1;
     text-align: center;
 }
-.what_you_get_icons_div h2:hover{
+
+.what_you_get_icons_div h2:hover {
     color: #ff0000 !important;
     cursor: pointer !important;
 }
@@ -4404,9 +4406,11 @@ a:hover {
     height: 100%;
     background-image: linear-gradient(to top, #e1e0df 1%, #ff0000 50%, #e1e0df 100%);
 }
-#mt-main > section:nth-child(4) > div > div > div.row.row-1 > div{
+
+#mt-main > section:nth-child(4) > div > div > div.row.row-1 > div {
     height: 300px;
 }
+
 .video_buttons {
     display: block;
     float: left;
@@ -5009,7 +5013,7 @@ a:hover {
 }
 
 .section-3-holder-div {
-    padding: 0px 0 0 120px ;
+    padding: 0px 0 0 120px;
 }
 
 .section-4-holder-div {
@@ -5205,32 +5209,107 @@ a:hover {
 
 .slider-7 .slider .s-box {
     position: absolute;
-    left: 7.6%;
-    right: 5%;
-    top: 12%;
-    background-color: rgba(255, 255, 255, 0.6);
-    padding: 1rem 1rem;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    /* padding: 1rem 1rem; */
+    height: 100%;
 }
 
 .slider-7 .slider .s-title {
     display: block;
     font-weight: 700;
-    color: #6a6a6a;
-    font-size: 14px;
+    color: white;
     line-height: 16px;
-    margin: 0 0 10px;
-    letter-spacing: 4px;
-    font-size: 150%;
+    margin: 30px 0 10px 29px;
+    letter-spacing: 1px;
+    font-size: 45px;
+    padding: 15px 20px;
+    background-color: #1b4f9a;
+    float: left;
+}
+
+.s-text-p {
+    margin-left: 35px;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 2.5rem;
+}
+
+.s-text-p-3-div {
+    margin: 30px 0 0 35px;
+}
+
+.s-text-p-2 {
+    margin: 30px 0 0 35px;
+}
+
+.s-text-p-3-title {
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.s-holder-2 > .s-box > .s-title {
+    background-color: #ac2709;
+}
+
+.s-holder-2 > .s-text-p {
+    color: #ac2709;
+}
+
+.s-holder-2-button {
+    background-color: #ac2709 !important;
+}
+/* new tag */
+.s-holder-3 > .s-box > .s-title {
+    background-color: #ac2709;
+}
+
+
+.s-holder-3-button {
+    background-color: #ac2709 !important;
+}
+/* new tag */
+.s-holder-4 > .s-box > .s-title {
+    background-color: #ac2709;
+}
+
+.s-holder-4 > .s-text-p {
+    color: #ac2709;
+}
+
+.s-holder-4-button {
+    background-color: #ac2709 !important;
+}
+
+.s-text-p-3-button {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 350px;
+    margin-right: 30px;
+    padding: 6px 45px;
+    background-color: #1b4f9a;
+    color: black;
+    cursor: pointer;
+    border: none;
+    float: right;
+}
+
+.s-text-p-3 {
+
 }
 
 .slider-7 .slider .heading {
     display: block;
-    color: #535353;
+    color: white;
     font-weight: 600;
-    margin: 0 0 3px -7px;
+    margin: 0 0 3px 30px;
     letter-spacing: -1px;
     font-size: 50px;
     line-height: 59px;
+    float: left;
 }
 
 .slider-7 .slider .heading.add {
@@ -5240,12 +5319,12 @@ a:hover {
 }
 
 .slider-7 .slider .s-txt {
-    max-width: 50%;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     line-height: 21px;
-    margin: 1rem 0 0 -3px;
+    margin: -5px 0 0 0;
     color: black;
+    float: left;
 }
 
 .slider-7 .slider .s-shop {
@@ -5315,7 +5394,7 @@ a:hover {
     /*margin: -5px 0 3px;*/
     text-transform: uppercase;
     font-weight: 300;
-    letter-spacing: 4.6px;
+    letter-spacing: 1px;
     font-size: 24px;
     line-height: 28px;
     /*background-color: rgba(0, 0, 0, 0.5);*/
@@ -5371,15 +5450,16 @@ a:hover {
 
 .banner-frame .btn-shop span {
     margin: 0 11px 0 0;
-    color: black;
+    color: red;
     font-weight: bold;
     font-size: 130%;
 }
 
 .banner-frame .btn-shop .fa {
     text-align: center;
+    color: lightgrey;
     border-radius: 100%;
-    border: 1px solid black;
+    border: 1px solid red;
     width: 24px;
     height: 24px;
     font-size: 17px;
@@ -5617,7 +5697,7 @@ a:hover {
     padding: 2px 8px;
     line-height: 21px;
     max-width: 65%;
-    bottom: 71px;
+    bottom: 35px;
     right: 56px;
     left: 56px;
 }
@@ -5626,17 +5706,68 @@ a:hover {
     display: inline-block;
     vertical-align: middle;
     text-transform: uppercase;
-    background: #535353;
-    padding: 3px 5px 4px;
+    background: white;
+    font-weight: 800;
+    color: red;
+    margin: 0 0 0 -6px;
+    letter-spacing: 1px;
+    font-size: 98%;
+    padding: 5px 10px;
+}
+
+.span-1 {
+    font-size: 85%;
+}
+
+.p-span-1 {
+    font-size: 27px;
     font-weight: 600;
-    color: #fff;
-    margin: 0 0 3px;
-    letter-spacing: 4.1px;
+    word-spacing: 5px;
+}
+
+.p-span-2 {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 3px;
+}
+
+.p-span-3 {
+    font-size: 23px;
+    font-weight: 700;
+    color: black;
+}
+
+.p-span-4 {
+    font-size: 14px;
+    color: black;
+    line-height: 0;
+    font-weight: 600;
+}
+
+.p-span-5 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.p-parent-1 {
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.p-parent-2 {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.p-span-6 {
+    font-size: 110%;
+    font-weight: 600;
+    line-height: 1;
 }
 
 .banner-5 .texts h3 {
-    margin: 0 0 8px;
-    font: 200 40px "Source Sans Pro", sans-serif;
+    margin: 3rem 0 8px;
+    font: 200 50px "Source Sans Pro", sans-serif;
+    line-height: 1;
 }
 
 .banner-5 .texts h3 strong {
@@ -5645,7 +5776,7 @@ a:hover {
 }
 
 .banner-5 .texts p {
-    margin: 0 0 18px 2px;
+    margin: 30px 0 18px 2px;
 }
 
 .banner-5 .texts .price-add {
@@ -5662,15 +5793,17 @@ a:hover {
 }
 
 .banner-6 .holder {
-    padding: 24px 33px 28px 23px;
+    padding: 10px;
 }
 
 .banner-6 .sub-title {
     display: block;
     font-weight: 600;
-    letter-spacing: 4px;
+    letter-spacing: 1px;
     margin: 0 0 21px;
-    letter-spacing: 4.2px;
+    color: red;
+    background-color: #4c5f7b;
+    padding: 3px;
 }
 
 .banner-6 .btn-shop {
@@ -5686,12 +5819,9 @@ a:hover {
 }
 
 .banner-6 .btn-shop .fa {
-    border-color: #fff;
+    border-color: #003a79;
 }
 
-.banner-6 h3 {
-    letter-spacing: 1px;
-}
 
 .banner-6 .offer {
     position: absolute;
@@ -5740,20 +5870,25 @@ a:hover {
 }
 
 .banner-7 .holder {
-    padding: 26px 26px 28px;
+    padding: 10px;
+}
+
+.strong-span-1 {
+    font-size: 120%;
 }
 
 .banner-7 h2 {
     margin: -20px 0 1px;
-    color: #939393;
-    font-size: 18px;
+
+    font-size: 16px;
     line-height: 28px;
+    background-color: #17a31a;
 }
 
 .banner-7 .price-tag {
     position: absolute;
     right: 29px;
-    bottom: 29px;
+    bottom: 10px;
 }
 
 .banner-7 .price {
@@ -5793,14 +5928,21 @@ a:hover {
 }
 
 .banner-8 .holder {
-    padding: 29px 24px 28px;
+    padding: 10px;
 }
 
 .banner-8 h2 {
-    color: #2b3d66;
+    color: red;
     margin: 0 0 15px;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 28px;
+    background-color: #5a3595;
+}
+
+.banner-8 h3 {
+    color: black;
+    font-size: 23px !important;
+    font-weight: 600;
 }
 
 .banner-8 .price-tag {
@@ -5930,19 +6072,28 @@ a:hover {
     margin-bottom: 25px;
 }
 
+.this-banner {
+    padding: 10px 15px 10px 15px !important;
+}
+
 .banner-12 h2 span {
     display: block;
     margin: 0 0 5px;
     font-weight: 600;
     text-transform: none;
-    font-size: 16px;
+    /*font-size: 24px;*/
     line-height: 18px;
+    font-family: "Arial Black";
+    color: #00739e;
+    padding: 10px;
+    background-color: white;
 }
 
 .banner-12 .btn-shop {
     position: absolute;
-    right: 38px;
+    right: 20px;
     bottom: 33px;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .banner-12 .btn-shop span,
@@ -5954,7 +6105,7 @@ a:hover {
 
 .banner-12 .btn-shop .fa {
     border-color: #fff;
-    background: gold;
+    background: lightgrey;
 }
 
 .banner-12 .btn-shop .fa:hover {
@@ -5975,13 +6126,15 @@ a:hover {
 
 .banner-13 h2 span {
     display: block;
-    color: #b7b7b7;
+    margin: 0 0 5px;
     font-weight: 600;
-    letter-spacing: 5px;
     text-transform: none;
-    padding: 0 3px 6px 0;
-    font-size: 16px;
+    /* font-size: 24px; */
     line-height: 18px;
+    font-family: "Arial Black";
+    color: #00739e;
+    padding: 10px;
+    background-color: white;
 }
 
 .banner-13 h2 strong {
@@ -5990,8 +6143,10 @@ a:hover {
 
 .banner-13 .btn-shop {
     position: absolute;
-    right: 38px;
-    bottom: 35px;
+    right: 200px;
+    bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 1px;
 }
 
 /*------------------------------------------------------------------
@@ -13088,24 +13243,30 @@ a:hover {
     background-position: center;
     background-size: cover;
 }
-.section-second-gap{
+
+.section-second-gap {
     background-color: rgba(255, 255, 255, 0.8);
     padding-bottom: 20px;
 }
-.section-third-gap{
+
+.section-third-gap {
     background-color: rgba(255, 255, 255, 0.8);
     padding-bottom: 20px;
 }
-#mt-main > section.slider-3 > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.section-3-holder-div.section-second-gap > h3{
+
+#mt-main > section.slider-3 > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.section-3-holder-div.section-second-gap > h3 {
     color: black;
 }
-#mt-main > section.slider-3 > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.section-3-holder-div.section-second-gap > p{
+
+#mt-main > section.slider-3 > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.section-3-holder-div.section-second-gap > p {
     color: black;
 }
-#mt-main > section.slider-3 > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.section-3-holder-div.section-third-gap > h3{
+
+#mt-main > section.slider-3 > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.section-3-holder-div.section-third-gap > h3 {
     color: black;
 }
-#mt-main > section.slider-3 > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.section-3-holder-div.section-third-gap > p{
+
+#mt-main > section.slider-3 > div > div > div > div > div.holder.section-3-holder.slick-slide.slick-current.slick-active.slick-center > div.section-3-holder-div.section-third-gap > p {
     color: black;
 }
 
@@ -13113,6 +13274,7 @@ a:hover {
     width: 200px;
     margin: 0 auto 60px;
 }
+
 .coming-soon .title {
     font-size: 28px;
     margin: 0 0 19px;

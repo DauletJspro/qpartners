@@ -22,15 +22,22 @@ use Illuminate\Support\Facades\Session;
                 <div class="col-xs-12">
                     <div class="banner-frame toppadding-zero">
                         <div class="banner-5 white wow fadeInLeft" data-wow-delay="0.4s">
-                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/home.png'); background-size: cover; background-position: center;"></div>
-                            <div class="holder" style="background-color: rgba(0,0,0,0.3)">
+                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/main_page_images/super_elixir_grippo.png'); background-size: cover; background-position: center;"></div>
+                            <div class="holder" style="">
                                 <div class="texts" style="background-color:transparent; padding: 2rem 4rem -5rem 4rem;">
-                                    <strong class="title">жилищная программа</strong>
-                                    <h3 style="font-weight: bold;word-break:keep-all;">Купи <br> <span
-                                                style="word-break: keep-all;">жилье за 400$</span></h3>
-                                    <p>Собственное жилье в рассрочку, без процентов, без комиссии, без переплат и без
-                                        подтверждения дохода</p>
-                                    <span class="price-add">$ 400.00</span>
+                                    <strong class="title">профилактика covid-19</strong>
+                                    <h3 style="font-weight: bold;word-break:keep-all;"><span
+                                                class="span-1">Защитит от</span> <br> <span
+                                                style="word-break: keep-all;font-weight:700;font-size:110%;">ВИРУСОВ</span>
+                                    </h3>
+                                    <p>
+                                        <span class="p-span-1">Super Elixir Grippo</span> <br>
+                                        <span class="p-span-2">
+                                            укрепляет иммунитет во время ОРВИ,<br>
+                                            обладает противовирусным <br>
+                                            и бактерицидными свойствами
+                                        </span>
+                                    </p>
                                     <a href="product-detail.html" class="btn-shop">
                                         <span><strong style="color: white;">Купить сейчас</strong></span>
                                         <i class="fa fa-angle-right"
@@ -40,20 +47,29 @@ use Illuminate\Support\Facades\Session;
                             </div>
                         </div>
                         <div class="banner-6 white wow fadeInRight" data-wow-delay="0.4s">
-                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/car.png'); background-size: cover; background-position: center;background-repeat: no-repeat;"></div>
+                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/main_page_images/super_elixir_energy.png'); background-size: cover; background-position: center;background-repeat: no-repeat;"></div>
                             <div class="holder" style="background-color: rgba(0,0,0,0.1);">
-                                <div style=" width: 100%; padding: 2rem 1rem">
-                                    <strong class="sub-title text-uppercase"
-                                            style="font-size: 130%; font-weight: 500;">Автопрограмма</strong>
-                                    <h3><span style="font-size:140%;">Забирай</span> <br> <span
-                                                style="font-size: 90%;word-break:keep-all;">свой автомобиль</span>
-                                        <br> <span
-                                                style="font-size: 130%; font-weightword-break:keep-all;"> за 400$</span>
+                                <div style=" width: 100%; padding: 5px;">
+                                    <strong class="sub-title text-uppercase text-center"
+                                            style="font-size: 15px; font-weight: 700;">ПРОФИЛАКТИКА COVID-19</strong>
+                                    <h3 style="padding-left:2px;background-color:rgba(0,0,0,0.2); line-height: 3rem;">
+                                        <span style="font-size:105%;">Зарядитесь</span> <br> <span
+                                                class="text-uppercase"
+                                                style="font-size: 100%;word-break: keep-all;">энергией природы</span>
                                     </h3>
+                                    <p style="margin-top: 5rem;background-color: rgba(255,255,255,0.1);">
+                                        <span class="p-span-3">Super Elixir Energy</span> <br>
+                                        <span class="p-span-4">
+                                            стимулирует иммунную систему, <br>
+                                            омолаживает и повышает защитные
+                                            силы организма.
+                                            Очищает кровь и повышает гемоглабин.
+                                        </span>
+                                    </p>
                                 </div>
                                 <a href="product-detail.html" class="btn-shop">
-                                    <span><strong>забрать сейчас</strong></span>
-                                    <i class="fa fa-angle-right" style="color: white;background-color: lightgrey;"></i>
+                                    <span style="color: #003a79 !important;"><strong>Купить сейчас</strong></span>
+                                    <i class="fa fa-angle-right" style="color: white;background-color: #93d2ff;"></i>
                                 </a>
                             </div>
                         </div><!-- banner 5 white end here -->
@@ -61,33 +77,53 @@ use Illuminate\Support\Facades\Session;
                         <div class="banner-box two">
                             <!-- banner 7 right start here -->
                             <div class="banner-7 right wow fadeInUp" data-wow-delay="0.4s">
-                                <div style="background-image: url('/new_design/images/businnes.png'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
+                                <div style="background-image: url('/new_design/images/main_page_images/super_elixir_bronchit.png'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
                                 <div class="holder">
                                     <div class="text-center"
                                          style="width: 100%; padding: 2rem 1rem;">
-                                        <h2 style="float: right;"><strong style="color: white; font-weight: bold;">МСБ
-                                                программа</strong></h2>
-                                        <h3 style="margin-top: 2rem;float: right;"><strong style="color: white;">Даем
-                                                грант <br> для бизнеса</strong></h3>
+                                        <h2 style=""><strong style="color: red; font-weight: bold;">Профилактика
+                                                COVID-19</strong></h2>
+                                        <h3 class="text-left" style="margin-top:10px;float: left;">
+                                            <strong style="color: black;font-weight: 600;">Дышите
+                                                <br> <span class="strong-span-1">ПОЛНОЙ ГРУДЬЮ</span></strong></h3>
+                                        <p style="float: left;color:black;" class="text-left p-parent-1">
+                                            <span class="p-span-5 text-left">Super Elixir Bronchi</span><br>
+                                            <span class="p-span-6">
+                                                обладает противовоспали- <br>
+                                                тельным, отхаркивающим, <br>
+                                                бронхолитическим, регене- <br>
+                                                ративным действием
+                                            </span>
+                                        </p>
                                     </div>
                                     <div class="price-tag">
-                                        <span class="price">$ 4000.00</span>
-                                        <a class="shop-now" href="product-detail.html">получить</a>
+                                        <a class="shop-now" href="product-detail.html">купить сейчас</a>
                                     </div>
                                 </div>
                             </div><!-- banner 7 right end here -->
                             <!-- banner 8 start here -->
                             <div class="banner-8 wow fadeInDown" data-wow-delay="0.4s">
-                                <div style="background-image: url('/new_design/images/travel.png'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
+                                <div style="background-image: url('/new_design/images/main_page_images/super_elixir_imunno.png'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
                                 <div class="holder text-left" style="background-color: rgba(0,0,0,0.2);">
                                     <div style="width: 100%; padding: 0 1rem;">
-                                        <h2><strong style="color: white; font-weight: bold;">тур программа</strong></h2>
-                                        <h2 style="margin-bottom:100px !important;"><strong style="color: white;">Выбирай
-                                                куда
-                                                полетишь</strong></h2>
+                                        <h2 class="text-center"><strong style="color: white; font-weight: bold;">Профилактика
+                                                COVID-19</strong></h2>
+                                        <h3 style="margin-bottom:20px !important;"><strong>Укрепите
+                                                <br> ИММУНИТЕТ</strong></h3>
+
+                                        <p style="float: left;color:black;" class="text-left p-parent-2">
+                                            <span class="p-span-5 text-left">Super Elixir Bronchi</span><br>
+                                            <span class="p-span-6">
+                                                обладает противовоспали- <br>
+                                                тельным, отхаркивающим, <br>
+                                                бронхолитическим, регене- <br>
+                                                ративным действием
+                                            </span>
+                                        </p>
+
                                         <div class="price-tag text-left" style="padding-top: 0; margin-left: 0.8rem;">
                                             <a class="btn-shop" href="product-detail.html">
-                                                <span>Выбрать</span>
+                                                <span>Купить сейчас</span>
                                                 <i style="color: white;background-color: lightgrey;"
                                                    class="fa fa-angle-right"></i>
                                             </a>
@@ -103,31 +139,58 @@ use Illuminate\Support\Facades\Session;
                         <div class="banner-box third">
                             <!-- banner 12 right white start here -->
                             <div class="banner-12 right white wow fadeInUp" data-wow-delay="0.4s">
-                                <img src="/new_design/images/income.png" alt="image description"
-                                     style="height: 260px;  width: 420px;">
-                                <div class="holder" style="background-color: rgba(0,0,0,0.2);">
-                                    <h2 style="padding-bottom: 1rem;"><span
-                                                class="text-uppercase">ЗАРАБОТОК</span><strong>Начни зарабатывать
-                                            от 200$ в месяц</strong></h2>
+                                <img src="/new_design/images/main_page_images/super_elixir_for_man.png"
+                                     alt="image description"
+                                     style="height: 277px;  width: 420px;">
+                                <div class="holder this-banner" style="">
+                                    <h2 class="text-uppercase" style="float:left;padding-bottom: 1rem;"><span
+                                                class="text-uppercase">ДЛЯ МУЖЧИН</span></h2>
+
+                                    <p style="float: left;color:black;padding: 2px;" class="text-left p-parent-2">
+                                        <span class="p-span-5 text-left">Super Elixir For Man</span><br>
+                                        <span class="p-span-6">
+                                                обладает иммуно- <br>
+                                                стимулирующим, <br>
+                                                действием, активный <br>
+                                                гемостимулятор.
+                                            </span> <br>
+                                        <span class="p-span-6" style="margin-top: 10px;">
+                                            Эффективен при <br>
+                                            везекулите.
+                                        </span>
+                                    </p>
+
                                     <a class="btn-shop" href="product-detail.html">
-                                        <span>начать</span>
+                                        <span>купить сейчас</span>
                                         <i class="fa fa-angle-right"></i>
                                     </a>
                                 </div>
                             </div><!-- banner 12 right white end here -->
                             <!-- banner 13 right start here -->
                             <div class="banner-13 right wow fadeInDown" data-wow-delay="0.4s">
-                                <img src="/new_design/images/marketing.png" alt="image description"
-                                     style="height: 295px;  width: 420px;">
-                                <div class="holder" style="background-color: rgba(0,0,0,0.1);">
-                                    <h3 style="padding-right: 1rem;margin: 0; color: white;" class="text-uppercase">
-                                        Возможность</h3>
-                                    <h3 style="padding-right: 1rem;"><strong
-                                                style="color: gold;">Построй свой бизнес с доходом 100 000$</strong>
-                                    </h3>
+                                <img src="/new_design/images/main_page_images/super_elixir_for_woman.png"
+                                     alt="image description"
+                                     style="height: 277px;  width: 420px;">
+                                <div class="holder this-banner" style="">
+                                    <h2 class="text-uppercase" style="float:left;padding-bottom: 1rem;"><span
+                                                class="text-uppercase">ДЛЯ ЖЕНЩИН</span></h2>
+
+                                    <p style="float: right;color:black;padding: 2px;" class="text-left p-parent-2">
+                                        <span class="p-span-5 text-left">Super Elixir <br> For Woman</span><br>
+                                        <span class="p-span-6">
+                                                обладает <br>
+                                                общеукрепляющим <br>
+                                                действием, снижает <br>
+                                                слабость и упадок сил.
+                                            </span> <br>
+                                        <span class="p-span-6" style="margin-top: 10px;">
+                                           Продлевает детородный <br> возраст.
+                                        </span>
+                                    </p>
+
                                     <a class="btn-shop" href="product-detail.html">
-                                        <span style="color:gold;">строить</span>
-                                        <i style="color: white; background-color: gold;" class="fa fa-angle-right"></i>
+                                        <span>купить сейчас</span>
+                                        <i class="fa fa-angle-right"></i>
                                     </a>
                                 </div>
                             </div><!-- banner 13 right end here -->
@@ -138,60 +201,159 @@ use Illuminate\Support\Facades\Session;
                             <div class="slider banner-slider">
                                 <!-- holder start here -->
                                 <div class="s-holder">
-                                    <img src="/new_design/images/promotion_home.png" alt="image description">
+                                    <img src="/new_design/images/main_page_images/super_elixir_for_man.png"
+                                         alt="image description">
                                     <div class="s-box">
-                                        <strong class="s-title text-uppercase">Промоушен</strong>
+                                        <strong class="s-title text-uppercase">Супер акция 5+2</strong>
                                         <span class="heading"
-                                              style="font-weight: bold;font-size: 40px;">Закрой статус Diamond Director</span>
-                                        <span class="heading add" style="">и забери ключи от жилья досрочно</span>
+                                              style="font-weight: bold;font-size: 40px;">Super Elixir for Man</span>
                                         <div class="s-txt">
-                                            <p>Закрой статус Diamond Director <br> в течений 180 дней <br> и получи
-                                                ключи от дома </p>
+                                            <p class="s-text-p">улучшает мужское здоровье. <br>
+                                                Является эффективным иммуностимулятором, <br>
+                                                активный гемостимулятор.
+                                            </p>
+                                            <div class="s-text-p-2">
+                                                1. Super Elixir For Man <br>
+                                                2. Super Elixir Nephro <br>
+                                                3. Super Elixir For Bronchi <br>
+                                                4. Super Cream Spasm <br>
+                                                5. Super Detox Universal <br>
+                                            </div>
+                                            <div class="s-text-p-3-div">
+                                                <h4 class="s-text-p-3-title text-uppercase">
+                                                    В ПОДАРОК
+                                                </h4>
+                                                <div class="s-text-p-3">
+                                                    1. Super Elixir Anti-Stress <br>
+                                                    2. Super Elixir Immuno
+                                                </div>
+                                            </div>
+
                                         </div>
+                                        <a class="s-text-p-3-button">
+                                            ПОДРОБНЕЕ
+                                        </a>
                                     </div>
                                 </div><!-- holder end here -->
                                 <!-- holder start here -->
-                                <div class="s-holder">
-                                    <img src="/new_design/images/promotion_tour.png" alt="image description">
-                                    <div class="s-box" style="background-color: rgba(0,0,0,0.3);">
-                                        <strong class="s-title text-uppercase">Промоушен</strong>
-                                        <span class="heading" style="color: white;">Закрой <span style="color: gold;">Gold Director</span></span>
-                                        <span class="heading add"
-                                              style="color: white;"> получи путевку <br> в Турцию</span>
-                                        <div class="s-txt" style="margin-top: 2rem;color: white; !important;">
-                                            <p>Закрой статус Gold Director <br> в течений 60 дней <br> и получи путевку
-                                                на Gold camp в Турции</p>
-                                        </div>
-                                    </div>
-                                </div><!-- holder end here -->
-                                <!-- holder start here -->
-                                <div class="s-holder">
-                                    <img src="/new_design/images/promotion_auto.png" alt="image description">
+                                <div class="s-holder s-holder-2">
+                                    <img src="/new_design/images/main_page_images/super_elixir_hepato.png"
+                                         alt="image description">
                                     <div class="s-box">
-                                        <strong class="s-title text-uppercase">Промоушен</strong>
-                                        <span class="heading">Закрой Sapphire Director</span>
-                                        <span class="heading add">и забери ключи от нового <br> автомобиля</span>
-                                        <div class="s-txt">
-                                            <p>Закрой статус Sapphire Director <br> в течений 90 дней <br> и получи
-                                                ключи от автомобиля</p>
+                                        <strong class="s-title text-uppercase">Супер акция 5+2</strong>
+                                        <span class="heading"
+                                              style="font-weight: bold;font-size: 40px;color: #ac2709;">Super Elixir Hepato</span>
+                                        <div class="s-txt" style="color: white;">
+                                            <p class="s-text-p">обладает противовирусным, желчегонным <br>
+                                                и рассасывающим действием. <br>
+                                                Восстанавливает работу печени.
+                                            </p>
+                                            <div class="s-text-p-2">
+                                                1. Super Elixir Hepato <br>
+                                                2. Super Elixir Gastro <br>
+                                                3. Super Elixir Bronchi <br>
+                                                4. Super Cream Spasm <br>
+                                                5. Super Detox Universal <br>
+                                            </div>
+                                            <div class="s-text-p-3-div">
+                                                <h4 class="s-text-p-3-title text-uppercase">
+                                                    В ПОДАРОК
+                                                </h4>
+                                                <div class="s-text-p-3">
+                                                    1. Super Elixir Anti-Stress <br>
+                                                    2. Super Elixir Immuno
+                                                </div>
+                                            </div>
+
                                         </div>
+                                        <a class="s-text-p-3-button s-holder-2-button">
+                                            ПОДРОБНЕЕ
+                                        </a>
                                     </div>
-                                </div><!-- holder end here -->
-                                <!-- holder star here -->
-                                <div class="s-holder">
-                                    <img src="/new_design/images/promotion_business.png" alt="image description">
-                                    <div class="s-box" style="background-color: rgba(0,0,0,0.4);">
-                                        <strong class="s-title text-uppercase" style="color: white;">Промоушен</strong>
-                                        <span class="heading"><span
-                                                    style="color: white;">Закрой Silver Manager</span> </span>
-                                        <span class="heading add" style="color: white;">и открой представительство <br> Natural Market</span>
-                                        <div class="s-txt" style="max-width: 100%;">
-                                            <p style="color: white;">Закрой статус Silver Manager в течений 30 дней <br>
-                                                и получи право открыть представительство Natural Market
-                                                <br> в своем регионе</p>
+                                </div>
+                                <div class="s-holder s-holder-3">
+                                    <img src="/new_design/images/main_page_images/super_elixir_for_woman.png"
+                                         alt="image description">
+                                    <div class="s-box">
+                                        <strong style="color: white;" class="s-title text-uppercase">Супер акция
+                                            5+2</strong>
+                                        <span class="heading"
+                                              style="font-weight: bold;font-size: 40px;color: black;">Super Elixir For Woman</span>
+                                        <div class="s-txt" style="color: black;float: none;">
+                                            <p class="s-text-p"
+                                               style="float: left; background-color: rgba(255,255,255,0.5); padding: 5px;">
+                                                поддерживает и восстанавливает<br>
+                                                женское здоровье. Обладает <br>
+                                                общеукрепляющим <br>
+                                                действием.
+                                            </p>
+                                            <div style="float: right;margin-right: 30px;">
+                                                <div class="s-text-p-2">
+                                                    1. Super Elixir for Woman <br>
+                                                    2. Super Elixir Gastro <br>
+                                                    3. Super Elixir Bronchi <br>
+                                                    4. Super Cream Spasm <br>
+                                                    5. Super Detox Universal <br>
+                                                </div>
+                                                <div class="s-text-p-3-div">
+                                                    <h4 class="s-text-p-3-title text-uppercase">
+                                                        В ПОДАРОК
+                                                    </h4>
+                                                    <div class="s-text-p-3">
+                                                        1. Super Elixir Anti-Stress <br>
+                                                        2. Super Elixir Immuno
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
+                                        <a class="s-text-p-3-button s-holder-2-button" style="    margin-top: 360px;
+    margin-right: -230px;">
+                                            ПОДРОБНЕЕ
+                                        </a>
                                     </div>
-                                </div><!-- holder end here -->
+                                </div>
+                                <div class="s-holder s-holder-4">
+                                    <img src="/new_design/images/main_page_images/super_elixir_clean.png"
+                                         alt="image description">
+                                    <div class="s-box">
+                                        <strong style="color: white; background-color: #77a100;" class="s-title text-uppercase">Супер акция
+                                            5+2</strong>
+                                        <span class="heading"
+                                              style="font-weight: bold;font-size: 40px;color: #77a100;">Super Elixir For Woman</span>
+                                        <div class="s-txt" style="color: black;float: none;">
+                                            <p class="s-text-p"
+                                               style="background-color:rgba(255,255,255,0.5);float: left; padding: 5px;">
+                                                очищает организм от паразитов, <br>
+                                                улучшает работу желудочно-кишечного <br>
+                                                тракта.
+                                            </p>
+                                            <div style="float: right;margin-right: 30px;">
+                                                <div class="s-text-p-2">
+                                                    1. Super Elixir Clean <br>
+                                                    2. Super Elixir For Man <br>
+                                                    3. Super Elixir For Woman <br>
+                                                    4. Super Cream Spasm <br>
+                                                    5. Super Detox Universal <br>
+                                                </div>
+                                                <div class="s-text-p-3-div">
+                                                    <h4 class="s-text-p-3-title text-uppercase">
+                                                        В ПОДАРОК
+                                                    </h4>
+                                                    <div class="s-text-p-3">
+                                                        1. Super Elixir Anti-Stress <br>
+                                                        2. Super Elixir Immuno
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <a class="s-text-p-3-button s-holder-2-button" style="    margin-top: 360px;
+    margin-right: -230px;background-color: #77a100 !important;">
+                                            ПОДРОБНЕЕ
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div><!-- slider 7 end here -->
                     </div>
