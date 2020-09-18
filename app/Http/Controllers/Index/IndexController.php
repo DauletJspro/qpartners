@@ -51,6 +51,9 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {
+        if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+            error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+        }
         $products = Product::all();
         $popularProducts = Product::where(['is_popular' => true])->get();
         $brands = Brand::where(['is_show' => true])->get();

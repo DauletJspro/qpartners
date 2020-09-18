@@ -556,39 +556,37 @@ class PacketController extends Controller
                     && $packet->packet_id != Packet::ELITE_FREE) {
                     $bonusPercentage = (20 / 100);
                     $bonus = $packetPrice * $bonusPercentage;
-                } elseif (($inviter_order == 2 || $inviter_order == 3)
-                    && $this->hasNeedPackets($packet->packet_id, $inviterPacketId)) {
+                } elseif (($inviter_order >= 2 || $inviter_order <= 8)
+                    && $this->hasNeedPackets($packet->packet_id, $inviterPacketId, $inviter_order)) {
                     $bonusPercentage = (5 / 100);
                     $bonus = $packetPrice * $bonusPercentage;
-                } elseif ($inviter_order == 4 && $this->hasNeedPackets($packet->packet_id, $inviterPacketId)) {
-                    $bonusPercentage = (10 / 100);
-                    $bonus = $packetPrice * $bonusPercentage;
-                } elseif ($inviter_order == 5 && $this->hasNeedPackets($packet->packet_id, $inviterPacketId)) {
-                    $bonusPercentage = (10 / 100);
-                    $bonus = $packetPrice * $bonusPercentage;
-                    $checkForVipOrPro = UserPacket::where('user_packet.user_id', $inviter->user_id)
-                        ->where('user_packet.is_active', true)
-                        ->whereIn('user_packet.packet_id', [Packet::VIP2, Packet::PRO])
-                        ->first();
-                    if ($checkForVipOrPro) {
-                        if ($checkForVipOrPro->packet_id == Packet::PRO
-                            && $inviterPacketId == Packet::VIP2
-                            && $packet->packet_id != Packet::ELITE_FREE) {
-                        } else {
-                            $operation = new UserOperation();
-                            $operation->author_id = $user->user_id;
-                            $operation->recipient_id = $inviter->user_id;
-                            $operation->money = $packetPrice * $bonusPercentage;
-                            $operation->operation_id = 1;
-                            $operation->operation_type_id = 32;
-                            $operation->operation_comment = sprintf('Накопительный бонус. %s.  Уровень - %s', $packet->packet_name_ru, $inviter_order);
-                            $operation->save();
-                            $inviter->cumulative_bonus += $packetPrice * $bonusPercentage;
-                            $this->sentMoney += $packetPrice * $bonusPercentage;
-                            $inviter->save();
-                        }
-                    }
-                }
+                } 
+                // elseif ($inviter_order == 5 && $this->hasNeedPackets($packet->packet_id, $inviterPacketId)) {
+                //     $bonusPercentage = (10 / 100);
+                //     $bonus = $packetPrice * $bonusPercentage;
+                //     $checkForVipOrPro = UserPacket::where('user_packet.user_id', $inviter->user_id)
+                //         ->where('user_packet.is_active', true)
+                //         ->whereIn('user_packet.packet_id', [Packet::VIP2, Packet::PRO])
+                //         ->first();
+                //     if ($checkForVipOrPro) {
+                //         if ($checkForVipOrPro->packet_id == Packet::PRO
+                //             && $inviterPacketId == Packet::VIP2
+                //             && $packet->packet_id != Packet::ELITE_FREE) {
+                //         } else {
+                //             $operation = new UserOperation();
+                //             $operation->author_id = $user->user_id;
+                //             $operation->recipient_id = $inviter->user_id;
+                //             $operation->money = $packetPrice * $bonusPercentage;
+                //             $operation->operation_id = 1;
+                //             $operation->operation_type_id = 32;
+                //             $operation->operation_comment = sprintf('Накопительный бонус. %s.  Уровень - %s', $packet->packet_name_ru, $inviter_order);
+                //             $operation->save();
+                //             $inviter->cumulative_bonus += $packetPrice * $bonusPercentage;
+                //             $this->sentMoney += $packetPrice * $bonusPercentage;
+                //             $inviter->save();
+                //         }
+                //     }
+                // }
             }
             if ($bonus) {
                 $operation = new UserOperation();
@@ -845,17 +843,19 @@ class PacketController extends Controller
     }
 
     public
-    function hasNeedPackets($packetId, $inviterPacketId)
+    function hasNeedPackets($packetId, $inviterPacketId, $order)
     {
         $actualPackets = [Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2, Packet::VIP, Packet::GAP1, Packet::GAP2, Packet::PRO];
+        $boolean = false;
         if ($inviterPacketId == Packet::ELITE_FREE) {
             $inviterPacketId = Packet::ELITE;
         }
-
-        if ($packetId <= $inviterPacketId && in_array($packetId, $actualPackets)) {
-            return true;
+        $inviterPacket = Packet::where(['packet_id' => $inviterPacketId])->first();
+        $packet_available_level = $inviterPacket->packet_available_level;
+        if ($packetId <= $inviterPacketId && in_array($packetId, $actualPackets) && $order <= $packet_available_level) {
+            $boolean = true;
         }
-        return false;
+        return $boolean;
     }
 
     public
