@@ -20,7 +20,7 @@ class Packet extends Model
     const VIP2 = 27;
     const GAP1 = 28;
     const  GAP2 = 29;
-    const PRO = 30;
+    const GAP = 30;
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];
@@ -31,7 +31,7 @@ class Packet extends Model
             self::CLASSIC,
             self::PREMIUM,
             self::ELITE,
-            self::PRO,
+            self::GAP,
             self::VIP2,
             self::VIP,
         ];
@@ -84,7 +84,7 @@ class Packet extends Model
                     $success = false;
                 }
                 break;
-            case UserStatus::AGENT:
+            case UserStatus::PREMIUM_MANAGER:
                 if ($incomeWeek >= 250) {
                     $messageBody = 'Ваш лимит на неделю не превышает 250$. ';
                     $success = false;
@@ -94,7 +94,7 @@ class Packet extends Model
                     $success = false;
                 }
                 break;
-            case UserStatus::MANAGER:
+            case UserStatus::ELITE_MANAGER:
                 if ($incomeWeek >= 250) {
                     $messageBody = 'Ваш лимит на неделю не превышает 500$. ';
                     $success = false;
@@ -114,7 +114,7 @@ class Packet extends Model
                     $success = false;
                 }
                 break;
-            case UserStatus::SILVER_MANAGER:
+            case UserStatus::VIP_MANAGER:
                 if ($incomeWeek >= 1500) {
                     $messageBody = 'Ваш лимит на неделю не превышает 1000$. ';
                     $success = false;
@@ -134,7 +134,7 @@ class Packet extends Model
                     $success = false;
                 }
                 break;
-            case UserStatus::SAPPHIRE_DIRECTOR:
+            case UserStatus::SAPPHIRE_MANAGER:
                 if ($incomeWeek >= 4000) {
                     $messageBody = 'Ваш лимит на неделю не превышает 4 000$. ';
                     $success = false;
@@ -144,7 +144,7 @@ class Packet extends Model
                     $success = false;
                 }
                 break;
-            case UserStatus::DIAMOND_DIRECTOR:
+            case UserStatus::DIAMOND_MANAGER:
                 if ($incomeWeek >= 25000) {
                     $messageBody = 'Ваш лимит на неделю не превышает 25 000$. ';
                     $success = false;

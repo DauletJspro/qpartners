@@ -513,9 +513,9 @@ class PacketController extends Controller
     {
         $inviter_order = 1;
         $userPacket = UserPacket::find($userPacketId);
-        $actualStatuses = [UserStatus::CONSULTANT, UserStatus::AGENT, UserStatus::MANAGER,
-            UserStatus::SILVER_MANAGER, UserStatus::GOLD_DIRECTOR, UserStatus::RUBIN_DIRECTOR,
-            UserStatus::SAPPHIRE_DIRECTOR, UserStatus::EMERALD_DIRECTOR, UserStatus::DIAMOND_DIRECTOR,
+        $actualStatuses = [UserStatus::CONSULTANT, UserStatus::PREMIUM_MANAGER, UserStatus::ELITE_MANAGER,
+            UserStatus::VIP_MANAGER, UserStatus::BRONZE_MANAGER, UserStatus::SILVER_MANAGER, UserStatus::GOLD_MANAGER, UserStatus::RUBIN_MANAGER,
+            UserStatus::SAPPHIRE_MANAGER, UserStatus::EMERALD_MANAGER, UserStatus::DIAMOND_MANAGER,
             UserStatus::FREE_ELITE_OWNER];
 
         if (!$userPacket) {
@@ -535,7 +535,7 @@ class PacketController extends Controller
         }
 
         $this->activatePackage($userPacket);
-
+        $this->implementInviterBonus($userPacket, $packet, $user);
 
         while ($inviter) {
             $bonus = 0;
@@ -554,39 +554,13 @@ class PacketController extends Controller
                 if ($inviter_order == 1
                     && in_array($inviter->status_id, $actualStatuses)
                     && $packet->packet_id != Packet::ELITE_FREE) {
-                    $bonusPercentage = (20 / 100);
+                    $bonusPercentage = (5 / 100);
                     $bonus = $packetPrice * $bonusPercentage;
-                } elseif (($inviter_order >= 2 || $inviter_order <= 8)
+                } elseif (($inviter_order >= 2 || $inviter_order <= 8 && $packet->packet_id != Packet::GAP)
                     && $this->hasNeedPackets($packet->packet_id, $inviterPacketId, $inviter_order)) {
                     $bonusPercentage = (5 / 100);
                     $bonus = $packetPrice * $bonusPercentage;
-                } 
-                // elseif ($inviter_order == 5 && $this->hasNeedPackets($packet->packet_id, $inviterPacketId)) {
-                //     $bonusPercentage = (10 / 100);
-                //     $bonus = $packetPrice * $bonusPercentage;
-                //     $checkForVipOrPro = UserPacket::where('user_packet.user_id', $inviter->user_id)
-                //         ->where('user_packet.is_active', true)
-                //         ->whereIn('user_packet.packet_id', [Packet::VIP2, Packet::PRO])
-                //         ->first();
-                //     if ($checkForVipOrPro) {
-                //         if ($checkForVipOrPro->packet_id == Packet::PRO
-                //             && $inviterPacketId == Packet::VIP2
-                //             && $packet->packet_id != Packet::ELITE_FREE) {
-                //         } else {
-                //             $operation = new UserOperation();
-                //             $operation->author_id = $user->user_id;
-                //             $operation->recipient_id = $inviter->user_id;
-                //             $operation->money = $packetPrice * $bonusPercentage;
-                //             $operation->operation_id = 1;
-                //             $operation->operation_type_id = 32;
-                //             $operation->operation_comment = sprintf('Накопительный бонус. %s.  Уровень - %s', $packet->packet_name_ru, $inviter_order);
-                //             $operation->save();
-                //             $inviter->cumulative_bonus += $packetPrice * $bonusPercentage;
-                //             $this->sentMoney += $packetPrice * $bonusPercentage;
-                //             $inviter->save();
-                //         }
-                //     }
-                // }
+                }
             }
             if ($bonus) {
                 $operation = new UserOperation();
@@ -606,7 +580,7 @@ class PacketController extends Controller
 
 //            echo '<pre>', var_dump($inviter_order . ' /  ' . $inviter->name . ' / ' . $inviter->user_id . ' / ' . $bonus . ' / ' . $inviterPacketId), '</pre>';
             $inviter = Users::where(['user_id' => $inviter->recommend_user_id])->first();
-            if (!$inviter || $inviter_order >= 5) {
+            if (!$inviter || $inviter_order >= 8) {
                 break;
             }
 
@@ -621,6 +595,50 @@ class PacketController extends Controller
 
         $this->implementPacketThings($packet, $user, $userPacket);
 
+    }
+
+    private function implementInviterBonus($userPacket, $packet, $user)
+    {        
+        if ($user->inviter_user_id) {
+            $inviter = Users::where(['user_id' => $user->inviter_user_id])->first();
+        }
+        else {
+            $inviter = Users::where(['user_id' => $user->recommend_user_id])->first();
+        }
+
+        $bonus = 0;
+        $bonusPercentage = 0;
+        $packetPrice = $userPacket->packet_price;
+        $inviterPacketId = UserPacket::where(['user_id' => $inviter->user_id])->where(['is_active' => true])->get();
+        $inviterCount = (count($inviterPacketId));
+
+        if ($inviterCount) {
+            $inviterPacketId = collect($inviterPacketId);
+            $inviterPacketId = $inviterPacketId->map(function ($item) {
+                return $item->packet_id;
+            });
+            $inviterPacketId = max($inviterPacketId->all());
+            $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
+            if ($packet->packet_id != Packet::ELITE_FREE) {
+                $bonusPercentage = (15 / 100);
+                $bonus = $packetPrice * $bonusPercentage;       
+            }
+        }
+        if ($bonus) {
+            $operation = new UserOperation();
+            $operation->author_id = $user->user_id;
+            $operation->recipient_id = $inviter->user_id;
+            $operation->money = $bonus;
+            $operation->operation_id = 1;
+            $operation->operation_type_id = 1;
+            $operation->operation_comment = 'Кураторский бонус. "' . $packet->packet_name_ru . '".';
+            $operation->save();
+
+            $inviter->user_money = $inviter->user_money + $bonus;
+            $inviter->save();
+
+            $this->sentMoney += $bonus;
+        }
     }
 
     private function activatePackage($userPacket)
@@ -706,8 +724,7 @@ class PacketController extends Controller
 
     }
 
-    private
-    function implementQualificationBonuses($packet, $user, $userPacket)
+    private function implementQualificationBonuses($packet, $user, $userPacket)
     {
 
         $inviterOrder = 1;
@@ -719,22 +736,22 @@ class PacketController extends Controller
             if ($inviterOrder > 5) {
                 $bonus = 0;
 
-                if ($inviterOrder == 6 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::SILVER_MANAGER) {
+                if ($inviterOrder == 6 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::VIP_MANAGER) {
                     $bonusPercentage = (1 / 100);
                     $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 7 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::GOLD_DIRECTOR) {
+                } elseif ($inviterOrder == 7 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::GOLD_MANAGER) {
                     $bonusPercentage = (1 / 100);
                     $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 8 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::RUBIN_DIRECTOR) {
+                } elseif ($inviterOrder == 8 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::RUBIN_MANAGER) {
                     $bonusPercentage = (1 / 100);
                     $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 9 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::SAPPHIRE_DIRECTOR) {
+                } elseif ($inviterOrder == 9 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::SAPPHIRE_MANAGER) {
                     $bonusPercentage = (1 / 100);
                     $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::EMERALD_DIRECTOR) {
+                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::EMERALD_MANAGER) {
                     $bonusPercentage = (1 / 100);
                     $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::DIAMOND_DIRECTOR) {
+                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::DIAMOND_MANAGER) {
                     $bonusPercentage = (1 / 100);
                     $bonus = $userPacketPrice * $bonusPercentage;
                 }
@@ -767,7 +784,7 @@ class PacketController extends Controller
     function qualificationUp($packet, $user)
     {
         $willUpdate = false;
-        $actualPackets = [Packet::ELITE_FREE, Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2, Packet::VIP, Packet::PRO];
+        $actualPackets = [Packet::ELITE_FREE, Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2, Packet::VIP];
         if (in_array($packet->packet_id, $actualPackets)) {
 
             $operation = new UserOperation();
@@ -782,14 +799,12 @@ class PacketController extends Controller
                 $operation->operation_comment = 'Ваш статус Консультант';
             if ($packet->packet_status_id == UserStatus::FREE_ELITE_OWNER)
                 $operation->operation_comment = 'Ваш статус владелец Elite free';
-            elseif ($packet->packet_status_id == UserStatus::AGENT)
-                $operation->operation_comment = 'Ваш статус Агент';
-            elseif ($packet->packet_status_id == UserStatus::MANAGER)
-                $operation->operation_comment = 'Ваш статус Менеджер';
-            elseif ($packet->packet_status_id == UserStatus::SILVER_MANAGER)
-                $operation->operation_comment = 'Ваш статус Серебряный Менеджер';
-            elseif ($packet->packet_status_id == UserStatus::GOLD_DIRECTOR)
-                $operation->operation_comment = 'Ваш статус Золотой Директор';
+            elseif ($packet->packet_status_id == UserStatus::PREMIUM_MANAGER)
+                $operation->operation_comment = 'Ваш статус Premium Менеджер';
+            elseif ($packet->packet_status_id == UserStatus::ELITE_MANAGER)
+                $operation->operation_comment = 'Ваш статус Elite Менеджер';
+            elseif ($packet->packet_status_id == UserStatus::VIP_MANAGER)
+                $operation->operation_comment = 'Ваш статус VIP Менеджер';            
 
 
             $operation->save();
@@ -799,32 +814,102 @@ class PacketController extends Controller
 
             $parentFollowers = Users::parentFollowers($user->recommend_user_id);
             $parent = Users::where('user_id', $user->recommend_user_id)->first();
-            $needNumber = 5; // Necessary number of followers for update parent status
+            $needNumber = 3; // Necessary number of followers for update parent status
             if (count($parentFollowers) >= $needNumber) {
                 $operation = new UserOperation();
-                if ($parent->status_id == UserStatus::MANAGER && $user->status_id == UserStatus::MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::MANAGER)) {
+                if ($parent->status_id >= UserStatus::PREMIUM_MANAGER && $user->status_id >= UserStatus::PREMIUM_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::PREMIUM_MANAGER)) {
+                    $parent->status_id = UserStatus::BRONZE_MANAGER;
+                    $operation->operation_comment = "Ваш статус Бронзовый Менеджер";
+                    $willUpdate = true;
+                }
+                if ($parent->status_id == UserStatus::BRONZE_MANAGER && $user->status_id == UserStatus::BRONZE_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::BRONZE_MANAGER)) {
                     $parent->status_id = UserStatus::SILVER_MANAGER;
                     $operation->operation_comment = "Ваш статус Серебряный Менеджер";
                     $willUpdate = true;
                 } elseif ($parent->status_id == UserStatus::SILVER_MANAGER && $user->status_id == UserStatus::SILVER_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SILVER_MANAGER)) {
-                    $parent->status_id = UserStatus::GOLD_DIRECTOR;
-                    $operation->operation_comment = "Ваш статус Золотой Директор";
+                    $parent->status_id = UserStatus::GOLD_MANAGER;
+                    $operation->operation_comment = "Ваш статус Золотой Менеджер";
                     $willUpdate = true;
-                } elseif ($parent->status_id == UserStatus::GOLD_DIRECTOR && $user->status_id == UserStatus::GOLD_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GOLD_DIRECTOR)) {
-                    $parent->status_id = UserStatus::RUBIN_DIRECTOR;
-                    $operation->operation_comment = "Ваш статус Рубиновый Директор";
+                } elseif ($parent->status_id == UserStatus::GOLD_MANAGER && $user->status_id == UserStatus::GOLD_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GOLD_MANAGER)) {
+                    $parent->status_id = UserStatus::RUBIN_MANAGER;
+                    $operation->operation_comment = "Ваш статус Рубиновый Менеджер";
                     $willUpdate = true;
-                } elseif ($parent->status_id == UserStatus::RUBIN_DIRECTOR && $user->status_id == UserStatus::RUBIN_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::RUBIN_DIRECTOR)) {
-                    $parent->status_id = UserStatus::SAPPHIRE_DIRECTOR;
-                    $operation->operation_comment = "Ваш статус Сапфировый Директор";
+                } elseif ($parent->status_id == UserStatus::RUBIN_MANAGER && $user->status_id == UserStatus::RUBIN_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::RUBIN_MANAGER)) {
+                    $parent->status_id = UserStatus::SAPPHIRE_MANAGER;
+                    $operation->operation_comment = "Ваш статус Сапфировый Менеджер";
                     $willUpdate = true;
-                } elseif ($parent->status_id == UserStatus::SAPPHIRE_DIRECTOR && $user->status_id == UserStatus::SAPPHIRE_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SAPPHIRE_DIRECTOR)) {
-                    $parent->status_id = UserStatus::EMERALD_DIRECTOR;
-                    $operation->operation_comment = "Ваш статус Изумрудный Директор";
+                } elseif ($parent->status_id == UserStatus::SAPPHIRE_MANAGER && $user->status_id == UserStatus::SAPPHIRE_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SAPPHIRE_MANAGER)) {
+                    $parent->status_id = UserStatus::EMERALD_MANAGER;
+                    $operation->operation_comment = "Ваш статус Изумрудный Менеджер";
                     $willUpdate = true;
-                } elseif ($parent->status_id == UserStatus::EMERALD_DIRECTOR && $user->status_id == UserStatus::EMERALD_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::EMERALD_DIRECTOR)) {
-                    $parent->status_id = UserStatus::DIAMOND_DIRECTOR;
-                    $operation->operation_comment = "Ваш статус Бриллиантовый Директор";
+                } elseif ($parent->status_id == UserStatus::EMERALD_MANAGER && $user->status_id == UserStatus::EMERALD_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::EMERALD_MANAGER)) {
+                    $parent->status_id = UserStatus::DIAMOND_MANAGER;
+                    $operation->operation_comment = "Ваш статус Бриллиантовый Менеджер";
+                    $willUpdate = true;
+                }
+
+                if ($willUpdate = true) {
+                    $operation->author_id = null;
+                    $operation->recipient_id = $parent->user_id;
+                    $operation->money = null;
+                    $operation->operation_id = 1;
+                    $operation->operation_type_id = 10;
+                    $parent->save();
+                    $operation->save();
+                }
+
+            }
+        }
+        else if ($packet->packet_id == Packet::GAP) {
+            $operation = new UserOperation();
+            $operation->author_id = null;
+            $operation->recipient_id = $user->user_id;
+            $operation->money = null;
+            $operation->operation_id = 1;
+            $operation->operation_type_id = 10;    
+            $operation->operation_comment = 'Ваш статус GAP Менеджер';
+            $operation->save();
+
+            $user->soc_status_id = $packet->packet_status_id;
+            $user->save();
+
+            $parentFollowers = Users::parentFollowers($user->recommend_user_id);
+            $parent = Users::where('user_id', $user->recommend_user_id)->first();
+            $needNumber = 3; // Necessary number of followers for update parent status
+            if (count($parentFollowers) >= $needNumber) {
+                $operation = new UserOperation();
+                if ($parent->soc_status_id == UserStatus::GAP_MANAGER && $user->soc_status_id == UserStatus::GAP_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP_MANAGER)) {
+                    $parent->soc_status_id = UserStatus::GAP1_MANAGER;
+                    $operation->operation_comment = "Ваш статус GAP Менеджер 1ур";
+                    $willUpdate = true;
+                }
+                if ($parent->soc_status_id == UserStatus::GAP1_MANAGER && $user->soc_status_id == UserStatus::GAP1_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP1_MANAGER)) {
+                    $parent->soc_status_id = UserStatus::GAP2_MANAGER;
+                    $operation->operation_comment = "Ваш статус GAP Менеджер 2ур";
+                    $willUpdate = true;
+                } elseif ($parent->soc_status_id == UserStatus::GAP2_MANAGER && $user->soc_status_id == UserStatus::GAP2_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP2_MANAGER)) {
+                    $parent->soc_status_id = UserStatus::GAP3_MANAGER;
+                    $operation->operation_comment = "Ваш статус GAP Менеджер 3ур";
+                    $willUpdate = true;
+                } elseif ($parent->soc_status_id == UserStatus::GAP3_MANAGER && $user->soc_status_id == UserStatus::GAP3_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP3_MANAGER)) {
+                    $parent->soc_status_id = UserStatus::GAP4_MANAGER;
+                    $operation->operation_comment = "Ваш статус GAP Менеджер 4ур";
+                    $willUpdate = true;
+                } elseif ($parent->soc_status_id == UserStatus::GAP4_MANAGER && $user->soc_status_id == UserStatus::GAP4_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP4_MANAGER)) {
+                    $parent->soc_status_id = UserStatus::GAP5_MANAGER;
+                    $operation->operation_comment = "Ваш статус GAP Менеджер 5ур";
+                    $willUpdate = true;
+                } elseif ($parent->soc_status_id == UserStatus::GAP5_MANAGER && $user->soc_status_id == UserStatus::GAP5_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP5_MANAGER)) {
+                    $parent->soc_status_id = UserStatus::GAP6_MANAGER;
+                    $operation->operation_comment = "Ваш статус GAP Менеджер 6ур";
+                    $willUpdate = true;
+                } elseif ($parent->soc_status_id == UserStatus::GAP6_MANAGER && $user->soc_status_id == UserStatus::GAP6_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP6_MANAGER)) {
+                    $parent->soc_status_id = UserStatus::GAP7_MANAGER;
+                    $operation->operation_comment = "Ваш статус GAP Менеджер 7ур";
+                    $willUpdate = true;
+                } elseif ($parent->soc_status_id == UserStatus::GAP7_MANAGER && $user->soc_status_id == UserStatus::GAP7_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP7_MANAGER)) {
+                    $parent->soc_status_id = UserStatus::GAP8_MANAGER;
+                    $operation->operation_comment = "Ваш статус GAP Менеджер 8ур";
                     $willUpdate = true;
                 }
 
@@ -845,7 +930,7 @@ class PacketController extends Controller
     public
     function hasNeedPackets($packetId, $inviterPacketId, $order)
     {
-        $actualPackets = [Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2, Packet::VIP, Packet::GAP1, Packet::GAP2, Packet::PRO];
+        $actualPackets = [Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2, Packet::VIP, Packet::GAP1, Packet::GAP2, Packet::GAP];
         $boolean = false;
         if ($inviterPacketId == Packet::ELITE_FREE) {
             $inviterPacketId = Packet::ELITE;
@@ -1102,7 +1187,7 @@ class PacketController extends Controller
 
                     $parentFollowers = Users::parentFollowers($user->recommend_user_id);
                     $parent = Users::where('user_id', $user->recommend_user_id)->first();
-                    $needNumber = 5; // Necessary number of followers for update parent status
+                    $needNumber = 3; // Necessary number of followers for update parent status
                     if (count($parentFollowers) >= $needNumber) {
 
                         $operation = new UserOperation();
@@ -1112,20 +1197,20 @@ class PacketController extends Controller
                         $operation->operation_id = 1;
                         $operation->operation_type_id = 10;
 
-                        if ($parent->status_id == UserStatus::MANAGER && $user->status_id == UserStatus::MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::MANAGER)) {
+                        if ($parent->status_id == UserStatus::ELITE_MANAGER && $user->status_id == UserStatus::ELITE_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::ELITE_MANAGER)) {
                             $parent->status_id = UserStatus::BRONZE_MANAGER;
                             $operation->operation_comment = "Ваш статус Бронзовый Менеджер";
                         } elseif ($parent->status_id == UserStatus::BRONZE_MANAGER && $user->status_id == UserStatus::BRONZE_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::BRONZE_MANAGER)) {
-                            $parent->status_id = UserStatus::SILVER_MANAGER;
+                            $parent->status_id = UserStatus::VIP_MANAGER;
                             $operation->operation_comment = "Ваш статус Серебряный Менеджер";
-                        } elseif ($parent->status_id == UserStatus::SILVER_MANAGER && $user->status_id == UserStatus::SILVER_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SILVER_MANAGER)) {
+                        } elseif ($parent->status_id == UserStatus::VIP_MANAGER && $user->status_id == UserStatus::VIP_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::VIP_MANAGER)) {
                             $parent->status_id = UserStatus::GOLD_MANAGER;
                             $operation->operation_comment = "Ваш статус Золотой Менеджер";
                         } elseif ($parent->status_id == UserStatus::GOLD_MANAGER && $user->status_id == UserStatus::GOLD_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GOLD_MANAGER)) {
-                            $parent->status_id = UserStatus::SAPPHIRE_DIRECTOR;
+                            $parent->status_id = UserStatus::SAPPHIRE_MANAGER;
                             $operation->operation_comment = "Ваш статус Сапфировый Директор";
-                        } elseif ($parent->status_id == UserStatus::SAPPHIRE_DIRECTOR && $user->status_id == UserStatus::SAPPHIRE_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SAPPHIRE_DIRECTOR)) {
-                            $parent->status_id = UserStatus::DIAMOND_DIRECTOR;
+                        } elseif ($parent->status_id == UserStatus::SAPPHIRE_MANAGER && $user->status_id == UserStatus::SAPPHIRE_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SAPPHIRE_MANAGER)) {
+                            $parent->status_id = UserStatus::DIAMOND_MANAGER;
                             $operation->operation_comment = "Ваш статус Бриллиантовый Директор";
                         }
                         $parent->save();

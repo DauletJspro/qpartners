@@ -39,7 +39,7 @@ class Users extends Model implements AuthenticatableContract
             }
         }
         $followerStatusIds = array_filter($followerStatusIds);
-        if (count($followerStatusIds) >= 5) {
+        if (count($followerStatusIds) >= 3) {
             return true;
         }
         return false;

@@ -22,6 +22,9 @@ class AuthController extends Controller
 {
     public function __construct()
     {
+        if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+            error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+        }
         $country_row = Country::orderBy('sort_num','asc')
                     ->orderBy('country_name_ru','asc')
                     ->where('is_show',1)
@@ -125,6 +128,7 @@ class AuthController extends Controller
 //            'city_id' => 'required|numeric',
             'password' => 'required|min:5',
             'recommend_user_id' => 'required',
+            'inviter_user_id' => 'required',
             'confirm_password' => 'required|same:password',
             'email' => 'required|email|unique:users,email,NULL,user_id,deleted_at,NULL',
             'login' => 'required|unique:users,login,NULL,user_id,deleted_at,NULL',
@@ -165,7 +169,8 @@ class AuthController extends Controller
         $user->role_id = 2;
         $user->is_confirm_email = 0;
         $user->is_activated = 1;
-        $user->recommend_user_id = is_numeric($request->recommend_user_id)?$request->recommend_user_id:null;
+        $user->recommend_user_id = is_numeric($request->recommend_user_id) ? $request->recommend_user_id : null;
+        $user->inviter_user_id = is_numeric($request->inviter_user_id) ? $request->inviter_user_id : null;
         $user->speaker_id = is_numeric($request->speaker_id)?$request->speaker_id:null;
         $user->office_director_id = is_numeric($request->office_director_id)?$request->office_director_id:null;
 

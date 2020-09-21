@@ -87,6 +87,20 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
+
+                                                <div>
+                                                    <select required name="inviter_user_id"
+                                                            data-placeholder="Выберите пригласитель"
+                                                            class="form-control selectpicker input"
+                                                            data-live-search="true">
+                                                        <option value="">Выберите пригласитель</option>
+                                                        @foreach($recommend_row as $item)
+                                                            <option @if($row->recommend_user_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id) ) {{'selected'}} @endif value="{{$item->user_id}}">
+                                                                {{sprintf('%s (%s)',$item['login'], $item['last_name'])}}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-6 form-group">
                                                 <input required type="email" name="email" class="form-control input"

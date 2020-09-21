@@ -10,7 +10,10 @@ use \App\Models\UserPacket;
 
     @if($item->is_portfolio == 0)
 
-        <?php $beforeSum = 0; ?>
+        <?php 
+            $beforeSum = 0;
+            $actualPackets = [Packet::PREMIUM, Packet::ELITE, Packet::VIP2];
+        ?>        
         @if(!in_array($item->packet_id, [\App\Models\Packet::GAP2, \App\Models\Packet::GAP1]))
             <?php $beforeSum = UserPacket::beforePurchaseSumWithPacketId(Auth::user()->user_id, $item->packet_id) ?>
         @endif
@@ -54,10 +57,16 @@ use \App\Models\UserPacket;
                            class="small-box-footer shop_buy_btn" style="font-size: 18px">Отменить запрос <i
                                     class="fa fa-arrow-circle-right"></i></a>
                     @endif
-                @else
-                    <a href="javascript:void(0)" onclick="showBuyModal(this,'{{$item->packet_id}}')"
-                       class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn" style="font-size: 18px">Купить
-                        пакет <i class="fa fa-arrow-circle-right"></i></a>
+                @else                    
+                    @if ($item->packet_id == Packet::GAP && !in_array($max_packet_user_number[0]->packet_id, $actualPackets))
+                        <a href="javascript:void(0)" onclick="showMessage('Для покупки этого пакета вы должны купить один из Premium, Elite, VIP пакетов')"
+                            class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn" style="font-size: 18px">Купить
+                            пакет <i class="fa fa-arrow-circle-right"></i></a>
+                    @else
+                        <a href="javascript:void(0)" onclick="showBuyModal(this,'{{$item->packet_id}}')"
+                            class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn" style="font-size: 18px">Купить
+                            пакет <i class="fa fa-arrow-circle-right"></i></a>
+                    @endif
                 @endif
                 {{--@else
 

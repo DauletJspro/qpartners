@@ -12,6 +12,21 @@
 
             </p>
         </li>
+        <?php $status_name = \App\Models\UserStatus::where('user_status_id', Auth::user()->soc_status_id)->first(); ?>
+        @if ($status_name)
+            <li class="header"
+                style="text-align: center; padding:5px 25px 0px">
+                <p style="color:#009551;margin:0px;font-weight: bold">
+
+                    @if(isset($status_name->user_status_name))
+
+                       <p>Соц.Статус: {{ $status_name->user_status_name }}</p>
+
+                    @endif
+
+                </p>
+            </li>
+        @endif
     @endif
 
     <li class="header" style="text-align: center; padding:5px 25px 0px">
