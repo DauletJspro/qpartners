@@ -661,7 +661,7 @@ class PacketController extends Controller
         $userPacket->packet_price = $userPacket->packet_price - $packet_old_price;
         $max_queue_start_position = UserPacket::where('packet_id', $userPacket->packet_id)->where('is_active', 1)->where('queue_start_position', '>', 0)->max('queue_start_position');
         $userPacket->queue_start_position = ($max_queue_start_position) ? ($max_queue_start_position + 1) : 1;
-        if ($userPacket->save() && $userPacket->packet_id != Packet::ELITE_FREE) {
+        if ($userPacket->save() && $userPacket->packet_id != Packet::ELITE_FREE && $userPacket->packet_id != Packet::GAP) {
             $this->add_share_to_global_diamond_found($userPacket, $userPacket->user_id);
         }
     }
@@ -687,7 +687,7 @@ class PacketController extends Controller
     private
     function implementPacketThings($packet, $user, $userPacket)
     {
-        if ($userPacket->user_packet_type == 'item' && $packet->packet_type == 1) {
+        if ($userPacket->user_packet_type == 'item' && $packet->packet_type == 1 && $userPacket->packet_id != Packet::GAP) {
             $operation = new UserOperation();
             $operation->author_id = null;
             $operation->recipient_id = $user->user_id;
@@ -696,7 +696,7 @@ class PacketController extends Controller
             $operation->operation_type_id = 15;
             $operation->operation_comment = 'За покупку пакета "' . $packet->packet_name_ru . '" Вы получаете ' . $packet->packet_thing;
             $operation->save();
-        } elseif ($userPacket->user_packet_type == 'service' && $packet->packet_type == 1) {
+        } elseif ($userPacket->user_packet_type == 'service' && $packet->packet_type == 1 && $userPacket->packet_id != Packet::GAP) {
             $operation = new UserOperation();
             $operation->author_id = null;
             $operation->recipient_id = $user->user_id;
@@ -706,7 +706,7 @@ class PacketController extends Controller
             $operation->operation_comment = 'За покупку пакета "' . $packet->packet_name_ru . '" Вы получаете ' . $packet->packet_lection;
             $operation->save();
         }
-
+        
         //пополнение фонда компании
         $company_money = $userPacket->packet_price - $this->sentMoney;
         $operation = new UserOperation();
@@ -721,7 +721,6 @@ class PacketController extends Controller
         $company = Users::where('user_id', 1)->first();
         $company->user_money = $company->user_money + $company_money;
         $company->save();
-
     }
 
     private function implementQualificationBonuses($packet, $user, $userPacket)
