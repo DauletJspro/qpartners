@@ -1,12 +1,12 @@
 <ul class="sidebar-menu">
     @if(Auth::user()->status_id > 0)
         <li class="header"
-            style="text-align: center; padding:5px 25px 0px"> <?php $status_name = \App\Models\UserStatus::where('user_status_id', Auth::user()->status_id)->first(); ?>
-            <p style="color:#009551;margin:0px;font-weight: bold">
+            style="padding:5px 25px 0px;"> <?php $status_name = \App\Models\UserStatus::where('user_status_id', Auth::user()->status_id)->first(); ?>
+            <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">
 
                 @if(isset($status_name->user_status_name))
 
-                    {{ $status_name->user_status_name }}
+                Статус QPC: {{ $status_name->user_status_name }}
 
                 @endif
 
@@ -15,33 +15,36 @@
         <?php $status_name = \App\Models\UserStatus::where('user_status_id', Auth::user()->soc_status_id)->first(); ?>
         @if ($status_name)
             <li class="header"
-                style="text-align: center; padding:5px 25px 0px">
-                <p style="color:#009551;margin:0px;font-weight: bold">
+                style="padding:5px 25px 0px">                
+                @if(isset($status_name->user_status_name))
 
-                    @if(isset($status_name->user_status_name))
+                    <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Статус GAP: {{ $status_name->user_status_name }}</p>
 
-                       <p>Соц.Статус: {{ $status_name->user_status_name }}</p>
-
-                    @endif
-
-                </p>
+                @endif                
             </li>
         @endif
     @endif
 
-    <li class="header" style="text-align: center; padding:5px 25px 0px">
-        <p style="color:red;margin:0px;font-weight: bold">Ваш баланс: {{Auth::user()->user_money}}PV
+    <li class="header" style="padding:5px 25px 0px">
+        <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Баланс: {{Auth::user()->user_money}}PV
             ( {{Auth::user()->user_money * \App\Models\Currency::pvToKzt()}}тг)</p>
     </li>
 
 
-    <li class="header" style="text-align: center; padding:5px 25px 0px">@if(Auth::user()->is_activated == 1) <p
-                style="color:#009551;margin:0px;">Ваш аккаунт успешно активирован</p> @else <p
-                style="color:red;margin:0px;">Ваш аккаунт не активирован</p> @endif</li>
-    <li class="header" style="text-align: center; padding:5px 25px 0px">@if(Auth::user()->is_valid_document == 1) <p
-                style="color:#009551;margin:0px;">Верификация успешно пройдено</p> @else <a
-                style="color:red;margin:0px;text-decoration: underline; padding: 0px" href="/admin/document">Верификация
-            не пройдено</a> @endif</li>
+    <li class="header" style="padding:5px 25px 0px">
+        @if(Auth::user()->is_activated == 1) 
+            <p style="color:#009551;margin:0px; font-size: 14px; font-weight: bold;">Аккаунт: Активирован</p> 
+        @else 
+            <p style="color:#009551;margin:0px; font-size: 14px; font-weight: bold;">Аккаунт: Не активирован</p> 
+        @endif
+    </li>
+    <li class="header" style="padding:5px 25px 0px">
+        @if(Auth::user()->is_valid_document == 1) 
+            <p style="color:#009551;margin:0px 0px 10px 0px; font-size: 14px; font-weight: bold;">Верификация: Пройдено</p> 
+        @else 
+            <a style="color:#009551;margin:0px 0px 10px 0px;text-decoration: underline; padding: 0px; font-size: 14px; font-weight: bold;" href="/admin/document">Верификация: Не пройдено</a> 
+        @endif
+    </li>
 
 
     <li class="treeview">
