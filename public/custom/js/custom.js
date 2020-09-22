@@ -51,6 +51,15 @@ function showMessage(message){
     return false;
 }
 
+function showLimitMessage() {
+    $.gritter.add({
+        title: '',
+        text: 'Для покупки этого пакета вы должны купить один из Premium, Elite, VIP пакетов',
+        class_name: 'success-gritter'
+    });
+    return false;
+}
+
 
 
 function addResponseAddPacket(ob,packet_id,user_packet_type){

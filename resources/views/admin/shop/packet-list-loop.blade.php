@@ -59,7 +59,7 @@ use \App\Models\UserPacket;
                     @endif 
                 @else                    
                     @if ($item->packet_id == Packet::GAP && !in_array($max_packet_user_number[0]->packet_id, $actualPackets))
-                        <a href="javascript:void(0)" onclick="showMessage('Для покупки этого пакета вы должны купить один из Premium, Elite, VIP пакетов')"
+                        <a href="javascript:void(0)" onclick="showLimitMessage()"
                             class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn" style="font-size: 18px">Купить
                             пакет <i class="fa fa-arrow-circle-right"></i></a>
                     @else
