@@ -58,10 +58,16 @@ use \App\Models\UserPacket;
                                     class="fa fa-arrow-circle-right"></i></a>
                     @endif 
                 @else                    
-                    @if ($item->packet_id == Packet::GAP && $max_packet_user_number[0] != null && !in_array($max_packet_user_number[0]->packet_id, $actualPackets))
-                        <a href="javascript:void(0)" onclick="showLimitMessage()"
-                            class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn" style="font-size: 18px">Купить
-                            пакет <i class="fa fa-arrow-circle-right"></i></a>
+                    @if ($item->packet_id == Packet::GAP)
+                        @if ($max_packet_user_number[0] == null || ($max_packet_user_number[0] != null && !in_array($max_packet_user_number[0]->packet_id, $actualPackets)))
+                            <a href="javascript:void(0)" onclick="showLimitMessage()"
+                                class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn" style="font-size: 18px">Купить
+                                пакет <i class="fa fa-arrow-circle-right"></i></a>
+                        @else
+                            <a href="javascript:void(0)" onclick="showBuyModal(this,'{{$item->packet_id}}')"
+                                class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn" style="font-size: 18px">Купить
+                                пакет <i class="fa fa-arrow-circle-right"></i></a>    
+                        @endif                        
                     @else
                         <a href="javascript:void(0)" onclick="showBuyModal(this,'{{$item->packet_id}}')"
                             class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn" style="font-size: 18px">Купить
