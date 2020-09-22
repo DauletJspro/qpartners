@@ -56,7 +56,7 @@ use \App\Models\UserPacket;
                         <a href="javascript:void(0)" onclick="cancelResponsePacket(this,'{{$item->packet_id}}')"
                            class="small-box-footer shop_buy_btn" style="font-size: 18px">Отменить запрос <i
                                     class="fa fa-arrow-circle-right"></i></a>
-                    @endif
+                    @endif 
                 @else                    
                     @if ($item->packet_id == Packet::GAP && !in_array($max_packet_user_number[0]->packet_id, $actualPackets))
                         <a href="javascript:void(0)" onclick="showMessage('Для покупки этого пакета вы должны купить один из Premium, Elite, VIP пакетов')"
