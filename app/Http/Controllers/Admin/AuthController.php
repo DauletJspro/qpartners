@@ -277,7 +277,7 @@ class AuthController extends Controller
                 'windows-1251',
                 'UTF-8',
                 'Новый пароль',
-                view('mail.reset-password',['new_password' => '1234']),
+                view('mail.reset-password',['new_password' => $new_password]),
                 true);
 
 
