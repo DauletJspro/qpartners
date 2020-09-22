@@ -76,7 +76,7 @@
                                                        class="form-control input" placeholder="Логин"/>
                                                 <div>
                                                     <select required name="recommend_user_id"
-                                                            data-placeholder="Выберите спонсора"
+                                                            data-placeholder="Выберите спонсора (1 уровень)"
                                                             class="form-control selectpicker input"
                                                             data-live-search="true">
                                                         <option value="">Выберите спонсора (1 уровень)</option>
@@ -90,10 +90,10 @@
 
                                                 <div>
                                                     <select required name="inviter_user_id"
-                                                            data-placeholder="Выберите пригласитель"
+                                                            data-placeholder="Выберите пригласителя"
                                                             class="form-control selectpicker input"
                                                             data-live-search="true">
-                                                        <option value="">Выберите пригласитель</option>
+                                                        <option value="">Выберите пригласителя</option>
                                                         @foreach($recommend_row as $item)
                                                             <option @if($row->recommend_user_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id) ) {{'selected'}} @endif value="{{$item->user_id}}">
                                                                 {{sprintf('%s (%s)',$item['login'], $item['last_name'])}}
