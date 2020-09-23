@@ -1359,11 +1359,11 @@
 @media only screen and (max-width: 767px) {
     .mt-paddingbottomxs {
         padding-bottom: 30px;
+        display: flex;
     }
 
     .mt-nopaddingtopxs {
-        padding-top: 0 !important;
-        display: flex;
+        padding-top: 0 !important;        
     }
 
     .banner-1,
