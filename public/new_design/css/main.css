@@ -2982,7 +2982,7 @@ a:hover {
 
 #mt-footer.style2 .footer-holder {
     padding: 51px 0 60px;
-    background-color: #696969;
+    background-color: #5e2416;
     color: white;
 }
 
@@ -13661,6 +13661,11 @@ label[for]:hover {
     cursor: pointer;
 }
 
+.nav_li_lang {
+    display: none !important;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
 
 .hide_nav_li {
     display: none !important;

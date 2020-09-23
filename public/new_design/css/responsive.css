@@ -2686,7 +2686,11 @@
     }
 
     .hide_nav_li {
-        display: inline-block !important;
+        display: block !important;
+    }    
+
+    .nav_li_lang {
+        display: flex !important;
     }
 
     

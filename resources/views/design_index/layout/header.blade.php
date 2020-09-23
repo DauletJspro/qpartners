@@ -333,7 +333,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                 <a class="" href="{{ route('favorite.showUserItem') }}">Избранные</a>
                             </li>
 
-                            <li class="hide_nav_li" style="display: flex;">
+                            <li class="hide_nav_li nav_li_lang">
                                 <a href="{{\App\Http\Helpers::setSessionLang('kz',$request)}}">
                                     KZ
                                 </a>
