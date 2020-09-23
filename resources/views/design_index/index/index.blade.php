@@ -376,12 +376,8 @@ use Illuminate\Support\Facades\Session;
                                                     <div class="b1">
                                                         <div class="b2">
                                                             <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
-                                                                <div style="width: 270px;
-                                                                        height: 290px;
-                                                                        background-image: url('{{$product->product_image}}');
-                                                                        background-position: center;
-                                                                        background-size: cover;">
-
+                                                                <div class="product_image" 
+                                                                    style="background-image: url('{{$product->product_image}}');">
                                                                 </div>
                                                             </a>
                                                             <ul class="mt-stars">
@@ -443,11 +439,8 @@ use Illuminate\Support\Facades\Session;
                                                     <div class="b1">
                                                         <div class="b2">
                                                             <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
-                                                                <div style="width: 270px;
-                                                                        height: 290px;
-                                                                        background-image: url('{{$product->product_image}}');
-                                                                        background-position: center;
-                                                                        background-size: cover;">
+                                                                <div class="product_image" 
+                                                                    style="background-image: url('{{$product->product_image}}');">
 
                                                                 </div>
                                                             </a>
@@ -506,12 +499,8 @@ use Illuminate\Support\Facades\Session;
                                                     <div class="b1">
                                                         <div class="b2">
                                                             <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
-                                                                <div style="width: 270px;
-                                                                        height: 290px;
-                                                                        background-image: url('{{$product->product_image}}');
-                                                                        background-position: center;
-                                                                        background-size: cover;">
-
+                                                                <div class="product_image"
+                                                                    style="background-image: url('{{$product->product_image}}');">
                                                                 </div>
                                                             </a>
                                                             <ul class="mt-stars">
@@ -568,12 +557,8 @@ use Illuminate\Support\Facades\Session;
                                                     <div class="b1">
                                                         <div class="b2">
                                                             <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
-                                                                <div style="width: 270px;
-                                                                        height: 290px;
-                                                                        background-image: url('{{$product->product_image}}');
-                                                                        background-position: center;
-                                                                        background-size: cover;">
-
+                                                                <div class="product_image" 
+                                                                    style="background-image: url('{{$product->product_image}}');">
                                                                 </div>
                                                             </a>
                                                             <ul class="mt-stars">
@@ -632,7 +617,7 @@ use Illuminate\Support\Facades\Session;
                                         <div class="box">
                                             <div class="b1">
                                                 <div class="b2">
-                                                    <div style="background-position: center; background-size: cover; width: 215px; height: 215px; background-image: url('{{$product->product_image}}')">
+                                                    <div class="product_image" style="background-image: url('{{$product->product_image}}')">
                                                     </div>
                                                     <span class="caption">
                                                         @if($product->is_new)
@@ -690,17 +675,15 @@ use Illuminate\Support\Facades\Session;
                         <h2 class="heading">Наши бренды</h2>
                         <div class="patner-slider">
                             @foreach($brands as $brand)
-                                @if ($brand->image)
-                                    <div class="slide">
-                                        <div class="box1">
-                                            <div class="box2">
-                                                <a href="#">
-                                                    <img src="{{$brand->image}}" alt="">
-                                                </a>
-                                            </div>
+                                <div class="slide">
+                                    <div class="box1">
+                                        <div class="box2">
+                                            <a href="#">
+                                                <img src="{{$brand->image}}" alt="">
+                                            </a>
                                         </div>
-                                    </div>                                                            
-                                @endif
+                                    </div>
+                                </div>
                             @endforeach
                         </div>
                     </div>
@@ -752,12 +735,10 @@ use Illuminate\Support\Facades\Session;
                                                         <div class="b2">
                                                             <a href="https://www.instagram.com/p/B_17-MYJDaU/?igshid=1jr9c3tss0z8q"
                                                                target="_blank">
-                                                                <div style="border: 1px solid lightgrey;
-                                                            width: 275px;
-                                                            height: 290px;
-                                                             background-image: url('https://www.instagram.com/p/B_17-MYJDaU/media/?size=m');
-                                                              background-size: contain; background-position:
-                                                               center; background-repeat: no-repeat;"></div>
+                                                                <div class="product_image" 
+                                                                    style="background-image: url('https://www.instagram.com/p/B_17-MYJDaU/media/?size=m'); 
+                                                                        background-size: contain;">
+                                                                </div>
                                                             </a>
                                                             <ul class="links">
                                                                 <li>
@@ -778,12 +759,10 @@ use Illuminate\Support\Facades\Session;
                                                         <div class="b2">
                                                             <a href="https://www.instagram.com/p/B_yso1ygEKe/?igshid=1w9pvg8ny5dy3"
                                                                target="_blank">
-                                                                <div style="border: 1px solid lightgrey;
-                                                            width: 275px;
-                                                            height: 290px;
-                                                             background-image: url('https://www.instagram.com/p/B_yso1ygEKe/media/?size=m');
-                                                              background-size: contain; background-position:
-                                                               center; background-repeat: no-repeat;"></div>
+                                                                <div class="product_image" 
+                                                                    style="background-image: url('https://www.instagram.com/p/B_yso1ygEKe/media/?size=m'); 
+                                                                        background-size: contain;">
+                                                                </div>                                                                
                                                             </a>
                                                             <ul class="links">
                                                                 <li>
@@ -804,12 +783,10 @@ use Illuminate\Support\Facades\Session;
                                                         <div class="b2">
                                                             <a href="https://www.instagram.com/p/B_l0FblJOE2/?igshid=1o1kyh6pyy8fj"
                                                                target="_blank">
-                                                                <div style="border: 1px solid lightgrey;
-                                                            width: 275px;
-                                                            height: 290px;
-                                                             background-image: url('https://www.instagram.com/p/B_l0FblJOE2/media/?size=m');
-                                                              background-size: contain; background-position:
-                                                               center; background-repeat: no-repeat;"></div>
+                                                               <div class="product_image" 
+                                                                    style="background-image: url('https://www.instagram.com/p/B_l0FblJOE2/media/?size=m'); 
+                                                                        background-size: contain;">
+                                                                </div>                                                               
                                                             </a>
                                                             <ul class="links">
                                                                 <li>
@@ -827,15 +804,13 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <div class="box">
                                                     <div class="b1">
-                                                        <div class="b2">
+                                                        <div class="b2">                                                            
                                                             <a href="https://www.instagram.com/p/B_hM0fdpGXv/?igshid=1dp0gvsveld2f"
                                                                target="_blank">
-                                                                <div style="border: 1px solid lightgrey;
-                                                            width: 275px;
-                                                            height: 290px;
-                                                             background-image: url('https://www.instagram.com/p/B_hM0fdpGXv/media/?size=m');
-                                                              background-size: contain; background-position:
-                                                               center; background-repeat: no-repeat;"></div>
+                                                               <div class="product_image" 
+                                                                    style="background-image: url('https://www.instagram.com/p/B_hM0fdpGXv/media/?size=m'); 
+                                                                        background-size: contain;">
+                                                                </div>
                                                             </a>
                                                             <ul class="links">
                                                                 <li>
@@ -853,15 +828,13 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <div class="box">
                                                     <div class="b1">
-                                                        <div class="b2">
+                                                        <div class="b2">                                                            
                                                             <a href="https://www.instagram.com/p/B_ePhRGpXP7/?igshid=ueow4438kns0"
                                                                target="_blank">
-                                                                <div style="border: 1px solid lightgrey;
-                                                            width: 275px;
-                                                            height: 290px;
-                                                             background-image: url('https://www.instagram.com/p/B_ePhRGpXP7/media/?size=m');
-                                                              background-size: contain; background-position:
-                                                               center; background-repeat: no-repeat;"></div>
+                                                               <div class="product_image" 
+                                                                    style="background-image: url('https://www.instagram.com/p/B_ePhRGpXP7/media/?size=m'); 
+                                                                        background-size: contain;">
+                                                                </div>
                                                             </a>
                                                             <ul class="links">
                                                                 <li>
@@ -879,15 +852,13 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <div class="box">
                                                     <div class="b1">
-                                                        <div class="b2">
+                                                        <div class="b2">                                                            
                                                             <a href="https://www.instagram.com/p/B_TygfspnQ5/?igshid=mhn1mobymsvz"
-                                                               target="_blank">
-                                                                <div style="border: 1px solid lightgrey;
-                                                            width: 275px;
-                                                            height: 290px;
-                                                             background-image: url('https://www.instagram.com/p/B_TygfspnQ5/media/?size=m');
-                                                              background-size: contain; background-position:
-                                                               center; background-repeat: no-repeat;"></div>
+                                                               target="_blank">                                                              
+                                                               <div class="product_image" 
+                                                                    style="background-image: url('https://www.instagram.com/p/B_TygfspnQ5/media/?size=m'); 
+                                                                        background-size: contain;">
+                                                                </div>
                                                             </a>
                                                             <ul class="links">
                                                                 <li>

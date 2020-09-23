@@ -6542,6 +6542,14 @@ a:hover {
     vertical-align: bottom;
 }
 
+.mt-product1 .b2 .product_image {
+    width: 270px;
+    height: 290px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .mt-product1 .caption {
     top: 44px;
     left: 0;
@@ -7397,7 +7405,7 @@ a:hover {
     height: 37px;
     position: absolute;
     border-radius: 19px;
-    background: #eee;
+    background: gold;
 }
 
 .mt-producttabs .producttabs {
@@ -13646,9 +13654,14 @@ label[for]:hover {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    K line-height: 1;
+    line-height: 1;
     background-color: black;
     color: white;
     font-weight: 600;
     cursor: pointer;
+}
+
+
+.hide_nav_li {
+    display: none !important;
 }

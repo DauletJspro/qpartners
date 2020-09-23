@@ -34,10 +34,10 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                 </div>
                 <div class="col-xs-12 col-sm-6 text-right">
                     <ul class="mt-top-list">
-                        <li>
+                        <li class="hidden-xs">
                             <a href="{{route('shop.show')}}">Магазин</a>
                         </li>
-                        <li>
+                        <li class="hidden-xs">
                             <div class="dropdown">
                                 <a class="icl_lang_sel_current icl_lang_sel_native">{{Lang::get('app.lang')}}</a>
                                 <div class="dropdown-content">
@@ -88,7 +88,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                         <?php $totalPrice += $total ? $total->product_price : 0; ?>
                     <?php endforeach ?>
                     @endif
-                    <a href="{{ route('basket.show') }}" class="mt-sh-cart" id="basket-box">
+                    <a href="{{ route('basket.show') }}" class="mt-sh-cart hidden-xs" id="basket-box">
                         <span class="icon-handbag"></span>
                         <strong>Ваша корзина</strong>
                         <span>{{isset($items) ? count($items) : 0}} продукта &nbsp; <i class="fa fa-dollar"></i>{{$totalPrice}}</span>
@@ -103,7 +103,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                         </li>
                         <li></li>
                         <li><a style="color: red;" href="{{route('favorite.showUserItem')}}"
-                               class="icon-heart"><span id="favoriteCount">{{count($favorites)}}</span></a></li>
+                               class="icon-heart hidden-xs"><span id="favoriteCount">{{count($favorites)}}</span></a></li>
                     </ul>
                     <nav id="nav">
                         <ul>
@@ -322,7 +322,28 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                     </ul>
                                 </div>
                             </li>
+                            <li class="hide_nav_li">
+                                <a href="{{route('shop.show')}}">Магазин</a>
+                            </li>
+                            <li class="hide_nav_li">
+                                <a class="" href="{{ route('basket.show') }}">Корзина</a>
+                            </li>
 
+                            <li class="hide_nav_li">
+                                <a class="" href="{{ route('favorite.showUserItem') }}">Избранные</a>
+                            </li>
+
+                            <li class="hide_nav_li" style="display: flex;">
+                                <a href="{{\App\Http\Helpers::setSessionLang('kz',$request)}}">
+                                    KZ
+                                </a>
+                                <a href="{{\App\Http\Helpers::setSessionLang('ru',$request)}}">
+                                    RU
+                                </a>
+                                <a href="{{\App\Http\Helpers::setSessionLang('en',$request)}}">
+                                    EN
+                                </a>
+                            </li>
 
                         </ul>
                     </nav>

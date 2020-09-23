@@ -752,7 +752,7 @@
     #nav {
         right: 0;
         margin: 0;
-        top: 65px;
+        top: 55px;
         opacity: 0;
         left: -9999px;
         overflow-y: auto;
@@ -2675,6 +2675,21 @@
     .hidden-xs {
         display: none !important;
     }
+
+    .mt-product1 .b2 .product_image {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .mt-patners .box1 {
+        width: 90%;
+    }
+
+    .hide_nav_li {
+        display: inline-block !important;
+    }
+
+    
 }
 
 @media only screen and (max-width: 550px) {
