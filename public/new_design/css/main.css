@@ -6550,6 +6550,22 @@ a:hover {
     background-repeat: no-repeat;
 }
 
+.mt-product1 .b2 .product_new_image {
+    width: 215px;
+    height: 215px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.mt-product1 .b2 .insta_image {
+    width: 270px;
+    height: 290px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .mt-product1 .caption {
     top: 44px;
     left: 0;

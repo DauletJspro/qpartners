@@ -2681,6 +2681,14 @@
         margin: 0 auto;
     }
 
+    .mt-product1 .b2 .product_new_image {
+        width: 95vw;
+    }
+
+    .mt-product1 .b2 .insta_image {
+        width: 95vw;
+    }
+
     .mt-patners .box1 {
         width: 90%;
     }
