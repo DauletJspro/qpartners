@@ -1363,6 +1363,7 @@
 
     .mt-nopaddingtopxs {
         padding-top: 0 !important;
+        display: flex;
     }
 
     .banner-1,
