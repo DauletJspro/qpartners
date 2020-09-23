@@ -56,7 +56,7 @@ class IndexController extends Controller
         }
         $products = Product::all();
         $popularProducts = Product::where(['is_popular' => true])->get();
-        $brands = Brand::where(['is_show' => true])->get();
+        $brands = Brand::where(['is_show' => true])->whereNotNull('image')->get();
         $elixirs = Product::where(['category_id' => Category::ELIXIR])->get();
         $gels = Product::where(['category_id' => Category::GEL])->get();
         $sprays = Product::where(['category_id' => Category::SPRAY])->get();

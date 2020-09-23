@@ -690,15 +690,17 @@ use Illuminate\Support\Facades\Session;
                         <h2 class="heading">Наши бренды</h2>
                         <div class="patner-slider">
                             @foreach($brands as $brand)
-                                <div class="slide">
-                                    <div class="box1">
-                                        <div class="box2">
-                                            <a href="#">
-                                                <img src="{{$brand->image}}" alt="">
-                                            </a>
+                                @if ($brand->image)
+                                    <div class="slide">
+                                        <div class="box1">
+                                            <div class="box2">
+                                                <a href="#">
+                                                    <img src="{{$brand->image}}" alt="">
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </div>                                                            
+                                @endif
                             @endforeach
                         </div>
                     </div>
