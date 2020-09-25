@@ -207,8 +207,8 @@ class IndexController extends Controller
 
             $user_status = UserStatus::where('user_status_id', $user->status_id)->first();
 
-            if ($months > 0 && $user->user_money > 4) {
-                $activation_money = 5;
+            if ($months > 0 && $user->user_money > 24) {
+                $activation_money = 24;
 
                 $user->user_money = $user->user_money - $activation_money;
                 $user->activated_date = date("Y-m-d");
@@ -245,8 +245,8 @@ class IndexController extends Controller
 
                     if ($parent_packet == null) continue;
 
-                    if ($counter > 0 && $counter <= 5) {
-                        $money = $activation_money * 10 / 100;
+                    if ($counter > 0 && $counter <= 8) {
+                        $money = $activation_money * 8.34 / 100;
                     }
 
                     $operation = new UserOperation();
@@ -263,7 +263,7 @@ class IndexController extends Controller
 
                     $send_money = $send_money + $money;
 
-                    if ($counter >= 5) break;
+                    if ($counter >= 8) break;
                 }
 
                 $operation = new UserOperation();
