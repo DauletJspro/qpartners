@@ -22,24 +22,22 @@ use Illuminate\Support\Facades\Session;
                 <div class="col-xs-12">
                     <div class="banner-frame toppadding-zero">
                         <div class="banner-5 white wow fadeInLeft" data-wow-delay="0.4s">
-                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/main_page_images/super_elixir_grippo.png'); background-size: cover; background-position: center;"></div>
+                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/main_page_images/car_1.jpg'); background-size: cover; background-position: center;"></div>
                             <div class="holder" style="">
-                                <div class="texts" style="background-color:transparent; padding: 2rem 4rem -5rem 4rem;">
-                                    <strong class="title">профилактика covid-19</strong>
-                                    <h3 style="font-weight: bold;word-break:keep-all;"><span
-                                                class="span-1">Защитит от</span> <br> <span
-                                                style="word-break: keep-all;font-weight:700;font-size:110%;">ВИРУСОВ</span>
-                                    </h3>
+                                <div class="texts" style="background-color:transparent; padding: 2rem 4rem -5rem 4rem; max-width: unset;">
+                                    <strong class="title" style="color: #000;">Социальная программа</strong>
+                                    {{-- <h3 style="font-weight: bold;word-break:keep-all;"><span
+                                                class="span-1">Дарим новый huyndai accent activ</span> <br>
+                                                <span class="span-1">за 6 190 000 KZT</span>
+                                    </h3> --}}
                                     <p>
-                                        <span class="p-span-1">Super Elixir Grippo</span> <br>
+                                        <span class="p-span-1">Дарим новый huyndai accent activ <br> за 6 190 000 KZT </span> <br>
                                         <span class="p-span-2">
-                                            укрепляет иммунитет во время ОРВИ,<br>
-                                            обладает противовирусным <br>
-                                            и бактерицидными свойствами
+                                            Выполни условия за 90 дней <br> и забирай свой Huyndai бесплатно!<br>                                            
                                         </span>
                                     </p>
                                     <a href="product-detail.html" class="btn-shop">
-                                        <span><strong style="color: white;">Купить сейчас</strong></span>
+                                        <span><strong style="color: white;">Забрать</strong></span>
                                         <i class="fa fa-angle-right"
                                            style="color: white;background-color: lightgrey;"></i>
                                     </a>
@@ -47,28 +45,28 @@ use Illuminate\Support\Facades\Session;
                             </div>
                         </div>
                         <div class="banner-6 white wow fadeInRight" data-wow-delay="0.4s">
-                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/main_page_images/super_elixir_energy.png'); background-size: cover; background-position: center;background-repeat: no-repeat;"></div>
+                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/main_page_images/iphone_1.jpg'); background-size: cover; background-position: center;background-repeat: no-repeat;"></div>
                             <div class="holder" style="background-color: rgba(0,0,0,0.1);">
-                                <div style=" width: 100%; padding: 5px;">
+                                <div style=" width: 100%; padding: 5px; position: relative;">
                                     <strong class="sub-title text-uppercase text-center"
-                                            style="font-size: 15px; font-weight: 700;">ПРОФИЛАКТИКА COVID-19</strong>
-                                    <h3 style="padding-left:2px;background-color:rgba(0,0,0,0.2); line-height: 3rem;">
+                                            style="font-size: 15px; font-weight: 700; background-color: #000; color: #fff;">Социальная программа</strong>
+                                    {{-- <h3 style="padding-left:2px;background-color:rgba(0,0,0,0.2); line-height: 3rem;">
                                         <span style="font-size:105%;">Зарядитесь</span> <br> <span
                                                 class="text-uppercase"
                                                 style="font-size: 100%;word-break: keep-all;">энергией природы</span>
-                                    </h3>
+                                    </h3>                                     --}}
+                                </div>
+                                <div style="position: absolute; bottom: 60px; left: 31px; right: 31px;">
                                     <p style="margin-top: 5rem;background-color: rgba(255,255,255,0.1);">
-                                        <span class="p-span-3">Super Elixir Energy</span> <br>
+                                        <span class="p-span-3">APPLE IPHONE XI <br> в ПОДАРОК! </span> <br>
                                         <span class="p-span-4">
-                                            стимулирует иммунную систему, <br>
-                                            омолаживает и повышает защитные
-                                            силы организма.
-                                            Очищает кровь и повышает гемоглабин.
+                                            Выполни условия за 30 дней <br>
+                                            и IPHONE XI за 389 890 KZT твой!
                                         </span>
                                     </p>
                                 </div>
                                 <a href="product-detail.html" class="btn-shop">
-                                    <span style="color: #003a79 !important;"><strong>Купить сейчас</strong></span>
+                                    <span style="color: #003a79 !important;"><strong>Участвовать</strong></span>
                                     <i class="fa fa-angle-right" style="color: white;background-color: #93d2ff;"></i>
                                 </a>
                             </div>
@@ -77,53 +75,47 @@ use Illuminate\Support\Facades\Session;
                         <div class="banner-box two">
                             <!-- banner 7 right start here -->
                             <div class="banner-7 right wow fadeInUp" data-wow-delay="0.4s">
-                                <div style="background-image: url('/new_design/images/main_page_images/super_elixir_bronchit.png'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
+                                <div style="background-image: url('/new_design/images/main_page_images/macbook_1.jpg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
                                 <div class="holder">
                                     <div class="text-center"
                                          style="width: 100%; padding: 2rem 1rem;">
-                                        <h2 style=""><strong style="color: red; font-weight: bold;">Профилактика
-                                                COVID-19</strong></h2>
-                                        <h3 class="text-left" style="margin-top:10px;float: left;">
+                                        <h2 style="background: #24899b"><strong style="color: #fff; font-weight: bold;">Социальная программа</strong></h2>
+                                        {{-- <h3 class="text-left" style="margin-top:10px;float: left;">
                                             <strong style="color: black;font-weight: 600;">Дышите
-                                                <br> <span class="strong-span-1">ПОЛНОЙ ГРУДЬЮ</span></strong></h3>
-                                        <p style="float: left;color:black;" class="text-left p-parent-1">
-                                            <span class="p-span-5 text-left">Super Elixir Bronchi</span><br>
-                                            <span class="p-span-6">
-                                                обладает противовоспали- <br>
-                                                тельным, отхаркивающим, <br>
-                                                бронхолитическим, регене- <br>
-                                                ративным действием
-                                            </span>
-                                        </p>
+                                                <br> <span class="strong-span-1">ПОЛНОЙ ГРУДЬЮ</span></strong></h3> --}}                                       
                                     </div>
+                                    <p style="float: left;color:black; position: absolute; bottom: 30px;" class="text-left p-parent-1">
+                                        <span class="p-span-5 text-left">ХОЧЕШЬ MACKBOOK AIR (554 990 KZT) БЕСПЛАТНО?</span><br>
+                                        <span class="p-span-6">
+                                            Выполни условия за 60 дней <br>
+                                            и забирай свой MACBOOK AIR<br>
+                                        </span>
+                                    </p>
                                     <div class="price-tag">
-                                        <a class="shop-now" href="product-detail.html">купить сейчас</a>
+                                        <a class="shop-now" href="product-detail.html">ХОЧУ</a>
                                     </div>
                                 </div>
                             </div><!-- banner 7 right end here -->
                             <!-- banner 8 start here -->
                             <div class="banner-8 wow fadeInDown" data-wow-delay="0.4s">
-                                <div style="background-image: url('/new_design/images/main_page_images/super_elixir_imunno.png'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
+                                <div style="background-image: url('/new_design/images/main_page_images/money_1.jpg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
                                 <div class="holder text-left" style="background-color: rgba(0,0,0,0.2);">
                                     <div style="width: 100%; padding: 0 1rem;">
-                                        <h2 class="text-center"><strong style="color: white; font-weight: bold;">Профилактика
-                                                COVID-19</strong></h2>
-                                        <h3 style="margin-bottom:20px !important;"><strong>Укрепите
-                                                <br> ИММУНИТЕТ</strong></h3>
+                                        <h2 style="background: #69ab00;" class="text-center"><strong style="color: white; font-weight: bold;">Социальная программа</strong></h2>
+                                        {{-- <h3 style="margin-bottom:20px !important;"><strong>Укрепите
+                                                <br> ИММУНИТЕТ</strong></h3> --}}
 
                                         <p style="float: left;color:black;" class="text-left p-parent-2">
-                                            <span class="p-span-5 text-left">Super Elixir Bronchi</span><br>
+                                            {{-- <span class="p-span-5 text-left">Super Elixir Bronchi</span><br> --}}
                                             <span class="p-span-6">
-                                                обладает противовоспали- <br>
-                                                тельным, отхаркивающим, <br>
-                                                бронхолитическим, регене- <br>
-                                                ративным действием
+                                                Выполни условия и получи <br>
+                                                денежную премию 90 000 KZT<br>                                                
                                             </span>
                                         </p>
 
                                         <div class="price-tag text-left" style="padding-top: 0; margin-left: 0.8rem;">
                                             <a class="btn-shop" href="product-detail.html">
-                                                <span>Купить сейчас</span>
+                                                <span>ПОЛУЧИТЬ</span>
                                                 <i style="color: white;background-color: lightgrey;"
                                                    class="fa fa-angle-right"></i>
                                             </a>
