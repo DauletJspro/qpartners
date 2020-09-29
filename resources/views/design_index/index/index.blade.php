@@ -22,16 +22,19 @@ use Illuminate\Support\Facades\Session;
                 <div class="col-xs-12">
                     <div class="banner-frame toppadding-zero">
                         <div class="banner-5 white wow fadeInLeft" data-wow-delay="0.4s">
-                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/main_page_images/car_1.jpg'); background-size: cover; background-position: center;"></div>
+                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/main_page_images/car_2.jpg'); background-size: cover; background-position: center;"></div>
                             <div class="holder" style="">
-                                <div class="texts" style="background-color:transparent; padding: 2rem 4rem -5rem 4rem; max-width: unset;">
-                                    <strong class="title" style="color: #000;">Социальная программа</strong>
+                                <strong class="title" style="position: absolute; left: 26px; top: 18px; color: #000;
+                                    display: inline-block; vertical-align: middle; text-transform: uppercase;
+                                    background: white; font-weight: 800; font-size: 98%;
+                                    padding: 5px 10px; letter-spacing: 1px;">Социальная программа</strong>
+                                <div class="texts" style="background-color:transparent; padding: 2rem 4rem -5rem 4rem; max-width: unset;">                                    
                                     {{-- <h3 style="font-weight: bold;word-break:keep-all;"><span
                                                 class="span-1">Дарим новый huyndai accent activ</span> <br>
                                                 <span class="span-1">за 6 190 000 KZT</span>
                                     </h3> --}}
                                     <p>
-                                        <span class="p-span-1">Дарим новый huyndai accent activ <br> за 6 190 000 KZT </span> <br>
+                                        <span class="p-span-1">Дарим новый Huyndai Accent <br> стоимостью 6 190 000 KZT </span> <br>
                                         <span class="p-span-2">
                                             Выполни условия за 90 дней <br> и забирай свой Huyndai бесплатно!<br>                                            
                                         </span>
@@ -45,7 +48,7 @@ use Illuminate\Support\Facades\Session;
                             </div>
                         </div>
                         <div class="banner-6 white wow fadeInRight" data-wow-delay="0.4s">
-                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/main_page_images/iphone_1.jpg'); background-size: cover; background-position: center;background-repeat: no-repeat;"></div>
+                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/main_page_images/iphone_2.jpg'); background-size: cover; background-position: center;background-repeat: no-repeat;"></div>
                             <div class="holder" style="background-color: rgba(0,0,0,0.1);">
                                 <div style=" width: 100%; padding: 5px; position: relative;">
                                     <strong class="sub-title text-uppercase text-center"
@@ -61,7 +64,7 @@ use Illuminate\Support\Facades\Session;
                                         <span class="p-span-3">APPLE IPHONE XI <br> в ПОДАРОК! </span> <br>
                                         <span class="p-span-4">
                                             Выполни условия за 30 дней <br>
-                                            и IPHONE XI за 389 890 KZT твой!
+                                            и IPHONE XI (389 890 KZT) твой!
                                         </span>
                                     </p>
                                 </div>
@@ -75,7 +78,7 @@ use Illuminate\Support\Facades\Session;
                         <div class="banner-box two">
                             <!-- banner 7 right start here -->
                             <div class="banner-7 right wow fadeInUp" data-wow-delay="0.4s">
-                                <div style="background-image: url('/new_design/images/main_page_images/macbook_1.jpg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
+                                <div style="background-image: url('/new_design/images/main_page_images/macbook_2.jpg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
                                 <div class="holder">
                                     <div class="text-center"
                                          style="width: 100%; padding: 2rem 1rem;">
@@ -98,14 +101,15 @@ use Illuminate\Support\Facades\Session;
                             </div><!-- banner 7 right end here -->
                             <!-- banner 8 start here -->
                             <div class="banner-8 wow fadeInDown" data-wow-delay="0.4s">
-                                <div style="background-image: url('/new_design/images/main_page_images/money_1.jpg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
+                                <div style="background-image: url('/new_design/images/main_page_images/money_2.jpg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
                                 <div class="holder text-left" style="background-color: rgba(0,0,0,0.2);">
                                     <div style="width: 100%; padding: 0 1rem;">
                                         <h2 style="background: #69ab00;" class="text-center"><strong style="color: white; font-weight: bold;">Социальная программа</strong></h2>
                                         {{-- <h3 style="margin-bottom:20px !important;"><strong>Укрепите
-                                                <br> ИММУНИТЕТ</strong></h3> --}}
-
-                                        <p style="float: left;color:black;" class="text-left p-parent-2">
+                                                <br> ИММУНИТЕТ</strong></h3> --}}                                        
+                                    </div>
+                                    <div style="position: absolute; padding: 0 1rem; bottom: 20px;">
+                                        <p style="float: left;color:black; margin: 0px 0px 15px;" class="text-left p-parent-2">
                                             {{-- <span class="p-span-5 text-left">Super Elixir Bronchi</span><br> --}}
                                             <span class="p-span-6">
                                                 Выполни условия и получи <br>

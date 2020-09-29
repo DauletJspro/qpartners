@@ -19,7 +19,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 hidden-xs">
-                    @foreach($subsidiaries as $key => $subsidiary)
+                    {{-- @foreach($subsidiaries as $key => $subsidiary)
                         <a href="{{route('coming-soon', ['id' => $subsidiary->id])}}" class="tel"
                            style="
                            {{$key ? 'margin-left:1px;' : ''}}
@@ -30,7 +30,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                              {{ $key <= count($subsidiary) ? 'border-right: 1px solid lightgrey;' : ''}}
                                     ">{{$subsidiary->name}}</span>
                         </a>
-                    @endforeach
+                    @endforeach --}}
                 </div>
                 <div class="col-xs-12 col-sm-6 text-right">
                     <ul class="mt-top-list">

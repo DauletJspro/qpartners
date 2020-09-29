@@ -252,7 +252,7 @@ a:hover {
 
 #mt-header.style3 .mt-top-bar {
     padding: 0;
-    background: #282828;
+    background: darkgray;
 }
 
 #mt-header.style3 .tel {
@@ -2982,7 +2982,7 @@ a:hover {
 
 #mt-footer.style2 .footer-holder {
     padding: 51px 0 60px;
-    background-color: #5e2416;
+    background-color: darkgray;
     color: white;
 }
 
