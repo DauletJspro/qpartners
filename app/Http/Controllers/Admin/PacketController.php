@@ -514,8 +514,8 @@ class PacketController extends Controller
         $inviter_order = 1;
         $userPacket = UserPacket::find($userPacketId);
         $actualStatuses = [UserStatus::CONSULTANT, UserStatus::PREMIUM_MANAGER, UserStatus::ELITE_MANAGER,
-            UserStatus::VIP_MANAGER, UserStatus::BRONZE_MANAGER, UserStatus::SILVER_MANAGER, UserStatus::GOLD_MANAGER, UserStatus::RUBIN_MANAGER,
-            UserStatus::SAPPHIRE_MANAGER, UserStatus::EMERALD_MANAGER, UserStatus::DIAMOND_MANAGER,
+            UserStatus::VIP_MANAGER, UserStatus::BRONZE_MANAGER, UserStatus::SILVER_MANAGER, UserStatus::GOLD_MANAGER, UserStatus::RUBIN_DIRECTOR,
+            UserStatus::SAPPHIRE_DIRECTOR, UserStatus::EMERALD_DIRECTOR, UserStatus::DIAMOND_DIRECTOR,
             UserStatus::FREE_ELITE_OWNER];
 
         if (!$userPacket) {
@@ -740,16 +740,16 @@ class PacketController extends Controller
                 } elseif ($inviterOrder == 7 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::GOLD_MANAGER) {
                     $bonusPercentage = (1 / 100);
                     $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 8 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::RUBIN_MANAGER) {
+                } elseif ($inviterOrder == 8 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::RUBIN_DIRECTOR) {
                     $bonusPercentage = (1 / 100);
                     $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 9 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::SAPPHIRE_MANAGER) {
+                } elseif ($inviterOrder == 9 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::SAPPHIRE_DIRECTOR) {
                     $bonusPercentage = (1 / 100);
                     $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::EMERALD_MANAGER) {
+                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::EMERALD_DIRECTOR) {
                     $bonusPercentage = (1 / 100);
                     $bonus = $userPacketPrice * $bonusPercentage;
-                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::DIAMOND_MANAGER) {
+                } elseif ($inviterOrder == 10 && in_array($packet->packet_id, $actualPackets) && $inviter->status_id >= UserStatus::DIAMOND_DIRECTOR) {
                     $bonusPercentage = (1 / 100);
                     $bonus = $userPacketPrice * $bonusPercentage;
                 }
@@ -829,20 +829,24 @@ class PacketController extends Controller
                     $operation->operation_comment = "Ваш статус Золотой Менеджер";
                     $willUpdate = true;
                 } elseif ($parent->status_id == UserStatus::GOLD_MANAGER && $user->status_id == UserStatus::GOLD_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GOLD_MANAGER)) {
-                    $parent->status_id = UserStatus::RUBIN_MANAGER;
-                    $operation->operation_comment = "Ваш статус Рубиновый Менеджер";
+                    $parent->status_id = UserStatus::PLATINUM_MANAGER;
+                    $operation->operation_comment = "Ваш статус Платиновый Менеджер";
                     $willUpdate = true;
-                } elseif ($parent->status_id == UserStatus::RUBIN_MANAGER && $user->status_id == UserStatus::RUBIN_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::RUBIN_MANAGER)) {
-                    $parent->status_id = UserStatus::SAPPHIRE_MANAGER;
-                    $operation->operation_comment = "Ваш статус Сапфировый Менеджер";
+                }elseif ($parent->status_id == UserStatus::PLATINUM_MANAGER && $user->status_id == UserStatus::PLATINUM_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::PLATINUM_MANAGER)) {
+                    $parent->status_id = UserStatus::RUBIN_DIRECTOR;
+                    $operation->operation_comment = "Ваш статус Рубиновый Директор";
                     $willUpdate = true;
-                } elseif ($parent->status_id == UserStatus::SAPPHIRE_MANAGER && $user->status_id == UserStatus::SAPPHIRE_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SAPPHIRE_MANAGER)) {
-                    $parent->status_id = UserStatus::EMERALD_MANAGER;
-                    $operation->operation_comment = "Ваш статус Изумрудный Менеджер";
+                } elseif ($parent->status_id == UserStatus::RUBIN_DIRECTOR && $user->status_id == UserStatus::RUBIN_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::RUBIN_DIRECTOR)) {
+                    $parent->status_id = UserStatus::SAPPHIRE_DIRECTOR;
+                    $operation->operation_comment = "Ваш статус Сапфировый Директор";
                     $willUpdate = true;
-                } elseif ($parent->status_id == UserStatus::EMERALD_MANAGER && $user->status_id == UserStatus::EMERALD_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::EMERALD_MANAGER)) {
-                    $parent->status_id = UserStatus::DIAMOND_MANAGER;
-                    $operation->operation_comment = "Ваш статус Бриллиантовый Менеджер";
+                } elseif ($parent->status_id == UserStatus::SAPPHIRE_DIRECTOR && $user->status_id == UserStatus::SAPPHIRE_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SAPPHIRE_DIRECTOR)) {
+                    $parent->status_id = UserStatus::EMERALD_DIRECTOR;
+                    $operation->operation_comment = "Ваш статус Изумрудный Директор";
+                    $willUpdate = true;
+                } elseif ($parent->status_id == UserStatus::EMERALD_DIRECTOR && $user->status_id == UserStatus::EMERALD_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::EMERALD_DIRECTOR)) {
+                    $parent->status_id = UserStatus::DIAMOND_DIRECTOR;
+                    $operation->operation_comment = "Ваш статус Бриллиантовый Директор";
                     $willUpdate = true;
                 }
 
@@ -1205,10 +1209,10 @@ class PacketController extends Controller
                             $parent->status_id = UserStatus::GOLD_MANAGER;
                             $operation->operation_comment = "Ваш статус Золотой Менеджер";
                         } elseif ($parent->status_id == UserStatus::GOLD_MANAGER && $user->status_id == UserStatus::GOLD_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GOLD_MANAGER)) {
-                            $parent->status_id = UserStatus::SAPPHIRE_MANAGER;
+                            $parent->status_id = UserStatus::SAPPHIRE_DIRECTOR;
                             $operation->operation_comment = "Ваш статус Сапфировый Директор";
-                        } elseif ($parent->status_id == UserStatus::SAPPHIRE_MANAGER && $user->status_id == UserStatus::SAPPHIRE_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SAPPHIRE_MANAGER)) {
-                            $parent->status_id = UserStatus::DIAMOND_MANAGER;
+                        } elseif ($parent->status_id == UserStatus::SAPPHIRE_DIRECTOR && $user->status_id == UserStatus::SAPPHIRE_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SAPPHIRE_DIRECTOR)) {
+                            $parent->status_id = UserStatus::DIAMOND_DIRECTOR;
                             $operation->operation_comment = "Ваш статус Бриллиантовый Директор";
                         }
                         $parent->save();

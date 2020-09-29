@@ -12,7 +12,7 @@ class AddSocStatusSeeder extends Seeder
     public function run()
     {
         \App\Models\UserStatus::create([
-            'user_status_id' => \App\Models\UserStatus::EMERALD_MANAGER,
+            'user_status_id' => \App\Models\UserStatus::EMERALD_DIRECTOR,
             'user_status_name' => 'GAP Менеджер',
             'user_status_money' => 0,
             'user_status_available_level' => 0,
@@ -24,7 +24,7 @@ class AddSocStatusSeeder extends Seeder
         ]);
 
         \App\Models\UserStatus::create([
-            'user_status_id' => \App\Models\UserStatus::DIAMOND_MANAGER,
+            'user_status_id' => \App\Models\UserStatus::DIAMOND_DIRECTOR,
             'user_status_name' => 'GAP Менеджер',
             'user_status_money' => 0,
             'user_status_available_level' => 0,

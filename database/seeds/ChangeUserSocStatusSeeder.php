@@ -11,7 +11,7 @@ class ChangeUserSocStatusSeeder extends Seeder
      */
     public function run()
     {        
-        \App\Models\UserStatus::where(['user_status_id' => \App\Models\UserStatus::EMERALD_MANAGER])->update(['is_soc_status' => false]);
-        \App\Models\UserStatus::where(['user_status_id' => \App\Models\UserStatus::DIAMOND_MANAGER])->update(['is_soc_status' => false]);
+        \App\Models\UserStatus::where(['user_status_id' => \App\Models\UserStatus::EMERALD_DIRECTOR])->update(['is_soc_status' => false]);
+        \App\Models\UserStatus::where(['user_status_id' => \App\Models\UserStatus::DIAMOND_DIRECTOR])->update(['is_soc_status' => false]);
     }
 }

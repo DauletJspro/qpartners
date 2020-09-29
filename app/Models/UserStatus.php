@@ -21,20 +21,21 @@ class UserStatus extends Model
     const BRONZE_MANAGER = 26;
     const SILVER_MANAGER = 27;
     const GOLD_MANAGER = 28;
-    const RUBIN_MANAGER = 29;
-    const SAPPHIRE_MANAGER = 30;
-    const EMERALD_MANAGER = 31;
-    const DIAMOND_MANAGER = 32;
+    const PLATINUM_MANAGER = 29;
+    const RUBIN_DIRECTOR = 30;
+    const SAPPHIRE_DIRECTOR = 31;
+    const EMERALD_DIRECTOR = 32;
+    const DIAMOND_DIRECTOR = 33;
 
-    const GAP_MANAGER = 33;
-    const GAP1_MANAGER = 34;
-    const GAP2_MANAGER = 35;
-    const GAP3_MANAGER = 36;
-    const GAP4_MANAGER = 37;
-    const GAP5_MANAGER = 38;
-    const GAP6_MANAGER = 39;
-    const GAP7_MANAGER = 40;
-    const GAP8_MANAGER = 41;
+    const GAP_MANAGER = 34;
+    const GAP1_MANAGER = 35;
+    const GAP2_MANAGER = 36;
+    const GAP3_MANAGER = 37;
+    const GAP4_MANAGER = 38;
+    const GAP5_MANAGER = 39;
+    const GAP6_MANAGER = 40;
+    const GAP7_MANAGER = 41;
+    const GAP8_MANAGER = 42;
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];

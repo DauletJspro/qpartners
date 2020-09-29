@@ -16,6 +16,6 @@ class UpdatePacketAvailableLevelSeeder extends Seeder
         \App\Models\Packet::where(['packet_id' => \App\Models\Packet::ELITE])->update(['packet_available_level' => 6]);
         \App\Models\Packet::where(['packet_id' => \App\Models\Packet::VIP2])->update(['packet_available_level' => 8]);
 
-        \App\Models\Packet::where(['packet_id' => \App\Models\Packet::GAP])->update(['packet_status_id' => 33, 'packet_name_ru' => 'GAP']);
+        \App\Models\Packet::where(['packet_id' => \App\Models\Packet::GAP])->update(['packet_status_id' => 34, 'packet_name_ru' => 'GAP']);
     }
 }

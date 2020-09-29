@@ -45,7 +45,7 @@ class GlobalBonusBeginOfMonth extends Command
     {
         $globalDiamondFound = Fond::where(['fond_id' => Fond::GLOBAL_DIAMOND_FOUND])->first();
         $globalDiamondFoundMoney = $globalDiamondFound->fond_money;
-        $diamondUsers = Users::where(['status_id' => UserStatus::DIAMOND_MANAGER])->get();
+        $diamondUsers = Users::where(['status_id' => UserStatus::DIAMOND_DIRECTOR])->get();
         $interest_holders = Users::where(['is_interest_holder' => true]);
         $sumShare = $interest_holders->sum('share');
         $sumShare = $sumShare + count($diamondUsers);

@@ -162,10 +162,10 @@ class OnlineController extends Controller
             UserStatus::ELITE_MANAGER,
             UserStatus::VIP_MANAGER,
             UserStatus::GOLD_MANAGER,
-            UserStatus::RUBIN_MANAGER,
-            UserStatus::SAPPHIRE_MANAGER,
-            UserStatus::EMERALD_MANAGER,
-            UserStatus::DIAMOND_MANAGER
+            UserStatus::RUBIN_DIRECTOR,
+            UserStatus::SAPPHIRE_DIRECTOR,
+            UserStatus::EMERALD_DIRECTOR,
+            UserStatus::DIAMOND_DIRECTOR
         ];
 
         $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
