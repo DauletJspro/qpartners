@@ -279,11 +279,21 @@ class PacketController extends Controller
             $result['status'] = false;
             return response()->json($result);
         }
-        if (Auth::user()->user_money < $packet->packet_price - $packet_old_price) {
-            $result['message'] = 'У вас не хватает баланса чтобы купить этот пакет';
-            $result['status'] = false;
-            return response()->json($result);
+        if ($packet->packet_id == Packet::GAP) {
+            if (Auth::user()->user_money < $packet->packet_price) {
+                $result['message'] = 'У вас не хватает баланса чтобы купить этот пакет';
+                $result['status'] = false;
+                return response()->json($result);
+            }
         }
+        else {
+            if (Auth::user()->user_money < $packet->packet_price - $packet_old_price) {
+                $result['message'] = 'У вас не хватает баланса чтобы купить этот пакет';
+                $result['status'] = false;
+                return response()->json($result);
+            }
+        }
+        
 
         $packet = Packet::where('packet_id', $request->packet_id)->first();
 
@@ -299,14 +309,19 @@ class PacketController extends Controller
         $operation = new UserOperation();
         $operation->author_id = Auth::user()->user_id;
         $operation->recipient_id = null;
-        $operation->money = $packet->packet_price - $packet_old_price;
+        $operation->money = $packet->packet_id == Packet::GAP ? $packet->packet_price : $packet->packet_price - $packet_old_price;
         $operation->operation_id = 2;
         $operation->operation_type_id = 30;
         $operation->operation_comment = $request->comment;
         $operation->save();
 
         $users = Users::find(Auth::user()->user_id);
-        $rest_mooney = $users->user_money - ($packet->packet_price - $packet_old_price);
+        if ($packet->packet_id == Packet::GAP) {
+            $rest_mooney =  $users->user_money - $packet->packet_price;
+        }
+        else {
+            $rest_mooney =  $users->user_money - ($packet->packet_price - $packet_old_price);
+        }
         $users->user_money = $rest_mooney;
         $users->save();
 
@@ -817,35 +832,123 @@ class PacketController extends Controller
                 $operation = new UserOperation();
                 if ($parent->status_id >= UserStatus::PREMIUM_MANAGER && $user->status_id >= UserStatus::PREMIUM_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::PREMIUM_MANAGER)) {
                     $parent->status_id = UserStatus::BRONZE_MANAGER;
+                    if (Packet::checkQualificationBonusTime($parent, 15)) {
+                        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус Бронзовый Менеджер \n Вы получите 15 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);
+                    }
                     $operation->operation_comment = "Ваш статус Бронзовый Менеджер";
                     $willUpdate = true;
                 }
                 if ($parent->status_id == UserStatus::BRONZE_MANAGER && $user->status_id == UserStatus::BRONZE_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::BRONZE_MANAGER)) {
                     $parent->status_id = UserStatus::SILVER_MANAGER;
+                    if (Packet::checkQualificationBonusTime($parent, 30)) {
+                        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус Серебряный Менеджер \n Вы получите 30 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);                            
+                    }
                     $operation->operation_comment = "Ваш статус Серебряный Менеджер";
                     $willUpdate = true;
                 } elseif ($parent->status_id == UserStatus::SILVER_MANAGER && $user->status_id == UserStatus::SILVER_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SILVER_MANAGER)) {
                     $parent->status_id = UserStatus::GOLD_MANAGER;
+                    if (Packet::checkQualificationBonusTime($parent, 60)) {   
+                        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус Золотой Менеджер \n Вы получите Путевку в санатории \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);                         
+                    }
                     $operation->operation_comment = "Ваш статус Золотой Менеджер";
                     $willUpdate = true;
                 } elseif ($parent->status_id == UserStatus::GOLD_MANAGER && $user->status_id == UserStatus::GOLD_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GOLD_MANAGER)) {
                     $parent->status_id = UserStatus::PLATINUM_MANAGER;
+                    if (Packet::checkQualificationBonusTime($parent, 90)) {  
+                        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус Платиновый Менеджер \n Вы получите Путевка на 1 человека \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);                          
+                    }
                     $operation->operation_comment = "Ваш статус Платиновый Менеджер";
                     $willUpdate = true;
                 }elseif ($parent->status_id == UserStatus::PLATINUM_MANAGER && $user->status_id == UserStatus::PLATINUM_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::PLATINUM_MANAGER)) {
                     $parent->status_id = UserStatus::RUBIN_DIRECTOR;
+                    if (Packet::checkQualificationBonusTime($parent, 120)) {      
+                        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус Рубиновый Менеджер \n Вы получите Круиз вокруг света \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);                      
+                    }
                     $operation->operation_comment = "Ваш статус Рубиновый Директор";
                     $willUpdate = true;
                 } elseif ($parent->status_id == UserStatus::RUBIN_DIRECTOR && $user->status_id == UserStatus::RUBIN_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::RUBIN_DIRECTOR)) {
                     $parent->status_id = UserStatus::SAPPHIRE_DIRECTOR;
+                    if (Packet::checkQualificationBonusTime($parent, 150)) {     
+                        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус Сапфировый Менеджер \n Вы получите Автомобиль Hyunday \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);                       
+                    }
                     $operation->operation_comment = "Ваш статус Сапфировый Директор";
                     $willUpdate = true;
                 } elseif ($parent->status_id == UserStatus::SAPPHIRE_DIRECTOR && $user->status_id == UserStatus::SAPPHIRE_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SAPPHIRE_DIRECTOR)) {
                     $parent->status_id = UserStatus::EMERALD_DIRECTOR;
+                    if (Packet::checkQualificationBonusTime($parent, 180)) {    
+                        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус Изумрудный Менеджер \n Вы получите Загородный коттедж \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);                        
+                    }
                     $operation->operation_comment = "Ваш статус Изумрудный Директор";
                     $willUpdate = true;
                 } elseif ($parent->status_id == UserStatus::EMERALD_DIRECTOR && $user->status_id == UserStatus::EMERALD_DIRECTOR && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::EMERALD_DIRECTOR)) {
                     $parent->status_id = UserStatus::DIAMOND_DIRECTOR;
+                    if (Packet::checkQualificationBonusTime($parent, 210)) {  
+                        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус Бриллиантовый Менеджер \n Вы получите Загородный коттедж \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);                          
+                    }
                     $operation->operation_comment = "Ваш статус Бриллиантовый Директор";
                     $willUpdate = true;
                 }
@@ -853,7 +956,7 @@ class PacketController extends Controller
                 if ($willUpdate = true) {
                     $operation->author_id = null;
                     $operation->recipient_id = $parent->user_id;
-                    $operation->money = null;
+                    $operation->money = $operation->money ?? null;
                     $operation->operation_id = 1;
                     $operation->operation_type_id = 10;
                     $parent->save();
@@ -880,36 +983,113 @@ class PacketController extends Controller
             $needNumber = 3; // Necessary number of followers for update parent status
             if (count($parentFollowers) >= $needNumber) {
                 $operation = new UserOperation();
-                if ($parent->soc_status_id == UserStatus::GAP_MANAGER && $user->soc_status_id == UserStatus::GAP_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP_MANAGER)) {
+                if ($parent->soc_status_id == UserStatus::GAP_MANAGER && $user->soc_status_id == UserStatus::GAP_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP_MANAGER)) {                    
                     $parent->soc_status_id = UserStatus::GAP1_MANAGER;
                     $operation->operation_comment = "Ваш статус GAP Менеджер 1ур";
                     $willUpdate = true;
                 }
                 if ($parent->soc_status_id == UserStatus::GAP1_MANAGER && $user->soc_status_id == UserStatus::GAP1_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP1_MANAGER)) {
+                    if (Packet::checkQualificationBonusTime($parent, 30)) {  
+                        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 2ур \n Вы получите 90 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);                          
+                    }
                     $parent->soc_status_id = UserStatus::GAP2_MANAGER;
                     $operation->operation_comment = "Ваш статус GAP Менеджер 2ур";
                     $willUpdate = true;
                 } elseif ($parent->soc_status_id == UserStatus::GAP2_MANAGER && $user->soc_status_id == UserStatus::GAP2_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP2_MANAGER)) {
+                    if (Packet::checkQualificationBonusTime($parent, 60)) {  
+                        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 2ур \n Вы получите 90 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);                          
+                    }
                     $parent->soc_status_id = UserStatus::GAP3_MANAGER;
                     $operation->operation_comment = "Ваш статус GAP Менеджер 3ур";
                     $willUpdate = true;
                 } elseif ($parent->soc_status_id == UserStatus::GAP3_MANAGER && $user->soc_status_id == UserStatus::GAP3_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP3_MANAGER)) {
+                    if (Packet::checkQualificationBonusTime($parent, 90)) {  
+                        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 2ур \n Вы получите 90 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);                          
+                    }
                     $parent->soc_status_id = UserStatus::GAP4_MANAGER;
                     $operation->operation_comment = "Ваш статус GAP Менеджер 4ур";
                     $willUpdate = true;
                 } elseif ($parent->soc_status_id == UserStatus::GAP4_MANAGER && $user->soc_status_id == UserStatus::GAP4_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP4_MANAGER)) {
+                    if (Packet::checkQualificationBonusTime($parent, 120)) {  
+                        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 2ур \n Вы получите 90 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);                          
+                    }
                     $parent->soc_status_id = UserStatus::GAP5_MANAGER;
                     $operation->operation_comment = "Ваш статус GAP Менеджер 5ур";
                     $willUpdate = true;
                 } elseif ($parent->soc_status_id == UserStatus::GAP5_MANAGER && $user->soc_status_id == UserStatus::GAP5_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP5_MANAGER)) {
+                    if (Packet::checkQualificationBonusTime($parent, 150)) {  
+                        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 2ур \n Вы получите 90 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);                          
+                    }
                     $parent->soc_status_id = UserStatus::GAP6_MANAGER;
                     $operation->operation_comment = "Ваш статус GAP Менеджер 6ур";
                     $willUpdate = true;
                 } elseif ($parent->soc_status_id == UserStatus::GAP6_MANAGER && $user->soc_status_id == UserStatus::GAP6_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP6_MANAGER)) {
+                    if (Packet::checkQualificationBonusTime($parent, 180)) {  
+                        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 7ур \n Вы получите 90 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);                          
+                    }
                     $parent->soc_status_id = UserStatus::GAP7_MANAGER;
                     $operation->operation_comment = "Ваш статус GAP Менеджер 7ур";
                     $willUpdate = true;
                 } elseif ($parent->soc_status_id == UserStatus::GAP7_MANAGER && $user->soc_status_id == UserStatus::GAP7_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP7_MANAGER)) {
+                    if (Packet::checkQualificationBonusTime($parent, 210)) {  
+                        $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 8ур \n Вы получите 90 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);                          
+                    }
                     $parent->soc_status_id = UserStatus::GAP8_MANAGER;
                     $operation->operation_comment = "Ваш статус GAP Менеджер 8ур";
                     $willUpdate = true;

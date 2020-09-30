@@ -25,10 +25,17 @@ use \App\Models\UserPacket;
                 <div class="inner">
                     <h3 style="font-family: cursive; font-size: 30px"> {{$item->packet_name_ru}}</h3>
 
-                    <h4 style="font-size: 25px">{{$item->packet_price - $beforeSum}}
+                    <h4 style="font-size: 25px">{{$item->packet_price - $beforeSum}}                        
+                        @if ($item->packet_id == \App\Models\Packet::GAP)
                         PV
-                        ({{($item->packet_price - $beforeSum) * \App\Models\Currency::pvToKzt()}}
-                        тг) </h4>
+                            ({{($item->packet_price) * \App\Models\Currency::pvToKzt()}}
+                        тг)        
+                        @else
+                            PV
+                            ({{($item->packet_price - $beforeSum) * \App\Models\Currency::pvToKzt()}}
+                            тг)  
+                        @endif
+                    </h4>
 
                     @if($packet_type == 'share')
                         @if($item->packet_share > 0)
