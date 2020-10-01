@@ -42,9 +42,13 @@
                 <button style="width: 100%; margin-bottom: 20px" type="button" onclick="closeModal()"
                         class="btn btn-default pull-left">Закрыть
                 </button>
+                <button onclick="buyProductOnline()"
+                        style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
+                        type="button" class="btn btn-default pull-left">Купить онлайн
+                </button>
                 <button onclick="confirmBasket()"
                         style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
-                        type="button" class="btn btn-default pull-left">Купить
+                        type="button" class="btn btn-default pull-left">Снять с баланса
                 </button>
             </div>
         </div>

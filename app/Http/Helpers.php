@@ -238,4 +238,36 @@ class Helpers {
         $lang = URL::to('/') . '/'  .$lang .$url_path;
         return $lang;
     }
+
+    public static function make_signature($input_data, $key) {
+        foreach ($input_data as $name => $value) {
+            if ($name !== "PAYMENT_HASH") $params[$name] = $value;
+        }
+        uksort($params, "strcasecmp");
+        $values = "";
+
+        foreach ($params as $name => $value) {
+            $values .= $value;
+        }
+
+        $signature = base64_encode(pack("H*", md5($values . $key)));
+
+        return $signature;
+    }
+
+    public static function send_request($url, $data) {
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        $response = trim($response);
+
+        return json_decode($response);
+    }
 } 

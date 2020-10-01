@@ -210,7 +210,9 @@ Route::group([
     Route::resource('instagram', 'InstagramController');
     Route::resource('group', 'GroupController');
     Route::resource('user-group', 'UserGroupController');
-
+    
+    Route::get('/orders', 'OrderController@index');
+    
     Route::get('basket', 'OnlineController@showBasket');
 
     Route::get('document', 'UserDocumentController@index');
@@ -289,6 +291,16 @@ Route::group([
     Route::post('image/upload/doc', 'ImageController@uploadDocument');
     Route::post('images/upload', 'ImageController@uploadMultipleImages');
     Route::get('media/{file_name}', 'ImageController@getImage')->where('file_name', '.*');
+});
+
+Route::group([
+    'prefix' => 'smartpay',
+], function () {
+    Route::post('create_order', 'SmartPayController@createOrder')->name('smartpay_create_order');
+    Route::post('callback', 'SmartPayController@callback')->name('smartpay_callback');
+    Route::post('fail', 'SmartPayController@fail')->name('smartpay_fail');
+    Route::post('order_product', 'SmartPayController@order_product')->name('order_product');
+    Route::get('return', 'SmartPayController@return')->name('smartpay_return');
 });
 
 /******* Index *******/
