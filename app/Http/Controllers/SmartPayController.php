@@ -66,7 +66,7 @@ class SmartPayController extends Controller
         }
         
         $price = ($packet->packet_price - $packet_old_price) * \App\Models\Currency::pvToKzt();
-        $name = 'Покупка пакета' . $packet->packet_name_ru . 'на сайте Januya.kz';        
+        $name = 'Покупка пакета ' . $packet->packet_name_ru . ' на сайте Januya.kz';        
         $data = [
             'MERCHANT_ID' => env('SMART_PAY_MERCHANT_ID'),
             'PAYMENT_AMOUNT' => 100,
@@ -126,7 +126,7 @@ class SmartPayController extends Controller
                     $user_packet->user_id = $order->user_id;
                     $user_packet->packet_id = $order->packet_id;
                     $user_packet->user_packet_type = null;
-                    $user_packet->packet_price = $order->sum / \App\Models\Currency::pvToKzt();
+                    $user_packet->packet_price = $packet->packet_price;
                     $user_packet->is_active = 0;
                     $user_packet->is_epay = 1;
                     $user_packet->is_portfolio = $packet->is_portfolio;
