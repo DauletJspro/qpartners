@@ -112,9 +112,11 @@ class SmartPayController extends Controller
         Log::info('callback');
         if(env('SMART_PAY_MERCHANT_ID') == $input_data['MERCHANT_ID']) {
             $sign = Helpers::make_signature($input_data, env('SMART_PAY_KEY'));
-        
+            Log::info('true merch');
             if($input_data['PAYMENT_HASH'] == $sign) {
+                Log::info('true hash');
                 $order = Order::getByCode($input_data['PAYMENT_ORDER_ID']);
+                Log::info($order);
                 if ($order) {
                     if (!$input_data['PAYMENT_STATUS'] != 'paid') {
                         return response()->json(['RESULT'=>'OK']);
@@ -126,7 +128,7 @@ class SmartPayController extends Controller
                     $user_packet->user_id = $order->user_id;
                     $user_packet->packet_id = $order->packet_id;
                     $user_packet->user_packet_type = null;
-                    $user_packet->packet_price = $packet->packet_price;
+                    $user_packet->packet_price = $order->sum / \App\Models\Currency::pvToKzt();
                     $user_packet->is_active = 0;
                     $user_packet->is_epay = 1;
                     $user_packet->is_portfolio = $packet->is_portfolio;
@@ -136,10 +138,12 @@ class SmartPayController extends Controller
                 // маркируем заказ с ИД PAYMENT_ORDER_ID как оплаченый
                 return response()->json(['RESULT'=>'OK']);
             } else {
+                Log::info('true hash');
                 // не совпадает цифровая подпись.
                 return response()->json(['RESULT' => 'RETRY', 'DESC' => 'invalid_signature']);
             }
         }
+        Log::info('false merch');
         return response()->json(['RESULT' => 'RETRY', 'DESC' => 'invalid_signature']);
     }
 
