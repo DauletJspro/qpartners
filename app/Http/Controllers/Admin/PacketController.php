@@ -852,8 +852,7 @@ class PacketController extends Controller
                     }
                     $operation->operation_comment = "Ваш статус Бронзовый Менеджер";
                     $willUpdate = true;
-                }
-                if ($parent->status_id == UserStatus::BRONZE_MANAGER && $user->status_id == UserStatus::BRONZE_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::BRONZE_MANAGER)) {
+                } elseif ($parent->status_id == UserStatus::BRONZE_MANAGER && $user->status_id == UserStatus::BRONZE_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::BRONZE_MANAGER)) {
                     $parent->status_id = UserStatus::SILVER_MANAGER;
                     if (Packet::checkQualificationBonusTime($parent, 30)) {
                         $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
