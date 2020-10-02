@@ -128,7 +128,7 @@ class SmartPayController extends Controller
                     $user_packet->user_id = $order->user_id;
                     $user_packet->packet_id = $order->packet_id;
                     $user_packet->user_packet_type = null;
-                    $user_packet->packet_price = $order->sum / \App\Models\Currency::pvToKzt();
+                    $user_packet->packet_price = $packet->packet_price;
                     $user_packet->is_active = 0;
                     $user_packet->is_epay = 1;
                     $user_packet->is_portfolio = $packet->is_portfolio;
@@ -154,10 +154,7 @@ class SmartPayController extends Controller
         $result['status'] = false;
         if (!$request->products && !$request->products_count) {
             return response()->json($result);
-        }
-        if (!Auth::check()) {                
-            return response()->json($result);
-        }
+        }        
         $price = 0;
         $order_code = time();
         $name = 'Покупка товаров на сайте Januya.kz';
@@ -237,11 +234,19 @@ class SmartPayController extends Controller
             if($input_data['PAYMENT_HASH'] == $sign) {
                 $order = Order::getByCode($input_data['PAYMENT_ORDER_ID']);
                 if ($order) {
-                    if (!$input_data['PAYMENT_STATUS'] != 'paid') {
+                    if ($input_data['PAYMENT_STATUS'] != 'paid') {
                         return response()->json(['RESULT'=>'OK']);
                     }
                     Order::changeIsPaid($input_data['PAYMENT_ORDER_ID']);
                     if ($order->user_id) {
+                        $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
+                        foreach ($products as $item) {
+                            $product = Product::where('product_id', $item->product_id)->first();
+                            $user_basket = UserBasket::where('user_basket_id', $item->user_basket_id)->first();
+                            $user_basket->product_price = $product->product_price;
+                            $user_basket->is_active = 1;
+                            $user_basket->save();              
+                        }  
                         $price = round($order->sum / \App\Models\Currency::pvToKzt());
                         $inviter_order = 1;
                         $user = Users::where(['user_id' => $order->user_id])->first();
@@ -339,21 +344,12 @@ class SmartPayController extends Controller
     }
 
     public function order_product() {
-        $sum = 0;       
+        $sum = 0;
         $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
         foreach ($products as $item) {
             $product_price = Product::where('product_id', $item->product_id)->first();
             $sum += $product_price->product_price * $item->unit;
         }
-        $user = Auth::user();
-        $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
-        foreach ($products as $item) {
-            $product = Product::where('product_id', $item->product_id)->first();
-            $user_basket = UserBasket::where('user_basket_id', $item->user_basket_id)->first();
-            $user_basket->product_price = $product->product_price;
-            $user_basket->is_active = 1;
-            $user_basket->save();              
-        }        
         
         $result['status'] = true;
         return response()->json($result);
