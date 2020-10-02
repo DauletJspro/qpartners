@@ -43,11 +43,15 @@
             <div class="modal-footer">
                 <button style="width: 100%; margin-bottom: 20px" type="button" onclick="closeModal()"
                         class="btn btn-default pull-left">Закрыть
-                </button>
-                <button id="buy_btn"
+                </button>               
+                <form action="{{ route('smartpay_create_order') }}" method="post" id="buyPacketForm">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="packet_id">
+                    <button id="buy_btn"
                         style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
                         type="button" class="btn btn-default pull-left">Купить онлайн
-                </button>
+                    </button>
+                </form>
                 <button style="margin-left:0px; background-color: #38b9ea; width: 100%; margin-bottom: 20px"
                         type="button" id="send_request_btn" class="btn btn-default pull-left">Отправить запрос
                 </button>
