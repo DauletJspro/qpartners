@@ -618,9 +618,43 @@ $(document).ready(function() {
         $(modal).find('#product_id').val(id)
         $(modal).modal();
     })
-    function showOrderFormModal(ob,id, is_partner) {      
+
+    $('#form_order').submit(function(e) {
+        e.preventDefault()    
+        let formData = new FormData($(this)[0]);
+        // document.getElementById('ajax-loader').style.display='block';
+        // $('#ajax-loader').css('display', 'block')
+        $.ajax({
+            url: '/smartpay/create_order_product',
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            dataType: 'json',
+            data: $(this).serialize(),
+            cache : false,
+            processData: false,
+            beforeSend: function() {
+                $(this).parents('.modal').modal()
+            },
+            success: function (data) {
+                // document.getElementById('ajax-loader').style.display='none';
+                // $('#ajax-loader').css('display', 'none')
+                if (data.status == false) {
+                    showError(data.message);
+                    $(this).parents('.modal').modal()
+                    return;
+                }
+                else {
+                    // console.log(data)
+                    $(this).parents('.modal').modal()
+                    window.location.replace(data.url);
+                }
+            }
+        });
         
-      }
+    })
+   
 })
 
 

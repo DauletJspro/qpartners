@@ -320,7 +320,7 @@ class SmartPayController extends Controller
         $result['message'] = 'Временно недоступно';
         $result['status'] = false;  
         $validator = Validator::make($request->all(), [
-            'product_id' => 'required|integer|exists:product',
+            'product_id' => 'required|integer',
             'product_count' => 'required|integer',
             'username' => 'required|string',
             'contact' => 'required|string',
@@ -333,7 +333,7 @@ class SmartPayController extends Controller
             $messages = $validator->errors();
             $error = $messages->all(); 
             $result['message'] = $error[0];           
-            return redirect()->json($result);
+            return response()->json($result);
         }
 
         $product = Product::where('product_id', $request->product_id)->first();
@@ -342,7 +342,7 @@ class SmartPayController extends Controller
         $name = 'Покупка товара на сайте Qpartner.club';
         $order_code = time();
         $price = ($product->product_price * $request->product_count ) * \App\Models\Currency::pvToKzt();
-        $products = [['product_id' => $request->product_id, 'count' => $request->product_count]];
+        $products = [['product_id' => $product->product_id, 'product_name' => $product->product_name_ru, 'count' => $request->product_count]];
         $data = [
             'MERCHANT_ID' => env('SMART_PAY_MERCHANT_ID'),
             'PAYMENT_AMOUNT' => 100,
@@ -362,8 +362,8 @@ class SmartPayController extends Controller
                 'user_id' => null,
                 'username' => $request->username ,
                 'email' => $request->email,
-                'address' => null,
-                'contact' => $request->phone,
+                'address' => $request->address,
+                'contact' => $request->contact,
                 'sum' => $price,
                 'products' => \json_encode($products),
                 'packet_id' => null,

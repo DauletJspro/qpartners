@@ -61,6 +61,9 @@ use \Illuminate\Support\Facades\Session;
 
 <script src="/new_design/js/jquery.js"></script>
 <script src="/new_design/js/plugins.js"></script>
+<script src="/custom/js/jquery.maskedinput.js"></script>
+<script src="/custom/js/jquery.gritter.js"></script>
+<script src="/custom/js/custom.js"></script>
 <script src="/new_design/js/jquery.main.js"></script>
 <script src="/notify/notify.js"></script>
 <script src="/notify/notify.min.js"></script>

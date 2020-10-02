@@ -13,7 +13,7 @@ class Order extends Model
     const COURIER_DELIVERY = 2;
     const POST_DELIVERY = 3;
     protected $primaryKey = 'id';
-    protected $fillable = ['order_code', 'user_id', 'username', 'email', 'address', 'contact', 'sum', 'products', 'packet_id', 'is_paid', 'payment_id'];
+    protected $fillable = ['order_code', 'user_id', 'username', 'email', 'address', 'contact', 'sum', 'products', 'packet_id', 'is_paid', 'payment_id', 'delivery_id'];
 
     public static function createOrder($data) {
         $order = Order::create([

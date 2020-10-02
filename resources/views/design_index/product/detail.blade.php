@@ -19,6 +19,7 @@ $tab = (explode('tab=', URL::current()));
 
 @endsection
 @section('content')
+    <i class="ajax-loader" id="ajax-loader"></i>
     <main id="mt-main">
         <!-- Mt Product Detial of the Page -->
         <section class="mt-product-detial wow fadeInUp" data-wow-delay="0.4s">
@@ -333,7 +334,7 @@ $tab = (explode('tab=', URL::current()));
                         </div>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('smartpay_create_order_product') }}" method="POST">
+                        <form id="form_order" action="{{ route('smartpay_create_order_product') }}" method="POST">
                             {{ csrf_field() }}
                             <input type="hidden" name="product_id" id="product_id">
                             <div id="user_not_partner">
@@ -355,17 +356,13 @@ $tab = (explode('tab=', URL::current()));
                                 <input type="text" class="form-control" id="address" name="address" placeholder="г.Алматы ул.Абая 187а кв 94">
                             </div>
                             <div class="form-group">
-                                <label for="address">Доставка</label>
-                                <select class="form-control" name="delivery" id="">
-                                    <option value="1">Самовывоз</option>
+                                <label for="delivery">Доставка</label>
+                                <select class="form-control" name="delivery" id="delivery">
+                                    <option value="1" selected>Самовывоз</option>
                                     <option value="2">Курьером</option>
                                     <option value="3">По почте</option>
                                 </select>                                
-                            </div>
-                            {{-- <div class="form-group form-check">
-                              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                              <label class="form-check-label" for="exampleCheck1">Я ознакомлен(а)</label>
-                            </div> --}}
+                            </div>                            
                             <button type="submit" class="btn btn-primary">Отправить</button>
                         </form>
                     </div>

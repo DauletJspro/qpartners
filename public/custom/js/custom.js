@@ -751,3 +751,38 @@ function buyPacketOnline(user_packet_type,packet_id) {
         });
     }
 }
+
+
+function show_more_detail(btn) {    
+    let data = $(btn).data('id');
+    console.log(data)
+    let form = $('#order_form').find('form');
+    $(form).find('#username').val(data.username)
+    $(form).find('#contact').val(data.contact)
+    $(form).find('#email').val(data.email)
+    $(form).find('#address').val(data.address)    
+    $(form).find('#payment_id').val(data.payment_id)    
+    if (data.delivery_id == 1) {
+        $(form).find('#delivery').val('Самовывоз')        
+    }
+    if (data.delivery_id == 2) {
+        $(form).find('#delivery').val('Курьером')        
+    }
+    if (data.delivery_id == 3) {
+        $(form).find('#delivery').val('По почтам')
+    }
+
+    let products = JSON.parse(data.products)
+    console.log(products)
+    for (let i = 0; i < products.length; i++) {
+        $(form).find('#product_list').append(
+            `
+            <tr>
+                <th scope="row">${i+1}</th>
+                <td>${products[i].product_name}</td>
+                <td>${products[i].count}</td>                
+            </tr>
+            `
+        )        
+    }
+}
