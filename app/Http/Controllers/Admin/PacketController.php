@@ -586,7 +586,7 @@ class PacketController extends Controller
                 $operation->money = $bonus;
                 $operation->operation_id = 1;
                 $operation->operation_type_id = 1;
-                $operation->operation_comment = 'Рекрутинговый бонус. "' . $packet->packet_name_ru . '". Уровень - ' . $inviter_order;
+                $operation->operation_comment = 'Структурный бонус. "' . $packet->packet_name_ru . '". Уровень - ' . $inviter_order;
                 $operation->save();
 
                 $inviter->user_money = $inviter->user_money + $bonus;
@@ -647,7 +647,7 @@ class PacketController extends Controller
             $operation->money = $bonus;
             $operation->operation_id = 1;
             $operation->operation_type_id = 1;
-            $operation->operation_comment = 'Кураторский бонус. "' . $packet->packet_name_ru . '".';
+            $operation->operation_comment = 'Рекрутинговый бонус. "' . $packet->packet_name_ru . '".';
             $operation->save();
 
             $inviter->user_money = $inviter->user_money + $bonus;
