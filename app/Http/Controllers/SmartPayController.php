@@ -118,7 +118,7 @@ class SmartPayController extends Controller
                 $order = Order::getByCode($input_data['PAYMENT_ORDER_ID']);
                 Log::info($order);
                 if ($order) {
-                    if (!$input_data['PAYMENT_STATUS'] != 'paid') {
+                    if ($input_data['PAYMENT_STATUS'] != 'paid') {
                         return response()->json(['RESULT'=>'OK']);
                     }
                     Order::changeIsPaid($input_data['PAYMENT_ORDER_ID']);
@@ -133,6 +133,7 @@ class SmartPayController extends Controller
                     $user_packet->is_epay = 1;
                     $user_packet->is_portfolio = $packet->is_portfolio;
                     $user_packet->save();
+                    Log::info($user_packet);
                     $bonus_system = app(\App\Http\Controllers\Admin\PacketController::class)->implementPacketBonuses($user_packet->user_packet_id);
                 }
                 // маркируем заказ с ИД PAYMENT_ORDER_ID как оплаченый
