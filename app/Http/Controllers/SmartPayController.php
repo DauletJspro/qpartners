@@ -151,18 +151,18 @@ class SmartPayController extends Controller
     public function createOrderProduct(Request $request)
     {
         $result['message'] = 'Временно недоступно';
-        $result['status'] = false;
-        if (!$request->products && !$request->products_count) {
+        $result['status'] = false;  
+        if (!Auth::check()) {
             return response()->json($result);
-        }        
+        }
         $price = 0;
         $order_code = time();
         $name = 'Покупка товаров на сайте Januya.kz';
-        $products_id = $request->products;
-        $products = Product::select('product_id', 'product_name_ru', 'product_price')->whereIn('product_id', $products_id)->get();
-        $products = collect($products);
-        foreach($products as $product) {
-            $product['count'] = $request->products_count[$product->product_id];
+        $sum = 0;
+        $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
+        foreach ($products as $item) {
+            $product_price = Product::where('product_id', $item->product_id)->first();
+            $sum += $product_price->product_price * $item->unit;
         }
         if (count($products) != count($products_id)) {                 
             return response()->json($result);
@@ -344,12 +344,7 @@ class SmartPayController extends Controller
     }
 
     public function order_product() {
-        $sum = 0;
-        $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
-        foreach ($products as $item) {
-            $product_price = Product::where('product_id', $item->product_id)->first();
-            $sum += $product_price->product_price * $item->unit;
-        }
+        
         
         $result['status'] = true;
         return response()->json($result);

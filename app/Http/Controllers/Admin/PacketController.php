@@ -571,10 +571,12 @@ class PacketController extends Controller
                     && $packet->packet_id != Packet::ELITE_FREE) {
                     $bonusPercentage = (5 / 100);
                     $bonus = $packetPrice * $bonusPercentage;
-                } elseif (($inviter_order >= 2 || $inviter_order <= 8 && $packet->packet_id != Packet::GAP)
-                    && $this->hasNeedPackets($packet->packet_id, $inviterPacketId, $inviter_order)) {
-                    $bonusPercentage = (5 / 100);
-                    $bonus = $packetPrice * $bonusPercentage;
+                } elseif ($packet->packet_id != Packet::GAP) {
+                    if (($inviter_order >= 2 || $inviter_order <= 8) && $this->hasNeedPackets($packet->packet_id, $inviterPacketId, $inviter_order))
+                    {
+                        $bonusPercentage = (5 / 100);
+                        $bonus = $packetPrice * $bonusPercentage;
+                    }
                 }
             }
             if ($bonus) {
@@ -604,9 +606,9 @@ class PacketController extends Controller
 
         $this->qualificationUp($packet, $user);
 
-        if ($user->status_id >= UserStatus::CONSULTANT) {
-            $this->implementQualificationBonuses($packet, $user, $userPacket);
-        }
+        // if ($user->status_id >= UserStatus::CONSULTANT) {
+        //     $this->implementQualificationBonuses($packet, $user, $userPacket);
+        // }
 
         $this->implementPacketThings($packet, $user, $userPacket);
 
@@ -672,7 +674,12 @@ class PacketController extends Controller
         }
 
         $userPacket->is_active = 1;
-        $userPacket->packet_price = $userPacket->packet_price - $packet_old_price;
+        if ($userPacket->packet_id == Packet::GAP) {
+            $userPacket->packet_price = $userPacket->packet_price;    
+        } 
+        else {
+            $userPacket->packet_price = $userPacket->packet_price - $packet_old_price;
+        }
         $max_queue_start_position = UserPacket::where('packet_id', $userPacket->packet_id)->where('is_active', 1)->where('queue_start_position', '>', 0)->max('queue_start_position');
         $userPacket->queue_start_position = ($max_queue_start_position) ? ($max_queue_start_position + 1) : 1;
         if ($userPacket->save() && $userPacket->packet_id != Packet::ELITE_FREE && $userPacket->packet_id != Packet::GAP) {
