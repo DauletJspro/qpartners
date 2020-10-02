@@ -9,6 +9,9 @@ use DB;
 
 class Order extends Model
 {
+    const PICKUP_DELIVERY = 1;
+    const COURIER_DELIVERY = 2;
+    const POST_DELIVERY = 3;
     protected $primaryKey = 'id';
     protected $fillable = ['order_code', 'user_id', 'username', 'email', 'address', 'contact', 'sum', 'products', 'packet_id', 'is_paid', 'payment_id'];
 
@@ -24,7 +27,8 @@ class Order extends Model
             'products' => $data['products'],
             'packet_id' => $data['packet_id'],
             'is_paid' => 0,
-            'payment_id' => $data['payment_id']            
+            'payment_id' => $data['payment_id'],
+            'delivery_id' => $data['delivery_id'],
         ]);
 
         return $order;
@@ -36,6 +40,18 @@ class Order extends Model
 
     public static function getByCode($order_code) {
         return Order::where('order_code', $order_code)->first();
+    }
+
+    public function getDelivery() {
+        if ($this->delivery_id == self::PICKUP_DELIVERY) {
+            return 'Самовывоз';
+        }
+        else if ($this->delivery_id == self::COURIER_DELIVERY) {
+            return 'Курьером';
+        }
+        if ($this->delivery_id == self::POST_DELIVERY) {
+            return 'По почте';
+        }
     }
 
 }

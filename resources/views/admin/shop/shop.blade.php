@@ -44,7 +44,7 @@
                 <button style="width: 100%; margin-bottom: 20px" type="button" onclick="closeModal()"
                         class="btn btn-default pull-left">Закрыть
                 </button>               
-                <form action="{{ route('order_product') }}" method="post" id="buyPacketForm">
+                <form action="{{ route('smartpay_create_order') }}" method="post" id="buyPacketForm">
                     {{ csrf_field() }}
                     <input type="hidden" name="packet_id">
                     <button id="buy_btn"

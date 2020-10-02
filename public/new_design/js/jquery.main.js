@@ -598,4 +598,29 @@ ResponsiveHelper = (function ($) {
     };
 }(jQuery));
 
+$(document).ready(function() {
+    $('#choosing_role').click(function() {
+        // $('.choose_role').show();
+        $('.choose_role').delay(500).queue(function(){
+            $(this).css("display", "block");            
+        });
+    })
+
+    $('#buyProductOnline').click(function() {
+        let modal = $('#order_form');
+        let id = $(this).data('id');
+        let product_count = $('#product_count').val();      
+        $('<input>').attr({
+            type: 'hidden',
+            name: 'product_count',
+            value: product_count
+        }).appendTo($(modal).find('form'));
+        $(modal).find('#product_id').val(id)
+        $(modal).modal();
+    })
+    function showOrderFormModal(ob,id, is_partner) {      
+        
+      }
+})
+
 
