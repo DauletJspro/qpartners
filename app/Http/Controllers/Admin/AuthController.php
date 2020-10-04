@@ -173,7 +173,26 @@ class AuthController extends Controller
         $user->inviter_user_id = is_numeric($request->inviter_user_id) ? $request->inviter_user_id : null;
         $user->speaker_id = is_numeric($request->speaker_id)?$request->speaker_id:null;
         $user->office_director_id = is_numeric($request->office_director_id)?$request->office_director_id:null;
-
+        if (is_numeric($request->recommend_user_id)) {
+            $recommend_user = Users::where('user_id', $request->recommend_user_id)->first();
+            if ($recommend_user) {
+                $recommend_user_count = Users::where('recommend_user_id', $request->recommend_user_id)->get();
+                if (count($recommend_user_count) >= 3) {
+                    return view('admin.new_design_auth.register', [
+                        'title' => '',
+                        'row' => (object)$request->all(),
+                        'error' => 'Спонсор уже имеет более 3 участников 1 уровня'
+                    ]); 
+                }
+            }
+            else {
+                return view('admin.new_design_auth.register', [
+                    'title' => '',
+                    'row' => (object)$request->all(),
+                    'error' => 'Спонсор уже имеет более 3 участников 1 уровня'
+                ]);
+            }
+        }
         $hash_email = md5(uniqid(time(), true));
         $user->hash_email = $hash_email;
         $user->activated_date = date("Y-m-d");

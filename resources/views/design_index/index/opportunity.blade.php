@@ -83,9 +83,9 @@
                                     </div>
                                     <div style="float: left; " class="second-section-text text-left">
                                     <span style="color: black;">
-                                        Став Партнером компании Вы можете получить <br>
-                                        бонус от $ 200 в месяц и построить собственный <br>
-                                        бизнес с доходом $ 100 000 в месяц
+                                        Став Партнером компании Вы получите бонус
+                                        <br> от 100 000 KZT в месяц и построить собственный 
+                                        бизнес с доходом 10 000 000 KZT в месяц
                                     </span>
                                         <div class="video_box" style="
                                             background-image: url('/new_design/images/video/qyran_partners.jpg');
@@ -93,7 +93,7 @@
                                             background-repeat: no-repeat;
                                             background-position: center;
                                         ">
-                                            <div class="red_play_button" data-youtube-url="bvdnE6--BCE"
+                                            <div class="red_play_button" data-youtube-url="uhJikpNX-u8"
                                                  onclick="openModal(this)" style="cursor: pointer;"></div>
                                         </div>
                                     </div>
@@ -139,7 +139,7 @@
                                             background-position: center;
                                             ">
                                             <div style="cursor: pointer;" class="green_play_button"
-                                                 data-youtube-url="3zG2nRzF0S4"
+                                                 data-youtube-url="eKyZWdo8drM"
                                                  onclick="openModal(this)"></div>
                                         </div>
                                     </div>
@@ -173,7 +173,7 @@
             <div class="container">
                 <div class="section-2-title" style="padding-bottom: 80px;">
                     <h1 class="h1-title"><span style="color: black;">Щедрые</span> <span
-                                style="color: #ff0000;">65%</span></h1>
+                                style="color: #ff0000;">80%</span></h1>
                     <h3 class="h3-title"><span style="color:#ff0000; ">с уникальным маркетинг планом</span></h3>
                     <div style="width: 100%;height: 100px;">
                         <h3 class="h3-title-what-you-get">Что <span style="color: #ff0000;">Вы получаете</span>?</h3>
@@ -266,7 +266,7 @@
                                 style="color: black;">?</span></h3>
                     <p>
                         Мы предлагаем маркетинг план который обеспечит Вам высокий и стабильный доход. <br>
-                        65% дохода от товарооборота, компания отдает в сеть. Вы можете начать получать <br>
+                        80% дохода от товарооборота, компания отдает в сеть. Вы можете начать получать <br>
                         доход от бонусов соответствующего пакета:
                     </p>
                     <div class="row row-1">
@@ -283,8 +283,9 @@
                                 <div class="bonus-text">
                                     <ul style="list-style: none;">
                                         <li>- Рекрутинговый</li>
-                                        <li>- Командный</li>
-                                        <li>- Быстрый</li>
+                                        <li>- Структурный</li>
+                                        <li>- Кэшбэк</li>
+                                        <li>- Активационный</li>
                                     </ul>
                                 </div>
                             </div>
@@ -303,9 +304,10 @@
                                 <div class="bonus-text">
                                     <ul style="list-style: none;">
                                         <li>- Рекрутинговый</li>
-                                        <li>- Командный</li>
+                                        <li>- Структурный</li>
                                         <li>- Кэшбэк</li>
-                                        <li>- Быстрый</li>
+                                        <li>- Активационный</li>
+                                        <li>- Квалификационный</li>
                                     </ul>
                                 </div>
                             </div>
@@ -325,10 +327,10 @@
                                 <div class="bonus-text">
                                     <ul style="list-style: none;">
                                         <li>- Рекрутинговый</li>
-                                        <li>- Командный</li>
+                                        <li>- Структурный</li>
                                         <li>- Кэшбэк</li>
-                                        <li>- Квалификационный</li>
-                                        <li>- Быстрый</li>
+                                        <li>- Активационный</li>
+                                        <li>- Квалификационный</li>                                        
                                     </ul>
                                 </div>
                             </div>
@@ -349,11 +351,11 @@
                                 <div class="bonus-text ">
                                     <ul style="list-style: none;">
                                         <li>- Рекрутинговый</li>
-                                        <li>- Командный</li>
+                                        <li>- Структурный</li>
                                         <li>- Кэшбэк</li>
+                                        <li>- Активационный</li>
                                         <li>- Квалификационный</li>
-                                        <li>- Накопительный</li>
-                                        <li>- Быстрый</li>
+                                        <li>- Глобальный</li>                                                                                
                                     </ul>
                                 </div>
                             </div>
@@ -370,17 +372,17 @@
                                     <img src="/new_design/images/opportunity/star.png" alt="">
                                 </div>
                                 <div class="packet-name text-center">
-                                    PRO
+                                    GAP
                                 </div>
                                 <div class="bonus-text ">
                                     <ul style="list-style: none;">
                                         <li>- Рекрутинговый</li>
-                                        <li>- Командный</li>
+                                        <li>- Структурный</li>
                                         <li>- Кэшбэк</li>
-                                        <li>- Квалификационный</li>
-                                        <li>- Накопительный</li>
+                                        <li>- Активационный</li>
+                                        <li>- Квалификационный</li>                                        
                                         <li>- Глобальный</li>
-                                        <li>- Быстрый</li>
+                                        <li>- Социальный</li>                                        
 
                                     </ul>
                                 </div>
