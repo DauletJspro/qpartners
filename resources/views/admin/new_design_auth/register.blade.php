@@ -87,7 +87,7 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-
+                                                
                                                 <div>
                                                     <select required name="inviter_user_id"
                                                             data-placeholder="Выберите пригласителя"
@@ -100,7 +100,7 @@
                                                             </option>
                                                         @endforeach
                                                     </select>
-                                                </div>
+                                                </div>                                                                                                
                                             </div>
                                             <div class="col-xs-12 col-sm-6 form-group">
                                                 <input required type="email" name="email" class="form-control input"
@@ -113,7 +113,25 @@
                                                 <input required type="password" value="{{$row->confirm_password}}"
                                                        name="confirm_password" class="form-control input"
                                                        placeholder="Повторите пароль"/>
-                                            </div>
+                                                
+                                                <div>
+                                                    <select required name="speaker_id" data-placeholder="Выберите спикера" class="form-control selectpicker input" data-live-search="true">
+                                                        <option value="">Выберите спикера</option>
+                                                        @foreach($speaker_row as $item)
+                                                            <option @if($row->speaker_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id)) {{'selected'}} @endif value="{{$item->user_id}}">{{$item['login']}} {{--({{$item['last_name']}} {{$item['name']}} {{$item['middle_name']}})--}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <div>
+                                                    <select required name="office_director_id" data-placeholder="Выберите директора офиса" class="form-control selectpicker input" data-live-search="true">
+                                                        <option value="">Выберите офис</option>
+                                                        @foreach($office_row as $item)
+                                                            <option @if($row->office_director_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id)) {{'selected'}} @endif value="{{$item->user_id}}">{{$item['office_name']}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>                                            
                                         </div>
                                         <br>
                                         <button type="submit" class="btn btn-danger btn-type1">Зарегистрироваться
