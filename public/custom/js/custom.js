@@ -370,7 +370,7 @@ function cancelResponsePacket(ob,packet_id){
 }
 
 function showBuyModal(ob,id) {
-    $('#buy_btn').attr('onclick','redirectPaybox("' + $(ob).closest('.packet-item-list').find('.packet_type').val() + '",' + id + ')');
+    $('#buy_btn').attr('onclick','buyPacketOnline("' + $(ob).closest('.packet-item-list').find('.packet_type').val() + '",' + id + ')');
     $('#send_request_btn').attr('onclick','addResponseAddPacket($(".buy_btn_' + id + '"),' + id + ',"' + $(ob).closest('.packet-item-list').find('.packet_type').val() + '")');
     $('#buy_packet_from_balance_btn').attr('onclick','buyPacketFromBalance($(".buy_btn_' + id + '"),' + id + ',"' + $(ob).closest('.packet-item-list').find('.packet_type').val() + '")');
     $('#buy_modal').fadeIn(0);
@@ -718,5 +718,71 @@ function sendMoneyToOtherAccount(ob){
                 }
             }
         });
+    }
+}
+
+function buyPacketOnline(user_packet_type,packet_id) {
+    if(confirm('Действительно хотите купить онлайн?')) {
+        document.getElementById('ajax-loader').style.display='block';
+        $.ajax({
+            url: '/smartpay/create_order',
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                packet_id: packet_id,
+                user_packet_type: user_packet_type                
+            },
+            beforeSend: function() {
+                closeModal();
+            },
+            success: function (data) {
+                document.getElementById('ajax-loader').style.display='none';
+                if (data.status == false) {
+                    showError(data.message);
+                    return;
+                }
+                else {
+                    // console.log(data)
+                    window.location.replace(data.url);
+                }
+            }
+        });
+    }
+}
+
+
+function show_more_detail(btn) {    
+    let data = $(btn).data('id');
+    console.log(data)
+    let form = $('#order_form').find('form');
+    $(form).find('#username').val(data.username)
+    $(form).find('#contact').val(data.contact)
+    $(form).find('#email').val(data.email)
+    $(form).find('#address').val(data.address)    
+    $(form).find('#payment_id').val(data.payment_id)    
+    if (data.delivery_id == 1) {
+        $(form).find('#delivery').val('Самовывоз')        
+    }
+    if (data.delivery_id == 2) {
+        $(form).find('#delivery').val('Курьером')        
+    }
+    if (data.delivery_id == 3) {
+        $(form).find('#delivery').val('По почтам')
+    }
+
+    let products = JSON.parse(data.products)
+    console.log(products)
+    for (let i = 0; i < products.length; i++) {
+        $(form).find('#product_list').append(
+            `
+            <tr>
+                <th scope="row">${i+1}</th>
+                <td>${products[i].product_name}</td>
+                <td>${products[i].count}</td>                
+            </tr>
+            `
+        )        
     }
 }

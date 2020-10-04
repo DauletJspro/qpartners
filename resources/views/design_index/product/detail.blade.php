@@ -19,6 +19,7 @@ $tab = (explode('tab=', URL::current()));
 
 @endsection
 @section('content')
+    <i class="ajax-loader" id="ajax-loader"></i>
     <main id="mt-main">
         <!-- Mt Product Detial of the Page -->
         <section class="mt-product-detial wow fadeInUp" data-wow-delay="0.4s">
@@ -105,17 +106,28 @@ $tab = (explode('tab=', URL::current()));
                                 <span class="price">Цена: &nbsp; ${{$product->product_price}} &nbsp; ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span>
                             </div>
                             <!-- Product Form of the Page -->
-                            <form action="#" class="product-form">
+                            <div action="#" class="product-form">
                                 <fieldset>
                                     <div class="row-val">
-                                        <label for="qty">Кол-во</label>
-                                        <input type="number" id="qty" placeholder="1">
+                                        <label for="product_count">Кол-во</label>
+                                        <input type="number" value="1" id="product_count">
+                                    </div>
+                                    <div class="row-val">
+                                        <button id="choosing_role" style="background: #00a65a;">Купить</button>
                                     </div>
                                     <div class="row-val">
                                         <button type="submit">Добавить в корзину</button>
-                                    </div>
+                                    </div>                                    
                                 </fieldset>
-                            </form>
+                                <div class="choose_role" >
+                                    <h5> Для партнеров qpartners.club скидка 20% на все продукции. </h5>
+                                    <p>Вы партнер или клиент (покупатель)?</p>
+                                    <div style="margin: 40px auto 0; display: flex; justify-content: space-evenly;">
+                                        <a href="/admin/online" class="btn btn-primary"> Партнер </a>
+                                        <a id="buyProductOnline" data-id="{{ $product->product_id }}" class="btn btn-primary"> Клиент </a>
+                                    </div>
+                                </div>
+                            </div>
                         <!-- Product Form of the Page end -->
                         </div>
                         <!-- Detail Holder of the Page end -->
@@ -309,6 +321,58 @@ $tab = (explode('tab=', URL::current()));
                 </div>
             </div>
         </div>
+        
+        <div class="modal fade " id="order_form" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <div class="title-group"
+                             style="margin-left: 20px; font-size: 120%; color: black; font-weight: 400;">
+                            <h4 class="modal-title">Форма заявки</h4>                            
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form_order" action="{{ route('smartpay_create_order_product') }}" method="POST">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="product_id" id="product_id">
+                            <div id="user_not_partner">
+                                <div class="form-group">
+                                    <label for="username">ФИО</label>
+                                    <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="ФИО">                              
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact">Контакт</label>
+                                    <input type="text" class="form-control" id="contact" name="contact" placeholder="+7 (777) 777 77 77">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">E-mail</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="noreply@example.com">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Адрес</label>
+                                <input type="text" class="form-control" id="address" name="address" placeholder="г.Алматы ул.Абая 187а кв 94">
+                            </div>
+                            <div class="form-group">
+                                <label for="delivery">Доставка</label>
+                                <select class="form-control" name="delivery" id="delivery">
+                                    <option value="1" selected>Самовывоз</option>
+                                    <option value="2">Курьером</option>
+                                    <option value="3">По почте</option>
+                                </select>                                
+                            </div>                            
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">

@@ -550,6 +550,8 @@ class PacketController extends Controller
         
         $this->activatePackage($userPacket);
         $this->implementInviterBonus($userPacket, $packet, $user);
+        $this->implementOfficeBonus($userPacket, $packet, $user);
+        $this->implementSpeakerBonus($userPacket, $packet, $user);
         $inviter = Users::where(['user_id' => $user->recommend_user_id])->first();
 
         while ($inviter) {
@@ -567,10 +569,10 @@ class PacketController extends Controller
                         return $item->packet_id;
                     });
                     $inviterPacketId = max($inviterPacketId->all());
-                    $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;                
+                    $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
                     if ($inviter_order == 1
                         && in_array($inviter->status_id, $actualStatuses)
-                        && $packet->packet_id != Packet::ELITE_FREE) {                                        
+                        && $packet->packet_id != Packet::ELITE_FREE) {
                         $bonusPercentage = (5 / 100);
                         $bonus = $packetPrice * $bonusPercentage;
                     } elseif ($packet->packet_id != Packet::GAP) {
@@ -615,6 +617,68 @@ class PacketController extends Controller
 
         $this->implementPacketThings($packet, $user, $userPacket);
 
+    }
+
+    private function implementOfficeBonus($userPacket, $packet, $user)
+    {
+        $userPacketCount = UserPacket::where('user_id', $user->user_id)->where('is_active', 1)->count();
+        if ($user->office_director_id && $packet->packet_id != Packet::GAP) {
+            $bonus = 0;
+            $bonusPercentage = 0;
+            $packetPrice = $userPacket->packet_price;
+            $office_director = Users::where(['user_id' => $user->office_director_id])->first();
+            if ($office_director) {            
+                $bonusPercentage = (3 / 100);
+                $bonus = $packetPrice * $bonusPercentage;
+            }
+    
+            if ($bonus) {
+                $operation = new UserOperation();
+                $operation->author_id = $user->user_id;
+                $operation->recipient_id = $office_director->user_id;
+                $operation->money = $bonus;
+                $operation->operation_id = 1;
+                $operation->operation_type_id = 8;
+                $operation->operation_comment = 'Офисный бонус';
+                $operation->save();
+    
+                $office_director->user_money = $office_director->user_money + $bonus;
+                $office_director->save();
+    
+                $this->sentMoney += $bonus;
+            }     
+        }        
+    }
+
+    private function implementSpeakerBonus($userPacket, $packet, $user)
+    {
+        $userPacketCount = UserPacket::where('user_id', $user->user_id)->where('is_active', 1)->count();
+        if ($userPacketCount <= 1 && $user->speaker_id && $packet->packet_id != Packet::GAP) {
+            $bonus = 0;
+            $bonusPercentage = 0;
+            $packetPrice = $userPacket->packet_price;
+            $speaker = Users::where(['user_id' => $user->speaker_id])->first();
+            if ($speaker) {            
+                $bonusPercentage = (2 / 100);
+                $bonus = $packetPrice * $bonusPercentage;
+            }
+    
+            if ($bonus) {
+                $operation = new UserOperation();
+                $operation->author_id = $user->user_id;
+                $operation->recipient_id = $speaker->user_id;
+                $operation->money = $bonus;
+                $operation->operation_id = 1;
+                $operation->operation_type_id = 7;
+                $operation->operation_comment = 'Спикерский бонус';
+                $operation->save();
+    
+                $speaker->user_money = $speaker->user_money + $bonus;
+                $speaker->save();
+    
+                $this->sentMoney += $bonus;
+            }     
+        }        
     }
 
     private function implementInviterBonus($userPacket, $packet, $user)

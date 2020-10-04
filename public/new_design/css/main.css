@@ -13686,3 +13686,11 @@ label[for]:hover {
 .hide_nav_li {
     display: none !important;
 }
+
+.choose_role {
+    padding: 10px;
+    margin: 10px; 
+    border-top: 1px solid; 
+    border-bottom: 1px solid;
+    display: none;
+}

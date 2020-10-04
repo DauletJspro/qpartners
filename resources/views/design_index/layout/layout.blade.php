@@ -61,6 +61,9 @@ use \Illuminate\Support\Facades\Session;
 
 <script src="/new_design/js/jquery.js"></script>
 <script src="/new_design/js/plugins.js"></script>
+<script src="/custom/js/jquery.maskedinput.js"></script>
+<script src="/custom/js/jquery.gritter.js"></script>
+<script src="/custom/js/custom.js"></script>
 <script src="/new_design/js/jquery.main.js"></script>
 <script src="/notify/notify.js"></script>
 <script src="/notify/notify.min.js"></script>
@@ -152,6 +155,21 @@ use \Illuminate\Support\Facades\Session;
                 }
             }
         });
+    }
+
+    function showOrderFormModal(ob,id, is_partner) {      
+      let modal = $('#order_form');
+      let product_count = $(ob).closest('.product-form').find('#product_count').val();      
+      $('<input>').attr({
+          type: 'hidden',
+          name: 'products_count['+id+']',
+          value: product_count
+      }).appendTo($(modal).find('form'));
+      $(modal).find('#product_id').val(id)      
+      if (is_partner) {
+        $(modal).find('#user_not_partner').hide()
+      }
+      $(modal).modal();
     }
 </script>
 

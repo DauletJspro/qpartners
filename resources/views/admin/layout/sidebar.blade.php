@@ -119,6 +119,19 @@
             </a>
         </li>
 
+        <li class="treeview">
+            <a href="/admin/speaker">
+                <i class="fa fa-comments"></i>
+                <span>Спикеры</span>
+            </a>
+          </li>
+          <li class="treeview">
+            <a href="/admin/office">
+                <i class="fa fa-building"></i>
+                <span>Офис</span>
+            </a>
+          </li>
+
     @endif
 
     <li class="treeview">

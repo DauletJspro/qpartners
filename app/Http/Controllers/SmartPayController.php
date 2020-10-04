@@ -66,7 +66,7 @@ class SmartPayController extends Controller
         }
         
         $price = ($packet->packet_price - $packet_old_price) * \App\Models\Currency::pvToKzt();
-        $name = 'Покупка пакета ' . $packet->packet_name_ru . ' на сайте Januya.kz';        
+        $name = 'Покупка пакета ' . $packet->packet_name_ru . ' на сайте Qpartner.club';        
         $data = [
             'MERCHANT_ID' => env('SMART_PAY_MERCHANT_ID'),
             'PAYMENT_AMOUNT' => 100,
@@ -148,7 +148,7 @@ class SmartPayController extends Controller
         return response()->json(['RESULT' => 'RETRY', 'DESC' => 'invalid_signature']);
     }
 
-    public function createOrderProduct(Request $request)
+    public function createOrderPartnerProduct(Request $request)
     {
         $result['message'] = 'Временно недоступно';
         $result['status'] = false;  
@@ -157,7 +157,7 @@ class SmartPayController extends Controller
         }
         $price = 0;
         $order_code = time();
-        $name = 'Покупка товаров на сайте Januya.kz';
+        $name = 'Покупка товаров на сайте Qpartner.club';
         $sum = 0;
         $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
         foreach ($products as $item) {
@@ -223,7 +223,7 @@ class SmartPayController extends Controller
         
     }
 
-    public function callbackProduct() {  
+    public function callbackPartnerProduct() {  
         
         $input_data = $request->all();
         Log::info($input_data);
@@ -315,6 +315,95 @@ class SmartPayController extends Controller
         }
         return response()->json(['RESULT' => 'RETRY', 'DESC' => 'invalid_signature']);        
     }
+    
+    public function createOrderProduct(Request $request) {
+        $result['message'] = 'Временно недоступно';
+        $result['status'] = false;  
+        $validator = Validator::make($request->all(), [
+            'product_id' => 'required|integer',
+            'product_count' => 'required|integer',
+            'username' => 'required|string',
+            'contact' => 'required|string',
+            'email' => 'required|string',
+            'address' => 'required|string',
+            'delivery' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            $messages = $validator->errors();
+            $error = $messages->all(); 
+            $result['message'] = $error[0];           
+            return response()->json($result);
+        }
+
+        $product = Product::where('product_id', $request->product_id)->first();
+        
+        $price = 0;
+        $name = 'Покупка товара на сайте Qpartner.club';
+        $order_code = time();
+        $price = ($product->product_price * $request->product_count ) * \App\Models\Currency::pvToKzt();
+        $products = [['product_id' => $product->product_id, 'product_name' => $product->product_name_ru, 'count' => $request->product_count]];
+        $data = [
+            'MERCHANT_ID' => env('SMART_PAY_MERCHANT_ID'),
+            'PAYMENT_AMOUNT' => 100,
+            'PAYMENT_ORDER_ID' => $order_code,
+            'PAYMENT_INFO' => $name,
+            'PAYMENT_CALLBACK_URL' => env('SMART_PAY_CALLBACK_PRODUCT_URL'),
+            'PAYMENT_RETURN_URL' => env('SMART_PAY_RETURN_URL'),
+            'PAYMENT_RETURN_FAIL_URL' => env('SMART_PAY_FAIL_URL'),
+        ];
+
+        $sign = Helpers::make_signature($data, env('SMART_PAY_KEY')); // формируем ключ
+        $data['PAYMENT_HASH'] = $sign;
+        $response = Helpers::send_request('https://spos.kz/merchant/api/create_invoice', $data);        
+        if($response->status === 0) { // проверяем статус выполнения            
+            $data_order = [
+                'order_code' => $order_code,
+                'user_id' => null,
+                'username' => $request->username ,
+                'email' => $request->email,
+                'address' => $request->address,
+                'contact' => $request->contact,
+                'sum' => $price,
+                'products' => \json_encode($products),
+                'packet_id' => null,
+                'payment_id' => $response->data->id,
+                'delivery_id' => $request->delivery
+            ];
+            $order = Order::createOrder($data_order);             
+            if ($order) {                
+                return response()->json(['url' => $response->data->url]);
+                // return  redirect()->away($response->data->url); // направляем пользователя на страницу оплаты
+            }
+            return response()->json($result);
+            // $payment_id = $response->data->id; // для удобства можно привязать к номеру заказа, чтобы проверять статус, используя запрос /merchant/api/status
+        } else { // произошла ошибка при выполнении (на стороне Smart Pay)                         
+            return response()->json($result);
+        }
+    }
+
+    public function callbackProduct() {
+        $input_data = $request->all();
+        Log::info($input_data);
+        Log::info('callback');
+        if(env('SMART_PAY_MERCHANT_ID') == $input_data['MERCHANT_ID']) {
+            $sign = Helpers::make_signature($input_data, env('SMART_PAY_KEY'));            
+            if($input_data['PAYMENT_HASH'] == $sign) {
+                $order = Order::getByCode($input_data['PAYMENT_ORDER_ID']);                
+                if ($order) {
+                    if ($input_data['PAYMENT_STATUS'] == 'paid') {
+                        Order::changeIsPaid($input_data['PAYMENT_ORDER_ID']);   
+                    }
+                    // маркируем заказ с ИД PAYMENT_ORDER_ID как оплаченый
+                    return response()->json(['RESULT'=>'OK']);
+                }                
+            } else {
+                // не совпадает цифровая подпись.
+                return response()->json(['RESULT' => 'RETRY', 'DESC' => 'invalid_signature']);
+            }
+        }        
+        return response()->json(['RESULT' => 'RETRY', 'DESC' => 'invalid_signature']);
+    }
 
     public function fail(Request $request) {
         Log::info($request);
@@ -341,12 +430,5 @@ class SmartPayController extends Controller
             $boolean = true;
         }
         return $boolean;
-    }
-
-    public function order_product() {
-        
-        
-        $result['status'] = true;
-        return response()->json($result);
     }
 }

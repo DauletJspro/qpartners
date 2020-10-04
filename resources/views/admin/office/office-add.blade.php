@@ -24,7 +24,7 @@
 
                                         <div class="box-body">
 
-                                            @if($user_id == null)
+                                            {{-- @if($user_id == null) --}}
 
                                                 <div class="form-group"  >
                                                     <label>Директор</label>
@@ -37,11 +37,11 @@
                                                     </select>
                                                 </div>
 
-                                           @else
+                                           {{-- @else
 
                                                 <input type="hidden" name="user_id" value="{{ $user_id }}">
 
-                                            @endif
+                                            @endif --}}
 
 
 

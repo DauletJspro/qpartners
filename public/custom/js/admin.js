@@ -560,3 +560,34 @@ function rejectInstagram(ob, id) {
     });
 }
 
+function buyProductOnline() {
+    if(confirm('Действительно хотите купить онлайн?')) {
+        document.getElementById('ajax-loader').style.display='block';
+        $.ajax({
+            url: '/smartpay/orders_product',
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                packet_id: packet_id,
+                user_packet_type: user_packet_type                
+            },
+            beforeSend: function() {
+                closeModal();
+            },
+            success: function (data) {
+                document.getElementById('ajax-loader').style.display='none';
+                if (data.status == false) {
+                    showError(data.message);
+                    return;
+                }
+                else {
+                    // console.log(data)
+                    window.location.replace(data.url);
+                }
+            }
+        });
+    }
+}
+

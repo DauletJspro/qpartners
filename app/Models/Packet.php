@@ -75,86 +75,30 @@ class Packet extends Model
         $incomeWeek = array_sum($incomeWeek->all());
 
         switch ($userStatus) {
-            case UserStatus::CONSULTANT;
-                if ($incomeWeek >= 50) {
-                    $messageBody = 'Ваш лимит на неделю не превышает 50$. ';
-                    $success = false;
-                }
+            case UserStatus::CONSULTANT;                
                 if ($incomeForMonth >= 200) {
                     $messageBody = 'Ваш лимит на неделю не превышает 200$. ';
                     $success = false;
                 }
                 break;
-            case UserStatus::PREMIUM_MANAGER:
-                if ($incomeWeek >= 250) {
-                    $messageBody = 'Ваш лимит на неделю не превышает 250$. ';
-                    $success = false;
-                }
+            case UserStatus::PREMIUM_MANAGER:                
                 if ($incomeForMonth >= 1000) {
                     $messageBody = 'Ваш лимит на неделю не превышает 1000$. ';
                     $success = false;
                 }
                 break;
             case UserStatus::ELITE_MANAGER:
-                if ($incomeWeek >= 250) {
-                    $messageBody = 'Ваш лимит на неделю не превышает 500$. ';
-                    $success = false;
-                }
                 if ($incomeForMonth >= 1000) {
                     $messageBody = 'Ваш лимит на неделю не превышает 2 000$. ';
                     $success = false;
                 }
-                break;
-            case UserStatus::BRONZE_MANAGER:
-                if ($incomeWeek >= 1000) {
-                    $messageBody = 'Ваш лимит на неделю не превышает 1000$. ';
-                    $success = false;
-                }
-                if ($incomeForMonth >= 4000) {
+                break;            
+            case UserStatus::VIP_MANAGER:                
+                if ($incomeForMonth >= 1000000) {
                     $messageBody = 'Ваш лимит на неделю не превышает 4 000$. ';
                     $success = false;
                 }
-                break;
-            case UserStatus::VIP_MANAGER:
-                if ($incomeWeek >= 1500) {
-                    $messageBody = 'Ваш лимит на неделю не превышает 1000$. ';
-                    $success = false;
-                }
-                if ($incomeForMonth >= 6000) {
-                    $messageBody = 'Ваш лимит на неделю не превышает 4 000$. ';
-                    $success = false;
-                }
-                break;
-            case UserStatus::GOLD_MANAGER:
-                if ($incomeWeek >= 2000) {
-                    $messageBody = 'Ваш лимит на неделю не превышает 2 000$. ';
-                    $success = false;
-                }
-                if ($incomeForMonth >= 8000) {
-                    $messageBody = 'Ваш лимит на неделю не превышает 8 000$. ';
-                    $success = false;
-                }
-                break;
-            case UserStatus::SAPPHIRE_DIRECTOR:
-                if ($incomeWeek >= 4000) {
-                    $messageBody = 'Ваш лимит на неделю не превышает 4 000$. ';
-                    $success = false;
-                }
-                if ($incomeForMonth >= 16000) {
-                    $messageBody = 'Ваш лимит на неделю не превышает 16 000$. ';
-                    $success = false;
-                }
-                break;
-            case UserStatus::DIAMOND_DIRECTOR:
-                if ($incomeWeek >= 25000) {
-                    $messageBody = 'Ваш лимит на неделю не превышает 25 000$. ';
-                    $success = false;
-                }
-                if ($incomeForMonth >= 100000) {
-                    $messageBody = 'Ваш лимит на неделю не превышает 100 000$. ';
-                    $success = false;
-                }
-                break;
+                break;            
         }
         return [
             'message' => $messageBody,
