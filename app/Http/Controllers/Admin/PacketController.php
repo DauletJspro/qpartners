@@ -558,24 +558,27 @@ class PacketController extends Controller
             $packetPrice = $userPacket->packet_price;
             $inviterPacketId = UserPacket::where(['user_id' => $inviter->user_id])->where(['is_active' => true])->get();
             $inviterCount = (count($inviterPacketId));
-
+            $limit = Packet::limitBonus($inviter);
+                            
             if ($inviterCount) {
-                $inviterPacketId = collect($inviterPacketId);
-                $inviterPacketId = $inviterPacketId->map(function ($item) {
-                    return $item->packet_id;
-                });
-                $inviterPacketId = max($inviterPacketId->all());
-                $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
-                if ($inviter_order == 1
-                    && in_array($inviter->status_id, $actualStatuses)
-                    && $packet->packet_id != Packet::ELITE_FREE) {
-                    $bonusPercentage = (5 / 100);
-                    $bonus = $packetPrice * $bonusPercentage;
-                } elseif ($packet->packet_id != Packet::GAP) {
-                    if (($inviter_order >= 2 || $inviter_order <= 8) && $this->hasNeedPackets($packet->packet_id, $inviterPacketId, $inviter_order))
-                    {
+                if ($limit['status']) {
+                    $inviterPacketId = collect($inviterPacketId);
+                    $inviterPacketId = $inviterPacketId->map(function ($item) {
+                        return $item->packet_id;
+                    });
+                    $inviterPacketId = max($inviterPacketId->all());
+                    $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;                
+                    if ($inviter_order == 1
+                        && in_array($inviter->status_id, $actualStatuses)
+                        && $packet->packet_id != Packet::ELITE_FREE) {                                        
                         $bonusPercentage = (5 / 100);
                         $bonus = $packetPrice * $bonusPercentage;
+                    } elseif ($packet->packet_id != Packet::GAP) {
+                        if (($inviter_order >= 2 || $inviter_order <= 8) && $this->hasNeedPackets($packet->packet_id, $inviterPacketId, $inviter_order))
+                        {
+                            $bonusPercentage = (5 / 100);
+                            $bonus = $packetPrice * $bonusPercentage;
+                        }
                     }
                 }
             }
@@ -989,12 +992,20 @@ class PacketController extends Controller
             $needNumber = 3; // Necessary number of followers for update parent status
             if (count($parentFollowers) >= $needNumber) {
                 $operation = new UserOperation();
-                if ($parent->soc_status_id == UserStatus::GAP_MANAGER && $user->soc_status_id == UserStatus::GAP_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP_MANAGER)) {                    
+                if ($parent->soc_status_id == UserStatus::GAP_MANAGER && $user->soc_status_id == UserStatus::GAP_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP_MANAGER)) {
+                    $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+                        'info@roiclub.kz',
+                        $parent->email,
+                        $parent->email,
+                        'windows-1251',
+                        'UTF-8',
+                        'Поздравляю вы повысили статус',
+                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 1ур \n Вы получите 90 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        true);
                     $parent->soc_status_id = UserStatus::GAP1_MANAGER;
                     $operation->operation_comment = "Ваш статус GAP Менеджер 1ур";
                     $willUpdate = true;
-                }
-                if ($parent->soc_status_id == UserStatus::GAP1_MANAGER && $user->soc_status_id == UserStatus::GAP1_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP1_MANAGER)) {
+                } elseif ($parent->soc_status_id == UserStatus::GAP1_MANAGER && $user->soc_status_id == UserStatus::GAP1_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::GAP1_MANAGER)) {
                     if (Packet::checkQualificationBonusTime($parent, 30)) {  
                         $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
                         'info@roiclub.kz',
@@ -1003,7 +1014,7 @@ class PacketController extends Controller
                         'windows-1251',
                         'UTF-8',
                         'Поздравляю вы повысили статус',
-                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 2ур \n Вы получите 90 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 2ур \n Вы получите 389 890 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
                         true);                          
                     }
                     $parent->soc_status_id = UserStatus::GAP2_MANAGER;
@@ -1018,7 +1029,7 @@ class PacketController extends Controller
                         'windows-1251',
                         'UTF-8',
                         'Поздравляю вы повысили статус',
-                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 2ур \n Вы получите 90 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 3ур \n Вы получите 554 990 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
                         true);                          
                     }
                     $parent->soc_status_id = UserStatus::GAP3_MANAGER;
@@ -1033,7 +1044,7 @@ class PacketController extends Controller
                         'windows-1251',
                         'UTF-8',
                         'Поздравляю вы повысили статус',
-                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 2ур \n Вы получите 90 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 4ур \n Вы получите 6 190 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
                         true);                          
                     }
                     $parent->soc_status_id = UserStatus::GAP4_MANAGER;
@@ -1048,7 +1059,7 @@ class PacketController extends Controller
                         'windows-1251',
                         'UTF-8',
                         'Поздравляю вы повысили статус',
-                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 2ур \n Вы получите 90 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 5ур \n Вы получите Сертификат на рассрочку 8 100 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
                         true);                          
                     }
                     $parent->soc_status_id = UserStatus::GAP5_MANAGER;
@@ -1063,7 +1074,7 @@ class PacketController extends Controller
                         'windows-1251',
                         'UTF-8',
                         'Поздравляю вы повысили статус',
-                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 2ур \n Вы получите 90 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 6ур \n Вы получите Сертификат на рассрочку 8 100 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
                         true);                          
                     }
                     $parent->soc_status_id = UserStatus::GAP6_MANAGER;
@@ -1078,7 +1089,7 @@ class PacketController extends Controller
                         'windows-1251',
                         'UTF-8',
                         'Поздравляю вы повысили статус',
-                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 7ур \n Вы получите 90 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 7ур \n Вы получите Сертификат на рассрочку 8 100 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
                         true);                          
                     }
                     $parent->soc_status_id = UserStatus::GAP7_MANAGER;
@@ -1093,7 +1104,7 @@ class PacketController extends Controller
                         'windows-1251',
                         'UTF-8',
                         'Поздравляю вы повысили статус',
-                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 8ур \n Вы получите 90 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
+                        view('mail.qualification-email',['message' => "Ваш статус GAP Менеджер 8ур \n Вы получите Сертификат на рассрочку 8 100 000 тг \n пожалуйста свяжитесь с нами! \n \n С уважением Qpartners.club"]),
                         true);                          
                     }
                     $parent->soc_status_id = UserStatus::GAP8_MANAGER;
