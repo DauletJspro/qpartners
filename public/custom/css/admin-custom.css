@@ -228,7 +228,8 @@ ul.level_1 {
 }
 .modal-dialog {
     left: 50%;
-    margin-left: -300px;
+    /* margin-left: -300px; */
+    transform: translateX(-50%);
     position: fixed;
     top: 30%;
     width: 600px;
@@ -270,6 +271,12 @@ ul.level_1 {
 @media (max-width: 767px) {
     #action {
         width: 400px;
+    }
+
+    .modal-dialog{
+        left: auto;
+        margin-left: 0px;
+        width: auto;
     }
 }
 

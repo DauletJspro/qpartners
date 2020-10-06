@@ -37,8 +37,19 @@
                            value="{{ $val->unit }}"/>
                 </td>
                 <td>
-                    {{ $val['product_price']}}PV
-                    ({{round($val->product_price * \App\Models\Currency::pvToKzt(),2)}}
+                    @php
+                        if($row->is_packet) {
+                            $price_ball = $val->product_price - ($val->product_price * \App\Models\Currency::PacketDiscount);
+                        }
+                        else if ($row->is_partner) {
+                            $price_ball = $val->product_price - ($val->product_price * \App\Models\Currency::PartnerDiscount);
+                        }
+                        else {
+                            $price_ball = $val->product_price - ($val->product_price * \App\Models\Currency::ClientDiscount);
+                        }
+                    @endphp
+                    {{ round($price_ball) }}$
+                    ({{round($price_ball * \App\Models\Currency::pvToKzt(),0)}}
                     тг)
                 </td>
                 <td>
@@ -51,14 +62,14 @@
                 </td>
             </tr>
 
-            <?php $sum += $val->product_price; ?>
+            <?php $sum += round($price_ball); ?>
             <?php $ballSum += $val->ball ?>
 
         @endforeach
 
         <tr>
             <td colspan="4" style="text-align: right"><b>Общая сумма:</b></td>
-            <td colspan="1"><b id="sum">{{$sum}} PV
+            <td colspan="1"><b id="sum">{{$sum}} $
                     ({{round($sum * \App\Models\Currency::pvToKzt(),2)}}тг)</b>
             </td>
             <td colspan="1"><b id="ballSum">+ {{ $ballSum }}</b>

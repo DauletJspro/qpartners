@@ -416,11 +416,15 @@ function setBasketUnit(ob, id) {
 }
 
 function confirmBasket() {
+    let discount_type = $('#discount_type').val();
+    let address = $('#address').val();
+    let delivery_id = $('#delivery').val();
     $.ajax({
         type: 'POST',
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
+        data: {type: discount_type, address: address, delivery_id: delivery_id},
         url: "/admin/online/confirm",
         success: function (data) {
             if (data.status == true) {
@@ -562,16 +566,20 @@ function rejectInstagram(ob, id) {
 
 function buyProductOnline() {
     if(confirm('Действительно хотите купить онлайн?')) {
+        let discount_type = $('#discount_type').val();
+        let address = $('#address').val();
+        let delivery_id = $('#delivery').val();
         document.getElementById('ajax-loader').style.display='block';
         $.ajax({
-            url: '/smartpay/orders_product',
+            url: '/smartpay/create_order_partner_product',
             type: 'POST',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             data: {
-                packet_id: packet_id,
-                user_packet_type: user_packet_type                
+                address: address,
+                delivery_id: delivery_id,
+                type: discount_type,                                
             },
             beforeSend: function() {
                 closeModal();

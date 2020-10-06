@@ -118,7 +118,7 @@ class Packet extends Model
 
         $incomeForMonth = UserOperation::where(['recipient_id' => $userId])
             ->where(['operation_type_id' => $availableBonuses])
-            ->whereBetween(['created_at', [$firstDay, $lastDay]])
+            ->whereBetween('created_at', [$firstDay, $lastDay])
             ->get();
 
         $incomeForMonth = collect($incomeForMonth);

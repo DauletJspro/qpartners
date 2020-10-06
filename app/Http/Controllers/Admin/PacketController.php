@@ -740,6 +740,8 @@ class PacketController extends Controller
             $packet_old_price = UserPacket::beforePurchaseSum($userPacket->user_id);
         }
 
+        
+
         $userPacket->is_active = 1;
         if ($userPacket->packet_id == Packet::GAP) {
             $userPacket->packet_price = $userPacket->packet_price;    
@@ -749,8 +751,12 @@ class PacketController extends Controller
         }
         $max_queue_start_position = UserPacket::where('packet_id', $userPacket->packet_id)->where('is_active', 1)->where('queue_start_position', '>', 0)->max('queue_start_position');
         $userPacket->queue_start_position = ($max_queue_start_position) ? ($max_queue_start_position + 1) : 1;
-        if ($userPacket->save() && $userPacket->packet_id != Packet::ELITE_FREE && $userPacket->packet_id != Packet::GAP) {
-            $this->add_share_to_global_diamond_found($userPacket, $userPacket->user_id);
+        // $userPacket->is_paid = 1;
+        if ($userPacket->save()) {
+            if ($userPacket->packet_id != Packet::ELITE_FREE && $userPacket->packet_id != Packet::GAP) {
+                $this->add_share_to_global_diamond_found($userPacket, $userPacket->user_id);
+            }
+            Users::where('user_id', $userPacket->user_id)->update(['product_balance' => $userPacket->packet_price]);
         }
     }
 

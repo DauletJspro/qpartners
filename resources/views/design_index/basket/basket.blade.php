@@ -115,6 +115,7 @@ $basketIds = [];
                                     id="product_price_kzt-{{$basketItem->product_id}}">{{$basketItem->product_price * $dollarCourse}} </span>
                         </strong>
                         <a style="cursor: pointer;" onclick="deleteItemFromBasket(this)"
+                            data-action="/admin/online/{{ $basketItem->product_id }}"
                            data-method="delete"
                            data-item-id="{{$basketItem->product_id}}"
                            data-user-id="{{Auth::user()->user_id}}" class="event_button">
@@ -159,10 +160,11 @@ $basketIds = [];
 @section('js')
     <script>
         function deleteItemFromBasket(tag_object) {
+            var action = $(tag_object).data('action');
             var method = $(tag_object).data('method');
             var item_id = $(tag_object).data('item-id');
             var user_id = $(tag_object).data('user-id');
-            ajax(method, item_id, user_id);
+            ajax(action, method, item_id, user_id);
             $("#basket-box").load(location.href + " #basket-box");
         }
 

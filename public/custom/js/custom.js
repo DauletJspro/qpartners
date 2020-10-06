@@ -772,8 +772,8 @@ function show_more_detail(btn) {
         $(form).find('#delivery').val('По почтам')
     }
 
-    let products = JSON.parse(data.products)
-    console.log(products)
+    let products = JSON.parse(data.products)    
+    $(form).find('#product_list').empty()
     for (let i = 0; i < products.length; i++) {
         $(form).find('#product_list').append(
             `

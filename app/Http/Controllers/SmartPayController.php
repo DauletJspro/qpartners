@@ -10,6 +10,7 @@ use App\Models\UserOperation;
 use App\Models\UserStatus;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\UserBasket;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -69,7 +70,7 @@ class SmartPayController extends Controller
         $name = 'Покупка пакета ' . $packet->packet_name_ru . ' на сайте Qpartner.club';        
         $data = [
             'MERCHANT_ID' => env('SMART_PAY_MERCHANT_ID'),
-            'PAYMENT_AMOUNT' => 100,
+            'PAYMENT_AMOUNT' => $price,
             'PAYMENT_ORDER_ID' => $order_code,
             'PAYMENT_INFO' => $name,
             'PAYMENT_CALLBACK_URL' => env('SMART_PAY_CALLBACK_URL'),
@@ -151,45 +152,58 @@ class SmartPayController extends Controller
     public function createOrderPartnerProduct(Request $request)
     {
         $result['message'] = 'Временно недоступно';
-        $result['status'] = false;  
+        $result['status'] = false; 
+        $validator = Validator::make($request->all(), [
+            'type' => 'required|string',
+            'address' => 'required|string',
+            'delivery_id' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            $messages = $validator->errors();
+            $error = $messages->all(); 
+            $result['message'] = $error[0];           
+            return response()->json($result);
+        }
         if (!Auth::check()) {
             return response()->json($result);
         }
-        $price = 0;
         $order_code = time();
         $name = 'Покупка товаров на сайте Qpartner.club';
         $sum = 0;
+        $products_all = [];
+        $products_item = [];
         $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
         foreach ($products as $item) {
             $product_price = Product::where('product_id', $item->product_id)->first();
             $sum += $product_price->product_price * $item->unit;
+            $products_item['product_id'] = $product_price->product_id;
+            $products_item['product_name'] = $product_price->product_name_ru;
+            $products_item['count'] = $item->unit;
+            $products_item['ball'] = $product_price->ball;
+            array_push($products_all, $products_item);
         }
-        if (count($products) != count($products_id)) {                 
-            return response()->json($result);
-        }
-        foreach ($products as $product) {
-            if (Auth::check()) {
-                $userPacket = UserPacket::where('user_id', Auth::user()->user_id)->where('is_active', true)->get();
-                if ($userPacket) {
-                    $discount_price = $product->product_price - ($product->product_price * \App\Models\Currency::PartnerDiscount);
-                    $discount_price = $discount_price * \App\Models\Currency::pvToKzt();
-                    $discount_price = round($discount_price) * $request->products_count[$product->product_id];
-                    $price += $discount_price;
-                }
+        if ($request->type == 'is_partner') {
+            $is_partner = UserPacket::where('user_id', Auth::user()->user_id)->where('is_active', 1)->exists();
+            if (!$is_partner) {
+                $result['error'] = 'Вы не являетесь партнером';
+                $result['status'] = false;
+                return response()->json($result);
             }
-            else {
-                $product_price = $product->product_price * \App\Models\Currency::pvToKzt();
-                $product_price = round($product_price) * $request->products_count[$product->product_id];
-                $price += $product_price;
-            }
+            $sum = $sum - ($sum * \App\Models\Currency::PartnerDiscount);
+            $sum = round($sum);
         }
-
+        else {
+            $sum = $sum - ($sum * \App\Models\Currency::ClientDiscount);
+            $sum = round($sum);
+        }                            
+        
         $data = [
             'MERCHANT_ID' => env('SMART_PAY_MERCHANT_ID'),
             'PAYMENT_AMOUNT' => 100,
             'PAYMENT_ORDER_ID' => $order_code,
             'PAYMENT_INFO' => $name,
-            'PAYMENT_CALLBACK_URL' => env('SMART_PAY_CALLBACK_URL'),
+            'PAYMENT_CALLBACK_URL' => env('SMART_PAY_CALLBACK_PARTNER_PRODUCT_URL'),
             'PAYMENT_RETURN_URL' => env('SMART_PAY_RETURN_URL'),
             'PAYMENT_RETURN_FAIL_URL' => env('SMART_PAY_FAIL_URL'),
         ];
@@ -197,20 +211,22 @@ class SmartPayController extends Controller
         $sign = Helpers::make_signature($data, env('SMART_PAY_KEY')); // формируем ключ
         $data['PAYMENT_HASH'] = $sign;
         $response = Helpers::send_request('https://spos.kz/merchant/api/create_invoice', $data);        
-        if($response->status === 0) { // проверяем статус выполнения            
+        if($response->status === 0) { // проверяем статус выполнения
             $data_order = [
-                'order_code' => $order_code,
-                'user_id' => Auth::check() ? Auth::user()->user_id : null,
-                'username' => Auth::check() ? Auth::user()->name .' '. Auth::user()->last_name : $request->username,
-                'email' => Auth::check() ? Auth::user()->email : $request->email,
-                'address' => $request->address ?? null,
-                'contact' => Auth::check() ? Auth::user()->phone : $request->contact,
-                'sum' => $price,
-                'products' => $request->products ? \json_encode($products) : null,
+                'order_code' => time(),
+                'user_id' => Auth::user()->user_id,
+                'username' => Auth::user()->name .' '. Auth::user()->last_name ,
+                'email' => Auth::user()->email,
+                'address' => $request->address,
+                'contact' => Auth::user()->phone,
+                'sum' => $sum,
+                'products' => \json_encode($products_all),
                 'packet_id' => null,
-                'payment_id' => $response->data->id
+                'payment_id' => $response->data->id,
+                'delivery_id' => $request->delivery_id,
+                'is_paid' => 0
             ];
-            $order = Order::createOrder($data_order);             
+            $order = Order::createOrder($data_order);
             if ($order) {
                 return response()->json(['url' => $response->data->url]);
                 // return  redirect()->away($response->data->url); // направляем пользователя на страницу оплаты
@@ -219,8 +235,7 @@ class SmartPayController extends Controller
             // $payment_id = $response->data->id; // для удобства можно привязать к номеру заказа, чтобы проверять статус, используя запрос /merchant/api/status
         } else { // произошла ошибка при выполнении (на стороне Smart Pay)                         
             return response()->json($result);
-        }
-        
+        }        
     }
 
     public function callbackPartnerProduct() {  
@@ -237,74 +252,8 @@ class SmartPayController extends Controller
                     if ($input_data['PAYMENT_STATUS'] != 'paid') {
                         return response()->json(['RESULT'=>'OK']);
                     }
-                    Order::changeIsPaid($input_data['PAYMENT_ORDER_ID']);
-                    if ($order->user_id) {
-                        $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
-                        foreach ($products as $item) {
-                            $product = Product::where('product_id', $item->product_id)->first();
-                            $user_basket = UserBasket::where('user_basket_id', $item->user_basket_id)->first();
-                            $user_basket->product_price = $product->product_price;
-                            $user_basket->is_active = 1;
-                            $user_basket->save();              
-                        }  
-                        $price = round($order->sum / \App\Models\Currency::pvToKzt());
-                        $inviter_order = 1;
-                        $user = Users::where(['user_id' => $order->user_id])->first();
-                        $inviter = Users::where(['user_id' => $user->recommend_user_id])->first();
-                        $actualStatuses = [UserStatus::CONSULTANT, UserStatus::PREMIUM_MANAGER, UserStatus::ELITE_MANAGER,
-                        UserStatus::VIP_MANAGER, UserStatus::BRONZE_MANAGER, UserStatus::SILVER_MANAGER, UserStatus::GOLD_MANAGER, UserStatus::RUBIN_DIRECTOR,
-                        UserStatus::SAPPHIRE_DIRECTOR, UserStatus::EMERALD_DIRECTOR, UserStatus::DIAMOND_DIRECTOR];                            
-                        while ($inviter) {                                  
-                            $bonus = 0;
-                            $bonusPercentage = round($price * (8.34 / 100), 0);
-                            $inviterPacketId = UserPacket::where(['user_id' => $inviter->user_id])->where(['is_active' => true])->get();
-                            $inviterCount = (count($inviterPacketId));
-                            if ($inviterCount) {  
-                                $inviterPacketId = collect($inviterPacketId);
-                                $inviterPacketId = $inviterPacketId->map(function ($item) {
-                                    return $item->packet_id;
-                                });
-                                $inviterPacketId = max($inviterPacketId->all());
-                                $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;                                                                      
-                                if (in_array($inviter->status_id, $actualStatuses) && $this->hasNeedPackets($inviterPacketId, $inviter_order)) {                                        
-                                    $bonus = $bonusPercentage; 
-                                }
-                            }    
-                            if ($bonus) {
-                                $operation = new UserOperation();
-                                $operation->author_id = $user->user_id;
-                                $operation->recipient_id = $inviter->user_id;
-                                $operation->money = $bonus;
-                                $operation->operation_id = 1;
-                                $operation->operation_type_id = 1;
-                                $operation->operation_comment = 'За покупку продукта. Уровень - ' . $inviter_order;
-                                $operation->save();
-                                $inviter->user_money = $inviter->user_money + $bonus;
-                                $inviter->save();
-                                $this->sentMoney += $bonus;
-                            }
-                            $inviter = Users::where(['user_id' => $inviter->recommend_user_id])->first();
-                            if (!$inviter || $inviter_order >= 8) {
-                                break;
-                            }    
-                            $inviter_order++;
-                        }
-                        
-                        //пополнение фонда компании
-                        $company_money = $price - $this->sentMoney;
-                        $operation = new UserOperation();
-                        $operation->author_id = $order->user_id;
-                        $operation->recipient_id = 1;
-                        $operation->money = $company_money;
-                        $operation->operation_id = 1;
-                        $operation->operation_type_id = 6;
-                        $operation->operation_comment = 'За покупку продукта';
-                        $operation->save();
-            
-                        $company = Users::where('user_id', 1)->first();
-                        $company->user_money = $company->user_money + $company_money;
-                        $company->save();
-                    }
+                    Order::changeIsPaid($input_data['PAYMENT_ORDER_ID']);                    
+                    $bonus_system = app(\App\Http\Controllers\Admin\OnlineController::class)->implementCashback($order->user_id);                    
                 }
                 // маркируем заказ с ИД PAYMENT_ORDER_ID как оплаченый
                 return response()->json(['RESULT'=>'OK']);
