@@ -563,7 +563,7 @@ class PacketController extends Controller
             $limit = Packet::limitBonus($inviter);
                             
             if ($inviterCount) {
-                if ($limit['status']) {
+                if ($limit['success']) {
                     $inviterPacketId = collect($inviterPacketId);
                     $inviterPacketId = $inviterPacketId->map(function ($item) {
                         return $item->packet_id;
