@@ -126,8 +126,10 @@ class Packet extends Model
             return $item->money;
         });
 
-        $incomeForMonth = array_map($incomeForMonth->all());    
+        Log::info($incomeForMonth);
 
+        $incomeForMonth = array_sum($incomeForMonth->all());    
+        Log::info($incomeForMonth);
         switch ($userStatus) {
             case UserStatus::CONSULTANT;                
                 if ($incomeForMonth >= 200) {
