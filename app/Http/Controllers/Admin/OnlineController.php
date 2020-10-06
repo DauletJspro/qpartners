@@ -275,7 +275,7 @@ class OnlineController extends Controller
     }
 
 
-    private function implementCashback($user_id) {
+    public function implementCashback($user_id) {
         $actualStatuses = [
             UserStatus::FREE_ELITE_OWNER,
             UserStatus::PREMIUM_MANAGER,

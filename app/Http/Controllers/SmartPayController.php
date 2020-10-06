@@ -196,7 +196,9 @@ class SmartPayController extends Controller
         else {
             $sum = $sum - ($sum * \App\Models\Currency::ClientDiscount);
             $sum = round($sum);
-        }                            
+        }    
+        
+        $sum = $sum * \App\Models\Currency::pvToKzt();
         
         $data = [
             'MERCHANT_ID' => env('SMART_PAY_MERCHANT_ID'),
