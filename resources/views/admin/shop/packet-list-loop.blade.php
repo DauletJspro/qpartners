@@ -25,8 +25,9 @@ use \App\Models\UserPacket;
                 <div class="inner">
                     <h3 style="font-family: cursive; font-size: 30px"> {{$item->packet_name_ru}}</h3>
 
-                    <h4 style="font-size: 25px">{{$item->packet_price - $beforeSum}}                        
-                        @if ($item->packet_id == \App\Models\Packet::GAP)
+                    <h4 style="font-size: 25px">
+                        @if ($item->packet_id == \App\Models\Packet::GAP || $item->packet_id == \App\Models\Packet::SUPER)
+                        {{$item->packet_price}}
                         PV
                             ({{($item->packet_price) * \App\Models\Currency::pvToKzt()}}
                         тг)        

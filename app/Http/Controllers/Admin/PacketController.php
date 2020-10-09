@@ -572,16 +572,20 @@ class PacketController extends Controller
                     $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
                     if ($inviter_order == 1
                         && in_array($inviter->status_id, $actualStatuses)
-                        && $packet->packet_id != Packet::ELITE_FREE) {
-                        $bonusPercentage = (5 / 100);
+                        && $packet->packet_id != Packet::SUPER) {                                                        
+                            $bonusPercentage = (5 / 100);
+                            $bonus = $packetPrice * $bonusPercentage;                                                                                
+                    } elseif ($inviter_order == 1 && $inviter->status_id == UserStatus::SUPER_MANAGER && $packet->packet_id == Packet::SUPER) {
+                        $bonusPercentage = (83.4 / 100);
                         $bonus = $packetPrice * $bonusPercentage;
-                    } elseif ($packet->packet_id != Packet::GAP) {
+                        // $bonus = round($bonus, -3);
+                    } elseif ($packet->packet_id != Packet::GAP || $packet->packet_id != Packet::SUPER) {
                         if (($inviter_order >= 2 || $inviter_order <= 8) && $this->hasNeedPackets($packet->packet_id, $inviterPacketId, $inviter_order))
                         {
                             $bonusPercentage = (5 / 100);
                             $bonus = $packetPrice * $bonusPercentage;
                         }
-                    }
+                    }                    
                 }
             }
             if ($bonus) {
@@ -593,14 +597,17 @@ class PacketController extends Controller
                 $operation->operation_type_id = 1;
                 $operation->operation_comment = 'Структурный бонус. "' . $packet->packet_name_ru . '". Уровень - ' . $inviter_order;
                 $operation->save();
-
-                $inviter->user_money = $inviter->user_money + $bonus;
+                if ($packet->packet_id == Packet::SUPER) {
+                    $inviter->super_balance = $inviter->super_balance + $bonus;                    
+                }
+                else {
+                    $inviter->user_money = $inviter->user_money + $bonus;
+                }                
                 $inviter->save();
 
                 $this->sentMoney += $bonus;
             }
-
-//            echo '<pre>', var_dump($inviter_order . ' /  ' . $inviter->name . ' / ' . $inviter->user_id . ' / ' . $bonus . ' / ' . $inviterPacketId), '</pre>';
+            
             $inviter = Users::where(['user_id' => $inviter->recommend_user_id])->first();
             if (!$inviter || $inviter_order >= 8) {
                 break;
@@ -622,15 +629,16 @@ class PacketController extends Controller
     private function implementOfficeBonus($userPacket, $packet, $user)
     {
         $userPacketCount = UserPacket::where('user_id', $user->user_id)->where('is_active', 1)->count();
-        if ($user->office_director_id && $packet->packet_id != Packet::GAP) {
+        if ($user->office_director_id && $packet->packet_id != Packet::GAP && $packet->packet_id != Packet::SUPER) {
             $bonus = 0;
             $bonusPercentage = 0;
             $packetPrice = $userPacket->packet_price;
             $office_director = Users::where(['user_id' => $user->office_director_id])->first();
-            if ($office_director) {            
+            
+            if ($office_director) {
                 $bonusPercentage = (3 / 100);
                 $bonus = $packetPrice * $bonusPercentage;
-            }
+            }            
     
             if ($bonus) {
                 $operation = new UserOperation();
@@ -653,7 +661,7 @@ class PacketController extends Controller
     private function implementSpeakerBonus($userPacket, $packet, $user)
     {
         $userPacketCount = UserPacket::where('user_id', $user->user_id)->where('is_active', 1)->count();
-        if ($userPacketCount <= 1 && $user->speaker_id && $packet->packet_id != Packet::GAP) {
+        if ($userPacketCount <= 1 && $user->speaker_id && $packet->packet_id != Packet::GAP && $packet->packet_id != Packet::SUPER) {
             $bonus = 0;
             $bonusPercentage = 0;
             $packetPrice = $userPacket->packet_price;
@@ -702,7 +710,7 @@ class PacketController extends Controller
             });
             $inviterPacketId = max($inviterPacketId->all());
             $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
-            if ($packet->packet_id != Packet::ELITE_FREE) {
+            if ($packet->packet_id != Packet::ELITE_FREE && $packet->packet_id != Packet::SUPER) {
                 $bonusPercentage = (15 / 100);
                 $bonus = $packetPrice * $bonusPercentage;       
             }
@@ -743,7 +751,7 @@ class PacketController extends Controller
         
 
         $userPacket->is_active = 1;
-        if ($userPacket->packet_id == Packet::GAP) {
+        if ($userPacket->packet_id == Packet::GAP || $userPacket->packet_id == Packet::SUPER) {
             $userPacket->packet_price = $userPacket->packet_price;    
         } 
         else {
@@ -753,10 +761,14 @@ class PacketController extends Controller
         $userPacket->queue_start_position = ($max_queue_start_position) ? ($max_queue_start_position + 1) : 1;
         // $userPacket->is_paid = 1;
         if ($userPacket->save()) {
-            if ($userPacket->packet_id != Packet::ELITE_FREE && $userPacket->packet_id != Packet::GAP) {
-                $this->add_share_to_global_diamond_found($userPacket, $userPacket->user_id);
-            }
-            Users::where('user_id', $userPacket->user_id)->update(['product_balance' => $userPacket->packet_price]);
+            if ($userPacket->packet_id != Packet::SUPER) {
+                if ($userPacket->packet_id != Packet::GAP) {
+                    $this->add_share_to_global_diamond_found($userPacket, $userPacket->user_id);
+                }   
+            }    
+            else {
+                Users::where('user_id', $userPacket->user_id)->update(['product_balance' => $userPacket->packet_price]);
+            }                    
         }
     }
 
@@ -877,7 +889,7 @@ class PacketController extends Controller
     function qualificationUp($packet, $user)
     {
         $willUpdate = false;
-        $actualPackets = [Packet::ELITE_FREE, Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2, Packet::VIP];
+        $actualPackets = [Packet::ELITE_FREE, Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2, Packet::VIP, Packet::SUPER];
         if (in_array($packet->packet_id, $actualPackets)) {
 
             $operation = new UserOperation();
@@ -897,7 +909,9 @@ class PacketController extends Controller
             elseif ($packet->packet_status_id == UserStatus::ELITE_MANAGER)
                 $operation->operation_comment = 'Ваш статус Elite Менеджер';
             elseif ($packet->packet_status_id == UserStatus::VIP_MANAGER)
-                $operation->operation_comment = 'Ваш статус VIP Менеджер';            
+                $operation->operation_comment = 'Ваш статус VIP Менеджер';
+            elseif ($packet->packet_status_id == UserStatus::SUPER_MANAGER)
+                $operation->operation_comment = 'Ваш статус Super Менеджер';
 
 
             $operation->save();
@@ -1030,6 +1044,32 @@ class PacketController extends Controller
                     }
                     $operation->operation_comment = "Ваш статус Бриллиантовый Директор";
                     $willUpdate = true;
+                } elseif ($parent->status_id == UserStatus::SUPER_MANAGER && $user->status_id == UserStatus::SUPER_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SUPER_MANAGER)) {
+                    $super_packet = Packet::where('packet_id', Packet::VIP)->get();                    
+                    $is_check = UserPacket::where('packet_id', Packet::VIP)->where('user_id', $parent->user_id)->exists();
+                    // if ($is_check) {
+                        $user_packet = new UserPacket();
+                        $user_packet->user_id = $parent->user_id;
+                        $user_packet->packet_id = $super_packet->packet_id;
+                        $user_packet->user_packet_type = 'item';
+                        $user_packet->packet_price = $super_packet->packet_price;
+                        $user_packet->is_active = 0;
+                        $user_packet->is_portfolio = $super_packet->is_portfolio;
+                        $user_packet->save();
+
+                        $this->implementPacketBonuses($user_packet->user_packet_id);
+                    // }
+                    $is_check = UserPacket::where('packet_id', Packet::GAP)->where('user_id', $parent->user_id)->exists();
+                    $super_packet = Packet::where('packet_id', Packet::GAP)->get();
+                    $user_packet = new UserPacket();
+                    $user_packet->user_id = $parent->user_id;
+                    $user_packet->packet_id = $super_packet->packet_id;
+                    $user_packet->user_packet_type = 'item';
+                    $user_packet->packet_price = $super_packet->packet_price;
+                    $user_packet->is_active = 0;
+                    $user_packet->is_portfolio = $super_packet->is_portfolio;
+                    $user_packet->save();
+                    $this->implementPacketBonuses($user_packet->user_packet_id);
                 }
 
                 if ($willUpdate = true) {
