@@ -618,13 +618,16 @@ class PacketController extends Controller
             $inviter_order++;
         }
 
-        $this->qualificationUp($packet, $user);
+
+        $this->implementPacketThings($packet, $user, $userPacket);
+        $this->qualificationUp($packet, $user);        
+        
 
         // if ($user->status_id >= UserStatus::CONSULTANT) {
         //     $this->implementQualificationBonuses($packet, $user, $userPacket);
         // }
 
-        $this->implementPacketThings($packet, $user, $userPacket);
+        
 
     }
 
@@ -1077,12 +1080,14 @@ class PacketController extends Controller
             if (count($parentFollowers) >= $needNumber) {
                 $operation = new UserOperation();
                 if ($parent->super_status_id == UserStatus::SUPER_MANAGER && $user->super_status_id == UserStatus::SUPER_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SUPER_MANAGER, 3)) {                    
+                    $this->sentMoney = 0;
                     $is_check = UserPacket::where('packet_id', Packet::VIP2)->where('user_id', $parent->user_id)->first();
                     $super_packet = Packet::find(Packet::VIP2);
                     if ($is_check) {
                         if (!$is_check->is_active) {
                             $this->implementPacketBonuses($is_check->user_packet_id); 
-                            $parent->super_balance = $parent->super_balance - $is_check->packet_price;
+                            $packet_old_price = UserPacket::beforePurchaseSum($is_check->user_id);
+                            $parent->super_balance = $parent->super_balance - ($is_check->packet_price - $packet_old_price);
                             $parent->save();
                             $operation->operation_comment = 'За покупку пакета "'.$super_packet->packet_name_ru .'"';
                             $willUpdate = true;
@@ -1098,7 +1103,8 @@ class PacketController extends Controller
                         $user_packet->is_portfolio = $super_packet->is_portfolio ?? 0;
                         $user_packet->save();
                         $this->implementPacketBonuses($user_packet->user_packet_id);
-                        $parent->super_balance = $parent->super_balance - $user_packet->packet_price;
+                        $packet_old_price = UserPacket::beforePurchaseSum($user_packet->user_id);
+                        $parent->super_balance = $parent->super_balance - ($user_packet->packet_price - $packet_old_price);
                         $parent->save();
                         $operation->operation_comment = 'За покупку пакета "'.$super_packet->packet_name_ru .'"';
                         $willUpdate = true;
