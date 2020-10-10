@@ -1109,6 +1109,7 @@ class PacketController extends Controller
                         $operation->operation_comment = 'За покупку пакета "'.$super_packet->packet_name_ru .'"';
                         $willUpdate = true;
                     }
+                    $this->sentMoney = 0;
                     $is_check = UserPacket::where('packet_id', Packet::GAP)->where('user_id', $parent->user_id)->first();                    
                     $super_packet = Packet::find(Packet::GAP);
                     if ($is_check) {
