@@ -79,11 +79,11 @@
 
                             @endforeach
 
-                                <tr>
+                                {{-- <tr>
                                     <td colspan="5" style="text-align: right"><b>Общая сумма:</b> </td>
                                     <td colspan="1"><b>{{round($row_sum,2)}} $ ({{round($row_sum * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}тг)</b></td>
                                     <td colspan="2"></td>
-                                </tr>
+                                </tr> --}}
                             </tbody>
 
                         </table>
