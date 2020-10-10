@@ -97,8 +97,16 @@ class OnlineController extends Controller
         if ($request->is_packet) {
             $request->is_packet = Auth::user()->product_balance > 0;
         }
+
+        $pay_from_cash_balanse = false;
+        $user_vip_packet = UserPacket::where('packet_id', Packet::VIP2)->where('user_id', Auth::user()->user_id)->where('is_active',1)->count();
+        $user_gap_packet = UserPacket::where('packet_id', Packet::GAP)->where('user_id', Auth::user()->user_id)->where('is_active',1)->count();
+        if ($user_vip_packet > 0 && $user_gap_packet > 0) {            
+            $pay_from_cash_balanse = true;
+        }
         return view('admin.online-shop.basket', [
-            'row' => $request
+            'row' => $request,
+            'pay_from_cash_balanse' => $pay_from_cash_balanse
         ]);
     }
 
@@ -218,8 +226,28 @@ class OnlineController extends Controller
             if ($user->product_balance == 0) {
                 UserPacket::where('user_id', Auth::user()->user_id)->where('is_active', 1)->where('is_paid', 0)->update(['is_paid' => 1]);
             }
-            $result['status'] = true;
-            return response()->json($result);
+            // $result['status'] = true;
+            // return response()->json($result);
+        }
+        elseif ($request->type == 'is_super') {
+            $sum = $sum - ($sum * \App\Models\Currency::PartnerDiscount);
+            $sum = round($sum);
+            if (Auth::user()->super_balance < $sum) {
+                $result['error'] = 'У вас недостаточно super бонусов';                
+                return response()->json($result);
+            }
+            $user->super_balance = $user->super_balance - $sum;
+            $user->save();
+            $products = UserBasket::where('user_id', $user->user_id)->where('is_active', 0)->get();
+            foreach ($products as $item) {
+                $product = Product::where('product_id', $item->product_id)->first();
+                $user_basket = UserBasket::where('user_basket_id', $item->user_basket_id)->first();
+                $user_basket->product_price = $product->product_price;
+                $user_basket->is_active = 1;
+                $user_basket->save();
+            }            
+            // $result['status'] = true;
+            // return response()->json($result);
         }
         elseif ($request->type == 'is_partner') {
             $is_partner = UserPacket::where('user_id', Auth::user()->user_id)->where('is_active', 1)->exists();
@@ -262,7 +290,7 @@ class OnlineController extends Controller
             'address' => $request->address,
             'contact' => Auth::user()->phone,
             'sum' => $sum,
-            'products' => \json_encode($products_all),
+            'products' => json_encode($products_all),
             'packet_id' => null,
             'payment_id' => 0,
             'delivery_id' => $request->delivery_id,

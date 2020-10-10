@@ -436,6 +436,11 @@ function confirmBasket() {
     });
 }
 
+function setSuperBalance() {        
+    console.log($('#discount_type').val('is_super'))
+    confirmBasket();
+}
+
 
 function delProductFromBasket(ob, id) {
     $(ob).closest('tr').remove();

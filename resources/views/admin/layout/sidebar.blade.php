@@ -29,6 +29,10 @@
         <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Баланс: {{Auth::user()->user_money}}PV
             ( {{Auth::user()->user_money * \App\Models\Currency::pvToKzt()}}тг)</p>
     </li>
+    <li class="header" style="padding:5px 25px 0px">
+        <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Super Баланс: {{Auth::user()->super_balance}}PV
+            ( {{Auth::user()->super_balance * \App\Models\Currency::pvToKzt()}}тг)</p>
+    </li>
 
 
     <li class="header" style="padding:5px 25px 0px">
@@ -251,6 +255,12 @@
             <a href="/admin/faq">
                 <i class="fa fa-question"></i>
                 <span>Часта задаваемые вопросы</span>
+            </a>
+        </li>
+        <li class="treeview">
+            <a href="/admin/orders">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Заказы</span>
             </a>
         </li>
     @endif

@@ -28,14 +28,26 @@ class Users extends Model implements AuthenticatableContract
         return Users::where(['recommend_user_id' => $parent_id])->get();
     }
 
-    public static function isEnoughStatuses($parent_id, $status_id)
+    public static function isEnoughStatuses($parent_id, $status_id, $status_type)
     {
         $followerStatusIds = [];
         $followers = Users::where(['recommend_user_id' => $parent_id])->get();
 
         foreach ($followers as $follower) {
-            if ($follower->status_id >= $status_id) {
-                array_push($followerStatusIds, $follower->status_id);
+            if ($status_type == 1) {
+                if ($follower->status_id >= $status_id) {
+                    array_push($followerStatusIds, $follower->status_id);
+                }
+            }
+            elseif ($status_type == 2) {
+                if ($follower->soc_status_id >= $status_id) {
+                    array_push($followerStatusIds, $follower->soc_status_id);
+                }
+            }
+            elseif ($status_type == 3) {
+                if ($follower->super_status_id >= $status_id) {
+                    array_push($followerStatusIds, $follower->super_status_id);
+                }
             }
         }
         $followerStatusIds = array_filter($followerStatusIds);

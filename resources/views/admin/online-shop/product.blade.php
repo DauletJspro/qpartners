@@ -14,7 +14,7 @@
         
         <div style="text-align: left; font-weight: bold; color: #009551;">
             <h4>У вас имеется бонус за покупку пакета</h4>
-            <h4 style="font-size: 20px;">Бонус: {{ Auth::user()->product_balance * \App\Models\Currency::pvToKzt() }} KZT</h4>
+            <h4 style="font-size: 20px;">Пакетный Бонус: {{ Auth::user()->product_balance * \App\Models\Currency::pvToKzt() }} KZT</h4>
         </div>
         <div style="text-align: right">
             <a style="font-size: 20px;text-decoration: underline;" href="/admin/basket">Посмотреть корзину <span id="basket_count" class="label label-primary pull-right" style=" background-color: rgb(253, 58, 53) ! important; font-size: 15px; border-radius: 50%">{{$row->basket_count}}</span></a>
@@ -43,7 +43,7 @@
                         <button> У меня есть бонус </button>
                     </form>
                 </div>
-            @endif                    
+            @endif        
         </div>
         
     </section>

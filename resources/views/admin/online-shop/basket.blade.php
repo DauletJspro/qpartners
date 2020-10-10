@@ -87,17 +87,30 @@
                 <p><span>Общая сумма: </span><span id="modal_desc"></span></p>
             </div>
             <div class="modal-footer">
-                @if (!$row->is_packet)
+                @if ($row->is_packet)
+                    <button onclick="confirmBasket()"
+                        id="confirmBasketBtn"
+                        style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
+                        type="button" class="btn btn-default pull-left">Снять с Пакетного бонуса
+                    </button>                
+                @else
+                    <button onclick="confirmBasket()"
+                        id="confirmBasketBtn"
+                        style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
+                        type="button" class="btn btn-default pull-left">Снять с баланса
+                    </button>
                     <button onclick="buyProductOnline()"
                             style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
                             type="button" class="btn btn-default pull-left">Купить онлайн
                     </button>
-                @endif
-                <button onclick="confirmBasket()"               
-                        id="confirmBasketBtn"
-                        style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
-                        type="button" class="btn btn-default pull-left">Снять с баланса
-                </button>
+                    @if ($pay_from_cash_balanse)
+                        <button onclick="setSuperBalance()"
+                            id="setSuperBalanceBtn"
+                            style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
+                            type="button" class="btn btn-default pull-left">Снять с super баланса
+                        </button>
+                    @endif                    
+                @endif                
             </div>
         </div>
     </div>
