@@ -1077,7 +1077,7 @@ class PacketController extends Controller
             if (count($parentFollowers) >= $needNumber) {
                 $operation = new UserOperation();
                 if ($parent->super_status_id == UserStatus::SUPER_MANAGER && $user->super_status_id == UserStatus::SUPER_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SUPER_MANAGER, 3)) {                    
-                    $is_check = UserPacket::where('packet_id', Packet::VIP2)->where('user_id', $parent->user_id)->get();
+                    $is_check = UserPacket::where('packet_id', Packet::VIP2)->where('user_id', $parent->user_id)->first();
                     $super_packet = Packet::find(Packet::VIP2);
                     if ($is_check) {
                         if (!$is_check->is_active) {
@@ -1103,7 +1103,7 @@ class PacketController extends Controller
                         $operation->operation_comment = 'За покупку пакета "'.$super_packet->packet_name_ru .'"';
                         $willUpdate = true;
                     }
-                    $is_check = UserPacket::where('packet_id', Packet::GAP)->where('user_id', $parent->user_id)->exists();                    
+                    $is_check = UserPacket::where('packet_id', Packet::GAP)->where('user_id', $parent->user_id)->first();                    
                     $super_packet = Packet::find(Packet::GAP);
                     if ($is_check) {
                         if (!$is_check->is_active) {                            
