@@ -135,7 +135,7 @@ class SmartPayController extends Controller
                     $user_packet->is_epay = 0;
                     $user_packet->is_portfolio = $packet->is_portfolio;
                     $user_packet->save();                    
-                    app('\App\Http\Controllers\Admin\PacketController::class')->implementPacketBonuses($user_packet->user_packet_id);
+                    app(\App\Http\Controllers\Admin\PacketController::class)->implementPacketBonuses($user_packet->user_packet_id);
                     Log::info('repeated');
                 }
                 // маркируем заказ с ИД PAYMENT_ORDER_ID как оплаченый
