@@ -129,14 +129,13 @@ class SmartPayController extends Controller
                     $user_packet = new UserPacket();
                     $user_packet->user_id = $order->user_id;
                     $user_packet->packet_id = $order->packet_id;
-                    $user_packet->user_packet_type = null;
+                    $user_packet->user_packet_type = 'item';
                     $user_packet->packet_price = $packet->packet_price;
                     $user_packet->is_active = 0;
-                    $user_packet->is_epay = 1;
+                    $user_packet->is_epay = 0;
                     $user_packet->is_portfolio = $packet->is_portfolio;
-                    $user_packet->save();
-                    Log::info($user_packet);
-                    $bonus_system = app(\App\Http\Controllers\Admin\PacketController::class)->implementPacketBonuses($user_packet->user_packet_id);
+                    $user_packet->save();                    
+                    app(\App\Http\Controllers\Admin\PacketController::class)->implementPacketBonuses($user_packet->user_packet_id);
                 }
                 // маркируем заказ с ИД PAYMENT_ORDER_ID как оплаченый
                 return response()->json(['RESULT'=>'OK']);
