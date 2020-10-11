@@ -256,8 +256,10 @@ class SmartPayController extends Controller
                     if ($input_data['PAYMENT_STATUS'] != 'paid') {
                         return response()->json(['RESULT'=>'OK']);
                     }
-                    Order::changeIsPaid($input_data['PAYMENT_ORDER_ID']);
-                    $bonus_system = app(\App\Http\Controllers\Admin\OnlineController::class)->implementCashback($order->user_id);                    
+                    if (!$order->is_paid) {
+                        app(\App\Http\Controllers\Admin\OnlineController::class)->implementCashback($order->user_id);
+                        Order::changeIsPaid($input_data['PAYMENT_ORDER_ID']);
+                    }
                 }
                 // маркируем заказ с ИД PAYMENT_ORDER_ID как оплаченый
                 return response()->json(['RESULT'=>'OK']);

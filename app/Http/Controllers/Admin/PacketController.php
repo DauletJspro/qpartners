@@ -768,7 +768,9 @@ class PacketController extends Controller
         if ($userPacket->save()) {
             if ($userPacket->packet_id != Packet::SUPER && $userPacket->packet_id != Packet::GAP) {
                 $this->add_share_to_global_diamond_found($userPacket, $userPacket->user_id);
-                Users::where('user_id', $userPacket->user_id)->update(['product_balance' => $userPacket->packet_price]);
+                $user = Users::find($userPacket->user_id);
+                $user->product_balance = $user->product_balance + $userPacket->packet_price;
+                $user->save();
             }            
         }
     }
