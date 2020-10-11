@@ -242,7 +242,7 @@ class SmartPayController extends Controller
         }        
     }
 
-    public function callbackPartnerProduct() {  
+    public function callbackPartnerProduct(Request $request) {  
         
         $input_data = $request->all();
         Log::info($input_data);
