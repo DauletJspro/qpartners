@@ -581,7 +581,7 @@ class PacketController extends Controller
                         $bonusPercentage = 0.8333;
                         $bonus = round($packetPrice * $bonusPercentage, 0);
                         // $bonus = round($bonus, 0);
-                    } elseif ($packet->packet_id != Packet::GAP || $packet->packet_id != Packet::SUPER) {
+                    } elseif ($packet->packet_id != Packet::GAP && $packet->packet_id != Packet::SUPER) {
                         if (($inviter_order >= 2 || $inviter_order <= 8) && $this->hasNeedPackets($packet->packet_id, $inviterPacketId, $inviter_order))
                         {
                             $bonusPercentage = (5 / 100);
