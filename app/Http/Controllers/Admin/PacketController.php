@@ -766,14 +766,10 @@ class PacketController extends Controller
         $userPacket->queue_start_position = ($max_queue_start_position) ? ($max_queue_start_position + 1) : 1;
         // $userPacket->is_paid = 1;
         if ($userPacket->save()) {
-            if ($userPacket->packet_id != Packet::SUPER) {
-                if ($userPacket->packet_id != Packet::GAP) {
-                    $this->add_share_to_global_diamond_found($userPacket, $userPacket->user_id);
-                }   
-            }    
-            else {
+            if ($userPacket->packet_id != Packet::SUPER && $userPacket->packet_id != Packet::GAP) {
+                $this->add_share_to_global_diamond_found($userPacket, $userPacket->user_id);
                 Users::where('user_id', $userPacket->user_id)->update(['product_balance' => $userPacket->packet_price]);
-            }                    
+            }            
         }
     }
 

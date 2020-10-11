@@ -84,6 +84,18 @@
         </style>
     </li>
     <li class="treeview">
+        <a href="/admin/shop">
+            <i class="fa fa-shopping-cart"></i>
+            <span>Магазин (пакеты)</span>
+        </a>
+    </li>
+    <li class="treeview">
+        <a href="/admin/online">
+            <i class="fa fa-shopping-cart"></i>
+            <span>Магазин (товары)</span>
+        </a>
+    </li>
+    <li class="treeview">
         <a href="/admin/document">
             <i class="fa fa-user"></i>
             <span>Мои документы</span>
@@ -282,18 +294,7 @@
              <span>Настройка авторегистрации</span>
          </a>
      </li>--}}
-    <li class="treeview">
-        <a href="/admin/shop">
-            <i class="fa fa-shopping-cart"></i>
-            <span>Магазин (пакеты)</span>
-        </a>
-    </li>
-    <li class="treeview">
-        <a href="/admin/online">
-            <i class="fa fa-shopping-cart"></i>
-            <span>Магазин (товары)</span>
-        </a>
-    </li>
+    
     <li class="treeview">
         <a href="/admin/presentation">
             <i class="fa fa-shopping-cart"></i>

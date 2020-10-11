@@ -32,6 +32,7 @@ use \App\Models\UserPacket;
                             ({{($item->packet_price) * \App\Models\Currency::pvToKzt()}}
                         тг)        
                         @else
+                            {{$item->packet_price - $beforeSum}}
                             PV
                             ({{($item->packet_price - $beforeSum) * \App\Models\Currency::pvToKzt()}}
                             тг)  
