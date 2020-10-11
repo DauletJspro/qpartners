@@ -92,7 +92,7 @@
                         id="confirmBasketBtn"
                         style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
                         type="button" class="btn btn-default pull-left">Снять с Пакетного бонуса
-                    </button>                
+                    </button>
                 @else
                     <button onclick="confirmBasket()"
                         id="confirmBasketBtn"
