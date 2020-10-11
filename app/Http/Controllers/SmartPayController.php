@@ -137,10 +137,9 @@ class SmartPayController extends Controller
                         $user_packet->save();                    
                         app(\App\Http\Controllers\Admin\PacketController::class)->implementPacketBonuses($user_packet->user_packet_id);
                         Order::changeIsPaid($input_data['PAYMENT_ORDER_ID']);
+                        return response()->json(['RESULT'=>'OK']);
                     }
-                }
-                // маркируем заказ с ИД PAYMENT_ORDER_ID как оплаченый
-                return response()->json(['RESULT'=>'OK']);
+                }                
             } else {
                 Log::info('true hash');
                 // не совпадает цифровая подпись.
@@ -259,10 +258,9 @@ class SmartPayController extends Controller
                     if (!$order->is_paid) {
                         app(\App\Http\Controllers\Admin\OnlineController::class)->implementCashback($order->user_id);
                         Order::changeIsPaid($input_data['PAYMENT_ORDER_ID']);
+                        return response()->json(['RESULT'=>'OK']);
                     }
                 }
-                // маркируем заказ с ИД PAYMENT_ORDER_ID как оплаченый
-                return response()->json(['RESULT'=>'OK']);
             } else {
                 // не совпадает цифровая подпись.
                 return response()->json(['RESULT' => 'RETRY', 'DESC' => 'invalid_signature']);
