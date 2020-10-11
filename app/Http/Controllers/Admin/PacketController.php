@@ -1077,7 +1077,7 @@ class PacketController extends Controller
             $parentFollowers = Users::parentFollowers($user->recommend_user_id);
             $parent = Users::where('user_id', $user->recommend_user_id)->first();
             $needNumber = 3; // Necessary number of followers for update parent status
-            if (count($parentFollowers) >= $needNumber) {
+            if (count($parentFollowers) >= $needNumber && $parent->super_balance >= 600) {
                 $operation = new UserOperation();
                 if ($parent->super_status_id == UserStatus::SUPER_MANAGER && $user->super_status_id == UserStatus::SUPER_MANAGER && Users::isEnoughStatuses($user->recommend_user_id, UserStatus::SUPER_MANAGER, 3)) {                    
                     $this->sentMoney = 0;
