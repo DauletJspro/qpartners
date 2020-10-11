@@ -8,7 +8,7 @@
         </h1>
         <div style="text-align: left; font-weight: bold; color: #009551;">
             <h4>У вас имеется бонус за покупку пакета</h4>
-            <h4 style="font-size: 20px;">Бонус: {{ Auth::user()->product_balance * \App\Models\Currency::pvToKzt() }} KZT</h4>
+            <h4 style="font-size: 20px;">Пакет бонус: {{ Auth::user()->product_balance * \App\Models\Currency::pvToKzt() }} KZT</h4>
         </div>
         <div style="text-align: right">
             <a style="font-size: 20px;text-decoration: underline;" href="/admin/online">Перейти в магазин<span

@@ -290,7 +290,7 @@ class OnlineController extends Controller
             'address' => $request->address,
             'contact' => Auth::user()->phone,
             'sum' => $sum,
-            'products' => json_encode($products_all),
+            'products' => \json_encode($products_all),
             'packet_id' => null,
             'payment_id' => 0,
             'delivery_id' => $request->delivery_id,

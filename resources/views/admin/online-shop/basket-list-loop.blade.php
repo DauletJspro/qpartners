@@ -48,7 +48,7 @@
                             $price_ball = $val->product_price - ($val->product_price * \App\Models\Currency::ClientDiscount);
                         }
                     @endphp
-                    {{ $price_ball }}$
+                    {{ round($price_ball, 2) }}$
                     ({{round($price_ball * \App\Models\Currency::pvToKzt(),0)}}
                     тг)
                 </td>
@@ -62,7 +62,7 @@
                 </td>
             </tr>
 
-            <?php $sum += $price_ball; ?>
+            <?php $sum += round($price_ball, 2); ?>
             <?php $ballSum += $val->ball ?>
 
         @endforeach
