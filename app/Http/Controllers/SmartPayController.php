@@ -70,7 +70,7 @@ class SmartPayController extends Controller
         $name = 'Покупка пакета ' . $packet->packet_name_ru . ' на сайте Qpartner.club';        
         $data = [
             'MERCHANT_ID' => env('SMART_PAY_MERCHANT_ID'),
-            'PAYMENT_AMOUNT' => $price,
+            'PAYMENT_AMOUNT' => 100,
             'PAYMENT_ORDER_ID' => $order_code,
             'PAYMENT_INFO' => $name,
             'PAYMENT_CALLBACK_URL' => env('SMART_PAY_CALLBACK_URL'),
@@ -92,7 +92,8 @@ class SmartPayController extends Controller
                 'sum' => $price,
                 'products' => null,
                 'packet_id' => $request->packet_id,
-                'payment_id' => $response->data->id
+                'payment_id' => $response->data->id,
+                'delivery_id' => null
             ];
             $order = Order::createOrder($data_order);             
             if ($order) {
