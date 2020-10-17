@@ -577,10 +577,16 @@ class PacketController extends Controller
                         && $packet->packet_id != Packet::SUPER) {                                                        
                             $bonusPercentage = (5 / 100);
                             $bonus = $packetPrice * $bonusPercentage;                                                                                
-                    } elseif ($inviter_order == 1 && $inviter->super_status_id == UserStatus::SUPER_MANAGER && $packet->packet_id == Packet::SUPER) {
-                        $bonusPercentage = 0.8333;
-                        $bonus = round($packetPrice * $bonusPercentage, 0);
-                        // $bonus = round($bonus, 0);
+                    } elseif ($inviter->super_status_id == UserStatus::SUPER_MANAGER && $packet->packet_id == Packet::SUPER) {                        
+                        $inviterFollowers_limit = Users::isEnoughStatuses($inviter->user_id, UserStatus::SUPER_MANAGER, 3);
+                        if (!$inviterFollowers_limit) {
+                            $bonusPercentage = 0.8333;
+                            $bonus = round($packetPrice * $bonusPercentage, 0);
+                        }
+                        elseif (($inviter_order >= 1 || $inviter_order <= 4)) {
+                            $bonusPercentage = 5/100;
+                            $bonus = round($packetPrice * $bonusPercentage, 0);
+                        }
                     } elseif ($packet->packet_id != Packet::GAP && $packet->packet_id != Packet::SUPER) {
                         if (($inviter_order >= 2 || $inviter_order <= 8) && $this->hasNeedPackets($packet->packet_id, $inviterPacketId, $inviter_order))
                         {
@@ -599,7 +605,7 @@ class PacketController extends Controller
                 $operation->operation_type_id = 1;
                 $operation->operation_comment = 'Структурный бонус. "' . $packet->packet_name_ru . '". Уровень - ' . $inviter_order;
                 $operation->save();
-                if ($packet->packet_id == Packet::SUPER) {
+                if ($packet->packet_id == Packet::SUPER && $bonus >= 200) {
                     $inviter->super_balance = $inviter->super_balance + $bonus;                    
                 }
                 else {
@@ -626,9 +632,6 @@ class PacketController extends Controller
         // if ($user->status_id >= UserStatus::CONSULTANT) {
         //     $this->implementQualificationBonuses($packet, $user, $userPacket);
         // }
-
-        
-
     }
 
     private function implementOfficeBonus($userPacket, $packet, $user)
