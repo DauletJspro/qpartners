@@ -138,7 +138,7 @@ class SmartPayController extends Controller
                         app(\App\Http\Controllers\Admin\PacketController::class)->implementPacketBonuses($user_packet->user_packet_id);
                         Order::changeIsPaid($input_data['PAYMENT_ORDER_ID']);
                         return response()->json(['RESULT'=>'OK']);
-                    }
+                    } 
                 }                
             } else {
                 Log::info('true hash');
