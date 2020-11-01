@@ -197,9 +197,9 @@ use Illuminate\Support\Facades\Session;
                             <div class="slider banner-slider">
                                 <!-- holder start here -->
                                 <div class="s-holder">
-                                    <img src="/new_design/images/main_page_images/super_elixir_for_man.png"
+                                    <img src="/new_design/images/main_page_images/1.png"
                                          alt="image description">
-                                    <div class="s-box">
+                                    {{-- <div class="s-box">
                                         <strong class="s-title text-uppercase">Супер акция 5+2</strong>
                                         <span class="heading"
                                               style="font-weight: bold;font-size: 40px;">Super Elixir for Man</span>
@@ -229,13 +229,13 @@ use Illuminate\Support\Facades\Session;
                                         <a class="s-text-p-3-button">
                                             ПОДРОБНЕЕ
                                         </a>
-                                    </div>
+                                    </div> --}}
                                 </div><!-- holder end here -->
                                 <!-- holder start here -->
                                 <div class="s-holder s-holder-2">
-                                    <img src="/new_design/images/main_page_images/super_elixir_hepato.png"
+                                    <img src="/new_design/images/main_page_images/2.png"
                                          alt="image description">
-                                    <div class="s-box">
+                                    {{-- <div class="s-box">
                                         <strong class="s-title text-uppercase">Супер акция 5+2</strong>
                                         <span class="heading"
                                               style="font-weight: bold;font-size: 40px;color: #ac2709;">Super Elixir Hepato</span>
@@ -265,12 +265,12 @@ use Illuminate\Support\Facades\Session;
                                         <a class="s-text-p-3-button s-holder-2-button">
                                             ПОДРОБНЕЕ
                                         </a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="s-holder s-holder-3">
-                                    <img src="/new_design/images/main_page_images/super_elixir_for_woman.png"
+                                    <img src="/new_design/images/main_page_images/3.png"
                                          alt="image description">
-                                    <div class="s-box">
+                                    {{-- <div class="s-box">
                                         <strong style="color: white;" class="s-title text-uppercase">Супер акция
                                             5+2</strong>
                                         <span class="heading"
@@ -307,12 +307,12 @@ use Illuminate\Support\Facades\Session;
     margin-right: -230px;">
                                             ПОДРОБНЕЕ
                                         </a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="s-holder s-holder-4">
-                                    <img src="/new_design/images/main_page_images/super_elixir_clean.png"
+                                    <img src="/new_design/images/main_page_images/4.png"
                                          alt="image description">
-                                    <div class="s-box">
+                                    {{-- <div class="s-box">
                                         <strong style="color: white; background-color: #77a100;" class="s-title text-uppercase">Супер акция
                                             5+2</strong>
                                         <span class="heading"
@@ -348,7 +348,7 @@ use Illuminate\Support\Facades\Session;
     margin-right: -230px;background-color: #77a100 !important;">
                                             ПОДРОБНЕЕ
                                         </a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div><!-- slider 7 end here -->

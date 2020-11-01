@@ -73,7 +73,9 @@ function initSlickSlider() {
         dots: true,
         arrows: false,
         infinite: true,
-        adaptiveHeight: true
+        adaptiveHeight: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
     });
     jQuery('.tabs-slider').slick({
         slidesToShow: 5,
