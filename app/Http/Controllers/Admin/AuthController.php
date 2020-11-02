@@ -25,25 +25,25 @@ class AuthController extends Controller
         if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
             error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
         }
-        $country_row = Country::orderBy('sort_num','asc')
-                    ->orderBy('country_name_ru','asc')
-                    ->where('is_show',1)
-                    ->get();
+        // $country_row = Country::orderBy('sort_num','asc')
+        //             ->orderBy('country_name_ru','asc')
+        //             ->where('is_show',1)
+        //             ->get();
 
         $users_row = Users::orderBy('last_name','asc')
                     ->get();
 
-        $city_row = City::orderBy('city_name_ru','asc')
-                    ->where('is_show',1)
-                    ->where('country_id',1)
-                    ->get();
+        // $city_row = City::orderBy('city_name_ru','asc')
+        //             ->where('is_show',1)
+        //             ->where('country_id',1)
+        //             ->get();
 
         $speaker_row = Users::orderBy('last_name','asc')->where('is_speaker',1)->get();
         $director_row = Users::orderBy('last_name','asc')->where('is_director_office',1)->get();
 
-        View::share('country_row', $country_row);
+        // View::share('country_row', $country_row);
         View::share('recommend_row', $users_row);
-        View::share('city_row', $city_row);
+        // View::share('city_row', $city_row);
         View::share('speaker_row', $speaker_row);
         View::share('office_row', $director_row);
     }
