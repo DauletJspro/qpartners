@@ -44,6 +44,25 @@
                                            <label>Порядковый номер сортировки</label>
                                            <input value="{{ $row->sort_num }}" type="text" class="form-control" name="sort_num" placeholder="Введите">
                                        </div>
+                                       <div class="form-group">
+                                           <label>Сумма (PV)</label>
+                                           <input value="{{ $row->packet_price }}" type="number" class="form-control" name="packet_price" placeholder="Введите">
+                                       </div>
+                                       <div class="form-group">
+                                            <label>
+                                                Показать
+                                            </label>
+                                       </div>
+                                       <div class="form-group">                                            
+                                            <label>
+                                                <input value="1" type="radio" class="form-check-input" name="is_show" {{ $row->is_show == 1 ? 'checked' : ''}}>
+                                                Да 
+                                            </label>
+                                            <label>
+                                                <input value="0" type="radio" class="form-check-input" name="is_show" {{ $row->is_show == 0 ? 'checked' : ''}}>
+                                                Нет
+                                            </label>
+                                       </div>
                                    </div>
                                    <div class="box-footer">
                                        <button type="submit" class="btn btn-primary">Сохранить</button>

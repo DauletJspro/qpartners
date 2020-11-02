@@ -12,7 +12,7 @@ class Packet extends Model
 {
     protected $table = 'packet';
     protected $primaryKey = 'packet_id';
-
+    protected $fillable = ['packet_price', 'packet_name_ru', 'packet_share', 'packet_lection', 'packet_thing', 'sort_num', 'packet_price', 'is_show'];
     const ELITE_FREE = 22;
     const CLASSIC = 23;
     const PREMIUM = 24;

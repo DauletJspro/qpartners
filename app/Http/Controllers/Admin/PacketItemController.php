@@ -28,9 +28,9 @@ class PacketItemController extends Controller
             ->select('packet.*',
                 DB::raw('DATE_FORMAT(packet.created_at,"%d.%m.%Y %H:%i") as date'));
 
-        if(isset($request->active))
-            $row->where('is_show',$request->active);
-        else $row->where('is_show','1');
+        // if(isset($request->active))
+        //     $row->where('is_show',$request->active);
+        // else $row->where('is_show','1');
         
         $row = $row->paginate(20);
 
@@ -79,6 +79,9 @@ class PacketItemController extends Controller
         $packet->packet_lection = $request->packet_lection;
         $packet->packet_image = $request->packet_image;
         $packet->sort_num = ($request->sort_num=='')?1000:$request->sort_num;
+        $packet->packet_price = $request->packet_price;
+        $packet->is_show = $request->is_show;
+        // dd($request->is_show);
         $packet->save();
         
         return redirect('/admin/packet-item');

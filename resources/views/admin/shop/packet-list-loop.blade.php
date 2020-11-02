@@ -26,16 +26,10 @@ use \App\Models\UserPacket;
                     <h3 style="font-family: cursive; font-size: 30px"> {{$item->packet_name_ru}}</h3>
 
                     <h4 style="font-size: 25px">
-                        @if ($item->packet_id == \App\Models\Packet::GAP || $item->packet_id == \App\Models\Packet::SUPER)
-                        {{$item->packet_price}}
-                        PV
-                            ({{($item->packet_price) * \App\Models\Currency::pvToKzt()}}
-                        тг)        
+                        @if ($item->packet_id == \App\Models\Packet::GAP || $item->packet_id == \App\Models\Packet::SUPER)                       
+                            {{($item->packet_price) * \App\Models\Currency::pvToKzt()}} тг       
                         @else
-                            {{$item->packet_price - $beforeSum}}
-                            PV
-                            ({{($item->packet_price - $beforeSum) * \App\Models\Currency::pvToKzt()}}
-                            тг)  
+                            {{($item->packet_price - $beforeSum) * \App\Models\Currency::pvToKzt()}} тг
                         @endif
                     </h4>
 
