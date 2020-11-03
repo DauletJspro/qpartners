@@ -86,11 +86,11 @@
                                                                     value="{{$item->user_id}}"> {{sprintf('%s (%s)',$item->login, $item->last_name)}}
                                                             </option>
                                                         @endif
-                                                        {{-- @foreach($recommend_row as $item)
+                                                         @foreach($recommend_row as $item)
                                                             <option @if($row->recommend_user_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id) ) {{'selected'}} @endif value="{{$item->user_id}}">
                                                                 {{sprintf('%s (%s)',$item['login'], $item['last_name'])}}
                                                             </option>
-                                                        @endforeach --}}
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 
@@ -106,11 +106,11 @@
                                                                     value="{{$item->user_id}}"> {{sprintf('%s (%s)',$item->login, $item->last_name)}}
                                                             </option>
                                                         @endif
-                                                        {{-- @foreach($recommend_row as $item)
+                                                         @foreach($recommend_row as $item)
                                                             <option @if($row->recommend_user_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id) ) {{'selected'}} @endif value="{{$item->user_id}}">
                                                                 {{sprintf('%s (%s)',$item['login'], $item['last_name'])}}
                                                             </option>
-                                                        @endforeach --}}
+                                                        @endforeach
                                                     </select>
                                                 </div>                                                                                                
                                             </div>
