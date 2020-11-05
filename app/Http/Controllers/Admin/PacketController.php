@@ -362,7 +362,7 @@ class PacketController extends Controller
         try {
             $this->implementPacketBonuses($request->packet_id);
         } catch (\Exception $e) {
-            var_dump($e->getFile() . ' ' . $e->getLine(). ' '. $e->getMessage());
+            var_dump($e->getFile() . ' ' . $e->getLine() . ' ' . $e->getMessage());
         }
 
 
