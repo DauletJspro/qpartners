@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use http\Client\Curl\User;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -20,6 +19,7 @@ class Users extends Model implements AuthenticatableContract
     const MODERATOR = 3;
 
     use SoftDeletes;
+
     protected $dates = ['deleted_at'];
 
 
@@ -38,13 +38,11 @@ class Users extends Model implements AuthenticatableContract
                 if ($follower->status_id >= $status_id) {
                     array_push($followerStatusIds, $follower->status_id);
                 }
-            }
-            elseif ($status_type == 2) {
+            } elseif ($status_type == 2) {
                 if ($follower->soc_status_id >= $status_id) {
                     array_push($followerStatusIds, $follower->soc_status_id);
                 }
-            }
-            elseif ($status_type == 3) {
+            } elseif ($status_type == 3) {
                 if ($follower->super_status_id >= $status_id) {
                     array_push($followerStatusIds, $follower->super_status_id);
                 }
@@ -55,5 +53,10 @@ class Users extends Model implements AuthenticatableContract
             return true;
         }
         return false;
+    }
+
+    public function packets()
+    {
+        return $this->hasMany(UserPacket::class, 'user_packet_id', 'user_id')->where('is_active', true);
     }
 }

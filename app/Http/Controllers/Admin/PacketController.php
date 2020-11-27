@@ -625,7 +625,7 @@ class PacketController extends Controller
 
 
         $this->implementPacketThings($packet, $user, $userPacket);
-        $this->qualificationUp($packet, $user);
+//        $this->qualificationUp($packet, $user);
 
 
         // if ($user->status_id >= UserStatus::CONSULTANT) {
@@ -754,16 +754,26 @@ class PacketController extends Controller
             $packet_old_price = UserPacket::beforePurchaseSum($userPacket->user_id);
         }
 
-
+        $total_price = $userPacket->packet_price - $packet_old_price;
         $userPacket->is_active = 1;
+        $userPacket->activated_at = date('Y-m-d H:i:s');
+
         if ($userPacket->packet_id == Packet::GAP || $userPacket->packet_id == Packet::SUPER) {
             $userPacket->packet_price = $userPacket->packet_price;
         } else {
-            $userPacket->packet_price = $userPacket->packet_price - $packet_old_price;
+            $userPacket->packet_price = $total_price;
         }
         $max_queue_start_position = UserPacket::where('packet_id', $userPacket->packet_id)->where('is_active', 1)->where('queue_start_position', '>', 0)->max('queue_start_position');
         $userPacket->queue_start_position = ($max_queue_start_position) ? ($max_queue_start_position + 1) : 1;
-        // $userPacket->is_paid = 1;
+
+        try {
+            $this->pv_to_gv($userPacket, $total_price);
+        } catch (\Exception $exception) {
+            $userPacket->is_active = false;
+            var_dump($exception->getMessage() . ' / ' . $exception->getFile() . ' / ' . $exception->getLine());
+        }
+
+
         if ($userPacket->save()) {
             if ($userPacket->packet_id != Packet::SUPER && $userPacket->packet_id != Packet::GAP) {
                 $this->add_share_to_global_diamond_found($userPacket, $userPacket->user_id);
@@ -772,6 +782,190 @@ class PacketController extends Controller
                 $user->save();
             }
         }
+    }
+
+    public function pv_to_gv($user_packet, $final_price)
+    {
+        $user_id = $user_packet->user_id;
+        $user = Users::where(['user_id' => $user_id])->first();
+        // add gv and pv to user
+        $user->pv_balance = ($user->pv_balance + $final_price);
+        $user->gv_balance = ($user->gv_balance + $final_price);
+        if ($user->save()) {
+            $user_operation = new UserOperation();
+            $user_operation->operation_id = 1;
+            $user_operation->money = $final_price;
+            $user_operation->author_id = $user->user_id;
+            $user_operation->recipient_id = $user->user_id;
+            $user_operation->operation_type_id = 11;
+            $user_operation->operation_comment = sprintf('Командный доход в размере %s gv, сам себе.', $final_price);
+            $user_operation->save();
+        }
+
+        if ($user_packet->packet_id != Packet::GAP) {
+            $this->checkForPremium($user->user_id);
+        }
+        if ($user_packet->packet_id == Packet::GAP) {
+            app(GAPController::class)->send_sv_to_top($user_packet);
+        }
+
+        // add gv to parents
+        $parent = Users::where(['user_id' => $user->recommend_user_id])->first();
+        $counter = 0;
+
+        while ($parent) {
+            $parent->gv_balance = $parent->gv_balance + $final_price;
+
+            if ($parent->save()) {
+                $user_operation = new UserOperation();
+                $user_operation->operation_id = 1;
+                $user_operation->money = $final_price;
+                $user_operation->author_id = $user->user_id;
+                $user_operation->recipient_id = $parent->user_id;
+                $user_operation->operation_type_id = 11;
+                $user_operation->operation_comment = sprintf('Командный доход в размере %s gv пользователь %s', $final_price, $counter);
+                $user_operation->save();
+            }
+
+            $parent = Users::where(['user_id' => $parent->recommend_user_id])->first();
+            if ($user_packet->packet_id != Packet::GAP) {
+                $this->checkForPremium($parent->user_id);
+            }
+
+            $counter++;
+            if ($counter >= 9) {
+                break;
+            }
+        }
+    }
+
+    public function checkForPremium($user_id)
+    {
+        $user = Users::where(['user_id' => $user_id])->first();
+
+        // check for bronze status
+        $check_pv = $user->pv_balance >= 50;
+        $satisfy_gv_balance = 100;
+        $enough_child_gv = $this->check_child($user_id, $satisfy_gv_balance);
+        if ($check_pv && $enough_child_gv) {
+            $last_status = UserStatus::BRONZE_MANAGER;
+        }
+
+        //check for silver status
+        $check_pv = $user->pv_balance >= 100;
+        $satisfy_gv_balance = 300;
+        $enough_child_gv = $this->check_child($user_id, $satisfy_gv_balance);
+
+        if ($check_pv && $enough_child_gv) {
+            $last_status = UserStatus::SILVER_MANAGER;
+        }
+
+
+        //check for gold status
+        $check_pv = $user->pv_balance >= 150;
+        $satisfy_gv_balance = 900;
+        $enough_child_gv = $this->check_child($user_id, $satisfy_gv_balance);
+
+        if ($check_pv && $enough_child_gv) {
+            $last_status = UserStatus::GOLD_MANAGER;
+        }
+
+
+        //check for platinum status
+        $check_pv = $user->pv_balance >= 150;
+        $satisfy_gv_balance = 2700;
+        $enough_child_gv = $this->check_child($user_id, $satisfy_gv_balance);
+
+        if ($check_pv && $enough_child_gv) {
+            $last_status = UserStatus::PLATINUM_MANAGER;
+        }
+
+
+        //check for rubin status
+        $check_pv = $user->pv_balance >= 150;
+        $satisfy_gv_balance = 8100;
+        $enough_child_gv = $this->check_child($user_id, $satisfy_gv_balance);
+
+        if ($check_pv && $enough_child_gv) {
+            $last_status = UserStatus::RUBIN_DIRECTOR;
+        }
+
+
+        //check for sapphire status
+        $check_pv = $user->pv_balance >= 150;
+        $satisfy_gv_balance = 24300;
+        $enough_child_gv = $this->check_child($user_id, $satisfy_gv_balance);
+
+        if ($check_pv && $enough_child_gv) {
+            $last_status = UserStatus::SAPPHIRE_DIRECTOR;
+        }
+
+
+        // check for emerald status
+        $check_pv = $user->pv_balance >= 150;
+        $satisfy_gv_balance = 72900;
+        $enough_child_gv = $this->check_child($user_id, $satisfy_gv_balance);
+
+        if ($check_pv && $enough_child_gv) {
+            $last_status = UserStatus::EMERALD_DIRECTOR;
+        }
+
+
+        // check for diamond status
+        $check_pv = $user->pv_balance >= 150;
+        $satisfy_gv_balance = 218700;
+        $enough_child_gv = $this->check_child($user_id, $satisfy_gv_balance);
+
+        if ($check_pv && $enough_child_gv) {
+            $last_status = UserStatus::DIAMOND_DIRECTOR;
+        }
+
+        if ($last_status == UserStatus::BRONZE_MANAGER) {
+            $premium_money = 30;
+        } elseif ($last_status == UserStatus::SILVER_MANAGER) {
+            $premium_money = 60;
+        } elseif ($last_status == UserStatus::GOLD_MANAGER) {
+            $premium_money = 180;
+        } elseif ($last_status == UserStatus::PLATINUM_MANAGER) {
+            $premium_money = 420;
+        } elseif ($last_status == UserStatus::RUBIN_DIRECTOR) {
+            $premium_money = 1400;
+        } elseif ($last_status == UserStatus::SAPPHIRE_DIRECTOR) {
+            $premium_money = 4200;
+        } elseif ($last_status == UserStatus::EMERALD_DIRECTOR) {
+            $premium_money = 14000;
+        } elseif ($last_status == UserStatus::DIAMOND_DIRECTOR) {
+            $premium_money = 42000;
+        }
+
+        $user->status_id = $last_status;
+        $user->user_money = $user->user_money + $premium_money;
+        if ($user->save()) {
+            $user_operation = new UserOperation();
+            $user_operation->operation_id = 1;
+            $user_operation->money = $premium_money;
+            $user_operation->author_id = null;
+            $user_operation->recipient_id = $user_id;
+            $user_operation->created_at = date('Y-m-d H:i:s');
+            $user_operation->operation_type_id = 11;
+            $user_operation->operation_comment = sprintf('Поздравляю!! вы получили коммандный в размере %s pv (%s тенге) и новый статус %s', $premium_money, $premium_money * 500, UserStatus::getStatusName($last_status));
+            $user_operation->save();
+        }
+    }
+
+    public function check_child($user_id, $satisfy_gv_balance)
+    {
+        $child = Users::where(['recommend_user_id' => $user_id])->get();
+        $counter = 0;
+        foreach ($child as $user) {
+            if ($user->gv_balance >= $satisfy_gv_balance) {
+                $counter++;
+            }
+        }
+        if ($counter >= 3) {
+            return true;
+        }
+        return false;
     }
 
     public function add_share_to_global_diamond_found($userPacket, $user_id)
