@@ -938,19 +938,22 @@ class PacketController extends Controller
             $premium_money = 42000;
         }
 
-        $user->status_id = $last_status;
-        $user->user_money = $user->user_money + $premium_money;
-        if ($user->save()) {
-            $user_operation = new UserOperation();
-            $user_operation->operation_id = 1;
-            $user_operation->money = $premium_money;
-            $user_operation->author_id = null;
-            $user_operation->recipient_id = $user_id;
-            $user_operation->created_at = date('Y-m-d H:i:s');
-            $user_operation->operation_type_id = 11;
-            $user_operation->operation_comment = sprintf('Поздравляю!! вы получили коммандный в размере %s pv (%s тенге) и новый статус %s', $premium_money, $premium_money * 500, UserStatus::getStatusName($last_status));
-            $user_operation->save();
+        if (isset($premium_money)) {
+            $user->status_id = $last_status;
+            $user->user_money = $user->user_money + $premium_money;
+            if ($user->save()) {
+                $user_operation = new UserOperation();
+                $user_operation->operation_id = 1;
+                $user_operation->money = $premium_money;
+                $user_operation->author_id = null;
+                $user_operation->recipient_id = $user_id;
+                $user_operation->created_at = date('Y-m-d H:i:s');
+                $user_operation->operation_type_id = 11;
+                $user_operation->operation_comment = sprintf('Поздравляю!! вы получили коммандный доход в размере %s pv (%s тенге) и новый статус %s', $premium_money, $premium_money * 500, UserStatus::getStatusName($last_status));
+                $user_operation->save();
+            }
         }
+
     }
 
     public function check_child($user_id, $satisfy_gv_balance)
