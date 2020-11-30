@@ -59,11 +59,23 @@
                                             <div style="padding-top: 5px; color: rgb(58, 58, 58);">
                                                 <p style="color: #009551; margin: 0px">
                                                     Квалификация: {{$user->user_status_name}}</p>
+                                                <p style="color: #00a5f4; margin: 0px">Статус
+                                                    GAP: {{isset($user->gap_status) ? \App\Models\GAP::get_status_name($user->gap_status) : ' нету'}}
+                                                </p>
                                                 <div>
                                                     <p style="font-weight: 900; margin: 0px">
                                                         ЛО: {{ $LOProfit + $gaps }} $
                                                         ({{round(($LOProfit+$gaps) * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
                                                         тг)</p>
+                                                    @if(isset($user->pv_balance ))
+                                                        <p style="font-weight: 900; margin: 0px">ЛО: {{$user->pv_balance }} PV</p>
+                                                    @endif
+                                                    @if(isset($user->gv_balance ))
+                                                        <p style="font-weight: 900; margin: 0px">ГО: {{$user->gv_balance }} GV</p>
+                                                    @endif
+                                                    @if(isset($user->sv_balance ))
+                                                        <p style="font-weight: 900; margin: 0px">GAP бонус: {{$user->sv_balance }} LV</p>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -85,10 +97,22 @@
                                             <div style="padding-top: 5px; color: rgb(58, 58, 58);">
                                                 <p style="color: #009551; margin: 0px">
                                                     Квалификация: {{$user->user_status_name}}</p>
+                                                <p style="color: #00a5f4; margin: 0px">Статус
+                                                    GAP: {{isset($user->gap_status) ? \App\Models\GAP::get_status_name($user->gap_status) : ' нету'}}
+                                                </p>
                                                 <div>
                                                     <p style="font-weight: 900; margin: 0px">ЛО: {{ $LOProfit }} $
                                                         ({{round($LOProfit * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
                                                         тг)</p>
+                                                    @if(isset($user->pv_balance ))
+                                                        <p style="font-weight: 900; margin: 0px">ЛО: {{$user->pv_balance }} PV</p>
+                                                    @endif
+                                                    @if(isset($user->gv_balance ))
+                                                        <p style="font-weight: 900; margin: 0px">ГО: {{$user->gv_balance }} GV</p>
+                                                    @endif
+                                                    @if(isset($user->sv_balance ))
+                                                        <p style="font-weight: 900; margin: 0px">GAP бонус: {{$user->sv_balance }} LV</p>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

@@ -767,12 +767,16 @@ class PacketController extends Controller
         $userPacket->queue_start_position = ($max_queue_start_position) ? ($max_queue_start_position + 1) : 1;
 
         try {
-            $this->pv_to_gv($userPacket, $total_price);
+            if ($userPacket->packet_id != Packet::GAP) {
+                $this->pv_to_gv($userPacket, $total_price);
+            } elseif ($userPacket->packet_id == Packet::GAP) {
+                app(GAPController::class)->send_sv_to_top($userPacket);
+            }
+
         } catch (\Exception $exception) {
             $userPacket->is_active = false;
             var_dump($exception->getMessage() . ' / ' . $exception->getFile() . ' / ' . $exception->getLine());
         }
-
 
         if ($userPacket->save()) {
             if ($userPacket->packet_id != Packet::SUPER && $userPacket->packet_id != Packet::GAP) {
@@ -802,12 +806,7 @@ class PacketController extends Controller
             $user_operation->save();
         }
 
-        if ($user_packet->packet_id != Packet::GAP) {
-            $this->checkForPremium($user->user_id);
-        }
-        if ($user_packet->packet_id == Packet::GAP) {
-            app(GAPController::class)->send_sv_to_top($user_packet);
-        }
+        $this->checkForPremium($user->user_id);
 
         // add gv to parents
         $parent = Users::where(['user_id' => $user->recommend_user_id])->first();
@@ -828,9 +827,8 @@ class PacketController extends Controller
             }
 
             $parent = Users::where(['user_id' => $parent->recommend_user_id])->first();
-            if ($user_packet->packet_id != Packet::GAP) {
-                $this->checkForPremium($parent->user_id);
-            }
+            $this->checkForPremium($parent->user_id);
+
 
             $counter++;
             if ($counter >= 9) {
