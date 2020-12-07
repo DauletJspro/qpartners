@@ -16,6 +16,7 @@ class UserPacket extends Model
     protected $primaryKey = 'user_packet_id';
 
     use SoftDeletes;
+
     protected $dates = ['deleted_at'];
 
 
@@ -38,12 +39,10 @@ class UserPacket extends Model
 
     public static function beforePurchaseSum($user_id)
     {
-
         $userPackets = UserPacket::where(['user_packet.user_id' => $user_id])->where('user_packet.is_active', 1)
             ->join('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
-            ->whereIn('user_packet.packet_id', Packet::actualPacket())
+            ->whereIn('user_packet.packet_id', [Packet::CLASSIC, Packet::PREMIUM, Packet::VIP2])
             ->get()->sortBy('packet.packet_id');
-
         if (!count($userPackets)) {
             return 0;
         };

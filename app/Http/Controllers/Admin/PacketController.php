@@ -423,12 +423,6 @@ class PacketController extends Controller
                 }
             }
 
-//            $packet_old_price = UserPacket::where('user_id', Auth::user()->user_id)
-//                ->where('packet_id', '>', 2)
-//                ->where('is_active', 1)
-//                ->where('user_packet.packet_id', '!=', 9)
-//                ->where('is_portfolio', '=', $packet->is_portfolio)
-//                ->sum('packet_price');
 
             $packet_old_price = UserPacket::beforePurchaseSum(Auth::user()->user_id);
         }
