@@ -17,7 +17,7 @@ class GAPController extends Controller
     {
         $user = Users::where(['user_id' => $user_packet->user_id])->first();
         $parent = Users::where(['user_id' => $user->recommend_user_id])->first();
-        $counter = 0;
+        $counter = 1;
         while ($parent) {
             $user_packet = UserPacket::where(['user_id' => $parent->user_id])->where(['is_active' => true])->get()->pluck('packet_id');
             $user_packet = isset($user_packet) ? $user_packet->toArray() : [];

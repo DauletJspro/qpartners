@@ -12,7 +12,11 @@ class Users extends Model implements AuthenticatableContract
     use Authenticatable;
 
     protected $primaryKey = 'user_id';
-    protected $fillable = ['email', 'password', 'login', 'user_id'];
+    protected $fillable = [
+        'email',
+        'password',
+        'login',
+        'user_id'];
 
     const ADMIN = 1;
     const CLIENT = 2;
@@ -58,5 +62,17 @@ class Users extends Model implements AuthenticatableContract
     public function packets()
     {
         return $this->hasMany(UserPacket::class, 'user_packet_id', 'user_id')->where('is_active', true);
+    }
+
+    public static function hasPackets(int $user_id)
+    {
+        $user_packet_count = UserPacket::where(['user_id' => $user_id])
+            ->whereIn('packet_id', [Packet::CLASSIC, Packet::PREMIUM, Packet::VIP2])->count();
+
+        if ($user_packet_count) {
+            return true;
+        }
+        return false;
+
     }
 }

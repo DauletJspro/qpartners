@@ -1,7 +1,6 @@
 <?php
 
 
-use App\Model\Review;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,12 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        $this->call('SocialNetworkSeeder');
-//        $this->call('InsetToAdministration');
-//        $this->call('InsertToLeadershipAdvice');
-//        $this->call('InsertDataToGuide');
-        $this->call('InsertFAQStatusesType');
-        $this->command->info('Review table seeded successfully!');
+        $this->call('ChangePacketPriceSeeder');
     }
 }
 
