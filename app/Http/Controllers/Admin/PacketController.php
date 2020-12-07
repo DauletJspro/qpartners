@@ -783,6 +783,9 @@ class PacketController extends Controller
 
     public function pv_to_gv($user_packet, $final_price)
     {
+        $final_price = $final_price * (500 / 600);
+        $final_price = round($final_price, 0);
+
         $user_id = $user_packet->user_id;
         $user = Users::where(['user_id' => $user_id])->first();
         // add pv to user
