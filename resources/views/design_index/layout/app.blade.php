@@ -19,3 +19,6 @@
 
 
 </head>
+<body>
+@stack('scripts')
+</body>
