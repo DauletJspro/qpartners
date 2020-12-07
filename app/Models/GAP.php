@@ -53,10 +53,6 @@ class GAP extends Model
         $result = (new GAP)->check_child_sv($parent_id, $enough_sv_balance);
         // date not increased now date
         $check_date = date("Y-m-d", strtotime("+1 month", $parent_packet->activated_at)) <= date("Y-m-d");
-        var_dump($parent_id);
-        var_dump($enough_pv_balance);
-        var_dump($result);
-        var_dump($check_date);
         if ($enough_pv_balance && $result && $check_date) {
             $GAP_status = GAP::GAP2;
         }
@@ -99,7 +95,7 @@ class GAP extends Model
         } elseif ($GAP_status == self::GAP3) {
             $premium_bonus = 2000;
         } elseif ($GAP_status == self::GAP4) {
-            $premium_bonus = 3000;
+            $premium_bonus = 6000;
         } elseif ($GAP_status == self::GAP5) {
             $premium_bonus = 18000;
         }

@@ -74,7 +74,7 @@
                                                         <p style="font-weight: 900; margin: 0px">ГО: {{$user->gv_balance }} GV</p>
                                                     @endif
                                                     @if(isset($user->sv_balance ))
-                                                        <p style="font-weight: 900; margin: 0px">GAP бонус: {{$user->sv_balance }} LV</p>
+                                                        <p style="font-weight: 900; margin: 0px">GAP объем: {{$user->sv_balance }} SV</p>
                                                     @endif
                                                 </div>
                                             </div>
@@ -111,7 +111,7 @@
                                                         <p style="font-weight: 900; margin: 0px">ГО: {{$user->gv_balance }} GV</p>
                                                     @endif
                                                     @if(isset($user->sv_balance ))
-                                                        <p style="font-weight: 900; margin: 0px">GAP бонус: {{$user->sv_balance }} LV</p>
+                                                        <p style="font-weight: 900; margin: 0px">GAP объем: {{$user->sv_balance }} SV</p>
                                                     @endif
                                                 </div>
                                             </div>

@@ -704,7 +704,6 @@ class PacketController extends Controller
             $inviter = Users::where(['user_id' => $user->recommend_user_id])->first();
         }
         $bonus = 0;
-        $bonusPercentage = 0;
         $packetPrice = $userPacket->packet_price;
         $inviterPacketId = UserPacket::where(['user_id' => $inviter->user_id])->where(['is_active' => true])->get();
         $inviterCount = (count($inviterPacketId));
@@ -716,10 +715,9 @@ class PacketController extends Controller
             });
             $inviterPacketId = max($inviterPacketId->all());
             $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
-            if ($packet->packet_id != Packet::ELITE_FREE && $packet->packet_id != Packet::SUPER) {
-                $bonusPercentage = (15 / 100);
-                $bonus = $packetPrice * $bonusPercentage;
-            }
+
+            $bonusPercentage = (15 / 100);
+            $bonus = $packetPrice * $bonusPercentage;
         }
         if ($bonus) {
             $operation = new UserOperation();
@@ -758,17 +756,18 @@ class PacketController extends Controller
         $userPacket->is_active = 1;
         $userPacket->activated_at = date('Y-m-d H:i:s');
 
-        if ($userPacket->packet_id == Packet::GAP || $userPacket->packet_id == Packet::SUPER) {
+        if ($userPacket->packet_id == Packet::GAP) {
             $userPacket->packet_price = $userPacket->packet_price;
         } else {
             $userPacket->packet_price = $total_price;
         }
+
         $max_queue_start_position = UserPacket::where('packet_id', $userPacket->packet_id)->where('is_active', 1)->where('queue_start_position', '>', 0)->max('queue_start_position');
         $userPacket->queue_start_position = ($max_queue_start_position) ? ($max_queue_start_position + 1) : 1;
 
         try {
             if ($userPacket->packet_id != Packet::GAP) {
-                $this->pv_to_gv($userPacket, $total_price);
+                $this->pv_to_gv($userPacket, $userPacket->packet_price);
             } elseif ($userPacket->packet_id == Packet::GAP) {
                 app(GAPController::class)->send_sv_to_top($userPacket);
             }
@@ -792,9 +791,8 @@ class PacketController extends Controller
     {
         $user_id = $user_packet->user_id;
         $user = Users::where(['user_id' => $user_id])->first();
-        // add gv and pv to user
+        // add pv to user
         $user->pv_balance = ($user->pv_balance + $final_price);
-        $user->gv_balance = ($user->gv_balance + $final_price);
         if ($user->save()) {
             $user_operation = new UserOperation();
             $user_operation->operation_id = 1;
@@ -802,7 +800,7 @@ class PacketController extends Controller
             $user_operation->author_id = $user->user_id;
             $user_operation->recipient_id = $user->user_id;
             $user_operation->operation_type_id = 11;
-            $user_operation->operation_comment = sprintf('Командный доход в размере %s gv, сам себе.', $final_price);
+            $user_operation->operation_comment = sprintf('Персональный доход  в размере %s pv.', $final_price);
             $user_operation->save();
         }
 
@@ -810,7 +808,7 @@ class PacketController extends Controller
 
         // add gv to parents
         $parent = Users::where(['user_id' => $user->recommend_user_id])->first();
-        $counter = 0;
+        $counter = 1;
 
         while ($parent) {
             $parent->gv_balance = $parent->gv_balance + $final_price;
