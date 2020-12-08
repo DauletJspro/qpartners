@@ -619,7 +619,7 @@ class PacketController extends Controller
 
 
         $this->implementPacketThings($packet, $user, $userPacket);
-//        $this->qualificationUp($packet, $user);
+        $this->qualificationUp($packet, $user);
 
 
         // if ($user->status_id >= UserStatus::CONSULTANT) {
@@ -783,6 +783,9 @@ class PacketController extends Controller
 
     public function pv_to_gv($user_packet, $final_price)
     {
+        $final_price = $final_price * (500 / 600);
+        $final_price = round($final_price, 0);
+
         $user_id = $user_packet->user_id;
         $user = Users::where(['user_id' => $user_id])->first();
         // add pv to user
@@ -793,8 +796,8 @@ class PacketController extends Controller
             $user_operation->money = $final_price;
             $user_operation->author_id = $user->user_id;
             $user_operation->recipient_id = $user->user_id;
-            $user_operation->operation_type_id = 11;
-            $user_operation->operation_comment = sprintf('Персональный доход  в размере %s pv.', $final_price);
+            $user_operation->operation_type_id = 40;
+            $user_operation->operation_comment = sprintf('Личный объем  в размере %s pv.', $final_price);
             $user_operation->save();
         }
 
@@ -814,7 +817,7 @@ class PacketController extends Controller
                 $user_operation->author_id = $user->user_id;
                 $user_operation->recipient_id = $parent->user_id;
                 $user_operation->operation_type_id = 11;
-                $user_operation->operation_comment = sprintf('Командный доход в размере %s gv пользователь %s', $final_price, $counter);
+                $user_operation->operation_comment = sprintf('Групповой объем в размере %s gv пользователь %s', $final_price, $counter);
                 $user_operation->save();
             }
 
