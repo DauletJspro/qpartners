@@ -10,10 +10,10 @@ use \App\Models\UserPacket;
 
     @if($item->is_portfolio == 0)
 
-        <?php 
-            $beforeSum = 0;
-            $actualPackets = [Packet::PREMIUM, Packet::ELITE, Packet::VIP2];
-        ?>        
+        <?php
+        $beforeSum = 0;
+        $actualPackets = [Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2];
+        ?>
         @if(!in_array($item->packet_id, [\App\Models\Packet::GAP2, \App\Models\Packet::GAP1]))
             <?php $beforeSum = UserPacket::beforePurchaseSumWithPacketId(Auth::user()->user_id, $item->packet_id) ?>
         @endif
@@ -26,8 +26,8 @@ use \App\Models\UserPacket;
                     <h3 style="font-family: cursive; font-size: 30px"> {{$item->packet_name_ru}}</h3>
 
                     <h4 style="font-size: 25px">
-                        @if ($item->packet_id == \App\Models\Packet::GAP || $item->packet_id == \App\Models\Packet::SUPER)                       
-                            {{($item->packet_price) * \App\Models\Currency::pvToKzt()}} тг       
+                        @if ($item->packet_id == \App\Models\Packet::GAP || $item->packet_id == \App\Models\Packet::SUPER)
+                            {{($item->packet_price) * \App\Models\Currency::pvToKzt()}} тг
                         @else
                             {{($item->packet_price - $beforeSum) * \App\Models\Currency::pvToKzt()}} тг
                         @endif
@@ -59,21 +59,23 @@ use \App\Models\UserPacket;
                         <a href="javascript:void(0)" onclick="cancelResponsePacket(this,'{{$item->packet_id}}')"
                            class="small-box-footer shop_buy_btn" style="font-size: 18px">Отменить запрос <i
                                     class="fa fa-arrow-circle-right"></i></a>
-                    @endif 
-                @else                    
+                    @endif
+                @else
                     @if ($item->packet_id == Packet::GAP)
                         @if ($max_packet_user_number[0] == null || ($max_packet_user_number[0] != null && !in_array($max_packet_user_number[0]->packet_id, $actualPackets)))
                             <a href="javascript:void(0)" onclick="showLimitMessage()"
-                                class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn" style="font-size: 18px">Купить
+                               class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn"
+                               style="font-size: 18px">Купить
                                 пакет <i class="fa fa-arrow-circle-right"></i></a>
                         @else
                             <a href="javascript:void(0)" onclick="showBuyModal(this,'{{$item->packet_id}}')"
-                                class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn" style="font-size: 18px">Купить
-                                пакет <i class="fa fa-arrow-circle-right"></i></a>    
-                        @endif                        
+                               class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn"
+                               style="font-size: 18px">Купить
+                                пакет <i class="fa fa-arrow-circle-right"></i></a>
+                        @endif
                     @else
                         <a href="javascript:void(0)" onclick="showBuyModal(this,'{{$item->packet_id}}')"
-                            class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn" style="font-size: 18px">Купить
+                           class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn" style="font-size: 18px">Купить
                             пакет <i class="fa fa-arrow-circle-right"></i></a>
                     @endif
                 @endif
