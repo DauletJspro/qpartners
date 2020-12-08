@@ -54,7 +54,7 @@ function showMessage(message){
 function showLimitMessage() {
     $.gritter.add({
         title: '',
-        text: 'Для покупки этого пакета вы должны купить один из Premium, Elite, VIP пакетов',
+        text: 'Для покупки этого пакета вы должны купить один из Classic Premium, Elite, VIP пакетов',
         class_name: 'success-gritter'
     });
     return false;
