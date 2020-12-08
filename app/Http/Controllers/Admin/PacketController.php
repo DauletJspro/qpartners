@@ -1077,7 +1077,7 @@ class PacketController extends Controller
     }
 
     private
-    function kqualificationUp($packet, $user)
+    function qualificationUp($packet, $user)
     {
         $willUpdate = false;
         $actualPackets = [Packet::ELITE_FREE, Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2, Packet::VIP];
