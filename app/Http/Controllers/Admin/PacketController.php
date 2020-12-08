@@ -619,7 +619,7 @@ class PacketController extends Controller
 
 
         $this->implementPacketThings($packet, $user, $userPacket);
-//        $this->qualificationUp($packet, $user);
+        $this->qualificationUp($packet, $user);
 
 
         // if ($user->status_id >= UserStatus::CONSULTANT) {
@@ -1077,7 +1077,7 @@ class PacketController extends Controller
     }
 
     private
-    function qualificationUp($packet, $user)
+    function kqualificationUp($packet, $user)
     {
         $willUpdate = false;
         $actualPackets = [Packet::ELITE_FREE, Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2, Packet::VIP];
