@@ -13,7 +13,7 @@ class ChangeGroupValue extends Seeder
     public function run()
     {
         DB::table('operation_type')->where('operation_type_id', 11)->update([
-            'operation_type_name_ru' => 'Груповой объем'
+            'operation_type_name_ru' => 'Групповой объем'
         ]);
 
     }
