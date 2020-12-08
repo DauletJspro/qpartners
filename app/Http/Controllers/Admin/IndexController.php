@@ -26,11 +26,16 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {
+
         $request->profit_all = UserOperation::where('recipient_id', Auth::user()->user_id)
             ->where('operation_id', 1)
             ->where('operation_type_id', '!=', 2)
             ->where('operation_type_id', '!=', 3)
             ->where('operation_type_id', '!=', 28)
+            ->where('operation_type_id', '!=', 29)
+            ->where('operation_type_id', '!=', 11)
+            ->where('operation_type_id', '!=', 40)
+            ->where('operation_type_id', '!=', 41)
             ->where('operation_type_id', '!=', 29)
             ->sum('money');
 
@@ -39,6 +44,10 @@ class IndexController extends Controller
             ->where('operation_type_id', '!=', 2)
             ->where('operation_type_id', '!=', 3)
             ->where('operation_type_id', '!=', 28)
+            ->where('operation_type_id', '!=', 29)
+            ->where('operation_type_id', '!=', 11)
+            ->where('operation_type_id', '!=', 40)
+            ->where('operation_type_id', '!=', 41)
             ->where('operation_type_id', '!=', 29)
             ->where('created_at', '>', date("Y-m-d"))
             ->sum('money');
@@ -49,6 +58,10 @@ class IndexController extends Controller
             ->where('operation_type_id', '!=', 3)
             ->where('operation_type_id', '!=', 28)
             ->where('operation_type_id', '!=', 29)
+            ->where('operation_type_id', '!=', 11)
+            ->where('operation_type_id', '!=', 40)
+            ->where('operation_type_id', '!=', 41)
+            ->where('operation_type_id', '!=', 29)
             ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))
             ->sum('money');
 
@@ -57,6 +70,10 @@ class IndexController extends Controller
             ->where('operation_type_id', '!=', 2)
             ->where('operation_type_id', '!=', 3)
             ->where('operation_type_id', '!=', 28)
+            ->where('operation_type_id', '!=', 29)
+            ->where('operation_type_id', '!=', 11)
+            ->where('operation_type_id', '!=', 40)
+            ->where('operation_type_id', '!=', 41)
             ->where('operation_type_id', '!=', 29)
             ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))
             ->sum('money');

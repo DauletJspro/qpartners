@@ -61,7 +61,8 @@
                                         @foreach($row as $key => $val)
 
                                             <tr @if($val->operation_type_id == 10) style="background-color: #91ff91 !important;"
-                                                @elseif($val->operation_type_id == 33) style="background-color: yellow !important;" @endif>
+                                                @elseif($val->operation_type_id == 33) style="background-color: yellow !important;"
+                                                @elseif($val->operation_type_id == 41) style="background-color: greenyellow !important;" @endif>
                                                 <td> {{ $key + 1 }}</td>
                                                 <td class="arial-font">
                                                     <a class="main-label"
@@ -91,6 +92,8 @@
                                                     @elseif($val->operation_type_id == 11)
                                                         {{$val->money}} GV
                                                     @elseif($val->operation_type_id == 40)
+                                                        {{$val->money}} PV
+                                                    @elseif($val->operation_type_id == 38)
                                                         {{$val->money}} PV
                                                     @else
                                                         {{ round($val->money,2) }} $

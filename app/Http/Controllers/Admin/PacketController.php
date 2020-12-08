@@ -817,7 +817,7 @@ class PacketController extends Controller
                 $user_operation->author_id = $user->user_id;
                 $user_operation->recipient_id = $parent->user_id;
                 $user_operation->operation_type_id = 11;
-                $user_operation->operation_comment = sprintf('Групповой объем в размере %s gv пользователь %s', $final_price, $counter);
+                $user_operation->operation_comment = sprintf('Групповой объем в размере %s gv уровень -%s', $final_price, $counter);
                 $user_operation->save();
             }
 
@@ -941,8 +941,8 @@ class PacketController extends Controller
                 $user_operation->author_id = null;
                 $user_operation->recipient_id = $user_id;
                 $user_operation->created_at = date('Y-m-d H:i:s');
-                $user_operation->operation_type_id = 11;
-                $user_operation->operation_comment = sprintf('Поздравляю!! вы получили коммандный доход в размере %s pv (%s тенге) и новый статус %s', $premium_money, $premium_money * 500, UserStatus::getStatusName($last_status));
+                $user_operation->operation_type_id = 41;
+                $user_operation->operation_comment = sprintf('Поздравляем!! Вы закрыли статус %s и получили квалификционный бонус %s тенге!',  UserStatus::getStatusName($last_status), $premium_money * 500);
                 $user_operation->save();
             }
         }
