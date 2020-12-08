@@ -32,8 +32,8 @@ class GAPController extends Controller
                     $user_operation->recipient_id = $parent->user_id;
                     $user_operation->created_at = date('Y-m-d H:i:s');
                     $user_operation->operation_type_id = 38;
-                    $user_operation->operation_comment = sprintf('Командный бонус GAP в размере 1sv
-                    , очередь пользователя %s', $counter);
+                    $user_operation->operation_comment = sprintf('Социальный обьем GAP в размере 1sv
+                    , уровень %s', $counter);
                     $user_operation->save();
                 }
                 GAP::check_for_premium($parent->user_id);

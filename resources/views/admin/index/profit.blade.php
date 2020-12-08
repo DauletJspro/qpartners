@@ -11,7 +11,7 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3>{{round($row->profit_today,2)}}<sup style="font-size: 20px">pv</sup></h3>
+                    <h3>{{round($row->profit_today,2)}}<sup style="font-size: 20px">$</sup></h3>
                     <h2 style="margin-top: 0px">{{round($row->currency->money * $row->profit_today,2)}}<sup style="font-size: 20px">ТГ</sup></h2>
                     <p>На сегодня</p>
                 </div>
@@ -25,7 +25,7 @@
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
-                    <h3>{{round($row->profit_last_week,2)}}<sup style="font-size: 20px">pv</sup></h3>
+                    <h3>{{round($row->profit_last_week,2)}}<sup style="font-size: 20px">$</sup></h3>
                     <h2 style="margin-top: 0px">{{round($row->currency->money * $row->profit_last_week,2)}}<sup style="font-size: 20px">ТГ</sup></h2>
                     <p>За последнюю неделю</p>
                 </div>
@@ -39,7 +39,7 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3>{{round($row->profit_last_month,2)}}<sup style="font-size: 20px">pv</sup></h3>
+                    <h3>{{round($row->profit_last_month,2)}}<sup style="font-size: 20px">$</sup></h3>
                     <h2 style="margin-top: 0px">{{round($row->currency->money * $row->profit_last_month,2)}}<sup style="font-size: 20px">ТГ</sup></h2>
                     <p>За последний месяц</p>
                 </div>
@@ -53,7 +53,7 @@
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
-                    <h3>{{round($row->profit_all,2)}}<sup style="font-size: 20px">pv</sup></h3>
+                    <h3>{{round($row->profit_all,2)}}<sup style="font-size: 20px">$</sup></h3>
                     <h2 style="margin-top: 0px">{{round($row->currency->money * $row->profit_all,2)}}<sup style="font-size: 20px">ТГ</sup></h2>
                     <p>За весь период</p>
                 </div>

@@ -10,7 +10,7 @@
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
-                    <h3>{{round(Auth::user()->user_money,2)}}<sup style="font-size: 20px">pv</sup></h3>
+                    <h3>{{round(Auth::user()->user_money,2)}}<sup style="font-size: 20px">$</sup></h3>
                     <h2 style="margin-top: 0px">{{round($row->currency->money * Auth::user()->user_money,2)}}<sup style="font-size: 20px">ТГ</sup></h2>
                     <p>Текущий баланс</p>
                 </div>
@@ -24,7 +24,7 @@
             <!-- small box -->
             <div class="small-box bg-gray">
                 <div class="inner">
-                    <h3>{{round($row->out_money,2)}}<sup style="font-size: 20px">pv</sup></h3>
+                    <h3>{{round($row->out_money,2)}}<sup style="font-size: 20px">$</sup></h3>
                     <h2 style="margin-top: 0px">{{round($row->currency->money * $row->out_money,2)}}<sup style="font-size: 20px">ТГ</sup></h2>
                     <p>Сумма, которая была снята</p>
                 </div>
@@ -38,7 +38,7 @@
             <!-- small box -->
             <div class="small-box bg-gray">
                 <div class="inner">
-                    <h3>{{round($row->send_money,2)}}<sup style="font-size: 20px">pv</sup></h3>
+                    <h3>{{round($row->send_money,2)}}<sup style="font-size: 20px">$</sup></h3>
                     <h2 style="margin-top: 0px">{{round($row->currency->money * $row->send_money,2)}}<sup style="font-size: 20px">ТГ</sup></h2>
                     <p>Сумма, которая была отправлена</p>
                 </div>
@@ -52,7 +52,7 @@
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
-                    <h3>{{round($row->profit_all + $row->passive_profit_all,2)}}<sup style="font-size: 20px">pv</sup></h3>
+                    <h3>{{round($row->profit_all + $row->passive_profit_all,2)}}<sup style="font-size: 20px">$</sup></h3>
                     <h2 style="margin-top: 0px">{{round($row->currency->money * ($row->profit_all + $row->passive_profit_all),2)}}<sup style="font-size: 20px">ТГ</sup></h2>
                     <p>За весь период</p>
                 </div>
@@ -69,7 +69,7 @@
                 <div class="inner">
                     <h3>{{$row->currency->money}}<sup style="font-size: 20px">Тенге</sup></h3>
                     <h2 style="margin-top: 0px">&nbsp;<sup style="font-size: 20px">&nbsp;</sup></h2>
-                    <p>1 pv = {{$row->currency->money}} т.г. </p>
+                    <p>1 $ = {{$row->currency->money}} т.г. </p>
                 </div>
                 <div class="icon">
 
