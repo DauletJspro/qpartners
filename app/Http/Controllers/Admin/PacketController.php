@@ -931,7 +931,7 @@ class PacketController extends Controller
             $premium_money = 42000;
         }
 
-        if (isset($premium_money)) {
+        if (isset($premium_money) && $user->status_id < $last_status) {
             $user->status_id = $last_status;
             $user->user_money = $user->user_money + $premium_money;
             if ($user->save()) {
@@ -942,8 +942,9 @@ class PacketController extends Controller
                 $user_operation->recipient_id = $user_id;
                 $user_operation->created_at = date('Y-m-d H:i:s');
                 $user_operation->operation_type_id = 41;
-                $user_operation->operation_comment = sprintf('Поздравляем!! Вы закрыли статус %s и получили квалификционный бонус %s тенге!',  UserStatus::getStatusName($last_status), $premium_money * 500);
+                $user_operation->operation_comment = sprintf('Поздравляем!! Вы закрыли статус %s и получили квалификационный бонус %s тенге!',  UserStatus::getStatusName($last_status), $premium_money * 500);
                 $user_operation->save();
+
             }
         }
 
