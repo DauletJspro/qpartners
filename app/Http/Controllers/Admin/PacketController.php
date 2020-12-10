@@ -913,22 +913,25 @@ class PacketController extends Controller
             $last_status = UserStatus::DIAMOND_DIRECTOR;
         }
 
-        if ($last_status == UserStatus::BRONZE_MANAGER) {
-            $premium_money = 30;
-        } elseif ($last_status == UserStatus::SILVER_MANAGER) {
-            $premium_money = 60;
-        } elseif ($last_status == UserStatus::GOLD_MANAGER) {
-            $premium_money = 180;
-        } elseif ($last_status == UserStatus::PLATINUM_MANAGER) {
-            $premium_money = 420;
-        } elseif ($last_status == UserStatus::RUBIN_DIRECTOR) {
-            $premium_money = 1400;
-        } elseif ($last_status == UserStatus::SAPPHIRE_DIRECTOR) {
-            $premium_money = 4200;
-        } elseif ($last_status == UserStatus::EMERALD_DIRECTOR) {
-            $premium_money = 14000;
-        } elseif ($last_status == UserStatus::DIAMOND_DIRECTOR) {
-            $premium_money = 42000;
+        $premium_money = 0;
+        if (isset($last_status)) {
+            if ($last_status == UserStatus::BRONZE_MANAGER) {
+                $premium_money = 30;
+            } elseif ($last_status == UserStatus::SILVER_MANAGER) {
+                $premium_money = 60;
+            } elseif ($last_status == UserStatus::GOLD_MANAGER) {
+                $premium_money = 180;
+            } elseif ($last_status == UserStatus::PLATINUM_MANAGER) {
+                $premium_money = 420;
+            } elseif ($last_status == UserStatus::RUBIN_DIRECTOR) {
+                $premium_money = 1400;
+            } elseif ($last_status == UserStatus::SAPPHIRE_DIRECTOR) {
+                $premium_money = 4200;
+            } elseif ($last_status == UserStatus::EMERALD_DIRECTOR) {
+                $premium_money = 14000;
+            } elseif ($last_status == UserStatus::DIAMOND_DIRECTOR) {
+                $premium_money = 42000;
+            }
         }
 
         if (isset($premium_money)) {
@@ -942,14 +945,15 @@ class PacketController extends Controller
                 $user_operation->recipient_id = $user_id;
                 $user_operation->created_at = date('Y-m-d H:i:s');
                 $user_operation->operation_type_id = 41;
-                $user_operation->operation_comment = sprintf('Поздравляем!! Вы закрыли статус %s и получили квалификционный бонус %s тенге!',  UserStatus::getStatusName($last_status), $premium_money * 500);
+                $user_operation->operation_comment = sprintf('Поздравляем!! Вы закрыли статус %s и получили квалификционный бонус %s тенге!', UserStatus::getStatusName($last_status), $premium_money * 500);
                 $user_operation->save();
             }
         }
 
     }
 
-    public function check_child($user_id, $satisfy_gv_balance)
+    public
+    function check_child($user_id, $satisfy_gv_balance)
     {
         $child = Users::where(['recommend_user_id' => $user_id])->get();
         $counter = 0;
@@ -964,7 +968,8 @@ class PacketController extends Controller
         return false;
     }
 
-    public function add_share_to_global_diamond_found($userPacket, $user_id)
+    public
+    function add_share_to_global_diamond_found($userPacket, $user_id)
     {
         $toGlobalFound = $userPacket->packet_price * (5 / 100);
         $fond = Fond::where(['fond_id' => Fond::GLOBAL_DIAMOND_FOUND])->first();
@@ -1021,7 +1026,8 @@ class PacketController extends Controller
         $company->save();
     }
 
-    private function implementQualificationBonuses($packet, $user, $userPacket)
+    private
+    function implementQualificationBonuses($packet, $user, $userPacket)
     {
 
         $inviterOrder = 1;
