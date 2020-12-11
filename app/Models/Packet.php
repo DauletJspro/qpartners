@@ -20,8 +20,8 @@ class Packet extends Model
     const VIP = 26;
     const VIP2 = 27;
     const GAP1 = 28;
-    const  GAP2 = 29;
-    const GAP = 30;
+    const GAP2 = 29;
+    const GAP3 = 30;
     const SUPER = 31;
 
     use SoftDeletes;
@@ -33,7 +33,9 @@ class Packet extends Model
             self::CLASSIC,
             self::PREMIUM,
             self::ELITE,
-            self::GAP,
+            self::GAP3,
+            self::GAP1,
+            self::GAP2,
             self::VIP2,
             self::VIP,
         ];
@@ -73,6 +75,7 @@ class Packet extends Model
         $incomeWeek = $incomeWeek->map(function ($item) {
             return $item->money;
         });
+
         $incomeWeek = array_sum($incomeWeek->all());
 
         switch ($userStatus) {

@@ -16,5 +16,7 @@ class UpdatePacketPrice extends Seeder
         \App\Models\Packet::where(['packet_id' => \App\Models\Packet::ELITE])->update(['packet_price' => 200]);
         \App\Models\Packet::where(['packet_id' => \App\Models\Packet::VIP2])->update(['packet_price' => 300]);
         \App\Models\Packet::where(['packet_id' => \App\Models\Packet::GAP])->update(['packet_price' => 300]);
+        \App\Models\Packet::where(['packet_id' => \App\Models\Packet::GAP1])->update(['packet_price' => 60]);
+        \App\Models\Packet::where(['packet_id' => \App\Models\Packet::GAP2])->update(['packet_price' => 120]);
     }
 }
