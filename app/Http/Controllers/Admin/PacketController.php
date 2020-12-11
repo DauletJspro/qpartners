@@ -947,6 +947,7 @@ class PacketController extends Controller
                 $user_operation->operation_type_id = 41;
                 $user_operation->operation_comment = sprintf('Поздравляем!! Вы закрыли статус %s и получили квалификационный бонус %s тенге!',  UserStatus::getStatusName($last_status), $premium_money * 500);
                 $user_operation->save();
+
             }
         }
 
