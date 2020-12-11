@@ -821,8 +821,8 @@ class PacketController extends Controller
                 $user_operation->save();
             }
 
-            $parent = Users::where(['user_id' => $parent->recommend_user_id])->first();
             $this->checkForPremium($parent->user_id);
+            $parent = Users::where(['user_id' => $parent->recommend_user_id])->first();
 
 
             $counter++;
