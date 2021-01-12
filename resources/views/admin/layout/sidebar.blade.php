@@ -1,4 +1,5 @@
 <ul class="sidebar-menu">
+    @if(Auth::user()->user_id != \App\Models\Users::Accountant)
     @if(Auth::user()->status_id > 0)
         <li class="header"
             style="padding:5px 25px 0px;"> <?php $status_name = \App\Models\UserStatus::where('user_status_id', Auth::user()->status_id)->first(); ?>
@@ -15,12 +16,12 @@
         <?php $status_name = \App\Models\UserStatus::where('user_status_id', Auth::user()->soc_status_id)->first(); ?>
         @if ($status_name)
             <li class="header"
-                style="padding:5px 25px 0px">                
+                style="padding:5px 25px 0px">
                 @if(isset($status_name->user_status_name))
 
                     <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Статус GAP: {{ $status_name->user_status_name }}</p>
 
-                @endif                
+                @endif
             </li>
         @endif
     @endif
@@ -38,15 +39,15 @@
 
     <li class="header" style="padding:5px 25px 0px">
         @if(Auth::user()->is_activated)
-            <p style="color:#009551;margin:0px; font-size: 14px; font-weight: bold;">Аккаунт: Активирован</p> 
-        @else 
-            <p style="color:#009551;margin:0px; font-size: 14px; font-weight: bold;">Аккаунт: Не активирован</p> 
+            <p style="color:#009551;margin:0px; font-size: 14px; font-weight: bold;">Аккаунт: Активирован</p>
+        @else
+            <p style="color:#009551;margin:0px; font-size: 14px; font-weight: bold;">Аккаунт: Не активирован</p>
         @endif
     </li>
     <li class="header" style="padding:5px 25px 0px">
         @if(Auth::user()->is_valid_document)
-            <p style="color:#009551;margin:0px 0px 10px 0px; font-size: 14px; font-weight: bold;">Верификация: Пройдено</p> 
-        @else 
+            <p style="color:#009551;margin:0px 0px 10px 0px; font-size: 14px; font-weight: bold;">Верификация: Пройдено</p>
+        @else
             <a style="color:#009551;margin:0px 0px 10px 0px;text-decoration: underline; padding: 0px; font-size: 14px; font-weight: bold;" href="/admin/document">Верификация: Не пройдено</a>
         @endif
     </li>
@@ -114,9 +115,10 @@
             <span>Мои подписчики</span>
         </a>
     </li>
+    @endif
 
     @if(Auth::user()->role_id == 1)
-
+    @if(Auth::user()->user_id != \App\Models\Users::Accountant)
         <li class="treeview">
             <a href="/admin/group">
                 <i class="fa fa-user"></i>
@@ -148,10 +150,10 @@
                 <span>Офис</span>
             </a>
           </li>
-
     @endif
-
-    <li class="treeview">
+    @endif
+        @if(Auth::user()->user_id != \App\Models\Users::Accountant)
+        <li class="treeview">
         <a href="/admin/online/history">
             <i class="fa fa-user"></i>
             <span>Мои покупки</span>
@@ -163,9 +165,10 @@
             <span>Договор</span>
         </a>
     </li>
-    @if(Auth::user()->role_id == 1)
-
-        <li class="treeview">
+            @endif
+            @if(Auth::user()->role_id == 1)
+            @if(Auth::user()->user_id != \App\Models\Users::Accountant)
+            <li class="treeview">
             <a href="/admin/packet/user/active">
                 <i class="fa fa-list-ul"></i>
                 <span>Статистика</span>
@@ -180,7 +183,7 @@
                       style="@if($user_packet_notice == 0) display: none; @endif background-color: rgb(253, 58, 53) ! important;">{{$user_packet_notice}}</span>
             </a>
         </li>
-
+            @endif
         <li class="treeview">
             <a href="/admin/packet/user/inactive">
                 <i class="fa fa-list-ul"></i>
@@ -221,7 +224,7 @@
                 </li>
             </ul>
         </li>
-
+        @if(Auth::user()->user_id != \App\Models\Users::Accountant)
         <li class="treeview">
             <a href="/admin/client">
                 <i class="fa fa-users"></i>
@@ -252,12 +255,14 @@
                 <span>Товары</span>
             </a>
         </li>
+                @endif
         <li class="treeview">
             <a href="/admin/accounting">
                 <i class="fa fa-money"></i>
                 <span>Учет</span>
             </a>
         </li>
+            @if(Auth::user()->user_id != \App\Models\Users::Accountant)
         <li>
             <a href="/admin/representative">
                 <i class="fa fa-user"></i>
@@ -276,13 +281,16 @@
                 <span>Заказы</span>
             </a>
         </li>
+                @endif
     @endif
+        @if(Auth::user()->user_id != \App\Models\Users::Accountant)
     <li class="treeview">
         <a href="/admin/operation">
             <i class="fa fa-list-ul"></i>
             <span>Счет</span>
         </a>
     </li>
+        @endif
     <li class="treeview">
         <a href="/admin/structure">
             <i class="fa fa-sitemap"></i>
@@ -295,7 +303,8 @@
              <span>Настройка авторегистрации</span>
          </a>
      </li>--}}
-    
+
+        @if(Auth::user()->user_id != \App\Models\Users::Accountant)
     <li class="treeview">
         <a href="/admin/presentation">
             <i class="fa fa-shopping-cart"></i>
@@ -328,7 +337,7 @@
             <span>Отправить деньги</span>
         </a>
     </li>
-
+     @endif
     <li class="treeview">
         <a href="/admin/password">
             <i class="fa fa-key"></i>

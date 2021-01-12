@@ -21,6 +21,7 @@ class Users extends Model implements AuthenticatableContract
     const ADMIN = 1;
     const CLIENT = 2;
     const MODERATOR = 3;
+    const Accountant = 100000;
 
     use SoftDeletes;
 
