@@ -76,4 +76,26 @@ class Users extends Model implements AuthenticatableContract
         return false;
 
     }
+
+    public function tickets()
+    {
+        return $this->hasMany(\App\Models\Ticket::class);
+    }
+
+    /**
+     * A user can have many comments
+     */
+    public function comments()
+    {
+        return $this->hasMany(\App\Models\CommentTicket::class);
+    }
+
+    /**
+     * Get the user that created ticket
+     * @param \App\User $user_id
+     */
+    public static function getTicketOwner($user_id)
+    {
+        return static::where('id', $user_id)->firstOrFail();
+    }
 }
