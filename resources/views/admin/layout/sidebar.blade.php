@@ -180,15 +180,6 @@
             @endif
             @if(Auth::user()->role_id == 1)
             @if(Auth::user()->user_id != \App\Models\Users::Accountant)
-                <li class="treeview">
-                    <a href="/admin/tickets">
-                        <i class="fa fa-list-ul"></i>
-                        <span>Вопросы от пользователей</span>
-                        <?php $countTicket = \App\Models\Ticket::where('status', '=', 'open')->count() ; ?>
-                        <span class="label label-primary pull-right" id="ticket_count"
-                              style="@if($user_packet_notice == 0) display: none; @endif background-color: rgb(253, 58, 53) ! important;">{{$countTicket}}</span>
-                    </a>
-                </li>
             <li class="treeview">
             <a href="/admin/packet/user/active">
                 <i class="fa fa-list-ul"></i>
@@ -204,6 +195,15 @@
                       style="@if($user_packet_notice == 0) display: none; @endif background-color: rgb(253, 58, 53) ! important;">{{$user_packet_notice}}</span>
             </a>
         </li>
+                <li class="treeview">
+                    <a href="/admin/tickets">
+                        <i class="fa fa-list-ul"></i>
+                        <span>Вопросы от пользователей</span>
+                        <?php $countTicket = \App\Models\Ticket::where('status', '=', 'open')->count() ; ?>
+                        <span class="label label-primary pull-right" id="ticket_count"
+                              style="@if($user_packet_notice == 0) display: none; @endif background-color: rgb(253, 58, 53) ! important;">{{$countTicket}}</span>
+                    </a>
+                </li>
             @endif
         <li class="treeview">
             <a href="/admin/packet/user/inactive">
