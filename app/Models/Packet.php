@@ -19,13 +19,15 @@ class Packet extends Model
     const ELITE = 25;
     const VIP = 26;
     const VIP2 = 27;
+    const GAP = 28; // TODO не забудь удалить
     const GAP1 = 28;
     const GAP2 = 29;
     const GAP3 = 30;
     const SUPER = 31;
 
-    use SoftDeletes;
-    protected $dates = ['deleted_at'];
+//    use SoftDeletes;
+
+//    protected $dates = ['deleted_at'];
 
     public static function actualPacket()
     {
@@ -79,13 +81,13 @@ class Packet extends Model
         $incomeWeek = array_sum($incomeWeek->all());
 
         switch ($userStatus) {
-            case UserStatus::CONSULTANT;                
+            case UserStatus::CONSULTANT;
                 if ($incomeForMonth >= 200) {
                     $messageBody = 'Ваш лимит на неделю не превышает 200$. ';
                     $success = false;
                 }
                 break;
-            case UserStatus::PREMIUM_MANAGER:                
+            case UserStatus::PREMIUM_MANAGER:
                 if ($incomeForMonth >= 1000) {
                     $messageBody = 'Ваш лимит на неделю не превышает 1000$. ';
                     $success = false;
@@ -96,13 +98,13 @@ class Packet extends Model
                     $messageBody = 'Ваш лимит на неделю не превышает 2 000$. ';
                     $success = false;
                 }
-                break;            
-            case UserStatus::VIP_MANAGER:                
+                break;
+            case UserStatus::VIP_MANAGER:
                 if ($incomeForMonth >= 1000000) {
                     $messageBody = 'Ваш лимит на неделю не превышает 4 000$. ';
                     $success = false;
                 }
-                break;            
+                break;
         }
         return [
             'message' => $messageBody,
@@ -132,10 +134,10 @@ class Packet extends Model
 
         Log::info($incomeForMonth);
 
-        $incomeForMonth = array_sum($incomeForMonth->all());    
+        $incomeForMonth = array_sum($incomeForMonth->all());
         Log::info($incomeForMonth);
         switch ($userStatus) {
-            case UserStatus::CONSULTANT;                
+            case UserStatus::CONSULTANT;
                 if ($incomeForMonth >= 200) {
                     $messageBody = 'Ваш лимит на месяц не превышает 200$. ';
                     $success = false;
@@ -152,13 +154,13 @@ class Packet extends Model
                     $messageBody = 'Ваш лимит на месяц не превышает 1 000$. ';
                     $success = false;
                 }
-                break;            
+                break;
             case UserStatus::VIP_MANAGER:
                 if ($incomeForMonth >= 10000) {
                     $messageBody = 'Ваш лимит на месяц не превышает 10 000$. ';
                     $success = false;
                 }
-                break;            
+                break;
         }
         return [
             'message' => $messageBody,
@@ -166,19 +168,19 @@ class Packet extends Model
         ];
     }
 
-    public static function checkQualificationBonusTime($user, $bonusTime) 
-    {        
+    public static function checkQualificationBonusTime($user, $bonusTime)
+    {
         $success = true;
         $userId = $user->user_id;
-        $userPacketActivate = UserPacket::where(['user_id' => $userId, 'is_active' => 1])->orderBy('packet_id','desc')->first();
-        $day = date("Y-m-d", strtotime("-".$bonusTime." day"));
+        $userPacketActivate = UserPacket::where(['user_id' => $userId, 'is_active' => 1])->orderBy('packet_id', 'desc')->first();
+        $day = date("Y-m-d", strtotime("-" . $bonusTime . " day"));
 
         if ($userPacketActivate->updated_at < $day) {
             $success = false;
         }
         Log::info($userPacketActivate);
         Log::info($day);
-        
+
         return $success;
     }
 

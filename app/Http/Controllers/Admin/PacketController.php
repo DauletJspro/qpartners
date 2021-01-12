@@ -360,7 +360,7 @@ class PacketController extends Controller
     public function acceptInactiveUserPacket(Request $request)
     {
         try {
-            $this->implementPacketBonuses($request->packet_id);
+            $this->implementPacketBonuses($request->packet_id, (int)$request->give_bonus);
         } catch (\Exception $e) {
             var_dump($e->getFile() . ' ' . $e->getLine() . ' ' . $e->getMessage());
         }
@@ -520,7 +520,7 @@ class PacketController extends Controller
     }
 
 
-    public function implementPacketBonuses($userPacketId)
+    public function implementPacketBonuses($userPacketId, $give_bonus = null)
     {
         $inviter_order = 1;
         $userPacket = UserPacket::find($userPacketId);
@@ -544,15 +544,15 @@ class PacketController extends Controller
             return response()->json($result);
         }
 
-        $this->activatePackage($userPacket);
-        if ($user->user_id != 1) {
+        $this->activatePackage($userPacket, $give_bonus);
+        if ($user->user_id != 1 && $give_bonus) {
             $this->implementInviterBonus($userPacket, $packet, $user);
             $this->implementOfficeBonus($userPacket, $packet, $user);
             $this->implementSpeakerBonus($userPacket, $packet, $user);
         }
         $inviter = Users::where(['user_id' => $user->recommend_user_id])->first();
 
-        while ($inviter) {
+        while ($inviter && $give_bonus) {
             $bonus = 0;
             $bonusPercentage = 0;
             $packetPrice = $userPacket->packet_price;
@@ -730,7 +730,7 @@ class PacketController extends Controller
         }
     }
 
-    private function activatePackage($userPacket)
+    private function activatePackage($userPacket, $give_bonus = null)
     {
         $packet_old_price = 0;
 
@@ -760,7 +760,7 @@ class PacketController extends Controller
         $userPacket->queue_start_position = ($max_queue_start_position) ? ($max_queue_start_position + 1) : 1;
 
         try {
-            if ($userPacket->packet_id != Packet::GAP) {
+            if ($userPacket->packet_id != Packet::GAP && $give_bonus) {
                 $this->pv_to_gv($userPacket, $userPacket->packet_price);
             } elseif ($userPacket->packet_id == Packet::GAP) {
                 app(GAPController::class)->send_sv_to_top($userPacket);
@@ -772,7 +772,7 @@ class PacketController extends Controller
         }
 
         if ($userPacket->save()) {
-            if ($userPacket->packet_id != Packet::SUPER && $userPacket->packet_id != Packet::GAP) {
+            if ($userPacket->packet_id != Packet::SUPER && $userPacket->packet_id != Packet::GAP && $give_bonus) {
                 $this->add_share_to_global_diamond_found($userPacket, $userPacket->user_id);
                 $user = Users::find($userPacket->user_id);
                 $user->product_balance = $user->product_balance + $userPacket->packet_price;
@@ -823,7 +823,6 @@ class PacketController extends Controller
 
             $this->checkForPremium($parent->user_id);
             $parent = Users::where(['user_id' => $parent->recommend_user_id])->first();
-
 
             $counter++;
             if ($counter >= 9) {
