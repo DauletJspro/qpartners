@@ -14,7 +14,7 @@ use \App\Models\UserPacket;
         $beforeSum = 0;
         $actualPackets = [Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2];
         ?>
-        @if(!in_array($item->packet_id, [\App\Models\Packet::GAP2, \App\Models\Packet::GAP1]))
+        @if(!in_array($item->packet_id, [\App\Models\Packet::GAP2, \App\Models\Packet::GAP1, \App\Models\Packet::GAP3]))
             <?php $beforeSum = UserPacket::beforePurchaseSumWithPacketId(Auth::user()->user_id, $item->packet_id) ?>
         @endif
 
@@ -24,9 +24,10 @@ use \App\Models\UserPacket;
             <div class="small-box packet-item-list" style="background-color: #{{$item->packet_css_color}}">
                 <div class="inner">
                     <h3 style="font-family: cursive; font-size: 30px"> {{$item->packet_name_ru}}</h3>
-
                     <h4 style="font-size: 25px">
-                        @if ($item->packet_id == \App\Models\Packet::GAP || $item->packet_id == \App\Models\Packet::SUPER)
+                        @if ($item->packet_id == \App\Models\Packet::GAP1 ||
+                             $item->packet_id == \App\Models\Packet::GAP2 ||
+                             $item->packet_id == \App\Models\Packet::GAP3)
                             {{($item->packet_price) * \App\Models\Currency::pvToKzt()}} тг
                         @else
                             {{($item->packet_price - $beforeSum) * \App\Models\Currency::pvToKzt()}} тг
@@ -40,7 +41,13 @@ use \App\Models\UserPacket;
                             <h4 style="font-size: 22px; font-weight: 800">&ensp;</h4>
                         @endif
                     @elseif($packet_type == 'item')
-                        <h4 style="font-size: 22px; font-weight: 800">{{$item->packet_thing}}</h4>
+                        <h4 style="font-size: 22px; font-weight: 800">
+                            @if($item->packet_thing)
+                                {{$item->packet_thing}}
+                            @else
+                                <br><br>
+                            @endif
+                        </h4>
                     @elseif($packet_type == 'service')
                         <h4 style="font-size: 22px; font-weight: 800">{{$item->packet_lection}}</h4>
                     @endif
@@ -61,7 +68,7 @@ use \App\Models\UserPacket;
                                     class="fa fa-arrow-circle-right"></i></a>
                     @endif
                 @else
-                    @if ($item->packet_id == Packet::GAP)
+                    @if (in_array($item->packet_id, [\App\Models\Packet::GAP1, \App\Models\Packet::GAP2, \App\Models\Packet::GAP3]))
                         @if ($max_packet_user_number[0] == null || ($max_packet_user_number[0] != null && !in_array($max_packet_user_number[0]->packet_id, $actualPackets)))
                             <a href="javascript:void(0)" onclick="showLimitMessage()"
                                class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn"
