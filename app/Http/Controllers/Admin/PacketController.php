@@ -618,7 +618,7 @@ class PacketController extends Controller
         }
 
 
-        $this->implementPacketThings($packet, $user, $userPacket);
+        $this->implementPacketThings($packet, $user, $userPacket, $give_bonus);
         $this->qualificationUp($packet, $user);
 
 
@@ -987,7 +987,7 @@ class PacketController extends Controller
     }
 
     private
-    function implementPacketThings($packet, $user, $userPacket)
+    function implementPacketThings($packet, $user, $userPacket, $give_bonus)
     {
         if ($userPacket->user_packet_type == 'item' && $packet->packet_type == 1 && $userPacket->packet_id != Packet::GAP) {
             $operation = new UserOperation();
@@ -1010,19 +1010,21 @@ class PacketController extends Controller
         }
 
         //пополнение фонда компании
-        $company_money = $userPacket->packet_price - $this->sentMoney;
-        $operation = new UserOperation();
-        $operation->author_id = $userPacket->user_id;
-        $operation->recipient_id = 1;
-        $operation->money = $company_money;
-        $operation->operation_id = 1;
-        $operation->operation_type_id = 6;
-        $operation->operation_comment = 'За покупку пакета "' . $packet->packet_name_ru . '"';
-        $operation->save();
+        if ($give_bonus) {
+            $company_money = $userPacket->packet_price - $this->sentMoney;
+            $operation = new UserOperation();
+            $operation->author_id = $userPacket->user_id;
+            $operation->recipient_id = 1;
+            $operation->money = $company_money;
+            $operation->operation_id = 1;
+            $operation->operation_type_id = 6;
+            $operation->operation_comment = 'За покупку пакета "' . $packet->packet_name_ru . '"';
+            $operation->save();
 
-        $company = Users::where('user_id', 1)->first();
-        $company->user_money = $company->user_money + $company_money;
-        $company->save();
+            $company = Users::where('user_id', 1)->first();
+            $company->user_money = $company->user_money + $company_money;
+            $company->save();
+        }
     }
 
     private
