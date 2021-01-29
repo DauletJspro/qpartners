@@ -104,6 +104,12 @@
         </a>
     </li>
         <li class="treeview">
+            <a href="/admin/document/receipt">
+                <i class="fa fa-user"></i>
+                <span>Мои квитанций</span>
+            </a>
+        </li>
+        <li class="treeview">
             <a href="/admin/my_tickets">
                 <i class="fa fa-list-ul"></i>
                 <span>Мои вопросы</span>
@@ -252,12 +258,18 @@
                 <span>Пользователи</span>
             </a>
         </li>
-        {{--<li class="treeview">
-            <a href="/admin/speaker">
-                <i class="fa fa-comments"></i>
-                <span>Спикеры</span>
-            </a>
-        </li>--}}
+                    <li class="treeview">
+                        <a href="/admin/client/share">
+                            <i class="fa fa-users"></i>
+                            <span>Пайщики</span>
+                        </a>
+                    </li>
+                    {{--<li class="treeview">
+                        <a href="/admin/speaker">
+                            <i class="fa fa-comments"></i>
+                            <span>Спикеры</span>
+                        </a>
+                    </li>--}}
         <li class="treeview">
             <a href="/admin/office">
                 <i class="fa fa-building"></i>

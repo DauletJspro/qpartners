@@ -74,8 +74,11 @@
                                                        class="form-control input" placeholder="Фамилия"/>
                                                 <input type="text" name="login" value="{{$row->login}}"
                                                        class="form-control input" placeholder="Логин"/>
+                                                <input type="text" name="iin" value="{{$row->iin}}"
+                                                       class="form-control input" placeholder="ИИН"/>
                                                 <div>
-                                                    <select required name="recommend_user_id"
+                                                    {{Form::select('is_activated', $activate, 1, ['class' => 'form-control selectpicker input','placeholder' => 'Выберите название программы', 'data-live-search' => 'true'])}}
+                                                        <select required name="recommend_user_id"
                                                             data-placeholder="Выберите спонсора (1 уровень)"
                                                             class="form-control selectpicker input"
                                                             data-live-search="true">

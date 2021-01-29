@@ -23,7 +23,7 @@ use Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
-class UserDocumentController extends Controller
+class   UserDocumentController extends Controller
 {
     public function __construct()
     {
@@ -49,6 +49,55 @@ class UserDocumentController extends Controller
         $document_list = Document::where('is_show',1)->orderBy('sort_num','asc')->get();
 
         return  view('admin.document.index',[
+            'document_list' => $document_list,
+            'user_id' => $user_id,
+            'user' => $user,
+            'is_own' => $is_own
+        ]);
+    }
+
+    public function indexOfReceipt($user_id = null)
+    {
+        $is_own = 0;
+        if($user_id == null) {
+            $user_id = Auth::user()->user_id;
+            $user = Auth::user();
+            $is_own = 1;
+        }
+        else {
+            $user = Users::find($user_id);
+            if($user == null) abort(404);
+        }
+
+        $document_list = Document::where('is_show',3)->orderBy('sort_num','asc')->get();
+
+
+
+        return  view('admin.receipt.index',[
+            'document_list' => $document_list,
+            'user_id' => $user_id,
+            'user' => $user,
+            'is_own' => $is_own
+        ]);
+    }
+
+    public function indexOfShareholder($user_id){
+        $is_own = 0;
+        if($user_id == null) {
+            $user_id = Auth::user()->user_id;
+            $user = Auth::user();
+            $is_own = 1;
+        }
+        else {
+            $user = Users::find($user_id);
+            if($user == null) abort(404);
+        }
+
+        $document_list = Document::where('is_show',3)->orderBy('sort_num','asc')->get();
+
+
+
+        return  view('admin.receipt.shareholder',[
             'document_list' => $document_list,
             'user_id' => $user_id,
             'user' => $user,

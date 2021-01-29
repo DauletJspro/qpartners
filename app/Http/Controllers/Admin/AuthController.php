@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\RegisterRequest;
+use App\Models\Position;
 use App\Models\UserInfo;
 use App\Models\Users;
 use Illuminate\Http\Request;
@@ -109,30 +110,32 @@ class AuthController extends Controller
         }
 
         $user = new Users();
+        $activate = Position::all()->pluck('name', 'id_select')->toArray();
 
         return view('admin.new_design_auth.register', [
-            'row' => $user
+            'row' => $user,
+            'activate' => $activate
         ]);
     }
 
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'last_name' => 'required',
-//            'city_id' => 'required|numeric',
-            'password' => 'required|min:5',
-            'recommend_user_id' => 'required',
-            'inviter_user_id' => 'required',
-            'confirm_password' => 'required|same:password',
-            'email' => 'required|email|unique:users,email,NULL,user_id,deleted_at,NULL',
-            'login' => 'required|unique:users,login,NULL,user_id,deleted_at,NULL',
-            'phone' => 'required|unique:users,phone,NULL,user_id,deleted_at,NULL',
-            'g-recaptcha-response' => 'required|captcha',
-//            'iin' => 'required|unique:users,iin,NULL,user_id,deleted_at,NULL',
-//            'address' => 'required',
+            'name'                          => 'required',
+            'last_name'                     => 'required',
+            'password'                      => 'required|min:5',
+            'recommend_user_id'             => 'required',
+            'inviter_user_id'               => 'required',
+            'confirm_password'              => 'required|same:password',
+            'email'                         => 'required|email|unique:users,email,NULL,user_id,deleted_at,NULL',
+            'login'                         => 'required|unique:users,login,NULL,user_id,deleted_at,NULL',
+            'phone'                         => 'required|unique:users,phone,NULL,user_id,deleted_at,NULL',
+            'g-recaptcha-response'          => 'required|captcha',
+            'iin'                           => 'required|unique:users,iin,NULL,user_id,deleted_at,NULL',
+            'is_activated'                  => 'required'
         ], [
             'g-recaptcha-response.required' => 'Завершите captche (я не робот)',
+            'iin.required'                  => 'Заполните ИИН'
         ]);
 
 
@@ -156,6 +159,7 @@ class AuthController extends Controller
         $user->email = $request->email;
         $user->login = $request->login;
         $user->iin = $request->iin;
+        $user->is_activated = $request->is_activated;
         $user->phone = $request->phone;
 
         $request->instagram = str_replace('http://www.instagram.com/', '', $request->instagram);
@@ -167,7 +171,6 @@ class AuthController extends Controller
 
         $user->role_id = 2;
         $user->is_confirm_email = 0;
-        $user->is_activated = 1;
         $user->recommend_user_id = is_numeric($request->recommend_user_id) ? $request->recommend_user_id : null;
         $user->inviter_user_id = is_numeric($request->inviter_user_id) ? $request->inviter_user_id : null;
         $user->speaker_id = is_numeric($request->speaker_id) ? $request->speaker_id : null;

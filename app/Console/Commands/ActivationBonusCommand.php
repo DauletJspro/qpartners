@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Packet;
 use App\Models\UserOperation;
+use App\Models\UserPacket;
 use App\Models\Users;
 use Illuminate\Console\Command;
 
@@ -104,26 +106,47 @@ class ActivationBonusCommand extends Command
         $parent = Users::where(['user_id' => $user->recommend_user_id])->first();
         $counter = 1;
         while ($parent) {
-            $parent->user_money = $parent->user_money + 0.6;
+            if ($this->getAvailableLevel($parent, $counter)) {
+                $parent->user_money = $parent->user_money + 0.6;
+                $userOperation = new UserOperation();
+                $userOperation->operation_id = 1;
+                $userOperation->money = 0.6;
+                $userOperation->author_id = $user->user_id;
+                $userOperation->recipient_id = $parent->user_id;
+                $userOperation->created_at = date('Y-m-d H:i:s');
+                $userOperation->updated_at = date('Y-m-d H:i:s');
+                $userOperation->operation_type_id = 35;
+                $userOperation->operation_comment = 'Активационный бонус, пользователь ' . $counter;
+                $userOperation->save();
 
-            $userOperation = new UserOperation();
-            $userOperation->operation_id = 1;
-            $userOperation->money = 0.6;
-            $userOperation->author_id = $user->user_id;
-            $userOperation->recipient_id = $parent->user_id;
-            $userOperation->created_at = date('Y-m-d H:i:s');
-            $userOperation->updated_at = date('Y-m-d H:i:s');
-            $userOperation->operation_type_id = 35;
-            $userOperation->operation_comment = 'Активационный бонус, пользователь ' . $counter;
-            $userOperation->save();
-
-            $parent->save();
-
+                $parent->save();
+            }
+            $parent = Users::where(['user_id' => $parent->recommend_user_id])->first();
             $counter++;
             if ($counter >= 9) {
                 break;
             }
 
         }
+    }
+
+    public function getAvailableLevel($parent, $counter = null){
+        $parentPacket = UserPacket::where('user_id', '=', $parent->user_id)->where(['is_active' => true])
+            ->whereIn('packet_id', [Packet::CLASSIC, Packet::PREMIUM, Packet::VIP2])
+            ->get()
+            ->pluck('packet_id');
+        $parentPacket = $parentPacket->toArray();
+        $parentPacket = max($parentPacket);
+        $check = false;
+         if ($counter <= 4 && $parentPacket >= Packet::CLASSIC){
+             $check = true;
+         }
+         if ($counter >= 5 && $counter <= 6 && $parentPacket >= Packet::PREMIUM){
+             $check = true;
+         }
+         if ($counter >= 7 && $counter <= 8 && $parentPacket == Packet::VIP2){
+             $check = true;
+         }
+         return $check;
     }
 }

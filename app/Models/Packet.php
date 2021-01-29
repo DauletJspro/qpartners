@@ -19,11 +19,10 @@ class Packet extends Model
     const ELITE = 25;
     const VIP = 26;
     const VIP2 = 27;
-    const GAP = 28; // TODO не забудь удалить
-    const GAP1 = 28;
-    const GAP2 = 29;
-    const GAP3 = 30;
-    const SUPER = 31;
+    const GAP = 30;
+    const GAPTechno = 31;
+    const GAPAuto = 32;
+    const GAPHome = 33;
 
 //    use SoftDeletes;
 

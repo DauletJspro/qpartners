@@ -143,6 +143,8 @@ Route::group([
     });
 
     Route::get('document/confirm', 'UserDocumentController@getConfirmDocumentList');
+    Route::get('document/receipt', 'UserDocumentController@indexOfReceipt');
+    Route::get('document/receipt/{user_id}', 'UserDocumentController@indexOfShareholder');
 
     Route::get('cron/career', 'IndexController@robotCareer');
 
@@ -273,10 +275,32 @@ Route::group([
     Route::post('country/is_show', 'CountryController@changeIsShow');
     Route::resource('country', 'CountryController');
 
-
     Route::post('client/is_show', 'ClientController@changeIsBan');
-    Route::resource('client', 'ClientController');
+    Route::put('client/share/{client}', 'ClientController@updateAutoUser')->name('client.auto.update');
+    Route::put('client/share/holder/{client}', 'ClientController@updateHomeUser')->name('client.home.update');
+    Route::get('client/share', 'ClientController@getAllGapShareholder');
+    Route::get('client/share/holder', 'ClientController@getAllAutoShareholder')->name('client.auto.users');
+    Route::get('client/share/holder/home', 'ClientController@getAllHomeShareholder')->name('client.home.users');
+    Route::get('client/share/{client}/edit', 'ClientController@editAutoUser')->name('client.auto.edit');
+    Route::get('client/share/holder/home/{client}/edit', 'ClientController@editHomeUser')->name('client.home.edit');
+
+    Route::resource('client', 'ClientController', ['only' =>[
+        'index', 'destroy'
+    ]
+    ]);
     Route::post('client/share', 'ClientController@editIntersHolderStatus')->name('client.share');
+
+    Route::resource('cooperative', 'CooperativeGroupController', ['only' => [
+        'index', 'create', 'store'
+    ]]);
+    Route::get('cooperative/{group}', 'CooperativeGroupController@getIdOfGroup')->name('cooperative.group');
+
+    Route::resource('home', 'CooperativeHomeGroupController', ['only' => [
+        'index', 'create', 'store'
+    ]]);
+    Route::get('home/{group}', 'CooperativeHomeGroupController@getIdOfGroup')->name('cooperative.home.group');
+
+
 
     Route::post('video/is_show', 'VideoController@changeIsBan');
     Route::resource('video', 'VideoController');

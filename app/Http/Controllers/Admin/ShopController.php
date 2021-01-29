@@ -26,7 +26,7 @@ class ShopController extends Controller
     {
         $request->packet = Packet::where('is_show', 1)
             ->where('is_old', 0)
-            ->whereNotIn('packet_id', [Packet::GAP1, Packet::GAP2])
+//            ->whereNotIn('packet_id', [Packet::GAP1, Packet::GAP2])
             ->orderBy('sort_num', 'asc')
             ->select('*',
                 DB::raw('(select count(user_packet.packet_id)
