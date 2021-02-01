@@ -234,6 +234,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="{{route('client.share')}}" method="POST">
+
                         {!! Form::token() !!}
                         <input type="hidden" id="modal_user_id" name="user_id" value="">
                         <div class="form-box">
