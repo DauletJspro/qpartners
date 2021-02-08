@@ -20,7 +20,7 @@ class Check extends Seeder
                 'windows-1251',
                 'UTF-8',
                 'Новый пароль',
-                view('mail.reset-password', ['new_password' => '12345']),
+                view('mail.reset-password', 'sailauovdaulet15@gmail.com', ''),
                 true);
         }catch (Exception $e){
             var_dump($e->getFile(). ' '. $e->getLine(). ' '. $e->getMessage() );
