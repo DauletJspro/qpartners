@@ -31,6 +31,7 @@ use \App\Models\Currency;
                                             <th style="width: 100px">Сумма</th>
                                             <th>Номер заказа</th>                                            
                                             <th>Оплачено</th>
+                                            <th>Доставленно</th>
                                             <th>Дата</th>
                                             <th>Детали</th>
                                         </tr>
@@ -62,6 +63,13 @@ use \App\Models\Currency;
                                                         @else
                                                             НЕТ
                                                         @endif                                                    
+                                                    </td>
+                                                    <td class="arial-font">
+                                                        @if ($val->accepted)
+                                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                                        @else
+                                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                                        @endif
                                                     </td>
                                                     <td class="arial-font">
                                                     {{ $val->created_at }}

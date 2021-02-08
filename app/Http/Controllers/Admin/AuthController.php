@@ -3,19 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\RegisterRequest;
+use App\Models\PasswordReset;
 use App\Models\Position;
 use App\Models\UserInfo;
 use App\Models\Users;
+use App\ResetPasswor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Helpers;
 use Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use SuperClosure\Analyzer\Token;
 use View;
-use DB;
 use Mockery\CountValidator\Exception;
 use Illuminate\Support\Facades\Validator;
-
 
 
 class AuthController extends Controller
@@ -121,21 +123,21 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name'                          => 'required',
-            'last_name'                     => 'required',
-            'password'                      => 'required|min:5',
-            'recommend_user_id'             => 'required',
-            'inviter_user_id'               => 'required',
-            'confirm_password'              => 'required|same:password',
-            'email'                         => 'required|email|unique:users,email,NULL,user_id,deleted_at,NULL',
-            'login'                         => 'required|unique:users,login,NULL,user_id,deleted_at,NULL',
-            'phone'                         => 'required|unique:users,phone,NULL,user_id,deleted_at,NULL',
-            'g-recaptcha-response'          => 'required|captcha',
-            'iin'                           => 'required|unique:users,iin,NULL,user_id,deleted_at,NULL',
-            'is_activated'                  => 'required'
+            'name' => 'required',
+            'last_name' => 'required',
+            'password' => 'required|min:5',
+            'recommend_user_id' => 'required',
+            'inviter_user_id' => 'required',
+            'confirm_password' => 'required|same:password',
+            'email' => 'required|email|unique:users,email,NULL,user_id,deleted_at,NULL',
+            'login' => 'required|unique:users,login,NULL,user_id,deleted_at,NULL',
+            'phone' => 'required|unique:users,phone,NULL,user_id,deleted_at,NULL',
+            'g-recaptcha-response' => 'required|captcha',
+            'iin' => 'required|unique:users,iin,NULL,user_id,deleted_at,NULL',
+            'is_activated' => 'required'
         ], [
             'g-recaptcha-response.required' => 'Завершите captche (я не робот)',
-            'iin.required'                  => 'Заполните ИИН'
+            'iin.required' => 'Заполните ИИН'
         ]);
 
 
@@ -284,21 +286,28 @@ class AuthController extends Controller
         try {
             $email = $request->email;
 
-            $user = Users::where('email', '=', $request->email)->first();
-            $new_password = str_random(8);
-            $password = Hash::make($new_password);
-            $user->password_original = $new_password;
-            $user->password = $password;
-            $user->save();
+//            $user = Users::where('email', '=', $request->email)->first();
+            $token = Str::random(60);
 
-            $ok = \App\Http\Helpers::send_mime_mail('info@roiclub.kz',
+            $resetPassword = new PasswordReset();
+            $resetPassword->email = $email;
+            $resetPassword->token = $token;
+            $resetPassword->is_active = true;
+            $resetPassword->save();
+            $link = sprintf('%s?email=%s&token=%', $_SERVER['SERVER_NAME'] . '/' . route('show.password'), $email, $token);
+
+
+            $ok = \App\Http\Helpers::send_mime_mail('Qpartners.club',
                 'info@roiclub.kz',
                 $email,
                 $email,
                 'windows-1251',
                 'UTF-8',
-                'Новый пароль',
-                view('mail.reset-password', ['new_password' => $new_password]),
+                'Восстановление пароля',
+                view('mail.reset-password', [
+                    'email' => $email,
+                    'link' => $link,
+                ]),
                 true);
 
 
@@ -314,6 +323,43 @@ class AuthController extends Controller
             'error' => $error
         ]);
     }
+
+
+    public function showSetPassword(Request $request)
+    {
+        $token = $request->input('token');
+        $user = Users::where('email', '=', $request->input('email'));
+        $resetPassword = PasswordReset::where('token', '=', $token);
+        if ($resetPassword->is_active == false) {
+            return redirect()->route('reset.password')->with('error', 'Ссылка не активная, повторите отправку!!!');
+        }
+        $resetPassword->is_active = false;
+        $resetPassword->save();
+        return view('admin.new_design_auth.new_password', compact('user'));
+    }
+
+    public function setNewPassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|exists:users,email',
+            'password' => 'required|min:6|confirmed',
+            'password_confirmation' => 'required|min:6'
+        ]);
+
+        if ($validator->fails()) {
+            $error = 'Произошла ошибка при восстановлении пароля, пожалуйста попробуйте еще раз!';
+            return view('admin.new_design_auth.new_password', [
+                'email' => $request->email,
+                'error' => $error
+            ]);
+        }
+        $user = Users::where('email', '=', $request->email)->first();
+        $user->password = Hash::make($request->password);
+        if ($user->save()) {
+            return redirect()->route('login.show')->with('success', 'Вы успешно восстановили пароль!!!');
+        }
+    }
+
 
     public function showSendConfirm(Request $request)
     {

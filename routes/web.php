@@ -23,8 +23,10 @@ Route::group([
     Route::get('/confirm', 'AuthController@confirmEmail');
     Route::get('/confirm-email', 'AuthController@showSendConfirm');
     Route::post('/send-confirm', 'AuthController@sendHashConfirm');
-    Route::get('/reset-password', 'AuthController@showResetPassword');
+    Route::get('/reset-password', 'AuthController@showResetPassword')->name('reset.password');
+    Route::get('/set-password', 'AuthController@showSetPassword')->name('show.password');
     Route::post('/reset-password', 'AuthController@resetPassword');
+    Route::post('/set-password', 'AuthController@setNewPassword');
     Route::post('/register', 'AuthController@register');
     Route::get('/logout', 'AuthController@logout');
 });
@@ -225,7 +227,11 @@ Route::group([
     Route::resource('user-group', 'UserGroupController');
     
     Route::get('/orders', 'OrderController@index');
-    
+    Route::get('/orders/edit', 'OrderController@editUserOrder')->name('orders.edit');
+    Route::post('/orders/edit/{id}', 'OrderController@updateOrder')->name('orders.update');
+
+    Route::get('/pdf', 'PdfController@generate')->name('pdf.generate');
+
     Route::get('basket', 'OnlineController@showBasket');
 
     Route::get('document', 'UserDocumentController@index');

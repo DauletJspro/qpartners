@@ -29,6 +29,26 @@ class OrderController extends Controller
         return view('admin.orders.index', [
             'row' => $request
         ]);
-    }    
+    }
+
+    public function editUserOrder(){
+        $getOrders = Order::where(['user_id' => Auth::user()->user_id, 'accepted' => 0])->get();
+        return view('admin.orders.show_user_orders', compact('getOrders'));
+
+
+    }
+    public function updateOrder(Request $request, $id){
+    $item = Order::find($id);
+    $item->accepted = 1;
+    $item->save();
+
+    if ($item){
+        return redirect()->route('orders.edit');
+    }
+
+
+
+    }
+
 }
 ?>
