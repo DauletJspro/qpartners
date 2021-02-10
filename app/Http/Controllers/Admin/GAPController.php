@@ -107,7 +107,7 @@ class GAPController extends Controller
             $user_operation->author_id = $user->user_id;
             $user_operation->recipient_id = $user->user_id;
             $user_operation->created_at = date('Y-m-d H:i:s');
-            $user_operation->operation_type_id = 41;
+            $user_operation->operation_type_id = 42;
             $user_operation->operation_comment = sprintf('Персональный обьем %s в размере %s sv',
                 $packet->packet_name_ru
                 , $send_sv);
