@@ -13,17 +13,15 @@ class Packet extends Model
     protected $table = 'packet';
     protected $primaryKey = 'packet_id';
     protected $fillable = ['packet_price', 'packet_name_ru', 'packet_share', 'packet_lection', 'packet_thing', 'sort_num', 'packet_price', 'is_show'];
-    const ELITE_FREE = 22;
     const CLASSIC = 23;
     const PREMIUM = 24;
     const ELITE = 25;
-    const VIP = 26;
     const VIP2 = 27;
-    const GAP = 28; // TODO не забудь удалить
-    const GAP1 = 28;
-    const GAP2 = 29;
-    const GAP3 = 30;
-    const SUPER = 31;
+    const GAP = 30;
+    const GAPTechno = 31;
+    const GAPAuto = 32;
+    const GAPHome = 33;
+
 
 //    use SoftDeletes;
 
@@ -35,11 +33,29 @@ class Packet extends Model
             self::CLASSIC,
             self::PREMIUM,
             self::ELITE,
-            self::GAP3,
-            self::GAP1,
-            self::GAP2,
+            self::GAPTechno,
+            self::GAPAuto,
+            self::GAPHome,
             self::VIP2,
-            self::VIP,
+        ];
+    }
+
+    public static function actualPacketWithoutGaps()
+    {
+        return [
+            self::CLASSIC,
+            self::PREMIUM,
+            self::ELITE,
+            self::VIP2,
+        ];
+    }
+
+    public static function actualPacketOnlyGaps()
+    {
+        return [
+            self::GAPTechno,
+            self::GAPAuto,
+            self::GAPHome,
         ];
     }
 
@@ -187,5 +203,17 @@ class Packet extends Model
     public function userPacket()
     {
         $this->hasMany('App\Models\UserPacket');
+    }
+
+    public static function getHasGapPackets($user_id)
+    {
+        $userHasPackets = UserPacket::where(['user_id' => $user_id])
+            ->where(['is_active' => true])
+            ->whereIn('packet_id', [Packet::GAPTechno, Packet::GAPAuto, Packet::GAPHome])
+            ->get()
+            ->pluck('packet_id');
+        $userHasPackets = isset($userHasPackets) ? $userHasPackets->toArray() : [];
+
+        return $userHasPackets;
     }
 }

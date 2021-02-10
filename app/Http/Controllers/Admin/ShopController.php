@@ -11,9 +11,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use View;
-use DB;
 
 class ShopController extends Controller
 {
@@ -26,8 +26,8 @@ class ShopController extends Controller
     {
         $request->packet = Packet::where('is_show', 1)
             ->where('is_old', 0)
-            ->whereNotIn('packet_id', [Packet::GAP1, Packet::GAP2])
-            ->orderBy('sort_num', 'asc')
+            ->whereIn('packet_id', [Packet::CLASSIC, Packet::PREMIUM, Packet::VIP2, Packet::GAPTechno, Packet::GAPAuto, Packet::GAPHome, Packet::GAP])
+            ->orderBy('packet_id', 'asc')
             ->select('*',
                 DB::raw('(select count(user_packet.packet_id)
                                                                                    from user_packet 
@@ -50,22 +50,9 @@ class ShopController extends Controller
             ->paginate(30);
 
 
-        $max_packet_user_number[0] = UserPacket::where('user_id', Auth::user()->user_id)
-            ->where('is_active', 1)
-            ->where('is_portfolio', 0)
-            ->orderBy('packet_id', 'desc')
-            ->first();
-
-        $max_packet_user_number[1] = UserPacket::where('user_id', Auth::user()->user_id)
-            ->where('is_active', 1)
-            ->where('is_portfolio', 1)
-            ->orderBy('packet_id', 'desc')
-            ->first();
-
 
         return view('admin.shop.shop', [
             'row' => $request,
-            'max_packet_user_number' => $max_packet_user_number,
         ]);
     }
 }

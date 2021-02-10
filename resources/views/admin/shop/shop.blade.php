@@ -13,7 +13,6 @@
         </div>
         {!! view('admin.shop.packet-list-loop',[
                     'row' => $row,
-                    'max_packet_user_number' => $max_packet_user_number,
                     'packet_type' => 'item',
                     ]) !!}
 

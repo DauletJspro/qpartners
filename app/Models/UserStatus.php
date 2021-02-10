@@ -11,9 +11,9 @@ class UserStatus extends Model
 {
     protected $table = 'user_status';
     protected $primaryKey = 'user_status_id';
-    
+
     const SUPER_MANAGER = 43;
-    
+
     const FREE_ELITE_OWNER = 20;
     const CLIENT = 21;
     const CONSULTANT = 22;
@@ -38,9 +38,19 @@ class UserStatus extends Model
     const GAP6_MANAGER = 40;
     const GAP7_MANAGER = 41;
     const GAP8_MANAGER = 42;
+    const ACTIV_1 = 44;
+    const ACTIV_2 = 45;
+    const ACTIV_3 = 46;
+    const PASSIV = 47;
+    const GAP1 = 48;
+    const GAP2 = 49;
+    const GAP3 = 50;
+    const GAP4 = 51;
+    const GAP5 = 52;
 
 
     use SoftDeletes;
+
     protected $dates = ['deleted_at'];
 
 
@@ -48,6 +58,25 @@ class UserStatus extends Model
     {
         $statusName = UserStatus::where(['user_status_id' => $id])->first();
         $statusName = $statusName ? $statusName->user_status_name : NULL;
+        return $statusName;
+    }
+
+    public static function getGapStatusName($id)
+    {
+        $statusName = UserStatus::where(['user_status_id' => $id])
+            ->whereIn('user_status_id', [
+                self::GAP4_MANAGER,
+                self::GAP5_MANAGER,
+                self::GAP6_MANAGER,
+                self::GAP7_MANAGER,
+                self::GAP8_MANAGER,
+                self::ACTIV_1,
+                self::ACTIV_2,
+                self::ACTIV_3,
+                self::PASSIV,
+            ])
+            ->first();
+        $statusName = isset($statusName) ? $statusName->user_status_name : 'нету';
         return $statusName;
     }
 }

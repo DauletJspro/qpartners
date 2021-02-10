@@ -16,7 +16,6 @@ use Mockery\CountValidator\Exception;
 use Illuminate\Support\Facades\Validator;
 
 
-
 class AuthController extends Controller
 {
     public function __construct()

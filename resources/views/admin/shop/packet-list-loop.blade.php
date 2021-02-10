@@ -13,11 +13,13 @@ use \App\Models\UserPacket;
         <?php
         $beforeSum = 0;
         $actualPackets = [Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2];
+        $isGap = false;
         ?>
-        @if(!in_array($item->packet_id, [\App\Models\Packet::GAP2, \App\Models\Packet::GAP1, \App\Models\Packet::GAP3]))
-            <?php $beforeSum = UserPacket::beforePurchaseSumWithPacketId(Auth::user()->user_id, $item->packet_id) ?>
+        @if(in_array($item->packet_id, [\App\Models\Packet::GAPTechno, \App\Models\Packet::GAPAuto, \App\Models\Packet::GAPHome]))
+            <?php $isGap = true; ?>
         @endif
 
+        <?php $beforeSum = UserPacket::beforePurchaseSumWithPacketId(Auth::user()->user_id, $item->packet_id, $isGap) ?>
 
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
@@ -25,12 +27,10 @@ use \App\Models\UserPacket;
                 <div class="inner">
                     <h3 style="font-family: cursive; font-size: 30px"> {{$item->packet_name_ru}}</h3>
                     <h4 style="font-size: 25px">
-                        @if ($item->packet_id == \App\Models\Packet::GAP1 ||
-                             $item->packet_id == \App\Models\Packet::GAP2 ||
-                             $item->packet_id == \App\Models\Packet::GAP3)
+                        @if($item->packet_id == \App\Models\Packet::GAP)
                             {{($item->packet_price) * \App\Models\Currency::pvToKzt()}} тг
                         @else
-                            {{($item->packet_price - $beforeSum) * \App\Models\Currency::pvToKzt()}} тг
+                            {{(($item->packet_price) - $beforeSum) * \App\Models\Currency::pvToKzt() }} тг
                         @endif
                     </h4>
 
@@ -58,7 +58,6 @@ use \App\Models\UserPacket;
                     <i class="ion ion-bag" style="font-size: 40px"></i>
                 </div>
 
-                {{--@if(($item->has_packet > 0 && $item->is_active > 0) || $max_packet_user_number[$item->is_portfolio] == null || $max_packet_user_number[$item->is_portfolio]->packet_id <= $item->packet_id)--}}
                 @if($item->has_packet > 0)
                     @if($item->is_active > 0)
                         <a class="small-box-footer shop_buy_btn" style="font-size: 18px">Вы уже приобрели</a>
@@ -68,18 +67,11 @@ use \App\Models\UserPacket;
                                     class="fa fa-arrow-circle-right"></i></a>
                     @endif
                 @else
-                    @if (in_array($item->packet_id, [\App\Models\Packet::GAP1, \App\Models\Packet::GAP2, \App\Models\Packet::GAP3]))
-                        @if ($max_packet_user_number[0] == null || ($max_packet_user_number[0] != null && !in_array($max_packet_user_number[0]->packet_id, $actualPackets)))
-                            <a href="javascript:void(0)" onclick="showLimitMessage()"
-                               class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn"
-                               style="font-size: 18px">Купить
-                                пакет <i class="fa fa-arrow-circle-right"></i></a>
-                        @else
-                            <a href="javascript:void(0)" onclick="showBuyModal(this,'{{$item->packet_id}}')"
-                               class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn"
-                               style="font-size: 18px">Купить
-                                пакет <i class="fa fa-arrow-circle-right"></i></a>
-                        @endif
+                    @if (in_array($item->packet_id, [\App\Models\Packet::GAPTechno, \App\Models\Packet::GAPHome, \App\Models\Packet::GAPAuto, \App\Models\Packet::GAP]))
+                        <a href="javascript:void(0)" onclick="showBuyModal(this,'{{$item->packet_id}}')"
+                           class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn"
+                           style="font-size: 18px">Купить
+                            пакет <i class="fa fa-arrow-circle-right"></i></a>
                     @else
                         <a href="javascript:void(0)" onclick="showBuyModal(this,'{{$item->packet_id}}')"
                            class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn" style="font-size: 18px">Купить

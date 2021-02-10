@@ -15,12 +15,12 @@
         <?php $status_name = \App\Models\UserStatus::where('user_status_id', Auth::user()->soc_status_id)->first(); ?>
         @if ($status_name)
             <li class="header"
-                style="padding:5px 25px 0px">                
+                style="padding:5px 25px 0px">
                 @if(isset($status_name->user_status_name))
 
                     <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Статус GAP: {{ $status_name->user_status_name }}</p>
 
-                @endif                
+                @endif
             </li>
         @endif
     @endif
@@ -29,25 +29,27 @@
         <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Баланс: {{Auth::user()->user_money}}PV
             ( {{Auth::user()->user_money * \App\Models\Currency::pvToKzt()}}тг)</p>
     </li>
-{{--        <li class="header" style="padding:5px 25px 0px">--}}
-{{--            <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Super--}}
-{{--                Баланс: {{Auth::user()->super_balance}}PV--}}
-{{--                ( {{Auth::user()->super_balance * \App\Models\Currency::pvToKzt()}}тг)</p>--}}
-{{--        </li>--}}
+    {{--        <li class="header" style="padding:5px 25px 0px">--}}
+    {{--            <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Super--}}
+    {{--                Баланс: {{Auth::user()->super_balance}}PV--}}
+    {{--                ( {{Auth::user()->super_balance * \App\Models\Currency::pvToKzt()}}тг)</p>--}}
+    {{--        </li>--}}
 
 
     <li class="header" style="padding:5px 25px 0px">
         @if(Auth::user()->is_activated)
-            <p style="color:#009551;margin:0px; font-size: 14px; font-weight: bold;">Аккаунт: Активирован</p> 
-        @else 
-            <p style="color:#009551;margin:0px; font-size: 14px; font-weight: bold;">Аккаунт: Не активирован</p> 
+            <p style="color:#009551;margin:0px; font-size: 14px; font-weight: bold;">Аккаунт: Активирован</p>
+        @else
+            <p style="color:#009551;margin:0px; font-size: 14px; font-weight: bold;">Аккаунт: Не активирован</p>
         @endif
     </li>
     <li class="header" style="padding:5px 25px 0px">
         @if(Auth::user()->is_valid_document)
-            <p style="color:#009551;margin:0px 0px 10px 0px; font-size: 14px; font-weight: bold;">Верификация: Пройдено</p> 
-        @else 
-            <a style="color:#009551;margin:0px 0px 10px 0px;text-decoration: underline; padding: 0px; font-size: 14px; font-weight: bold;" href="/admin/document">Верификация: Не пройдено</a>
+            <p style="color:#009551;margin:0px 0px 10px 0px; font-size: 14px; font-weight: bold;">Верификация:
+                Пройдено</p>
+        @else
+            <a style="color:#009551;margin:0px 0px 10px 0px;text-decoration: underline; padding: 0px; font-size: 14px; font-weight: bold;"
+               href="/admin/document">Верификация: Не пройдено</a>
         @endif
     </li>
 
@@ -141,13 +143,13 @@
                 <i class="fa fa-comments"></i>
                 <span>Спикеры</span>
             </a>
-          </li>
-          <li class="treeview">
+        </li>
+        <li class="treeview">
             <a href="/admin/office">
                 <i class="fa fa-building"></i>
                 <span>Офис</span>
             </a>
-          </li>
+        </li>
 
     @endif
 
@@ -187,7 +189,7 @@
                 <span>Запросы на пакет</span>
                 <?php $user_packet_notice = \App\Models\UserPacket::where('is_active', '0')->count();?>
                 <span class="label label-primary pull-right" id="inactive_user_packet_count"
-                      style="@if($user_packet_notice == 0) display: none; @endif background-color: rgb(253, 58, 53) ! important;">{{$user_packet_notice}}</span>
+                      style="@if($user_packet_notice == 0) display: none; @endif background-color: rgb(253,58,53) ! important;">{{$user_packet_notice}}</span>
             </a>
         </li>
         <li class="treeview">
@@ -295,7 +297,7 @@
              <span>Настройка авторегистрации</span>
          </a>
      </li>--}}
-    
+
     <li class="treeview">
         <a href="/admin/presentation">
             <i class="fa fa-shopping-cart"></i>

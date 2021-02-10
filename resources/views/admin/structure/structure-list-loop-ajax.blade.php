@@ -41,7 +41,7 @@
                     <div style="padding-top: 5px; color: rgb(58, 58, 58);">
                         <p style="color: #009551; margin: 0px">Квалификация: {{$user->user_status_name}}</p>
                         <p style="color: #00a5f4; margin: 0px">Статус
-                            GAP: {{isset($user->gap_status) ? \App\Models\GAP::get_status_name($user->gap_status) : ' нету'}}
+                            GAP: {{isset($user->gap_status) ? \App\Models\UserStatus::getStatusName($user->gap_status) : ' нету'}}
                         </p>
                         <div>
                             <p style="font-weight: 900; margin: 0px">ЛО: {{ $LOProfit + $gaps }} $
@@ -56,8 +56,11 @@
                             @if(isset($user->gv_balance ))
                                 <p style="font-weight: 900; margin: 0px">ГО: {{$user->gv_balance }} GV</p>
                             @endif
-                            @if(isset($user->sv_balance ))
-                                <p style="font-weight: 900; margin: 0px">GAP объем: {{$user->sv_balance }} SV</p>
+                            @if(isset($user->personal_sv_balance ))
+                                <p style="font-weight: 900; margin: 0px">Л-SV: {{$user->personal_sv_balance }} SV</p>
+                            @endif
+                            @if(isset($user->group_sv_balance ))
+                                <p style="font-weight: 900; margin: 0px">Г-SV: {{$user->group_sv_balance }} SV</p>
                             @endif
                         </div>
                     </div>
@@ -80,7 +83,7 @@
                     <div style="padding-top: 5px; color: rgb(58, 58, 58);">
                         <p style="color: #009551; margin: 0px">Квалификация: {{$user->user_status_name}}</p>
                         <p style="color: #00a5f4; margin: 0px">Статус
-                            GAP: {{isset($user->gap_status) ? \App\Models\GAP::get_status_name($user->gap_status) : ' нету'}}
+                            GAP: {{isset($user->gap_status) ?  \App\Models\UserStatus::getStatusName($user->gap_status)  : ' нету'}}
                         </p>
                         <div>
                             <p style="font-weight: 900; margin: 0px">ЛО: {{ $LOProfit + $gaps }} $
@@ -93,8 +96,11 @@
                             @if(isset($user->gv_balance ))
                                 <p style="font-weight: 900; margin: 0px">ГО: {{$user->gv_balance }} GV</p>
                             @endif
-                            @if(isset($user->sv_balance ))
-                                <p style="font-weight: 900; margin: 0px">GAP объем: {{$user->sv_balance }} SV</p>
+                            @if(isset($user->personal_sv_balance ))
+                                <p style="font-weight: 900; margin: 0px">Л-SV: {{$user->personal_sv_balance }} SV</p>
+                            @endif
+                            @if(isset($user->group_sv_balance ))
+                                <p style="font-weight: 900; margin: 0px">Г-SV: {{$user->group_sv_balance }} SV</p>
                             @endif
                         </div>
                     </div>
