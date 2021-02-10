@@ -372,11 +372,8 @@ class SmartPayController extends Controller
 
     public function hasNeedPackets($inviterPacketId, $order)
     {
-        $actualPackets = [Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2, Packet::VIP, Packet::GAP1, Packet::GAP2, Packet::GAP];
+        $actualPackets = [Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2, Packet::GAP1, Packet::GAP2, Packet::GAP];
         $boolean = false;
-        if ($inviterPacketId == Packet::ELITE_FREE) {
-            $inviterPacketId = Packet::ELITE;
-        }
         $inviterPacket = Packet::where(['packet_id' => $inviterPacketId])->first();
         $packet_available_level = $inviterPacket->packet_available_level;
         if ($order <= $packet_available_level) {

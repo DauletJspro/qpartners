@@ -11,6 +11,6 @@ class HidePacketSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Packet::where(['packet_id' => \App\Models\Packet::ELITE_FREE])->update(['is_portfolio' => 1]);
+//        \App\Models\Packet::where(['packet_id' => \App\Models\Packet::ELITE_FREE])->update(['is_portfolio' => 1]);
     }
 }

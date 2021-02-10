@@ -57,8 +57,6 @@ class ChangeStatusIdInTbalePacket extends Migration
                     $status_id = UserStatus::AGENT;
                 } elseif ($maxUserPacketId == Packet::ELITE) {
                     $status_id = UserStatus::MANAGER;
-                } elseif ($maxUserPacketId == Packet::VIP) {
-                    $status_id = UserStatus::MANAGER;
                 } elseif ($maxUserPacketId == Packet::VIP2) {
                     $status_id = UserStatus::MANAGER;
                 } else {

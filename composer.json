@@ -7,7 +7,7 @@
     "require": {
         "php": ">=5.6.4",
         "ext-pdo": "*",
-        "anhskohbo/no-captcha": "9999999-dev",
+        "anhskohbo/no-captcha": "dev-master",
         "laravel/framework": "5.3.*",
         "laravelcollective/html": "^5.3"
     },
