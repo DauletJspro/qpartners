@@ -16,11 +16,18 @@ class Users extends Model implements AuthenticatableContract
         'email',
         'password',
         'login',
-        'user_id'];
+        'user_id',
+        'group_id',
+        'iin',
+        'home_group_id',
+        'is_active'
+        ];
 
     const ADMIN = 1;
     const CLIENT = 2;
     const MODERATOR = 3;
+    const Accountant = 100000;
+
 
     use SoftDeletes;
 
@@ -74,5 +81,38 @@ class Users extends Model implements AuthenticatableContract
         }
         return false;
 
+    }
+
+    public function tickets()
+    {
+        return $this->hasMany(\App\Models\Ticket::class);
+    }
+
+    /**
+     * A user can have many comments
+     */
+    public function comments()
+    {
+        return $this->hasMany(\App\Models\CommentTicket::class);
+    }
+
+    public function program(){
+        return $this->hasMany(CooperativeGroup::class,'id','group_id');
+    }
+
+    public function programHome(){
+        return $this->hasMany(CooperativeGroup::class,'id','home_group_id');
+    }
+
+    public function getPosition(){
+        return $this->hasMany(Position::class, 'id_select' , 'is_activated');
+    }
+    /**
+     * Get the user that created ticket
+     * @param \App\User $user_id
+     */
+    public static function getTicketOwner($user_id)
+    {
+        return static::where('id', $user_id)->firstOrFail();
     }
 }

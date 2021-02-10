@@ -23,8 +23,10 @@ Route::group([
     Route::get('/confirm', 'AuthController@confirmEmail');
     Route::get('/confirm-email', 'AuthController@showSendConfirm');
     Route::post('/send-confirm', 'AuthController@sendHashConfirm');
-    Route::get('/reset-password', 'AuthController@showResetPassword');
+    Route::get('/reset-password', 'AuthController@showResetPassword')->name('reset.password');
+    Route::get('/set-password', 'AuthController@showSetPassword')->name('show.password');
     Route::post('/reset-password', 'AuthController@resetPassword');
+    Route::post('/set-password', 'AuthController@setNewPassword');
     Route::post('/register', 'AuthController@register');
     Route::get('/logout', 'AuthController@logout');
 });
@@ -47,6 +49,17 @@ Route::group([
 
     Route::get('support', 'SupportController@index')->name('support.index');
     Route::get('support/{id}', 'SupportController@edit')->name('support.edit');
+
+    Route::get('new_ticket', 'TicketsController@create');
+    Route::post('new_ticket', 'TicketsController@store');
+    Route::get('tickets/{ticket_id}', 'TicketsController@show');
+    Route::get('my_tickets', 'TicketsController@userTickets');
+
+    Route::get('tickets', 'TicketsController@index');
+    Route::post('close_ticket/{ticket_id}', 'TicketsController@close');
+
+    Route::post('comment', 'CommentsTicket@postComment');
+
 
     Route::group([
         'prefix' => 'profile'
@@ -132,6 +145,8 @@ Route::group([
     });
 
     Route::get('document/confirm', 'UserDocumentController@getConfirmDocumentList');
+    Route::get('document/receipt', 'UserDocumentController@indexOfReceipt');
+    Route::get('document/receipt/{user_id}', 'UserDocumentController@indexOfShareholder');
 
     Route::get('cron/career', 'IndexController@robotCareer');
 
@@ -212,7 +227,11 @@ Route::group([
     Route::resource('user-group', 'UserGroupController');
     
     Route::get('/orders', 'OrderController@index');
-    
+    Route::get('/orders/edit', 'OrderController@editUserOrder')->name('orders.edit');
+    Route::post('/orders/edit/{id}', 'OrderController@updateOrder')->name('orders.update');
+
+    Route::get('/pdf', 'PdfController@generate')->name('pdf.generate');
+
     Route::get('basket', 'OnlineController@showBasket');
 
     Route::get('document', 'UserDocumentController@index');
@@ -262,10 +281,32 @@ Route::group([
     Route::post('country/is_show', 'CountryController@changeIsShow');
     Route::resource('country', 'CountryController');
 
-
     Route::post('client/is_show', 'ClientController@changeIsBan');
-    Route::resource('client', 'ClientController');
+    Route::put('client/share/{client}', 'ClientController@updateAutoUser')->name('client.auto.update');
+    Route::put('client/share/holder/{client}', 'ClientController@updateHomeUser')->name('client.home.update');
+    Route::get('client/share', 'ClientController@getAllGapShareholder');
+    Route::get('client/share/holder', 'ClientController@getAllAutoShareholder')->name('client.auto.users');
+    Route::get('client/share/holder/home', 'ClientController@getAllHomeShareholder')->name('client.home.users');
+    Route::get('client/share/{client}/edit', 'ClientController@editAutoUser')->name('client.auto.edit');
+    Route::get('client/share/holder/home/{client}/edit', 'ClientController@editHomeUser')->name('client.home.edit');
+
+    Route::resource('client', 'ClientController', ['only' =>[
+        'index', 'destroy'
+    ]
+    ]);
     Route::post('client/share', 'ClientController@editIntersHolderStatus')->name('client.share');
+
+    Route::resource('cooperative', 'CooperativeGroupController', ['only' => [
+        'index', 'create', 'store'
+    ]]);
+    Route::get('cooperative/{group}', 'CooperativeGroupController@getIdOfGroup')->name('cooperative.group');
+
+    Route::resource('home', 'CooperativeHomeGroupController', ['only' => [
+        'index', 'create', 'store'
+    ]]);
+    Route::get('home/{group}', 'CooperativeHomeGroupController@getIdOfGroup')->name('cooperative.home.group');
+
+
 
     Route::post('video/is_show', 'VideoController@changeIsBan');
     Route::resource('video', 'VideoController');

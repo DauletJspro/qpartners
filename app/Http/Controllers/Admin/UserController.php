@@ -62,7 +62,7 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|unique:users'
+            'email' => 'required|unique:users',
         ]);
 
         if ($validator->fails()) {
@@ -78,6 +78,7 @@ class UserController extends Controller
         $user = new Users();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->iin = $request->iin;
         $user->role_id = 3;
         $user->avatar = $request->avatar;
         $user->password = Hash::make('12345');
@@ -103,7 +104,7 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|unique:users,email,' . $id . ',user_id'
+            'email' => 'required|unique:users,email,' . $id . ',user_id',
         ]);
 
         if ($validator->fails()) {
