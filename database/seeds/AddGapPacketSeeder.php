@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class AddGapPacketSeeder extends Seeder
 {
@@ -62,6 +63,9 @@ class AddGapPacketSeeder extends Seeder
             'send_sv' => 5,
             'is_upgrade_packet' => true,
         ]);
+
+        DB::table('packet')->where(['packet_id' => \App\Models\Packet::GAP])->delete();
+
         \App\Models\Packet::insert([
             'packet_id' => \App\Models\Packet::GAP,
             'packet_name_ru' => 'GAP',
