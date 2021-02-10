@@ -230,7 +230,15 @@ Route::group([
     Route::get('/orders/edit', 'OrderController@editUserOrder')->name('orders.edit');
     Route::post('/orders/edit/{id}', 'OrderController@updateOrder')->name('orders.update');
 
-    Route::get('/pdf', 'PdfController@generate')->name('pdf.generate');
+
+    Route::get('/pdf', 'PdfController@index')->name('pdf.index');
+    Route::get('/pdf/baspana', 'PdfController@generateBaspana')->name('pdf.generate');
+    Route::get('/pdf/baspana-plus', 'PdfController@generateBaspanaPlus')->name('pdf.generate.plus');
+    Route::get('/pdf/tulpar', 'PdfController@generateTulpar')->name('pdf.generate.tulpar');
+    Route::get('/pdf/tulpar-plus', 'PdfController@generateTulparPlus')->name('pdf.generate.tulpar.plus');
+
+
+
 
     Route::get('basket', 'OnlineController@showBasket');
 
