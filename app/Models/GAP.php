@@ -9,7 +9,6 @@ class GAP extends Model
 
     public static function check_for_premium($user_id)
     {
-        var_dump($user_id);
         $premium_bonus = 0;
         $user = Users::where(['user_id' => $user_id])->first();
 
