@@ -599,7 +599,7 @@ class PacketController extends Controller
             $this->implementOfficeBonus($userPacket, $packet, $user);
             $this->implementSpeakerBonus($userPacket, $packet, $user);
         }
-        $inviter = Users::where(['user_id' => $user->recommend_user_id])->first();
+        $inviter = Users::where(['user_id' => $user->recommend_user_id])->where('is_activated', '=', true)->first();
 
         while ($inviter && $give_bonus && $isNotGap) {
             $bonus = 0;
@@ -738,9 +738,9 @@ class PacketController extends Controller
     private function implementInviterBonus($userPacket, $packet, $user)
     {
         if ($user->inviter_user_id) {
-            $inviter = Users::where(['user_id' => $user->inviter_user_id])->first();
+            $inviter = Users::where(['user_id' => $user->inviter_user_id])->where('is_activated', '=', true)->first();
         } else {
-            $inviter = Users::where(['user_id' => $user->recommend_user_id])->first();
+            $inviter = Users::where(['user_id' => $user->recommend_user_id])->where('is_activated', '=', true)->first();
         }
         $bonus = 0;
         $packetPrice = $userPacket->packet_price;
@@ -846,7 +846,7 @@ class PacketController extends Controller
         $this->checkForPremium($user->user_id);
 
         // add gv to parents
-        $parent = Users::where(['user_id' => $user->recommend_user_id])->first();
+        $parent = Users::where(['user_id' => $user->recommend_user_id])->where('is_activated', '=', true)->first();
         $counter = 1;
 
         while ($parent) {
@@ -864,7 +864,7 @@ class PacketController extends Controller
             }
 
             $this->checkForPremium($parent->user_id);
-            $parent = Users::where(['user_id' => $parent->recommend_user_id])->first();
+            $parent = Users::where(['user_id' => $parent->recommend_user_id])->where('is_activated', '=', true)->first();
 
             $counter++;
             if ($counter >= 9) {

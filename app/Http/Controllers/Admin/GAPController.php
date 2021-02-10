@@ -19,7 +19,7 @@ class GAPController extends Controller
     public function send_group_sv($user_packet)
     {
         $user = Users::where(['user_id' => $user_packet->user_id])->first();
-        $parent = Users::where(['user_id' => $user->recommend_user_id])->first();
+        $parent = Users::where(['user_id' => $user->recommend_user_id])->where('is_activated', '=', true)->first();
         $packet = Packet::where(['packet_id' => $user_packet->packet_id])->first();
         $counter = 1;
         $userHasPackets = Packet::getHasGapPackets($user->user_id);
@@ -120,9 +120,9 @@ class GAPController extends Controller
         //  Рекрутинговый бонус
         $user = Users::where(['user_id' => $user_packet->user_id])->first();
         if (isset($user->inviter_user_id)) {
-            $inviter = Users::where(['user_id' => $user->inviter_user_id])->first();
+            $inviter = Users::where(['user_id' => $user->inviter_user_id])->where('is_activated', '=', true)->first();
         } else {
-            $inviter = Users::where(['user_id' => $user->recommend_user_id])->first();
+            $inviter = Users::where(['user_id' => $user->recommend_user_id])->where('is_activated', '=', true)->first();
         }
         if (isset($inviter)) {
             $packet = Packet::where(['packet_id' => $user_packet->packet_id])->first();
@@ -141,7 +141,7 @@ class GAPController extends Controller
         }
 
         // Структурный бонус
-        $parent = Users::where(['user_id' => $user->recommend_user_id])->first();
+        $parent = Users::where(['user_id' => $user->recommend_user_id])->where('is_activated', '=', true)->first();
         $bonus = $user_packet->packet_price * (5 / 100);
         if (isset($parent)) {
             $parent->user_money = $parent->user_money + $bonus;
