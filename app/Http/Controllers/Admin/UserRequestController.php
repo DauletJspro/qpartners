@@ -249,8 +249,16 @@ class UserRequestController extends Controller
             return response()->json($result);
         }*/
 
-        if(Auth::user()->user_money - $request->money < 0){
-            $result['message'] = 'Вы можете снять максимум '.Auth::user()->user_money.'$';
+//        if(Auth::user()->user_money - $request->money < 0){
+//            $result['message'] = 'Вы можете снять максимум '.Auth::user()->user_money.'$';
+//            $result['status'] = false;
+//            return response()->json($result);
+//        }
+
+        $possible = (Auth::user()->user_money - 12) * 500;
+        if (Auth::user()->user_money - $request->money  < 12){
+            $result['message'] = 'Чтобы снять деньги минимальный остаток на счету должно быть равен ежемесячный 
+            активация: 12$ (6000 тенге). Максимальная сумма для снятие равно: '.(Auth::user()->user_money - 12)."$ ($possible тенге)";
             $result['status'] = false;
             return response()->json($result);
         }
@@ -308,6 +316,14 @@ class UserRequestController extends Controller
 
         if(Auth::user()->user_money - $request->money < 0){
             $result['message'] = 'Вы можете отправить максимум '.Auth::user()->user_money.'$';
+            $result['status'] = false;
+            return response()->json($result);
+        }
+
+        $possible = (Auth::user()->user_money - 12) * 500;
+        if (Auth::user()->user_money - $request->money  < 12){
+            $result['message'] = 'Чтобы снять деньги минимальный остаток на счету должно быть равен ежемесячный 
+            активация: 12$ (6000 тенге). Максимальная сумма для снятие равно: '.(Auth::user()->user_money - 12)."$ ($possible тенге)";
             $result['status'] = false;
             return response()->json($result);
         }
