@@ -7,7 +7,7 @@ use \App\Models\UserPacket;
 ?>
 
 @foreach($row->packet as $key => $item)
-
+    @if($item->is_usual_packet ==1)
     @if($item->is_portfolio == 0)
 
         <?php
@@ -90,6 +90,7 @@ use \App\Models\UserPacket;
             </div>
         </div>
 
+    @endif
     @endif
 
 @endforeach
