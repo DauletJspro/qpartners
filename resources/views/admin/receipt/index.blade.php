@@ -4,7 +4,7 @@
 
     <section class="content-header">
         <h1>
-            Мои документы
+            Мои квитанций
         </h1>
     </section>
     <section class="content">
