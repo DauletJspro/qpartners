@@ -30,7 +30,7 @@ class AddActivationBonusSeeder extends Seeder
             ],
             [
                 'operation_type_id' => 38,
-                'operation_type_name_ru' => 'Командный бонус GAP в размере 1sv',
+                'operation_type_name_ru' => 'Командный бонус GAP в размере',
                 'created_at' => date('Y-m-d H:i:s'),
             ],
             [

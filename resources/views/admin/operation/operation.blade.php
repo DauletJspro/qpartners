@@ -94,7 +94,7 @@
                                                     @elseif($val->operation_type_id == 40)
                                                         {{$val->money}} PV
                                                     @elseif($val->operation_type_id == 38)
-                                                        {{$val->money}} PV
+                                                        {{$val->money}} SV
                                                     @else
                                                         {{ round($val->money,2) }} $
                                                         ({{round($val->money * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
