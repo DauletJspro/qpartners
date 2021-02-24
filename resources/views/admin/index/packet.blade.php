@@ -14,7 +14,7 @@
                 <div class="small-box" style="background-color: #{{$item->packet_css_color}}">
                     <div class="inner">
                         <h3 style="font-family: cursive; font-size: 24px">{{$item->packet_name_ru}}</h3>
-                        <h4 style="font-size: 22px">{{$item->packet_price}} pv
+                        <h4 style="font-size: 22px">{{$item->packet_price *(500/600)}} pv
                             ({{$item->packet_price * $row->currency->money}}тг)</h4>
                     </div>
                     <div class="icon">
