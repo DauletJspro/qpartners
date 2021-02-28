@@ -132,7 +132,6 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users,email,NULL,user_id,deleted_at,NULL',
             'login' => 'required|unique:users,login,NULL,user_id,deleted_at,NULL',
             'phone' => 'required|unique:users,phone,NULL,user_id,deleted_at,NULL',
-            'g-recaptcha-response' => 'required|captcha',
             'iin' => 'required|unique:users,iin,NULL,user_id,deleted_at,NULL',
             'is_activated' => 'required'
         ], [
