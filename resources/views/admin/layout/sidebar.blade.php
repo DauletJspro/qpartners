@@ -28,10 +28,16 @@
         @endif
 
         <li class="header" style="padding:5px 25px 0px">
-            <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Баланс: {{Auth::user()->user_money}}
+            <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Кэшбэк: {{Auth::user()->cashback}}
                 PV
-                ( {{Auth::user()->user_money * \App\Models\Currency::pvToKzt()}}тг)</p>
+                ( {{Auth::user()->cashback * \App\Models\Currency::pvToKzt()}}тг)</p>
         </li>
+
+            <li class="header" style="padding:5px 25px 0px">
+                <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Баланс: {{Auth::user()->user_money}}
+                    PV
+                    ( {{Auth::user()->user_money * \App\Models\Currency::pvToKzt()}}тг)</p>
+            </li>
         {{--        <li class="header" style="padding:5px 25px 0px">--}}
         {{--            <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Super--}}
         {{--                Баланс: {{Auth::user()->super_balance}}PV--}}
