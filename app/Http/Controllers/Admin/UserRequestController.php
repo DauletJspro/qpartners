@@ -236,33 +236,16 @@ class UserRequestController extends Controller
             return response()->json($result);
         }
 
-        /*if(Auth::user()->user_money - $status->user_month_activation_money < 0){
-            $result['message'] = 'Недостаточно средств';
-            $result['status'] = false;
-            return response()->json($result);
-        }
-
-        if(Auth::user()->user_money - $request->money < $status->user_month_activation_money){
-            $count = Auth::user()->user_money - $status->user_month_activation_money;
-            $result['message'] = 'Вы можете снять максимум '.$count.'$';
-            $result['status'] = false;
-            return response()->json($result);
-        }*/
-
         if(Auth::user()->user_money - $request->money < 0){
             $result['message'] = 'Вы можете снять максимум '.Auth::user()->user_money.'$';
             $result['status'] = false;
             return response()->json($result);
         }
-
-        if($request->money < 40){
-            $result['message'] = 'Вы можете снять минимум '.$request->money.'$';
-            $result['status'] = false;
-            return response()->json($result);
-        }
-
         if (Auth::user()->user_money - $request->money  < 12){
-            $result['message'] = 'Чтобы отправить деньги минимальный остаток на счету должно быть 12500 тенге';
+            $possible = Auth::user()->user_money - 12;
+            $currency = $possible*500;
+            $result['message'] = "Чтобы снять деньги минимальный остаток на счету должно быть 6000 тенге, 
+            минимальная сумма для отправки денегь равно ".$possible.'$'."($currency тг)";
             $result['status'] = false;
             return response()->json($result);
         }
@@ -298,28 +281,16 @@ class UserRequestController extends Controller
             $result['status'] = false;
             return response()->json($result);
         }
-
-        /*if(Auth::user()->user_money - $status->user_month_activation_money < 0){
-            $result['message'] = 'Недостаточно средств';
-            $result['status'] = false;
-            return response()->json($result);
-        }
-
-        if(Auth::user()->user_money - $request->money < $status->user_month_activation_money){
-            $count = Auth::user()->user_money - $status->user_month_activation_money;
-            $result['message'] = 'Вы можете снять максимум '.$count.'$';
-            $result['status'] = false;
-            return response()->json($result);
-        }*/
-
         if(Auth::user()->user_money - $request->money < 0){
             $result['message'] = 'Вы можете отправить максимум '.Auth::user()->user_money.'$';
             $result['status'] = false;
             return response()->json($result);
         }
-
         if (Auth::user()->user_money - $request->money  < 12){
-            $result['message'] = 'Чтобы отправить деньги минимальный остаток на счету должно быть 12500 тенге';
+            $possible = Auth::user()->user_money - 12;
+            $currency = $possible*500;
+            $result['message'] = "Чтобы снять деньги минимальный остаток на счету должно быть 6000 тенге, 
+            минимальная сумма для отправки денегь равно ".$possible.'$'."($currency тг)";
             $result['status'] = false;
             return response()->json($result);
         }
