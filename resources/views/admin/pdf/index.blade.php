@@ -26,22 +26,22 @@
         <tr>
             <th scope="row">1</th>
             <td>Баспана</td>
-            <td><a class="btn btn-primary" href="/admin/pdf/baspana" role="button">Скачать договор</a></td>
+            <td><a class="btn btn-primary" href="/admin/pdf/baspana" role="button">Посмотреть договор</a></td>
         </tr>
         <tr>
             <th scope="row">2</th>
             <td>Баспана +</td>
-            <td><a class="btn btn-primary" href="/admin/pdf/baspana-plus" role="button">Скачать договор</a></td>
+            <td><a class="btn btn-primary" href="/admin/pdf/baspana-plus" role="button">Посмотреть договор</a></td>
         </tr>
         <tr>
             <th scope="row">3</th>
             <td>Тұлпар</td>
-            <td><a class="btn btn-primary" href="/admin/pdf/tulpar" role="button">Скачать договор</a></td>
+            <td><a class="btn btn-primary" href="/admin/pdf/tulpar" role="button">Посмотреть договор</a></td>
         </tr>
         <tr>
             <th scope="row">4</th>
             <td>Тұлпар +</td>
-            <td><a class="btn btn-primary" href="/admin/pdf/tulpar-plus" role="button">Скачать договор</a></td>
+            <td><a class="btn btn-primary" href="/admin/pdf/tulpar-plus" role="button">Посмотреть договор</a></td>
         </tr>
         </tbody>
     </table>

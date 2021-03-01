@@ -19,7 +19,7 @@
                             <b>Активация</b> <a class="pull-right">@if($row->is_activated == 0) <span style="color: red">Не пройдено</span>@else <span style="color: #009551">Пройдено</span> @endif</a>
                         </li>
                         <li class="list-group-item">
-                            <b>Верификация</b> <a class="pull-right">@if($row->is_valid_document == 0) <span style="color: red">Не пройдено</span>@else <span style="color: #009551">Пройдено</span> @endif</a>
+                            <b>Верификация</b> <a class="pull-right" href="/admin/document">@if($row->is_valid_document == 0) <span style="color: red">Не пройдено</span>@else <span style="color: #009551">Пройдено</span> @endif</a>
                         </li>
 
                         @if(Auth::user()->role_id == 1)

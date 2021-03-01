@@ -193,12 +193,6 @@
                 <span>Мои покупки</span>
             </a>
         </li>
-        <li class="treeview">
-            <a href="/admin/our-document">
-                <i class="fa fa-user"></i>
-                <span>Договор</span>
-            </a>
-        </li>
     @endif
     @if(Auth::user()->role_id == 1)
         @if(Auth::user()->user_id != \App\Models\Users::Accountant)
