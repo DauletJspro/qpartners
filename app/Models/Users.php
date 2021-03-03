@@ -20,7 +20,13 @@ class Users extends Model implements AuthenticatableContract
         'group_id',
         'iin',
         'home_group_id',
-        'is_active'
+        'group_plus_id',
+        'home_plus_id',
+        'is_active',
+        'qoldau_id',
+        'qamqor_id',
+        'jastar_id',
+        'jas_otau_id'
         ];
 
     const ADMIN = 1;

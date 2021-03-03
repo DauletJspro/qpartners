@@ -30,7 +30,7 @@ class CooperativeHomeGroupController extends Controller
     {
 
         $item = new CooperativeHomeGroup();
-        $listOfProgram = CooperativeProgramm::where('program_code', '=', 2)->pluck('program_name', 'id')->toArray();
+        $listOfProgram = CooperativeProgramm::where('program_code', '=', 3)->pluck('program_name', 'id')->toArray();
 
         return view('admin.shareholder-clients.home.create' , compact('item', 'listOfProgram'));
     }

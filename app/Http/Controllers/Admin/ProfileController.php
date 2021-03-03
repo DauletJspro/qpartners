@@ -140,25 +140,25 @@ class ProfileController extends Controller
                         ->get();
 
         $row->profit_all = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_id',1)
+            ->where('operation_id','!=',2)
+            ->where('operation_type_id',1)
             ->sum('money');
 
         $row->profit_today = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_id',1)
+            ->where('operation_id','!=',2)
+            ->where('operation_type_id',1)
             ->where('created_at','>',date("Y-m-d"))
             ->sum('money');
 
         $row->profit_last_week = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_id',1)
+            ->where('operation_id','!=',2)
+            ->where('operation_type_id',1)
             ->where('created_at','>',date("Y-m-d",strtotime("-7 day")))
             ->sum('money');
 
         $row->profit_last_month = UserOperation::where('recipient_id',Auth::user()->user_id)
-            ->where('operation_type_id','!=',2)
-            ->where('operation_id',1)
+            ->where('operation_id','!=',2)
+            ->where('operation_type_id',1)
             ->where('created_at','>',date("Y-m-d",strtotime("-30 day")))
             ->sum('money');
 

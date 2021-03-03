@@ -18,10 +18,28 @@
                             пользователи</a>
                     </h3>
                     <h3 class="box-title box-title-first ">
-                        <a href="/admin/cooperative">Авто программа</a>
+                        <a href="/admin/cooperative">Тулпар</a>
+                    </h3>
+                    <h3 class="box-title box-title-first ">
+                        <a href="/admin/pluses">Тулпар +</a>
                     </h3>
                     <h3 class="box-title box-title-third">
-                        <a href="/admin/home">Жилищная программа</a>
+                        <a href="/admin/home">Баспана</a>
+                    </h3>
+                    <h3 class="box-title box-title-fourth" style="margin-left: 30px" >
+                        <a href="/admin/homes">Баспана +</a>
+                    </h3>
+                    <h3 class="box-title box-title-fourth" style="margin-left: 30px" >
+                        <a href="/admin/qoldau">Qoldau</a>
+                    </h3>
+                    <h3 class="box-title box-title-fourth" style="margin-left: 30px" >
+                        <a href="/admin/qamqor">Qamqor</a>
+                    </h3>
+                    <h3 class="box-title box-title-fourth" style="margin-left: 30px" >
+                        <a href="/admin/jastar">Jastar</a>
+                    </h3>
+                    <h3 class="box-title box-title-fourth" style="margin-left: 30px" >
+                        <a href="/admin/jasotau">JasOtau</a>
                     </h3>
                     <div class="clear-float"></div>
                 </div>

@@ -292,10 +292,13 @@ Route::group([
     Route::post('client/is_show', 'ClientController@changeIsBan');
     Route::put('client/share/{client}', 'ClientController@updateAutoUser')->name('client.auto.update');
     Route::put('client/share/holder/{client}', 'ClientController@updateHomeUser')->name('client.home.update');
+    Route::put('client/share/plus/{client}', 'ClientController@updateAutoPlusUser')->name('client.plus.update');
     Route::get('client/share', 'ClientController@getAllGapShareholder');
     Route::get('client/share/holder', 'ClientController@getAllAutoShareholder')->name('client.auto.users');
     Route::get('client/share/holder/home', 'ClientController@getAllHomeShareholder')->name('client.home.users');
+    Route::get('client/share/holder/plus', 'ClientController@getAllPlusShareholder')->name('client.plus.users');
     Route::get('client/share/{client}/edit', 'ClientController@editAutoUser')->name('client.auto.edit');
+    Route::get('client/share/plus/{client}/edit', 'ClientController@editAutoPlusUser')->name('client.plus.edit');
     Route::get('client/share/holder/home/{client}/edit', 'ClientController@editHomeUser')->name('client.home.edit');
 
     Route::resource('client', 'ClientController', ['only' =>[
@@ -309,10 +312,59 @@ Route::group([
     ]]);
     Route::get('cooperative/{group}', 'CooperativeGroupController@getIdOfGroup')->name('cooperative.group');
 
+
+    Route::resource('pluses', 'CooperativeGroupPlusController', ['only' => [
+        'index', 'create', 'store'
+    ]]);
+    Route::get('plus/{group}', 'CooperativeGroupPlusController@getIdOfGroup')->name('plus.group');
+
+
     Route::resource('home', 'CooperativeHomeGroupController', ['only' => [
         'index', 'create', 'store'
     ]]);
     Route::get('home/{group}', 'CooperativeHomeGroupController@getIdOfGroup')->name('cooperative.home.group');
+
+
+    Route::resource('homes', 'CooperativeHomePlusGroupController', ['only' => [
+        'index', 'create', 'store'
+    ]]);
+    Route::put('homes/clients/{client}', 'CooperativeHomePlusGroupController@updateHomeUser')->name('clients.plus.update');
+    Route::get('homess/{group}', 'CooperativeHomePlusGroupController@getIdOfGroup')->name('homes.group');
+    Route::get('homes/clients', 'CooperativeHomePlusGroupController@getAllHomePlusShareholder')->name('clients.group');
+    Route::get('homes/clients/{client}/edit', 'CooperativeHomePlusGroupController@editHomeUser')->name('clients.plus.edit');
+
+    Route::resource('qoldau', 'QoldauController', ['only' => [
+        'index', 'create', 'store'
+    ]]);
+    Route::put('qoldau/clients/{client}', 'QoldauController@updateUser')->name('qoldau.clients.update');
+    Route::get('qoldau/clients', 'QoldauController@getUsers')->name('qoldau.clients');
+    Route::get('qoldau/clients/{client}/edit', 'QoldauController@editUser')->name('qoldau.clients.edit');
+    Route::get('qoldau/{client}', 'QoldauController@getIdOfGroup')->name('qoldau.client.edit');
+
+    Route::resource('qamqor', 'QamqorController', ['only' => [
+        'index', 'create', 'store'
+    ]]);
+    Route::put('qamqor/clients/{client}', 'QamqorController@updateUser')->name('qamqor.clients.update');
+    Route::get('qamqor/clients', 'QamqorController@getUsers')->name('qamqor.clients');
+    Route::get('qamqor/clients/{client}/edit', 'QamqorController@editUser')->name('qamqor.clients.edit');
+    Route::get('qamqor/{client}', 'QamqorController@getIdOfGroup')->name('qamqor.client.edit');
+
+    Route::resource('jastar', 'JastarController', ['only' => [
+        'index', 'create', 'store'
+    ]]);
+    Route::put('jastar/clients/{client}', 'JastarController@updateUser')->name('jastar.clients.update');
+    Route::get('jastar/clients', 'JastarController@getUsers')->name('jastar.clients');
+    Route::get('jastar/clients/{client}/edit', 'JastarController@editUser')->name('jastar.clients.edit');
+    Route::get('jastar/{client}', 'JastarController@getIdOfGroup')->name('jastar.client.edit');
+
+    Route::resource('jasotau', 'JasOtauController', ['only' => [
+        'index', 'create', 'store'
+    ]]);
+    Route::put('jasotau/clients/{client}', 'JasOtauController@updateUser')->name('jasotau.clients.update');
+    Route::get('jasotau/clients', 'JasOtauController@getUsers')->name('jasotau.clients');
+    Route::get('jasotau/clients/{client}/edit', 'JasOtauController@editUser')->name('jasotau.clients.edit');
+    Route::get('jasotau/{client}', 'JasOtauController@getIdOfGroup')->name('jasotau.client.edit');
+
 
 
 

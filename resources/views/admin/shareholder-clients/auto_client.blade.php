@@ -18,10 +18,10 @@
                             пользователи</a>
                     </h3>
                     <h3 class="box-title box-title-first ">
-                        <a href="/admin/cooperative">Авто программа</a>
+                        <a href="/admin/cooperative">Тулпар</a>
                     </h3>
                     <h3 class="box-title box-title-third">
-                        <a href="/admin/cooperative">Жилищная программа</a>
+                        <a href="/admin/cooperative">Баспана</a>
                     </h3>
                     <div class="clear-float"></div>
                 </div>

@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h3 class="box-title box-title-second">
-            <a href="/admin/home">Жилищная программа</a>
+            <a href="/admin/home">Баспана</a>
         </h3>
     </section>
     <section class="content">

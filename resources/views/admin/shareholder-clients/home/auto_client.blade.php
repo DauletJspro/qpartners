@@ -17,11 +17,8 @@
                            class="menu-tab @if(isset($request->is_active)) active-page @endif">Неактивные
                             пользователи</a>
                     </h3>
-                    <h3 class="box-title box-title-first ">
-                        <a href="/admin/cooperative">Авто программа</a>
-                    </h3>
                     <h3 class="box-title box-title-third">
-                        <a href="/admin/cooperative">Жилищная программа</a>
+                        <a href="/admin/home">Баспана</a>
                     </h3>
                     <div class="clear-float"></div>
                 </div>

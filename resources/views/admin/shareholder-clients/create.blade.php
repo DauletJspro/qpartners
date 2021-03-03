@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h3 class="box-title box-title-second">
-            <a href="/admin/cooperative">Авто программа</a>
+            <a href="/admin/cooperative">Тулпар</a>
         </h3>
     </section>
     <section class="content">
@@ -29,7 +29,6 @@
                                                 <label>Название программы</label>
                                                 {{Form::select('program_id', $listOfProgram, null, ['class' => 'form-control','placeholder' => 'Выберите название программы'])}}
                                             </div>
-
                                         <div class="box-footer">
                                             <button type="submit" class="btn btn-primary">Сохранить</button>
                                         </div>

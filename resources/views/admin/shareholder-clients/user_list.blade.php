@@ -18,7 +18,7 @@
                             пользователи</a>
                     </h3>
                     <h3 class="box-title box-title-second">
-                        <a href="/admin/cooperative">Авто программа</a>
+                        <a href="/admin/cooperative">Тулпар</a>
                     </h3>
                     <div class="clear-float"></div>
                 </div>

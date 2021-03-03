@@ -18,7 +18,7 @@
                             пользователи</a>
                     </h3>
                     <h3 class="box-title box-title-second">
-                        <a href="/admin/cooperative">Авто программа</a>
+                        <a href="/admin/cooperative">Тулпар</a>
                     </h3>
                     <div class="clear-float"></div>
                 </div>
@@ -71,7 +71,7 @@
                                                     <td class="arial-font">
                                                         <a class="main-label"
                                                            target=""><p
-                                                                    class="">@if($val->program_id == 1) Тулпар  @elseif($val->program_id == 2) Тулпар ++  @endif</p>
+                                                                    class="">@if($val->program_id == 1) Тулпар @endif</p>
                                                         </a>
                                                     </td>
                                                     <td class="arial-font">
