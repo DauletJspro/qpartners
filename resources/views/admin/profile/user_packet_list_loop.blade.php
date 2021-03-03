@@ -15,9 +15,9 @@ $userPacket = \App\Models\UserPacket::where('user_id', '=', \Illuminate\Support\
                 <i class="ion ion-bag" style="font-size: 17px"></i>
             </div>
 
-                @if($item->is_active == 0)
+                @if($item->is_active == 1)
                     <a class="small-box-footer" style="font-size: 18px">Приобретенный</a>
-                @elseif($item->is_active == 1)
+                @elseif($item->is_active == 0)
                     <a class="small-box-footer" style="font-size: 18px">Отправил запрос</a>
                 @endif
 
