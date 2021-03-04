@@ -27,7 +27,7 @@ class ShopController extends Controller
     {
         $request->packet = Packet::where('is_show', 1)
             ->where('is_old', 0)
-            ->whereIn('packet_id', [Packet::CLASSIC, Packet::PREMIUM, Packet::VIP2, Packet::GAPTechno, Packet::GAPAuto, Packet::GAPHome, Packet::GAP])
+            ->whereIn('packet_id', array_merge([Packet::CLASSIC, Packet::PREMIUM, Packet::VIP2, Packet::GAPTechno, Packet::GAPAuto, Packet::GAPHome], Packet::actualPassivePackets()))
             ->orderBy('packet_id', 'asc')
             ->select('*',
                 DB::raw('(select count(user_packet.packet_id)
@@ -49,7 +49,6 @@ class ShopController extends Controller
                                                                                                                    from user_packet
                                                                                                                    where user_packet.deleted_at is null and packet_id = packet.packet_id and user_id = ' . Auth::user()->user_id . ' limit 1) as is_active'))
             ->paginate(30);
-
 
 
         return view('admin.shop.shop', [

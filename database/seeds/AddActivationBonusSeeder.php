@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 class AddActivationBonusSeeder extends Seeder
 {
     /**
+     *
      * Run the database seeds.
      *
      * @return void

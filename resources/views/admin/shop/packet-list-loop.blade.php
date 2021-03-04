@@ -4,17 +4,16 @@ use App\Models\Packet;
 use \Illuminate\Support\Facades\Auth;
 use \App\Models\UserPacket;
 
+$beforeSum = 0;
+$actualPackets = [Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2, Packet::GAPTechno, Packet::GAPAuto, Packet::GAPHome];
+$isGap = false;
 ?>
 
 @foreach($row->packet as $key => $item)
-    @if($item->is_usual_packet ==1)
-    @if($item->is_portfolio == 0)
+    @if(in_array($item->packet_id, $actualPackets))
 
-        <?php
-        $beforeSum = 0;
-        $actualPackets = [Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2];
-        $isGap = false;
-        ?>
+
+
         @if(in_array($item->packet_id, [\App\Models\Packet::GAPTechno, \App\Models\Packet::GAPAuto, \App\Models\Packet::GAPHome]))
             <?php $isGap = true; ?>
         @endif
@@ -74,23 +73,17 @@ use \App\Models\UserPacket;
                             пакет <i class="fa fa-arrow-circle-right"></i></a>
                     @else
                         <a href="javascript:void(0)" onclick="showBuyModal(this,'{{$item->packet_id}}')"
-                           class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn" style="font-size: 18px">Купить
+                           class="buy_btn_{{$item->packet_id}} small-box-footer shop_buy_btn"
+                           style="font-size: 18px">Купить
                             пакет <i class="fa fa-arrow-circle-right"></i></a>
                     @endif
                 @endif
-                {{--@else
-
-                    <a class="small-box-footer" style="font-size: 18px">&ensp;</a>
-
-                @endif--}}
-
                 <a href="javascript:void(0)" onclick="getReadMorePacket('{{$item->packet_id}}')"
                    class="small-box-footer"
                    style="font-size: 16px; text-decoration: underline; padding-top: 10px; background: rgba(0, 0, 0, 0.21) none repeat scroll 0px 0px;">Подробнее</a>
             </div>
         </div>
 
-    @endif
     @endif
 
 @endforeach

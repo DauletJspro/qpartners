@@ -21,6 +21,14 @@ class Packet extends Model
     const GAPTechno = 31;
     const GAPAuto = 32;
     const GAPHome = 33;
+    const JASTAR = 40;
+    const QAMQOR = 41;
+    const JAS_OTAU = 42;
+    const QOLDAU = 43;
+    const BASPANA_PLUS = 44;
+    const BASPANA = 45;
+    const TULPAR_PLUS = 46;
+    const TULPAR = 47;
 
 
 //    use SoftDeletes;
@@ -56,6 +64,20 @@ class Packet extends Model
             self::GAPTechno,
             self::GAPAuto,
             self::GAPHome,
+        ];
+    }
+
+    public static function actualPassivePackets()
+    {
+        return [
+            self::JASTAR,
+            self::QAMQOR,
+            self::JAS_OTAU,
+            self::QOLDAU,
+            self::BASPANA_PLUS,
+            self::BASPANA,
+            self::TULPAR_PLUS,
+            self::TULPAR
         ];
     }
 

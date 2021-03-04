@@ -48,6 +48,15 @@ class UserStatus extends Model
     const GAP4 = 51;
     const GAP5 = 52;
 
+    const JASTAR = 55;
+    const QAMQOR = 56;
+    const JAS_OTAU = 57;
+    const QOLDAU = 58;
+    const BASPANA_PLUS = 59;
+    const BASPANA = 60;
+    const TULPAR_PLUS = 61;
+    const TULPAR = 62;
+
 
     use SoftDeletes;
 
