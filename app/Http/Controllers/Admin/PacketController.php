@@ -338,7 +338,7 @@ class PacketController extends Controller
         }
 
         if (in_array($packet->packet_id, [Packet::GAPTechno, Packet::GAPAuto, Packet::GAPHome]) && empty($userPackets)) {
-            $result['message'] = 'Для получение пакета ' . $packet->packet_name_ru . ', необходимо иметь один из пакетов CLASSIC, PREMIUM, ELITE, VIP.';
+            $result['message'] = 'Для получение пакета ' . $packet->packet_name_ru . ', необходимо иметь один из пакетов CLASSIC, PREMIUM, VIP.';
             $result['status'] = false;
             return response()->json($result);
         }
