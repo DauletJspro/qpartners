@@ -63,7 +63,6 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                     @else
                                         <a href="/admin/index">Личный кабинет</a>
                                     @endif
-
                                 </div>
                             </div>
                         </li>
@@ -82,7 +81,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                     <?php $totalPrice = 0;?>
                     <?php $total = 0;?>
                     @if(Auth::user())
-                        <?php $items = \App\Models\UserBasket::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->user_id])->get(); ?>
+                    <?php $items = \App\Models\UserBasket::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->user_id])->get(); ?>
                         <?php foreach ($items as $item): ?>
                         <?php $total = (\App\Models\Product::where(['product_id' => $item->product_id])->first()); ?>
                         <?php $totalPrice += $total ? $total->product_price : 0; ?>
@@ -168,135 +167,15 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                 </div>
                                 <span class="mt-mdropover"></span>
                             </li>
-                            <li class="drop">
-                                <a href="#">ПРОГРАММЫ <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <div class="mt-dropmenu text-left">
-                                    <!-- mt frame start here -->
-                                    <div class="mt-frame">
-                                        <!-- mt f box start here -->
-                                        <div class="mt-f-box">
-                                            <!-- mt col3 start here -->
-                                            <div class="mt-col-3">
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="product-grid-view.html"
-                                                                             class="mt-subopener">Жилье</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="product-grid-view.html">Стоимость жилья от
-                                                                    16000$</a></li>
-                                                            <li><a href="product-grid-view.html">Рассрочка до 44
-                                                                    месяцев </a></li>
-                                                            <li><a href="product-grid-view.html">Без процентов и
-                                                                    комиссии</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#"
-                                                                             class="mt-subopener">Автомобиль</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="404-page.html">Стоимость автомобиля от
-                                                                    6000$</a></li>
-                                                            <li><a href="404-page.html">Рассрочка до 15 месяцев</a></li>
-                                                            <li><a href="404-page.html">Без процентов и комиссии</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- mt col3 end here -->
-
-                                            <!-- mt col3 start here -->
-                                            <div class="mt-col-3">
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#"
-                                                                             class="mt-subopener">Бизнес</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="about-us.html">Грант на бизнес от 4000$</a>
-                                                            </li>
-                                                            <li><a href="about-us.html">Рассрочка до 10 месяцев</a></li>
-                                                            <li><a href="about-us.html">Без процентов и комиссии</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#"
-                                                                             class="mt-subopener">Путешествие</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="contact-us.html">Путевки на сумму от 1000$</a>
-                                                            </li>
-                                                            <li><a href="contact-us.html">Рассрочка до 6 месяцев</a>
-                                                            </li>
-                                                            <li><a href="contact-us.html">Без процентов и комиссии</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- mt col3 end here -->
-
-                                            <!-- mt col3 start here -->
-                                            <div class="mt-col-3">
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#"
-                                                                             class="mt-subopener">Продвижение в
-                                                            INSTAGRAM</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="#">Более 1 млн подписчиков</a></li>
-                                                            <li><a href="#">В период от 6 до 15 недель</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#"
-                                                                             class="mt-subopener">Дисконтная
-                                                            программа</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="#">Скидки на товары и услуги</a></li>
-                                                            <li><a href="#">Более 100 компании</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="sub-dropcont">
-                                                    <strong class="title"><a href="#"
-                                                                             class="mt-subopener">Программа обучения</a></strong>
-                                                    <div class="sub-drop">
-                                                        <ul>
-                                                            <li><a href="coming-soon.html">Интернет грамотность</a></li>
-                                                            <li><a href="coming-soon.html">Финансовая грамотность</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- mt col3 end here -->
-
-                                            <!-- mt col3 start here -->
-                                            <div class="mt-col-3 promo">
-                                                <div class="mt-promobox" style="position: relative;">
-                                                    <a href="register"><img
-                                                                src="/new_design/images/program_banner.png"
-                                                                alt="promo banner"
-                                                                class="img-responsive">
-                                                        <div style="position: absolute; bottom: 8px;right: 16px;"><a
-                                                                    href="register"
-                                                                    class="btn btn-warning">Регистрация</a></div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <!-- mt col3 end here -->
-                                        </div>
-                                        <!-- mt f box end here -->
-                                    </div>
-                                    <!-- mt frame end here -->
+                            <li>
+                                <a class="drop-link" href="">ПРОГРАММЫ<i class="fa fa-angle-down"
+                                                                         aria-hidden="true"></i></a>
+                                <div class="s-drop">
+                                    <ul>
+                                        <li><a href="/partner-program">Партнерская программа</a></li>
+                                        <li><a href="{{route('get.social')}}">Социальная программа</a></li>
+                                    </ul>
                                 </div>
-                                <span class="mt-mdropover"></span>
                             </li>
                             <li>
                                 <a class="drop-link" href="blog-right-sidebar.html">НОВОСТИ<i class="fa fa-angle-down"
@@ -310,15 +189,13 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                 </div>
                             </li>
                             <li>
-                                <a class="" href="/opportunity">Возможности</a>
-                            </li>
-                            <li>
                                 <a class="drop-link" href="homepage1.html">КОНТАКТЫ<i class="fa fa-angle-down"
                                                                                       aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
                                         <li><a href="{{route('contact.show')}}">Головной офис</a></li>
-                                        <li><a href="{{route('representative.show')}}">Представители</a></li>
+                                        <li><a
+                                                    href="{{route('representative.show')}}">Представители</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -328,11 +205,9 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                             <li class="hide_nav_li">
                                 <a class="" href="{{ route('basket.show') }}">Корзина</a>
                             </li>
-
                             <li class="hide_nav_li">
                                 <a class="" href="{{ route('favorite.showUserItem') }}">Избранные</a>
                             </li>
-
                             <li class="hide_nav_li nav_li_lang">
                                 <a href="{{\App\Http\Helpers::setSessionLang('kz',$request)}}">
                                     KZ
@@ -344,7 +219,6 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                     EN
                                 </a>
                             </li>
-
                         </ul>
                     </nav>
                 </div>
@@ -353,7 +227,6 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
     </div>
     <span class="mt-side-over"></span>
 </header>
-
 @section('js')
 @endsection
 <style>
@@ -362,12 +235,10 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
         padding: 16px;
         border: none;
     }
-
     .dropdown {
         position: relative;
         display: inline-block;
     }
-
     .dropdown-content {
         display: none;
         position: absolute;
@@ -375,20 +246,16 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
     }
-
     .dropdown-content a {
         color: black;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
     }
-
     .dropdown-content a:hover {
         background-color: #ddd;
     }
-
     .dropdown:hover .dropdown-content {
         display: block;
     }
-
 </style>

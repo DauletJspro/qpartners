@@ -13,6 +13,9 @@
 
 
 /******* Auth *******/
+
+use App\Http\Controllers\Index\PassiveProgramController;
+
 Route::group([
     'middleware' => 'web',
     'namespace' => 'Admin',
@@ -392,6 +395,7 @@ Route::group([
     Route::post('image/upload/doc', 'ImageController@uploadDocument');
     Route::post('images/upload', 'ImageController@uploadMultipleImages');
     Route::get('media/{file_name}', 'ImageController@getImage')->where('file_name', '.*');
+
 });
 
 Route::group([
@@ -413,6 +417,15 @@ Route::group([
     'namespace' => 'Index',
 ], function () {
     Route::get('/', 'IndexController@index');
+    Route::get('/social-program', 'PassiveProgramController@getSocial' )->name('get.social');
+    Route::get('/partner-program','PassiveProgramController@getPartner');
+    Route::get('/baspana-plus', 'PassiveProgramController@getBaspanaPlus' );
+    Route::get('/activ-home','PassiveProgramController@getActiveHome');
+    Route::get('/baspana', 'PassiveProgramController@getBaspana' );
+    Route::get('/activ-car', 'PassiveProgramController@getActiveCar'  );
+    Route::get('/tulpar', 'PassiveProgramController@getTulpar');
+    Route::get('/tulpar-plus', 'PassiveProgramController@getTulparPlus' );
+    Route::get('/form', 'PassiveProgramController@getForm');
     Route::get('/opportunity', 'IndexController@opportunity');
     Route::get('gallery', 'IndexController@gallery')->name('gallery.show');
     Route::get('gallery-detail/{id}', 'IndexController@galleryDetail')->name('gallery-detail.show');
@@ -443,5 +456,4 @@ Route::group([
     Route::get('file/{file_name}', 'IndexController@showFile')->where('file_name', '.*');
     Route::get('{about_url}', 'IndexController@getAboutById');
     Route::get('{user_id}/{user_name}', 'IndexController@redirectToRegister');
-
 });
