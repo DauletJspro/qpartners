@@ -162,7 +162,7 @@ class PacketController extends Controller
 
         if (in_array($packet->packet_id, Packet::actualPassivePackets())) {
             $hasPassivePacket = UserPacket::whereIn('packet_id', Packet::actualPassivePackets())->count();
-            if ($hasPassivePacket) {
+            if ($hasPassivePacket > 0) {
                 $result['message'] = 'Вы можете приобрести пассивный пакет только один раз!!!';
                 $result['status'] = false;
                 return response()->json($result);
