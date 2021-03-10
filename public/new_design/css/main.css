@@ -177,13 +177,42 @@
  }
 } */
 
+
+@import url(//db.onlinewebfonts.com/c/b82329475307e0380dc1ea23f0c35266?family=adineue+PRO);
+@font-face {font-family: "adineue PRO";
+    src: url("//db.onlinewebfonts.com/t/b82329475307e0380dc1ea23f0c35266.eot");
+    src: url("//db.onlinewebfonts.com/t/b82329475307e0380dc1ea23f0c35266.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/b82329475307e0380dc1ea23f0c35266.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/b82329475307e0380dc1ea23f0c35266.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/b82329475307e0380dc1ea23f0c35266.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/b82329475307e0380dc1ea23f0c35266.svg#adineue PRO") format("svg"); }
+@font-face {
+    font-family: adineuePROKZ-Light;
+    src: local("adineuePROKZ-Light"),
+    local("adineuePROKZ-Light"),
+    url(adineuePROKZ-Light.ttf);
+    font-weight: bold;
+}
+
 @import url(//db.onlinewebfonts.com/c/36b94f058581f2e0ace7e0017351d5b6?family=adineue+PRO+KZ+Bold);
 @font-face {
     font-family: "adineue PRO KZ Bold";
     src: url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.eot");
-    src: url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.woff") format("woff"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.svg#adineue PRO KZ Bold") format("svg");
+    src: url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/36b94f058581f2e0ace7e0017351d5b6.svg#adineue PRO KZ Bold") format("svg");
 }
 
+
+@font-face {
+    font-family: MyHelvetica;
+    src: local("Helvetica Neue Bold"),
+    local("HelveticaNeue-Bold"),
+    url(MgOpenModernaBold.ttf);
+    font-weight: bold;
+}
 
 .ellipsis {
     white-space: nowrap; /* 1 */
@@ -252,7 +281,7 @@ a:hover {
 
 #mt-header.style3 .mt-top-bar {
     padding: 0;
-    background: darkgray;
+    background: #ffd700!important;
 }
 
 #mt-header.style3 .tel {
@@ -1502,8 +1531,19 @@ a:hover {
     font-size: 120%;
     display: block;
     padding: 9px 19px;
-    background-color: lightgrey;
+    background-color: #ffd700;
     margin-right: 5px;
+}
+
+.mt-top-bar .mt-top-list a:nth-last-child(n + 2)::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: -3px;
+    width: 1px;
+    height: 22px;
+    border-radius:2px;
+    background: #fff;
 }
 
 #mt-header > div.mt-top-bar > div > div > div.col-xs-12.col-sm-6.text-right > ul > li:nth-child(3) > div > a {
@@ -2118,7 +2158,7 @@ a:hover {
     background-repeat: no-repeat;
     background-position: 50% 100%;
     background: white;
-    c
+
 }
 
 #nav .mt-dropmenu .mt-frame .mt-f-box {
@@ -2982,7 +3022,7 @@ a:hover {
 
 #mt-footer.style2 .footer-holder {
     padding: 51px 0 60px;
-    background-color: darkgray;
+    background-color: gold;
     color: white;
 }
 
@@ -3528,6 +3568,14 @@ a:hover {
 
 #mt-footer .f-widget-newsletter .holder {
     overflow: hidden;
+}
+
+.banner-5 .holder-inner{
+    position: absolute;
+    line-height: 21px;
+    max-width: 65%;
+    bottom: 10%;
+    left: 10%;
 }
 
 #mt-footer .f-widget-newsletter .newsletter-form {
@@ -4353,11 +4401,67 @@ a:hover {
     color: white;
 }
 
+
+article {
+    background: #F2F2F2;
+    padding: 50px;
+    border-radius: 5%;
+    color: #3d3d3d;
+}
+
+.bl {
+    width: 150px;
+    background: #ffec5c;
+    padding: 50px 10px;
+}
+
+.text-st{
+    font-family:'Montserrat';
+    font-weight: bold;
+    font-size: larger;
+}
+.number {
+    font-family: 'Montserrat';
+    font-size: 4em;
+    padding: 0 0 25px;
+    font-weight: bold;
+    opacity: 0;
+}
+
+.viz {
+    opacity: 1;
+    transition: 1s;
+}
+
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.time-text{
+    font-family: 'adineue PRO KZ Bold';
+    font-size: x-large;
+    color: #000;
+}
+
 .mt-mainslider4 {
     background: white;
-    margin: -30px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
     min-height: 530px;
     max-width: 2000px;
+}
+
+.left-nav{
+    text-align: right;
+    font-size:18px;
 }
 
 .mt-section-1 {
@@ -4371,7 +4475,6 @@ a:hover {
 
 .mt-section-2 {
     margin: 0 0 0 0;
-    min-height: 650px;
     max-width: 2000px;
     background: #e1e0df;
 }
@@ -4448,21 +4551,37 @@ a:hover {
 .want-to-be-partner-box {
     margin-top: 50px;
     padding: 20px 40px 20px 40px;
-}
-
-.want-to-be-partner-box-a {
     font-size: 30px;
-    color: rgb(255, 255, 255);
-    font-weight: 400;
-    text-transform: uppercase;
+    color: rgb(255, 255, 255)!important;
+    font-weight: 600;
+    font-family: 'Montserrat';
     line-height: 1.2;
     text-align: center;
     background-color: rgb(255, 0, 0);
-    width: 442px;
-    height: 80px;
-    margin-top: 20px;
-    padding: 10px 30px;
+    border-radius: 20px;;
 }
+
+/*.table > tbody > tr > th{
+    padding: 64px;
+}
+.table > tbody > tr > th{
+    padding: 64px;
+}*/
+
+.want-to-be-partner-box:hover {
+    margin-top: 50px;
+    padding: 16px 36px 16px 36px;
+    font-size: 30px;
+    color: rgb(255, 0, 0)!important;
+    font-weight: 600;
+    font-family: 'Montserrat';
+    line-height: 1.2;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border: solid 4px #ff0000;
+    border-radius: #f00 20px;;
+}
+
 
 .share-button {
     font-size: 30px;
@@ -4480,6 +4599,18 @@ a:hover {
     border: 1px solid #ff0000 !important;
 }
 
+.bold-tx{
+    font-weight: bold;
+    font-family: 'Montserrat';
+    color: #000;
+    font-size: larger
+}
+
+.main-tx{
+    font-family: 'Montserrat';
+    color: #000;
+    font-size: medium;
+}
 
 .red-border {
     float: right;
@@ -4488,10 +4619,9 @@ a:hover {
     background-image: linear-gradient(to top, #e1e0df 1%, #ff0000 50%, #e1e0df 100%);
 }
 
-.packet-body {
+/*.packet-body {
     padding: 20px 25px;
-
-}
+}*/
 
 .packet-name {
     font-size: 31px;
@@ -4499,6 +4629,7 @@ a:hover {
     color: rgb(0, 0, 0);
     font-weight: bold;
     line-height: 1.2;
+    padding-bottom: 12px
 }
 
 .stars-box {
@@ -4506,10 +4637,23 @@ a:hover {
     height: auto;
 }
 
+#mt-section-1 .about-button{
+    background: #ff0000;
+    color: #ffffff;
+    padding: 5px 20px;
+}
+
+/*.my-img-circle{
+    display: inline-block;
+    border-radius: 100%;
+    border: 4px solid #ff0000;
+    width: 160px;
+    height: 130px;
+}*/
 .stars-box img {
     display: inline-block;
-    width: 30px;
-    height: 28px;
+    width: 160px;
+    height: 130px;
 }
 
 .bonus-text ul {
@@ -4551,9 +4695,10 @@ a:hover {
 }
 
 .download-marketing {
-    font-size: 25px;
+    font-size: 20px;
     color: rgb(255, 255, 255);
-    font-weight: bold;
+    font-family: 'Montserrat';
+    margin:10px 0 20px 0;
     line-height: 1.2;
     background: #d30000;
     padding: 0px 0px 0px 20px;
@@ -5355,7 +5500,7 @@ a:hover {
 }
 
 .slider-7 .slick-dots li.slick-active {
-    border-color: #aeaeae;
+    border-color: #ff6060;
 }
 
 .slider-7 .slick-dots li button {
@@ -5445,13 +5590,11 @@ a:hover {
     transition: all .4s linear;
     display: inline-block;
     vertical-align: middle;
-    font-weight: bold;
 }
 
 .banner-frame .btn-shop span {
     margin: 0 11px 0 0;
     color: red;
-    font-weight: bold;
     font-size: 130%;
 }
 
@@ -5459,11 +5602,10 @@ a:hover {
     text-align: center;
     color: lightgrey;
     border-radius: 100%;
-    border: 1px solid red;
     width: 24px;
     height: 24px;
     font-size: 17px;
-    line-height: 21px;
+    line-height: 23px;
 }
 
 .banner-frame .btn-shop.add {
@@ -5694,12 +5836,67 @@ a:hover {
 
 .banner-5 .texts {
     position: absolute;
-    padding: 2px 8px;
+    font-family: 'adineue PRO KZ Bold';
+    max-width: 65%;
+    top: 8%;
+    color: #000;
+    left: 10%;
+}
+
+.banner-6 .texts {
+    position: absolute;
+    font-family: 'adineue PRO KZ Bold';
+    top: 8%;
+    color: #000;
+    left: 10%;
+}
+
+.banner-7 .texts {
+    position: absolute;
+    top: 16%;
+    font-family: 'adineue PRO KZ Bold';
+    color: #000;
+    left: 10%;
+}
+
+.banner-7 .holder-inner {
+    position: absolute;
     line-height: 21px;
     max-width: 65%;
-    bottom: 35px;
-    right: 56px;
-    left: 56px;
+    bottom: 10%;
+    left: 10%;
+}
+
+.banner-8 .holder-inner {
+    position: absolute;
+    bottom: 18%;
+    right: 10%;
+}
+.banner-8 .texts {
+    position: absolute;
+    font-family: 'adineue PRO KZ Bold';
+    top: 5%;
+    left: 10%;
+}
+
+.banner-9 .holder-inner {
+    position: absolute;
+    line-height: 21px;
+    max-width: 65%;
+    bottom: 10%;
+    left: 10%;
+}
+
+.banner-11 .holder-inner {
+    position: absolute;
+    line-height: 21px;
+    max-width: 65%;
+    bottom: 10%;
+    left: 10%;
+}
+
+.texts .main-tx{
+    font-size:44px;
 }
 
 .banner-5 .texts .title {
@@ -5775,9 +5972,9 @@ a:hover {
     font: 700 57px/62px "Montserrat", sans-serif;
 }
 
-.banner-5 .texts p {
+/*.banner-5 .texts p {
     margin: 30px 0 18px 2px;
-}
+}*/
 
 .banner-5 .texts .price-add {
     display: block;
@@ -5808,9 +6005,8 @@ a:hover {
 
 .banner-6 .btn-shop {
     position: absolute;
-    bottom: 30px;
-    left: 31px;
-    right: 31px;
+    bottom: 10%;
+    left: 10%;
 }
 
 .banner-6 .btn-shop span,
@@ -6091,9 +6287,13 @@ a:hover {
 
 .banner-12 .btn-shop {
     position: absolute;
-    right: 20px;
-    bottom: 33px;
-    background-color: rgba(0, 0, 0, 0.2);
+    left: 10%;
+    bottom: 10%;
+    color: #000;
+    font-size: 18px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 4px 12px;
 }
 
 .banner-12 .btn-shop span,
@@ -6143,10 +6343,11 @@ a:hover {
 
 .banner-13 .btn-shop {
     position: absolute;
-    right: 200px;
-    bottom: 20px;
-    background-color: rgba(0, 0, 0, 0.4);
-    padding: 1px;
+    right: 10%;
+    bottom: 10%;
+    background: rgb(255, 0, 0);
+    border-radius: 8px;
+    padding: 4px 12px;
 }
 
 /*------------------------------------------------------------------
@@ -7791,8 +7992,12 @@ a:hover {
 31. Mt Productsc / .mt-productsc
 -------------------------------------------------------------------*/
 
+.pt-80{
+    padding-top: 86px;
+}
+
 .mt-productsc {
-    padding: 40px 0 54px;
+    padding: 0px 0 54px;
 }
 
 .mt-productsc .mt-heading {
@@ -7800,7 +8005,7 @@ a:hover {
 }
 
 .mt-productsc.style2 {
-    padding: 40px 0 44px;
+    padding: 0px 0 44px;
 }
 
 .mt-productsc.style2 .mt-heading {
@@ -9276,7 +9481,7 @@ a:hover {
 
 #product-masonry {
     overflow: hidden;
-    margin: 0 0 150px;
+    margin: 0 0 0px;
 }
 
 #product-masonry #product-filter {
@@ -9350,8 +9555,8 @@ a:hover {
     float: left;
     padding: 0 10px 30px;
     text-align: center;
-    border-bottom: 1px solid #d7d7d7;
-    border-right: 1px solid #d7d7d7;
+    /*border-bottom: 1px solid #d7d7d7;
+    border-right: 1px solid #d7d7d7;*/
 }
 
 #product-masonry .masonry-list .mt-product1 {
@@ -13529,9 +13734,9 @@ a:focus {
 4. Main / #main
 -------------------------------------------------------------------*/
 
-#mt-main {
+/*#mt-main {
     overflow: hidden;
-}
+}*/
 
 #back-top {
     bottom: 0;
@@ -13689,8 +13894,25 @@ label[for]:hover {
 
 .choose_role {
     padding: 10px;
-    margin: 10px; 
-    border-top: 1px solid; 
+    margin: 10px;
+    border-top: 1px solid;
     border-bottom: 1px solid;
     display: none;
+}
+
+/*
+partner
+*/
+.but-part{
+    margin-top: 18px;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: #000;
+    font-weight: 600;
+    font-family: 'Montserrat';
+    line-height: 1.2;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border: solid 2px #ff0000;
+    border-radius: 10px;
 }

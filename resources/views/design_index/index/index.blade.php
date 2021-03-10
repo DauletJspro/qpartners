@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Session;
 
 @endsection
 
+
 @section('content')
 
     <main id="mt-main">
@@ -22,110 +23,71 @@ use Illuminate\Support\Facades\Session;
                 <div class="col-xs-12">
                     <div class="banner-frame toppadding-zero">
                         <div class="banner-5 white wow fadeInLeft" data-wow-delay="0.4s">
-                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/main_page_images/car_2.jpg'); background-size: cover; background-position: center;"></div>
-                            <div class="holder" style="">
-                                <strong class="title" style="position: absolute; left: 26px; top: 18px; color: #000;
-                                    display: inline-block; vertical-align: middle; text-transform: uppercase;
-                                    background: white; font-weight: 800; font-size: 98%;
-                                    padding: 5px 10px; letter-spacing: 1px;">Социальная программа</strong>
-                                <div class="texts" style="background-color:transparent; padding: 2rem 4rem -5rem 4rem; max-width: unset;">                                    
-                                    {{-- <h3 style="font-weight: bold;word-break:keep-all;"><span
-                                                class="span-1">Дарим новый huyndai accent activ</span> <br>
-                                                <span class="span-1">за 6 190 000 KZT</span>
-                                    </h3> --}}
-                                    <p>
-                                        <span class="p-span-1">Дарим новый Huyndai Accent <br> стоимостью 6 190 000 KZT </span> <br>
-                                        <span class="p-span-2">
-                                            Выполни условия за 90 дней <br> и забирай свой Huyndai бесплатно!<br>                                            
-                                        </span>
-                                    </p>
-                                    <a href="product-detail.html" class="btn-shop">
-                                        <span><strong style="color: white;">Забрать</strong></span>
-                                        <i class="fa fa-angle-right"
-                                           style="color: white;background-color: lightgrey;"></i>
+                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/NewResource/img-1.png'); background-size: cover; background-position: center;"></div>
+                            <div class="holder">
+                                <div class="texts" style=" font-family: adineue PRO KZ Bold;color:#000;">
+                                    <span class="mb-0" style="font-size:44px;font-weight:bold;">МОЙ ДОМ</span>
+                                    <p style="font-size:44px;font-weight:bold;">МОЯ КРЕПОСТЬ</p>
+                                    <span style="font-size: 19px;font-family:'Montserrat';" class="p-0">Стань обладателем собственного</hr style="list-style:none;"> дома</span>
+                                </div>
+                                <div class="holder-inner">
+                                    <a href="/baspana" class="btn-shop">
+                                        <span style="color: #fff !important;">ПОДРОБНЕЕ</span>
+                                        <i class="fa fa-angle-right" style="background: #ffd700; color: #000;"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="banner-6 white wow fadeInRight" data-wow-delay="0.4s">
-                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/main_page_images/iphone_2.jpg'); background-size: cover; background-position: center;background-repeat: no-repeat;"></div>
-                            <div class="holder" style="background-color: rgba(0,0,0,0.1);">
-                                <div style=" width: 100%; padding: 5px; position: relative;">
-                                    <strong class="sub-title text-uppercase text-center"
-                                            style="font-size: 15px; font-weight: 700; background-color: #000; color: #fff;">Социальная программа</strong>
-                                    {{-- <h3 style="padding-left:2px;background-color:rgba(0,0,0,0.2); line-height: 3rem;">
-                                        <span style="font-size:105%;">Зарядитесь</span> <br> <span
-                                                class="text-uppercase"
-                                                style="font-size: 100%;word-break: keep-all;">энергией природы</span>
-                                    </h3>                                     --}}
+                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/NewResource/img-2.png'); background-size: cover; background-position: center;background-repeat: no-repeat;"></div>
+                            <div class="holder">
+                                <div class="texts" style="font-family: adineue PRO KZ Bold;color:#000;">
+                                    <span style="font-size:28px;font-weight:bold;">АВТОМОБИЛЬ</span>
+                                    <p style="font-size:28px;font-weight:bold;">ДЛЯ ДУШИ</p>
+                                    <span style="font-size: 14px;font-family:'Montserrat';"  class="p-0">Получи автомобиль за 0 тенге</span>
                                 </div>
-                                <div style="position: absolute; bottom: 60px; left: 31px; right: 31px;">
-                                    <p style="margin-top: 5rem;background-color: rgba(255,255,255,0.1);">
-                                        <span class="p-span-3">APPLE IPHONE XI <br> в ПОДАРОК! </span> <br>
-                                        <span class="p-span-4">
-                                            Выполни условия за 30 дней <br>
-                                            и IPHONE XI (389 890 KZT) твой!
-                                        </span>
-                                    </p>
+                                <div class="holder-inner">
+                                    <a href="/tulpar" class="btn-shop">
+                                        <span style="color: #fff !important;">ЗАБРАТЬ</span>
+                                        <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
+                                    </a>
                                 </div>
-                                <a href="product-detail.html" class="btn-shop">
-                                    <span style="color: #003a79 !important;"><strong>Участвовать</strong></span>
-                                    <i class="fa fa-angle-right" style="color: white;background-color: #93d2ff;"></i>
-                                </a>
                             </div>
                         </div><!-- banner 5 white end here -->
                         <!-- banner box two start here -->
                         <div class="banner-box two">
                             <!-- banner 7 right start here -->
                             <div class="banner-7 right wow fadeInUp" data-wow-delay="0.4s">
-                                <div style="background-image: url('/new_design/images/main_page_images/macbook_2.jpg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
+                                <div style="background-image: url('/new_design/images/NewResource/img-3.png'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
                                 <div class="holder">
-                                    <div class="text-center"
-                                         style="width: 100%; padding: 2rem 1rem;">
-                                        <h2 style="background: #24899b"><strong style="color: #fff; font-weight: bold;">Социальная программа</strong></h2>
-                                        {{-- <h3 class="text-left" style="margin-top:10px;float: left;">
-                                            <strong style="color: black;font-weight: 600;">Дышите
-                                                <br> <span class="strong-span-1">ПОЛНОЙ ГРУДЬЮ</span></strong></h3> --}}                                       
+                                    <div class="texts" style="color:#ffd700;">
+                                        <span style="font-size:28px;font-weight:bold;">НОВЕНЬКИЙ</span>
+                                        <p style="font-size:28px;font-weight:bold;">СМАРТФОН!</p>
+                                        <span style="font-size: 14px;font-family:'Montserrat';color:#000;float:left;" class="p-0">Поспеши!</span>
                                     </div>
-                                    <p style="float: left;color:black; position: absolute; bottom: 30px;" class="text-left p-parent-1">
-                                        <span class="p-span-5 text-left">ХОЧЕШЬ MACKBOOK AIR (554 990 KZT) БЕСПЛАТНО?</span><br>
-                                        <span class="p-span-6">
-                                            Выполни условия за 60 дней <br>
-                                            и забирай свой MACBOOK AIR<br>
-                                        </span>
-                                    </p>
-                                    <div class="price-tag">
-                                        <a class="shop-now" href="product-detail.html">ХОЧУ</a>
+                                    <div class="holder-inner">
+                                        <a href="product-detail.html" class="btn-shop">
+                                            <span style="color: #000 !important;">ПОДРОБНЕЕ</span>
+                                            <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div><!-- banner 7 right end here -->
                             <!-- banner 8 start here -->
                             <div class="banner-8 wow fadeInDown" data-wow-delay="0.4s">
-                                <div style="background-image: url('/new_design/images/main_page_images/money_2.jpg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
-                                <div class="holder text-left" style="background-color: rgba(0,0,0,0.2);">
-                                    <div style="width: 100%; padding: 0 1rem;">
-                                        <h2 style="background: #69ab00;" class="text-center"><strong style="color: white; font-weight: bold;">Социальная программа</strong></h2>
-                                        {{-- <h3 style="margin-bottom:20px !important;"><strong>Укрепите
-                                                <br> ИММУНИТЕТ</strong></h3> --}}                                        
+                                <div style="background-image: url('/new_design/images/NewResource/img-4.png'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
+                                <div class="holder">
+                                    <div class="texts" style="font-family: adineue PRO KZ Bold;color:#fff;">
+                                        <span style="font-size:28px;font-weight:bold;">ПУТЕШЕСТВИЕ</span>
+                                        <p style="font-size:28px;font-weight:bold;">БЕЗ ГРАНИЦ!</p>
+                                        <span style="font-size: 14px;width:150px;font-family:'Montserrat';color:#fff;position:absolute;left:55%;" class="p-0">А ты готов </hr> к приключениям?!</span>
                                     </div>
-                                    <div style="position: absolute; padding: 0 1rem; bottom: 20px;">
-                                        <p style="float: left;color:black; margin: 0px 0px 15px;" class="text-left p-parent-2">
-                                            {{-- <span class="p-span-5 text-left">Super Elixir Bronchi</span><br> --}}
-                                            <span class="p-span-6">
-                                                Выполни условия и получи <br>
-                                                денежную премию 90 000 KZT<br>                                                
-                                            </span>
-                                        </p>
-
-                                        <div class="price-tag text-left" style="padding-top: 0; margin-left: 0.8rem;">
-                                            <a class="btn-shop" href="product-detail.html">
-                                                <span>ПОЛУЧИТЬ</span>
-                                                <i style="color: white;background-color: lightgrey;"
-                                                   class="fa fa-angle-right"></i>
-                                            </a>
-                                        </div>
+                                    <div class="holder-inner">
+                                        <a href="product-detail.html" class="btn-shop">
+                                            <span style="color: #000 !important;font-weight:300;">ГОТОВ</span>
+                                            <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
+                                        </a>
                                     </div>
-
                                 </div>
                             </div><!-- banner 8 start here -->
                         </div>
@@ -134,60 +96,39 @@ use Illuminate\Support\Facades\Session;
                         <!-- banner box third start here -->
                         <div class="banner-box third">
                             <!-- banner 12 right white start here -->
-                            <div class="banner-12 right white wow fadeInUp" data-wow-delay="0.4s">
-                                <img src="/new_design/images/main_page_images/super_elixir_for_man.png"
+                            <div class="banner-12 white wow fadeInUp" data-wow-delay="0.4s">
+                                <img src="/new_design/images/NewResource/img-5.png"
                                      alt="image description"
                                      style="height: 277px;  width: 420px;">
-                                <div class="holder this-banner" style="">
-                                    <h2 class="text-uppercase" style="float:left;padding-bottom: 1rem;"><span
-                                                class="text-uppercase">ДЛЯ МУЖЧИН</span></h2>
-
-                                    <p style="float: left;color:black;padding: 2px;" class="text-left p-parent-2">
-                                        <span class="p-span-5 text-left">Super Elixir For Man</span><br>
-                                        <span class="p-span-6">
-                                                обладает иммуно- <br>
-                                                стимулирующим, <br>
-                                                действием, активный <br>
-                                                гемостимулятор.
-                                            </span> <br>
-                                        <span class="p-span-6" style="margin-top: 10px;">
-                                            Эффективен при <br>
-                                            везекулите.
-                                        </span>
-                                    </p>
-
-                                    <a class="btn-shop" href="product-detail.html">
-                                        <span>купить сейчас</span>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
+                                <div class="holder">
+                                    <div class="texts" style="font-family: adineue PRO KZ Bold;color:#fff;">
+                                        <span style="font-size:28px;font-weight:bold;">SUPER ELIXIR</span>
+                                        <p style="font-size:28px;font-weight:bold;">FOR MAN</p>
+                                        <span style="font-size: 14px;width:200px;font-family:'Montserrat';color:#fff;float:left;" class="p-0">МУЖСКАЯ СИЛА </hr> В МУЖСКОМ ЗДОРОВЬИ</span>
+                                    </div>
+                                    <div class="holder-inner">
+                                        <a href="/shop" class="btn-shop">
+                                            <spanstyle="color:#000!important;font-weight:300;">ПОДРОБНЕЕ</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div><!-- banner 12 right white end here -->
                             <!-- banner 13 right start here -->
                             <div class="banner-13 right wow fadeInDown" data-wow-delay="0.4s">
-                                <img src="/new_design/images/main_page_images/super_elixir_for_woman.png"
+                                <img src="/new_design/images/NewResource/img-6.png"
                                      alt="image description"
                                      style="height: 277px;  width: 420px;">
-                                <div class="holder this-banner" style="">
-                                    <h2 class="text-uppercase" style="float:left;padding-bottom: 1rem;"><span
-                                                class="text-uppercase">ДЛЯ ЖЕНЩИН</span></h2>
-
-                                    <p style="float: right;color:black;padding: 2px;" class="text-left p-parent-2">
-                                        <span class="p-span-5 text-left">Super Elixir <br> For Woman</span><br>
-                                        <span class="p-span-6">
-                                                обладает <br>
-                                                общеукрепляющим <br>
-                                                действием, снижает <br>
-                                                слабость и упадок сил.
-                                            </span> <br>
-                                        <span class="p-span-6" style="margin-top: 10px;">
-                                           Продлевает детородный <br> возраст.
-                                        </span>
-                                    </p>
-
-                                    <a class="btn-shop" href="product-detail.html">
-                                        <span>купить сейчас</span>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
+                                <div class="holder">
+                                    <div class="texts" style="font-family: adineue PRO KZ Bold;color:#fff;">
+                                        <span style="font-size:28px;font-weight:bold;">SUPER ELIXIR</span>
+                                        <p style="font-size:28px;font-weight:bold;">FOR <span style="color:#f00;">WOMAN</span></p>
+                                        <span style="font-size: 14px;width:200px;font-family:'Montserrat';color:#000;float:right;" class="p-0">ТВОЙ ВНЕШНИЙ ВИД ТВОЙ ЗАЛОГ УСПЕХА</span>
+                                    </div>
+                                    <div class="holder-inner">
+                                        <a href="/shop" class="btn-shop">
+                                            <span style="color: #fff !important;font-weight:300;">ПОДРОБНЕЕ</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div><!-- banner 13 right end here -->
                         </div><!-- banner box third end here -->
@@ -197,7 +138,7 @@ use Illuminate\Support\Facades\Session;
                             <div class="slider banner-slider">
                                 <!-- holder start here -->
                                 <div class="s-holder">
-                                    <img src="/new_design/images/main_page_images/1.png"
+                                    <img src="/new_design/images/main_page_images/qpartners 1.jpg"
                                          alt="image description">
                                     {{-- <div class="s-box">
                                         <strong class="s-title text-uppercase">Супер акция 5+2</strong>
@@ -233,7 +174,7 @@ use Illuminate\Support\Facades\Session;
                                 </div><!-- holder end here -->
                                 <!-- holder start here -->
                                 <div class="s-holder s-holder-2">
-                                    <img src="/new_design/images/main_page_images/2.png"
+                                    <img src="/new_design/images/main_page_images/qpartners 2.jpg"
                                          alt="image description">
                                     {{-- <div class="s-box">
                                         <strong class="s-title text-uppercase">Супер акция 5+2</strong>
@@ -268,7 +209,7 @@ use Illuminate\Support\Facades\Session;
                                     </div> --}}
                                 </div>
                                 <div class="s-holder s-holder-3">
-                                    <img src="/new_design/images/main_page_images/3.png"
+                                    <img src="/new_design/images/main_page_images/qpartners 3.jpg"
                                          alt="image description">
                                     {{-- <div class="s-box">
                                         <strong style="color: white;" class="s-title text-uppercase">Супер акция
@@ -303,14 +244,13 @@ use Illuminate\Support\Facades\Session;
                                             </div>
 
                                         </div>
-                                        <a class="s-text-p-3-button s-holder-2-button" style="    margin-top: 360px;
-    margin-right: -230px;">
+                                        <a class="s-text-p-3-button s-holder-2-button" style="    margin-top: 360px;margin-right: -230px;">
                                             ПОДРОБНЕЕ
                                         </a>
                                     </div> --}}
                                 </div>
                                 <div class="s-holder s-holder-4">
-                                    <img src="/new_design/images/main_page_images/4.png"
+                                    <img src="/new_design/images/main_page_images/qpartners 4.jpg"
                                          alt="image description">
                                     {{-- <div class="s-box">
                                         <strong style="color: white; background-color: #77a100;" class="s-title text-uppercase">Супер акция
@@ -353,6 +293,58 @@ use Illuminate\Support\Facades\Session;
                             </div>
                         </div><!-- slider 7 end here -->
                     </div>
+
+                    <div class="banner-frame nospace wow fadeInUp" data-wow-delay="0.6s">
+                        <!-- banner 9 start here -->
+                        <div class="banner-9">
+                            <img src="/new_design/images/NewResource/img-ban-1.png" alt="image description">
+                            <div class="holder">
+                                <div class="texts" style="color:#fff; adineue PRO KZ Bold;">
+                                    <p style="font-size:28px;font-weight:bold;">ДОХОДНОСТЬ</p>
+                                    <span style="font-size: 20px;font-family:'Montserrat';color:#fff;float:left;" class="p-0">80% от оборота!</span>
+                                </div>
+                                <div class="holder-inner">
+                                    <a href="product-detail.html" class="btn-shop">
+                                        <span style="color: #fff!important;text-transform:lowercase;">подробнее</span>
+                                        <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div><!-- banner 9 end here -->
+                        <!-- banner 10 start here -->
+                        <div class="banner-10">
+                            <img src="/new_design/images/NewResource/img-ban-2.png" alt="image description">
+                            <div class="holder">
+                                <div class="texts" style="color:#000;">
+                                    <p style="font-size:28px;font-weight:bold;">БОНУСЫ</p>
+                                    <span style="font-size: 20px;font-family:'Montserrat';color:#000;" class="p-0">8 видов!</span>
+                                </div>
+                                <div class="holder-inner">
+                                    <a href="product-detail.html" class="btn-shop">
+                                        <span style="color: #000!important;text-transform:lowercase;">подробнее</span>
+                                        <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div><!-- banner 10 end here -->
+                        <!-- banner 11 start here -->
+                        <div class="banner-11">
+                            <img src="/new_design/images/NewResource/img-ban-3.png" alt="image description">
+                            <div class="holder">
+                                <div class="texts" style="color:#000;">
+                                    <p style="font-size:28px;font-weight:bold;">ЗАРАБОТОК</p>
+                                    <span style="font-size: 20px;font-family:'Montserrat';color:#000;float:left;" class="p-0">более 44 000 000</span>
+                                </div>
+                                <div class="holder-inner" style="float:left;">
+                                    <a href="product-detail.html" class="btn-shop">
+                                        <span style="color: #000!important;text-transform:lowercase;">подробнее</span>
+                                        <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div><!-- banner 11 end here -->
+                    </div><!-- banner frame end here -->
+
                     <div class="mt-producttabs style2 wow fadeInUp" data-wow-delay="0.4s">
                         <!-- producttabs start here -->
                         <ul class="producttabs">
@@ -372,8 +364,8 @@ use Illuminate\Support\Facades\Session;
                                                     <div class="b1">
                                                         <div class="b2">
                                                             <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
-                                                                <div class="product_image" 
-                                                                    style="background-image: url('{{$product->product_image}}');">
+                                                                <div class="product_image"
+                                                                     style="background-image: url('{{$product->product_image}}');">
                                                                 </div>
                                                             </a>
                                                             <ul class="mt-stars">
@@ -435,8 +427,8 @@ use Illuminate\Support\Facades\Session;
                                                     <div class="b1">
                                                         <div class="b2">
                                                             <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
-                                                                <div class="product_image" 
-                                                                    style="background-image: url('{{$product->product_image}}');">
+                                                                <div class="product_image"
+                                                                     style="background-image: url('{{$product->product_image}}');">
 
                                                                 </div>
                                                             </a>
@@ -496,7 +488,7 @@ use Illuminate\Support\Facades\Session;
                                                         <div class="b2">
                                                             <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
                                                                 <div class="product_image"
-                                                                    style="background-image: url('{{$product->product_image}}');">
+                                                                     style="background-image: url('{{$product->product_image}}');">
                                                                 </div>
                                                             </a>
                                                             <ul class="mt-stars">
@@ -553,8 +545,8 @@ use Illuminate\Support\Facades\Session;
                                                     <div class="b1">
                                                         <div class="b2">
                                                             <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
-                                                                <div class="product_image" 
-                                                                    style="background-image: url('{{$product->product_image}}');">
+                                                                <div class="product_image"
+                                                                     style="background-image: url('{{$product->product_image}}');">
                                                                 </div>
                                                             </a>
                                                             <ul class="mt-stars">
@@ -667,6 +659,56 @@ use Illuminate\Support\Facades\Session;
                             @endforeach
                         </div>
                     </div>
+
+                    <div id="product-masonry">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h2 class="heading" style="color: #3a3a3a;margin: 0 0 7px;text-transform: uppercase;padding-bottom:25px; font: 700 26px/30px 'Montserrat', sans-serif;">ОТЗЫВЫ</h2>
+                                    <ul class="masonry-list">
+                                        <li class="fil1">
+                                            <!-- mt product start here -->
+                                            <div class="mt-product1 large">
+                                                <!-- box start here -->
+                                                <div class="box">
+                                                    <iframe width="250" height="250" src="https://www.youtube.com/embed/YXdlHaZtQxw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </div><!-- box end here -->
+                                            </div><!-- mt product1 end here -->
+                                        </li>
+                                        <li class="fil2">
+                                            <!-- mt product start here -->
+                                            <div class="mt-product1 large">
+                                                <!-- box start here -->
+                                                <div class="box">
+                                                    <iframe width="250" height="250" src="https://www.youtube.com/embed/vrA0RLhLo-8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </div><!-- box end here -->
+
+                                            </div><!-- mt product1 end here -->
+                                        </li>
+                                        <li class="fil3">
+                                            <!-- mt product start here -->
+                                            <div class="mt-product1 large">
+                                                <!-- box start here -->
+                                                <div class="box">
+                                                    <iframe width="250" height="250" src="https://www.youtube.com/embed/YXdlHaZtQxw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </div><!-- box end here -->
+                                            </div><!-- mt product1 end here -->
+                                        </li>
+                                        <li class="fil1">
+                                            <!-- mt product start here -->
+                                            <div class="mt-product1 large">
+                                                <!-- box start here -->
+                                                <div class="box">
+                                                    <iframe width="250" height="250" src="https://www.youtube.com/embed/vrA0RLhLo-8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </div><!-- box end here -->
+                                            </div><!-- mt product1 end here -->
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="mt-patners wow fadeInUp" data-wow-delay="0.4s">
                         <h2 class="heading">Наши бренды</h2>
                         <div class="patner-slider">
@@ -683,41 +725,41 @@ use Illuminate\Support\Facades\Session;
                             @endforeach
                         </div>
                     </div>
-                    <div class="banner-frame nospace wow fadeInUp" data-wow-delay="0.4s">
-                        <h2 class="heading" style="letter-spacing: 1px; ">ПРОДВИЖЕНИЕ В INSTAGRAM</h2>
-                        <div style="margin-top: 3rem;">
-                            <div class="banner-9">
-                                <img src="/new_design/images/insta_1.png" alt="image description">
-                                <div class="holder">
-                                    <h2><span>Хочешь</span><strong>1 млн. подписчиков?</strong></h2>
-                                    <a class="btn-shop" href="product-detail.html">
-                                        <span>Хочу</span>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="banner-10">
-                                <img src="/new_design/images/insta_2.png" alt="image description">
-                                <div class="holder">
-                                    <h2><span>Продвигай</span><strong>свой аккаунт</strong></h2>
-                                    <a class="btn-shop" href="product-detail.html">
-                                        <span>Продвигать</span>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="banner-11">
-                                <img src="/new_design/images/insta_3.png" alt="image description">
-                                <div class="holder">
-                                    <h2><span>Зарабатывай</span><strong>от 1000$ за 1 пост</strong></h2>
-                                    <a class="btn-shop" href="product-detail.html">
-                                        <span>Зарабатывать</span>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- <div class="banner-frame nospace wow fadeInUp" data-wow-delay="0.4s">
+                         <h2 class="heading" style="letter-spacing: 1px; ">ПРОДВИЖЕНИЕ В INSTAGRAM</h2>
+                         <div style="margin-top: 3rem;">
+                             <div class="banner-9">
+                                 <img src="/new_design/images/insta_1.png" alt="image description">
+                                 <div class="holder">
+                                     <h2><span>Хочешь</span><strong>1 млн. подписчиков?</strong></h2>
+                                     <a class="btn-shop" href="product-detail.html">
+                                         <span>Хочу</span>
+                                         <i class="fa fa-angle-right"></i>
+                                     </a>
+                                 </div>
+                             </div>
+                             <div class="banner-10">
+                                 <img src="/new_design/images/insta_2.png" alt="image description">
+                                 <div class="holder">
+                                     <h2><span>Продвигай</span><strong>свой аккаунт</strong></h2>
+                                     <a class="btn-shop" href="product-detail.html">
+                                         <span>Продвигать</span>
+                                         <i class="fa fa-angle-right"></i>
+                                     </a>
+                                 </div>
+                             </div>
+                             <div class="banner-11">
+                                 <img src="/new_design/images/insta_3.png" alt="image description">
+                                 <div class="holder">
+                                     <h2><span>Зарабатывай</span><strong>от 1000$ за 1 пост</strong></h2>
+                                     <a class="btn-shop" href="product-detail.html">
+                                         <span>Зарабатывать</span>
+                                         <i class="fa fa-angle-right"></i>
+                                     </a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>-->
                     @if(App::environment('hola'))
                         <div class="mt-producttabs style4 wow fadeInUp" data-wow-delay="0.4s">
                             <h2 class="heading">МЫ В INSTAGRAM</h2>
@@ -731,8 +773,8 @@ use Illuminate\Support\Facades\Session;
                                                         <div class="b2">
                                                             <a href="https://www.instagram.com/p/B_17-MYJDaU/?igshid=1jr9c3tss0z8q"
                                                                target="_blank">
-                                                                <div class="insta_image" 
-                                                                    style="background-image: url('https://www.instagram.com/p/B_17-MYJDaU/media/?size=m'); 
+                                                                <div class="insta_image"
+                                                                     style="background-image: url('https://www.instagram.com/p/B_17-MYJDaU/media/?size=m');
                                                                         background-size: contain;">
                                                                 </div>
                                                             </a>
@@ -755,10 +797,10 @@ use Illuminate\Support\Facades\Session;
                                                         <div class="b2">
                                                             <a href="https://www.instagram.com/p/B_yso1ygEKe/?igshid=1w9pvg8ny5dy3"
                                                                target="_blank">
-                                                                <div class="insta_image" 
-                                                                    style="background-image: url('https://www.instagram.com/p/B_yso1ygEKe/media/?size=m'); 
+                                                                <div class="insta_image"
+                                                                     style="background-image: url('https://www.instagram.com/p/B_yso1ygEKe/media/?size=m');
                                                                         background-size: contain;">
-                                                                </div>                                                                
+                                                                </div>
                                                             </a>
                                                             <ul class="links">
                                                                 <li>
@@ -779,10 +821,10 @@ use Illuminate\Support\Facades\Session;
                                                         <div class="b2">
                                                             <a href="https://www.instagram.com/p/B_l0FblJOE2/?igshid=1o1kyh6pyy8fj"
                                                                target="_blank">
-                                                               <div class="insta_image" 
-                                                                    style="background-image: url('https://www.instagram.com/p/B_l0FblJOE2/media/?size=m'); 
+                                                                <div class="insta_image"
+                                                                     style="background-image: url('https://www.instagram.com/p/B_l0FblJOE2/media/?size=m');
                                                                         background-size: contain;">
-                                                                </div>                                                               
+                                                                </div>
                                                             </a>
                                                             <ul class="links">
                                                                 <li>
@@ -800,11 +842,11 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <div class="box">
                                                     <div class="b1">
-                                                        <div class="b2">                                                            
+                                                        <div class="b2">
                                                             <a href="https://www.instagram.com/p/B_hM0fdpGXv/?igshid=1dp0gvsveld2f"
                                                                target="_blank">
-                                                               <div class="insta_image" 
-                                                                    style="background-image: url('https://www.instagram.com/p/B_hM0fdpGXv/media/?size=m'); 
+                                                                <div class="insta_image"
+                                                                     style="background-image: url('https://www.instagram.com/p/B_hM0fdpGXv/media/?size=m');
                                                                         background-size: contain;">
                                                                 </div>
                                                             </a>
@@ -824,11 +866,11 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <div class="box">
                                                     <div class="b1">
-                                                        <div class="b2">                                                            
+                                                        <div class="b2">
                                                             <a href="https://www.instagram.com/p/B_ePhRGpXP7/?igshid=ueow4438kns0"
                                                                target="_blank">
-                                                               <div class="insta_image" 
-                                                                    style="background-image: url('https://www.instagram.com/p/B_ePhRGpXP7/media/?size=m'); 
+                                                                <div class="insta_image"
+                                                                     style="background-image: url('https://www.instagram.com/p/B_ePhRGpXP7/media/?size=m');
                                                                         background-size: contain;">
                                                                 </div>
                                                             </a>
@@ -848,11 +890,11 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <div class="box">
                                                     <div class="b1">
-                                                        <div class="b2">                                                            
+                                                        <div class="b2">
                                                             <a href="https://www.instagram.com/p/B_TygfspnQ5/?igshid=mhn1mobymsvz"
-                                                               target="_blank">                                                              
-                                                               <div class="insta_image" 
-                                                                    style="background-image: url('https://www.instagram.com/p/B_TygfspnQ5/media/?size=m'); 
+                                                               target="_blank">
+                                                                <div class="insta_image"
+                                                                     style="background-image: url('https://www.instagram.com/p/B_TygfspnQ5/media/?size=m');
                                                                         background-size: contain;">
                                                                 </div>
                                                             </a>

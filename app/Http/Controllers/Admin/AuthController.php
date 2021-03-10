@@ -91,7 +91,12 @@ class AuthController extends Controller
                 ]);
             }
 
+            if(Auth::user()->is_activated)
             return redirect('/admin/index');
+            else{
+                return redirect('/admin/shop');
+            }
+
         }
 
         return view('admin.new_design_auth.login', ['login' => '']);

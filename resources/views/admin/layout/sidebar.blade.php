@@ -33,11 +33,14 @@
                 ( {{Auth::user()->cashback * \App\Models\Currency::pvToKzt()}}тг)</p>
         </li>
 
+        @if(Auth::user()->is_activated)
             <li class="header" style="padding:5px 25px 0px">
-                <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Баланс: {{Auth::user()->user_money}}
+                <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">
+                    Баланс: {{Auth::user()->user_money}}
                     PV
                     ( {{Auth::user()->user_money * \App\Models\Currency::pvToKzt()}}тг)</p>
             </li>
+        @endif
         {{--        <li class="header" style="padding:5px 25px 0px">--}}
         {{--            <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Super--}}
         {{--                Баланс: {{Auth::user()->super_balance}}PV--}}
@@ -62,22 +65,22 @@
             @endif
         </li>
 
+        @if(Auth::user()->is_activated)
+            <li class="treeview">
+                <a href="/admin/index">
+                    <i class="fa fa-user"></i>
+                    <span>Главная</span>
+                </a>
+            </li>
 
-        <li class="treeview">
-            <a href="/admin/index">
-                <i class="fa fa-user"></i>
-                <span>Главная</span>
-            </a>
-        </li>
 
-
-        <li class="treeview" style="background-color: #F9BF3B;">
-            <a href="/admin/call-friend" style="color: black" class="balance-btn">
-                <i class="fa fa-reply-all"></i>
-                <span style="color: black">Пригласить друга</span>
-            </a>
-        </li>
-
+            <li class="treeview" style="background-color: #F9BF3B;">
+                <a href="/admin/call-friend" style="color: black" class="balance-btn">
+                    <i class="fa fa-reply-all"></i>
+                    <span style="color: black">Пригласить друга</span>
+                </a>
+            </li>
+        @endif
         <li class="treeview">
             <a href="/admin/profile">
                 <i class="fa fa-user"></i>
@@ -137,7 +140,8 @@
                 <span>Задать вопрос</span>
             </a>
         </li>
-        <li class="treeview">
+            @if(Auth::user()->is_activated)
+            <li class="treeview">
             <a href="/admin/instagram">
                 <i class="fa fa-user"></i>
                 <span>Мои подписки</span>
@@ -149,7 +153,8 @@
                 <span>Мои подписчики</span>
             </a>
         </li>
-        <li class="treeview">
+                @endif
+                <li class="treeview">
             <a href="/admin/pdf">
                 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                 <span>Договор</span>
@@ -332,20 +337,23 @@
             </li>
         @endif
     @endif
-    @if(Auth::user()->user_id != \App\Models\Users::Accountant)
-        <li class="treeview">
-            <a href="/admin/operation">
-                <i class="fa fa-list-ul"></i>
-                <span>Счет</span>
-            </a>
-        </li>
-    @endif
-    <li class="treeview">
-        <a href="/admin/structure">
-            <i class="fa fa-sitemap"></i>
-            <span>Структура</span>
-        </a>
-    </li>
+        @if(Auth::user()->is_activated)
+            @if(Auth::user()->user_id != \App\Models\Users::Accountant)
+                <li class="treeview">
+                    <a href="/admin/operation">
+                        <i class="fa fa-list-ul"></i>
+                        <span>Счет</span>
+                    </a>
+                </li>
+            @endif
+            <li class="treeview">
+                <a href="/admin/structure">
+                    <i class="fa fa-sitemap"></i>
+                    <span>Структура</span>
+                </a>
+            </li>
+        @endif
+
     {{-- <li class="treeview">
          <a href="/admin/binar/config">
              <i class="fa fa-sitemap"></i>
@@ -374,7 +382,8 @@
                     </a>
                 </li>
         @endif--}}
-        <li class="treeview">
+            @if(Auth::user()->is_activated)
+            <li class="treeview">
             <a href="/admin/request/send">
                 <i class="fa fa-money"></i>
                 <span>Снятие денег</span>
@@ -386,6 +395,7 @@
                 <span>Отправить деньги</span>
             </a>
         </li>
+                @endif
     @endif
     <li class="treeview">
         <a href="/admin/password">

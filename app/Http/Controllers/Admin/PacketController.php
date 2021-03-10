@@ -164,6 +164,7 @@ class PacketController extends Controller
             $hasPassivePacket = UserPacket::whereIn('packet_id', Packet::actualPassivePackets())
                 ->where(['user_id' => Auth::user()->user_id])->count();
             if ($hasPassivePacket) {
+
                 $result['message'] = 'Вы можете приобрести пассивный пакет только один раз!!!';
                 $result['status'] = false;
                 return response()->json($result);
@@ -340,7 +341,7 @@ class PacketController extends Controller
         }
 
         if (in_array($packet->packet_id, [Packet::GAPTechno, Packet::GAPAuto, Packet::GAPHome]) && empty($userPackets)) {
-            $result['message'] = 'Для получение пакета ' . $packet->packet_name_ru . ', необходимо иметь один из пакетов CLASSIC, PREMIUM, ELITE, VIP.';
+            $result['message'] = 'Для получение пакета ' . $packet->packet_name_ru . ', необходимо иметь один из пакетов CLASSIC, PREMIUM, VIP.';
             $result['status'] = false;
             return response()->json($result);
         }
