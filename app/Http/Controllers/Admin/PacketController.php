@@ -161,7 +161,8 @@ class PacketController extends Controller
         }
 
         if (in_array($packet->packet_id, Packet::actualPassivePackets())) {
-            $hasPassivePacket = UserPacket::whereIn('packet_id', Packet::actualPassivePackets())->count();
+            $hasPassivePacket = UserPacket::whereIn('packet_id', Packet::actualPassivePackets())
+                ->where(['user_id' => Auth::user()->user_id])->count();
             if ($hasPassivePacket) {
                 $result['message'] = 'Вы можете приобрести пассивный пакет только один раз!!!';
                 $result['status'] = false;
@@ -270,7 +271,8 @@ class PacketController extends Controller
         $packet_old_price = 0;
 
         if (in_array($packet->packet_id, Packet::actualPassivePackets())) {
-            $hasPassivePacket = UserPacket::whereIn('packet_id', Packet::actualPassivePackets())->count();
+            $hasPassivePacket = UserPacket::whereIn('packet_id', Packet::actualPassivePackets())
+                ->where(['user_id' => Auth::user()->user_id])->count();
             if ($hasPassivePacket) {
                 $result['message'] = 'Вы можете приобрести пассивный пакет только один раз!!!';
                 $result['status'] = false;
