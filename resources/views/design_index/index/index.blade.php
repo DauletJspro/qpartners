@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Session;
                 <div class="col-xs-12">
                     <div class="banner-frame toppadding-zero">
                         <div class="banner-5 white wow fadeInLeft" data-wow-delay="0.4s">
-                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/NewResource/img-1.png'); background-size: cover; background-position: center;"></div>
+                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/NewResource/img-1.jpg'); background-size: cover; background-position: center;"></div>
                             <div class="holder">
                                 <div class="texts" style=" font-family: adineue PRO KZ Bold;color:#000;">
                                     <span class="mb-0" style="font-size:44px;font-weight:bold;">МОЙ ДОМ</span>
