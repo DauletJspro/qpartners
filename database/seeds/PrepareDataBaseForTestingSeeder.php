@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class PrepareDataBaseForTestingSeeder extends Seeder
@@ -31,6 +32,8 @@ class PrepareDataBaseForTestingSeeder extends Seeder
             $user_packet->is_active = false;
             $user_packet->save();
         }
+
+        DB::table('user_operation')->truncate();
 
 //        $passiveUsersArray = [
 //            'Iskak888' => \App\Models\Packet::BASPANA,
