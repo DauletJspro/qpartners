@@ -25,6 +25,13 @@ class PrepareDataBaseForTestingSeeder extends Seeder
             $user->save();
         }
 
+        $userPackets = \App\Models\UserPacket::where(['is_active' => true])->get();
+
+        foreach ($userPackets as $user_packet) {
+            $user_packet->is_active = false;
+            $user_packet->save();
+        }
+
 //        $passiveUsersArray = [
 //            'Iskak888' => \App\Models\Packet::BASPANA,
 //            'Mehrinisa888' => \App\Models\Packet::BASPANA,
