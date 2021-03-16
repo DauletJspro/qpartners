@@ -35,6 +35,9 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                 <div class="col-xs-12 col-sm-6 text-right">
                     <ul class="mt-top-list">
                         <li class="hidden-xs">
+                            <a href="/forlife/index">ForLife</a>
+                        </li>
+                        <li class="hidden-xs">
                             <a href="{{route('shop.show')}}">Магазин</a>
                         </li>
                         <li class="hidden-xs">
@@ -63,6 +66,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                     @else
                                         <a href="/admin/index">Личный кабинет</a>
                                     @endif
+
                                 </div>
                             </div>
                         </li>
@@ -81,7 +85,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                     <?php $totalPrice = 0;?>
                     <?php $total = 0;?>
                     @if(Auth::user())
-                    <?php $items = \App\Models\UserBasket::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->user_id])->get(); ?>
+                        <?php $items = \App\Models\UserBasket::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->user_id])->get(); ?>
                         <?php foreach ($items as $item): ?>
                         <?php $total = (\App\Models\Product::where(['product_id' => $item->product_id])->first()); ?>
                         <?php $totalPrice += $total ? $total->product_price : 0; ?>
@@ -118,7 +122,22 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                     </ul>
                                 </div>
                             </li>
-                            <li class="drop">
+                            <li>
+                                <a class="drop-link" href="">ПРОДУКЦИЯ<i class="fa fa-angle-down"
+                                                                         aria-hidden="true"></i></a>
+                                <div class="s-drop">
+                                    <ul>
+                                        <li><a href="/shop/1">ЭЛИКСИРЫ</a></li>
+                                        <li><a href="/shop/2">ГЕЛИ</a></li>
+                                        <li><a href="/shop/3">СПРЕИ</a></li>
+                                        <li><a href="/shop/4">КРЕМА</a></li>
+                                        <li><a href="/shop/5">ДЕТОКС</a></li>
+                                        <li><a href="/shop/6">МЫЛО</a></li>
+                                        <li><a href="/shop/7">ТВЕРДЫЙ ШАМПУНЬ</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        <!--<li class="drop">
                                 <a href="#">ПРОДУКЦИЯ<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                 <div class="mt-dropmenu text-left">
                                     <div class="mt-frame">
@@ -126,54 +145,46 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                             <div class="row">
                                                 <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
                                                     <?php foreach($categories as $category): ?>
-                                                    <div class="mt-col-3">
-                                                        <div class="sub-dropcont">
-                                                            <strong class="title"><a href="product-grid-view.html"
-                                                                                     class="mt-subopener">{{$category->name}}</a></strong>
+                                <div class="mt-col-3">
+                                    <div class="sub-dropcont">
+                                        <strong class="title"><a href="product-grid-view.html"
+                                                                 class="mt-subopener">{{$category->name}}</a></strong>
                                                             <div class="sub-drop">
                                                                 <?php $products = \App\Models\Product::where(['category_id' => $category->id])->get(); ?>
-                                                                @foreach($products as $product)
-                                                                    <ul>
-                                                                        <li><a href="/product/{{$product->product_id}}">
-                                                                                {{ $product->product_name_ru}}</a></li>
-                                                                    </ul>
-                                                                @endforeach
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <?php  endforeach; ?>
-                                                </div>
-                                                <div class="col-4 col-sm-4 col-md-4 xol-lg-4 col-xl-4 ">
-                                                    <div class="mt-col-3 promo">
-                                                        <div class="mt-promobox" style="position: relative;">
-                                                            <a href="register"><img
-                                                                        src="/new_design/images/program_banner.png"
-                                                                        alt="promo banner"
-                                                                        class="img-responsive">
-                                                                <div style="position: absolute; bottom: 8px;right: 16px;">
-                                                                    <a
-                                                                            href="register"
-                                                                            class="btn btn-warning">Регистрация</a>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- mt f box end here -->
-                                    </div>
-                                    <!-- mt frame end here -->
                                 </div>
-                                <span class="mt-mdropover"></span>
-                            </li>
+                            </div>
+                        </div>
+<?php  endforeach; ?>
+                                </div>
+                                <div class="col-4 col-sm-4 col-md-4 xol-lg-4 col-xl-4 ">
+                                    <div class="mt-col-3 promo">
+                                        <div class="mt-promobox" style="position: relative;">
+                                            <a href="register"><img
+                                                        src="/new_design/images/program_banner.png"
+                                                        alt="promo banner"
+                                                        class="img-responsive">
+                                                <div style="position: absolute; bottom: 8px;right: 16px;">
+                                                    <a
+                                                            href="register"
+                                                            class="btn btn-warning">Регистрация</a>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="mt-mdropover"></span>
+            </li>-->
                             <li>
                                 <a class="drop-link" href="">ПРОГРАММЫ<i class="fa fa-angle-down"
                                                                          aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
                                         <li><a href="/partner-program">Партнерская программа</a></li>
-                                        <li><a href="{{route('get.social')}}">Социальная программа</a></li>
+                                        <li><a href="/social-program">Социальная программа</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -188,14 +199,14 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                     </ul>
                                 </div>
                             </li>
+
                             <li>
                                 <a class="drop-link" href="homepage1.html">КОНТАКТЫ<i class="fa fa-angle-down"
                                                                                       aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
                                         <li><a href="{{route('contact.show')}}">Головной офис</a></li>
-                                        <li><a
-                                                    href="{{route('representative.show')}}">Представители</a></li>
+                                        <li><a href="{{route('representative.show')}}">Представители</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -205,9 +216,11 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                             <li class="hide_nav_li">
                                 <a class="" href="{{ route('basket.show') }}">Корзина</a>
                             </li>
+
                             <li class="hide_nav_li">
                                 <a class="" href="{{ route('favorite.showUserItem') }}">Избранные</a>
                             </li>
+
                             <li class="hide_nav_li nav_li_lang">
                                 <a href="{{\App\Http\Helpers::setSessionLang('kz',$request)}}">
                                     KZ
@@ -219,6 +232,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                     EN
                                 </a>
                             </li>
+
                         </ul>
                     </nav>
                 </div>
@@ -227,6 +241,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
     </div>
     <span class="mt-side-over"></span>
 </header>
+
 @section('js')
 @endsection
 <style>
@@ -235,10 +250,12 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
         padding: 16px;
         border: none;
     }
+
     .dropdown {
         position: relative;
         display: inline-block;
     }
+
     .dropdown-content {
         display: none;
         position: absolute;
@@ -246,16 +263,20 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
     }
+
     .dropdown-content a {
         color: black;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
     }
+
     .dropdown-content a:hover {
         background-color: #ddd;
     }
+
     .dropdown:hover .dropdown-content {
         display: block;
     }
+
 </style>

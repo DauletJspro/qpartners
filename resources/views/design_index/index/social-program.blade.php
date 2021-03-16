@@ -85,24 +85,24 @@
         <section class="mt-section-2">
             <div class="container" style="margin-top: 0;padding-top: 70px;">
                 <div class="row row-1 text-center" style="align-items:center;">
-                    <div class="col-sm-6 col-md-6 col-lg-4 col-lg-offset-2 col-xl-3 col-xs-6" style="text-align:left;">
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-lg-offset-2 col-xl-3 col-xs-12" style="text-align:left;">
                         <h2 style="font-family: 'adineue PRO KZ Bold';font-size: xxx-large;color: #000;margin-bottom:0px;">СУММА ЗАЙМА</h2>
                         <h2 style="font-family: 'adineue PRO KZ Bold';font-size: xxx-large;color: #000;margin-top:0px;"> ДО <span style="color:#f00;"> 9 000 000 </span>  тг.</h2>
                         <h5 style="font-family: 'Montserrat';font-size:large;color: #000;text-align:left; margin:28px 0px 18px 0px;">Мы предлагаем уникальные программы по приобретению жилья автомобилья в рассрочку.</h5>
                         <h5 style="font-family: 'Montserrat';font-size:large;color: #000;text-align:left;">Данная программа не имеет аналогов на рынке.</h5>
                         <div style="margin:20px 0 20px 0">
-                            <a class="download-marketing" href="/presentation/marketing_plan.pdf" target="_blank">
-                                СКАЧАТЬ МАРКЕТИНГ
+                            <a class="download-marketing" href="/presentation/Презент Актив.pdf" target="_blank">
+                                СКАЧАТЬ ПРОГРАММУ
                                 <span>PDF</span>
                             </a>
                         </div>
-                        <a class="download-marketing" href="/presentation/marketing_plan.pdf" target="_blank">
-                            СКАЧАТЬ МАРКЕТИНГ
-                            <span>PDF</span>
+                        <a class="download-marketing" href="https://youtu.be/cbMPm_caz3c" target="_blank">
+                            ПОСМОТРЕТЬ
+                            <span>MP4</span>
                         </a>
 
                     </div>
-                    <div class="col-sm-6 col-md-6 col-lg-4  col-xl-3 col-xs-6">
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xs-12">
                         <div class=" text-center">
                             <img class="rounded-circle" src="/new_design/images/NewResource/5.png" alt="">
                         </div>
@@ -141,7 +141,7 @@
 
                         <div class="packet-body">
                             <div class=" text-center">
-                                <svg fill="none" class="rubicons clipboard-check" xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 24 24" stroke="red" stroke-width="1.5">
+                                <svg fill="none" class="rubicons clipboard-check" xmlns="http://www.w3.org/2000/svg" width="104" height="104"" viewBox="0 0 24 24" stroke="red" stroke-width="1.5">
                                 <path d="M9.667 13.389l1.5 1.5L15 10.667" stroke-linecap="round"></path>
                                 <path d="M15.625 4H19v17H5V4h3.375" stroke-linecap="round"></path>
                                 <path d="M15 3H9v3h6V3z" stroke-linecap="round"></path>
@@ -193,7 +193,7 @@
                             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
                                 <div class="packet-body">
                                     <div class="my-img-circle text-center">
-                                        <img class="rounded-circle" src="/new_design/images/NewResource/6.png" alt="">
+                                        <img style="padding: 30px;" class="rounded-circle" src="/new_design/images/NewResource/6.png" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -220,7 +220,7 @@
                             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
                                 <div class="packet-body">
                                     <div class="my-img-circle text-center">
-                                        <img class="rounded-circle" src="/new_design/images/NewResource/7.png" alt="">
+                                        <img style="padding: 30px;" class="rounded-circle" src="/new_design/images/NewResource/7.png" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -247,7 +247,7 @@
                             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
                                 <div class="packet-body">
                                     <div class="my-img-circle text-center">
-                                        <img class="rounded-circle" src="/new_design/images/NewResource/8.png" alt="">
+                                        <img style="padding: 30px;" class="rounded-circle" src="/new_design/images/NewResource/8.png" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -417,7 +417,7 @@
                         <article>
                             <div class="mid clearfix">
                                 <div id="counter">
-                                    <div data-num="5091" class="number">5091</div>
+                                    <div data-num="110" class="number">110</div>
                                     <div class="text-st">УЧАСТНИКОВ <span style="color: #ff0000;"> СОЦИАЛЬНОЙ ПРОГРАММЫ</span></div>
                                 </div>
                             </div>
@@ -428,7 +428,7 @@
                         <article>
                             <div class="mid clearfix">
                                 <div id="counter">
-                                    <div data-num="254" class="number">254</div>
+                                    <div data-num="57" class="number">57</div>
                                     <div class="text-st">УЧАСТНИКАМ<span style="color: #ff0000;"> ВЫДАНО ЖИЛЬЕ</span></div>
                                 </div>
                             </div>
@@ -439,7 +439,7 @@
                         <article>
                             <div class="mid clearfix">
                                 <div id="counter">
-                                    <div data-num="572" class="number">572</div>
+                                    <div data-num="25" class="number">25</div>
                                     <div class="text-st">УЧАСТНИКАМ<span style="color: #ff0000;"> ВЫДАН АВТОМОБИЛЬ</span></div>
                                 </div>
                             </div>

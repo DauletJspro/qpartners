@@ -12,16 +12,16 @@
         window.jssor_1_slider_init = function() {
 
             var jssor_1_options = {
-              $AutoPlay: 1,
-              $SlideWidth: 720,
-              $ArrowNavigatorOptions: {
-                $Class: $JssorArrowNavigator$
-              },
-              $BulletNavigatorOptions: {
-                $Class: $JssorBulletNavigator$,
-                $SpacingX: 16,
-                $SpacingY: 16
-              }
+                $AutoPlay: 1,
+                $SlideWidth: 720,
+                $ArrowNavigatorOptions: {
+                    $Class: $JssorArrowNavigator$
+                },
+                $BulletNavigatorOptions: {
+                    $Class: $JssorBulletNavigator$,
+                    $SpacingX: 16,
+                    $SpacingY: 16
+                }
             };
 
             var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
@@ -71,51 +71,55 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-image: url('/new_design/images/Partner/1.png');
+            background-color: #00BDE7;
             margin-left: auto;
             margin-right: auto;
             position: relative;
         ">
-             <div class="container">
-                 <div class="row">
-                     <div class="col-md-6" style="display:inline-block;">
-                         <div style="position:absolute;padding-top: 18%;left:5%; min-height:320px;">
-                         <iframe width="560" height="315" src="https://www.youtube.com/embed/YXdlHaZtQxw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                          </div> 
-                     </div>  
-                     <div class="col-md-6" style="display:inline-block;">   
-                         <div class="text-center" style="padding-top: 23%; width:320px; min-height:180px; margin:auto;">
-                                <form method="POST" action="http://localhost/faq/opportunity-faq-store" accept-charset="UTF-8" class="contact-form"><input name="_token" type="hidden" value="AFgCPHMDQTZEDbRvBvIjtUXlCrIGlXWNiVVQVX32">
-                                    <input name="_token" type="hidden" value="AFgCPHMDQTZEDbRvBvIjtUXlCrIGlXWNiVVQVX32">
-                                    <fieldset class="have-a-question-fieldset">
-                                        <input type="text" required="" name="user_name" class="form-control" placeholder="Имя">
-                                        <input type="email" required="" name="user_email" class="form-control" placeholder="Фамилия">
-                                        <input type="text" required="" name="user_phone" class="form-control" placeholder="Номер телефона">
-                                        <button type="submit" class="float-left" style="padding:6px 36px; font-size:18px; background:#000;color:#fff; border:0;border-radius:5px;margin-top:10px;">
-                                            Стать Партнером
-                                        </button>
-                                        <button href="#" style="padding:6px 30px; background:#000;color:#fff; font-size:18px; border:0;border-radius:5px;margin-top:10px;" class="float-right">
-                                            Войти
-                                        </button>
-                                    </fieldset>
-                                </form>
-                         </div>
-                      </div>
-                 </div> 
-             </div>         
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div style="padding-top: 18%; min-height:320px;">
+                            <div class="thumb-wrap">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/KH2ME2eialg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="display:inline-block;">
+                        <div class="text-center" style="padding-top: 23%; width:320px; min-height:180px; margin:auto;">
+                            <form method="POST" action="http://localhost/faq/opportunity-faq-store" accept-charset="UTF-8" class="contact-form"><input name="_token" type="hidden" value="AFgCPHMDQTZEDbRvBvIjtUXlCrIGlXWNiVVQVX32">
+                                <input name="_token" type="hidden" value="AFgCPHMDQTZEDbRvBvIjtUXlCrIGlXWNiVVQVX32">
+                                <fieldset class="have-a-question-fieldset">
+                                    <input type="text" required="" name="user_name" class="form-control" placeholder="Имя">
+                                    <input type="email" required="" name="user_email" class="form-control" placeholder="Фамилия">
+                                    <input type="text" required="" name="user_phone" class="form-control" placeholder="Номер телефона">
+                                    <button type="submit" class="float-left" style="padding:6px 36px; font-size:18px; background:#000;color:#fff; border:0;border-radius:5px;margin-top:10px;">
+                                        Стать Партнером
+                                    </button>
+                                    <button href="#" style="padding:6px 30px; background:#000;color:#fff; font-size:18px; border:0;border-radius:5px;margin-top:10px;" class="float-right">
+                                        Войти
+                                    </button>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <section class="mt-section-1">
             <div class="container" style="margin-top: 0;padding:50px 10px;">
                 <div class="row row-1 text-center">
-                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xs-12" style="margin-bottom:15px;">
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xs-12" style="margin-bottom:15px;">
                         <p style="font-family:'Montserrat';font-size:18px;color:#000;margin:0;padding: 0 63px;"> ПОСТРОЙ СВОЙ БИЗНЕС С ДОХОДОМ БОЛЕЕ 44 000 000 ТЕНГЕ</p>
-                            <div class="packet-body">
-                                <div class="my-img-circle text-center" style="padding: 0 60px;">
-                                <iframe width="470" height="315" src="https://www.youtube.com/embed/YXdlHaZtQxw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="packet-body">
+                            <div class="my-img-circle text-center" style="padding: 0 60px;">
+                                <div class="thumb-wrap">
+                                    <iframe width="470" height="315" src="https://www.youtube.com/embed/x_GhXMEju0k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                             </div>
-                            <div class="row" style="padding:0 80px;">
-                                <a><div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xs-12 but-part" style="margin-top: 18px;
+                        </div>
+                        <div class="row" style="padding:0 80px;">
+                            <a><div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xs-12 but-part" style="margin-top: 18px;
     padding: 10px 20px;
     font-size: 13px;
     color: #000;
@@ -128,7 +132,7 @@
     border-radius: 10px;">
                                     СТАТЬ ПАРТНЕРОМ
                                 </div></a>
-                                <a href="/presentation/QPClub.pdf" target="_blank"><div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xs-12" style="margin-top: 18px;
+                            <a href="/presentation/QPClub.pdf" target="_blank"><div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xs-12" style="margin-top: 18px;
     padding:10px 20px;
     font-size: 13px;
     color: #000;
@@ -141,17 +145,19 @@
     border-radius: 10px;">
                                     СКАЧАТЬ ПРЕЗЕНТАЦИЮ
                                 </div></a>
-                            </div>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xs-12" style="margin-bottom:15px;">
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xs-12" style="margin-bottom:15px;">
                         <p style="font-family:'Montserrat';font-size:18px;color:#000;margin:0;padding: 0 48px;">НАТУРАЛЬНЫЕ СРЕДСТВА ДЛЯ КРЕПКОГО ЗДОРОВЬЯ</p>
-                            <div class="packet-body">
-                                <div class=" text-center" style="padding: 0 60px;">
-                                <iframe width="470" height="315" src="https://www.youtube.com/embed/vrA0RLhLo-8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="packet-body">
+                            <div class=" text-center" style="padding: 0 60px;">
+                                <div class="thumb-wrap">
+                                    <iframe width="470" height="315" class="responsive-iframe" src="https://www.youtube.com/embed/vrA0RLhLo-8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                             </div>
-                            <div class="row" style="padding:0 80px;">
-                                <a><div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xs-12 but-part" style="margin-top: 18px;
+                        </div>
+                        <div class="row" style="padding:0 80px;">
+                            <a><div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xs-12 but-part" style="margin-top: 18px;
     padding: 10px 20px;
     font-size: 13px;
     color: #000;
@@ -164,7 +170,7 @@
     border-radius: 10px;">
                                     СТАТЬ ПАРТНЕРОМ
                                 </div></a>
-                                <a href="/presentation/Catalog.pdf" target="_blank"><div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xs-12" style="margin-top: 18px;
+                            <a href="/presentation/Catalog.pdf" target="_blank"><div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xs-12" style="margin-top: 18px;
     padding:10px 20px;
     font-size: 13px;
     color: #000;
@@ -177,219 +183,219 @@
     border-radius: 10px;">
                                     СКАЧАТЬ ПРЕЗЕНТАЦИЮ
                                 </div></a>
-                            </div>
                         </div>
-                 </div>
-             </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <section class="mt-section-2">
             <div class="container" style="margin-top: 0;padding-top: 70px;">
                 <div class="row row-1 text-center" style="align-items:center;">
-                    <div class="col-sm-6 col-md-6 col-lg-4 col-lg-offset-2 col-xl-3 col-xs-6" style="text-align:left;">
-                       <h2 style="font-family: 'adineue PRO KZ Bold';font-size: xx-large;color: #000;margin-bottom:0px;">МАРКЕТИНГ ПЛАН</h2>
-                       <h2 style="font-family: 'adineue PRO KZ Bold';font-size: xx-large;color: #000;margin-top:0px;"> С ДОХОДНОСТЬЮ 80% </h2>
-                       <h5 style="font-family: 'Montserrat';font-size:large;color: #000;text-align:left; margin:28px 0px 18px 0px;">Мы предлагаем маркетинг план, который обеспечит Вам высокий и стабильный доход.</h5>
-                       <h5 style="font-family: 'Montserrat';font-size:large;color: #000;text-align:left;">80% дохода от товарооборота, компания отдает в сеть.</h5>
-                       <div style="margin:20px 0 20px 0">  
-                            <a class="download-marketing" href="/presentation/marketing_plan.pdf" target="_blank">
-                                СКАЧАТЬ МАРКЕТИНГ
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-lg-offset-2 col-xl-3 col-xs-12" style="text-align:left;">
+                        <h2 style="font-family: 'adineue PRO KZ Bold';font-size: xx-large;color: #000;margin-bottom:0px;">МАРКЕТИНГ ПЛАН</h2>
+                        <h2 style="font-family: 'adineue PRO KZ Bold';font-size: xx-large;color: #000;margin-top:0px;"> С ДОХОДНОСТЬЮ 80% </h2>
+                        <h5 style="font-family: 'Montserrat';font-size:large;color: #000;text-align:left; margin:28px 0px 18px 0px;">Мы предлагаем маркетинг план, который обеспечит Вам высокий и стабильный доход.</h5>
+                        <h5 style="font-family: 'Montserrat';font-size:large;color: #000;text-align:left;">80% дохода от товарооборота, компания отдает в сеть.</h5>
+                        <div style="margin:20px 0 20px 0">
+                            <a class="download-marketing" href="/presentation/QPClub.pdf" target="_blank">
+                                СКАЧАТЬ ПРОГРАММУ
                                 <span>PDF</span>
                             </a>
-                            </div>
-                            <a class="download-marketing" href="/presentation/marketing_plan.pdf" target="_blank">
-                                СКАЧАТЬ МАРКЕТИНГ
-                                <span>PDF</span>
-                            </a>
-                            
-                    </div>
-                        <div class="col-sm-6 col-md-6 col-lg-4  col-xl-3 col-xs-6">
-                                <div class=" text-center">
-                                    <img class="rounded-circle" src="/new_design/images/Partner/4.png" alt="">
-                               </div>
                         </div>
-                 </div>
-             </div>
+                        <a class="download-marketing" href="https://youtu.be/x_GhXMEju0k" target="_blank">
+                            ПОСМОТРЕТЬ
+                            <span>MP4</span>
+                        </a>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xs-12">
+                        <div class=" text-center">
+                            <img class="rounded-circle" src="/new_design/images/Partner/4.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <section class="mt-section-2" style="background:#fff;">
-            <div class="container" style="margin-top: 15px;padding:75px 0;border-radius:10px;background:#e1e0df;">
+            <div class="container" style="margin-top: 15px;padding:75px 0;border-radius:10px;">
                 <div class="row row-1 text-center">
                     <div class="table-responsive">
-                         <div class="col-lg-12 row">
-                             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                               <div class="packet-body">
-                                     <h1 style="font-family: 'adineue PRO KZ Bold';font-size:x-large;color: #000;"><span style="color:#f00;">СОЦИАЛЬНЫЕ</span> ПАКЕТЫ</h1>
-                               </div>
+                        <div class="col-lg-12 row">
+                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                <div class="packet-body">
+                                    <h1 style="font-family: 'adineue PRO KZ Bold';font-size:x-large;color: #000;padding-left:10px;"><span style="color:#f00;">ПАРТНЕРСКИЕ</span> ПАКЕТЫ</h1>
+                                </div>
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                                 <p class="bold-tx pt-80"> Инструмент </p>
+                                <p class="bold-tx pt-110"> Инструмент </p>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                                <p class="bold-tx pt-80">  Продукция </p>
+                                <p class="bold-tx pt-110">  Продукция </p>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                                <p class="bold-tx pt-80">  Ур.дохода </p>
+                                <p class="bold-tx pt-110">  Ур.дохода </p>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                                <p class="bold-tx pt-80">  Макс.доход </p>
+                                <p class="bold-tx pt-110">  Макс.доход </p>
                             </div>
-                         </div>    
+                        </div>
 
                         <div class="col-lg-12 row main-tx">
                             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                                  <div class="packet-body">
-                                      <div class="my-img-circle text-center">
-                                          <img class="rounded-circle" src="/new_design/images/Partner/p-1.png" alt="">
-                                      </div>
-                                  </div>
+                                <div class="packet-body">
+                                    <div class="my-img-circle text-center">
+                                        <img class="rounded-circle" src="/new_design/images/Partner/p-1.png" alt="">
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                                 <p class="pt-80"> Маркетинг план каталог продукций </p>
+                                <p class="pt-110"> Маркетинг план, Каталог продукций </p>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                                <p class="pt-80"> 6 штук </p>
+                                <p class="pt-110"> 6 штук </p>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                                <p class="pt-80"> до 4 уровня </p>
+                                <p class="pt-110"> до 4 уровня </p>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                                <p class="pt-80">  100 000 тг/мес. </p>
+                                <p class="pt-110">  100 000 тг/мес. </p>
                             </div>
                             <div class="col-lg-12">
                                 <a href="product-detail.html" class="btn-shop">
                                     <span style="color:#fff!important;background:#ca313f; border-radius:10px; padding:3px 40px;font-weight:300;font-family: 'adineue PRO KZ Bold';float:right;">купить пакет</span>
                                 </a>
                             </div>
-                       </div>
- 
-                      <div class="col-lg-12 row main-tx">
-                          <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                        </div>
+
+                        <div class="col-lg-12 row main-tx">
+                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
                                 <div class="packet-body">
                                     <div class="my-img-circle text-center">
                                         <img class="rounded-circle" src="/new_design/images/Partner/p-2.png" alt="">
                                     </div>
                                 </div>
-                          </div>
-                          <div style="" class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                                 <p class="pt-80"> Маркетинг план каталог продукций </p>
+                            </div>
+                            <div style="" class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                <p class="pt-110"> Маркетинг план, Каталог продукций </p>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                                <p class="pt-80"> 12 штук </p>
+                                <p class="pt-110"> 12 штук </p>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                                <p class="pt-80">  до 4 уровня </p>
+                                <p class="pt-110">  до 4 уровня </p>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                                <p class="pt-80">  250 000 тг/мес. </p>
+                                <p class="pt-110">  250 000 тг/мес. </p>
                             </div>
                             <div class="col-lg-12">
                                 <a href="product-detail.html" class="btn-shop">
                                     <span style="color:#fff!important;background:#04ad5d; border-radius:10px; padding:3px 40px;font-weight:300;font-family: 'adineue PRO KZ Bold';float:right;">купить пакет</span>
                                 </a>
                             </div>
-                      </div>
+                        </div>
 
-                      <div class="col-lg-12 row main-tx">
-                          <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-12 row main-tx">
+                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
                                 <div class="packet-body">
                                     <div class="my-img-circle text-center">
                                         <img class="rounded-circle" src="/new_design/images/Partner/p-3.png" alt="">
                                     </div>
                                 </div>
-                          </div>
-                          <div style="" class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                                 <p class="pt-80"> Маркетинг план каталог продукций </p>
+                            </div>
+                            <div style="" class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                                <p class="pt-110"> Маркетинг план, Каталог продукций </p>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                                <p class="pt-80"> 18 штук </p>
+                                <p class="pt-110"> 18 штук </p>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                                <p class="pt-80">  до 4 уровня </p>
+                                <p class="pt-110">  до 4 уровня </p>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                                <p class="pt-80">  неогранично </p>
+                                <p class="pt-110">  неогранично </p>
                             </div>
                             <div class="col-lg-12">
                                 <a href="product-detail.html" class="btn-shop">
                                     <span style="color:#fff!important;background:#eca000; border-radius:10px; padding:3px 40px;font-weight:300;font-family: 'adineue PRO KZ Bold';float:right;">купить пакет</span>
                                 </a>
                             </div>
-                      </div>
+                        </div>
                     </div>
-                 </div>
-             </div>
+                </div>
+            </div>
         </section>
 
-     
-    <style>
-        /*jssor slider loading skin spin css*/
-        .jssorl-009-spin img {
-            animation-name: jssorl-009-spin;
-            animation-duration: 1.6s;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
-        }
 
-        @keyframes jssorl-009-spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+        <style>
+            /*jssor slider loading skin spin css*/
+            .jssorl-009-spin img {
+                animation-name: jssorl-009-spin;
+                animation-duration: 1.6s;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+            }
 
-        /*jssor slider bullet skin 051 css*/
-        .jssorb051 .i {position:absolute;cursor:pointer;}
-        .jssorb051 .i .b {fill:#fff;fill-opacity:0.3;}
-        .jssorb051 .i:hover .b {fill-opacity:.7;}
-        .jssorb051 .iav .b {fill-opacity: 1;}
-        .jssorb051 .i.idn {opacity:.3;}
+            @keyframes jssorl-009-spin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
 
-        /*jssor slider arrow skin 051 css*/
-        .jssora051 {display:block;position:absolute;cursor:pointer;}
-        .jssora051 .a {fill:none;stroke:#fff;stroke-width:360;stroke-miterlimit:10;}
-        .jssora051:hover {opacity:.8;}
-        .jssora051.jssora051dn {opacity:.5;}
-        .jssora051.jssora051ds {opacity:.3;pointer-events:none;}
-    </style>
-    <section style="margin-top:60px;">
-    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1080px;height:380px;overflow:hidden;visibility:hidden;">
-        <!-- Loading Screen -->
-        <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-            <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg" />
-        </div>
-        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1080px;height:380px;overflow:hidden;">
-            <div>
-                <h4>ПОСТРОЙ СВОЙ ДОМ МЕЧТЫ</h4>
-                <img data-u="image"  src="/new_design/images/Partner/8.png" />
+            /*jssor slider bullet skin 051 css*/
+            .jssorb051 .i {position:absolute;cursor:pointer;}
+            .jssorb051 .i .b {fill:#fff;fill-opacity:0.3;}
+            .jssorb051 .i:hover .b {fill-opacity:.7;}
+            .jssorb051 .iav .b {fill-opacity: 1;}
+            .jssorb051 .i.idn {opacity:.3;}
+
+            /*jssor slider arrow skin 051 css*/
+            .jssora051 {display:block;position:absolute;cursor:pointer;}
+            .jssora051 .a {fill:none;stroke:#fff;stroke-width:360;stroke-miterlimit:10;}
+            .jssora051:hover {opacity:.8;}
+            .jssora051.jssora051dn {opacity:.5;}
+            .jssora051.jssora051ds {opacity:.3;pointer-events:none;}
+        </style>
+        <section style="margin-top:60px; background:#e1e0df; padding:60px 0px;">
+            <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1080px;height:380px;overflow:hidden;visibility:hidden;">
+                <!-- Loading Screen -->
+                <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg" />
+                </div>
+                <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1080px;height:380px;overflow:hidden;">
+                    <div>
+                        <h4>ПОСТРОЙ СВОЙ ДОМ МЕЧТЫ</h4>
+                        <img data-u="image"  src="/new_design/images/Partner/8.png" />
+                    </div>
+                    <div>
+                        <img data-u="image" src="/new_design/images/Partner/9.png" />
+                    </div>
+                    <div>
+                        <img data-u="image" src="/new_design/images/Partner/10.png" />
+                    </div>
+                </div><a data-scale="0" href="https://www.jssor.com" style="display:none;position:absolute;">animation</a>
+                <!-- Bullet Navigator -->
+                <div data-u="navigator" class="jssorb051" style="position:absolute;bottom:16px;right:16px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
+                    <div data-u="prototype" class="i" style="width:12px;height:12px;">
+                        <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                            <circle class="b" cx="8000" cy="8000" r="5800"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <!-- Arrow Navigator -->
+                <div data-u="arrowleft" class="jssora051" style="width:65px;height:65px;top:0px;left:35px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+                    <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                        <polyline class="a" points="11040,1920 4960,8000 11040,14080 "></polyline>
+                    </svg>
+                </div>
+                <div data-u="arrowright" class="jssora051" style="width:65px;height:65px;top:0px;right:35px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+                    <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                        <polyline class="a" points="4960,1920 11040,8000 4960,14080 "></polyline>
+                    </svg>
+                </div>
             </div>
-            <div>
-                <img data-u="image" src="/new_design/images/Partner/9.png" />
-            </div>
-            <div>
-                <img data-u="image" src="/new_design/images/Partner/10.png" />
-            </div>
-        </div><a data-scale="0" href="https://www.jssor.com" style="display:none;position:absolute;">animation</a>
-        <!-- Bullet Navigator -->
-        <div data-u="navigator" class="jssorb051" style="position:absolute;bottom:16px;right:16px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
-            <div data-u="prototype" class="i" style="width:12px;height:12px;">
-                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                    <circle class="b" cx="8000" cy="8000" r="5800"></circle>
-                </svg>
-            </div>
-        </div>
-        <!-- Arrow Navigator -->
-        <div data-u="arrowleft" class="jssora051" style="width:65px;height:65px;top:0px;left:35px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
-            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                <polyline class="a" points="11040,1920 4960,8000 11040,14080 "></polyline>
-            </svg>
-        </div>
-        <div data-u="arrowright" class="jssora051" style="width:65px;height:65px;top:0px;right:35px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
-            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                <polyline class="a" points="4960,1920 11040,8000 4960,14080 "></polyline>
-            </svg>
-        </div>
-    </div>
-    </section>
+        </section>
         <section class="row" style="padding-bottom: 25px;">
             <div class="container">
-            <div class="why-we-are-text" style="padding-top:40px;">
+                <div class="why-we-are-text" style="padding-top:40px;">
                     <h3>ИСТОРИИ <span style="font-weight:bold;"> УСПЕХА </span>НАШИХ<span style="font-weight:bold;"> ПАРТНЕРОВ </span></h3>
                 </div>
                 <div class="col-xs-12">
@@ -528,54 +534,54 @@
                     <h3>ПОЧЕМУ ВЫ ДОЛЖНЫ РАБОТАТЬ С НАМИ!</h3>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4 text-center"> 
-                         <article style="background:#fff;">
-                              <div class="mid clearfix">
+                    <div class="col-sm-4 text-center">
+                        <article style="background:#fff;">
+                            <div class="mid clearfix">
                                 <div id="counter">
                                     <img class="rounded-circle" src="/new_design/images/Partner/11.png" alt="">
                                     <div class="text-st">ВЫСОКОДОХОДНАЯ И УНИКАЛЬНАЯ МАРКЕТИНГ ПРОГРАММА</div>
                                 </div>
-                              </div>
-                          </article>
-                         </div>
-                         <div class="col-sm-4 text-center">
-                         <article style="background:#fff;">
-                              <div class="mid clearfix">
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-sm-4 text-center">
+                        <article style="background:#fff;">
+                            <div class="mid clearfix">
                                 <div id="counter">
                                     <img class="rounded-circle" src="/new_design/images/Partner/12.png" alt="">
                                     <div class="text-st">ОЗДОРОВИТЕЛЬНАЯ И НАТУРАЛЬНАЯ ПРОДУКЦИЯ</div>
                                 </div>
-                              </div>
-                          </article>
-                         </div>
-                         <div class="col-sm-4 text-center">
-                         <article style="background:#fff;">
-                              <div class="mid clearfix">
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-sm-4 text-center">
+                        <article style="background:#fff;">
+                            <div class="mid clearfix">
                                 <div id="counter">
-                                    <img class="rounded-circle" src="/new_design/images/Partner/13.png" alt=""> 
+                                    <img class="rounded-circle" src="/new_design/images/Partner/13.png" alt="">
                                     <div class="text-st">ЛУЧШИЕ УСЛОВИЯ ДЛЯ ПРИОБРЕТЕНИЕ АВТОМОБИЛЬЯ И ДОМА</div>
                                 </div>
-                              </div>
-                          </article>  
-                        </div>
-                        <div class="col-sm-6 text-center"> 
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-sm-6 text-center">
                         <a href="/presentation/Презент.pdf" target="_blank" href="/form" class="want-to-be-partner-box-a">
                             <div class="want-to-be-partner-box text-center">
-                                    СТАТЬ УЧАСТНИКОМ
+                                СТАТЬ УЧАСТНИКОМ
                             </div>
-                         </a>
-                        </div>
-                        <div href="/presentation/Презент.pdf" target="_blank" class="col-sm-6 text-center"> 
-                            <a href="/register" class="want-to-be-partner-box-a">
-                              <div class="want-to-be-partner-box text-center">
-                                    ПОДЕЛИТЬСЯ
-                              </div>
-                            </a>
-                        </div>
+                        </a>
+                    </div>
+                    <div href="/presentation/Презент.pdf" target="_blank" class="col-sm-6 text-center">
+                        <a href="/register" class="want-to-be-partner-box-a">
+                            <div class="want-to-be-partner-box text-center">
+                                ПОДЕЛИТЬСЯ
+                            </div>
+                        </a>
                     </div>
                 </div>
-                
-                
+            </div>
+
+
             </div>
         </section>
         <section class="" style="background: rgba(232, 232, 232, 0.5); padding-top: 50px; padding-bottom: 50px;">
@@ -715,7 +721,6 @@
         }
     </script>
 
-    
-       
-@endsection
 
+
+@endsection

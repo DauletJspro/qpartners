@@ -239,12 +239,13 @@ Route::group([
     Route::get('/pdf/baspana-plus', 'PdfController@generateBaspanaPlus')->name('pdf.generate.plus');
     Route::get('/pdf/tulpar', 'PdfController@generateTulpar')->name('pdf.generate.tulpar');
     Route::get('/pdf/tulpar-plus', 'PdfController@generateTulparPlus')->name('pdf.generate.tulpar.plus');
+    Route::get('/pdf/users', 'PdfController@getUser')->name('pdf.users');
+
 
 
 
 
     Route::get('basket', 'OnlineController@showBasket');
-
     Route::get('document', 'UserDocumentController@index');
     Route::get('document/{user_id}', 'UserDocumentController@index');
     Route::get('presentation', 'PresentationController@index');

@@ -12,11 +12,13 @@
 @section('content')
     <main id="mt-main">
         <!-- Mt Content Banner of the Page -->
-        <section class="mt-contact-banner">
+        <section class="mt-contact-banner"  style=" background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+             background-image: url('/new_design/images/NewResource/list.jpg');">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
-                        <h1>СПИСОК ПРЕДСТАВИТЕЛЕЙ</h1>
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
                             </ul>
@@ -125,4 +127,3 @@
         </div>
     </main>
 @endsection
-

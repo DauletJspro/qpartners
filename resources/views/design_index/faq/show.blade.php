@@ -12,15 +12,17 @@
 @section('content')
     <main id="mt-main">
         <!-- Mt Content Banner of the Page -->
-        <section class="mt-contact-banner" style="background-color: lightgrey;">
+        <section class="mt-contact-banner"  style=" background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+             background-image: url('/new_design/images/NewResource/answer.jpg');">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
-                        <h1>Вопросы и ответы</h1>
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
-{{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
-{{--                                <li>FAQ's</li>--}}
+                                {{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
+                                {{--                                <li>FAQ's</li>--}}
                             </ul>
                         </nav>
                     </div>
@@ -84,4 +86,3 @@
         </div>
     </main>
 @endsection
-

@@ -22,6 +22,10 @@
                            class="menu-tab @if($request->is_ban == '1') active-page @endif">Заблокированные
                             пользователи</a>
                     </h3>
+                    <h3 class="box-title box-title-second">
+                        <a href="/admin/pdf/users"
+                           class="menu-tab">Скачать списиок пользователей</a>
+                    </h3>
                     <div class="clear-float"></div>
                 </div>
                 <div>
