@@ -13,6 +13,7 @@ class PrepareDataBaseForTestingSeeder extends Seeder
      */
     public function run()
     {
+        ## Reset users balance and user packets
         $users = \App\Models\Users::whereNotNull('user_id')->get();
         foreach ($users as $user) {
             $user->user_money = 0;
@@ -33,35 +34,59 @@ class PrepareDataBaseForTestingSeeder extends Seeder
             $user_packet->save();
         }
 
+        ## clear user operation database
         DB::table('user_operation')->truncate();
 
-//        $passiveUsersArray = [
-//            'Iskak888' => \App\Models\Packet::BASPANA,
-//            'Mehrinisa888' => \App\Models\Packet::BASPANA,
-//            'sumbat7$' => \App\Models\Packet::BASPANA,
-//            'turgan$$$' => \App\Models\Packet::BASPANA,
-//            'Bagila888' => \App\Models\Packet::BASPANA,
-//            'Esenkul888' => \App\Models\Packet::BASPANA_PLUS,
-//            'balum888' => \App\Models\Packet::BASPANA_PLUS,
-//            'Bulak' => \App\Models\Packet::BASPANA_PLUS,
-//            'Mayira888' => \App\Models\Packet::BASPANA_PLUS,
-//            'Kenhetai888' => \App\Models\Packet::BASPANA_PLUS,
-//            'Nurbolat75' => \App\Models\Packet::TULPAR,
-//            'NazgulB' => \App\Models\Packet::TULPAR,
-//            'Ниетбаевна' => \App\Models\Packet::TULPAR_PLUS,
-//            'Moldagali888' => \App\Models\Packet::TULPAR_PLUS,
-//            'Nurlan888' => \App\Models\Packet::TULPAR_PLUS,
-//            'Dmitri888' => \App\Models\Packet::TULPAR_PLUS,
-//            'Mansia888' => \App\Models\Packet::QAMQOR,
-//            'Zhanaiym' => \App\Models\Packet::JAS_OTAU
-//
-//        ];
-//        $passiveUsers = \App\Models\Users::whereIn('login', [
-//            'Iskak888', 'Mehrinisa888', 'sumbat7$', 'turgan$$$', 'Bagila888', 'Esenkul888', 'balum888',
-//            'Bulak', 'Mayira888', 'Kenhetai888', 'Nurbolat75', 'NazgulB', 'Ниетбаевна', 'Moldagali888', 'Nurlan888',
-//            'Dmitri888', 'Mansia888', 'Zhanaiym'
-//        ])->get();
-//        var_dump(($passiveUsers));
+        $passiveUsersArray = [
+            'Iskak888' => \App\Models\Packet::BASPANA,
+            'Mehrinisa888' => \App\Models\Packet::BASPANA,
+            'sumbat7$' => \App\Models\Packet::BASPANA,
+            'turgan$$$' => \App\Models\Packet::BASPANA,
+            'Bagila888' => \App\Models\Packet::BASPANA,
+            'Esenkul888' => \App\Models\Packet::BASPANA_PLUS,
+            'balum888' => \App\Models\Packet::BASPANA_PLUS,
+            'bulak' => \App\Models\Packet::BASPANA_PLUS,
+            'Mayira888' => \App\Models\Packet::BASPANA_PLUS,
+            'Kenhetai888' => \App\Models\Packet::BASPANA_PLUS,
+            'Nurbolat75' => \App\Models\Packet::TULPAR,
+            'nazgulB' => \App\Models\Packet::TULPAR,
+            'Ниетбаевна' => \App\Models\Packet::TULPAR_PLUS,
+            'Moldagali888' => \App\Models\Packet::TULPAR_PLUS,
+            'Nurlan888' => \App\Models\Packet::TULPAR_PLUS,
+            'Dmitri888' => \App\Models\Packet::TULPAR_PLUS,
+            'Mansia888' => \App\Models\Packet::QAMQOR,
+            'Zhanaiym' => \App\Models\Packet::JAS_OTAU
+
+        ];
+        $passiveUsers = \App\Models\Users::whereIn('login', [
+            'Iskak888', 'Mehrinisa888', 'sumbat7$', 'turgan$$$', 'Bagila888', 'Esenkul888', 'balum888',
+            'bulak', 'Mayira888', 'Kenhetai888', 'Nurbolat75', 'nazgulB', 'Ниетбаевна', 'Moldagali888', 'Nurlan888',
+            'Dmitri888', 'Mansia888', 'Zhanaiym'
+        ])->get();
+
+
+        ## add new packets to passive users
+        foreach ($passiveUsers as $user) {
+            $packet_id = $passiveUsersArray[$user->login];
+            $packet = \App\Models\Packet::find($packet_id);
+            $userPacket = new \App\Models\UserPacket();
+            $userPacket->user_id = $user->user_id;
+            $userPacket->packet_id = $packet_id;
+            $userPacket->packet_price = $packet->packet_price;
+            $userPacket->created_at = date('Y-m-d H:i:s');
+            $userPacket->updated_at = date('Y-m-d H:i:s');
+            $userPacket->level = 1;
+            $userPacket->is_active = 0;
+            $userPacket->is_paid = 0;
+            $userPacket->is_portfolio = 0;
+            $userPacket->is_epay = 0;
+            $userPacket->user_packet_type = 'item';
+            $userPacket->packet_type = 1;
+            $userPacket->save();
+
+            $user->status_id = $packet->packet_status_id;
+            $user->save();
+        }
 
 
     }
