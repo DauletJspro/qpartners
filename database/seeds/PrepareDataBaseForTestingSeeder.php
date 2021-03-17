@@ -36,13 +36,18 @@ class PrepareDataBaseForTestingSeeder extends Seeder
 
         ## GAP TO GAPHome
 
-        $gapUserPackets = \App\Models\UserPacket::where('packet_id', \App\Models\Packet::GAP)->get();
+//        $gapUserPackets = \App\Models\UserPacket::where('packet_id', \App\Models\Packet::GAP)->get();
+//
+//        foreach ($gapUserPackets as $userPacket) {
+//            $userPacket->packet_id = \App\Models\Packet::GAPHome;
+//            $userPacket->save();
+//        }
 
-        foreach ($gapUserPackets as $userPacket) {
-            $userPacket->packet_id = \App\Models\Packet::GAPHome;
-            $userPacket->save();
+        $gapHomeUserPackets = \App\Models\UserPacket::where('packet_id', \App\Models\Packet::GAPHome)->get();
+        foreach ($gapHomeUserPackets as $gapHomeUserPacket) {
+            $gapHomeUserPacket->packet_price = 300;
+            $gapHomeUserPacket->save();
         }
-
 
         ## clear user operation database
 //        DB::table('user_operation')->truncate();
