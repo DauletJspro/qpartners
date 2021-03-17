@@ -70,7 +70,7 @@ class AddPassiveUserStatusSeeder extends Seeder
 
         \App\Models\UserStatus::create([
             'user_status_id' => \App\Models\UserStatus::BASPANA,
-            'user_status_name' => 'Baspana PLus',
+            'user_status_name' => 'Baspana',
             'user_status_money' => 0,
             'user_status_available_level' => 0,
             'sort_num' => 134,
@@ -82,7 +82,7 @@ class AddPassiveUserStatusSeeder extends Seeder
 
         \App\Models\UserStatus::create([
             'user_status_id' => \App\Models\UserStatus::TULPAR_PLUS,
-            'user_status_name' => 'Baspana PLus',
+            'user_status_name' => 'Tulpar Plus',
             'user_status_money' => 0,
             'user_status_available_level' => 0,
             'sort_num' => 135,
@@ -94,7 +94,7 @@ class AddPassiveUserStatusSeeder extends Seeder
 
         \App\Models\UserStatus::create([
             'user_status_id' => \App\Models\UserStatus::TULPAR,
-            'user_status_name' => 'Baspana PLus',
+            'user_status_name' => 'Tulpar',
             'user_status_money' => 0,
             'user_status_available_level' => 0,
             'sort_num' => 136,
