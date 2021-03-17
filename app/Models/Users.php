@@ -26,7 +26,8 @@ class Users extends Model implements AuthenticatableContract
         'qoldau_id',
         'qamqor_id',
         'jastar_id',
-        'jas_otau_id'
+        'jas_otau_id',
+        'personal_sv_balance'
         ];
 
     const ADMIN = 1;
