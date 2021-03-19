@@ -696,7 +696,7 @@ class PacketController extends Controller
         }
 
 
-        if ($isNotGap && $inviter->is_activated) {
+        if ($isNotGap) {
             $this->implementPacketThings($packet, $user, $userPacket, $give_bonus);
             $this->qualificationUp($packet, $user);
         }
@@ -935,20 +935,21 @@ class PacketController extends Controller
         $counter = 1;
 
         while ($parent) {
-            $parent->gv_balance = $parent->gv_balance + $final_price;
-
-            if ($parent->save()) {
-                $user_operation = new UserOperation();
-                $user_operation->operation_id = 1;
-                $user_operation->money = $final_price;
-                $user_operation->author_id = $user->user_id;
-                $user_operation->recipient_id = $parent->user_id;
-                $user_operation->operation_type_id = 11;
-                $user_operation->operation_comment = sprintf('Групповой объем в размере %s gv уровень - %s', $final_price, $counter);
-                $user_operation->save();
+            if ($parent->is_activated) {
+                $parent->gv_balance = $parent->gv_balance + $final_price;
+                if ($parent->save()) {
+                    $user_operation = new UserOperation();
+                    $user_operation->operation_id = 1;
+                    $user_operation->money = $final_price;
+                    $user_operation->author_id = $user->user_id;
+                    $user_operation->recipient_id = $parent->user_id;
+                    $user_operation->operation_type_id = 11;
+                    $user_operation->operation_comment = sprintf('Групповой объем в размере %s gv уровень - %s', $final_price, $counter);
+                    $user_operation->save();
+                }
+                $this->checkForPremium($parent->user_id);
             }
 
-            $this->checkForPremium($parent->user_id);
             $parent = Users::where(['user_id' => $parent->recommend_user_id])->where('is_activated', '=', true)->first();
 
             $counter++;
@@ -1084,7 +1085,7 @@ class PacketController extends Controller
         $child = Users::where(['recommend_user_id' => $user_id])->get();
         $counter = 0;
         foreach ($child as $user) {
-            if ($user->gv_balance >= $satisfy_gv_balance) {
+            if (($user->gv_balance + $user->pv_balance) >= $satisfy_gv_balance) {
                 $counter++;
             }
         }
