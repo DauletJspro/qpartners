@@ -1,6 +1,9 @@
 @php
-$userPacket = \App\Models\UserPacket::where('user_id', '=', \Illuminate\Support\Facades\Auth::user()->user_id)
-->get()
+
+    $userPacket = \App\Models\UserPacket::where('user_id', '=', $row->user_id)
+->get();
+
+
 
 @endphp
 @if(isset($userPacket))
