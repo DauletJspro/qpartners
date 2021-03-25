@@ -86,12 +86,12 @@
                                                         @if( isset($row->recommend_user_id) || (isset($_GET['id']) && $_GET['id']))
                                                             <?php  $item = \App\Models\Users::where(['user_id' => (isset($_GET['id']) ? $_GET['id'] : $row->recommend_user_id)])->first(); ?>
                                                             <option selected
-                                                                    value="{{$item->user_id}}"> {{sprintf('%s (%s)',$item->login, $item->last_name)}}
+                                                                    value="{{$item->user_id}}"> {{$item->login}}
                                                             </option>
                                                         @endif
                                                         @foreach($recommend_row as $item)
                                                             <option @if($row->recommend_user_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id) ) {{'selected'}} @endif value="{{$item->user_id}}">
-                                                                {{sprintf('%s (%s)',$item['login'], $item['last_name'])}}
+                                                                {{$item['login']}}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -111,7 +111,7 @@
                                                         @endif
                                                         @foreach($recommend_row as $item)
                                                             <option @if($row->recommend_user_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id) ) {{'selected'}} @endif value="{{$item->user_id}}">
-                                                                {{sprintf('%s (%s)',$item['login'], $item['last_name'])}}
+                                                                {{$item['login']}}
                                                             </option>
                                                         @endforeach
                                                     </select>
