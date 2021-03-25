@@ -13,9 +13,11 @@ class GAP extends Model
         $user = Users::where(['user_id' => $user_id])->first();
 
         $userMaxGapPacket = max(UserPacket::where(['user_id' => $user->user_id])
-            ->whereIn('packet_id', [Packet::GAPTechno, Packet::GAPAuto, Packet::GAPHome])->get()
-            ->pluck('packet_id'
-            )->toArray());
+            ->whereIn('packet_id', [Packet::GAPTechno, Packet::GAPAuto, Packet::GAPHome])
+            ->get()
+            ->pluck('packet_id')
+            ->toArray());
+
 
         $user_packet = UserPacket::where(['user_id' => $user->user_id])
             ->whereIn('packet_id', [Packet::GAPTechno, Packet::GAPAuto, Packet::GAPHome])
@@ -83,7 +85,7 @@ class GAP extends Model
                 $user_operation->recipient_id = $user->user_id;
                 $user_operation->created_at = date('Y-m-d H:i:s');
                 $user_operation->operation_type_id = 39;
-                $user_operation->operation_comment = sprintf('Вы получаете премиум бонус в размере %s pv (%s тенге) и статус %s GAP', $premium_bonus, $premium_bonus * 500, $status_name);
+                $user_operation->operation_comment = sprintf('Вы получаете социальный бонус в размере %s pv (%s тенге) и статус %s', $premium_bonus, $premium_bonus * 500, $status_name);
                 $user_operation->save();
             }
         }
