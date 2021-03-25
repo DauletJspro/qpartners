@@ -935,7 +935,8 @@ class PacketController extends Controller
         $counter = 1;
 
         while ($parent) {
-            if ($parent->is_activated) {
+            $userPacket = UserPacket::where('user_id', '=', $parent->user_id)->where('is_active', '=', true)->count();
+            if ($parent->is_activated && $userPacket > 0) {
                 $parent->gv_balance = $parent->gv_balance + $final_price;
                 if ($parent->save()) {
                     $user_operation = new UserOperation();

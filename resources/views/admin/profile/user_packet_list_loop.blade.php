@@ -1,7 +1,9 @@
 @php
-$userPacket = \App\Models\UserPacket::where('user_id', '=', \Illuminate\Support\Facades\Auth::user()->user_id)->get()
-@endphp
+$userPacket = \App\Models\UserPacket::where('user_id', '=', \Illuminate\Support\Facades\Auth::user()->user_id)
+->get()
 
+@endphp
+@if(isset($userPacket))
 @foreach($userPacket as $key => $item)
 
     <div class="col-lg-4 col-xs-6">
@@ -25,3 +27,4 @@ $userPacket = \App\Models\UserPacket::where('user_id', '=', \Illuminate\Support\
     </div>
 
 @endforeach
+    @endif
