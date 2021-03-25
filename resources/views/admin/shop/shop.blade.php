@@ -125,7 +125,12 @@
         </div>
     @endif
 
-
+    <style>
+        .modal-content {
+            position: absolute!important;
+        }
+    </style>
 @endsection
+
 
 
