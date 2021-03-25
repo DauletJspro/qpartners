@@ -624,7 +624,7 @@ class PacketController extends Controller
 
 
         if (!$isNotGap || $isPassivePackets) {
-            $this->implementGap($userPacket, $isPassivePackets);
+            $this->implementGap($userPacket, $isPassivePackets, $give_bonus);
         }
 
         $this->activatePackage($userPacket, $give_bonus, !$isNotGap);
@@ -702,15 +702,17 @@ class PacketController extends Controller
         }
     }
 
-    public function implementGap($userPacket, $isPassivePacket)
+    public function implementGap($userPacket, $isPassivePacket, $give_bonus)
     {
 
         try {
-            if (!$isPassivePacket) {
+            if (!$isPassivePacket && $give_bonus) {
                 app(GAPController::class)->send_personal_sv($userPacket);
             }
-            app(GAPController::class)->send_group_sv($userPacket);
-            app(GAPController::class)->give_bonus($userPacket);
+            if ($give_bonus) {
+                app(GAPController::class)->send_group_sv($userPacket);
+                app(GAPController::class)->give_bonus($userPacket);
+            }
             app(GAPController::class)->give_status($userPacket);
         } catch (\Exception $exception) {
             $userPacket->is_active = false;
