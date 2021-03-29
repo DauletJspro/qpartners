@@ -15,41 +15,41 @@ class ChangeProgrammName extends Seeder
         DB::table('cooperative_programms')->truncate();
 
         DB::table('cooperative_programms')->insert([
-            'program_name' => 'Тулпар',
+            'program_names' => 'Тулпар',
             'program_code' => '1'
         ]);
         DB::table('cooperative_programms')->insert([
-            'program_name' => 'Тулпар +',
+            'program_names' => 'Тулпар +',
             'program_code' => '2'
         ]);
 
         DB::table('cooperative_programms')->insert([
-            'program_name' => 'Баспана',
+            'program_names' => 'Баспана',
             'program_code' => '3'
         ]);
 
         DB::table('cooperative_programms')->insert([
-            'program_name' => 'Баспана +',
+            'program_names' => 'Баспана +',
             'program_code' => '4'
         ]);
 
         DB::table('cooperative_programms')->insert([
-            'program_name' => 'Qoldau',
+            'program_names' => 'Qoldau',
             'program_code' => '5'
         ]);
 
         DB::table('cooperative_programms')->insert([
-            'program_name' => 'Qamqor',
+            'program_names' => 'Qamqor',
             'program_code' => '6'
         ]);
 
         DB::table('cooperative_programms')->insert([
-            'program_name' => 'Jastar',
+            'program_names' => 'Jastar',
             'program_code' => '7'
         ]);
 
         DB::table('cooperative_programms')->insert([
-            'program_name' => 'Jas Otau',
+            'program_names' => 'Jas Otau',
             'program_code' => '8'
         ]);
 
