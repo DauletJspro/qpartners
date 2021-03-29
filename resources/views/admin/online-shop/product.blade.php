@@ -11,7 +11,7 @@
             <h4>* Активный Партнер - это Партнер совершающий покупку продукции не менее 12$ каждый месяц</h4>
             <h4>** Cash Back бонус получает Активные партнеры и выше</h4>
         </div>
-        
+
         <div style="text-align: left; font-weight: bold; color: #009551;">
             <h4>У вас имеется бонус за покупку пакета</h4>
             <h4 style="font-size: 20px;">Пакетный Бонус: {{ Auth::user()->product_balance * \App\Models\Currency::pvToKzt() }} KZT</h4>
@@ -43,9 +43,9 @@
                         <button> У меня есть бонус </button>
                     </form>
                 </div>
-            @endif        
+            @endif
         </div>
-        
+
     </section>
 
 @endsection
@@ -72,7 +72,7 @@
                 <h2 class="modal-title" id="modal_title"></h2>
             </div>
             <div class="modal-body">
-                
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" onclick="closeModal()">Закрыть</button>

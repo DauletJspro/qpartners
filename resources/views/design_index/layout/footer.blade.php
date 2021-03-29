@@ -7,28 +7,30 @@
     <aside class="f-promo-box dark">
         <div class="container divider">
             <div class="row">
+
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <!-- F Widget Item of the Page -->
+                    <div class="f-widget-item">
+                        <span class="widget-icon"><i class="fa fa-money"></i></span>
+                        <div class="txt-holder">
+                            <h1 class="f-promo-box-heading">Высокий и стабильный заработок</h1>
+                            <p>Заработок от 200$ в месяц</p>
+                        </div>
+                    </div>
+                    <!-- F Widget Item of the Page -->
+                </div>
                 <div class="col-xs-12 col-sm-6 col-md-3 mt-paddingbottomsm">
                     <!-- F Widget Item of the Page -->
                     <div class="f-widget-item">
                         <span class="widget-icon"><i class="fa fa-plane"></i></span>
                         <div class="txt-holder">
-                            <h1 class="f-promo-box-heading">БЫСТРАЯ ДОСТАВКА</h1>
-                            <p>Доставка от 1 до 10 рабочих дней</p>
+                            <h1 class="f-promo-box-heading">Авто и жильё в рассрочку</h1>
+                            <p>до 9 миллионов тенге</p>
                         </div>
                     </div>
                     <!-- F Widget Item of the Page end -->
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 mt-paddingbottomsm">
-                    <!-- F Widget Item of the Page -->
-                    <div class="f-widget-item">
-                        <span class="widget-icon"><i class="fa fa-life-ring"></i></span>
-                        <div class="txt-holder">
-                            <h1 class="f-promo-box-heading">Поддержка 24/7</h1>
-                            <p>Информационная и техническая поддержка</p>
-                        </div>
-                    </div>
-                    <!-- F Widget Item of the Page -->
-                </div>
+
                 <div class="col-xs-12 col-sm-6 col-md-3 mt-paddingbottomxs">
                     <!-- F Widget Item of the Page -->
                     <div class="f-widget-item">
@@ -40,13 +42,13 @@
                     </div>
                     <!-- F Widget Item of the Page -->
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="col-xs-12 col-sm-6 col-md-3 mt-paddingbottomsm">
                     <!-- F Widget Item of the Page -->
                     <div class="f-widget-item">
-                        <span class="widget-icon"><i class="fa fa-money"></i></span>
+                        <span class="widget-icon"><i class="fa fa-life-ring"></i></span>
                         <div class="txt-holder">
-                            <h1 class="f-promo-box-heading">Высокий и стабильный заработок</h1>
-                            <p>Заработок от 200$ в месяц</p>
+                            <h1 class="f-promo-box-heading">Поддержка 24/7</h1>
+                            <p>Информационная и техническая поддержка</p>
                         </div>
                     </div>
                     <!-- F Widget Item of the Page -->
@@ -69,8 +71,7 @@
                             через сеть независимых партнеров</p>
                         <ul class="list-unstyled address-list" style="color:white;">
                             <li><i class="fa fa-map-marker"></i>
-                                <address>г. &nbsp; Алматы, &nbsp; ул. &nbsp; Пушкина, &nbsp; 36 <br>
-                                    БЦ &nbsp; "Мегатау", &nbsp; 4-этаж, &nbsp; 408-офис
+                                <address>г. &nbsp; Шымкент, &nbsp; ул. &nbsp; Кабанбай батыра, &nbsp; 28 б
                                 </address>
                             </li>
                             <li><i class="fa fa-phone"></i><a href="tel:+77073691777" style="color: white;">+7 707 369

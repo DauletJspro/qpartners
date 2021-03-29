@@ -43,8 +43,7 @@
                         <ul class="list-unstyled contact-txt">
                             <li>
                                 <strong>Адрес</strong>
-                                <address style="line-height: 2.5rem; font-weight: 400;">г. Алматы, ул Пушкина, 36, <br>
-                                    БЦ “Мегатау” 4-этаж, офис 408
+                                <address style="line-height: 2.5rem; font-weight: 400;">г. Шымкент, ул Кабанбай батыра, 28 б
                                 </address>
                             </li>
                             <li>

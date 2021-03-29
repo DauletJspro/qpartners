@@ -433,6 +433,7 @@ Route::group([
     Route::get('city', 'IndexController@getCityListByCountry');
     Route::get('video', 'IndexController@video');
     Route::get('contact', 'IndexController@contact')->name('contact.show');
+    Route::get('/cap', 'CapCardController@index')->name('cap.show');
     Route::post('contact', 'IndexController@sendMessage');
     Route::get('coming-soon', 'IndexController@comingSoon')->name('coming-soon');
     Route::get('news', 'NewsController@newsList');
@@ -458,3 +459,4 @@ Route::group([
     Route::get('{about_url}', 'IndexController@getAboutById');
     Route::get('{user_id}/{user_name}', 'IndexController@redirectToRegister');
 });
+
