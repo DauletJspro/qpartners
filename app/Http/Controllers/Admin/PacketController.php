@@ -630,10 +630,12 @@ class PacketController extends Controller
         $this->activatePackage($userPacket, $give_bonus, !$isNotGap);
 
 
-        if ($user->user_id != 1 && $give_bonus && $isNotGap && !$isPassivePackets) {
+        if ($user->user_id != 1 && $give_bonus && $isNotGap) {
             $this->implementInviterBonus($userPacket, $packet, $user);
-            $this->implementOfficeBonus($userPacket, $packet, $user);
-            $this->implementSpeakerBonus($userPacket, $packet, $user);
+            if (!$isPassivePackets) {
+                $this->implementOfficeBonus($userPacket, $packet, $user);
+                $this->implementSpeakerBonus($userPacket, $packet, $user);
+            }
         }
         $inviter = Users::where(['user_id' => $user->recommend_user_id])->where('is_activated', '=', true)->first();
 
@@ -644,7 +646,7 @@ class PacketController extends Controller
                 if (in_array($packet->packet_id, [Packet::JASTAR, Packet::QAMQOR, Packet::JAS_OTAU, Packet::QOLDAU])) {
                     $packetPrice = $packetPrice / 2;
                 } elseif (in_array($packet->packet_id, [Packet::BASPANA_PLUS, Packet::BASPANA, Packet::TULPAR_PLUS, Packet::TULPAR])) {
-                    $packetPrice = $packetPrice * (62.5 / 100);
+                    $packetPrice = $packetPrice * (37.5 / 100);
                 }
 
 
@@ -785,13 +787,30 @@ class PacketController extends Controller
 
     private function implementInviterBonus($userPacket, $packet, $user)
     {
+        $isPassivePackets = in_array($packet->packet_id, [
+            Packet::JASTAR,
+            Packet::QAMQOR,
+            Packet::JAS_OTAU,
+            Packet::QOLDAU,
+            Packet::BASPANA_PLUS,
+            Packet::BASPANA,
+            Packet::TULPAR_PLUS,
+            Packet::TULPAR_PLUS
+        ]);
+
+
         if ($user->inviter_user_id) {
             $inviter = Users::where(['user_id' => $user->inviter_user_id])->where('is_activated', '=', true)->first();
         } else {
             $inviter = Users::where(['user_id' => $user->recommend_user_id])->where('is_activated', '=', true)->first();
         }
+        if ($isPassivePackets){
+            $packetPrice = $userPacket->packet_price * (37.5/100);
+        }
+        else{
+            $packetPrice = $userPacket->packet_price;
+        }
         $bonus = 0;
-        $packetPrice = $userPacket->packet_price;
         $inviterPacketId = UserPacket::where(['user_id' => $inviter->user_id])->where(['is_active' => true])->get();
         $inviterCount = (count($inviterPacketId));
 
@@ -905,7 +924,7 @@ class PacketController extends Controller
             if (in_array($packet->packet_id, [Packet::JASTAR, Packet::QAMQOR, Packet::JAS_OTAU, Packet::QOLDAU])) {
                 $final_price = $packet->packet_price / 2;
             } elseif (in_array($packet->packet_id, [Packet::BASPANA_PLUS, Packet::BASPANA, Packet::TULPAR_PLUS, Packet::TULPAR])) {
-                $final_price = $packet->packet_price * (62.5 / 100);
+                $final_price = $packet->packet_price * (37.5 / 100);
             }
         }
 
