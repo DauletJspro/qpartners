@@ -618,7 +618,7 @@ class PacketController extends Controller
             Packet::QOLDAU,
             Packet::BASPANA_PLUS,
             Packet::BASPANA,
-            Packet::TULPAR_PLUS,
+            Packet::TULPAR,
             Packet::TULPAR_PLUS
         ]);
 
@@ -632,10 +632,8 @@ class PacketController extends Controller
 
         if ($user->user_id != 1 && $give_bonus && $isNotGap) {
             $this->implementInviterBonus($userPacket, $packet, $user);
-            if (!$isPassivePackets) {
-                $this->implementOfficeBonus($userPacket, $packet, $user);
-                $this->implementSpeakerBonus($userPacket, $packet, $user);
-            }
+            $this->implementOfficeBonus($userPacket, $packet, $user);
+            $this->implementSpeakerBonus($userPacket, $packet, $user);
         }
         $inviter = Users::where(['user_id' => $user->recommend_user_id])->where('is_activated', '=', true)->first();
 
@@ -794,7 +792,7 @@ class PacketController extends Controller
             Packet::QOLDAU,
             Packet::BASPANA_PLUS,
             Packet::BASPANA,
-            Packet::TULPAR_PLUS,
+            Packet::TULPAR,
             Packet::TULPAR_PLUS
         ]);
 
