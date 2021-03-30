@@ -193,7 +193,7 @@ class GAPController extends Controller
                 $operation->money = $bonus;
                 $operation->operation_id = 1;
                 $operation->operation_type_id = 1;
-                $operation->operation_comment = 'Структурный бонус. "' . $packet->packet_name_ru . '".';
+                $operation->operation_comment = 'Спонсорский бонус. "' . $packet->packet_name_ru . '".';
                 $operation->save();
             }
         }

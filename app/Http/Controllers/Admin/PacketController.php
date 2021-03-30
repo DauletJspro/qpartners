@@ -722,11 +722,28 @@ class PacketController extends Controller
 
     private function implementOfficeBonus($userPacket, $packet, $user)
     {
+
+        $isPassivePackets = in_array($packet->packet_id, [
+            Packet::JASTAR,
+            Packet::QAMQOR,
+            Packet::JAS_OTAU,
+            Packet::QOLDAU,
+            Packet::BASPANA_PLUS,
+            Packet::BASPANA,
+            Packet::TULPAR,
+            Packet::TULPAR_PLUS
+        ]);
+
         $userPacketCount = UserPacket::where('user_id', $user->user_id)->where('is_active', 1)->count();
         if ($user->office_director_id && $packet->packet_id != Packet::GAP) {
             $bonus = 0;
             $bonusPercentage = 0;
-            $packetPrice = $userPacket->packet_price;
+            if ($isPassivePackets){
+                $packetPrice = $userPacket->packet_price * (37.5/100);
+            }
+            else{
+                $packetPrice = $userPacket->packet_price;
+            }
             $office_director = Users::where(['user_id' => $user->office_director_id])->first();
 
             if ($office_director) {
@@ -754,11 +771,27 @@ class PacketController extends Controller
 
     private function implementSpeakerBonus($userPacket, $packet, $user)
     {
+
+        $isPassivePackets = in_array($packet->packet_id, [
+            Packet::JASTAR,
+            Packet::QAMQOR,
+            Packet::JAS_OTAU,
+            Packet::QOLDAU,
+            Packet::BASPANA_PLUS,
+            Packet::BASPANA,
+            Packet::TULPAR,
+            Packet::TULPAR_PLUS
+        ]);
         $userPacketCount = UserPacket::where('user_id', $user->user_id)->where('is_active', 1)->count();
         if ($userPacketCount <= 1 && $user->speaker_id && $packet->packet_id != Packet::GAP) {
             $bonus = 0;
             $bonusPercentage = 0;
-            $packetPrice = $userPacket->packet_price;
+            if ($isPassivePackets){
+                $packetPrice = $userPacket->packet_price * (37.5/100);
+            }
+            else{
+                $packetPrice = $userPacket->packet_price;
+            }
             $speaker = Users::where(['user_id' => $user->speaker_id])->first();
             if ($speaker) {
                 $bonusPercentage = (2 / 100);
@@ -801,12 +834,6 @@ class PacketController extends Controller
             $inviter = Users::where(['user_id' => $user->inviter_user_id])->where('is_activated', '=', true)->first();
         } else {
             $inviter = Users::where(['user_id' => $user->recommend_user_id])->where('is_activated', '=', true)->first();
-        }
-        if ($isPassivePackets){
-            $packetPrice = $userPacket->packet_price * (37.5/100);
-        }
-        else{
-            $packetPrice = $userPacket->packet_price;
         }
         $bonus = 0;
         $inviterPacketId = UserPacket::where(['user_id' => $inviter->user_id])->where(['is_active' => true])->get();
