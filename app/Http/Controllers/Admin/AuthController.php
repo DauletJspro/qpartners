@@ -42,9 +42,10 @@ class AuthController extends Controller
 
         $speaker_row = Users::orderBy('last_name', 'asc')->where('is_speaker', 1)->get();
         $director_row = Users::orderBy('last_name', 'asc')->where('is_director_office', 1)->get();
-
+        $activate = Position::all()->pluck('name', 'id_select')->toArray();
         // View::share('country_row', $country_row);
         View::share('recommend_row', $users_row);
+        View::share('activate', $activate);
         // View::share('city_row', $city_row);
         View::share('speaker_row', $speaker_row);
         View::share('office_row', $director_row);
@@ -91,9 +92,9 @@ class AuthController extends Controller
                 ]);
             }
 
-            if(Auth::user()->is_activated)
-            return redirect('/admin/index');
-            else{
+            if (Auth::user()->is_activated)
+                return redirect('/admin/index');
+            else {
                 return redirect('/admin/shop');
             }
 
@@ -117,11 +118,10 @@ class AuthController extends Controller
         }
 
         $user = new Users();
-        $activate = Position::all()->pluck('name', 'id_select')->toArray();
+
 
         return view('admin.new_design_auth.register', [
             'row' => $user,
-            'activate' => $activate
         ]);
     }
 
