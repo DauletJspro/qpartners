@@ -81,28 +81,28 @@ class PrepareDataBaseForTestingSeeder extends Seeder
 
 
         ## add new packets to passive users
-//        foreach ($passiveUsers as $user) {
-//            $packet_id = $passiveUsersArray[$user->login];
-//            $packet = \App\Models\Packet::find($packet_id);
-//            $userPacket = new \App\Models\UserPacket();
-//            $userPacket->user_id = $user->user_id;
-//            $userPacket->packet_id = $packet_id;
-//            $userPacket->packet_price = $packet->packet_price;
-//            $userPacket->created_at = date('Y-m-d H:i:s');
-//            $userPacket->updated_at = date('Y-m-d H:i:s');
-//            $userPacket->level = 1;
-//            $userPacket->is_active = 0;
-//            $userPacket->is_paid = 0;
-//            $userPacket->is_portfolio = 0;
-//            $userPacket->is_epay = 0;
-//            $userPacket->user_packet_type = 'item';
-//            $userPacket->packet_type = 1;
-//            $userPacket->save();
-//
-//            $user->status_id = $packet->packet_status_id;
-//            $user->save();
-//
-//        }
+        foreach ($passiveUsers as $user) {
+            $packet_id = $passiveUsersArray[$user->login];
+            $packet = \App\Models\Packet::find($packet_id);
+            $userPacket = new \App\Models\UserPacket();
+            $userPacket->user_id = $user->user_id;
+            $userPacket->packet_id = $packet_id;
+            $userPacket->packet_price = $packet->packet_price;
+            $userPacket->created_at = date('Y-m-d H:i:s');
+            $userPacket->updated_at = date('Y-m-d H:i:s');
+            $userPacket->level = 1;
+            $userPacket->is_active = 0;
+            $userPacket->is_paid = 0;
+            $userPacket->is_portfolio = 0;
+            $userPacket->is_epay = 0;
+            $userPacket->user_packet_type = 'item';
+            $userPacket->packet_type = 1;
+            $userPacket->save();
+
+            $user->status_id = $packet->packet_status_id;
+            $user->save();
+
+        }
 
 
     }

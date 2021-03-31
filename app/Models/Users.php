@@ -89,6 +89,18 @@ class Users extends Model implements AuthenticatableContract
         return false;
 
     }
+    public static function hasCountPackets(int $user_id)
+    {
+        $user_packet_count = UserPacket::where(['user_id' => $user_id])
+            ->where('is_active', '=', true)
+            ->count();
+
+        if ($user_packet_count) {
+            return true;
+        }
+        return false;
+
+    }
 
     public function tickets()
     {

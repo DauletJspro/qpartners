@@ -81,6 +81,26 @@ class Packet extends Model
         ];
     }
 
+    public static function actualAllPackets(){
+        return[
+            self::CLASSIC,
+            self::PREMIUM,
+            self::ELITE,
+            self::GAPTechno,
+            self::GAPAuto,
+            self::GAPHome,
+            self::VIP2,
+            self::JASTAR,
+            self::QAMQOR,
+            self::JAS_OTAU,
+            self::QOLDAU,
+            self::BASPANA_PLUS,
+            self::BASPANA,
+            self::TULPAR_PLUS,
+            self::TULPAR
+        ];
+    }
+
 
     public static function limit($user)
     {
