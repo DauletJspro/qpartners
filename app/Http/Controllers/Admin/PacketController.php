@@ -738,8 +738,12 @@ class PacketController extends Controller
         if ($user->office_director_id && $packet->packet_id != Packet::GAP) {
             $bonus = 0;
             $bonusPercentage = 0;
-            if ($isPassivePackets){
-                $packetPrice = $userPacket->packet_price * (37.5/100);
+            if ($isPassivePackets) {
+                if (in_array($packet->packet_id, [Packet::JASTAR, Packet::QAMQOR, Packet::JAS_OTAU, Packet::QOLDAU])) {
+                    $packetPrice = $packet->packet_price / 2;
+                } elseif (in_array($packet->packet_id, [Packet::BASPANA_PLUS, Packet::BASPANA, Packet::TULPAR_PLUS, Packet::TULPAR])) {
+                    $packetPrice = $packet->packet_price * (37.5 / 100);
+                }
             }
             else{
                 $packetPrice = $userPacket->packet_price;
@@ -786,8 +790,12 @@ class PacketController extends Controller
         if ($userPacketCount <= 1 && $user->speaker_id && $packet->packet_id != Packet::GAP) {
             $bonus = 0;
             $bonusPercentage = 0;
-            if ($isPassivePackets){
-                $packetPrice = $userPacket->packet_price * (37.5/100);
+            if ($isPassivePackets) {
+                if (in_array($packet->packet_id, [Packet::JASTAR, Packet::QAMQOR, Packet::JAS_OTAU, Packet::QOLDAU])) {
+                    $packetPrice = $packet->packet_price / 2;
+                } elseif (in_array($packet->packet_id, [Packet::BASPANA_PLUS, Packet::BASPANA, Packet::TULPAR_PLUS, Packet::TULPAR])) {
+                    $packetPrice = $packet->packet_price * (37.5 / 100);
+                }
             }
             else{
                 $packetPrice = $userPacket->packet_price;
@@ -846,7 +854,16 @@ class PacketController extends Controller
             });
             $inviterPacketId = max($inviterPacketId->all());
             $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
-
+            if ($isPassivePackets) {
+                if (in_array($packet->packet_id, [Packet::JASTAR, Packet::QAMQOR, Packet::JAS_OTAU, Packet::QOLDAU])) {
+                    $packetPrice = $packet->packet_price / 2;
+                } elseif (in_array($packet->packet_id, [Packet::BASPANA_PLUS, Packet::BASPANA, Packet::TULPAR_PLUS, Packet::TULPAR])) {
+                    $packetPrice = $packet->packet_price * (37.5 / 100);
+                }
+            }
+            else{
+                $packetPrice = $userPacket->packet_price;
+            }
             $bonusPercentage = (15 / 100);
             $bonus = $packetPrice * $bonusPercentage;
         }
