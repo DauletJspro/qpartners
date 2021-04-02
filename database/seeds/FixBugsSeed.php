@@ -12,7 +12,7 @@ class FixBugsSeed extends Seeder
      */
     public function run()
     {
-        DB::table('user_packet')->where('user_id', '=', 100218)->where('packet_id', 23)->update([
+        DB::table('user_packet')->where('user_id', '=', 100218)->update([
             'is_active' => false
         ]);
 
