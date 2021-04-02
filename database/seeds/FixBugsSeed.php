@@ -18,7 +18,7 @@ class FixBugsSeed extends Seeder
 
         DB::table('user_operation')->where('author_id', '=', 100218)->delete();
 
-        $user = \App\Models\Users::where('user_id', '=', '50')->first();
+        $user = \App\Models\Users::where('user_id', '=', 100172)->first();
             $user->user_money = $user->user_money - 96;
             $user->save();
 
