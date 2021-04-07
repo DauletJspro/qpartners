@@ -13,16 +13,16 @@ class FixBugsSeed extends Seeder
     public function run()
     {
         {
-            DB::table('user_packet')->where('user_id', '=', 100082)->update([
-                'is_active' => false
+            DB::table('user_packet')->where('user_id', '=', 100082)->where('packet_id', '=', 27)->update([
+                'is_active' => true
             ]);
-
-            DB::table('user_operation')->where('author_id', '=', 100082)->where('recipient_id', '=', 100082)
-                ->whereDate('created_at', '2021-04-07')->delete();
-
-            $user = \App\Models\Users::where('user_id', '=', 100082)->first();
-            $user->personal_sv_balance = $user->personal_sv_balance - 5;
-            $user->save();
+//
+//            DB::table('user_operation')->where('author_id', '=', 100082)->where('recipient_id', '=', 100082)
+//                ->whereDate('created_at', '2021-04-07')->delete();
+//
+//            $user = \App\Models\Users::where('user_id', '=', 100082)->first();
+//            $user->personal_sv_balance = $user->personal_sv_balance - 5;
+//            $user->save();
 
 //            $users1 = \App\Models\Users::whereIn('user_id',  [100124, 100103, 100088, 100052, 100048, 100047, 46,
 // 11])->get();
