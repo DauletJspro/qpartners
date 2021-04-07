@@ -286,14 +286,14 @@ class UserRequestController extends Controller
             $result['status'] = false;
             return response()->json($result);
         }
-        if (Auth::user()->user_money - $request->money  < 12){
-            $possible = Auth::user()->user_money - 12;
-            $currency = $possible*500;
-            $result['message'] = "Чтобы снять деньги минимальный остаток на счету должно быть 6000 тенге, 
-            минимальная сумма для отправки денегь равно ".$possible.'$'."($currency тг)";
-            $result['status'] = false;
-            return response()->json($result);
-        }
+//        if (Auth::user()->user_money - $request->money  < 12){
+//            $possible = Auth::user()->user_money - 12;
+//            $currency = $possible*500;
+//            $result['message'] = "Чтобы снять деньги минимальный остаток на счету должно быть 6000 тенге,
+//            минимальная сумма для отправки денегь равно ".$possible.'$'."($currency тг)";
+//            $result['status'] = false;
+//            return response()->json($result);
+//        }
 
         $operation = new UserOperation();
         $operation->author_id = $request->recipient_id;
