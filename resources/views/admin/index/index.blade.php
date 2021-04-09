@@ -7,7 +7,7 @@
 
 @section('content')
 
-    @include('admin.index.profit')
+{{--    <!-- @include('admin.index.profit') -->--}}
 
     @include('admin.index.home-profit')
 
