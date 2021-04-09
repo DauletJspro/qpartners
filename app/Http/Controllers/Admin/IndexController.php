@@ -27,22 +27,26 @@ class IndexController extends Controller
     public function index(Request $request)
     {
 
-        $request->profit_all = UserOperation::where('recipient_id', Auth::user()->user_id)
-            ->where('operation_id', 1)
+        $request->profit_all = UserOperation::where('recipient_id', '=',Auth::user()->user_id)
+            ->where('operation_id', '=',1)
+            ->whereIn('operation_type_id', [1, 8, 7, 41])
             ->sum('money');
 
-        $request->profit_today = UserOperation::where('recipient_id', Auth::user()->user_id)
-            ->where('operation_id', 1)
+        $request->profit_today = UserOperation::where('recipient_id', '=',Auth::user()->user_id)
+            ->where('operation_id', '=',1)
+            ->whereIn('operation_type_id', [1, 8, 7, 41])
             ->where('created_at', '>', date("Y-m-d"))
             ->sum('money');
 
-        $request->profit_last_week = UserOperation::where('recipient_id', Auth::user()->user_id)
-            ->where('operation_id', 1)
+        $request->profit_last_week = UserOperation::where('recipient_id', '=',Auth::user()->user_id)
+            ->where('operation_id', '=',1)
+            ->whereIn('operation_type_id', [1, 8, 7, 41])
             ->where('created_at', '>', date("Y-m-d", strtotime("-7 day")))
             ->sum('money');
 
-        $request->profit_last_month = UserOperation::where('recipient_id', Auth::user()->user_id)
-            ->where('operation_id', 1)
+        $request->profit_last_month = UserOperation::where('recipient_id', '=',Auth::user()->user_id)
+            ->where('operation_id', '=',1)
+            ->whereIn('operation_type_id', [1, 8, 7, 41])
             ->where('created_at', '>', date("Y-m-d", strtotime("-30 day")))
             ->sum('money');
 
