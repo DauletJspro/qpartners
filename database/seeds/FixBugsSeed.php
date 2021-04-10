@@ -17,7 +17,7 @@ class FixBugsSeed extends Seeder
                 'is_active' => false
             ]);
             
-            DB::table('user_packet'->where('user_id', '=', 100274)->where('packet_id', '=', 33)->update([
+            DB::table('user_packet')->where('user_id', '=', 100274)->where('packet_id', '=', 33)->update([
             	'is_active' => false
             ]);
 //
