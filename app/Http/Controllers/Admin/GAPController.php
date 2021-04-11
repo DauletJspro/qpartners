@@ -78,9 +78,9 @@ class GAPController extends Controller
                     $user_operation->save();
                 }
             }
-            if (isset($parent) && !$isPassivePacket) {
-                GAP::check_for_premium($parent->user_id);
-            }
+//            if (isset($parent) && !$isPassivePacket) {
+//                GAP::check_for_premium($parent->user_id);
+//            }
 
             $parent = Users::where(['user_id' => $parent->recommend_user_id])->first();
 
