@@ -11,7 +11,7 @@
 @php
     use Illuminate\Support\Facades\DB;
 
-    $gapUsers = DB::table('users')->get();
+    $gapUsers = DB::table('users')->where('deleted_at', '=', null)->get();
 @endphp
 
 <table class="row" width="100%" bgcolor="#ffffff" align="center" cellpadding="0" cellspacing="0" border="0"
