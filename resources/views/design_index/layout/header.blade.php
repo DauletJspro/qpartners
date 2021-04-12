@@ -35,9 +35,6 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                 <div class="col-xs-12 col-sm-6 text-right">
                     <ul class="mt-top-list">
                         <li class="hidden-xs">
-                            <a href="{{route('cap.show')}}">ForLife</a>
-                        </li>
-                        <li class="hidden-xs">
                             <a href="{{route('shop.show')}}">Магазин</a>
                         </li>
                         <li class="hidden-xs">
