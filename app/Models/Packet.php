@@ -175,16 +175,15 @@ class Packet extends Model
         $messageBody = '';
         $success = true;
         $userId = $user->user_id;
-        $userStatus = $user->user_status;
+        $userStatus = $user->status_id;
         $availableBonuses = [1, 32, 22];
         $firstDay = date('Y-m-d H:i:s', strtotime('first day of this month'));
         $lastDay = date('Y-m-d H:i:s', strtotime('last day of this month'));
 
         $incomeForMonth = UserOperation::where(['recipient_id' => $userId])
-            ->where(['operation_type_id' => $availableBonuses])
+            ->whereIn('operation_type_id', $availableBonuses)
             ->whereBetween('created_at', [$firstDay, $lastDay])
             ->get();
-
         $incomeForMonth = collect($incomeForMonth);
         $incomeForMonth = $incomeForMonth->map(function ($item) {
             return $item->money;
@@ -207,23 +206,54 @@ class Packet extends Model
                     $success = false;
                 }
                 break;
-            case UserStatus::ELITE_MANAGER:
+            case UserStatus::VIP_MANAGER:
                 if ($incomeForMonth >= 1000) {
                     $messageBody = 'Ваш лимит на месяц не превышает 1 000$. ';
                     $success = false;
                 }
                 break;
-            case UserStatus::VIP_MANAGER:
-                if ($incomeForMonth >= 10000) {
-                    $messageBody = 'Ваш лимит на месяц не превышает 10 000$. ';
-                    $success = false;
-                }
-                break;
+	        case  UserStatus::BRONZE_MANAGER:
+		        if ($incomeForMonth >= 2000){
+			        $success = false;
+		        }
+		        break;
+	        case  UserStatus::SILVER_MANAGER:
+		        if ($incomeForMonth >= 3000){
+			        $success = false;
+		        }
+		        break;
+	        case  UserStatus::GOLD_MANAGER:
+		        if ($incomeForMonth >= 4000){
+			        $success = false;
+		        }
+		        break;
+	        case  UserStatus::PLATINUM_MANAGER:
+		        if ($incomeForMonth >= 5000){
+			        $success = false;
+		        }
+		        break;
+	        case  UserStatus::RUBIN_DIRECTOR:
+		        if ($incomeForMonth >= 10000){
+			        $success = false;
+		        }
+		        break;
+	        case  UserStatus::SAPPHIRE_DIRECTOR:
+		        if ($incomeForMonth >= 12500){
+			        $success = false;
+		        }
+		        break;
+	        case  UserStatus::EMERALD_DIRECTOR:
+		        if ($incomeForMonth >= 15000){
+			        $success = false;
+		        }
+		        break;
+	        case  UserStatus::DIAMOND_DIRECTOR:
+		        if ($incomeForMonth >= 20000){
+			        $success = false;
+		        }
+		        break;
         }
-        return [
-            'message' => $messageBody,
-            'success' => $success,
-        ];
+        return $success;
     }
 
     public static function checkQualificationBonusTime($user, $bonusTime)
