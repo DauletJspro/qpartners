@@ -63,7 +63,10 @@ Route::group([
 
     Route::post('comment', 'CommentsTicket@postComment');
 
-
+    Route::resource('gap_item', 'GapCardItemController');
+    Route::resource('gap_category', 'GapCardCategoryController');
+    Route::resource('gap_sub_category', 'GapCardSubCategoryController');
+    
     Route::group([
         'prefix' => 'profile'
     ], function () {
@@ -228,7 +231,7 @@ Route::group([
     Route::resource('instagram', 'InstagramController');
     Route::resource('group', 'GroupController');
     Route::resource('user-group', 'UserGroupController');
-    
+
     Route::get('/orders', 'OrderController@index');
     Route::get('/orders/edit', 'OrderController@editUserOrder')->name('orders.edit');
     Route::post('/orders/edit/{id}', 'OrderController@updateOrder')->name('orders.update');
@@ -240,9 +243,6 @@ Route::group([
     Route::get('/pdf/tulpar', 'PdfController@generateTulpar')->name('pdf.generate.tulpar');
     Route::get('/pdf/tulpar-plus', 'PdfController@generateTulparPlus')->name('pdf.generate.tulpar.plus');
     Route::get('/pdf/users', 'PdfController@getUser')->name('pdf.users');
-
-
-
 
 
     Route::get('basket', 'OnlineController@showBasket');
@@ -305,7 +305,7 @@ Route::group([
     Route::get('client/share/plus/{client}/edit', 'ClientController@editAutoPlusUser')->name('client.plus.edit');
     Route::get('client/share/holder/home/{client}/edit', 'ClientController@editHomeUser')->name('client.home.edit');
 
-    Route::resource('client', 'ClientController', ['only' =>[
+    Route::resource('client', 'ClientController', ['only' => [
         'index', 'destroy'
     ]
     ]);
@@ -370,8 +370,6 @@ Route::group([
     Route::get('jasotau/{client}', 'JasOtauController@getIdOfGroup')->name('jasotau.client.edit');
 
 
-
-
     Route::post('video/is_show', 'VideoController@changeIsBan');
     Route::resource('video', 'VideoController');
     Route::post('user/is_show', 'UserController@changeIsBan');
@@ -418,14 +416,14 @@ Route::group([
     'namespace' => 'Index',
 ], function () {
     Route::get('/', 'IndexController@index');
-    Route::get('/social-program', 'PassiveProgramController@getSocial' )->name('get.social');
-    Route::get('/partner-program','PassiveProgramController@getPartner');
-    Route::get('/baspana-plus', 'PassiveProgramController@getBaspanaPlus' );
-    Route::get('/activ-home','PassiveProgramController@getActiveHome');
-    Route::get('/baspana', 'PassiveProgramController@getBaspana' );
-    Route::get('/activ-car', 'PassiveProgramController@getActiveCar'  );
+    Route::get('/social-program', 'PassiveProgramController@getSocial')->name('get.social');
+    Route::get('/partner-program', 'PassiveProgramController@getPartner');
+    Route::get('/baspana-plus', 'PassiveProgramController@getBaspanaPlus');
+    Route::get('/activ-home', 'PassiveProgramController@getActiveHome');
+    Route::get('/baspana', 'PassiveProgramController@getBaspana');
+    Route::get('/activ-car', 'PassiveProgramController@getActiveCar');
     Route::get('/tulpar', 'PassiveProgramController@getTulpar');
-    Route::get('/tulpar-plus', 'PassiveProgramController@getTulparPlus' );
+    Route::get('/tulpar-plus', 'PassiveProgramController@getTulparPlus');
     Route::get('/form', 'PassiveProgramController@getForm');
     Route::get('/opportunity', 'IndexController@opportunity');
     Route::get('gallery', 'IndexController@gallery')->name('gallery.show');
