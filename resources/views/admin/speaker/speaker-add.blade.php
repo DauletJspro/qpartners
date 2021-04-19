@@ -27,7 +27,10 @@
                                                 <select name="user_id" data-placeholder="Выберите" class="form-control selectpicker" data-live-search="true">
 
                                                     @foreach($users_row as $item)
-                                                        <option <?php if($row->user_id == $item->user_id) echo 'selected '; ?> value="{{$item->user_id}}">{{$item['name']}} {{$item['last_name']}} {{$item['middle_name']}}</option>
+                                                        <option <?php if($row->user_id == $item->user_id) echo 'selected
+                                                         '; ?> value="{{$item->user_id}}">{{$item['name']}}
+                                                            {{$item['last_name']}} {{$item['middle_name']}}
+                                                            ({{$item['login']}})</option>
                                                     @endforeach
 
                                                 </select>
