@@ -140,21 +140,21 @@
                 <span>Задать вопрос</span>
             </a>
         </li>
-            @if(Auth::user()->is_activated)
+        @if(Auth::user()->is_activated)
             <li class="treeview">
-            <a href="/admin/instagram">
-                <i class="fa fa-user"></i>
-                <span>Мои подписки</span>
-            </a>
-        </li>
+                <a href="/admin/instagram">
+                    <i class="fa fa-user"></i>
+                    <span>Мои подписки</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="/admin/instagram/partners/request">
+                    <i class="fa fa-user"></i>
+                    <span>Мои подписчики</span>
+                </a>
+            </li>
+        @endif
         <li class="treeview">
-            <a href="/admin/instagram/partners/request">
-                <i class="fa fa-user"></i>
-                <span>Мои подписчики</span>
-            </a>
-        </li>
-                @endif
-                <li class="treeview">
             <a href="/admin/pdf">
                 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                 <span>Договор</span>
@@ -337,22 +337,22 @@
             </li>
         @endif
     @endif
-        @if(Auth::user()->is_activated)
-            @if(Auth::user()->user_id != \App\Models\Users::Accountant)
-                <li class="treeview">
-                    <a href="/admin/operation">
-                        <i class="fa fa-list-ul"></i>
-                        <span>Счет</span>
-                    </a>
-                </li>
-            @endif
+    @if(Auth::user()->is_activated)
+        @if(Auth::user()->user_id != \App\Models\Users::Accountant)
             <li class="treeview">
-                <a href="/admin/structure">
-                    <i class="fa fa-sitemap"></i>
-                    <span>Структура</span>
+                <a href="/admin/operation">
+                    <i class="fa fa-list-ul"></i>
+                    <span>Счет</span>
                 </a>
             </li>
         @endif
+        <li class="treeview">
+            <a href="/admin/structure">
+                <i class="fa fa-sitemap"></i>
+                <span>Структура</span>
+            </a>
+        </li>
+    @endif
 
     {{-- <li class="treeview">
          <a href="/admin/binar/config">
@@ -382,20 +382,20 @@
                     </a>
                 </li>
         @endif--}}
-            @if(Auth::user()->is_activated)
+        @if(Auth::user()->is_activated)
             <li class="treeview">
-            <a href="/admin/request/send">
-                <i class="fa fa-money"></i>
-                <span>Снятие денег</span>
-            </a>
-        </li>
-        <li class="treeview">
-            <a href="/admin/request/send-account">
-                <i class="fa fa-money"></i>
-                <span>Отправить деньги</span>
-            </a>
-        </li>
-                @endif
+                <a href="/admin/request/send">
+                    <i class="fa fa-money"></i>
+                    <span>Снятие денег</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="/admin/request/send-account">
+                    <i class="fa fa-money"></i>
+                    <span>Отправить деньги</span>
+                </a>
+            </li>
+        @endif
     @endif
     <li class="treeview">
         <a href="/admin/password">
@@ -403,6 +403,30 @@
             <span>Сменить пароль</span>
         </a>
     </li>
+
+    @if(Auth::user()->user_id== 1)
+        <li class="treeview">
+            <a href="{{route('gap_category.index')}}">
+                <i class="fa fa-list-ul"></i>
+                &nbsp;
+                Добавить <br> GAP card категорий
+            </a>
+        </li>
+        <li class="treeview">
+            <a href="{{route('gap_sub_category.index')}}">
+                <i class="fa fa-list-ul"></i>
+                &nbsp;
+                Добавить <br> GAP card под категорий
+            </a>
+        </li>
+        <li class="treeview">
+            <a href="{{route('gap_item.index')}}">
+                <i class="fa fa-building"></i>
+                &nbsp;
+                Добавить <br> GAP  под центры
+            </a>
+        </li>
+    @endif
 
 
     <li class="treeview">
