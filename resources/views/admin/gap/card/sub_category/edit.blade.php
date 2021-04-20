@@ -1,4 +1,4 @@
-<?php $title = 'Редактировать вопрос-ответы'; ?>
+<?php $title = 'Изменить категорий'; ?>
 @extends('admin.layout.layout')
 
 @section('content')
@@ -19,26 +19,20 @@
                             </div>
                         @endif
                         <div class="box-body">
-                            {{ Form::open(['action' => ['Admin\FaqController@update', 'id'=> $faq->id], 'method' => 'PUT']) }}
-                            {{ Form::token() }}
-                            <div class="form-group">
-                                {{ Form::label('Вопрос', null, ['class' => 'control-label']) }}
-                                {{ Form::textarea('question',$faq->question, ['class' => 'form-control'])}}
-                            </div>
-                            <div class="form-group">
-                                {{ Form::label('Ответ на вопрос', null, ['class' => 'control-label']) }}
-                                {{ Form::textarea('answer',$faq->answer, ['class' => 'form-control'])}}
-                            </div>
-{{--                            <div class="form-group">--}}
-{{--                                {{ Form::label('Порядковый номер', null, ['class' => 'control-label']) }}--}}
-{{--                                {{ Form::text('order', $faq->order, ['class' => 'form-control'])}}--}}
-{{--                            </div>--}}
-                            <div class="form-group">
-                                {{ Form::checkbox('is_active',NULL,$faq->is_active)}}
-                                {{ Form::label('Активный (показывать на странице FAQ)', null, ['class' => 'control-label']) }}
-                            </div>
-                            {{ Form::submit('Создать', ['class'=> 'btn btn-primary']) }}
-                            {{ Form::close() }}
+                            <form action="{{route('gap_sub_category.update', ['gap_category' => $gapCardSubCategory->id])}}"
+                                  method="post">
+                                {{ Form::token() }}
+                                <input name="_method" type="hidden" value="PUT">
+                                <div class="form-group">
+                                    {{ Form::label('Название на казахском', null, ['class' => 'control-label']) }}
+                                    {{ Form::text('title_kz',$gapCardSubCategory->title_kz, ['class' => 'form-control'])}}
+                                </div>
+                                <div class="form-group">
+                                    {{ Form::label('Название на русском', null, ['class' => 'control-label']) }}
+                                    {{ Form::text('title_ru',$gapCardSubCategory->title_ru, ['class' => 'form-control'])}}
+                                </div>
+                                {{ Form::submit('Создать', ['class'=> 'btn btn-primary']) }}
+                            </form>
                         </div>
                     </div>
                 </div>

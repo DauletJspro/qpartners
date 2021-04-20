@@ -19,18 +19,28 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 hidden-xs">
-                    {{-- @foreach($subsidiaries as $key => $subsidiary)
-                        <a href="{{route('coming-soon', ['id' => $subsidiary->id])}}" class="tel"
-                           style="
-                           {{$key ? 'margin-left:1px;' : ''}}
-                                   " data-toggle='tooltip' data-placement='bottom' title='{{$subsidiary->name}}'>
-                            <span style="
-                             padding:0 14px 0 14px;
-                             color: white;
-                             {{ $key <= count($subsidiary) ? 'border-right: 1px solid lightgrey;' : ''}}
-                                    ">{{$subsidiary->name}}</span>
-                        </a>
-                    @endforeach --}}
+                    <ul class="gap-ul mt-top-bar" style="float: left;">
+                        <li style="list-style-type: none;">
+                            <a href="">
+                                GAP MARKET
+                            </a>
+                        </li>
+                        <li style="list-style-type: none;">
+                            <a href="">
+                                GAP CARD
+                            </a>
+                        </li>
+                        <li style="list-style-type: none;">
+                            <a href="">
+                                GAP TURISM
+                            </a>
+                        </li>
+                        <li style="list-style-type: none;">
+                            <a href="">
+                                GAP ACADEMY
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="col-xs-12 col-sm-6 text-right">
                     <ul class="mt-top-list">
@@ -103,7 +113,8 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                         </li>
                         <li></li>
                         <li><a style="color: red;" href="{{route('favorite.showUserItem')}}"
-                               class="icon-heart hidden-xs"><span id="favoriteCount">{{count($favorites)}}</span></a></li>
+                               class="icon-heart hidden-xs"><span id="favoriteCount">{{count($favorites)}}</span></a>
+                        </li>
                     </ul>
                     <nav id="nav">
                         <ul>
@@ -274,6 +285,23 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
 
     .dropdown:hover .dropdown-content {
         display: block;
+    }
+
+    #mt-header.style3 .mt-top-bar {
+        background-color: #FF0000 !important;
+    }
+
+    .gap-ul {
+        margin-bottom: 0 !important;
+    }
+
+    .gap-ul li {
+        float: left !important;
+        display: block;
+        padding-top: 0.6rem;
+        font-size: 1.8rem;
+        font-weight: bolder;
+        padding-right: 1rem;
     }
 
 </style>

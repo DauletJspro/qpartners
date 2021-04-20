@@ -6,11 +6,11 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title box-title-first">
-                        <a class="menu-tab active-page" href="/admin/faq">Все вопросы</a>
+                        <a class="menu-tab active-page" href="/admin/gap_sub_category">Все GAP под категорий</a>
                     </h3>
                     <div style="float: right;">
-                        <a href="/admin/faq/create">
-                            <button class="btn btn-primary box-add-btn">Добавить вопросы</button>
+                        <a href="{{route('gap_sub_category.create')}}">
+                            <button class="btn btn-primary box-add-btn">Добавить GAP под категорию</button>
                         </a>
                     </div>
                     <div class="clear-float"></div>
@@ -20,9 +20,8 @@
                         <thead>
                         <tr style="border: 1px">
                             <th style="width: 30px">№</th>
-                            <th>Вопрос</th>
-                            <th>Ответ</th>
-                            <th>Статус</th>
+                            <th>Название на казахском</th>
+                            <th>Название на русском</th>
                             <th>Дата создание</th>
                             <th>Дата редактирование</th>
 
@@ -31,24 +30,21 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($faqs as $faq)
+                        @foreach($gapCardSubCategories as $category)
                             <tr>
-                                <td>{{ $faq->id }}</td>
-                                <td><p>{{ $faq->question }}</p></td>
-                                <td><p>{{ $faq->answer }}</p></td>
-                                <td><span class="badge"
-                                          style="background-color: {{ $faq->is_active ?  'green': 'red' }};">{{ $faq->is_active ?  'Активный': 'Не активный' }}</span>
-                                </td>
-                                <td>{{ $faq->created_at}}</td>
-                                <td>{{ $faq->updated_at}}</td>
+                                <td>{{ $category->id }}</td>
+                                <td>{{ $category->title_kz }}</td>
+                                <td>{{ $category->title_ru }}</td>
+                                <td>{{ $category->created_at}}</td>
+                                <td>{{ $category->updated_at}}</td>
                                 <td style="text-align: center">
-                                    <a href="/admin/faq/{{ $faq->id }}/edit">
+                                    <a href="/admin/gap_sub_category/{{ $category->id }}/edit">
                                         <li class="fa fa-pencil" style="font-size: 20px;"></li>
                                     </a>
                                 </td>
                                 <td style="text-align: center">
                                     <a href="javascript:void(0)"
-                                       onclick="delItem(this,'{{ $faq->id }}','faq')">
+                                       onclick="delItem(this,'{{ $category->id }}','gap_sub_category')">
                                         <li class="fa fa-trash-o" style="font-size: 20px; color: red;"></li>
                                     </a>
                                 </td>
