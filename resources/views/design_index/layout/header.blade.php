@@ -40,25 +40,42 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                 GAP ACADEMY
                             </a>
                         </li>
+                        <li style="list-style-type: none;">
+                            <a href="">
+                                GAP TURISM
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-6 text-right">
-                    <ul class="mt-top-list">
+                    <ul class="header-items-ul mt-top-list">
                         <li class="hidden-xs">
-                            <a href="{{route('shop.show')}}">Магазин</a>
+                            <a href="" style="
+                                font-weight: bolder;
+                                font-size: 1.2rem;
+                            ">
+                                + 7 707 369 17 77
+                            </a>
                         </li>
                         <li class="hidden-xs">
                             <div class="dropdown">
-                                <a class="icl_lang_sel_current icl_lang_sel_native">{{Lang::get('app.lang')}}</a>
+                                <a class="icl_lang_sel_current icl_lang_sel_native">Almaty <i
+                                            class="fa fa-arrow-down"></i></a>
+                            </div>
+                        </li>
+                        <li class="hidden-xs">
+                            <div class="dropdown">
+                                <a class="icl_lang_sel_current icl_lang_sel_native">RU <i
+                                            class="fa fa-arrow-down"></i> </a>
                                 <div class="dropdown-content">
                                     <a href="{{\App\Http\Helpers::setSessionLang('kz',$request)}}">
-                                        Қазақша
+                                        RU
                                     </a>
                                     <a href="{{\App\Http\Helpers::setSessionLang('ru',$request)}}">
-                                        Русский
+                                        KZ
                                     </a>
                                     <a href="{{\App\Http\Helpers::setSessionLang('en',$request)}}">
-                                        English
+                                        EN
                                     </a>
                                 </div>
                             </div>
@@ -131,70 +148,17 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                 </div>
                             </li>
                             <li>
-                                <a class="drop-link" href="">ПРОДУКЦИЯ<i class="fa fa-angle-down"
-                                                                         aria-hidden="true"></i></a>
+                                <a class="drop-link" href="blog-right-sidebar.html">Программы<i class="fa fa-angle-down"
+                                                                                                aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
-                                        <li><a href="/shop/1">ЭЛИКСИРЫ</a></li>
-                                        <li><a href="/shop/2">ГЕЛИ</a></li>
-                                        <li><a href="/shop/3">СПРЕИ</a></li>
-                                        <li><a href="/shop/4">КРЕМА</a></li>
-                                        <li><a href="/shop/5">ДЕТОКС</a></li>
-                                        <li><a href="/shop/6">МЫЛО</a></li>
-                                        <li><a href="/shop/7">ТВЕРДЫЙ ШАМПУНЬ</a></li>
                                     </ul>
                                 </div>
                             </li>
-                        <!--<li class="drop">
-                                <a href="#">ПРОДУКЦИЯ<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <div class="mt-dropmenu text-left">
-                                    <div class="mt-frame">
-                                        <div class="mt-f-box">
-                                            <div class="row">
-                                                <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                                                    <?php foreach($categories as $category): ?>
-                                <div class="mt-col-3">
-                                    <div class="sub-dropcont">
-                                        <strong class="title"><a href="product-grid-view.html"
-                                                                 class="mt-subopener">{{$category->name}}</a></strong>
-                                                            <div class="sub-drop">
-                                                                <?php $products = \App\Models\Product::where(['category_id' => $category->id])->get(); ?>
-                                </div>
-                            </div>
-                        </div>
-<?php  endforeach; ?>
-                                </div>
-                                <div class="col-4 col-sm-4 col-md-4 xol-lg-4 col-xl-4 ">
-                                    <div class="mt-col-3 promo">
-                                        <div class="mt-promobox" style="position: relative;">
-                                            <a href="register"><img
-                                                        src="/new_design/images/program_banner.png"
-                                                        alt="promo banner"
-                                                        class="img-responsive">
-                                                <div style="position: absolute; bottom: 8px;right: 16px;">
-                                                    <a
-                                                            href="register"
-                                                            class="btn btn-warning">Регистрация</a>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <span class="mt-mdropover"></span>
-            </li>-->
                             <li>
-                                <a class="drop-link" href="">ПРОГРАММЫ<i class="fa fa-angle-down"
-                                                                         aria-hidden="true"></i></a>
-                                <div class="s-drop">
-                                    <ul>
-                                        <li><a href="/partner-program">Партнерская программа</a></li>
-                                        <li><a href="/social-program">Социальная программа</a></li>
-                                    </ul>
-                                </div>
+                                <a href="">
+                                    Преимущества
+                                </a>
                             </li>
                             <li>
                                 <a class="drop-link" href="blog-right-sidebar.html">НОВОСТИ<i class="fa fa-angle-down"
@@ -296,12 +260,22 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
     }
 
     .gap-ul li {
+        margin-top: 0.7rem;
         float: left !important;
         display: block;
-        padding-top: 0.6rem;
-        font-size: 1.8rem;
+        padding-top: 0.2rem;
+        font-size: 1.4rem;
         font-weight: bolder;
         padding-right: 1rem;
+        padding-left: 1rem;
+        border-right: 2px solid white;
     }
 
+    .header-items-ul li a {
+        background-color: transparent !important;
+    }
+
+    .dropdown-content a {
+        color: black !important;
+    }
 </style>
