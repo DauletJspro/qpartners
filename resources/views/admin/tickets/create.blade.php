@@ -3,7 +3,11 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Вопрос администратору</div>
+                @if(\Illuminate\Support\Facades\Auth::user()->role_id == 1)
+                <div class="panel-heading">Вопрос клиенту</div>
+                @else
+                    <div class="panel-heading">Вопрос администратору</div>
+                @endif
 
                 <div class="panel-body">
                     @include('admin.tickets.includes.flash')
@@ -43,6 +47,28 @@
                                 @endif
                             </div>
                         </div>
+
+                        @if(\Illuminate\Support\Facades\Auth::user()->role_id == 1)
+                        <div class="form-group{{ $errors->has('recipient') ? ' has-error' : '' }}">
+                            <label for="recipient" class="col-md-4 control-label">Список пользователей</label>
+
+                            <div class="col-md-6">
+                                <select id="recipient" type="recipient" class="form-control selectpicker"
+                                        name="recipient" data-live-search="true">
+                                    <option value="">Выберите получателя</option>
+                                @foreach ($users as $user)
+                                        <option value="{{ $user->user_id }}">{{ $user->login }}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('recipient'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('recipient') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        @endif
 
                         <div class="form-group{{ $errors->has('priority') ? ' has-error' : '' }}">
                             <label for="priority" class="col-md-4 control-label">Приоритет</label>
@@ -90,3 +116,10 @@
         </div>
     </div>
 @endsection
+<style>
+    .bootstrap-select > .dropdown-toggle, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default {
+        height: 34px!important;
+    }
+</style>
+
+

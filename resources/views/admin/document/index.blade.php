@@ -1,11 +1,20 @@
 @extends('admin.layout.layout')
 
 @section('content')
+    @php
+    $ticket = \App\Models\Ticket::where('recipient_id', '=', \Illuminate\Support\Facades\Auth::user()->user_id)
+->where('category_id', '=', 2)->get();
+    @endphp
 
     <section class="content-header">
         <h1>
             Мои документы
         </h1>
+        @if(count($ticket))
+        <a href=/admin/my_tickets><h5 style="color: red">Кажется у вас проблемы с верификаций. Чтобы посмотреть
+                подробную
+                причину нажмите по данному тексту.</h5></a>
+        @endif
     </section>
     <section class="content">
     <div class="row">
