@@ -11,5 +11,10 @@ class GapCardCategory extends Model
         'title_ru'
     ];
 
-    
+    public function sub_categories()
+    {
+        return $this->hasMany(GapCardSubCategory::class);
+    }
+
+
 }

@@ -1,4 +1,5 @@
-<?php $title = 'Добавить вопрос-ответы'; ?>
+@php($categories = \App\Models\GapCardCategory::pluck('title_ru', 'id')->toArray())
+<?php $title = 'Добавить под категорий'; ?>
 @extends('admin.layout.layout')
 
 @section('content')
@@ -19,23 +20,22 @@
                             </div>
                         @endif
                         <div class="box-body">
-                            {{ Form::open(['action' => ['Admin\FaqController@store'], 'method' => 'POST']) }}
+                            {{ Form::open(['action' => ['Admin\GapCardSubCategoryController@store'], 'method' => 'POST']) }}
                             {{ Form::token() }}
                             <div class="form-group">
-                                {{ Form::label('Вопрос', null, ['class' => 'control-label']) }}
-                                {{ Form::textarea('question',null, ['class' => 'form-control'])}}
+                                {{ Form::label('Название на казахском', null, ['class' => 'control-label']) }}
+                                {{ Form::text('title_kz',null, ['class' => 'form-control'])}}
                             </div>
                             <div class="form-group">
-                                {{ Form::label('Ответ на вопрос', null, ['class' => 'control-label']) }}
-                                {{ Form::textarea('answer',null, ['class' => 'form-control'])}}
+                                {{ Form::label('Название на русском', null, ['class' => 'control-label']) }}
+                                {{ Form::text('title_ru',null, ['class' => 'form-control'])}}
                             </div>
-{{--                            <div class="form-group">--}}
-{{--                                {{ Form::label('Порядковый номер', null, ['class' => 'control-label']) }}--}}
-{{--                                {{ Form::text('order', null, ['class' => 'form-control', 'type'=> 'number'])}}--}}
-{{--                            </div>--}}
                             <div class="form-group">
-                                {{ Form::checkbox('is_active')}}
-                                {{ Form::label('Активный (показывать на странице FAQ)', null, ['class' => 'control-label']) }}
+                                {{ Form::label('Выберите категорию', null, ['class' => 'control-label']) }}
+                                {{ Form::select('gap_card_category_id',
+                                    $categories,
+                                    null,
+                                    ['class' => 'form-control'])}}
                             </div>
                             {{ Form::submit('Создать', ['class'=> 'btn btn-primary']) }}
                             {{ Form::close() }}

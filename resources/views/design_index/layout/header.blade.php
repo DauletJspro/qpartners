@@ -13,42 +13,80 @@ if (Auth::user()) {
 $needSubsidiaryIds = [5, 7, 8];
 $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
 
+$logo_image_name = 'market.png';
+$controllerName = request()->route()->getAction()['controller'];
+$gapTypeActive = 0;
+if ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
+    $logo_image_name = 'market.png';
+    $gapTypeActive = 1;
+} elseif ($controllerName == 'App\Http\Controllers\Index\GapCardController@show') {
+    $logo_image_name = 'card.png';
+    $gapTypeActive = 2;
+}
 ?>
 <header id="mt-header" class="style3">
     <div class="mt-top-bar">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 hidden-xs">
-                    {{-- @foreach($subsidiaries as $key => $subsidiary)
-                        <a href="{{route('coming-soon', ['id' => $subsidiary->id])}}" class="tel"
-                           style="
-                           {{$key ? 'margin-left:1px;' : ''}}
-                                   " data-toggle='tooltip' data-placement='bottom' title='{{$subsidiary->name}}'>
-                            <span style="
-                             padding:0 14px 0 14px;
-                             color: white;
-                             {{ $key <= count($subsidiary) ? 'border-right: 1px solid lightgrey;' : ''}}
-                                    ">{{$subsidiary->name}}</span>
-                        </a>
-                    @endforeach --}}
+                    <ul class="gap-ul mt-top-bar" style="float: left;">
+                        <li style="list-style-type: none;">
+                            <a style="{{$gapTypeActive == 1 ? 'background:white;color:red;' : ''}}"
+                               href="{{route('gap.market.show')}}">
+                                GAP MARKET
+                            </a>
+                        </li>
+                        <li style="list-style-type: none;">
+                            <a style="{{$gapTypeActive == 2 ? 'background:white;color:red;' : '' }}" href="{{route('gap.card.show')}}">
+                                GAP CARD
+                            </a>
+                        </li>
+                        <li style="list-style-type: none;">
+                            <a href="">
+                                GAP TURISM
+                            </a>
+                        </li>
+                        <li style="list-style-type: none;">
+                            <a href="">
+                                GAP ACADEMY
+                            </a>
+                        </li>
+                        <li style="list-style-type: none;">
+                            <a href="">
+                                GAP TURISM
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="col-xs-12 col-sm-6 text-right">
-                    <ul class="mt-top-list">
+                    <ul class="header-items-ul mt-top-list">
                         <li class="hidden-xs">
-                            <a href="{{route('shop.show')}}">Магазин</a>
+                            <a href="" style="
+                                font-weight: bold;
+                                font-size: 1.2rem;
+                            ">
+                                + 7 707 369 17 77
+                            </a>
                         </li>
                         <li class="hidden-xs">
                             <div class="dropdown">
-                                <a class="icl_lang_sel_current icl_lang_sel_native">{{Lang::get('app.lang')}}</a>
+                                <a class="icl_lang_sel_current icl_lang_sel_native">Almaty <i
+                                            class="fa fa-arrow-down"></i></a>
+                            </div>
+                        </li>
+                        <li class="hidden-xs">
+                            <div class="dropdown">
+                                <a class="icl_lang_sel_current icl_lang_sel_native">RU <i
+                                            class="fa fa-arrow-down"></i> </a>
                                 <div class="dropdown-content">
                                     <a href="{{\App\Http\Helpers::setSessionLang('kz',$request)}}">
-                                        Қазақша
+                                        RU
                                     </a>
                                     <a href="{{\App\Http\Helpers::setSessionLang('ru',$request)}}">
-                                        Русский
+                                        KZ
                                     </a>
                                     <a href="{{\App\Http\Helpers::setSessionLang('en',$request)}}">
-                                        English
+                                        EN
                                     </a>
                                 </div>
                             </div>
@@ -76,8 +114,9 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="mt-logo"><a href="/"><img src="/new_design/images/logo/logo.png" alt="schon"
-                                                          style="height: 45px; width: 135px;margin-top: -4px;"></a>
+                    <div class="mt-logo"><a href="/"><img src="/new_design/images/logo/gap/{{$logo_image_name}}"
+                                                          alt="schon"
+                                                          style="height: 30px; width: 140px;"></a>
                     </div>
                     <?php $totalPrice = 0;?>
                     <?php $total = 0;?>
@@ -88,11 +127,6 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                         <?php $totalPrice += $total ? $total->product_price : 0; ?>
                     <?php endforeach ?>
                     @endif
-                    <a href="{{ route('basket.show') }}" class="mt-sh-cart hidden-xs" id="basket-box">
-                        <span class="icon-handbag"></span>
-                        <strong>Ваша корзина</strong>
-                        <span>{{isset($items) ? count($items) : 0}} продукта &nbsp; <i class="fa fa-dollar"></i>{{$totalPrice}}</span>
-                    </a>
                     <ul class="mt-icon-list">
                         <li class="hidden-lg hidden-md">
                             <a href="#" class="bar-opener mobile-toggle">
@@ -102,8 +136,6 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                             </a>
                         </li>
                         <li></li>
-                        <li><a style="color: red;" href="{{route('favorite.showUserItem')}}"
-                               class="icon-heart hidden-xs"><span id="favoriteCount">{{count($favorites)}}</span></a></li>
                     </ul>
                     <nav id="nav">
                         <ul>
@@ -120,70 +152,17 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                 </div>
                             </li>
                             <li>
-                                <a class="drop-link" href="">ПРОДУКЦИЯ<i class="fa fa-angle-down"
-                                                                         aria-hidden="true"></i></a>
+                                <a class="drop-link" href="blog-right-sidebar.html">Программы<i class="fa fa-angle-down"
+                                                                                                aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
-                                        <li><a href="/shop/1">ЭЛИКСИРЫ</a></li>
-                                        <li><a href="/shop/2">ГЕЛИ</a></li>
-                                        <li><a href="/shop/3">СПРЕИ</a></li>
-                                        <li><a href="/shop/4">КРЕМА</a></li>
-                                        <li><a href="/shop/5">ДЕТОКС</a></li>
-                                        <li><a href="/shop/6">МЫЛО</a></li>
-                                        <li><a href="/shop/7">ТВЕРДЫЙ ШАМПУНЬ</a></li>
                                     </ul>
                                 </div>
                             </li>
-                        <!--<li class="drop">
-                                <a href="#">ПРОДУКЦИЯ<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <div class="mt-dropmenu text-left">
-                                    <div class="mt-frame">
-                                        <div class="mt-f-box">
-                                            <div class="row">
-                                                <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                                                    <?php foreach($categories as $category): ?>
-                                <div class="mt-col-3">
-                                    <div class="sub-dropcont">
-                                        <strong class="title"><a href="product-grid-view.html"
-                                                                 class="mt-subopener">{{$category->name}}</a></strong>
-                                                            <div class="sub-drop">
-                                                                <?php $products = \App\Models\Product::where(['category_id' => $category->id])->get(); ?>
-                                </div>
-                            </div>
-                        </div>
-<?php  endforeach; ?>
-                                </div>
-                                <div class="col-4 col-sm-4 col-md-4 xol-lg-4 col-xl-4 ">
-                                    <div class="mt-col-3 promo">
-                                        <div class="mt-promobox" style="position: relative;">
-                                            <a href="register"><img
-                                                        src="/new_design/images/program_banner.png"
-                                                        alt="promo banner"
-                                                        class="img-responsive">
-                                                <div style="position: absolute; bottom: 8px;right: 16px;">
-                                                    <a
-                                                            href="register"
-                                                            class="btn btn-warning">Регистрация</a>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <span class="mt-mdropover"></span>
-            </li>-->
                             <li>
-                                <a class="drop-link" href="">ПРОГРАММЫ<i class="fa fa-angle-down"
-                                                                         aria-hidden="true"></i></a>
-                                <div class="s-drop">
-                                    <ul>
-                                        <li><a href="/partner-program">Партнерская программа</a></li>
-                                        <li><a href="/social-program">Социальная программа</a></li>
-                                    </ul>
-                                </div>
+                                <a href="{{route('advantage.index')}}">
+                                    Преимущества
+                                </a>
                             </li>
                             <li>
                                 <a class="drop-link" href="blog-right-sidebar.html">НОВОСТИ<i class="fa fa-angle-down"
@@ -276,4 +255,31 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
         display: block;
     }
 
+    #mt-header.style3 .mt-top-bar {
+        background-color: #FF0000 !important;
+    }
+
+    .gap-ul {
+        margin-bottom: 0 !important;
+    }
+
+    .gap-ul li {
+        margin-top: 0.7rem;
+        float: left !important;
+        display: block;
+        padding-top: 0.2rem;
+        font-size: 1.4rem;
+        font-weight: bolder;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        border-right: 2px solid white;
+    }
+
+    .header-items-ul li a {
+        background-color: transparent !important;
+    }
+
+    .dropdown-content a {
+        color: black !important;
+    }
 </style>

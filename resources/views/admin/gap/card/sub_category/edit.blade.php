@@ -1,4 +1,6 @@
-<?php $title = 'Редактировать вопрос-ответы'; ?>
+@php($categories = \App\Models\GapCardCategory::pluck('title_ru', 'id')->toArray())
+
+<?php $title = 'Добавить под категорий'; ?>
 @extends('admin.layout.layout')
 
 @section('content')
@@ -19,23 +21,22 @@
                             </div>
                         @endif
                         <div class="box-body">
-                            {{ Form::open(['action' => ['Admin\FaqController@update', 'id'=> $faq->id], 'method' => 'PUT']) }}
+                            {{ Form::open(['action' => ['Admin\GapCardSubCategoryController@store'], 'method' => 'POST']) }}
                             {{ Form::token() }}
                             <div class="form-group">
-                                {{ Form::label('Вопрос', null, ['class' => 'control-label']) }}
-                                {{ Form::textarea('question',$faq->question, ['class' => 'form-control'])}}
+                                {{ Form::label('Название на казахском', null, ['class' => 'control-label']) }}
+                                {{ Form::text('title_kz',$gapCardSubCategory->title_kz, ['class' => 'form-control'])}}
                             </div>
                             <div class="form-group">
-                                {{ Form::label('Ответ на вопрос', null, ['class' => 'control-label']) }}
-                                {{ Form::textarea('answer',$faq->answer, ['class' => 'form-control'])}}
+                                {{ Form::label('Название на русском', null, ['class' => 'control-label']) }}
+                                {{ Form::text('title_ru',$gapCardSubCategory->title_ru, ['class' => 'form-control'])}}
                             </div>
-{{--                            <div class="form-group">--}}
-{{--                                {{ Form::label('Порядковый номер', null, ['class' => 'control-label']) }}--}}
-{{--                                {{ Form::text('order', $faq->order, ['class' => 'form-control'])}}--}}
-{{--                            </div>--}}
                             <div class="form-group">
-                                {{ Form::checkbox('is_active',NULL,$faq->is_active)}}
-                                {{ Form::label('Активный (показывать на странице FAQ)', null, ['class' => 'control-label']) }}
+                                {{ Form::label('Выберите категорию', null, ['class' => 'control-label']) }}
+                                {{ Form::select('gap_card_category_id',
+                                    $categories,
+                                    $gapCardSubCategory->gap_card_category_id,
+                                    ['class' => 'form-control'])}}
                             </div>
                             {{ Form::submit('Создать', ['class'=> 'btn btn-primary']) }}
                             {{ Form::close() }}

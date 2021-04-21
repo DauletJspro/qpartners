@@ -1,16 +1,15 @@
 @extends('admin.layout.layout')
-
 @section('content')
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title box-title-first">
-                        <a class="menu-tab active-page" href="/admin/faq">Все вопросы</a>
+                        <a class="menu-tab active-page" href="/admin/gap_item">Все GAP центры</a>
                     </h3>
                     <div style="float: right;">
-                        <a href="/admin/faq/create">
-                            <button class="btn btn-primary box-add-btn">Добавить вопросы</button>
+                        <a href="{{route('gap_item.create')}}">
+                            <button class="btn btn-primary box-add-btn">Добавить GAP центр</button>
                         </a>
                     </div>
                     <div class="clear-float"></div>
@@ -20,9 +19,13 @@
                         <thead>
                         <tr style="border: 1px">
                             <th style="width: 30px">№</th>
-                            <th>Вопрос</th>
-                            <th>Ответ</th>
-                            <th>Статус</th>
+                            <th>Название на казахском</th>
+                            <th>Название на русском</th>
+                            <th>Описание на казахском</th>
+                            <th>Описание на русском</th>
+                            <th>Скидки в процентах</th>
+                            <th>Цена</th>
+                            <th>Под категория</th>
                             <th>Дата создание</th>
                             <th>Дата редактирование</th>
 
@@ -31,24 +34,26 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($faqs as $faq)
+                        @foreach($gapCardItem as $item)
                             <tr>
-                                <td>{{ $faq->id }}</td>
-                                <td><p>{{ $faq->question }}</p></td>
-                                <td><p>{{ $faq->answer }}</p></td>
-                                <td><span class="badge"
-                                          style="background-color: {{ $faq->is_active ?  'green': 'red' }};">{{ $faq->is_active ?  'Активный': 'Не активный' }}</span>
-                                </td>
-                                <td>{{ $faq->created_at}}</td>
-                                <td>{{ $faq->updated_at}}</td>
+                                <td>{{ $item->id }}</td>
+                                <td><p>{{$item->title_kz}}</p></td>
+                                <td><p>{{$item->title_ru}}</p></td>
+                                <td><p>{{$item->description_kz}}</p></td>
+                                <td><p>{{$item->description_ru}}</p></td>
+                                <td><p>{{$item->discount_percentage}}</p></td>
+                                <td><p>{{$item->price}}</p></td>
+                                <td><p>{{$item->gapCardSubCategory->title_ru}}</p></td>
+                                <td>{{ $item->created_at}}</td>
+                                <td>{{ $item->updated_at}}</td>
                                 <td style="text-align: center">
-                                    <a href="/admin/faq/{{ $faq->id }}/edit">
+                                    <a href="/admin/gap_item/{{ $item->id }}/edit">
                                         <li class="fa fa-pencil" style="font-size: 20px;"></li>
                                     </a>
                                 </td>
                                 <td style="text-align: center">
                                     <a href="javascript:void(0)"
-                                       onclick="delItem(this,'{{ $faq->id }}','faq')">
+                                       onclick="delItem(this,'{{ $item->id }}','gap_item')">
                                         <li class="fa fa-trash-o" style="font-size: 20px; color: red;"></li>
                                     </a>
                                 </td>

@@ -66,7 +66,7 @@ Route::group([
     Route::resource('gap_item', 'GapCardItemController');
     Route::resource('gap_category', 'GapCardCategoryController');
     Route::resource('gap_sub_category', 'GapCardSubCategoryController');
-    
+
     Route::group([
         'prefix' => 'profile'
     ], function () {
@@ -380,6 +380,7 @@ Route::group([
     Route::resource('packet-item', 'PacketItemController');
     Route::resource('product', 'ProductController');
     Route::resource('category', 'CategoryController');
+    Route::resource('sub_category', 'SubCategoryController');
     Route::resource('brand', 'BrandController');
     Route::resource('news-category', 'NewsCategoryController');
     Route::resource('representative', 'RepresentativeController');
@@ -416,6 +417,7 @@ Route::group([
     'namespace' => 'Index',
 ], function () {
     Route::get('/', 'IndexController@index');
+    Route::get('advantages/', 'AdvantagesController@index')->name('advantage.index');
     Route::get('/social-program', 'PassiveProgramController@getSocial')->name('get.social');
     Route::get('/partner-program', 'PassiveProgramController@getPartner');
     Route::get('/baspana-plus', 'PassiveProgramController@getBaspanaPlus');
@@ -431,7 +433,8 @@ Route::group([
     Route::get('city', 'IndexController@getCityListByCountry');
     Route::get('video', 'IndexController@video');
     Route::get('contact', 'IndexController@contact')->name('contact.show');
-    Route::get('/cap', 'CapCardController@index')->name('cap.show');
+    Route::get('gap/card/show', 'GapCardController@show')->name('gap.card.show');
+    Route::get('gap/market/show', 'GapMarketController@show')->name('gap.market.show');
     Route::post('contact', 'IndexController@sendMessage');
     Route::get('coming-soon', 'IndexController@comingSoon')->name('coming-soon');
     Route::get('news', 'NewsController@newsList');

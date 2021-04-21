@@ -132,19 +132,19 @@ function initSlickSlider() {
         ]
     });
     jQuery('.bestseller-slider').slick({
-        slidesToShow: 4,
+        slidesToShow: 1,
         slidesToScroll: 1,
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 1,
                 }
             },
             {
                 breakpoint: 767,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 1,
                 }
             },
             {
@@ -600,18 +600,18 @@ ResponsiveHelper = (function ($) {
     };
 }(jQuery));
 
-$(document).ready(function() {
-    $('#choosing_role').click(function() {
+$(document).ready(function () {
+    $('#choosing_role').click(function () {
         // $('.choose_role').show();
-        $('.choose_role').delay(500).queue(function(){
-            $(this).css("display", "block");            
+        $('.choose_role').delay(500).queue(function () {
+            $(this).css("display", "block");
         });
     })
 
-    $('#buyProductOnline').click(function() {
+    $('#buyProductOnline').click(function () {
         let modal = $('#order_form');
         let id = $(this).data('id');
-        let product_count = $('#product_count').val();      
+        let product_count = $('#product_count').val();
         $('<input>').attr({
             type: 'hidden',
             name: 'product_count',
@@ -621,8 +621,8 @@ $(document).ready(function() {
         $(modal).modal();
     })
 
-    $('#form_order').submit(function(e) {
-        e.preventDefault()    
+    $('#form_order').submit(function (e) {
+        e.preventDefault()
         let formData = new FormData($(this)[0]);
         // document.getElementById('ajax-loader').style.display='block';
         // $('#ajax-loader').css('display', 'block')
@@ -634,9 +634,9 @@ $(document).ready(function() {
             },
             dataType: 'json',
             data: $(this).serialize(),
-            cache : false,
+            cache: false,
             processData: false,
-            beforeSend: function() {
+            beforeSend: function () {
                 $(this).parents('.modal').modal()
             },
             success: function (data) {
@@ -646,17 +646,16 @@ $(document).ready(function() {
                     showError(data.message);
                     $(this).parents('.modal').modal()
                     return;
-                }
-                else {
+                } else {
                     // console.log(data)
                     $(this).parents('.modal').modal()
                     window.location.replace(data.url);
                 }
             }
         });
-        
+
     })
-   
+
 })
 
 
