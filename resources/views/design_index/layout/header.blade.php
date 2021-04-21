@@ -156,7 +156,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                                 </div>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="{{route('advantage.index')}}">
                                     Преимущества
                                 </a>
                             </li>

@@ -66,7 +66,7 @@ Route::group([
     Route::resource('gap_item', 'GapCardItemController');
     Route::resource('gap_category', 'GapCardCategoryController');
     Route::resource('gap_sub_category', 'GapCardSubCategoryController');
-    
+
     Route::group([
         'prefix' => 'profile'
     ], function () {
@@ -416,6 +416,7 @@ Route::group([
     'namespace' => 'Index',
 ], function () {
     Route::get('/', 'IndexController@index');
+    Route::get('advantages/', 'AdvantagesController@index')->name('advantage.index');
     Route::get('/social-program', 'PassiveProgramController@getSocial')->name('get.social');
     Route::get('/partner-program', 'PassiveProgramController@getPartner');
     Route::get('/baspana-plus', 'PassiveProgramController@getBaspanaPlus');
