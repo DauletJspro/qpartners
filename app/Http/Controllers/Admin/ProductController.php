@@ -45,7 +45,7 @@ class ProductController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'product_name_ru' => 'required',
-            'category' => 'required',
+            'sub_category_id' => 'required',
         ]);
         if ($validator->fails()) {
             $messages = $validator->errors();
@@ -72,7 +72,7 @@ class ProductController extends Controller
         $product->information = $request->information;
         $product->composition = $request->composition;
         $product->sort_num = ($request->sort_num == '') ? 1000 : $request->sort_num;
-        $product->category_id = $request->category;
+        $product->sub_category_id = $request->sub_category_id;
         $product->save();
 
         return redirect('/admin/product');
@@ -95,7 +95,7 @@ class ProductController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'product_name_ru' => 'required',
-            'category' => 'required',
+            'sub_category_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -123,7 +123,7 @@ class ProductController extends Controller
         $product->information = $request->information;
         $product->composition = $request->composition;
         $product->sort_num = ($request->sort_num == '') ? 1000 : $request->sort_num;
-        $product->category_id = $request->category;
+        $product->sub_category_id = $request->sub_category_id;
         $product->save();
 
         return redirect('/admin/product');

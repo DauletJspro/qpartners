@@ -2,12 +2,7 @@
 
 use Illuminate\Support\Facades\DB;
 
-$categories = \App\Models\Category::all();
-$array = [];
-foreach ($categories as $category) {
-    $array[$category->id] = $category->name;
-}
-$categories = $array;
+$categories = \App\Models\SubCategory::pluck('title_ru', 'id')->toArray();
 $items = \App\Models\Product::ITEM;
 ?>
 @extends('admin.layout.layout')
@@ -103,8 +98,8 @@ $items = \App\Models\Product::ITEM;
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Выберите категорию</label>
-                                                {!! Form::select('category',$categories,(isset($row->category_id) ? $row->category_id : null),['class' => 'form-control', 'placeholder' => 'Выберите категорию']); !!}
+                                                <label>Выберите под категорию</label>
+                                                {!! Form::select('sub_category_id',$categories,($row->sub_category_id ? $row->sub_category_id : null),['class' => 'form-control', 'placeholder' => 'Выберите под категорию']); !!}
                                             </div>
                                             <div class="form-group">
                                                 <label>Выберите назначение</label>

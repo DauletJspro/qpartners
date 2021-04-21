@@ -8,6 +8,7 @@
                 <div class="box-header">
                     <h3 class="box-title box-title-first">
                         <a class="menu-tab active-page" href="/admin/category">Все категорий</a>
+                        <a class="menu-tab active-page" href="/admin/sub_category">Все под категорий</a>
                         <a class="menu-tab active-page" href="/admin/product">Все товары</a>
                         <a class="menu-tab active-page" href="/admin/brand">Все бренды</a>
                     </h3>
@@ -18,9 +19,14 @@
                         <a href="/admin/category/create">
                             <button class="btn btn-success box-add-btn">Добавить категорию</button>
                         </a>
+                        <br>
+                        <a href="/admin/sub_category/create">
+                            <button class="btn btn-success box-add-btn">Добавить под категорию</button>
+                        </a>
                         <a href="/admin/brand/create">
                             <button class="btn btn-warning box-add-btn">Добавить бренд</button>
                         </a>
+
                     </div>
                     <div class="clear-float"></div>
                 </div>
@@ -34,7 +40,7 @@
                             <th>Цена</th>
                             <th>Новый</th>
                             <th>Популярный</th>
-                            <th>Категория</th>
+                            <th>Под категория</th>
                             <th>Назначения</th>
                             <th>Балл</th>
                             <th>Краткое описание</th>
@@ -74,8 +80,7 @@
                                           style="background-color: {{ $val->is_popular ? 'green' : 'red' }}">{{$val->is_popular ? 'Да' : 'Нет'}}</span>
                                 </td>
                                 <td>
-                                    <?php $category = \App\Models\Category::where(['id' => $val->category_id])->first(); ?>
-                                    <strong>{{ isset($category) && !empty($category) ? $category->name : 'Не указано' }}</strong>
+                                    <strong>{{ isset($val->sub_category) ? $val->sub_category->title_kz : 'Не указано' }}</strong>
                                 </td>
                                 <td>
                                     {{ $val->item_id ? \App\Models\Product::ITEM[$val->item_id] :

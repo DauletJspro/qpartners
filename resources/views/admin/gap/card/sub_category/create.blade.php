@@ -1,4 +1,5 @@
-<?php $title = 'Добавить категорий'; ?>
+@php($categories = \App\Models\GapCardCategory::pluck('title_ru', 'id')->toArray())
+<?php $title = 'Добавить под категорий'; ?>
 @extends('admin.layout.layout')
 
 @section('content')
@@ -28,6 +29,13 @@
                             <div class="form-group">
                                 {{ Form::label('Название на русском', null, ['class' => 'control-label']) }}
                                 {{ Form::text('title_ru',null, ['class' => 'form-control'])}}
+                            </div>
+                            <div class="form-group">
+                                {{ Form::label('Выберите категорию', null, ['class' => 'control-label']) }}
+                                {{ Form::select('gap_card_category_id',
+                                    $categories,
+                                    null,
+                                    ['class' => 'form-control'])}}
                             </div>
                             {{ Form::submit('Создать', ['class'=> 'btn btn-primary']) }}
                             {{ Form::close() }}
