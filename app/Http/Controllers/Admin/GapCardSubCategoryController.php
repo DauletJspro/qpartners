@@ -24,14 +24,14 @@ class GapCardSubCategoryController extends Controller
 
     public function store(Request $request)
     {
+
         $messages = [
             'required' => 'Необходимо заполнить поле :attribute',
-            'min:5' => 'Минимальное количество символов должно быть 5'
+            'min:3' => 'Минимальное количество символов должно быть 3'
         ];
-
         $validator = Validator::make($request->all(), [
-            'title_kz' => 'required|min:5',
-            'title_ru' => 'required|min:5',
+            'title_kz' => 'required|min:3',
+            'title_ru' => 'required|min:3',
         ], $messages);
 
         if ($validator->fails()) {
@@ -62,12 +62,12 @@ class GapCardSubCategoryController extends Controller
     {
         $messages = [
             'required' => 'Необходимо заполнить поле :attribute',
-            'min:5' => 'Минимальное количество символов должно быть 5'
+            'min:3' => 'Минимальное количество символов должно быть 3'
         ];
 
         $validator = Validator::make($request->all(), [
-            'title_kz' => 'required|min:5',
-            'title_ru' => 'required|min:5',
+            'title_kz' => 'required|min:3',
+            'title_ru' => 'required|min:3',
         ], $messages);
 
         if ($validator->fails()) {

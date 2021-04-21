@@ -13,6 +13,7 @@ class Product extends Model
     protected $primaryKey = 'product_id';
 
     use SoftDeletes;
+
     protected $dates = ['deleted_at'];
 
     const ITEM = [1 => 'Очищение', 2 => 'Восполнение', 3 => 'Укрепление', 4 => 'Профилактика'];
@@ -21,6 +22,11 @@ class Product extends Model
     public function Category()
     {
         return $this->belongsTo('Category');
+    }
+
+    public function sub_category()
+    {
+        return $this->belongsTo(SubCategory::class);
     }
 
     public function favorite()

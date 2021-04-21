@@ -13,6 +13,16 @@ if (Auth::user()) {
 $needSubsidiaryIds = [5, 7, 8];
 $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
 
+$logo_image_name = 'market.png';
+$controllerName = request()->route()->getAction()['controller'];
+$gapTypeActive = 0;
+if ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
+    $logo_image_name = 'market.png';
+    $gapTypeActive = 1;
+} elseif ($controllerName == 'App\Http\Controllers\Index\GapCardController@show') {
+    $logo_image_name = 'card.png';
+    $gapTypeActive = 2;
+}
 ?>
 <header id="mt-header" class="style3">
     <div class="mt-top-bar">
@@ -21,12 +31,13 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                 <div class="col-xs-12 col-sm-6 hidden-xs">
                     <ul class="gap-ul mt-top-bar" style="float: left;">
                         <li style="list-style-type: none;">
-                            <a href="">
+                            <a style="{{$gapTypeActive == 1 ? 'background:white;color:red;' : ''}}"
+                               href="{{route('gap.market.show')}}">
                                 GAP MARKET
                             </a>
                         </li>
                         <li style="list-style-type: none;">
-                            <a href="">
+                            <a style="{{$gapTypeActive == 2 ? 'background:white;color:red;' : '' }}" href="{{route('gap.card.show')}}">
                                 GAP CARD
                             </a>
                         </li>
@@ -51,7 +62,7 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                     <ul class="header-items-ul mt-top-list">
                         <li class="hidden-xs">
                             <a href="" style="
-                                font-weight: bolder;
+                                font-weight: bold;
                                 font-size: 1.2rem;
                             ">
                                 + 7 707 369 17 77
@@ -103,8 +114,9 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="mt-logo"><a href="/"><img src="/new_design/images/logo/logo.png" alt="schon"
-                                                          style="height: 45px; width: 135px;margin-top: -4px;"></a>
+                    <div class="mt-logo"><a href="/"><img src="/new_design/images/logo/gap/{{$logo_image_name}}"
+                                                          alt="schon"
+                                                          style="height: 30px; width: 140px;"></a>
                     </div>
                     <?php $totalPrice = 0;?>
                     <?php $total = 0;?>
@@ -115,11 +127,6 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                         <?php $totalPrice += $total ? $total->product_price : 0; ?>
                     <?php endforeach ?>
                     @endif
-                    <a href="{{ route('basket.show') }}" class="mt-sh-cart hidden-xs" id="basket-box">
-                        <span class="icon-handbag"></span>
-                        <strong>Ваша корзина</strong>
-                        <span>{{isset($items) ? count($items) : 0}} продукта &nbsp; <i class="fa fa-dollar"></i>{{$totalPrice}}</span>
-                    </a>
                     <ul class="mt-icon-list">
                         <li class="hidden-lg hidden-md">
                             <a href="#" class="bar-opener mobile-toggle">
@@ -129,9 +136,6 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
                             </a>
                         </li>
                         <li></li>
-                        <li><a style="color: red;" href="{{route('favorite.showUserItem')}}"
-                               class="icon-heart hidden-xs"><span id="favoriteCount">{{count($favorites)}}</span></a>
-                        </li>
                     </ul>
                     <nav id="nav">
                         <ul>

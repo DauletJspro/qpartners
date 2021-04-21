@@ -1,4 +1,6 @@
-<?php $title = 'Изменить категорий'; ?>
+@php($categories = \App\Models\GapCardCategory::pluck('title_ru', 'id')->toArray())
+
+<?php $title = 'Добавить под категорий'; ?>
 @extends('admin.layout.layout')
 
 @section('content')
@@ -19,20 +21,25 @@
                             </div>
                         @endif
                         <div class="box-body">
-                            <form action="{{route('gap_sub_category.update', ['gap_category' => $gapCardSubCategory->id])}}"
-                                  method="post">
-                                {{ Form::token() }}
-                                <input name="_method" type="hidden" value="PUT">
-                                <div class="form-group">
-                                    {{ Form::label('Название на казахском', null, ['class' => 'control-label']) }}
-                                    {{ Form::text('title_kz',$gapCardSubCategory->title_kz, ['class' => 'form-control'])}}
-                                </div>
-                                <div class="form-group">
-                                    {{ Form::label('Название на русском', null, ['class' => 'control-label']) }}
-                                    {{ Form::text('title_ru',$gapCardSubCategory->title_ru, ['class' => 'form-control'])}}
-                                </div>
-                                {{ Form::submit('Создать', ['class'=> 'btn btn-primary']) }}
-                            </form>
+                            {{ Form::open(['action' => ['Admin\GapCardSubCategoryController@store'], 'method' => 'POST']) }}
+                            {{ Form::token() }}
+                            <div class="form-group">
+                                {{ Form::label('Название на казахском', null, ['class' => 'control-label']) }}
+                                {{ Form::text('title_kz',$gapCardSubCategory->title_kz, ['class' => 'form-control'])}}
+                            </div>
+                            <div class="form-group">
+                                {{ Form::label('Название на русском', null, ['class' => 'control-label']) }}
+                                {{ Form::text('title_ru',$gapCardSubCategory->title_ru, ['class' => 'form-control'])}}
+                            </div>
+                            <div class="form-group">
+                                {{ Form::label('Выберите категорию', null, ['class' => 'control-label']) }}
+                                {{ Form::select('gap_card_category_id',
+                                    $categories,
+                                    $gapCardSubCategory->gap_card_category_id,
+                                    ['class' => 'form-control'])}}
+                            </div>
+                            {{ Form::submit('Создать', ['class'=> 'btn btn-primary']) }}
+                            {{ Form::close() }}
                         </div>
                     </div>
                 </div>
