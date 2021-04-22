@@ -21,6 +21,7 @@ Route::group([
     'namespace' => 'Admin',
 ], function () {
     Route::any('/', 'AuthController@login');
+    Route::get('/check-list/register', 'AuthController@showCheckListRegister')->name('check-list.register');
     Route::any('/login', 'AuthController@login')->name('login.show');
     Route::get('/register', 'AuthController@showRegister');
     Route::get('/confirm', 'AuthController@confirmEmail');
@@ -416,7 +417,7 @@ Route::group([
     'middleware' => 'web',
     'namespace' => 'Index',
 ], function () {
-    Route::get('/', 'IndexController@index');
+    Route::get('/', 'IndexController@index')->name('gap.index.show');
     Route::get('advantages/', 'AdvantagesController@index')->name('advantage.index');
     Route::get('/social-program', 'PassiveProgramController@getSocial')->name('get.social');
     Route::get('/partner-program', 'PassiveProgramController@getPartner');

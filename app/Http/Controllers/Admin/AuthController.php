@@ -429,4 +429,10 @@ class AuthController extends Controller
             'ok' => $ok
         ]);
     }
+
+    public function showCheckListRegister()
+    {
+        return view('admin.new_design_auth.check-list-register');
+
+    }
 }
