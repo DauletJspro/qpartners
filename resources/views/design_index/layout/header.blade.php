@@ -76,15 +76,14 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         <li class="hidden-xs">
                             <a href="" style="
                                 font-weight: bold;
-                                font-size: 1.2rem;
+                                font-size: 1.5rem;
                             ">
                                 + 7 707 369 17 77
                             </a>
                         </li>
                         <li class="hidden-xs">
                             <div class="dropdown cursor-pointer">
-                                <a class="icl_lang_sel_current icl_lang_sel_native">RU <i
-                                            class="fa fa-arrow-down"></i> </a>
+                                <a class="icl_lang_sel_current icl_lang_sel_native">RU <i class="fa fa-angle-down"  aria-hidden="true"></i> </a>
                                 <div class="dropdown-content">
                                     <a href="{{\App\Http\Helpers::setSessionLang('kz',$request)}}">
                                         RU
@@ -277,6 +276,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
 
     .dropdown:hover .dropdown-content {
         display: grid;
+        width: 60%;
         grid-template-columns: repeat(4, 1fr);
         background-color: white;
     }
