@@ -1,6 +1,7 @@
 @php
 
     $userPacket = \App\Models\UserPacket::where('user_id', '=', $row->user_id)
+->where('is_active', true)
 ->get();
 
 

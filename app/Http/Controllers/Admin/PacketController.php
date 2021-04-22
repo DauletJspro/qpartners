@@ -647,31 +647,31 @@ class PacketController extends Controller
                     $packetPrice = $packetPrice * (37.5 / 100);
                 }
                 $inviterPacketId = UserPacket::where(['user_id' => $inviter->user_id])
-	                ->where(['is_active' => true])
-	                ->whereIn('packet_id', [Packet::CLASSIC, Packet::PREMIUM, Packet::VIP2])
-	                ->get()->pluck('packet_id');
+                    ->where(['is_active' => true])
+                    ->whereIn('packet_id', [Packet::CLASSIC, Packet::PREMIUM, Packet::VIP2])
+                    ->get()->pluck('packet_id');
                 $inviterCount = (count($inviterPacketId));
                 $limit = Packet::limitBonus($inviter);
                 if (isset($inviterCount) && $limit == true) {
-                        $inviterPacketId = collect($inviterPacketId);
-                        $inviterPacketId = max($inviterPacketId->toArray());
-                        $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
-                        if ($inviter_order == 1) {
-                            $bonusPercentage = (5 / 100);
-                            $bonus = $packetPrice * $bonusPercentage;
-                        }
-                        if ($inviter_order >= 2 && $inviter_order <= 4 && $inviterPacketId >= Packet::CLASSIC) {
-	                            $bonusPercentage = (5 / 100);
-	                            $bonus = $packetPrice * $bonusPercentage;
-                            }
-                        if ($inviter_order > 4 && $inviter_order <= 6 && $inviterPacketId >= Packet::PREMIUM){
-	                            $bonusPercentage = (5 / 100);
-	                            $bonus = $packetPrice * $bonusPercentage;
-                            }
-                        if ($inviter_order > 6 && $inviter_order <= 8 && $inviterPacketId == Packet::VIP2){
-		                        $bonusPercentage = (5 / 100);
-		                        $bonus = $packetPrice * $bonusPercentage;
-	                        }
+                    $inviterPacketId = collect($inviterPacketId);
+                    $inviterPacketId = max($inviterPacketId->toArray());
+                    $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
+                    if ($inviter_order == 1) {
+                        $bonusPercentage = (5 / 100);
+                        $bonus = $packetPrice * $bonusPercentage;
+                    }
+                    if ($inviter_order >= 2 && $inviter_order <= 4 && $inviterPacketId >= Packet::CLASSIC) {
+                        $bonusPercentage = (5 / 100);
+                        $bonus = $packetPrice * $bonusPercentage;
+                    }
+                    if ($inviter_order > 4 && $inviter_order <= 6 && $inviterPacketId >= Packet::PREMIUM) {
+                        $bonusPercentage = (5 / 100);
+                        $bonus = $packetPrice * $bonusPercentage;
+                    }
+                    if ($inviter_order > 6 && $inviter_order <= 8 && $inviterPacketId == Packet::VIP2) {
+                        $bonusPercentage = (5 / 100);
+                        $bonus = $packetPrice * $bonusPercentage;
+                    }
                 }
                 if ($bonus) {
                     $operation = new UserOperation();
@@ -745,8 +745,7 @@ class PacketController extends Controller
                 } elseif (in_array($packet->packet_id, [Packet::BASPANA_PLUS, Packet::BASPANA, Packet::TULPAR_PLUS, Packet::TULPAR])) {
                     $packetPrice = $packet->packet_price * (37.5 / 100);
                 }
-            }
-            else{
+            } else {
                 $packetPrice = $userPacket->packet_price;
             }
             $office_director = Users::where(['user_id' => $user->office_director_id])->first();
@@ -797,8 +796,7 @@ class PacketController extends Controller
                 } elseif (in_array($packet->packet_id, [Packet::BASPANA_PLUS, Packet::BASPANA, Packet::TULPAR_PLUS, Packet::TULPAR])) {
                     $packetPrice = $packet->packet_price * (37.5 / 100);
                 }
-            }
-            else{
+            } else {
                 $packetPrice = $userPacket->packet_price;
             }
             $speaker = Users::where(['user_id' => $user->speaker_id])->first();
@@ -847,22 +845,19 @@ class PacketController extends Controller
         $bonus = 0;
         $inviterPacketId = UserPacket::where(['user_id' => $inviter->user_id])->where(['is_active' => true])->get();
         $inviterCount = (count($inviterPacketId));
+        var_dump($inviter->user_id);
+        var_dump($inviter->is_activated);
+        var_dump($inviterCount);
+        die();
 
         if ($inviterCount) {
-            $inviterPacketId = collect($inviterPacketId);
-            $inviterPacketId = $inviterPacketId->map(function ($item) {
-                return $item->packet_id;
-            });
-            $inviterPacketId = max($inviterPacketId->all());
-            $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
             if ($isPassivePackets) {
                 if (in_array($packet->packet_id, [Packet::JASTAR, Packet::QAMQOR, Packet::JAS_OTAU, Packet::QOLDAU])) {
                     $packetPrice = $packet->packet_price / 2;
                 } elseif (in_array($packet->packet_id, [Packet::BASPANA_PLUS, Packet::BASPANA, Packet::TULPAR_PLUS, Packet::TULPAR])) {
                     $packetPrice = $packet->packet_price * (37.5 / 100);
                 }
-            }
-            else{
+            } else {
                 $packetPrice = $userPacket->packet_price;
             }
             $bonusPercentage = (15 / 100);
@@ -923,10 +918,10 @@ class PacketController extends Controller
         }
 
         if (!in_array($userPacket->packet_id, [
-                Packet::GAP,
-                Packet::GAPHome,
-                Packet::GAPTechno,
-                Packet::GAPAuto])) {
+            Packet::GAP,
+            Packet::GAPHome,
+            Packet::GAPTechno,
+            Packet::GAPAuto])) {
             $this->pv_to_gv($userPacket, $userPacket->packet_price, $give_bonus);
         }
 
@@ -977,22 +972,19 @@ class PacketController extends Controller
         $user_id = $user_packet->user_id;
         $user = Users::where(['user_id' => $user_id])->first();
 
-
-        if (!$isPassivePacket) {
-            // add pv to user
-            $user->pv_balance = ($user->pv_balance + $final_price);
-            if ($user->save()) {
-                $user_operation = new UserOperation();
-                $user_operation->operation_id = 1;
-                $user_operation->money = $final_price;
-                $user_operation->author_id = $user->user_id;
-                $user_operation->recipient_id = $user->user_id;
-                $user_operation->operation_type_id = 40;
-                $user_operation->operation_comment = sprintf('Личный объем  в размере %s pv.', $final_price);
-                $user_operation->save();
-            }
-            $this->checkForPremium($user->user_id);
+        $user->pv_balance = ($user->pv_balance + $final_price);
+        if ($user->save()) {
+            $user_operation = new UserOperation();
+            $user_operation->operation_id = 1;
+            $user_operation->money = $final_price;
+            $user_operation->author_id = $user->user_id;
+            $user_operation->recipient_id = $user->user_id;
+            $user_operation->operation_type_id = 40;
+            $user_operation->operation_comment = sprintf('Личный объем  в размере %s pv.', $final_price);
+            $user_operation->save();
         }
+        $this->checkForPremium($user->user_id);
+
 
         // add gv to parents
         $parent = Users::where(['user_id' => $user->recommend_user_id])->where('is_activated', '=', true)->first();
