@@ -32,7 +32,7 @@ if ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
                     <ul class="gap-ul mt-top-bar" style="float: left;">
                         <li style="list-style-type: none;">
                             <a style="{{$gapTypeActive == 1 ? 'background:white;color:red;' : ''}}"
-                      /          href="{{route('gap.market.show')}}">
+                                href="{{route('gap.market.show')}}">
                                 GAP MARKET
                             </a>
                         </li>
