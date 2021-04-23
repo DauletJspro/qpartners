@@ -84,36 +84,30 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         <li class="hidden-xs">
                             <div class="dropdown cursor-pointer">
                                 <a class="icl_lang_sel_current icl_lang_sel_native">RU <i class="fa fa-angle-down"  aria-hidden="true"></i> </a>
-                                <div style="position:absolute;">
-
-                                    <div class="dropdown-content">
-                                        <a href="{{\App\Http\Helpers::setSessionLang('kz',$request)}}">
-                                            RU
-                                        </a>
-                                        <a href="{{\App\Http\Helpers::setSessionLang('ru',$request)}}">
-                                            KZ
-                                        </a>
-                                        <a href="{{\App\Http\Helpers::setSessionLang('en',$request)}}">
-                                            EN
-                                        </a>
-                                    </div>
+                                <div class="dropdown-content">
+                                    <a href="{{\App\Http\Helpers::setSessionLang('kz',$request)}}">
+                                        RU
+                                    </a>
+                                    <a href="{{\App\Http\Helpers::setSessionLang('ru',$request)}}">
+                                        KZ
+                                    </a>
+                                    <a href="{{\App\Http\Helpers::setSessionLang('en',$request)}}">
+                                        EN
+                                    </a>
                                 </div>
                             </div>
                         </li>
                         <li class="">
                             <div class="dropdown">
                                 <a class="" href="#">{{Lang::get('app.cabinet')}}</a>
-                                <div style="position:absolute;">
+                                <div class="dropdown-content">
+                                    @if(!Auth::check())
+                                        <a href="{{ route('check-list.register')}}">Регистрация</a>
+                                        <a href="/login">Войти</a>
+                                    @else
+                                        <a href="/admin/index">Личный кабинет</a>
+                                    @endif
 
-                                    <div class="dropdown-content">
-                                        @if(!Auth::check())
-                                            <a href="{{ route('check-list.register')}}">Регистрация</a>
-                                            <a href="/login">Войти</a>
-                                        @else
-                                            <a href="/admin/index">Личный кабинет</a>
-                                        @endif
-
-                                    </div>
                                 </div>
                             </div>
                         </li>
@@ -125,8 +119,8 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     <div class="mt-bottom-bar">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12" style="display: flex;">
-                    <div class=""><a href="/"><img src="/new_design/images/logo/gap/{{$logo_image_name}}"
+                <div class="col-xs-12">
+                    <div class="mt-logo"><a href="/"><img src="/new_design/images/logo/gap/{{$logo_image_name}}"
                                                           alt="schon"
                                                           style="height: 20px; width: 100px; margin-top: 0.5rem"></a>
                     </div>
@@ -168,8 +162,22 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         </li>
                         <li></li>
                     </ul>-->
-                    <nav id="nav" style="margin-left:auto">
-                        <ul class="" >
+                    <nav id="nav" style="float:none;">
+                        <div class="dropdown cursor-pointer" style="margin-left: 5rem;">
+                            <a class="icl_lang_sel_current fs-18 icl_lang_sel_native font-weight-lighter mt-1" style="">Алматы <i class="fa fa-angle-down"  aria-hidden="true"></i></a>
+                            <div class="dropdown-content">
+                                <div style="display:flex; flex-wrap: wrap; width: 800px; font-size: 12px; text-transform:capitalize">
+                                    <?php for($i = 0; $i < count($cities); $i++ ){?>
+                                        <a href="" class="fs-14" style="width: 25%" >
+                                            {{$cities[$i]->city_name_ru}}
+                                        </a>
+
+                                     <?php } ?>
+                                </div>
+
+                            </div>
+                        </div>
+                        <ul class="">
 
                             <li>
                                 <a class="drop-link" href="">О НАС<i class="fa fa-angle-down"
@@ -265,8 +273,10 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
 
     .dropdown-content {
         display: none;
+        position: absolute;
         background-color: #f1f1f1;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
     }
 
     .dropdown-content a {
@@ -278,6 +288,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
         border: 1px solid white;
         align-items: center
     }
+
     .dropdown-content a:hover {
         background-color: #fad749 !important;
         color: white !important;
@@ -285,10 +296,12 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     }
 
     .dropdown:hover .dropdown-content {
-        display: grid;
-        width: 100%;
-        grid-template-columns: repeat(4, 1fr);
-        background-color: white;
+        display:block;
+
+//         display: grid;
+//         width: 60%;
+//         grid-template-columns: repeat(4, 1fr);
+//         background-color: white;
     }
     .fs-14 {
         font-size: 14px;
@@ -336,5 +349,8 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     }
     .mt-1 {
         margin-top: 0.8rem;
+    }
+    .fs-18 {
+        font-size: 18px;
     }
 </style>
