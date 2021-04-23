@@ -122,7 +122,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                 <div class="col-xs-12">
                     <div class="mt-logo"><a href="/"><img src="/new_design/images/logo/gap/{{$logo_image_name}}"
                                                           alt="schon"
-                                                          style="height: 20px; width: 100px; margin-top: 1.2rem"></a>
+                                                          style="height: 30px;  max-width: 200px; margin-top: 0.6rem"></a>
                     </div>
                     <?php $totalPrice = 0;?>
                     <?php $total = 0;?>
@@ -144,7 +144,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         <li></li>
                     </ul>-->
                     <nav id="nav" style="float:none;">
-                        <div class="dropdown cursor-pointer">
+                        <div class="dropdown cursor-pointer" style="margin-left: 5rem;">
                             <a class="icl_lang_sel_current fs-18 icl_lang_sel_native font-weight-lighter mt-1" style="">Алматы <i class="fa fa-angle-down"  aria-hidden="true"></i></a>
                             <div class="dropdown-content">
                                 <div style="display:flex; flex-wrap: wrap; width: 800px; font-size: 12px; text-transform:capitalize">
