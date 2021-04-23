@@ -31,7 +31,7 @@ use \Illuminate\Support\Facades\Session;
 <div id="wrapper">
     <div id="pre-loader" class="loader-container text-center">
         <div class="loader text-center" style="width: 15%;">
-            <img src="/new_design/images/logo/logo.png" style="width: 100%;" alt="loader">
+            <img src="/new_design/images/logo/gap/gap.svg" style="width: 100%;" alt="loader">
         </div>
     </div>
     <div class="w1">
@@ -157,15 +157,15 @@ use \Illuminate\Support\Facades\Session;
         });
     }
 
-    function showOrderFormModal(ob,id, is_partner) {      
+    function showOrderFormModal(ob,id, is_partner) {
       let modal = $('#order_form');
-      let product_count = $(ob).closest('.product-form').find('#product_count').val();      
+      let product_count = $(ob).closest('.product-form').find('#product_count').val();
       $('<input>').attr({
           type: 'hidden',
           name: 'products_count['+id+']',
           value: product_count
       }).appendTo($(modal).find('form'));
-      $(modal).find('#product_id').val(id)      
+      $(modal).find('#product_id').val(id)
       if (is_partner) {
         $(modal).find('#user_not_partner').hide()
       }

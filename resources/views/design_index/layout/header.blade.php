@@ -143,11 +143,11 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         </li>
                         <li></li>
                     </ul>-->
-                    <nav id="nav" style="float:none">
+                    <nav id="nav" style="float:none;">
                         <div class="dropdown cursor-pointer">
                             <a class="icl_lang_sel_current fs-18 icl_lang_sel_native font-weight-lighter mt-1" style="">Алматы <i class="fa fa-angle-down"  aria-hidden="true"></i></a>
                             <div class="dropdown-content">
-                                <div style="display:flex; flex-wrap: wrap;">
+                                <div style="display:flex; flex-wrap: wrap; width: 800px; font-size: 12px; text-transform:capitalize">
                                     <?php for($i = 0; $i < count($cities); $i++ ){?>
                                         <a href="" class="fs-14" style="width: 25%" >
                                             {{$cities[$i]->city_name_ru}}
