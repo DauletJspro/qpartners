@@ -1,12 +1,3 @@
-@php($categories = \App\Models\Category::all())
-<?php
-$sub_category_id = request()->input('sub_category_id');
-if (isset($sub_category_id)) {
-    $products = \App\Models\Product::where(['sub_category_id' => $sub_category_id])->paginate(9);
-} else {
-    $products = \App\Models\Product::paginate(9);
-}
-?>
 @extends('design_index.layout.layout')
 
 @section('meta-tags')
@@ -131,14 +122,14 @@ if (isset($sub_category_id)) {
                             <ul class="list-inline">
                                 <li>
                                     <a href="#" class="drop-link">
-                                        Default Sorting <i aria-hidden="true" class="fa fa-angle-down"></i>
+                                        Сортировать <i aria-hidden="true" class="fa fa-angle-down"></i>
                                     </a>
                                     <div class="drop">
                                         <ul class="list-unstyled">
-                                            <li><a href="#">ASC</a></li>
-                                            <li><a href="#">DSC</a></li>
-                                            <li><a href="#">Price</a></li>
-                                            <li><a href="#">Relevance</a></li>
+                                            <li><a href="#" >По возрастанию</a></li>
+                                            <li><a href="#">По убыванию</a></li>
+                                            <li><a href="{{route('sort.price')}}" class="price_sorting_btn" id="sort-price">По цене</a></li>
+                                            <li><a href="#">По популярности</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -213,3 +204,14 @@ if (isset($sub_category_id)) {
         margin: 0 0 4px !important;
     }
 </style>
+
+<script type="text/javascript">
+    function sortPrice()
+    {
+        var sortPrice = document.getElementById('sort-price');
+        $( ".price_sorting_btn" ).click( function() {
+            console.log(sortPrice)
+        } );
+    }
+
+</script>
