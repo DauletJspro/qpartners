@@ -130,7 +130,7 @@ class ProfileController extends Controller
                 'recommend.user_id as recommend_user_id',
                 DB::raw('DATE_FORMAT(users.created_at,"%d.%m.%Y") as date'))
             ->first();
-        
+
         if($row == null) abort(404);
 
         $row->packet = UserPacket::leftJoin('users','users.user_id','=','user_packet.user_id')

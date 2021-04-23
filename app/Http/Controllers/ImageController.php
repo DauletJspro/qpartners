@@ -153,31 +153,35 @@ class ImageController extends Controller
 
     public function uploadDocument(Request $request)
     {
-        if (!isset($request->image_id)) $file = $request->image;
-        else $file = $request['image_' . $request->image_id];
-        $file_name = $file->getClientOriginalName();
-        $extension = $file->getClientOriginalExtension();
+        try {
+            if (!isset($request->image_id)) $file = $request->image;
+            else $file = $request['image_' . $request->image_id];
+            $file_name = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
 
-        if ($file->getClientSize() > 10097152) {
-            $result['error'] = 'Максимальный размер загружаемого файла ~ 10 МБ';
-            $result['success'] = false;
+            if ($file->getClientSize() > 10097152) {
+                $result['error'] = 'Максимальный размер загружаемого файла ~ 10 МБ';
+                $result['success'] = false;
+                return $result;
+            }
+
+            $destinationPath = '/document/' . date('Y') . '/' . date('m') . '/' . date('d');
+
+            $file_name = $destinationPath . '/' . $file_name;
+
+            if (Storage::disk('image')->exists($file_name)) {
+                $now = \DateTime::createFromFormat('U.u', microtime(true));
+                $file_name = $destinationPath . '/' . $now->format("Hisu") . '.' . $extension;
+            }
+
+            Storage::disk('image')->put($file_name, File::get($file));
+            $result['status'] = true;
+            $result['format'] = $extension;
+            $result['file_name'] = '/media' . $file_name;
             return $result;
+        } catch (\Exception $exception) {
+            var_dump($exception->getFile() . ' / ' . $exception->getLine() . ' / ' . $exception->getMessage());
         }
-
-        $destinationPath = '/document/' . date('Y') . '/' . date('m') . '/' . date('d');
-
-        $file_name = $destinationPath . '/' . $file_name;
-
-        if (Storage::disk('image')->exists($file_name)) {
-            $now = \DateTime::createFromFormat('U.u', microtime(true));
-            $file_name = $destinationPath . '/' . $now->format("Hisu") . '.' . $extension;
-        }
-
-        Storage::disk('image')->put($file_name, File::get($file));
-        $result['status'] = true;
-        $result['format'] = $extension;
-        $result['file_name'] = '/media' . $file_name;
-        return $result;
     }
 
     public function deleteImage($imagePath)
