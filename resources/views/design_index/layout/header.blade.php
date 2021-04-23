@@ -1,5 +1,6 @@
 <?php
 use App\Models\Category;
+use App\Models\City;
 use Illuminate\Support\Facades\Auth;
 
 $categories = Category::where(['is_show' => true])->limit(15)->get();
@@ -13,15 +14,21 @@ if (Auth::user()) {
 $needSubsidiaryIds = [5, 7, 8];
 $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
 
+$cities_table = new City();
+$cities = City::where('country_id',1)->get();
+
 $logo_image_name = 'market.png';
 $controllerName = request()->route()->getAction()['controller'];
 $gapTypeActive = 0;
-if ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
-    $logo_image_name = 'market.png';
+if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
+    $logo_image_name = 'gap.svg';
     $gapTypeActive = 1;
+} elseif ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
+    $logo_image_name = 'market.png';
+    $gapTypeActive = 2;
 } elseif ($controllerName == 'App\Http\Controllers\Index\GapCardController@show') {
     $logo_image_name = 'card.png';
-    $gapTypeActive = 2;
+    $gapTypeActive = 3;
 }
 ?>
 <header id="mt-header" class="style3">
@@ -30,30 +37,36 @@ if ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
             <div class="row">
                 <div class="col-xs-12 col-sm-6 hidden-xs">
                     <ul class="gap-ul mt-top-bar" style="float: left;">
-                        <li style="list-style-type: none;">
+                        <li style="{{$gapTypeActive == 1 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
                             <a style="{{$gapTypeActive == 1 ? 'background:white;color:red;' : ''}}"
+                               href="{{route('gap.index.show')}}">
+                               GAP
+                            </a>
+                        </li>
+                        <li style="{{$gapTypeActive == 2 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
+                            <a style="{{$gapTypeActive == 2 ? 'background:white;color:red;' : ''}}"
                                href="{{route('gap.market.show')}}">
-                                GAP MARKET
+                               MARKET
                             </a>
                         </li>
-                        <li style="list-style-type: none;">
-                            <a style="{{$gapTypeActive == 2 ? 'background:white;color:red;' : '' }}" href="{{route('gap.card.show')}}">
-                                GAP CARD
-                            </a>
-                        </li>
-                        <li style="list-style-type: none;">
-                            <a href="">
-                                GAP TURISM
+                        <li style="{{$gapTypeActive == 3 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
+                            <a style="{{$gapTypeActive == 3 ? 'background:white;color:red;' : '' }}" href="{{route('gap.card.show')}}">
+                                CARD
                             </a>
                         </li>
                         <li style="list-style-type: none;">
                             <a href="">
-                                GAP ACADEMY
+                                TURISM
                             </a>
                         </li>
                         <li style="list-style-type: none;">
                             <a href="">
-                                GAP TURISM
+                                ACADEMY
+                            </a>
+                        </li>
+                        <li style="list-style-type: none;">
+                            <a href="" style="">
+                                TURISM
                             </a>
                         </li>
                     </ul>
@@ -63,21 +76,14 @@ if ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
                         <li class="hidden-xs">
                             <a href="" style="
                                 font-weight: bold;
-                                font-size: 1.2rem;
+                                font-size: 1.5rem;
                             ">
                                 + 7 707 369 17 77
                             </a>
                         </li>
                         <li class="hidden-xs">
-                            <div class="dropdown">
-                                <a class="icl_lang_sel_current icl_lang_sel_native">Almaty <i
-                                            class="fa fa-arrow-down"></i></a>
-                            </div>
-                        </li>
-                        <li class="hidden-xs">
-                            <div class="dropdown">
-                                <a class="icl_lang_sel_current icl_lang_sel_native">RU <i
-                                            class="fa fa-arrow-down"></i> </a>
+                            <div class="dropdown cursor-pointer">
+                                <a class="icl_lang_sel_current icl_lang_sel_native">RU <i class="fa fa-angle-down"  aria-hidden="true"></i> </a>
                                 <div class="dropdown-content">
                                     <a href="{{\App\Http\Helpers::setSessionLang('kz',$request)}}">
                                         RU
@@ -96,7 +102,7 @@ if ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
                                 <a class="" href="#">{{Lang::get('app.cabinet')}}</a>
                                 <div class="dropdown-content">
                                     @if(!Auth::check())
-                                        <a href="/register">Регистрация</a>
+                                        <a href="{{ route('check-list.register')}}">Регистрация</a>
                                         <a href="/login">Войти</a>
                                     @else
                                         <a href="/admin/index">Личный кабинет</a>
@@ -116,7 +122,19 @@ if ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
                 <div class="col-xs-12">
                     <div class="mt-logo"><a href="/"><img src="/new_design/images/logo/gap/{{$logo_image_name}}"
                                                           alt="schon"
-                                                          style="height: 30px; width: 140px;"></a>
+                                                          style="height: 20px; width: 100px; margin-top: 1.5rem"></a>
+                    </div>
+                    <div class="dropdown ml-4 fs-24 cursor-pointer mt-1">
+                        <a class="icl_lang_sel_current icl_lang_sel_native font-weight-lighter">Алматы <i class="fa fa-angle-down"  aria-hidden="true"></i></a>
+                        <div class="dropdown-content">
+                        <?php for($i = 0; $i < count($cities); $i++ ){?>
+                            <a href="" class="fs-14">
+                                {{$cities[$i]->city_name_ru}}
+                            </a>
+
+                         <?php } ?>
+
+                        </div>
                     </div>
                     <?php $totalPrice = 0;?>
                     <?php $total = 0;?>
@@ -127,7 +145,7 @@ if ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
                         <?php $totalPrice += $total ? $total->product_price : 0; ?>
                     <?php endforeach ?>
                     @endif
-                    <ul class="mt-icon-list">
+      <!--              <ul class="mt-icon-list">
                         <li class="hidden-lg hidden-md">
                             <a href="#" class="bar-opener mobile-toggle">
                                 <span class="bar"></span>
@@ -136,9 +154,10 @@ if ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
                             </a>
                         </li>
                         <li></li>
-                    </ul>
+                    </ul>-->
                     <nav id="nav">
-                        <ul>
+                        <ul class="">
+
                             <li>
                                 <a class="drop-link" href="">О НАС<i class="fa fa-angle-down"
                                                                      aria-hidden="true"></i></a>
@@ -228,7 +247,6 @@ if ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
     }
 
     .dropdown {
-        position: relative;
         display: inline-block;
     }
 
@@ -242,18 +260,30 @@ if ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
 
     .dropdown-content a {
         color: black;
-        padding: 12px 16px;
+        padding: 8px;
         text-decoration: none;
         display: block;
+        border-radius: 4px;
+        border: 1px solid white;
+        align-items: center
     }
 
     .dropdown-content a:hover {
-        background-color: #ddd;
+        background-color: #fad749 !important;
+        color: white !important;
+
     }
 
     .dropdown:hover .dropdown-content {
-        display: block;
+        display: grid;
+        width: 60%;
+        grid-template-columns: repeat(4, 1fr);
+        background-color: white;
     }
+    .fs-14 {
+        font-size: 14px;
+    }
+
 
     #mt-header.style3 .mt-top-bar {
         background-color: #FF0000 !important;
@@ -281,5 +311,20 @@ if ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
 
     .dropdown-content a {
         color: black !important;
+    }
+    .ml-4 {
+        margin-left: 4rem;
+    }
+    .fs-24 {
+        font-size: 24px;
+    }
+    .cursor-pointer {
+        cursor: pointer;
+    }
+    .font-weight-lighter {
+        font-weight: lighter;
+    }
+    .mt-1 {
+        margin-top: 0.8rem;
     }
 </style>
