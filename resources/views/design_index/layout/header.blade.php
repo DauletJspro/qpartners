@@ -122,19 +122,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                 <div class="col-xs-12">
                     <div class="mt-logo"><a href="/"><img src="/new_design/images/logo/gap/{{$logo_image_name}}"
                                                           alt="schon"
-                                                          style="height: 20px; width: 100px; margin-top: 1.5rem"></a>
-                    </div>
-                    <div class="dropdown ml-4 fs-24 cursor-pointer mt-1">
-                        <a class="icl_lang_sel_current icl_lang_sel_native font-weight-lighter">Алматы <i class="fa fa-angle-down"  aria-hidden="true"></i></a>
-                        <div class="dropdown-content">
-                        <?php for($i = 0; $i < count($cities); $i++ ){?>
-                            <a href="" class="fs-14">
-                                {{$cities[$i]->city_name_ru}}
-                            </a>
-
-                         <?php } ?>
-
-                        </div>
+                                                          style="height: 20px; width: 100px; margin-top: 1.2rem"></a>
                     </div>
                     <?php $totalPrice = 0;?>
                     <?php $total = 0;?>
@@ -155,7 +143,21 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         </li>
                         <li></li>
                     </ul>-->
-                    <nav id="nav">
+                    <nav id="nav" style="float:none">
+                        <div class="dropdown cursor-pointer">
+                            <a class="icl_lang_sel_current fs-18 icl_lang_sel_native font-weight-lighter mt-1" style="">Алматы <i class="fa fa-angle-down"  aria-hidden="true"></i></a>
+                            <div class="dropdown-content">
+                                <div style="display:flex; flex-wrap: wrap;">
+                                    <?php for($i = 0; $i < count($cities); $i++ ){?>
+                                        <a href="" class="fs-14" style="width: 25%" >
+                                            {{$cities[$i]->city_name_ru}}
+                                        </a>
+
+                                     <?php } ?>
+                                </div>
+
+                            </div>
+                        </div>
                         <ul class="">
 
                             <li>
@@ -272,13 +274,16 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
         background-color: #fad749 !important;
         color: white !important;
 
+
     }
 
     .dropdown:hover .dropdown-content {
-        display: grid;
-        width: 60%;
-        grid-template-columns: repeat(4, 1fr);
-        background-color: white;
+        display:block;
+
+//         display: grid;
+//         width: 60%;
+//         grid-template-columns: repeat(4, 1fr);
+//         background-color: white;
     }
     .fs-14 {
         font-size: 14px;
@@ -326,5 +331,8 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     }
     .mt-1 {
         margin-top: 0.8rem;
+    }
+    .fs-18 {
+        font-size: 18px;
     }
 </style>
