@@ -38,15 +38,15 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                 <div class="col-xs-12 col-sm-6 hidden-xs">
                     <ul class="gap-ul mt-top-bar" style="float: left;">
                         <li style="{{$gapTypeActive == 1 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
-                            <a style="{{$gapTypeActive == 1 ? 'background:white;color:red;' : ''}}"
+                            <a style=""
                                href="{{route('gap.index.show')}}">
-                               GAP
+                                GAP
                             </a>
                         </li>
-                        <li style="{{$gapTypeActive == 2 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
+                        <li style="">
                             <a style="{{$gapTypeActive == 2 ? 'background:white;color:red;' : ''}}"
                                href="{{route('gap.market.show')}}">
-                               MARKET
+                                MARKET
                             </a>
                         </li>
                         <li style="{{$gapTypeActive == 3 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
@@ -127,38 +127,33 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
             <div class="row">
                 <div class="col-xs-12" style="display: flex;">
                     <div class=""><a href="/"><img src="/new_design/images/logo/gap/{{$logo_image_name}}"
-                                                          alt="schon"
-                                                          style="height: 20px; width: 100px; margin-top: 0.5rem"></a>
+                                                   alt="schon"
+                                                   style="height: 30px; width: 100px; margin-top: 0.5rem"></a>
                     </div>
                     <div class="dropdown ml-4 fs-24 cursor-pointer">
-                        <a class="icl_lang_sel_current icl_lang_sel_native font-weight-lighter">
-                            @if(isset($city))
-                                {{$city->city_name_ru}}
-                            @else
-                                Шымкент
-                            @endif
-                            <i class="fa fa-angle-down"  aria-hidden="true"></i></a>
+                        <a class="icl_lang_sel_current icl_lang_sel_native font-weight-lighter">Алматы <i class="fa fa-angle-down"  aria-hidden="true"></i></a>
                         <div style="position:absolute;">
                             <div class="dropdown-content">
                                 <?php for($i = 0; $i < count($cities); $i++ ){?>
-                                    <a href="{{ route('city.products', $cities[$i]->city_id) }}" class="fs-14" name="city" id="city">
-                                        {{$cities[$i]->city_name_ru}}
-                                    </a>
+                                <a href="" class="fs-14">
+                                    {{$cities[$i]->city_name_ru}}
+                                </a>
+
                                 <?php } ?>
 
                             </div>
                         </div>
                     </div>
-                    <?php $totalPrice = 0;?>
-                    <?php $total = 0;?>
-                    @if(Auth::user())
-                        <?php $items = \App\Models\UserBasket::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->user_id])->get(); ?>
-                        <?php foreach ($items as $item): ?>
+                <?php $totalPrice = 0;?>
+                <?php $total = 0;?>
+                @if(Auth::user())
+                    <?php $items = \App\Models\UserBasket::where(['user_id' => \Illuminate\Support\Facades\Auth::user()->user_id])->get(); ?>
+                    <?php foreach ($items as $item): ?>
                         <?php $total = (\App\Models\Product::where(['product_id' => $item->product_id])->first()); ?>
                         <?php $totalPrice += $total ? $total->product_price : 0; ?>
                     <?php endforeach ?>
-                    @endif
-      <!--              <ul class="mt-icon-list">
+                @endif
+                <!--              <ul class="mt-icon-list">
                         <li class="hidden-lg hidden-md">
                             <a href="#" class="bar-opener mobile-toggle">
                                 <span class="bar"></span>
@@ -278,6 +273,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
         border: 1px solid white;
         align-items: center
     }
+
     .dropdown-content a:hover {
         background-color: #fad749 !important;
         color: white !important;
