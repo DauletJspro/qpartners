@@ -120,9 +120,17 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="mt-logo"><a href="/"><img src="/new_design/images/logo/gap/{{$logo_image_name}}"
+                    <div class="mt-logo"><a href="/">
+                    @if($logo_image_name === 'gap.svg')
+                        <img src="/new_design/images/logo/gap/{{$logo_image_name}}"
                                                           alt="schon"
-                                                          style="height: 30px;  max-width: 200px; margin-top: 0.6rem"></a>
+                                                          style="height: 30px;  width: 120px; margin-top: 0.6rem">
+                    @else
+                        <img src="/new_design/images/logo/gap/{{$logo_image_name}}"
+                          alt="schon"
+                          style="height: 30px;  width: 200px; margin-top: 0.6rem">
+                    @endif
+                    </a>
                     </div>
                     <?php $totalPrice = 0;?>
                     <?php $total = 0;?>
@@ -173,10 +181,12 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                 </div>
                             </li>
                             <li>
-                                <a class="drop-link" href="blog-right-sidebar.html">Программы<i class="fa fa-angle-down"
-                                                                                                aria-hidden="true"></i></a>
+                                <a class="drop-link" href="blog-right-sidebar.html">программы<i class="fa fa-angle-down"
+                                                                                              aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
+                                        <li><a href="/news">с первоначальным взносом</a></li>
+                                        <li><a href="/news">с паевым взносом</a></li>
                                     </ul>
                                 </div>
                             </li>
