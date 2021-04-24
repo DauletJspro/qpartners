@@ -124,25 +124,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                                           alt="schon"
                                                           style="height: 20px; width: 100px; margin-top: 0.5rem"></a>
                     </div>
-                    <div class="dropdown ml-4 fs-24 cursor-pointer">
-                        <a class="icl_lang_sel_current icl_lang_sel_native font-weight-lighter">
-                            @if(isset($city))
-                                {{$city->city_name_ru}}
-                            @else
-                                Шымкент
-                            @endif
-                            <i class="fa fa-angle-down"  aria-hidden="true"></i></a>
-                        <div style="position:absolute;">
-                            <div class="dropdown-content">
-                                <?php for($i = 0; $i < count($cities); $i++ ){?>
-                                    <a href="{{ route('city.products', $cities[$i]->city_id) }}" class="fs-14" name="city" id="city">
-                                        {{$cities[$i]->city_name_ru}}
-                                    </a>
-                                <?php } ?>
 
-                            </div>
-                        </div>
-                    </div>
                     <?php $totalPrice = 0;?>
                     <?php $total = 0;?>
                     @if(Auth::user())
@@ -152,23 +134,19 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         <?php $totalPrice += $total ? $total->product_price : 0; ?>
                     <?php endforeach ?>
                     @endif
-      <!--              <ul class="mt-icon-list">
-                        <li class="hidden-lg hidden-md">
-                            <a href="#" class="bar-opener mobile-toggle">
-                                <span class="bar"></span>
-                                <span class="bar small"></span>
-                                <span class="bar"></span>
-                            </a>
-                        </li>
-                        <li></li>
-                    </ul>-->
                     <nav id="nav" style="float:none;">
                         <div class="dropdown cursor-pointer" style="margin-left: 5rem;">
-                            <a class="icl_lang_sel_current fs-18 icl_lang_sel_native font-weight-lighter mt-1" style="">Алматы <i class="fa fa-angle-down"  aria-hidden="true"></i></a>
+                            <a class="icl_lang_sel_current fs-18 icl_lang_sel_native font-weight-lighter mt-1" style="">
+                                @if(isset($city))
+                                    {{$city->city_name_ru}}
+                                @else
+                                    Шымкент
+                                @endif
+                                <i class="fa fa-angle-down"  aria-hidden="true"></i></a>
                             <div class="dropdown-content">
                                 <div style="display:flex; flex-wrap: wrap; width: 800px; font-size: 12px; text-transform:capitalize">
                                     <?php for($i = 0; $i < count($cities); $i++ ){?>
-                                        <a href="" class="fs-14" style="width: 25%" >
+                                        <a href="{{ route('city.products', $cities[$i]->city_id) }}" class="fs-14" style="width: 25%" >
                                             {{$cities[$i]->city_name_ru}}
                                         </a>
 
