@@ -40,17 +40,18 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         <li style="{{$gapTypeActive == 1 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
                             <a style="{{$gapTypeActive == 1 ? 'background:white;color:red;' : ''}}"
                                href="{{route('gap.index.show')}}">
-                               GAP
+                                GAP
                             </a>
                         </li>
                         <li style="{{$gapTypeActive == 2 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
                             <a style="{{$gapTypeActive == 2 ? 'background:white;color:red;' : ''}}"
                                href="{{route('gap.market.show')}}">
-                               MARKET
+                                MARKET
                             </a>
                         </li>
                         <li style="{{$gapTypeActive == 3 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
-                            <a style="{{$gapTypeActive == 3 ? 'background:white;color:red;' : '' }}" href="{{route('gap.card.show')}}">
+                            <a style="{{$gapTypeActive == 3 ? 'background:white;color:red;' : '' }}"
+                               href="{{route('gap.card.show')}}">
                                 CARD
                             </a>
                         </li>
@@ -83,7 +84,8 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         </li>
                         <li class="hidden-xs">
                             <div class="dropdown cursor-pointer">
-                                <a class="icl_lang_sel_current icl_lang_sel_native">RU <i class="fa fa-angle-down"  aria-hidden="true"></i> </a>
+                                <a class="icl_lang_sel_current icl_lang_sel_native">RU <i class="fa fa-angle-down"
+                                                                                          aria-hidden="true"></i> </a>
                                 <div class="dropdown-content">
                                     <a href="{{\App\Http\Helpers::setSessionLang('kz',$request)}}">
                                         RU
@@ -107,7 +109,6 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                     @else
                                         <a href="/admin/index">Личный кабинет</a>
                                     @endif
-
                                 </div>
                             </div>
                         </li>
@@ -131,11 +132,12 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                             @else
                                 Шымкент
                             @endif
-                            <i class="fa fa-angle-down"  aria-hidden="true"></i></a>
+                            <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         <div class="dropdown-content">
                             <div style="display:flex; flex-wrap: wrap; width: 800px; font-size: 12px; text-transform:capitalize">
                                 <?php for($i = 0; $i < count($cities); $i++ ){?>
-                                <a href="{{ route('city.products', $cities[$i]->city_id) }}" class="fs-14" style="width: 25%" >
+                                <a href="{{ route('city.products', $cities[$i]->city_id) }}" class="fs-14"
+                                   style="width: 25%">
                                     {{$cities[$i]->city_name_ru}}
                                 </a>
 
@@ -273,13 +275,14 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     }
 
     .dropdown:hover .dropdown-content {
-        display:block;
+        display: block;
 
-//         display: grid;
-//         width: 60%;
-//         grid-template-columns: repeat(4, 1fr);
-//         background-color: white;
+    / / display: grid;
+    / / width: 60 %;
+    / / grid-template-columns: repeat(4, 1 fr);
+    / / background-color: white;
     }
+
     .fs-14 {
         font-size: 14px;
     }
@@ -312,21 +315,27 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     .dropdown-content a {
         color: black !important;
     }
+
     .ml-4 {
         margin-left: 4rem;
     }
+
     .fs-24 {
         font-size: 24px;
     }
+
     .cursor-pointer {
         cursor: pointer;
     }
+
     .font-weight-lighter {
         font-weight: lighter;
     }
+
     .mt-1 {
         margin-top: 0.8rem;
     }
+
     .fs-18 {
         font-size: 18px;
     }

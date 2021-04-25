@@ -1000,7 +1000,7 @@ class PacketController extends Controller
                 $this->checkForPremium($parent->user_id);
             }
 
-            $parent = Users::where(['user_id' => $parent->recommend_user_id])->where('is_activated', '=', true)->first();
+            $parent = Users::where(['user_id' => $parent->recommend_user_id])->first();
 
             $counter++;
             if ($counter >= 9) {
