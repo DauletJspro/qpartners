@@ -629,7 +629,6 @@ class PacketController extends Controller
 
         $this->activatePackage($userPacket, $give_bonus, !$isNotGap);
 
-
         if ($user->user_id != 1 && $give_bonus && $isNotGap) {
             $this->implementInviterBonus($userPacket, $packet, $user);
             $this->implementOfficeBonus($userPacket, $packet, $user);
@@ -705,7 +704,6 @@ class PacketController extends Controller
 
     public function implementGap($userPacket, $isPassivePacket, $give_bonus)
     {
-
         try {
             if (!$isPassivePacket) {
                 app(GAPController::class)->send_personal_sv($userPacket);
@@ -845,11 +843,6 @@ class PacketController extends Controller
         $bonus = 0;
         $inviterPacketId = UserPacket::where(['user_id' => $inviter->user_id])->where(['is_active' => true])->get();
         $inviterCount = (count($inviterPacketId));
-        var_dump($inviter->user_id);
-        var_dump($inviter->is_activated);
-        var_dump($inviterCount);
-        die();
-
         if ($inviterCount) {
             if ($isPassivePackets) {
                 if (in_array($packet->packet_id, [Packet::JASTAR, Packet::QAMQOR, Packet::JAS_OTAU, Packet::QOLDAU])) {
