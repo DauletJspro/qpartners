@@ -102,7 +102,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                 <a class="" href="#">{{Lang::get('app.cabinet')}}</a>
                                 <div class="dropdown-content">
                                     @if(!Auth::check())
-                                        <a href="{{ route('check-list.register')}}">Регистрация</a>
+                                        <a href="/register">Регистрация</a>
                                         <a href="/login">Войти</a>
                                     @else
                                         <a href="/admin/index">Личный кабинет</a>
