@@ -437,7 +437,7 @@ Route::group([
     Route::get('contact', 'IndexController@contact')->name('contact.show');
     Route::get('gap/card/show', 'GapCardController@show')->name('gap.card.show');
     Route::get('gap/market/show', 'GapMarketController@show')->name('gap.market.show');
-    Route::get('sort/price','GapMarketController@sortPrice')->name('sort.price');
+    Route::get('product/filter','GapMarketController@FilterProduct')->name('sort.price');
     Route::post('contact', 'IndexController@sendMessage');
     Route::get('coming-soon', 'IndexController@comingSoon')->name('coming-soon');
     Route::get('news', 'NewsController@newsList');
