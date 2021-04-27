@@ -40,17 +40,18 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         <li style="{{$gapTypeActive == 1 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
                             <a style="{{$gapTypeActive == 1 ? 'background:white;color:red;' : ''}}"
                                href="{{route('gap.index.show')}}">
-                               GAP
+                                GAP
                             </a>
                         </li>
                         <li style="{{$gapTypeActive == 2 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
                             <a style="{{$gapTypeActive == 2 ? 'background:white;color:red;' : ''}}"
                                href="{{route('gap.market.show')}}">
-                               MARKET
+                                MARKET
                             </a>
                         </li>
                         <li style="{{$gapTypeActive == 3 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
-                            <a style="{{$gapTypeActive == 3 ? 'background:white;color:red;' : '' }}" href="{{route('gap.card.show')}}">
+                            <a style="{{$gapTypeActive == 3 ? 'background:white;color:red;' : '' }}"
+                               href="{{route('gap.card.show')}}">
                                 CARD
                             </a>
                         </li>
@@ -83,7 +84,8 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         </li>
                         <li class="hidden-xs">
                             <div class="dropdown cursor-pointer">
-                                <a class="icl_lang_sel_current icl_lang_sel_native">RU <i class="fa fa-angle-down"  aria-hidden="true"></i> </a>
+                                <a class="icl_lang_sel_current icl_lang_sel_native">RU <i class="fa fa-angle-down"
+                                                                                          aria-hidden="true"></i> </a>
                                 <div class="dropdown-content">
                                     <a href="{{\App\Http\Helpers::setSessionLang('kz',$request)}}">
                                         RU
@@ -102,12 +104,11 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                 <a class="" href="#">{{Lang::get('app.cabinet')}}</a>
                                 <div class="dropdown-content">
                                     @if(!Auth::check())
-                                        <a href="{{ route('check-list.register')}}">Регистрация</a>
+                                        <a href="/register">Регистрация</a>
                                         <a href="/login">Войти</a>
                                     @else
                                         <a href="/admin/index">Личный кабинет</a>
                                     @endif
-
                                 </div>
                             </div>
                         </li>
@@ -120,17 +121,30 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="mt-logo"><a href="/">
-                    @if($logo_image_name === 'gap.svg')
-                        <img src="/new_design/images/logo/gap/{{$logo_image_name}}"
+                    <div class="mt-logo"><a href="/"><img src="/new_design/images/logo/gap/{{$logo_image_name}}"
                                                           alt="schon"
-                                                          style="height: 30px;  width: 120px; margin-top: 0.6rem">
-                    @else
-                        <img src="/new_design/images/logo/gap/{{$logo_image_name}}"
-                          alt="schon"
-                          style="height: 30px;  width: 200px; margin-top: 0.6rem">
-                    @endif
-                    </a>
+                                                          style="height: 20px; width: 100px; margin-top: 0.5rem"></a>
+                    </div>
+                    <div class="dropdown cursor-pointer" style="margin-left: 5rem;">
+                        <a class="icl_lang_sel_current fs-18 icl_lang_sel_native font-weight-lighter mt-1" style="">
+                            @if(isset($city))
+                                {{$city->city_name_ru}}
+                            @else
+                                Шымкент
+                            @endif
+                            <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                        <div class="dropdown-content">
+                            <div style="display:flex; flex-wrap: wrap; width: 800px; font-size: 12px; text-transform:capitalize">
+                                <?php for($i = 0; $i < count($cities); $i++ ){?>
+                                <a href="{{ route('city.products', $cities[$i]->city_id) }}" class="fs-14"
+                                   style="width: 25%">
+                                    {{$cities[$i]->city_name_ru}}
+                                </a>
+
+                                <?php } ?>
+                            </div>
+
+                        </div>
                     </div>
                     <?php $totalPrice = 0;?>
                     <?php $total = 0;?>
@@ -141,36 +155,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         <?php $totalPrice += $total ? $total->product_price : 0; ?>
                     <?php endforeach ?>
                     @endif
-      <!--              <ul class="mt-icon-list">
-                        <li class="hidden-lg hidden-md">
-                            <a href="#" class="bar-opener mobile-toggle">
-                                <span class="bar"></span>
-                                <span class="bar small"></span>
-                                <span class="bar"></span>
-                            </a>
-                        </li>
-                        <li></li>
-                    </ul>-->
                     <nav id="nav" style="float:none;">
-                        <div class="dropdown cursor-pointer" style="margin-left: 5rem;">
-                            <a class="icl_lang_sel_current icl_lang_sel_native font-weight-lighter">
-                                @if(isset($city))
-                                    {{$city->city_name_ru}}
-                                @else
-                                    Шымкент
-                                @endif
-                                <i class="fa fa-angle-down"  aria-hidden="true"></i></a>
-                            <div class="dropdown-content">
-                                <div style="display:flex; flex-wrap: wrap; width: 800px; font-size: 12px; text-transform:capitalize">
-                                    <?php for($i = 0; $i < count($cities); $i++ ){?>
-                                        <a href="{{ route('city.products', $cities[$i]->city_id) }}" class="fs-14" name="city" id="city">
-                                            {{$cities[$i]->city_name_ru}}
-                                        </a>
-                                    <?php } ?>
-                                </div>
-
-                            </div>
-                        </div>
                         <ul class="">
 
                             <li>
@@ -186,8 +171,8 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                 </div>
                             </li>
                             <li>
-                                <a class="drop-link" href="blog-right-sidebar.html">программы<i class="fa fa-angle-down"
-                                                                                              aria-hidden="true"></i></a>
+                                <a class="drop-link" href="blog-right-sidebar.html">Программы<i class="fa fa-angle-down"
+                                                                                                aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
                                         <li><a href="{{ route('programs') }}">с первоначальным взносом</a></li>
@@ -293,12 +278,12 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     }
 
     .dropdown:hover .dropdown-content {
-        display:block;
+        display: block;
 
-//         display: grid;
-//         width: 60%;
-//         grid-template-columns: repeat(4, 1fr);
-//         background-color: white;
+    / / display: grid;
+    / / width: 60 %;
+    / / grid-template-columns: repeat(4, 1 fr);
+    / / background-color: white;
     }
     .fs-14 {
         font-size: 14px;
@@ -332,21 +317,27 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     .dropdown-content a {
         color: black !important;
     }
+
     .ml-4 {
         margin-left: 4rem;
     }
+
     .fs-24 {
         font-size: 24px;
     }
+
     .cursor-pointer {
         cursor: pointer;
     }
+
     .font-weight-lighter {
         font-weight: lighter;
     }
+
     .mt-1 {
         margin-top: 0.8rem;
     }
+
     .fs-18 {
         font-size: 18px;
     }

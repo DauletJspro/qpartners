@@ -2,13 +2,40 @@
 
 @section('meta-tags')
     <title>Qpartners Shop</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
           content="«Qpartners» - это уникальный медиа проект с широким набором возожностей для взаймодествия с участниками виртуального рынка"/>
     <meta name="keywords" content="Qpartners"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $('.product_sorting_btn').click(function (){
+                var orderBy = $(this).data('order');
+                $.ajax({
+                   url: "{{route('sort.price')}}",
+                   type:"GET",
+                   data:{
+                       orderBy: orderBy
+                   },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                   success: (data) => {
+                        $(".mt-productlisthold").html(data);
+                   },
+                });
+            });
+        });
+
+    </script>
 @endsection
+
 @section('content')
     <main id="mt-main" style="margin-top: -50px !important;">
         <div class="row" style="margin-right: 0 !important; margin-left: 0 !important;">
@@ -126,10 +153,11 @@
                                     </a>
                                     <div class="drop">
                                         <ul class="list-unstyled">
-                                            <li><a href="#" >По возрастанию</a></li>
-                                            <li><a href="#">По убыванию</a></li>
-                                            <li><a href="{{route('sort.price')}}" class="price_sorting_btn" id="sort-price">По цене</a></li>
-                                            <li><a href="#">По популярности</a></li>
+                                            <li><a href="#" class="product_sorting_btn" id="sort-price"
+                                                   data-order="price-low-high">По цене возрастанию</a></li>
+                                            <li><a href="#" class="product_sorting_btn" id="sort-price"
+                                                   data-order="price-high-low">По цене убыванию</a></li>
+                                            <li><a href="#" class="product_sorting_btn" data-order="popular">По популярности</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -139,6 +167,9 @@
                                                                            aria-hidden="true"></i></a>
                                 </li>
                             </ul>
+                            <input type="hidden" name="hidden_button_name" id="hidden_button_name" value="price">
+                            <input type="hidden" name="hidden_sort_type" id="hidden_sort_type" value="asc">
+
                         </div><!-- btn-box end here -->
                         <!-- mt-textbox start here -->
                         <div class="mt-textbox">
@@ -204,14 +235,3 @@
         margin: 0 0 4px !important;
     }
 </style>
-
-<script type="text/javascript">
-    function sortPrice()
-    {
-        var sortPrice = document.getElementById('sort-price');
-        $( ".price_sorting_btn" ).click( function() {
-            console.log(sortPrice)
-        } );
-    }
-
-</script>
