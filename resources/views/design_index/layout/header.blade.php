@@ -190,8 +190,8 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                                                                               aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
-                                        <li><a href="/news">с первоначальным взносом</a></li>
-                                        <li><a href="/news">с паевым взносом</a></li>
+                                        <li><a href="{{ route('programs') }}">с первоначальным взносом</a></li>
+                                        <li><a href="{{ route('programs') }}">с паевым взносом</a></li>
                                     </ul>
                                 </div>
                             </li>
