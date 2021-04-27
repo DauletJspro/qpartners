@@ -418,6 +418,7 @@ Route::group([
     'namespace' => 'Index',
 ], function () {
     Route::get('/', 'IndexController@index')->name('gap.index.show');
+    Route::get('/programs', 'ProgramController@index')->name('programs');
     Route::get('/city/{cityId}', 'CityController@getProductFromCity')->name('city.products');
     Route::get('advantages/', 'AdvantagesController@index')->name('advantage.index');
     Route::get('/social-program', 'PassiveProgramController@getSocial')->name('get.social');
@@ -437,7 +438,7 @@ Route::group([
     Route::get('contact', 'IndexController@contact')->name('contact.show');
     Route::get('gap/card/show', 'GapCardController@show')->name('gap.card.show');
     Route::get('gap/market/show', 'GapMarketController@show')->name('gap.market.show');
-    Route::get('sort/price','GapMarketController@sortPrice')->name('sort.price');
+    Route::get('product/filter','GapMarketController@FilterProduct')->name('sort.price');
     Route::post('contact', 'IndexController@sendMessage');
     Route::get('coming-soon', 'IndexController@comingSoon')->name('coming-soon');
     Route::get('news', 'NewsController@newsList');

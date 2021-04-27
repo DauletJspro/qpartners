@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Index;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class GapMarketController extends Controller
 {
@@ -20,10 +21,41 @@ class GapMarketController extends Controller
         return view('design_index.gap.market', compact('products'));
     }
 
-    public function sortPrice()
+    public function FilterProduct(Request $request)
     {
-        $products = Product::orderBy('product_price','desc')->paginate(9);
+        if(isset($request->orderBy)){
+            if($request->orderBy == "price-low-high"){
+                $products = Product::orderBy('product_price','asc')->paginate(9);
+            }
+        }
 
-        return view('design_index.gap.market', compact('products'));
+        if(isset($request->orderBy)){
+            if($request->orderBy == "price-high-low"){
+                $products = Product::orderBy('product_price','desc')->paginate(9);
+            }
+        }
+
+        if(isset($request->orderBy)){
+            if($request->orderBy == "popular"){
+                $products = DB::select('SELECT product.product_id,product.product_name_ru, product.product_desc_ru, product.product_price  FROM  
+                user_basket 
+                INNER JOIN product ON 
+                product.product_id = user_basket.product_id GROUP BY product.product_id ORDER BY count(product.product_id) DESC');
+            }
+        }
+        if($request->ajax())
+        {
+            return view('design_index.gap.product_card.product_card',compact('products'))->render();
+        }
+    }
+
+
+    public function sortByPopular()
+    {
+            $products = DB::select('SELECT product.product_id,product.product_name_ru, product.product_desc_ru, product.product_price  FROM  
+            user_basket 
+            INNER JOIN product ON 
+            product.product_id = user_basket.product_id GROUP BY product.product_id ORDER BY count(product.product_id) DESC');
+
     }
 }
