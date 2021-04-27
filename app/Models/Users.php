@@ -89,6 +89,7 @@ class Users extends Model implements AuthenticatableContract
         return false;
 
     }
+
     public static function hasCountPackets(int $user_id)
     {
         $user_packet_count = UserPacket::where(['user_id' => $user_id])
@@ -115,17 +116,21 @@ class Users extends Model implements AuthenticatableContract
         return $this->hasMany(\App\Models\CommentTicket::class);
     }
 
-    public function program(){
-        return $this->hasMany(CooperativeGroup::class,'id','group_id');
+    public function program()
+    {
+        return $this->hasMany(CooperativeGroup::class, 'id', 'group_id');
     }
 
-    public function programHome(){
-        return $this->hasMany(CooperativeGroup::class,'id','home_group_id');
+    public function programHome()
+    {
+        return $this->hasMany(CooperativeGroup::class, 'id', 'home_group_id');
     }
 
-    public function getPosition(){
-        return $this->hasMany(Position::class, 'id_select' , 'is_activated');
+    public function getPosition()
+    {
+        return $this->hasMany(Position::class, 'id_select', 'is_activated');
     }
+
     /**
      * Get the user that created ticket
      * @param \App\User $user_id
@@ -135,8 +140,15 @@ class Users extends Model implements AuthenticatableContract
         return static::where('id', $user_id)->firstOrFail();
     }
 
-    public static function getSponsorName($id){
+    public static function getSponsorName($id)
+    {
         $sponsor = Users::where('user_id', '=', $id->recommend_user_id)->first();
         return $sponsor->login;
     }
+
+    public function status()
+    {
+        return $this->hasOne(UserStatus::class, 'user_status_id', 'status_id');
+    }
+
 }
