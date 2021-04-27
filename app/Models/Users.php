@@ -28,7 +28,7 @@ class Users extends Model implements AuthenticatableContract
         'jastar_id',
         'jas_otau_id',
         'personal_sv_balance'
-        ];
+    ];
 
     const ADMIN = 1;
     const CLIENT = 2;
@@ -149,6 +149,11 @@ class Users extends Model implements AuthenticatableContract
     public function status()
     {
         return $this->hasOne(UserStatus::class, 'user_status_id', 'status_id');
+    }
+
+    public function childs()
+    {
+        return $this->hasMany(Users::class, 'recommend_user_id', 'user_id');
     }
 
 }

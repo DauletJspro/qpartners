@@ -1,4 +1,8 @@
-<?php use App\Models\Packet;use App\Models\UserPacket;use Illuminate\Support\Facades\Auth;$user_list = \App\Models\Users::where('recommend_user_id', $user_id)->take(500)->get(); ?>
+<?php
+use App\Models\Packet;use App\Models\UserPacket;
+use Illuminate\Support\Facades\Auth;
+$user_list = \App\Models\Users::where('recommend_user_id', $user_id)->take(500)->get();
+?>
 
 @foreach($user_list as $key => $item)
 
@@ -65,6 +69,28 @@
                         </div>
                     </div>
                 </div>
+                <div class="left-float" style="width: 400px; height: auto;padding-top: 3rem;">
+                    @foreach($user->childs as $key=> $child)
+                        <div class="row" style="padding-bottom: 1rem;">
+                            <div class="col-sm-5 text-center" style="padding-right: 0 !important;">
+                                <h5 style="font-weight: 900; margin-top: 2px; !important;">
+                                    {{$child->login}}
+                                </h5>
+                            </div>
+                            <div class="col-sm-7" style="padding-left: 0 !important;">
+                                <p style="font-weight: 900; margin-bottom: 1px !important;">
+                                    КО{{$key+1}}: {{$child->gv_balance + $child->pv_balance }}
+                                    GV
+                                </p>
+                                <p style="font-weight: 900; margin-bottom: 1px !important;">
+                                    КSV{{$key+1}}
+                                    : {{$child->personal_sv_balance + $child->group_sv_balance }}
+                                    SV
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
                 <div class="clear-float"></div>
             </div>
             <ul class="level_{{$level}} child-list">
@@ -104,6 +130,28 @@
                             @endif
                         </div>
                     </div>
+                </div>
+                <div class="left-float" style="width: 400px; height: auto;padding-top: 3rem;">
+                    @foreach($user->childs as $key=> $child)
+                        <div class="row" style="padding-bottom: 1rem;">
+                            <div class="col-sm-5 text-center" style="padding-right: 0 !important;">
+                                <h5 style="font-weight: 900; margin-top: 2px; !important;">
+                                    {{$child->login}}
+                                </h5>
+                            </div>
+                            <div class="col-sm-7" style="padding-left: 0 !important;">
+                                <p style="font-weight: 900; margin-bottom: 1px !important;">
+                                    КО{{$key+1}}: {{$child->gv_balance + $child->pv_balance }}
+                                    GV
+                                </p>
+                                <p style="font-weight: 900; margin-bottom: 1px !important;">
+                                    КSV{{$key+1}}
+                                    : {{$child->personal_sv_balance + $child->group_sv_balance }}
+                                    SV
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
                 <div class="clear-float"></div>
             </div>
