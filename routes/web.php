@@ -418,7 +418,8 @@ Route::group([
     'namespace' => 'Index',
 ], function () {
     Route::get('/', 'IndexController@index')->name('gap.index.show');
-    Route::get('/programs', 'ProgramController@index')->name('programs');
+    Route::get('/programs/the_initial', 'ProgramController@initial')->name('program.initial');
+    Route::get('/programs/the_shares', 'ProgramController@share')->name('program.share');
     Route::get('/city/{cityId}', 'CityController@getProductFromCity')->name('city.products');
     Route::get('advantages/', 'AdvantagesController@index')->name('advantage.index');
     Route::get('/social-program', 'PassiveProgramController@getSocial')->name('get.social');
