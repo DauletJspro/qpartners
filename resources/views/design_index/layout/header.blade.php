@@ -120,13 +120,18 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     <div class="mt-bottom-bar">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="mt-logo"><a href="/"><img src="/new_design/images/logo/gap/{{$logo_image_name}}"
-                                                          alt="schon"
-                                                          style="height: 20px; width: 100px; margin-top: 0.5rem"></a>
+                <div class="col-xs-12" style="display: flex; align-items: center;">
+                    <div class="mt-logo fs-24" style="font-weight: 600; margin-left: 20px">
+                        <span style="color: red">GAP</span>
+                        @if($gapTypeActive === 2)
+                            <span style="color: #646464">MARKET</span>
+                        @endif
+                        @if($gapTypeActive === 3)
+                            <span style="color: #646464">CARD</span>
+                        @endif
                     </div>
-                    <div class="dropdown cursor-pointer" style="margin-left: 5rem;">
-                        <a class="icl_lang_sel_current fs-18 icl_lang_sel_native font-weight-lighter mt-1" style="">
+                    <div class="dropdown cursor-pointer" style="margin-left: 4rem;">
+                        <a class="icl_lang_sel_current fs-18 icl_lang_sel_native font-weight-lighter text-black mt-1" style="">
                             @if(isset($city))
                                 {{$city->city_name_ru}}
                             @else
@@ -155,7 +160,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         <?php $totalPrice += $total ? $total->product_price : 0; ?>
                     <?php endforeach ?>
                     @endif
-                    <nav id="nav" style="float:none;">
+                    <nav id="nav" style="float:none; margin-left: auto; font-weight: bold;">
                         <ul class="">
 
                             <li>
@@ -175,8 +180,8 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                                                                                 aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
-                                        <li><a href="{{ route('programs') }}">с первоначальным взносом</a></li>
-                                        <li><a href="{{ route('programs') }}">с паевым взносом</a></li>
+                                        <li><a href="{{ route('program.initial') }}">с первоначальным взносом</a></li>
+                                        <li><a href="{{ route('program.share') }}">с паевым взносом</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -337,8 +342,10 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     .mt-1 {
         margin-top: 0.8rem;
     }
-
     .fs-18 {
         font-size: 18px;
+    }
+    .text-black {
+        color: black;
     }
 </style>

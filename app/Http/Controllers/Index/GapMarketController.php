@@ -18,7 +18,7 @@ class GapMarketController extends Controller
         } else {
             $products = \App\Models\Product::paginate(9);
         }
-        return view('design_index.gap.market', compact('products'));
+        return view('design_index.gap.market', compact('products', 'categories'));
     }
 
     public function FilterProduct(Request $request)
@@ -37,7 +37,8 @@ class GapMarketController extends Controller
 
         if(isset($request->orderBy)){
             if($request->orderBy == "popular"){
-                $products = DB::select('SELECT product.product_id,product.product_name_ru, product.product_desc_ru, product.product_price  FROM  
+                $products = DB::select('
+                SELECT product.product_id,product.product_name_ru, product.product_desc_ru, product.product_price  FROM  
                 user_basket 
                 INNER JOIN product ON 
                 product.product_id = user_basket.product_id GROUP BY product.product_id ORDER BY count(product.product_id) DESC');
@@ -49,13 +50,4 @@ class GapMarketController extends Controller
         }
     }
 
-
-    public function sortByPopular()
-    {
-            $products = DB::select('SELECT product.product_id,product.product_name_ru, product.product_desc_ru, product.product_price  FROM  
-            user_basket 
-            INNER JOIN product ON 
-            product.product_id = user_basket.product_id GROUP BY product.product_id ORDER BY count(product.product_id) DESC');
-
-    }
 }

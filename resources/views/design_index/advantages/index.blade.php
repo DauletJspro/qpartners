@@ -81,7 +81,7 @@
                 <!-- Breadcrumbs of the Page -->
                 <nav class="breadcrumbs black-text-color text-center">
                     <ul class="list-unstyled d-flex font-weight-lighter black-text-color">
-                        <a href="index.html">Главная <i class="fa fa-angle-right"></i></a>
+                        <a href="/">Главная <i class="fa fa-angle-right"></i></a>
                         Преимущества
                     </ul>
                 </nav>

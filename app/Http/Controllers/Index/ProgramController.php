@@ -7,8 +7,12 @@ use App\Http\Controllers\Controller;
 
 class ProgramController extends Controller
 {
-    public function index()
+    public function initial()
     {
-            return view('design_index.programs.index');
+            return view('design_index.programs.initial');
+    }
+    public function share()
+    {
+        return view('design_index.programs.share');
     }
 }

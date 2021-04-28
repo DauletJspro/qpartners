@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -112,4 +113,5 @@ class SubCategoryController extends Controller
         $category = SubCategory::find($id);
         $category->delete();
     }
+
 }
