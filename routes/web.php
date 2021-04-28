@@ -67,6 +67,7 @@ Route::group([
     Route::resource('gap_item', 'GapCardItemController');
     Route::resource('gap_category', 'GapCardCategoryController');
     Route::resource('gap_sub_category', 'GapCardSubCategoryController');
+    Route::resource('gap_market_product','GapMarketProductController');
 
     Route::group([
         'prefix' => 'profile'

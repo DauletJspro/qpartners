@@ -14,6 +14,10 @@ class Product extends Model
 
     use SoftDeletes;
 
+//    protected $fillable = [
+//      'product_name_ru','product_desc_ru','full_desc_ru'
+//    ];
+
     protected $dates = ['deleted_at'];
 
     const ITEM = [1 => 'Очищение', 2 => 'Восполнение', 3 => 'Укрепление', 4 => 'Профилактика'];

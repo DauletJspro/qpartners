@@ -2,39 +2,42 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\City;
 use App\Models\Product;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use View;
-use DB;
 
-class ProductController extends Controller
+class GapMarketProductController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('adminWebsite');
-    }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index(Request $request)
     {
-        $row = Product::paginate(20);
+        $row = Product::where('user_id', Auth::user()->user_id)->paginate(20);
 
-        return view('admin.product.product', [
+        return view('admin.gap_market.product.product', [
             'row' => $row,
             'request' => $request
         ]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         $row = new Product();
         $row->product_image = '/media/default.jpg';
-
         $row->is_new = 0;
         $row->is_popular = 0;
-
 
         return view('admin.product.product-edit', [
             'title' => 'Добавить товар',
@@ -42,6 +45,12 @@ class ProductController extends Controller
         ]);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -74,25 +83,49 @@ class ProductController extends Controller
         $product->composition = $request->composition;
         $product->sort_num = ($request->sort_num == '') ? 1000 : $request->sort_num;
         $product->sub_category_id = $request->sub_category_id;
+        $product->city_id = 8;
+        $product->user_id = Auth::user()->user_id   ;
         $product->save();
 
-        return redirect('/admin/product');
+        return redirect()->route('gap_market_product.create')->with('success', 'Вы добавили продукт '.$request->product_name_ru." успешно.");
     }
 
-    public function edit($id)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-        $row = Product::where(['product_id' => $id])->first();
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($productId)
+    {
+        $row = Product::where(['product_id' => $productId])->first();
 
 
         return view('admin.product.product-edit', [
             'title' => 'Изменить продукт',
             'row' => $row
         ]);
-
     }
 
-
-    public function update(Request $request, $id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $productId)
     {
         $validator = Validator::make($request->all(), [
             'product_name_ru' => 'required',
@@ -109,7 +142,7 @@ class ProductController extends Controller
             ]);
         }
 
-        $product = Product::find($id);
+        $product = Product::find($productId);
         $product->product_name_ru = $request->product_name_ru;
         $product->product_price = is_numeric($request->product_price) ? $request->product_price : 0;
         $product->product_cash = is_numeric($request->product_cash) ? $request->product_cash : 0;
@@ -127,19 +160,27 @@ class ProductController extends Controller
         $product->sub_category_id = $request->sub_category_id;
         $product->save();
 
-        return redirect('/admin/product');
+        return redirect()->back()->with('success', 'Вы изменили продукт '.$request->product_name_ru." успешно.");
     }
 
-    public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($productId)
     {
-        $news = Product::find($id);
-        $news->delete();
-        $news->save();
-
-    }
-
-    public function detail()
-    {
-
+        $product = Product::find($productId);
+        if(Auth::check()){
+            $product = Product::where(['product_id'=>$product->product_id,'user_id'=>Auth::user()->user_id]);
+            if($product->delete()){
+                return 1;
+            }else {
+                return 2;
+            }
+        }else {
+            return 3;
+        }
     }
 }

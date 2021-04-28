@@ -107,7 +107,7 @@
                                             <li>
                                                 <a href="" style="color:black;">
                                                     <span><a href="/gap/market/show/?sub_category_id={{$sub_category->id}}">{{$sub_category->title_ru}}</a></span>
-                                                    <span class="num">{{isset($sub_category->items) ? count($sub_category->items) : 0}}</span>
+                                                    <span class="num">{{isset($sub_category->products) ? count($sub_category->products) : 0}}</span>
                                                 </a>
                                             </li>
                                         @endforeach
@@ -157,7 +157,7 @@
                                                    data-order="price-low-high">По цене возрастанию</a></li>
                                             <li><a href="#" class="product_sorting_btn" id="sort-price"
                                                    data-order="price-high-low">По цене убыванию</a></li>
-                                            <li><a href="#" class="product_sorting_btn" data-order="popular">По популярности</a></li>
+                                            <li><a href="#" class="product_sorting_btn" data-order=" ">По популярности</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -203,8 +203,7 @@
                                         <p style=" width: 30ch;   overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
                                             {{$item->product_desc_ru}}
                                         </p>
-                                        <span class=" price
-                                                "> <span>{{$item->product_price}}</span> тг.</span>
+                                        <span class="price"> <span>{{$item->product_price}}</span> тг.</span>
                                     </div>
                                 </div>
                             </li>
