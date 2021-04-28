@@ -25,7 +25,7 @@ $items = \App\Models\Product::ITEM;
                         @endif
 
                         @if($row->product_id > 0)
-                            <form action="{{ route('gap_market_product.update', $row->product_id) }}" method="POST">
+                            <form action="/admin/product/{{$row->product_id}}" method="POST">
 
                                 <input type="hidden" name="_method" value="PUT">
                                 @else

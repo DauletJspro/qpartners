@@ -426,14 +426,20 @@
                 Добавить <br> GAP  под центры
             </a>
         </li>
+
+        <li class="treeview">
+            <a href="{{route('gap_market_product.index')}}">
+                <i class="fa fa-shopping-cart"></i>
+                <span>
+                    Добавить <br> GAP market товар
+                </span>
+            </a>
+        </li>
     @endif
-
-
     <li class="treeview">
         <a href="/logout">
             <i class="fa fa-sign-out"></i>
             <span>Выйти</span>
         </a>
     </li>
-
 </ul>
