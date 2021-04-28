@@ -175,6 +175,8 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                                                                                 aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
+                                        <li><a href="{{ route('program.initial') }}">с первоначальным взносом</a></li>
+                                        <li><a href="{{ route('program.share') }}">с паевым взносом</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -272,6 +274,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
         background-color: #fad749 !important;
         color: white !important;
 
+
     }
 
     .dropdown:hover .dropdown-content {
@@ -282,7 +285,6 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     / / grid-template-columns: repeat(4, 1 fr);
     / / background-color: white;
     }
-
     .fs-14 {
         font-size: 14px;
     }
@@ -335,7 +337,6 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     .mt-1 {
         margin-top: 0.8rem;
     }
-
     .fs-18 {
         font-size: 18px;
     }

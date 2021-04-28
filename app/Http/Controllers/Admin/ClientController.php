@@ -7,6 +7,7 @@ use App\Models\CooperativeGroupPlus;
 use App\Models\CooperativeHomeGroup;
 use App\Models\Packet;
 use App\Models\Users;
+use App\Models\UserStatus;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use View;
@@ -77,7 +78,11 @@ class ClientController extends Controller
             $request->row->where(['users.is_interest_holder' => true]);
         }
 
-            $request->row = $request->row->paginate(10);
+        if($request->user_status_id){
+            $request->row->where(['users.status_id' => $request->user_status_id]);
+        }
+
+        $request->row = $request->row->paginate(10);
 
         return view('admin.client.client', [
             'row' => $request,
@@ -86,9 +91,10 @@ class ClientController extends Controller
         ]);
     }
 
-    public function getAllGapShareholder(Request $request){
+    public function getAllGapShareholder(Request $request)
+    {
         $request->row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
-            ->where('packet.packet_id','=', Packet::GAP)
+            ->where('packet.packet_id', '=', Packet::GAP)
             ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
             ->leftJoin('user_packet', 'user_packet.user_id', '=', 'users.user_id')
             ->leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
@@ -108,7 +114,7 @@ class ClientController extends Controller
         if (isset($request->user_name) && $request->user_name != '')
             $request->row->where(function ($query) use ($request) {
                 $query->where('users.name', 'like', '%' . $request->user_name . '%')
-                    ->orWhere('users.iin', 'like', '%' . $request->iin. '%')
+                    ->orWhere('users.iin', 'like', '%' . $request->iin . '%')
                     ->orWhere('users.last_name', 'like', '%' . $request->user_name . '%')
                     ->orWhere('users.login', 'like', '%' . $request->user_name . '%')
                     ->orWhere('users.email', 'like', '%' . $request->user_name . '%')
@@ -153,10 +159,11 @@ class ClientController extends Controller
         ]);
     }
 
-    public function getAllAutoShareholder(Request $request){
+    public function getAllAutoShareholder(Request $request)
+    {
         $request->row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
-            ->where('packet.packet_id','=', 27)
-            ->where('users.group_id', '=' , 0)
+            ->where('packet.packet_id', '=', 27)
+            ->where('users.group_id', '=', 0)
             ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
             ->leftJoin('user_packet', 'user_packet.user_id', '=', 'users.user_id')
             ->leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
@@ -177,7 +184,7 @@ class ClientController extends Controller
             $request->row->where(function ($query) use ($request) {
                 $query->where('users.name', 'like', '%' . $request->login . '%')
                     ->orWhere('users.last_name', 'like', '%' . $request->login . '%')
-                    ->orWhere('users.iin' , 'like', 'iin'. $request->login. '%')
+                    ->orWhere('users.iin', 'like', 'iin' . $request->login . '%')
                     ->orWhere('users.login', 'like', '%' . $request->login . '%')
                     ->orWhere('users.email', 'like', '%' . $request->login . '%')
                     ->orWhere('users.middle_name', 'like', '%' . $request->login . '%');
@@ -196,6 +203,7 @@ class ClientController extends Controller
         if ($request->is_interest_holder) {
             $request->row->where(['users.is_interest_holder' => true]);
         }
+
         $request->row = $request->row->paginate(10);
 
         return view('admin.shareholder-clients.user_list', [
@@ -205,10 +213,11 @@ class ClientController extends Controller
         ]);
     }
 
-    public function getAllHomeShareholder(Request $request){
+    public function getAllHomeShareholder(Request $request)
+    {
         $request->row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
-            ->where('packet.packet_id','=', 27)
-            ->where('users.home_group_id', '=' , 0)
+            ->where('packet.packet_id', '=', 27)
+            ->where('users.home_group_id', '=', 0)
             ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
             ->leftJoin('user_packet', 'user_packet.user_id', '=', 'users.user_id')
             ->leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
@@ -247,6 +256,8 @@ class ClientController extends Controller
         if ($request->is_interest_holder) {
             $request->row->where(['users.is_interest_holder' => true]);
         }
+
+
         $request->row = $request->row->paginate(10);
 
         return view('admin.shareholder-clients.home.user_list', [
@@ -256,10 +267,11 @@ class ClientController extends Controller
         ]);
     }
 
-    public function getAllPlusShareholder(Request $request){
+    public function getAllPlusShareholder(Request $request)
+    {
         $request->row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
-            ->where('packet.packet_id','=', 27)
-            ->where('users.group_plus_id', '=' , 0)
+            ->where('packet.packet_id', '=', 27)
+            ->where('users.group_plus_id', '=', 0)
             ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
             ->leftJoin('user_packet', 'user_packet.user_id', '=', 'users.user_id')
             ->leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
@@ -280,7 +292,7 @@ class ClientController extends Controller
             $request->row->where(function ($query) use ($request) {
                 $query->where('users.name', 'like', '%' . $request->login . '%')
                     ->orWhere('users.last_name', 'like', '%' . $request->login . '%')
-                    ->orWhere('users.iin' , 'like', 'iin'. $request->login. '%')
+                    ->orWhere('users.iin', 'like', 'iin' . $request->login . '%')
                     ->orWhere('users.login', 'like', '%' . $request->login . '%')
                     ->orWhere('users.email', 'like', '%' . $request->login . '%')
                     ->orWhere('users.middle_name', 'like', '%' . $request->login . '%');
@@ -307,31 +319,36 @@ class ClientController extends Controller
             'request' => $request
         ]);
     }
-    public function editAutoUser($id){
-          $user = Users::find($id);
+
+    public function editAutoUser($id)
+    {
+        $user = Users::find($id);
         $listOfGroup = CooperativeGroup::all()->pluck('group_name', 'id')->toArray();
-          return view('admin.shareholder-clients.add_user_to_group', compact('user', 'listOfGroup'));
+        return view('admin.shareholder-clients.add_user_to_group', compact('user', 'listOfGroup'));
     }
 
-    public function editAutoPlusUser($id){
+    public function editAutoPlusUser($id)
+    {
         $user = Users::find($id);
         $listOfGroup = CooperativeGroupPlus::all()->pluck('group_name', 'id')->toArray();
         return view('admin.shareholder-clients.tulpar-plus.add_user_to_group', compact('user', 'listOfGroup'));
     }
 
-    public function editHomeUser($id){
+    public function editHomeUser($id)
+    {
         $user = Users::find($id);
         $listOfGroup = CooperativeHomeGroup::all()->pluck('group_name', 'id')->toArray();
         return view('admin.shareholder-clients.home.add_user_to_group', compact('user', 'listOfGroup'));
     }
 
-    public function updateAutoUser(Request $request, $id){
+    public function updateAutoUser(Request $request, $id)
+    {
         $item = Users::find($id);
         $data = $request->all();
         $result = $item->update($data);
-        if ($result){
+        if ($result) {
             return redirect()->route('cooperative.index')->with('success', 'Пользователь успешно добавлен');
-        }else{
+        } else {
             return back()->withErrors(['msg' => 'Error'])
                 ->withInput();
         }
@@ -340,25 +357,27 @@ class ClientController extends Controller
     }
 
 
-    public function updateAutoPlusUser(Request $request, $id){
+    public function updateAutoPlusUser(Request $request, $id)
+    {
         $item = Users::find($id);
         $data = $request->all();
         $result = $item->update($data);
-        if ($result){
+        if ($result) {
             return redirect()->route('pluses.index')->with('success', 'Пользователь успешно добавлен');
-        }else{
+        } else {
             return back()->withErrors(['msg' => 'Error'])
                 ->withInput();
         }
     }
 
-    public function updateHomeUser(Request $request, $id){
+    public function updateHomeUser(Request $request, $id)
+    {
         $item = Users::find($id);
         $data = $request->all();
         $result = $item->update($data);
-        if ($result){
+        if ($result) {
             return redirect()->route('home.index')->with('success', 'Пользователь успешно добавлен');
-        }else{
+        } else {
             return back()->withErrors(['msg' => 'Error'])
                 ->withInput();
         }
@@ -395,4 +414,5 @@ class ClientController extends Controller
         $request->session()->flash('danger', 'Произошла ошибка');
         return back();
     }
+
 }

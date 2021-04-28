@@ -1,3 +1,6 @@
+<?php
+$statuses = \App\Models\UserStatus::where(['is_show' => true])->pluck('user_status_name', 'user_status_id')->toArray();
+?>
 @extends('admin.layout.layout')
 
 @section('content')
@@ -68,6 +71,7 @@
                                         <th style="width: 15px">Аватар</th>
                                         <th>Пользователь</th>
                                         <th>Спонсор</th>
+                                        <th>Статус</th>
                                         <th>Email / Телефон</th>
                                         <th>Пакеты</th>
                                         <th>Дата регист.</th>
@@ -101,7 +105,17 @@
                                                        class="form-control" name="sponsor_name" placeholder="Поиск">
                                             </form>
                                         </td>
-                                        <td></td>
+                                        <td>
+                                            <form>
+                                                <select id="status_id" value="{{$request->user_status_id}}" type="text"
+                                                        class="form-control" name="user_status_id">
+                                                    <option value="" disabled selected>Выберите статус</option>
+                                                    @foreach($statuses as $key =>  $value)
+                                                        <option {{$request->user_status_id && $request->user_status_id == $key ? 'selected' : ''}}  value="{{$key}}">{{$value}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </form>
+                                        </td>
                                         <td>
                                             <form>
                                                 <input value="{{$request->packet_name}}" type="text"
@@ -155,11 +169,15 @@
                                                 </a>
                                             </td>
                                             <td class="arial-font">
+                                                {{$val->status->user_status_name}}
+                                            </td>
+                                            <td class="arial-font">
                                                 <div>
                                                     {{ $val->email }} </br>
                                                     {{ $val->phone }}
                                                 </div>
                                             </td>
+
                                             <td class="arial-font" style="text-align: center">
                                                 @include('admin.client.user_packet_list_loop')
                                             </td>
@@ -285,5 +303,10 @@
             $('#is_holder').val(is_holder);
             $('#myModal').modal();
         }
+
+        $('#status_id').on('change', function (e) {
+            window.location.replace("/admin/client?user_status_id=" + $(this).val());
+        })
+
     </script>
 @endsection
