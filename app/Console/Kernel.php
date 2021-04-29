@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\ActivationBonusCommand;
+use App\Console\Commands\BackupCommand;
 use App\Console\Commands\UnitTestCommand;
 use App\Models\Fond;
 use App\Models\Operation;
@@ -24,6 +25,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\UserPacketSetPaid',
         ActivationBonusCommand::class,
         UnitTestCommand::class,
+        BackupCommand::class
     ];
 
     /**
@@ -36,6 +38,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('globalBonus:everyMonth')
             ->everyMinute();
+        $schedule->command('make:backup')
+            ->daily();
     }
 
     /**

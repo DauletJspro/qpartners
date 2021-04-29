@@ -142,7 +142,7 @@ class Users extends Model implements AuthenticatableContract
 
     public static function getSponsorName($id)
     {
-        $sponsor = Users::where('user_id', '=', $id->recommend_user_id)->first();
+        $sponsor = Users::where('user_id', '=', $id->recommend_user_id)->select('login')->first();
         return $sponsor->login;
     }
 
