@@ -35,7 +35,7 @@
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Имя</th>
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Фамилия</th>
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Логин</th>
-        <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Спорнсор</th>
+        <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Спонсор</th>
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Дата активаций</th>
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Номер телефона</th>
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Пакеты</th>
