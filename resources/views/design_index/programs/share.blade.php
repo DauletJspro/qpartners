@@ -1,34 +1,4 @@
 
-<?php
-$programs= collect([
-        [
-            'imgSrc'=> "baspana.jpg",
-            'body'=> "BASPANA - жилье для большой семьи в рассрочку"
-        ],
-        [
-            'imgSrc'=> "tulpar.jpg",
-            'body'=> "TULPAR - автомобиль для всей семьи в рассрочку"
-        ],
-        [
-            'imgSrc'=> "jastar.jpg",
-            'body'=> "JASTAR - жилье для молодежи в рассрочку"
-        ],
-        [
-            'imgSrc'=> "jas-otau.jpg",
-            'body'=> "JAS OTAU - жилье для молодых семей в рассрочку"
-        ],
-        [
-            'imgSrc'=> "qoldau.jpg",
-            'body'=> "QOLDAU - жилье медработников и учителей в рассрочку"
-        ],
-        [
-            'imgSrc'=> "qamqor.jpg",
-            'body'=> "QAMQOR - жилье для социально уязвимых слоев населения в рассрочку"
-        ],
-    ]
-);
-?>
-
 @extends('design_index.layout.layout')
 
 @section('meta-tags')
@@ -119,12 +89,14 @@ $programs= collect([
                         <div class="d-flex-column w-31 ml-2 mt-1">
                             <img src="/new_design/images/banners/{{$program["imgSrc"]}}" alt="programs img not found"/>
                             <p class="text-black mt-1 w-75 font-weight-600">{{$program["body"]}}</p>
-                            <button class="mr-auto bg-red color-white border-radius-30 px-15 py-05 d-flex-row" style="border: none">
-                                Подробнее
-                                <img style="width: 10px; height: 10px; margin-top: 6px; margin-left: 5px"
-                                     src="/new_design/images/right-navigation.svg"
-                                     alt="right navigation img not found"
-                                >
+                            <button class="button-hover mr-auto bg-red border-radius-30 px-15 py-05" onclick="" style="border: none;">
+                                <a href="/programs/{{$program['id']}}" class="a-hover d-flex-row color-white">
+                                    Подробнее
+                                    <img style="width: 10px; height: 10px; margin-top: 6px; margin-left: 5px"
+                                         src="/new_design/images/right-navigation.svg"
+                                         alt="right navigation img not found"
+                                    >
+                                </a>
                             </button>
                         </div>
                     @endforeach
@@ -243,6 +215,15 @@ $programs= collect([
     .font-weight-600 {
         font-weight: 600 !important;
     }
+    .button-hover:hover {
+        background-color: #c60303 !important;
+
+    }
+    .a-hover:hover {
+        color: white !important;
+
+    }
+
     .programs-image {
         background-image:url('/new_design/images/programs.png');
         height: 172px;

@@ -67,7 +67,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         </li>
                         <li style="list-style-type: none;">
                             <a href="" style="">
-                                TURISM
+                                MEDIA
                             </a>
                         </li>
                     </ul>
@@ -122,12 +122,12 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
             <div class="row">
                 <div class="col-xs-12" style="display: flex; align-items: center;">
                     <div class="mt-logo fs-24" style="font-weight: 600; margin-left: 20px">
-                        <span style="color: red">GAP</span>
+                        <a href="/"><span style="color: red">GAP</span></a>
                         @if($gapTypeActive === 2)
-                            <span style="color: #646464">MARKET</span>
+                            <a href="/gap/market/show"><span style="color: #646464">MARKET</span></a>
                         @endif
                         @if($gapTypeActive === 3)
-                            <span style="color: #646464">CARD</span>
+                            <a href="/gap/card/show"><span style="cursor:pointer;color: #646464">CARD</span></a>
                         @endif
                     </div>
                     <div class="dropdown cursor-pointer" style="margin-left: 4rem;">
