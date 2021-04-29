@@ -35,7 +35,7 @@
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Имя</th>
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Фамилия</th>
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Логин</th>
-{{--        <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Спорнсор</th>--}}
+        <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Спорнсор</th>
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Дата активаций</th>
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Номер телефона</th>
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Пакеты</th>
@@ -47,7 +47,7 @@
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{$gapUser->name}}</td>
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{$gapUser->last_name}}</td>
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{$gapUser->login}}</td>
-{{--            <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{\App\Models\Users::getSponsorName($gapUser)}}</td>--}}
+            <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{\App\Models\Users::getSponsorName($gapUser)}}</td>
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{$gapUser->activated_date}}</td>
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{$gapUser->phone}}</td>
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">@include('admin.pdf.include')
