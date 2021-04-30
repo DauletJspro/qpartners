@@ -26,10 +26,10 @@ class TicketsController extends Controller
     public function userTickets()
     {
         $tickets = Ticket::where('user_id', Auth::user()->user_id)->paginate(10);
-        $adminTickets = Ticket::where('user_id', '=', 1)->where('recipient_id', '=', Auth::user()->user_id)->get();
+        $adminTickets = Ticket::where('user_id', '=', 1)->where('recipient_id', '=', Auth::user()->user_id)->paginate(10);
         $categories = CategoryTicket::all();
 
-        return view('admin.tickets.user_tickets', compact('tickets', 'categories', 'adminTickets'));
+        return view('admin.tickets.user_tickets', compact('tickets', 'adminTickets', 'categories'));
     }
     /**
      * Show the form for creating a new resource.

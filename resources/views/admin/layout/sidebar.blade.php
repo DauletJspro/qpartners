@@ -131,7 +131,11 @@
         <li class="treeview">
             <a href="/admin/my_tickets">
                 <i class="fa fa-list-ul"></i>
-                <span>Мои вопросы</span>
+                <span>Сообщение и вопросы</span>
+                <?php $countTicket = \App\Models\Ticket::where('user_id', '=', 1)
+                    ->where('recipient_id', '=', \Illuminate\Support\Facades\Auth::user()->user_id)->count(); ?>
+                <span class="label label-primary pull-right" id="ticket_count"
+                      style="@if($countTicket == 0) display: none; @endif background-color: rgb(253, 58, 53) ! important;">{{$countTicket}}</span>
             </a>
         </li>
         <li class="treeview">

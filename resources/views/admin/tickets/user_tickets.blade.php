@@ -48,9 +48,21 @@
 		        			@endforeach
 		        			</tbody>
 		        		</table>
-                        <div class="panel-heading">
+						{{ $tickets->render() }}
+					@endif
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="panel panel-default">
+					<div class="panel-heading">
                             <i class="fa fa-ticket">Сообщение от администрации сайта</i>
                         </div>
+					<div class="panel-body">
+					@if ($adminTickets->isEmpty())
+						<p>У вас нет сообщение от админа</p>
+					@else
                         <table class="table">
                             <thead>
                             <tr>
@@ -87,10 +99,9 @@
                             @endforeach
                             </tbody>
                         </table>
-
-		        		{{ $tickets->render() }}
-	        		@endif
-	        	</div>
+		        		{{ $adminTickets->render() }}
+				@endif
+				</div>
 	        </div>
 	    </div>
 	</div>

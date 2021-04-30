@@ -1,19 +1,5 @@
-
-<?php
-$programs= collect([
-        [
-            'imgSrc'=> "baspana-plus.jpg",
-            'body'=> "BASPANA PLUS - собственное жилье в рассрочку с первоначальным взносом"
-        ],
-        [
-            'imgSrc'=> "tulpar-plus.jpg",
-            'body'=> "TULPAR PLUS - автомобиль мечты в рассрочку с первоначальным взносом"
-        ],
-    ]
-);
-?>
-
 @extends('design_index.layout.layout')
+
 
 @section('meta-tags')
     <title>Qpartners Shop</title>
@@ -24,6 +10,7 @@ $programs= collect([
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 @endsection
+
 
 @section('content')
     <div class="container mb-7">
@@ -103,12 +90,14 @@ $programs= collect([
                         <div class="d-flex-column w-31 ml-2 mt-1">
                             <img src="/new_design/images/banners/{{$program["imgSrc"]}}" alt="programs img not found"/>
                             <p class="text-black mt-1 w-75 font-weight-600">{{$program["body"]}}</p>
-                            <button class="mr-auto bg-red color-white border-radius-30 px-15 py-05 d-flex-row" style="border: none">
-                                Подробнее
-                                <img style="width: 10px; height: 10px; margin-top: 6px; margin-left: 5px"
-                                   src="/new_design/images/right-navigation.svg"
-                                   alt="right navigation img not found"
-                                >
+                            <button class="button-hover mr-auto bg-red border-radius-30 px-15 py-05" onclick="" style="border: none;">
+                                <a href="/programs/{{$program['id']}}" class="a-hover d-flex-row color-white">
+                                    Подробнее
+                                    <img style="width: 10px; height: 10px; margin-top: 6px; margin-left: 5px"
+                                         src="/new_design/images/right-navigation.svg"
+                                         alt="right navigation img not found"
+                                    >
+                                </a>
                             </button>
                         </div>
                     @endforeach
@@ -173,6 +162,14 @@ $programs= collect([
     .px-15 {
         padding-left: 15px;
         padding-right: 15px;
+    }
+    .button-hover:hover {
+        background-color: #c60303 !important;
+
+    }
+    .a-hover:hover {
+        color: white !important;
+
     }
     .py-05 {
         padding-top: 5px;

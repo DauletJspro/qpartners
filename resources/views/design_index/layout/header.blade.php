@@ -67,7 +67,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         </li>
                         <li style="list-style-type: none;">
                             <a href="" style="">
-                                TURISM
+                                MEDIA
                             </a>
                         </li>
                     </ul>
@@ -120,13 +120,18 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     <div class="mt-bottom-bar">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="mt-logo"><a href="/"><img src="/new_design/images/logo/gap/{{$logo_image_name}}"
-                                                          alt="schon"
-                                                          style="height: 20px; width: 100px; margin-top: 0.5rem"></a>
+                <div class="col-xs-12" style="display: flex; align-items: center;">
+                    <div class="mt-logo fs-24" style="font-weight: 600; margin-left: 20px">
+                        <a href="/"><span style="color: red">GAP</span></a>
+                        @if($gapTypeActive === 2)
+                            <a href="/gap/market/show"><span style="color: #646464">MARKET</span></a>
+                        @endif
+                        @if($gapTypeActive === 3)
+                            <a href="/gap/card/show"><span style="cursor:pointer;color: #646464">CARD</span></a>
+                        @endif
                     </div>
-                    <div class="dropdown cursor-pointer" style="margin-left: 5rem;">
-                        <a class="icl_lang_sel_current fs-18 icl_lang_sel_native font-weight-lighter mt-1" style="">
+                    <div class="dropdown cursor-pointer" style="margin-left: 4rem;">
+                        <a class="icl_lang_sel_current fs-18 icl_lang_sel_native font-weight-lighter text-black mt-1" style="">
                             @if(isset($city))
                                 {{$city->city_name_ru}}
                             @else
@@ -156,7 +161,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         <?php $totalPrice += $total ? $total->product_price : 0; ?>
                     <?php endforeach ?>
                     @endif
-                    <nav id="nav" style="float:none;">
+                    <nav id="nav" style="float:none; margin-left: auto; font-weight: bold;">
                         <ul class="">
 
                             <li>
@@ -340,5 +345,8 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     }
     .fs-18 {
         font-size: 18px;
+    }
+    .text-black {
+        color: black;
     }
 </style>
