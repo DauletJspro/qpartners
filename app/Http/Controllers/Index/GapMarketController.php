@@ -37,17 +37,20 @@ class GapMarketController extends Controller
 
         if(isset($request->orderBy)){
             if($request->orderBy == "popular"){
-                $products = DB::select('
-                SELECT product.product_id,product.product_name_ru, product.product_desc_ru, product.product_price  FROM  
-                user_basket 
-                INNER JOIN product ON 
-                product.product_id = user_basket.product_id GROUP BY product.product_id ORDER BY count(product.product_id) DESC');
+                $products = DB::table('user_basket')->
+                join('product','user_basket.product_id', '=', 'product.product_id')->
+                select('product.product_id','product.product_name_ru','product.product_desc_ru','product.product_price')->
+                groupBy('product.product_id')->
+                orderBy(DB::raw('count(product.product_id)'), 'DESC')->
+                get();
             }
         }
         if($request->ajax())
         {
             return view('design_index.gap.product_card.product_card',compact('products'))->render();
         }
+
     }
+
 
 }

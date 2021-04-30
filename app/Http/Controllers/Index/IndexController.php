@@ -28,6 +28,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
@@ -61,6 +62,7 @@ class IndexController extends Controller
         $gels = Product::where(['category_id' => Category::GEL])->get();
         $sprays = Product::where(['category_id' => Category::SPRAY])->get();
         $creams = Product::where(['category_id' => Category::CREAM])->get();
+
 
 
         return view('design_index.index.index',

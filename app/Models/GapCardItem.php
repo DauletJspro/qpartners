@@ -16,6 +16,7 @@ class GapCardItem extends Model
         'discount_percentage',
         'price',
         'gap_card_sub_category_id',
+        'user_id'
     ];
 
 

@@ -142,7 +142,8 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                             <div style="display:flex; flex-wrap: wrap; width: 800px; font-size: 12px; text-transform:capitalize">
                                 <?php for($i = 0; $i < count($cities); $i++ ){?>
                                 <a href="{{ route('city.products', $cities[$i]->city_id) }}" class="fs-14"
-                                   style="width: 25%">
+                                   style="width: 25%"
+                                >
                                     {{$cities[$i]->city_name_ru}}
                                 </a>
 
