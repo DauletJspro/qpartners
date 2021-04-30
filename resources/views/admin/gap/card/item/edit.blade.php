@@ -14,9 +14,14 @@
             <div class="col-md-12">
                 <div class="col-md-12" style="padding-left: 0px">
                     <div class="box box-primary">
-                        @if (isset($error))
+                        @if (count($errors) > 0)
                             <div class="alert alert-danger">
-                                {{ $error }}
+                                <ul>
+                                    Исправьте следующие ошибки
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                         @endif
                         <div class="box-body">

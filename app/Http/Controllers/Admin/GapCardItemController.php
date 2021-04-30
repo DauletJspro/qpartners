@@ -3,17 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GapCardItemRequest;
 use App\Models\GapCardCategory;
 use App\Models\GapCardItem;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class GapCardItemController extends Controller
 {
     public function index()
     {
-        $gapCardItem = GapCardItem::all();
-        return view('admin.gap.card.item.index', compact('gapCardItem'));
+        $gapCardItems = GapCardItem::where('user_id', Auth::user()->user_id)->orderBy('created_at','desc')->paginate(40);
+        return view('admin.gap.card.item.index', compact('gapCardItems'));
 
     }
 
@@ -22,42 +25,14 @@ class GapCardItemController extends Controller
         return view('admin.gap.card.item.create');
     }
 
-    public function store(Request $request)
+    public function store(GapCardItemRequest $request)
     {
-        $messages = [
-            'required' => 'Необходимо заполнить поле :attribute',
-            'min:5' => 'Минимальное количество символов должно быть 5'
-        ];
-
-        $validator = Validator::make($request->all(), [
-            'title_kz' => 'required|min:3',
-            'title_ru' => 'required|min:3',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'discount_percentage' => 'required',
-            'price' => 'required',
-            'gap_card_sub_category_id' => 'required',
-        ], $messages);
-
-
-        if ($validator->fails()) {
-            $messages = $validator->errors();
-            $errors = $messages->all();
-            $errorResults = 'Необходимо исправить следующие ошибки' . '<br>';
-            foreach ($errors as $error) {
-                $errorResults .= '&nbsp;' . $error . '<br>';
-            }
-            $request->session()->flash('danger', $errorResults);
-            return back();
-        }
-
-        $image = '';
         $destinationPath = public_path('admin/image/gap_item/');
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = time() . '.' . $image->getClientOriginalExtension();
             $image->move($destinationPath, $name);
         }
-
         if (GapCardItem::create([
             'title_kz' => $request->title_kz,
             'title_ru' => $request->title_ru,
@@ -67,8 +42,12 @@ class GapCardItemController extends Controller
             'price' => $request->price,
             'discount_percentage' => $request->discount_percentage,
             'gap_card_sub_category_id' => $request->gap_card_sub_category_id,
+            'user_id' => Auth::user()->user_id
         ])) {
             $request->session()->flash('success', 'Вы успешно добавили центр!   ');
+            return redirect(route('gap_item.index'));
+        }else{
+            $request->session()->flash('warning', 'Что то пошло не так повторите попытку!   ');
             return redirect(route('gap_item.index'));
         }
     }
@@ -80,34 +59,8 @@ class GapCardItemController extends Controller
         return view('admin.gap.card.item.edit', compact('gapCardItem'));
     }
 
-    public function update(Request $request, $id)
+    public function update(GapCardItemRequest $request, $id)
     {
-        $messages = [
-            'required' => 'Необходимо заполнить поле :attribute',
-            'min:5' => 'Минимальное количество символов должно быть 5'
-        ];
-
-        $validator = Validator::make($request->all(), [
-            'title_kz' => 'required|min:3',
-            'title_ru' => 'required|min:3',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'discount_percentage' => 'required',
-            'price' => 'required',
-            'gap_card_sub_category_id' => 'required',
-        ], $messages);
-
-
-        if ($validator->fails()) {
-            $messages = $validator->errors();
-            $errors = $messages->all();
-            $errorResults = 'Необходимо исправить следующие ошибки' . '<br>';
-            foreach ($errors as $error) {
-                $errorResults .= '&nbsp;' . $error . '<br>';
-            }
-            $request->session()->flash('danger', $errorResults);
-            return back();
-        }
-
         $gapCardItem = GapCardItem::where(['id' => $id])->first();
         $name = $gapCardItem->image;
         $destinationPath = public_path('admin/image/gap_item/');
@@ -127,13 +80,26 @@ class GapCardItemController extends Controller
             'discount_percentage' => $request->discount_percentage,
             'gap_card_sub_category_id' => $request->gap_card_sub_category_id,
         ])) {
-            $request->session()->flash('success', 'Вы успешно добавили центр!   ');
+            $request->session()->flash('success', 'Вы успешно изменили центр!   ');
+            return redirect(route('gap_item.index'));
+        }else{
+            $request->session()->flash('warning', 'Что то пошло не так повторите попытку!   ');
             return redirect(route('gap_item.index'));
         }
     }
 
-    public function destroy($id)
+    public function destroy($gapItemId)
     {
-        //
+        $gapItem = GapCardItem::find($gapItemId);
+        if(Auth::check()){
+            $gapItem = GapCardItem::where(['id'=>$gapItem->id]);
+            if($gapItem->delete()){
+                return 1;
+            }else {
+                return 2;
+            }
+        }else {
+            return 3;
+        }
     }
 }

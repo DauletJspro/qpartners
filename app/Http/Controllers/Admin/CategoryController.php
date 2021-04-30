@@ -59,7 +59,6 @@ class CategoryController extends Controller
             ['name' => 'required|max:100']
             , $messages);
 
-
         if ($validator->fails()) {
             $messages = $validator->errors();
             $error = $messages->all();

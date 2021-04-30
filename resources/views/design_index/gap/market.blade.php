@@ -157,7 +157,7 @@
                                                    data-order="price-low-high">По цене возрастанию</a></li>
                                             <li><a href="#" class="product_sorting_btn" id="sort-price"
                                                    data-order="price-high-low">По цене убыванию</a></li>
-                                            <li><a href="#" class="product_sorting_btn" data-order=" ">По популярности</a></li>
+                                            <li><a href="#" class="product_sorting_btn" data-order="popular">По популярности</a></li>
                                         </ul>
                                     </div>
                                 </li>
