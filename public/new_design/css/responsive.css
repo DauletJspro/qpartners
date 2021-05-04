@@ -2732,6 +2732,9 @@
 }
 
 @media only screen and (max-width: 550px) {
+    .advantages-block {
+        grid-template-columns: repeat(2, 1fr);
+    }
     .mt-bottom-bar .mt-top-social {
         display: none;
     }
@@ -2867,6 +2870,11 @@
 	#mt-main > div > div > div > ul > li {
 		width: 48%;
 	}
+}
+@media only screen and (max-width: 424px) {
+    .advantages-block {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media only screen and (max-width: 375px) {
