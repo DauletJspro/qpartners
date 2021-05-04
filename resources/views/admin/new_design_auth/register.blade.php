@@ -14,7 +14,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
 <script>
+
     function displayInfo(value) {
+        document.getElementById("registrate-section").style.display = 'block';
 
         let shareholder = document.getElementById("shareholder");
         let activePartner = document.getElementById("activePartner");
@@ -22,6 +24,7 @@
         let consumer = document.getElementById("consumer");
         let seller = document.getElementById("seller");
         let user = document.getElementById("user");
+        console.log('activePartner');
 
         if(value === 'shareholder') {
             shareholder.classList.add("register-types-btn-selected");
@@ -40,6 +43,7 @@
             document.getElementById('company-name').style.display = 'none';
 
         }
+
         else if(value === 'activePartner') {
             shareholder.classList.remove("register-types-btn-selected");
             activePartner.classList.add('register-types-btn-selected');
@@ -120,10 +124,12 @@
             document.getElementById('company-name').style.display = 'none';
             document.getElementById('office').style.display = 'none';
         }
+
     }
 </script>
 
 @section('content')
+
     <div class="mt-search-popup">
         <div class="mt-holder">
             <a href="#" class="search-close"><span></span><span></span></a>
@@ -150,7 +156,7 @@
 
         <br>
         <div class="text-uppercase fs-27 black-text-color text-center font-weight-600" style="letter-spacing: 3px">выберите форму регистрации</div>
-        <div class="container">
+        <div class="container mb-7">
             <div class=" d-flex-row text-center mt-2 flex-wrap" style="font-size: 16px">
                 <div class="register-types-btn bg-red color-white text-uppercase" onclick="displayInfo('shareholder')" id="shareholder">
                     пайщик
@@ -173,7 +179,7 @@
 
             </div>
         </div>
-        <section class="mt-detail-sec toppadding-zero">
+        <section class="mt-detail-sec toppadding-zero" id="registrate-section">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-10 col-sm-push-1">
@@ -330,10 +336,14 @@
     </main>
 
 @endsection
+
 @push('scripts')
     {!! NoCaptcha::renderJs() !!}
 @endpush
 <style>
+    #registrate-section {
+        display: none;
+    }
     .register-types-btn {
         height: 47px;
         margin-right: 10px;
