@@ -297,7 +297,7 @@
                                         </div>
                                         <br>
                                         <div class="" style="width: 100%; display: flex">
-                                            <button type="submit" class="btn btn-danger font-weight-600" style="background: red !important; border-radius: 20px; margin: 0 auto; font-size: 24px !important; padding: 5px 50px">Зарегистрироваться
+                                            <button type="submit" class="btn btn-danger font-weight-600" style="background: red !important; border-radius: 20px; margin: 0 auto; font-size: 22px !important; padding: 5px 20px">Зарегистрироваться
                                             </button>
                                         </div>
 
@@ -356,10 +356,11 @@
         font-size: 4rem;
         color: white;
         text-align: center;
-        background-size: 100%;
+        background-size: 100% 100;
         padding-top: 60px;
         font-weight: 600;
         letter-spacing: 4px;
+        background-repeat: no-repeat;
     }
     .program-block-width {
         width: 31%;

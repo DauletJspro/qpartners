@@ -474,6 +474,9 @@
     .mt-paddingsmzero {
         padding: 0 !important;
     }
+    .register-types-btn {
+        min-width: 31%;
+    }
 
     .mt-paddingbottomsm {
         padding-bottom: 30px;
@@ -1359,6 +1362,9 @@
 @media only screen and (max-width: 767px) {
     #nav-icon1 {
         display: block !important;
+    }
+    .register-types-btn {
+        min-width: 45%;
     }
     .program-detail-about, .program-detail-img {
         width: 90%;
@@ -2882,6 +2888,9 @@
 	#mt-main > div > div > div > ul > li {
 		width: 97%;
 	}
+    .register-types-btn {
+        min-width: 100%;
+    }
     .program-block-width {
         width: 100%;
     }
