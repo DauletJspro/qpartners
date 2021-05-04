@@ -14,9 +14,12 @@ class Product extends Model
 
     use SoftDeletes;
 
-//    protected $fillable = [
-//      'product_name_ru','product_desc_ru','full_desc_ru'
-//    ];
+    protected $fillable = [
+        'product_name_ru','product_desc_ru','full_description_ru',
+        'ball','product_cash','sort_num','product_image','product_id',
+        'information','composition','is_popular','is_new','sub_category_id','item_id','product_price',
+        'city_id','user_id','product_image'
+    ];
 
     protected $dates = ['deleted_at'];
 

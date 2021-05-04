@@ -980,12 +980,12 @@ class PacketController extends Controller
 
 
         // add gv to parents
-        $parent = Users::where(['user_id' => $user->recommend_user_id])->where('is_activated', '=', true)->first();
+        $parent = Users::where(['user_id' => $user->recommend_user_id])->first();
         $counter = 1;
 
         while ($parent) {
             $userPacket = UserPacket::where('user_id', '=', $parent->user_id)->where('is_active', '=', true)->count();
-            if ($parent->is_activated && $userPacket > 0 && $giveBonus) {
+            if ($userPacket > 0 && $giveBonus) {
                 $parent->gv_balance = $parent->gv_balance + $final_price;
                 if ($parent->save()) {
                     $user_operation = new UserOperation();

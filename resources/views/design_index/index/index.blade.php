@@ -23,12 +23,12 @@ use Illuminate\Support\Facades\Session;
                 <div class="col-xs-12">
                     <div class="banner-frame toppadding-zero">
                         <div class="banner-5 white wow fadeInLeft" data-wow-delay="0.4s">
-                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/NewResource/img-1.jpg'); background-size: cover; background-position: center;"></div>
+                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/banners/banner1.svg'); background-size: cover; background-position: center;"></div>
                             <div class="holder">
-                                <div class="texts" style=" font-family: adineue PRO KZ Bold;color:#000;">
-                                    <span class="mb-0" style="font-size:44px;font-weight:bold;">МОЙ ДОМ</span>
-                                    <p style="font-size:44px;font-weight:bold;">МОЯ КРЕПОСТЬ</p>
-                                    <span style="font-size: 19px;font-family:'Montserrat';" class="p-0">Стань обладателем собственного</hr style="list-style:none;"> дома</span>
+                                <div class="texts" style=" font-family: adineue PRO KZ Bold;color:white;">
+                                    <span class="mb-0" style="font-size:44px;font-weight:bold;">СВОЙ ДОМ</span>
+                                    <p style="font-size:44px;font-weight:bold;">БЕЗ ИПОТЕКИ</p>
+                                    <span style="font-size: 19px;font-family:'Montserrat';" class="p-0">Рассрочка до 120 месяцев на </hr style="list-style:none;"> жилье</span>
                                 </div>
                                 <div class="holder-inner">
                                     <a href="/baspana" class="btn-shop">
@@ -39,12 +39,12 @@ use Illuminate\Support\Facades\Session;
                             </div>
                         </div>
                         <div class="banner-6 white wow fadeInRight" data-wow-delay="0.4s">
-                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/NewResource/img-2.png'); background-size: cover; background-position: center;background-repeat: no-repeat;"></div>
+                            <div style="max-width: 100%; height: 590px; background-image: url('/new_design/images/banners/banner2.svg'); background-size: cover; background-position: center;background-repeat: no-repeat;"></div>
                             <div class="holder">
-                                <div class="texts" style="font-family: adineue PRO KZ Bold;color:#000;">
+                                <div class="texts" style="font-family: adineue PRO KZ Bold;color:white;">
                                     <span style="font-size:28px;font-weight:bold;">АВТОМОБИЛЬ</span>
-                                    <p style="font-size:28px;font-weight:bold;">ДЛЯ ДУШИ</p>
-                                    <span style="font-size: 14px;font-family:'Montserrat';"  class="p-0">Получи автомобиль за 0 тенге</span>
+                                    <p style="font-size:28px;font-weight:bold;">В РАССРОЧКУ</p>
+                                    <span style="font-size: 14px;font-family:'Montserrat';"  class="p-0">Получи авто через месяц</span>
                                 </div>
                                 <div class="holder-inner">
                                     <a href="/tulpar" class="btn-shop">
@@ -58,16 +58,16 @@ use Illuminate\Support\Facades\Session;
                         <div class="banner-box two">
                             <!-- banner 7 right start here -->
                             <div class="banner-7 right wow fadeInUp" data-wow-delay="0.4s">
-                                <div style="background-image: url('/new_design/images/NewResource/img-3.png'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
+                                <div style="background-image: url('/new_design/images/banners/banner3.svg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
                                 <div class="holder">
-                                    <div class="texts" style="color:#ffd700;">
-                                        <span style="font-size:28px;font-weight:bold;">НОВЕНЬКИЙ</span>
-                                        <p style="font-size:28px;font-weight:bold;">СМАРТФОН!</p>
-                                        <span style="font-size: 14px;font-family:'Montserrat';color:#000;float:left;" class="p-0">Поспеши!</span>
+                                    <div class="texts" style="color:white;">
+                                        <span style="font-size:28px;font-weight:bold;">ЖИЛЬЕ ДЛЯ</span>
+                                        <p style="font-size:28px;font-weight:bold;">МОЛОДЕЖИ</p>
+                                        <span style="font-size: 14px;font-family:'Montserrat';color:white;float:left;" class="p-0">от 18 до 29 лет</span>
                                     </div>
                                     <div class="holder-inner">
                                         <a href="product-detail.html" class="btn-shop">
-                                            <span style="color: #000 !important;">ПОДРОБНЕЕ</span>
+                                            <span style="color: white;">ПОДРОБНЕЕ</span>
                                             <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
                                         </a>
                                     </div>
@@ -75,17 +75,17 @@ use Illuminate\Support\Facades\Session;
                             </div><!-- banner 7 right end here -->
                             <!-- banner 8 start here -->
                             <div class="banner-8 wow fadeInDown" data-wow-delay="0.4s">
-                                <div style="background-image: url('/new_design/images/NewResource/img-4.png'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
+                                <div style="background-image: url('/new_design/images/banners/banner4.svg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
                                 <div class="holder">
-                                    <div class="texts" style="font-family: adineue PRO KZ Bold;color:#fff;">
-                                        <span style="font-size:28px;font-weight:bold;">ПУТЕШЕСТВИЕ</span>
-                                        <p style="font-size:28px;font-weight:bold;">БЕЗ ГРАНИЦ!</p>
-                                        <span style="font-size: 14px;width:150px;font-family:'Montserrat';color:#fff;position:absolute;left:55%;" class="p-0">А ты готов </hr> к приключениям?!</span>
+                                    <div class="texts" style="font-family: adineue PRO KZ Bold;color:white;">
+                                        <span style="font-size:28px;font-weight:bold;">ДОМ ДЛЯ</span>
+                                        <p style="font-size:28px;font-weight:bold;">ВСЕЙ СЕМЬИ</p>
+                                        <span style="font-size: 14px;width:150px;font-family:'Montserrat';color:white;position:absolute;left:55%;" class="p-0">Жилье для </hr> молодых семей</span>
                                     </div>
                                     <div class="holder-inner">
                                         <a href="product-detail.html" class="btn-shop">
-                                            <span style="color: #000 !important;font-weight:300;">ГОТОВ</span>
-                                            <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
+                                            <span style="color: white !important;font-weight:300;">Подробнее</span>
+                                            <i class="fa fa-angle-right" style="background: #fff; color: black;"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -97,36 +97,36 @@ use Illuminate\Support\Facades\Session;
                         <div class="banner-box third">
                             <!-- banner 12 right white start here -->
                             <div class="banner-12 white wow fadeInUp" data-wow-delay="0.4s">
-                                <img src="/new_design/images/NewResource/img-5.png"
+                                <img src="/new_design/images/banners/banner5.svg"
                                      alt="image description"
                                      style="height: 277px;  width: 420px;">
                                 <div class="holder">
-                                    <div class="texts" style="font-family: adineue PRO KZ Bold;color:#fff;">
-                                        <span style="font-size:28px;font-weight:bold;">SUPER ELIXIR</span>
-                                        <p style="font-size:28px;font-weight:bold;">FOR MAN</p>
-                                        <span style="font-size: 14px;width:200px;font-family:'Montserrat';color:#fff;float:left;" class="p-0">МУЖСКАЯ СИЛА </hr> В МУЖСКОМ ЗДОРОВЬИ</span>
+                                    <div class="texts" style="font-family: adineue PRO KZ Bold;color:white;">
+                                        <span style="font-size:28px;font-weight:bold;">ГАРАНТИЯ</span>
+                                        <span style="font-size: 14px;width:200px;font-family:'Montserrat';color:#fff;float:left;" class="p-0">Ваши вклады и права </hr> защищены законом РК</span>
                                     </div>
                                     <div class="holder-inner">
-                                        <a href="/shop" class="btn-shop">
-                                            <spanstyle="color:#000!important;font-weight:300;">ПОДРОБНЕЕ</span>
+                                        <a href="/shop" class="btn-shop" style="background: none">
+                                            <span style="color: white !important;font-weight:300;">Подробнее</span>
+                                            <i class="fa fa-angle-right" style="background: #fff; color: black;"></i>
                                         </a>
                                     </div>
                                 </div>
                             </div><!-- banner 12 right white end here -->
                             <!-- banner 13 right start here -->
                             <div class="banner-13 right wow fadeInDown" data-wow-delay="0.4s">
-                                <img src="/new_design/images/NewResource/img-6.png"
+                                <img src="/new_design/images/banners/banner6.svg"
                                      alt="image description"
                                      style="height: 277px;  width: 420px;">
                                 <div class="holder">
-                                    <div class="texts" style="font-family: adineue PRO KZ Bold;color:#fff;">
-                                        <span style="font-size:28px;font-weight:bold;">SUPER ELIXIR</span>
-                                        <p style="font-size:28px;font-weight:bold;">FOR <span style="color:#f00;">WOMAN</span></p>
-                                        <span style="font-size: 14px;width:200px;font-family:'Montserrat';color:#000;float:right;" class="p-0">ТВОЙ ВНЕШНИЙ ВИД ТВОЙ ЗАЛОГ УСПЕХА</span>
+                                    <div class="texts" style="font-family: adineue PRO KZ Bold;color:white;">
+                                        <span style="font-size:28px;font-weight:bold;">ВОПРОСЫ И ОТВЕТЫ</span>
+                                        <span style="font-size: 14px;width:200px;font-family:'Montserrat';color:white;float:right;" class="p-0">Ответы на часто задаваемые вопросы</span>
                                     </div>
                                     <div class="holder-inner">
-                                        <a href="/shop" class="btn-shop">
-                                            <span style="color: #fff !important;font-weight:300;">ПОДРОБНЕЕ</span>
+                                        <a href="/shop" class="btn-shop" style="background: none">
+                                            <span style="color: white !important;font-weight:300;">Подробнее</span>
+                                            <i class="fa fa-angle-right" style="background: #fff; color: black;"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -297,11 +297,11 @@ use Illuminate\Support\Facades\Session;
                     <div class="banner-frame nospace wow fadeInUp" data-wow-delay="0.6s">
                         <!-- banner 9 start here -->
                         <div class="banner-9">
-                            <img src="/new_design/images/NewResource/img-ban-1.png" alt="image description">
+                            <img src="/new_design/images/banners/banner8.svg" alt="image description">
                             <div class="holder">
                                 <div class="texts" style="color:#fff; adineue PRO KZ Bold;">
-                                    <p style="font-size:28px;font-weight:bold;">ДОХОДНОСТЬ</p>
-                                    <span style="font-size: 20px;font-family:'Montserrat';color:#fff;float:left;" class="p-0">80% от оборота!</span>
+                                    <p style="font-size:28px;font-weight:bold;">ПРЕИМУЩЕСТВО №1 </p>
+                                    <span style="font-size: 20px;font-family:'Montserrat';color:#fff;float:left;" class="p-0">Вступительный взнос от 60 000 тенге</span>
                                 </div>
                                 <div class="holder-inner">
                                     <a href="product-detail.html" class="btn-shop">
@@ -313,15 +313,15 @@ use Illuminate\Support\Facades\Session;
                         </div><!-- banner 9 end here -->
                         <!-- banner 10 start here -->
                         <div class="banner-10">
-                            <img src="/new_design/images/NewResource/img-ban-2.png" alt="image description">
+                            <img src="/new_design/images/banners/banner9.svg" alt="image description">
                             <div class="holder">
-                                <div class="texts" style="color:#000;">
-                                    <p style="font-size:28px;font-weight:bold;">БОНУСЫ</p>
-                                    <span style="font-size: 20px;font-family:'Montserrat';color:#000;" class="p-0">8 видов!</span>
+                                <div class="texts" style="color:white;">
+                                    <p style="font-size:28px;font-weight:bold;">ПРЕИМУЩЕСТВО №2</p>
+                                    <span style="font-size: 20px;font-family:'Montserrat';color:white;" class="p-0">Паевый взнос 10 000 тенге</span>
                                 </div>
                                 <div class="holder-inner">
                                     <a href="product-detail.html" class="btn-shop">
-                                        <span style="color: #000!important;text-transform:lowercase;">подробнее</span>
+                                        <span style="color: white !important;text-transform:lowercase;">подробнее</span>
                                         <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
                                     </a>
                                 </div>
@@ -329,15 +329,15 @@ use Illuminate\Support\Facades\Session;
                         </div><!-- banner 10 end here -->
                         <!-- banner 11 start here -->
                         <div class="banner-11">
-                            <img src="/new_design/images/NewResource/img-ban-3.png" alt="image description">
+                            <img src="/new_design/images/banners/banner10.svg" alt="image description">
                             <div class="holder">
-                                <div class="texts" style="color:#000;">
-                                    <p style="font-size:28px;font-weight:bold;">ЗАРАБОТОК</p>
-                                    <span style="font-size: 20px;font-family:'Montserrat';color:#000;float:left;" class="p-0">более 44 000 000</span>
+                                <div class="texts" style="color:white;">
+                                    <p style="font-size:28px;font-weight:bold;">ПРЕИМУЩЕСТВО №3</p>
+                                    <span style="font-size: 20px;font-family:'Montserrat';color:white;float:left;" class="p-0">Cрок получения рассрочки от 1 месяца</span>
                                 </div>
                                 <div class="holder-inner" style="float:left;">
                                     <a href="product-detail.html" class="btn-shop">
-                                        <span style="color: #000!important;text-transform:lowercase;">подробнее</span>
+                                        <span style="color: white;text-transform:lowercase;">подробнее</span>
                                         <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
                                     </a>
                                 </div>

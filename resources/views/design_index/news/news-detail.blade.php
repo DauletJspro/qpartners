@@ -12,11 +12,12 @@
 @section('content')
     <main id="mt-main">
         <!-- Mt Contact Banner of the Page -->
-        <section class="mt-contact-banner style4 wow fadeInUp" data-wow-delay="0.4s"
-                 style="background-color: lightgrey;">
+        <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"
+                 style="background-image:url('/new_design/images/banners/montazhnaya6.jpg');">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
+                        <h1 style="color: white !important;">Новости {{isset($category) ?  ' / '.$category->name : ''}}</h1>
                         <h1>{{$news->news_name}}</h1>
                         {{--                        <nav class="breadcrumbs">--}}
                         {{--                            <ul class="list-unstyled">--}}

@@ -92,7 +92,7 @@
                     <h3 class="font-weight-bold" style="text-transform:uppercase">возможности от пк «GAP»</h3>
                 </div>
                 <p class="black-text-color font-weight-lighter pt-2">Потребительский кооператив «GAP» предлагает Вам приобрести жилье или автомобиль на самых лучших условиях.</p>
-                <div class="d-grid">
+                <div class="advantages-block">
                     @foreach ($myarray as $m)
 
                     <div class="centralize-elements">
@@ -132,7 +132,7 @@
         margin-top: 50px;
         margin-bottom: 20px;
     }
-    .d-grid {
+    .advantages-block {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
 

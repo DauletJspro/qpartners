@@ -11,8 +11,8 @@
 
 @section('content')
     <main id="mt-main">
-        <section class="mt-contact-banner style4 wow fadeInUp" data-wow-delay="0.4s"
-                 style="background-color: lightgrey;">
+        <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"
+                 style="background-image:url('/new_design/images/banners/montazhnaya6.jpg');">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
@@ -20,7 +20,7 @@
                         <?php if ($category_id): ?>
                         <?php $category = \App\Models\NewsCategory::where(['id' => $category_id])->first(); ?>
                         <?php endif ?>
-                        <h1>Новости {{isset($category) ?  ' / '.$category->name : ''}}</h1>
+                        <h1 style="color: white !important;">Новости {{isset($category) ?  ' / '.$category->name : ''}}</h1>
                         <!-- Breadcrumbs of the Page -->
                     {{--                        <nav class="breadcrumbs">--}}
                     {{--                            <ul class="list-unstyled">--}}
@@ -39,6 +39,22 @@
                 </div>
             </div>
         </section>
+        <div class=" d-flex-row">
+            <!-- Breadcrumbs of the Page -->
+            <nav class="breadcrumbs black-text-color text-center">
+                <ul class="list-unstyled d-flex-row font-weight-lighter">
+                    <a href="/" class="my-text font-weight-400">главная <i class="fa fa-angle-right ml-1"></i></a>
+                    <span class="font-weight-400 ml-1 text-silver ">программы</span>
+                </ul>
+            </nav>
+            <!-- Breadcrumbs of the Page end -->
+
+            <div class="ml-auto d-flex-row">
+                <button class="bg-white border-radius-30 border-silver px-15 py-05">Сортировка<i class="fa fa-angle-down" style="margin-left: 4px"></i></button>
+                <div class="ml-3 border-radius-60"><i class="gg-microsoft"></i></div>
+                <div class="ml-2 border-radius-50"><i class="gg-feed"></i></div>
+            </div>
+        </div>
         <div class="mt-blog-detail style1">
             <div class="container">
                 <div class="row">
@@ -47,7 +63,7 @@
                             <h3>Пока никаких новостей...</h3>
                         @endif
                         @foreach($news as $item)
-                            <article class="blog-post style2">
+                            <article class="blog-post style2" style="border-radius: 0">
                                 <div class="img-holder">
                                     <a href="/news/{{$item->news_id}}">
                                         <div style="
@@ -63,7 +79,7 @@
                                         </ul>
                                 </div>
                                 <div class="blog-txt">
-                                    <h2><a href="/news/{{$item->news_id}}">{{$item->news_name_ru}}</a></h2>
+                                    <h2><a href="/news/{{$item->news_id}}" style="color: red">{{$item->news_name_ru}}</a></h2>
                                     <ul class="list-unstyled blog-nav">
                                         <li><a href="#"><i
                                                         class="fa fa-clock-o"></i>{{date('Y:m:d', strtotime($item->created_at))}}
