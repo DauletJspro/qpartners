@@ -145,7 +145,11 @@ class Users extends Model implements AuthenticatableContract
         $sponsor = Users::where('user_id', '=', $id->recommend_user_id)->select('login')->first();
         return $sponsor->login;
     }
-
+    public static function getInviterName($id)
+    {
+        $sponsor = Users::where('user_id', '=', $id->inviter_user_id)->select('login')->first();
+        return $sponsor->login;
+    }
     public function status()
     {
         return $this->hasOne(UserStatus::class, 'user_status_id', 'status_id');
