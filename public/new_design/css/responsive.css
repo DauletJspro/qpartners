@@ -1147,7 +1147,6 @@
         padding-bottom: 30px;
         padding-top: 0;
     }
-
     #blog-isotops {
         margin: 0;
     }
@@ -1357,11 +1356,27 @@
 }
 
 @media only screen and (max-width: 767px) {
+    #nav-icon1 {
+        display: block !important;
+    }
+    #phoneNumber, #language {
+        display: none;
+    }
+
+    .mt-bottom-bar .cities-content {
+        flex-direction: column !important;
+        flex-wrap: nowrap !important;
+        width: 200px !important;
+        height: 370px;
+        overflow-y: scroll;
+    }
+    .mt-bottom-bar .cities-content a {
+        width: 100% !important;
+    }
     .mt-paddingbottomxs {
         padding-bottom: 30px;
         display: flex;
     }
-
     .mt-nopaddingtopxs {
         padding-top: 0 !important;        
     }
@@ -2673,8 +2688,8 @@
         width: 50%;
     }
 
-    .hidden-xs {
-        display: none !important;
+    #hidden-xs {
+        display: none;
     }
 
     .mt-product1 .b2 .product_image {

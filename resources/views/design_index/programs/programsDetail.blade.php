@@ -26,6 +26,7 @@
         else if(value === 'conditions') {
             x.style.display = "none";
             y.style.display = "block";
+            z.style.display = 'none';
             conditions_btn.style.color = 'black';
             conditions_btn.style.borderBottom = '4px solid black';
             example_btn.style.color = '#646464';
@@ -117,20 +118,16 @@
             <div style="margin-top: 37px; height: 30px" class="d-flex-row">
                 <span class="text-silver" style="margin: auto 0">кол-во</span>
                 <input class="program-quantity ml-3" type="number" value="1">
-                <button class="button-hover bg-green border-radius-30 px-15 ml-1 py-05" onclick="" style="border: none;">
-                    <a href="/programs/{{$chosen_program['id']}}" class="a-hover d-flex-row color-white">
-                        купить
-                    </a>
-                </button>
-                <button class="button-hover bg-red border-radius-30 px-15 ml-1 py-05" onclick="" style="border: none;">
-                    <a href="/programs/{{$chosen_program['id']}}" class="a-hover d-flex-row color-white">
-                        Подробнее
-                        <img style="width: 10px; height: 10px; margin-top: 6px; margin-left: 5px"
-                             src="/new_design/images/right-navigation.svg"
-                             alt="right navigation img not found"
-                        >
-                    </a>
-                </button>
+                <a href="/programs/{{$chosen_program['id']}}" class=" bg-green border-radius-30 px-15 ml-1 py-05 a-hover color-white">
+                    купить
+                </a>
+                <a href="/programs/{{$chosen_program['id']}}" class=" bg-red border-radius-30 px-15 ml-1 py-05 a-hover d-flex-row color-white">
+                    Подробнее
+                    <img style="width: 10px; height: 10px; margin-top: 6px; margin-left: 5px"
+                         src="/new_design/images/right-navigation.svg"
+                         alt="right navigation img not found"
+                    >
+                </a>
 
             </div>
         </div>
@@ -217,7 +214,7 @@
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
     }
     .a-hover:hover {
-        color: black !important;
+        color: yellow !important;
 
     }
     .program-quantity {
