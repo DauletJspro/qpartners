@@ -76,7 +76,7 @@
 
                         <tbody>
 
-                        @foreach($row as $key => $val)
+                        @foreach($product as $key => $val)
 
                             <tr>
                                 <td> {{ $key + 1 }}</td>
@@ -145,7 +145,7 @@
                     </table>
 
                     <div style="text-align: center">
-                        {{ $row->appends(\Illuminate\Support\Facades\Input::except('page'))->links() }}
+                        {{ $product->appends(\Illuminate\Support\Facades\Input::except('page'))->links() }}
                     </div>
 
                 </div>
