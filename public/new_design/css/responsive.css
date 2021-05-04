@@ -732,6 +732,7 @@
         padding: 0;
     }
 
+
     #mt-header.style19 .mt-icon-list {
         margin: -5px 4px 0 0;
     }
@@ -1359,8 +1360,18 @@
     #nav-icon1 {
         display: block !important;
     }
+    .program-detail-about, .program-detail-img {
+        width: 90%;
+        margin-left: 5%;
+    }
     #phoneNumber, #language {
         display: none;
+    }
+    .program-block-width {
+        width: 45%;
+    }
+    .program-detail-block-width {
+        width: 25%;
     }
 
     .mt-bottom-bar .cities-content {
@@ -2724,6 +2735,9 @@
     .mt-bottom-bar .mt-top-social {
         display: none;
     }
+    .program-block-width {
+        width: 70%;
+    }
 
     #product-masonry #product-filter {
         font-size: 12px;
@@ -2739,9 +2753,16 @@
 }
 
 @media only screen and (max-width: 479px) {
+    .program-block-width {
+        width: 80%;
+    }
     .banner-1 .holder {
         padding: 15px;
     }
+    .program-detail-block-width {
+        width: 40%;
+    }
+
 
     #mt-main > div > div > div > ul > li {
         width: 49%;
@@ -2853,6 +2874,13 @@
 	#mt-main > div > div > div > ul > li {
 		width: 97%;
 	}
+    .program-block-width {
+        width: 100%;
+    }
+    .more-btn {
+        margin: 2rem auto 0 auto;
+    }
+
 }
 
 
