@@ -13,7 +13,115 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
+<script>
+    function displayInfo(value) {
 
+        let shareholder = document.getElementById("shareholder");
+        let activePartner = document.getElementById("activePartner");
+        let entrepreneur = document.getElementById("entrepreneur");
+        let consumer = document.getElementById("consumer");
+        let seller = document.getElementById("seller");
+        let user = document.getElementById("user");
+
+        if(value === 'shareholder') {
+            shareholder.classList.add("register-types-btn-selected");
+            activePartner.classList.remove('register-types-btn-selected');
+            entrepreneur.classList.remove('register-types-btn-selected');
+            consumer.classList.remove('register-types-btn-selected');
+            seller.classList.remove('register-types-btn-selected');
+            user.classList.remove('register-types-btn-selected');
+            document.getElementById('speakers').style.display = 'none';
+            document.getElementById('sponsors').style.display = 'none';
+            document.getElementById('inviters').style.display = 'none';
+            document.getElementById('iin').style.display = 'block';
+            document.getElementById('bin').style.display = 'none';
+            document.getElementById('office').style.display = 'block';
+            document.getElementById('company-address').style.display = 'none';
+            document.getElementById('company-name').style.display = 'none';
+
+        }
+        else if(value === 'activePartner') {
+            shareholder.classList.remove("register-types-btn-selected");
+            activePartner.classList.add('register-types-btn-selected');
+            entrepreneur.classList.remove('register-types-btn-selected');
+            consumer.classList.remove('register-types-btn-selected');
+            seller.classList.remove('register-types-btn-selected');
+            user.classList.remove('register-types-btn-selected');
+            document.getElementById('speakers').style.display = 'block';
+            document.getElementById('sponsors').style.display = 'block';
+            document.getElementById('inviters').style.display = 'block';
+            document.getElementById('iin').style.display = 'block';
+            document.getElementById('bin').style.display = 'none';
+            document.getElementById('office').style.display = 'block';
+            document.getElementById('company-address').style.display = 'none';
+            document.getElementById('company-name').style.display = 'none';
+        }
+        else if(value === 'entrepreneur') {
+            shareholder.classList.remove("register-types-btn-selected");
+            activePartner.classList.remove('register-types-btn-selected');
+            entrepreneur.classList.add('register-types-btn-selected');
+            consumer.classList.remove('register-types-btn-selected');
+            seller.classList.remove('register-types-btn-selected');
+            user.classList.remove('register-types-btn-selected');
+            document.getElementById('speakers').style.display = 'none';
+            document.getElementById('sponsors').style.display = 'none';
+            document.getElementById('inviters').style.display = 'none';
+            document.getElementById('iin').style.display = 'none';
+            document.getElementById('bin').style.display = 'block';
+            document.getElementById('office').style.display = 'none';
+            document.getElementById('company-address').style.display = 'block';
+            document.getElementById('company-name').style.display = 'block';
+        }
+        else if(value === 'consumer') {
+            shareholder.classList.remove("register-types-btn-selected");
+            activePartner.classList.remove('register-types-btn-selected');
+            entrepreneur.classList.remove('register-types-btn-selected');
+            consumer.classList.add('register-types-btn-selected');
+            seller.classList.remove('register-types-btn-selected');
+            user.classList.remove('register-types-btn-selected');
+            document.getElementById('speakers').style.display = 'none';
+            document.getElementById('sponsors').style.display = 'block';
+            document.getElementById('inviters').style.display = 'none';
+            document.getElementById('iin').style.display = 'none';
+            document.getElementById('bin').style.display = 'none';
+            document.getElementById('company-address').style.display = 'none';
+            document.getElementById('company-name').style.display = 'none';
+            document.getElementById('office').style.display = 'none';
+        }
+        else if(value === 'seller') {
+            shareholder.classList.remove("register-types-btn-selected");
+            activePartner.classList.remove('register-types-btn-selected');
+            entrepreneur.classList.remove('register-types-btn-selected');
+            consumer.classList.remove('register-types-btn-selected');
+            seller.classList.add('register-types-btn-selected');
+            user.classList.remove('register-types-btn-selected');
+            document.getElementById('speakers').style.display = 'none';
+            document.getElementById('sponsors').style.display = 'none';
+            document.getElementById('inviters').style.display = 'none';
+            document.getElementById('iin').style.display = 'none';
+            document.getElementById('bin').style.display = 'none';
+            document.getElementById('company-address').style.display = 'none';
+            document.getElementById('company-name').style.display = 'none';
+            document.getElementById('office').style.display = 'none';
+        }
+        else if(value === 'user') {
+            shareholder.classList.remove("register-types-btn-selected");
+            activePartner.classList.remove('register-types-btn-selected');
+            entrepreneur.classList.remove('register-types-btn-selected');
+            consumer.classList.remove('register-types-btn-selected');
+            seller.classList.remove('register-types-btn-selected');
+            user.classList.add('register-types-btn-selected');
+            document.getElementById('speakers').style.display = 'none';
+            document.getElementById('sponsors').style.display = 'block';
+            document.getElementById('inviters').style.display = 'none';
+            document.getElementById('iin').style.display = 'none';
+            document.getElementById('bin').style.display = 'none';
+            document.getElementById('company-address').style.display = 'none';
+            document.getElementById('company-name').style.display = 'none';
+            document.getElementById('office').style.display = 'none';
+        }
+    }
+</script>
 
 @section('content')
     <div class="mt-search-popup">
@@ -29,30 +137,47 @@
         </div>
     </div>
     <main id="mt-main">
-        <section class="mt-contact-banner"
-                 {{--                 style="background-image: url('/new_design/images/sign_in.png'); background-size: contain; background-repeat: no-repeat;"--}}
-                 style="background-color: lightgrey" ;
-        >
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 text-center">
-                        <h1>Регистрация</h1>
-                        <nav class="breadcrumbs">
-                            <ul class="list-unstyled">
-                                {{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
-                                {{--                                <li>register</li>--}}
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="register-image w-100 text-uppercase"><span class="programs-image-text" >регистрация</span></div>
+        <div class="container">
+            <nav class="breadcrumbs text-center fs-11" style="margin-top: 30px">
+                <ul class="list-unstyled d-flex-row font-weight-lighter text-uppercase">
+                    <a href="/" class="my-text font-weight-400">главная <i class="fa fa-angle-right ml-1"></i></a>
+
+                    <a class="my-text font-weight-400 ml-1">программы</a>
+                </ul>
+            </nav>
+        </div>
+
         <br>
+        <div class="text-uppercase fs-27 black-text-color text-center font-weight-600" style="letter-spacing: 3px">выберите форму регистрации</div>
+        <div class="container">
+            <div class=" d-flex-row text-center mt-2 flex-wrap" style="font-size: 16px">
+                <div class="register-types-btn bg-red color-white text-uppercase" onclick="displayInfo('shareholder')" id="shareholder">
+                    пайщик
+                </div>
+                <div class="register-types-btn bg-red color-white text-uppercase" onclick="displayInfo('activePartner')" id="activePartner">
+                    активный партнер
+                </div>
+                <div class="register-types-btn bg-red color-white text-uppercase" onclick="displayInfo('entrepreneur')" id="entrepreneur">
+                    предприниматель
+                </div>
+                <div class="register-types-btn bg-red color-white text-uppercase" onclick="displayInfo('consumer')" id="consumer">
+                    потребитель
+                </div>
+                <div class="register-types-btn bg-red color-white text-uppercase" onclick="displayInfo('seller')" id="seller">
+                    продавец
+                </div>
+                <div class="register-types-btn bg-red color-white text-uppercase"onclick="displayInfo('user')" id="user"  style="margin-right: 0">
+                    пользователь
+                </div>
+
+            </div>
+        </div>
         <section class="mt-detail-sec toppadding-zero">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-10 col-sm-push-1">
-                        <div class="holder" style="margin: 0;">
+                        <div class="holder" style="margin: 0; padding-top: 0; font-family: 'Droid Serif', serif; border: none">
                             <div class="mt-side-widget">
                                 <div style="">
                                     <header class="text-center">
@@ -68,15 +193,19 @@
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-6 form-group">
-                                                <input required type="text" name="name" value="{{$row->name}}"
+                                                <input id="first-name" required type="text" name="name" value="{{$row->name}}"
                                                        class="form-control input" placeholder="Имя"/>
-                                                <input type="text" name="last_name" value="{{$row->last_name}}"
+                                                <input id="last-name" type="text" name="last_name" value="{{$row->last_name}}"
                                                        class="form-control input" placeholder="Фамилия"/>
-                                                <input type="text" name="login" value="{{$row->login}}"
+                                                <input id="login" type="text" name="login" value="{{$row->login}}"
                                                        class="form-control input" placeholder="Логин"/>
-                                                <input type="text" name="iin" value="{{$row->iin}}"
+                                                <input id="iin" type="text" name="iin" value="{{$row->iin}}"
                                                        class="form-control input" placeholder="ИИН"/>
-                                                <div>
+                                                <input id="bin" type="text" name="bin" value="{{$row->iin}}"
+                                                       class="form-control input" placeholder="БИН"/>
+                                                <input id="company-name" required type="text" name="company-name" value="{{$row->company_name}}"
+                                                       class="form-control input" placeholder="Название компании"/>
+                                                <div id="sponsors">
                                                     {{Form::select('is_activated', $activate, 1, ['class' => 'form-control selectpicker input','placeholder' => 'Выберите название программы', 'data-live-search' => 'true'])}}
                                                         <select required name="recommend_user_id"
                                                             data-placeholder="Выберите спонсора (1 уровень)"
@@ -97,7 +226,7 @@
                                                     </select>
                                                 </div>
 
-                                                <div>
+                                                <div id="inviters">
                                                     <select required name="inviter_user_id"
                                                             data-placeholder="Выберите пригласителя"
                                                             class="form-control selectpicker input"
@@ -118,18 +247,20 @@
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-6 form-group">
-                                                <input required type="email" name="email" class="form-control input"
+                                                <input id="email" required type="email" name="email" class="form-control input"
                                                        value="{{$row->email}}" placeholder="Email"/>
-                                                <input required type="tel" name="phone" class="form-control input"
+                                                <input id="phone" required type="tel" name="phone" class="form-control input"
                                                        value="{{$row->phone}}" placeholder="Номер телефона"/>
-                                                <input required type="password" value="{{$row->password}}"
+                                                <input id="password" required type="password" value="{{$row->password}}"
                                                        name="password" class="form-control input"
                                                        placeholder="Пароль"/>
-                                                <input required type="password" value="{{$row->confirm_password}}"
+                                                <input id="confirm-password" required type="password" value="{{$row->confirm_password}}"
                                                        name="confirm_password" class="form-control input"
                                                        placeholder="Повторите пароль"/>
+                                                <input id="company-address" required type="text" name="company-address" value="{{$row->company_address}}"
+                                                       class="form-control input" placeholder="Адрес компании"/>
 
-                                                <div>
+                                                <div id="speakers">
                                                     <select required name="speaker_id"
                                                             data-placeholder="Выберите спикера"
                                                             class="form-control selectpicker input"
@@ -141,7 +272,7 @@
                                                     </select>
                                                 </div>
 
-                                                <div>
+                                                <div id="office">
                                                     <select required name="office_director_id"
                                                             data-placeholder="Выберите директора офиса"
                                                             class="form-control selectpicker input"
@@ -165,8 +296,11 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <button type="submit" class="btn btn-danger btn-type1">Зарегистрироваться
-                                        </button>
+                                        <div class="" style="width: 100%; display: flex">
+                                            <button type="submit" class="btn btn-danger font-weight-600" style="background: red !important; border-radius: 20px; margin: 0 auto; font-size: 24px !important; padding: 5px 50px">Зарегистрироваться
+                                            </button>
+                                        </div>
+
                                     </form>
                                     <header>
                                         <div class="form-group text-center already-registered-div">
@@ -199,3 +333,191 @@
 @push('scripts')
     {!! NoCaptcha::renderJs() !!}
 @endpush
+<style>
+    .register-types-btn {
+        height: 47px;
+        margin-right: 10px;
+        cursor: pointer;
+        margin-top: 10px;
+        padding: 14px 10px 0 10px;
+        min-width: 15.8%;
+    }
+    .register-types-btn:hover {
+        background-color: #cebfbf;
+        color: black;
+    }
+    .register-types-btn-selected {
+        background-color: #F6F6F6 !important;
+        color: red !important;
+    }
+    .register-image {
+        background-image:url('/new_design/images/banners/montazhnaya1.png');
+        height: 172px;
+        font-size: 4rem;
+        color: white;
+        text-align: center;
+        background-size: 100%;
+        padding-top: 60px;
+        font-weight: 600;
+        letter-spacing: 4px;
+    }
+    .program-block-width {
+        width: 31%;
+    }
+
+    .black-text-color {
+        color: black;
+    }
+    .w-75 {
+        width: 75%;
+    }
+    .color-white {
+        color: white;
+    }
+    .flex-wrap {
+        flex-wrap: wrap;
+    }
+    .border-radius-50 {
+        border-radius: 50%;
+        border:1px solid silver;
+        padding-top: 16px;
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+    .border-radius-60 {
+        border-radius: 50%;
+        border:1px solid silver;
+        padding: 8px;
+    }
+    .border-radius-30 {
+        border-radius: 30px;
+    }
+    .border-silver {
+        border:1px solid silver;
+    }
+    .flex-wrap {
+        flex-wrap: wrap;
+    }
+    .pt-2 {
+        padding-top: 20px;
+    }
+    .pt-13 {
+        padding-top: 13px
+    }
+    .pt-5 {
+        padding-top: 5px;
+    }
+    .ml-1 {
+        margin-left: 10px;
+    }
+    .ml-2 {
+        margin-left: 20px;
+    }
+    .ml-3 {
+        margin-left: 30px;
+    }
+    .px-15 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .button-hover:hover {
+        background-color: #c60303 !important;
+
+    }
+    .a-hover:hover {
+        color: white !important;
+
+    }
+    .py-05 {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .bg-white {
+        background: white;
+    }
+    .bg-red {
+        background: red;
+    }
+    .bg-silver {
+        background: #d7d7d7;
+    }
+    .ml-auto {
+        margin-left: auto;
+    }
+    .mr-auto {
+        margin-right: auto;
+    }
+    a:hover {
+        color: #8e8e8e !important;
+    }
+    .mb-7 {
+        margin-bottom: 70px;
+    }
+    .mt-2 {
+        margin-top: 20px;
+    }
+    .fs-18 {
+        font-size: 18px;
+    }
+    .mt-1 {
+        margin-top: 10px;
+    }
+    .mt-5 {
+        margin-top: 50px;
+    }
+    .pl-2 {
+        padding-left: 20px;
+    }
+    .pl-1 {
+        padding-left: 10px;
+    }
+    .font-weight-lighter {
+        font-weight: lighter
+    }
+    .font-weight-400 {
+        font-weight: 400 !important;
+    }
+    .font-weight-600 {
+        font-weight: 600 !important;
+    }
+    .programs-image {
+        background-image:url('/new_design/images/programs.png');
+        height: 172px;
+        font-size: 4rem;
+        color: white;
+        text-align: center;
+        background-size: 100%;
+        padding-top: 60px;
+        font-weight: 600;
+        letter-spacing: 4px;
+    }
+    .programs-image-text {
+        text-shadow: 1px 1px 1px black;
+    }
+    .my-text {
+        color: black !important;
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+
+    .text-silver {
+        color: #8d8c8c !important;
+        letter-spacing: 2px;
+    }
+    .text-black {
+        color: black !important;
+        font-weight: 500;
+    }
+    .fs-27 {
+        font-size: 27px;
+
+    }
+    .d-flex-column {
+        display: flex;
+        flex-direction: column;
+    }
+    .d-flex-row {
+        display: flex;
+    }
+</style>
