@@ -18,7 +18,7 @@
             $('.product_sorting_btn').click(function (){
                 var orderBy = $(this).data('order');
                 $.ajax({
-                   url: "{{route('sort.price')}}",
+                   url: "{{route('filter.products')}}",
                    type:"GET",
                    data:{
                        orderBy: orderBy
