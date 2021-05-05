@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\DB;
 
 $categories = \App\Models\SubCategory::pluck('title_ru', 'id')->toArray();
 $items = \App\Models\Product::ITEM;
+
+
 ?>
 @extends('admin.layout.layout')
 

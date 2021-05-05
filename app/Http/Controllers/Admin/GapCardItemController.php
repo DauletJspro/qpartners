@@ -27,6 +27,7 @@ class GapCardItemController extends Controller
 
     public function store(GapCardItemRequest $request)
     {
+
         $destinationPath = public_path('admin/image/gap_item/');
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -50,6 +51,8 @@ class GapCardItemController extends Controller
             $request->session()->flash('warning', 'Что то пошло не так повторите попытку!   ');
             return redirect(route('gap_item.index'));
         }
+
+
     }
 
 
@@ -59,8 +62,9 @@ class GapCardItemController extends Controller
         return view('admin.gap.card.item.edit', compact('gapCardItem'));
     }
 
-    public function update(GapCardItemRequest $request, $id)
+    public function update(Request $request, $id)
     {
+
         $gapCardItem = GapCardItem::where(['id' => $id])->first();
         $name = $gapCardItem->image;
         $destinationPath = public_path('admin/image/gap_item/');
@@ -80,7 +84,7 @@ class GapCardItemController extends Controller
             'discount_percentage' => $request->discount_percentage,
             'gap_card_sub_category_id' => $request->gap_card_sub_category_id,
         ])) {
-            $request->session()->flash('success', 'Вы успешно изменили центр!   ');
+            $request->session()->flash('success', 'Вы успешно изменили центр! ');
             return redirect(route('gap_item.index'));
         }else{
             $request->session()->flash('warning', 'Что то пошло не так повторите попытку!   ');
