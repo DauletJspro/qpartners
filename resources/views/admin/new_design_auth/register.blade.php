@@ -78,7 +78,7 @@
                                                        class="form-control input" placeholder="ИИН"/>
                                                 <div>
                                                     {{Form::select('is_activated', $activate, 1, ['class' => 'form-control selectpicker input','placeholder' => 'Выберите название программы', 'data-live-search' => 'true'])}}
-                                                        <select required name="recommend_user_id"
+                                                    <select required name="recommend_user_id"
                                                             data-placeholder="Выберите спонсора (1 уровень)"
                                                             class="form-control selectpicker input"
                                                             data-live-search="true">

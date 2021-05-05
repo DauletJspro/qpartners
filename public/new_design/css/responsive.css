@@ -474,6 +474,9 @@
     .mt-paddingsmzero {
         padding: 0 !important;
     }
+    .register-types-btn {
+        min-width: 31%;
+    }
 
     .mt-paddingbottomsm {
         padding-bottom: 30px;
@@ -731,6 +734,7 @@
         top: 100%;
         padding: 0;
     }
+
 
     #mt-header.style19 .mt-icon-list {
         margin: -5px 4px 0 0;
@@ -1147,7 +1151,6 @@
         padding-bottom: 30px;
         padding-top: 0;
     }
-
     #blog-isotops {
         margin: 0;
     }
@@ -1357,11 +1360,40 @@
 }
 
 @media only screen and (max-width: 767px) {
+    #nav-icon1 {
+        display: block !important;
+    }
+    .register-types-btn {
+        min-width: 45%;
+    }
+    .program-detail-about, .program-detail-img {
+        width: 90%;
+        margin-left: 5%;
+    }
+    #phoneNumber, #language {
+        display: none;
+    }
+    .program-block-width {
+        width: 45%;
+    }
+    .program-detail-block-width {
+        width: 25%;
+    }
+
+    .mt-bottom-bar .cities-content {
+        flex-direction: column !important;
+        flex-wrap: nowrap !important;
+        width: 200px !important;
+        height: 370px;
+        overflow-y: scroll;
+    }
+    .mt-bottom-bar .cities-content a {
+        width: 100% !important;
+    }
     .mt-paddingbottomxs {
         padding-bottom: 30px;
         display: flex;
     }
-
     .mt-nopaddingtopxs {
         padding-top: 0 !important;        
     }
@@ -2673,8 +2705,8 @@
         width: 50%;
     }
 
-    .hidden-xs {
-        display: none !important;
+    #hidden-xs {
+        display: none;
     }
 
     .mt-product1 .b2 .product_image {
@@ -2706,8 +2738,14 @@
 }
 
 @media only screen and (max-width: 550px) {
+    .advantages-block {
+        grid-template-columns: repeat(2, 1fr);
+    }
     .mt-bottom-bar .mt-top-social {
         display: none;
+    }
+    .program-block-width {
+        width: 70%;
     }
 
     #product-masonry #product-filter {
@@ -2724,9 +2762,16 @@
 }
 
 @media only screen and (max-width: 479px) {
+    .program-block-width {
+        width: 80%;
+    }
     .banner-1 .holder {
         padding: 15px;
     }
+    .program-detail-block-width {
+        width: 40%;
+    }
+
 
     #mt-main > div > div > div > ul > li {
         width: 49%;
@@ -2832,12 +2877,27 @@
 		width: 48%;
 	}
 }
+@media only screen and (max-width: 424px) {
+    .advantages-block {
+        grid-template-columns: 1fr;
+    }
+}
 
 @media only screen and (max-width: 375px) {
 
 	#mt-main > div > div > div > ul > li {
 		width: 97%;
 	}
+    .register-types-btn {
+        min-width: 100%;
+    }
+    .program-block-width {
+        width: 100%;
+    }
+    .more-btn {
+        margin: 2rem auto 0 auto;
+    }
+
 }
 
 

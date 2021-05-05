@@ -26,6 +26,7 @@
         else if(value === 'conditions') {
             x.style.display = "none";
             y.style.display = "block";
+            z.style.display = 'none';
             conditions_btn.style.color = 'black';
             conditions_btn.style.borderBottom = '4px solid black';
             example_btn.style.color = '#646464';
@@ -59,8 +60,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 @endsection
 @section('content')
-    <div class="container d-flex-row mb-7 ff">
-        <div class="d-flex-column" style="width: 40%;">
+    <div class="container d-flex-row mb-7 ff flex-wrap">
+        <div class="program-detail-img d-flex-column">
             <div class="d-flex-row">
                 <img src="/new_design/images/svg/like.svg" style="width: 20px; height: 23px" alt="img not found"/>
                 <span style="margin: 0 1.5rem 0 0.5rem">{{$chosen_program["like"]}}</span>
@@ -69,7 +70,7 @@
             </div>
             <img src="/new_design/images/banners/{{$chosen_program["imgSrc"]}}" class="mt-1" alt="img not found"/>
         </div>
-        <div class="d-flex-column" style="width: 50%; margin-left: 10%">
+        <div class="program-detail-about d-flex-column mt-2" >
             <!-- Breadcrumbs of the Page -->
             <nav class="breadcrumbs text-center fs-11">
                 <ul class="list-unstyled d-flex-row font-weight-lighter text-uppercase">
@@ -98,7 +99,7 @@
                 </div>
                 <span style="margin: 15px 0 0 10px">Отзывы ({{$chosen_program['comment']}})</span>
             </div>
-            <div class="d-flex-row mt-1">
+            <div class="d-flex-row mt-1 flex-wrap">
                 <a href="#" class="d-flex-row a-hover">
                     <img src="/new_design/images/svg/share.svg" style="width: 20px; height: 23px" alt="img not found"/>
                     <span style="margin: 0 2.5rem 0 0.5rem">Поделиться</span>
@@ -114,23 +115,19 @@
             </div>
             <div style="margin-top:60px; font-weight: 300; width: 90%" class="text-black fs-18">{{$chosen_program['about_program']}}</div>
             <div style="margin-top: 100px; font-weight: 300; width: 90%" class="text-black fs-18">Вступительный взнос {{$chosen_program['entrance_fee']}}</div>
-            <div style="margin-top: 37px; height: 30px" class="d-flex-row">
+            <div style="margin-top: 37px; height: 30px" class="d-flex-row flex-wrap">
                 <span class="text-silver" style="margin: auto 0">кол-во</span>
                 <input class="program-quantity ml-3" type="number" value="1">
-                <button class="button-hover bg-green border-radius-30 px-15 ml-1 py-05" onclick="" style="border: none;">
-                    <a href="/programs/{{$chosen_program['id']}}" class="a-hover d-flex-row color-white">
-                        купить
-                    </a>
-                </button>
-                <button class="button-hover bg-red border-radius-30 px-15 ml-1 py-05" onclick="" style="border: none;">
-                    <a href="/programs/{{$chosen_program['id']}}" class="a-hover d-flex-row color-white">
-                        Подробнее
-                        <img style="width: 10px; height: 10px; margin-top: 6px; margin-left: 5px"
-                             src="/new_design/images/right-navigation.svg"
-                             alt="right navigation img not found"
-                        >
-                    </a>
-                </button>
+                <a href="/programs/{{$chosen_program['id']}}" class=" bg-green border-radius-30 px-15 ml-1 py-05 a-hover color-white">
+                    купить
+                </a>
+                <a href="/programs/{{$chosen_program['id']}}" class="more-btn bg-red border-radius-30 px-15 ml-1 py-05 a-hover d-flex-row color-white">
+                    Подробнее
+                    <img style="width: 10px; height: 10px; margin-top: 6px; margin-left: 5px"
+                         src="/new_design/images/right-navigation.svg"
+                         alt="right navigation img not found"
+                    >
+                </a>
 
             </div>
         </div>
@@ -173,7 +170,7 @@
 
                 @foreach($programs as $program)
                     @if($program['id'] !== $chosen_program['id'])
-                        <div class="d-flex-column mt-1" style="width: 18%; margin-right: 20px">
+                        <div class="program-detail-block-width d-flex-column mt-1">
                             <img src="/new_design/images/banners/{{$program["imgSrc"]}}" alt="programs img not found"/>
                             <p class="text-black mt-1 fs-11">{{$program["body"]}}</p>
                             <button class="button-hover mr-auto bg-red border-radius-30" onclick="" style="border: none; padding: 0 1rem">
@@ -197,8 +194,17 @@
 <style>
     @import url('https://css.gg/feed.css');
     @import url('https://css.gg/microsoft.css');
-
-
+    .program-detail-block-width{
+        width: 18%;
+        margin-right: 20px;
+    }
+    .program-detail-img {
+        width: 40%;
+    }
+    .program-detail-about {
+        width: 50%;
+        margin-left: 10%
+    }
     .conditions, .example {
         display: none;
     }
@@ -217,7 +223,7 @@
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
     }
     .a-hover:hover {
-        color: black !important;
+        color: yellow !important;
 
     }
     .program-quantity {
