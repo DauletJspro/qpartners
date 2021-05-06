@@ -204,7 +204,7 @@ if (isset($sub_category_id)) {
                                         </div>
                                     </div>
                                     <div class="txt">
-                                        <strong class="title"><a href="">{{$item->title_ru}}</a></strong>
+                                        <strong class="title"><a href="{{ route('gap_card.detail', $item->id) }}">{{$item->title_ru}}</a></strong>
                                         <span class="price"> <span>{{$item->price}}</span>  тг.</span>
                                     </div>
                                 </div>
