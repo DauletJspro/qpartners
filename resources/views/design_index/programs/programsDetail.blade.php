@@ -60,6 +60,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 @endsection
 @section('content')
+
     <div class="container d-flex-row mb-7 ff flex-wrap">
         <div class="program-detail-img d-flex-column">
             <div class="d-flex-row">
