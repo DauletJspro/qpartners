@@ -33,14 +33,12 @@
             consumer.classList.remove('register-types-btn-selected');
             seller.classList.remove('register-types-btn-selected');
             user.classList.remove('register-types-btn-selected');
-            document.getElementById('speakers').style.display = 'none';
-            document.getElementById('sponsors').style.display = 'none';
-            document.getElementById('inviters').style.display = 'none';
-            document.getElementById('iin').style.display = 'block';
-            document.getElementById('bin').style.display = 'none';
-            document.getElementById('office').style.display = 'block';
-            document.getElementById('company-address').style.display = 'none';
-            document.getElementById('company-name').style.display = 'none';
+            document.getElementById('shareholder-block').style.display = 'block';
+            document.getElementById('activePartner-block').style.display = 'none';
+            document.getElementById('entrepreneur-block').style.display = 'none';
+            document.getElementById('consumer-block').style.display = 'none';
+            document.getElementById('seller-block').style.display = 'none';
+            document.getElementById('user-block').style.display = 'none';
 
         }
 
@@ -51,15 +49,13 @@
             consumer.classList.remove('register-types-btn-selected');
             seller.classList.remove('register-types-btn-selected');
             user.classList.remove('register-types-btn-selected');
-            document.getElementById('speakers').style.display = 'block';
-            document.getElementById('sponsors').style.display = 'block';
-            document.getElementById('inviters').style.display = 'block';
-            document.getElementById('iin').style.display = 'block';
-            document.getElementById('bin').style.display = 'none';
-            document.getElementById('office').style.display = 'block';
-            document.getElementById('company-address').style.display = 'none';
-            document.getElementById('company-name').style.display = 'none';
-        }
+
+            document.getElementById('shareholder-block').style.display = 'none';
+            document.getElementById('activePartner-block').style.display = 'block';
+            document.getElementById('entrepreneur-block').style.display = 'none';
+            document.getElementById('consumer-block').style.display = 'none';
+            document.getElementById('seller-block').style.display = 'none';
+            document.getElementById('user-block').style.display = 'none';        }
         else if(value === 'entrepreneur') {
             shareholder.classList.remove("register-types-btn-selected");
             activePartner.classList.remove('register-types-btn-selected');
@@ -67,15 +63,13 @@
             consumer.classList.remove('register-types-btn-selected');
             seller.classList.remove('register-types-btn-selected');
             user.classList.remove('register-types-btn-selected');
-            document.getElementById('speakers').style.display = 'none';
-            document.getElementById('sponsors').style.display = 'none';
-            document.getElementById('inviters').style.display = 'none';
-            document.getElementById('iin').style.display = 'none';
-            document.getElementById('bin').style.display = 'block';
-            document.getElementById('office').style.display = 'none';
-            document.getElementById('company-address').style.display = 'block';
-            document.getElementById('company-name').style.display = 'block';
-        }
+
+            document.getElementById('shareholder-block').style.display = 'none';
+            document.getElementById('activePartner-block').style.display = 'none';
+            document.getElementById('entrepreneur-block').style.display = 'block';
+            document.getElementById('consumer-block').style.display = 'none';
+            document.getElementById('seller-block').style.display = 'none';
+            document.getElementById('user-block').style.display = 'none';        }
         else if(value === 'consumer') {
             shareholder.classList.remove("register-types-btn-selected");
             activePartner.classList.remove('register-types-btn-selected');
@@ -83,15 +77,13 @@
             consumer.classList.add('register-types-btn-selected');
             seller.classList.remove('register-types-btn-selected');
             user.classList.remove('register-types-btn-selected');
-            document.getElementById('speakers').style.display = 'none';
-            document.getElementById('sponsors').style.display = 'block';
-            document.getElementById('inviters').style.display = 'none';
-            document.getElementById('iin').style.display = 'none';
-            document.getElementById('bin').style.display = 'none';
-            document.getElementById('company-address').style.display = 'none';
-            document.getElementById('company-name').style.display = 'none';
-            document.getElementById('office').style.display = 'none';
-        }
+
+            document.getElementById('shareholder-block').style.display = 'none';
+            document.getElementById('activePartner-block').style.display = 'none';
+            document.getElementById('entrepreneur-block').style.display = 'none';
+            document.getElementById('consumer-block').style.display = 'block';
+            document.getElementById('seller-block').style.display = 'none';
+            document.getElementById('user-block').style.display = 'none';        }
         else if(value === 'seller') {
             shareholder.classList.remove("register-types-btn-selected");
             activePartner.classList.remove('register-types-btn-selected');
@@ -99,15 +91,13 @@
             consumer.classList.remove('register-types-btn-selected');
             seller.classList.add('register-types-btn-selected');
             user.classList.remove('register-types-btn-selected');
-            document.getElementById('speakers').style.display = 'none';
-            document.getElementById('sponsors').style.display = 'none';
-            document.getElementById('inviters').style.display = 'none';
-            document.getElementById('iin').style.display = 'none';
-            document.getElementById('bin').style.display = 'none';
-            document.getElementById('company-address').style.display = 'none';
-            document.getElementById('company-name').style.display = 'none';
-            document.getElementById('office').style.display = 'none';
-        }
+
+            document.getElementById('shareholder-block').style.display = 'none';
+            document.getElementById('activePartner-block').style.display = 'none';
+            document.getElementById('entrepreneur-block').style.display = 'none';
+            document.getElementById('consumer-block').style.display = 'none';
+            document.getElementById('seller-block').style.display = 'block';
+            document.getElementById('user-block').style.display = 'none';        }
         else if(value === 'user') {
             shareholder.classList.remove("register-types-btn-selected");
             activePartner.classList.remove('register-types-btn-selected');
@@ -115,15 +105,13 @@
             consumer.classList.remove('register-types-btn-selected');
             seller.classList.remove('register-types-btn-selected');
             user.classList.add('register-types-btn-selected');
-            document.getElementById('speakers').style.display = 'none';
-            document.getElementById('sponsors').style.display = 'block';
-            document.getElementById('inviters').style.display = 'none';
-            document.getElementById('iin').style.display = 'none';
-            document.getElementById('bin').style.display = 'none';
-            document.getElementById('company-address').style.display = 'none';
-            document.getElementById('company-name').style.display = 'none';
-            document.getElementById('office').style.display = 'none';
-        }
+
+            document.getElementById('shareholder-block').style.display = 'none';
+            document.getElementById('activePartner-block').style.display = 'none';
+            document.getElementById('entrepreneur-block').style.display = 'none';
+            document.getElementById('consumer-block').style.display = 'none';
+            document.getElementById('seller-block').style.display = 'none';
+            document.getElementById('user-block').style.display = 'block';        }
 
     }
 </script>
@@ -148,15 +136,14 @@
             <nav class="breadcrumbs text-center fs-11" style="margin-top: 30px">
                 <ul class="list-unstyled d-flex-row font-weight-lighter text-uppercase">
                     <a href="/" class="my-text font-weight-400">главная <i class="fa fa-angle-right ml-1"></i></a>
-
-                    <a class="my-text font-weight-400 ml-1">программы</a>
+                    <a class="my-text font-weight-400 ml-1">регистрация</a>
                 </ul>
             </nav>
         </div>
 
         <br>
         <div class="text-uppercase fs-27 black-text-color text-center font-weight-600" style="letter-spacing: 3px">выберите форму регистрации</div>
-        <div class="container mb-7">
+        <div class="container">
             <div class=" d-flex-row text-center mt-2 flex-wrap" style="font-size: 16px">
                 <div class="register-types-btn bg-red color-white text-uppercase" onclick="displayInfo('shareholder')" id="shareholder">
                     пайщик
@@ -185,7 +172,7 @@
                     <div class="col-xs-12 col-sm-10 col-sm-push-1">
                         <div class="holder" style="margin: 0; padding-top: 0; font-family: 'Droid Serif', serif; border: none">
                             <div class="mt-side-widget">
-                                <div style="">
+                                <div style="" id="form-parent">
                                     <header class="text-center">
                                         <h1>Регистрация</h1>
                                         <p>Еще нету аккаунта?</p>
@@ -195,119 +182,14 @@
                                             <p style="color:red">{{$error}}</p>
                                         </div>
                                     @endif
-                                    <form method="post" action="/register">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <div class="row">
-                                            <div class="col-xs-12 col-sm-6 form-group">
-                                                <input id="first-name" required type="text" name="name" value="{{$row->name}}"
-                                                       class="form-control input" placeholder="Имя"/>
-                                                <input id="last-name" type="text" name="last_name" value="{{$row->last_name}}"
-                                                       class="form-control input" placeholder="Фамилия"/>
-                                                <input id="login" type="text" name="login" value="{{$row->login}}"
-                                                       class="form-control input" placeholder="Логин"/>
-                                                <input id="iin" type="text" name="iin" value="{{$row->iin}}"
-                                                       class="form-control input" placeholder="ИИН"/>
-                                                <input id="bin" type="text" name="bin" value="{{$row->iin}}"
-                                                       class="form-control input" placeholder="БИН"/>
-                                                <input id="company-name" required type="text" name="company-name" value="{{$row->company_name}}"
-                                                       class="form-control input" placeholder="Название компании"/>
-                                                <div id="sponsors">
-                                                    {{Form::select('is_activated', $activate, 1, ['class' => 'form-control selectpicker input','placeholder' => 'Выберите название программы', 'data-live-search' => 'true'])}}
-                                                        <select required name="recommend_user_id"
-                                                            data-placeholder="Выберите спонсора (1 уровень)"
-                                                            class="form-control selectpicker input"
-                                                            data-live-search="true">
-                                                        <option value="">Выберите спонсора (1 уровень)</option>
-                                                        @if( isset($row->recommend_user_id) || (isset($_GET['id']) && $_GET['id']))
-                                                            <?php  $item = \App\Models\Users::where(['user_id' => (isset($_GET['id']) ? $_GET['id'] : $row->recommend_user_id)])->first(); ?>
-                                                            <option selected
-                                                                    value="{{$item->user_id}}"> {{$item->login}}
-                                                            </option>
-                                                        @endif
-                                                        @foreach($recommend_row as $item)
-                                                            <option @if($row->recommend_user_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id) ) {{'selected'}} @endif value="{{$item->user_id}}">
-                                                                {{$item['login']}}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
 
-                                                <div id="inviters">
-                                                    <select required name="inviter_user_id"
-                                                            data-placeholder="Выберите пригласителя"
-                                                            class="form-control selectpicker input"
-                                                            data-live-search="true">
-                                                        <option value="">Выберите пригласителя</option>
-                                                        @if( isset($row->recommend_user_id) || (isset($_GET['id']) && $_GET['id']))
-                                                            <?php  $item = \App\Models\Users::where(['user_id' => (isset($_GET['id']) ? $_GET['id'] : $row->recommend_user_id)])->first(); ?>
-                                                            <option selected
-                                                                    value="{{$item->user_id}}"> {{sprintf('%s (%s)',$item->login, $item->last_name)}}
-                                                            </option>
-                                                        @endif
-                                                        @foreach($recommend_row as $item)
-                                                            <option @if($row->recommend_user_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id) ) {{'selected'}} @endif value="{{$item->user_id}}">
-                                                                {{$item['login']}}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-6 form-group">
-                                                <input id="email" required type="email" name="email" class="form-control input"
-                                                       value="{{$row->email}}" placeholder="Email"/>
-                                                <input id="phone" required type="tel" name="phone" class="form-control input"
-                                                       value="{{$row->phone}}" placeholder="Номер телефона"/>
-                                                <input id="password" required type="password" value="{{$row->password}}"
-                                                       name="password" class="form-control input"
-                                                       placeholder="Пароль"/>
-                                                <input id="confirm-password" required type="password" value="{{$row->confirm_password}}"
-                                                       name="confirm_password" class="form-control input"
-                                                       placeholder="Повторите пароль"/>
-                                                <input id="company-address" required type="text" name="company-address" value="{{$row->company_address}}"
-                                                       class="form-control input" placeholder="Адрес компании"/>
+                                    <div id="shareholder-block">@include('admin.new_design_auth.shareholder')</div>
+                                    <div id="activePartner-block">@include('admin.new_design_auth.active-partner')</div>
+                                    <div id="entrepreneur-block">@include('admin.new_design_auth.entrepreneur')</div>
+                                    <div id="consumer-block">@include('admin.new_design_auth.consumer')</div>
+                                    <div id="seller-block">@include('admin.new_design_auth.sellerr')</div>
+                                    <div id="user-block">@include('admin.new_design_auth.user')</div>
 
-                                                <div id="speakers">
-                                                    <select required name="speaker_id"
-                                                            data-placeholder="Выберите спикера"
-                                                            class="form-control selectpicker input"
-                                                            data-live-search="true">
-                                                        <option value="">Выберите спикера</option>
-                                                        @foreach($speaker_row as $item)
-                                                            <option @if($row->speaker_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id)) {{'selected'}} @endif value="{{$item->user_id}}">{{$item['login']}} {{--({{$item['last_name']}} {{$item['name']}} {{$item['middle_name']}})--}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-
-                                                <div id="office">
-                                                    <select required name="office_director_id"
-                                                            data-placeholder="Выберите директора офиса"
-                                                            class="form-control selectpicker input"
-                                                            data-live-search="true">
-                                                        <option value="">Выберите офис</option>
-                                                        @foreach($office_row as $item)
-                                                            <option @if($row->office_director_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id)) {{'selected'}} @endif value="{{$item->user_id}}">{{$item['office_name']}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-md-6 offset-md-4">
-                                                {!! NoCaptcha::display() !!}
-                                                @if ($errors->has('g-recaptcha-response'))
-                                                    <span class="help-block">
-                                                     <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="" style="width: 100%; display: flex">
-                                            <button type="submit" class="btn btn-danger font-weight-600" style="background: red !important; border-radius: 20px; margin: 0 auto; font-size: 22px !important; padding: 5px 20px">Зарегистрироваться
-                                            </button>
-                                        </div>
-
-                                    </form>
                                     <header>
                                         <div class="form-group text-center already-registered-div">
                                             Если Вы уже зарегистрированы на нашем сайте, нажмите <a
