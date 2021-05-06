@@ -11,12 +11,38 @@ if (isset($sub_category_id)) {
 
 @section('meta-tags')
     <title>Qpartners Shop</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
           content="«Qpartners» - это уникальный медиа проект с широким набором возожностей для взаймодествия с участниками виртуального рынка"/>
     <meta name="keywords" content="Qpartners"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $('.card_sorting_btn').click(function (){
+                var orderBy = $(this).data('order');
+                $.ajax({
+                    url: "{{route('filter.cards')}}",
+                    type:"GET",
+                    data:{
+                        orderBy: orderBy
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: (data) => {
+                        $(".mt-productlisthold").html(data);
+                    },
+                });
+            });
+        });
+
+    </script>
 @endsection
 @section('content')
     <main id="mt-main" style="margin-top: -50px !important;">
@@ -131,14 +157,15 @@ if (isset($sub_category_id)) {
                             <ul class="list-inline">
                                 <li>
                                     <a href="#" class="drop-link">
-                                        Default Sorting <i aria-hidden="true" class="fa fa-angle-down"></i>
+                                        Сортировать <i aria-hidden="true" class="fa fa-angle-down"></i>
                                     </a>
                                     <div class="drop">
                                         <ul class="list-unstyled">
-                                            <li><a href="#">ASC</a></li>
-                                            <li><a href="#">DSC</a></li>
-                                            <li><a href="#">Price</a></li>
-                                            <li><a href="#">Relevance</a></li>
+                                            <li><a href="#" class="card_sorting_btn" id="sort-price"
+                                                   data-order="price-low-high">По цене возрастанию</a></li>
+                                            <li><a href="#" class="card_sorting_btn" id="sort-price"
+                                                   data-order="price-high-low">По цене убыванию</a></li>
+                                            <li><a href="#" class="card_sorting_btn" data-order="popular">По популярности</a></li>
                                         </ul>
                                     </div>
                                 </li>
