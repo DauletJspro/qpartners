@@ -15,6 +15,7 @@ class GapCardItemController extends Controller
 {
     public function index()
     {
+
         $gapCardItems = GapCardItem::where('user_id', Auth::user()->user_id)->orderBy('created_at','desc')->paginate(40);
         return view('admin.gap.card.item.index', compact('gapCardItems'));
 
