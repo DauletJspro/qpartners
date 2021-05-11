@@ -177,10 +177,10 @@
                         <div class="holder" style="margin: 0; padding-top: 0; font-family: 'Droid Serif', serif; border: none">
                             <div class="mt-side-widget">
                                 <div style="" id="form-parent">
-                                    <header class="text-center">
-                                        <h1>Регистрация</h1>
-                                        <p>Еще нету аккаунта?</p>
-                                    </header>
+{{--                                    <header class="text-center">--}}
+{{--                                        <h1>Регистрация</h1>--}}
+{{--                                        <p>Еще нету аккаунта?</p>--}}
+{{--                                    </header>--}}
                                     @if(isset($error))
                                         <div class="alert alert-danger">
                                             <p style="color:red">{{$error}}</p>
