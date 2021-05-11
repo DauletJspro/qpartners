@@ -32,6 +32,7 @@ if ($role_id == \App\Models\Role::CLIENT && $is_activated == true) {
 ?>
 
 
+
 @section('content')
 
     <div class="mt-search-popup">
@@ -47,56 +48,36 @@ if ($role_id == \App\Models\Role::CLIENT && $is_activated == true) {
         </div>
     </div>
     <main id="mt-main">
-        <div class="register-image text-uppercase">
-            <p class="programs-image-text" style="margin:0; position: absolute; text-align: center; width: 100%; padding: 55px 0 0 10px">регистрация</p>
-
-            <img src="/new_design/images/banners/montazhnaya1.png" alt="img not found" style="width: 100%; height: 100%">
-        </div>
-        <div class="container">
-            <nav class="breadcrumbs text-center fs-11" style="margin-top: 30px">
-                <ul class="list-unstyled d-flex-row font-weight-lighter text-uppercase">
-                    <a href="/" class="my-text font-weight-400">главная <i class="fa fa-angle-right ml-1"></i></a>
-                    <a class="my-text font-weight-400 ml-1">регистрация</a>
-                </ul>
-            </nav>
-        </div>
-
-        <br>
-        <div class="text-uppercase fs-27 black-text-color text-center font-weight-600" style="letter-spacing: 3px">выберите форму регистрации</div>
-        <div class="container">
-            <div class=" d-flex-row text-center mt-2 flex-wrap" style="font-size: 16px">
-                <div class="register-types-btn bg-red color-white text-uppercase" onclick="displayInfo('shareholder')" id="shareholder">
-                    пайщик
+        <section class="mt-contact-banner"
+                 {{--                 style="background-image: url('/new_design/images/sign_in.png'); background-size: contain; background-repeat: no-repeat;"--}}
+                 style="background-color: lightgrey" ;
+        >
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h1>Регистрация</h1>
+                        <nav class="breadcrumbs">
+                            <ul class="list-unstyled">
+                                {{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
+                                {{--                                <li>register</li>--}}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
-                <div class="register-types-btn bg-red color-white text-uppercase" onclick="displayInfo('activePartner')" id="activePartner">
-                    активный партнер
-                </div>
-                <div class="register-types-btn bg-red color-white text-uppercase" onclick="displayInfo('entrepreneur')" id="entrepreneur">
-                    предприниматель
-                </div>
-                <div class="register-types-btn bg-red color-white text-uppercase" onclick="displayInfo('consumer')" id="consumer">
-                    потребитель
-                </div>
-                <div class="register-types-btn bg-red color-white text-uppercase" onclick="displayInfo('seller')" id="seller">
-                    продавец
-                </div>
-                <div class="register-types-btn bg-red color-white text-uppercase"onclick="displayInfo('user')" id="user"  style="margin-right: 0">
-                    пользователь
-                </div>
-
             </div>
-        </div>
-        <section class="mt-detail-sec toppadding-zero" id="registrate-section">
+        </section>
+        <br>
+        <section class="mt-detail-sec toppadding-zero">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-10 col-sm-push-1">
-                        <div class="holder" style="margin: 0; padding-top: 0; font-family: 'Droid Serif', serif; border: none">
+                        <div class="holder" style="margin: 0;">
                             <div class="mt-side-widget">
-                                <div style="" id="form-parent">
-{{--                                    <header class="text-center">--}}
-{{--                                        <h1>Регистрация</h1>--}}
-{{--                                        <p>Еще нету аккаунта?</p>--}}
-{{--                                    </header>--}}
+                                <div style="">
+                                    <header class="text-center">
+                                        <h1>Регистрация</h1>
+                                        <p>Еще нету аккаунта?</p>
+                                    </header>
                                     @if(isset($error))
                                         <div class="alert alert-danger">
                                             <p style="color:red">{{$error}}</p>
