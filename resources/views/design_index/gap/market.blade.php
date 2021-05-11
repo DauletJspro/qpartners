@@ -199,7 +199,7 @@
                                         </div>
                                     </div>
                                     <div class="txt">
-                                        <strong class="title"><a href="">{{$item->product_name_ru}}</a></strong>
+                                        <strong class="title"><a href="{{ route('product.detail', $item->product_id) }}">{{$item->product_name_ru}}</a></strong>
                                         <p style=" width: 30ch;   overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
                                             {{$item->product_desc_ru}}
                                         </p>

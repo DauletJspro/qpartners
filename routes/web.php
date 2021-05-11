@@ -441,7 +441,8 @@ Route::group([
     Route::get('contact', 'IndexController@contact')->name('contact.show');
     Route::get('gap/card/show', 'GapCardController@show')->name('gap.card.show');
     Route::get('gap/market/show', 'GapMarketController@show')->name('gap.market.show');
-    Route::get('product/filter','GapMarketController@FilterProduct')->name('sort.price');
+    Route::get('product/filter','GapMarketController@FilterProduct')->name('filter.products');
+    Route::get('card/filter','GapCardController@FilterCards')->name('filter.cards');
     Route::post('contact', 'IndexController@sendMessage');
     Route::get('coming-soon', 'IndexController@comingSoon')->name('coming-soon');
     Route::get('news', 'NewsController@newsList');
@@ -460,6 +461,7 @@ Route::group([
     Route::post('favorite/is-ajax', 'FavoriteController@isAjax')->name('favorite.isAjax');
     Route::get('shop/{category_id}', 'ShopController@index')->name('shop.show.category');
     Route::get('product/{id}', 'ProductController@detail')->name('product.detail');
+    Route::get('gap_card/{id}', 'GapCardController@detail')->name('gap_card.detail');
     Route::get('education/{url}', 'IndexController@getEducationById');
     Route::get('project/{url}', 'IndexController@getProjectById');
     Route::get('news/{url}', 'NewsController@getNewsById');

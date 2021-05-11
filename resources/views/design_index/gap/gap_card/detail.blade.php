@@ -69,7 +69,7 @@
                 <img src="/new_design/images/svg/comment.svg" style="width: 20px; height: 23px" alt="img not found"/>
                 <span style="margin: 0 1.5rem 0 0.5rem">{{$chosen_program["comment"]}}</span>
             </div>
-            <img src="/new_design/images/banners/{{$chosen_program["imgSrc"]}}" class="mt-1" alt="img not found"/>
+            <img src="/admin/image/gap_item/{{$gap_card->image}}" class="mt-1" alt="img not found"/>
         </div>
         <div class="program-detail-about d-flex-column mt-2" >
             <!-- Breadcrumbs of the Page -->
@@ -80,26 +80,28 @@
                         <a href="{{$chosen_program['category_id'] == 1 ? '/programs/the_initial' : '/programs/the_shares'}}" class="my-text font-weight-400 ml-1">C первонач. взносом <i class="fa fa-angle-right ml-1"></i> </a>
                     @endif
 
-                    <a class="my-text font-weight-400 ml-1">{{$chosen_program['name']}}</a>
+                    <a class="my-text font-weight-400 ml-1">{{$gap_card->title_ru}}</a>
                 </ul>
             </nav>
             <!-- Breadcrumbs of the Page end -->
-            <span class="my-text fs-27 text-uppercase">{{$chosen_program['name']}}</span>
-            <div class="d-flex-row">
-                <div class="rate">
-                    <input type="radio" id="star5" name="rate" onclick="rating(5)" value="5" />
-                    <label for="star5" title="text">5 stars</label>
-                    <input type="radio" id="star4" name="rate" onclick="rating(4)" value="4" />
-                    <label for="star4" title="text">4 stars</label>
-                    <input type="radio" id="star3" name="rate" onclick="rating(3)" value="3" />
-                    <label for="star3" title="text">3 stars</label>
-                    <input type="radio" id="star2" name="rate" onclick="rating(2)" value="2" />
-                    <label for="star2" title="text">2 stars</label>
-                    <input type="radio" id="star1" name="rate" onclick="rating(1)" value="1" />
-                    <label for="star1" title="text">1 star</label>
+            <span class="my-text fs-27 text-uppercase">{{$gap_card->title_ru}}</span>
+            @if(\Illuminate\Support\Facades\Auth::check())
+                <div class="d-flex-row">
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" onclick="rating(5)" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" onclick="rating(4)" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" onclick="rating(3)" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" onclick="rating(2)" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" onclick="rating(1)" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div>
+                    <span style="margin: 15px 0 0 10px">Отзывы (4)</span>
                 </div>
-                <span style="margin: 15px 0 0 10px">Отзывы ({{$chosen_program['comment']}})</span>
-            </div>
+            @endif
             <div class="d-flex-row mt-1 flex-wrap">
                 <a href="#" class="d-flex-row a-hover">
                     <img src="/new_design/images/svg/share.svg" style="width: 20px; height: 23px" alt="img not found"/>
@@ -114,29 +116,29 @@
                     <span style="margin: 0 2.5rem 0 0.5rem">Добавить в избранное</span>
                 </a>
             </div>
-            <div style="margin-top:60px; font-weight: 300; width: 90%" class="text-black fs-18">{{$chosen_program['about_program']}}</div>
-            <div style="margin-top: 100px; font-weight: 300; width: 90%" class="text-black fs-18">Вступительный взнос {{$chosen_program['entrance_fee']}}</div>
+            <div style="margin-top:60px; font-weight: 300; width: 90%" class="text-black fs-18">{{ $gap_card->description_ru }}</div>
+            <div style="margin-top: 100px; font-weight: 300; width: 90%" class="text-black fs-18">Цена: {{$gap_card->price}} тг</div>
             <div style="margin-top: 37px; height: 30px" class="d-flex-row flex-wrap">
                 <span class="text-silver" style="margin: auto 0">кол-во</span>
                 <input class="program-quantity ml-3" type="number" value="1">
                 <a href="/programs/{{$chosen_program['id']}}" class=" bg-green border-radius-30 px-15 ml-1 py-05 a-hover color-white">
-                    купить
+                    Добавить в корзину
                 </a>
-                <a href="/programs/{{$chosen_program['id']}}" class="more-btn bg-red border-radius-30 px-15 ml-1 py-05 a-hover d-flex-row color-white">
-                    Подробнее
-                    <img style="width: 10px; height: 10px; margin-top: 6px; margin-left: 5px"
-                         src="/new_design/images/right-navigation.svg"
-                         alt="right navigation img not found"
-                    >
-                </a>
+{{--                <a href="/programs/{{$chosen_program['id']}}" class="more-btn bg-red border-radius-30 px-15 ml-1 py-05 a-hover d-flex-row color-white">--}}
+{{--                    Подробнее--}}
+{{--                    <img style="width: 10px; height: 10px; margin-top: 6px; margin-left: 5px"--}}
+{{--                         src="/new_design/images/right-navigation.svg"--}}
+{{--                         alt="right navigation img not found"--}}
+{{--                    >--}}
+{{--                </a>--}}
 
             </div>
         </div>
     </div>
     <div class="text-center text-uppercase">
         <a class="infos-btn ml-2" id="infos-btn" onclick="displayInfo('infos')">Информация</a>
-        <a class="conditions-btn ml-2" id="conditions-btn" onclick="displayInfo('conditions')">Условия</a>
-        <a class="example-btn ml-2" id="example-btn" onclick="displayInfo('example')">Пример</a>
+        <a class="conditions-btn ml-2" id="conditions-btn" onclick="displayInfo('conditions')">Получить бонус</a>
+        <a class="example-btn ml-2" id="example-btn" onclick="displayInfo('example')">Отзывы</a>
     </div>
     <div class="mb-7 fs-18 text-black" style="border-top: 3px solid #C4C4C4; font-weight: 300; padding-left: 5%">
         <div class="infos container mt-2" id="infos">
@@ -154,7 +156,7 @@
             <p> 3. После получения жилья в рассрочку <span class="text-red font-weight-600">ежемесячно</span> совершать <span class="text-red font-weight-600">погашение рассрочки</span> согласно Вашему графику</p>
         </div>
         <div class="example container mt-2" id="example">
-            <p>Давайте рассмотрим пример для того чтобы все условия программы стали более понятными для Вас. Например, Вы хотите приобрести <span class="text-red font-weight-600">жилье на сумму 9 000 000 тенге</span>
+            <p>Давайте рассмотрим пример для того <чтоб></чтоб>ы все условия программы стали более понятными для Вас. Например, Вы хотите приобрести <span class="text-red font-weight-600">жилье на сумму 9 000 000 тенге</span>
                 и готовый внести <span class="text-red font-weight-600">50% первоначального взноса.</span></p>
             <p>1. Вы вносите <span class="text-red font-weight-600">вступительный взнос</span> в размере <span class="text-red font-weight-600">240 000 тенге</span> и становитесь
                 полноценным участником кооператива.</p>
@@ -169,13 +171,13 @@
             <span class="my-text fs-18 text-uppercase ml-2">другие программы</span>
             <div class="d-flex-row flex-wrap pt-2">
 
-                @foreach($programs as $program)
-                    @if($program['id'] !== $chosen_program['id'])
+                @foreach($similarCards as $similarCard)
+
                         <div class="program-detail-block-width d-flex-column mt-1">
-                            <img src="/new_design/images/banners/{{$program["imgSrc"]}}" alt="programs img not found"/>
-                            <p class="text-black mt-1 fs-11">{{$program["body"]}}</p>
+                            <img src="/admin/image/gap_item/{{$similarCard->image}}" alt="programs img not found"/>
+                            <p class="text-black mt-1 fs-11">{{$similarCard->title_ru}}</p>
                             <button class="button-hover mr-auto bg-red border-radius-30" onclick="" style="border: none; padding: 0 1rem">
-                                <a href="/programs/{{$program['id']}}" class="a-hover d-flex-row color-white">
+                                <a href="{{route('gap_card.detail', $similarCard->id)}}" class="a-hover d-flex-row color-white">
                                     Подробнее
                                     <img style="width: 10px; height: 10px; margin-top: 6px; margin-left: 5px"
                                          src="/new_design/images/right-navigation.svg"
@@ -184,7 +186,7 @@
                                 </a>
                             </button>
                         </div>
-                    @endif
+
                 @endforeach
 
             </div>
