@@ -1,5 +1,5 @@
 <ul class="sidebar-menu">
-    @if(Auth::user()->user_id != \App\Models\Users::Accountant)
+    @if(Auth::user()->user_id != \App\Models\Users::ACCOUNTANT)
         @if(Auth::user()->status_id > 0)
             <li class="header"
                 style="padding:5px 25px 0px;"> <?php $status_name = \App\Models\UserStatus::where('user_status_id', Auth::user()->status_id)->first(); ?>
@@ -167,7 +167,7 @@
     @endif
 
     @if(Auth::user()->role_id == 1)
-        @if(Auth::user()->user_id != \App\Models\Users::Accountant)
+        @if(Auth::user()->user_id != \App\Models\Users::ACCOUNTANT)
             <li class="treeview">
                 <a href="/admin/group">
                     <i class="fa fa-user"></i>
@@ -201,7 +201,7 @@
             </li>
         @endif
     @endif
-    @if(Auth::user()->user_id != \App\Models\Users::Accountant)
+    @if(Auth::user()->user_id != \App\Models\Users::ACCOUNTANT)
         <li class="treeview">
             <a href="/admin/online/history">
                 <i class="fa fa-user"></i>
@@ -210,7 +210,7 @@
         </li>
     @endif
     @if(Auth::user()->role_id == 1)
-        @if(Auth::user()->user_id != \App\Models\Users::Accountant)
+        @if(Auth::user()->user_id != \App\Models\Users::ACCOUNTANT)
             <li class="treeview">
                 <a href="/admin/packet/user/active">
                     <i class="fa fa-list-ul"></i>
@@ -276,7 +276,7 @@
                 </li>
             </ul>
         </li>
-        @if(Auth::user()->user_id != \App\Models\Users::Accountant)
+        @if(Auth::user()->user_id != \App\Models\Users::ACCOUNTANT)
             <li class="treeview">
                 <a href="/admin/client">
                     <i class="fa fa-users"></i>
@@ -320,7 +320,7 @@
                 <span>Учет</span>
             </a>
         </li>
-        @if(Auth::user()->user_id != \App\Models\Users::Accountant)
+        @if(Auth::user()->user_id != \App\Models\Users::ACCOUNTANT)
             <li>
                 <a href="/admin/representative">
                     <i class="fa fa-user"></i>
@@ -342,7 +342,7 @@
         @endif
     @endif
     @if(Auth::user()->is_activated)
-        @if(Auth::user()->user_id != \App\Models\Users::Accountant)
+        @if(Auth::user()->user_id != \App\Models\Users::ACCOUNTANT)
             <li class="treeview">
                 <a href="/admin/operation">
                     <i class="fa fa-list-ul"></i>
@@ -365,7 +365,7 @@
          </a>
      </li>--}}
 
-    @if(Auth::user()->user_id != \App\Models\Users::Accountant)
+    @if(Auth::user()->user_id != \App\Models\Users::ACCOUNTANT)
         <li class="treeview">
             <a href="/admin/presentation">
                 <i class="fa fa-shopping-cart"></i>

@@ -1,33 +1,29 @@
-
 <form method="post" action="">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="row">
         <div class="col-xs-12 col-sm-6 form-group">
-            <input id="first-name" required type="text" name="name" value="{{$row->name}}"
-                   class="form-control input" placeholder="Имя"/>
-            <input id="last-name" type="text" name="last_name" value="{{$row->last_name}}"
-                   class="form-control input" placeholder="Фамилия"/>
+            <input id="brand-name" required type="text" name="brand_name" value="{{$row->brand_name}}"
+                   class="form-control input" placeholder="Названия бренда"/>
+            <input id="last-name" type="text" name="organization_name" value="{{$row->organization_name}}"
+                   class="form-control input" placeholder="Название коипании"/>
             <input id="login" type="text" name="login" value="{{$row->login}}"
                    class="form-control input" placeholder="Логин"/>
             <input id="bin" type="text" name="bin" value="{{$row->bin}}"
                    class="form-control input" placeholder="БИН"/>
-            <input id="company-name" type="text" name="company-name" value="{{$row->company_name}}"
-                   class="form-control input" placeholder="Название компании"/>
-            <div id="cities">
-{{--                {{Form::select('is_activated', $activate, 1, ['class' => 'form-control selectpicker input','placeholder' => 'Выберите название программы', 'data-live-search' => 'true'])}}--}}
-                <select name="recommend_user_id"
-                        data-placeholder="Выберите город"
+            <div id="agents">
+                <select name="agent_id"
+                        data-placeholder="Выберите агента"
                         class="form-control selectpicker input"
                         data-live-search="true">
-                    <option value="">Выберите город</option>
-                    @if( isset($row->recommend_user_id) || (isset($_GET['id']) && $_GET['id']))
-                        <?php  $item = \App\Models\Users::where(['user_id' => (isset($_GET['id']) ? $_GET['id'] : $row->recommend_user_id)])->first(); ?>
+                    <option value="">Выберите агента</option>
+                    @if( isset($row->agent_id))
+                        <?php  $item = \App\Models\Users::where(['user_id' => $row->agent_id])->first(); ?>
                         <option selected
-                                value="{{$item->user_id}}"> {{$item->login}}
+                                value="{{$item->user_id}}"> {{sprintf('%s (%s)',$item->login, $item->last_name)}}
                         </option>
                     @endif
-                    @foreach($recommend_row as $item)
-                        <option @if($row->recommend_user_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id) ) {{'selected'}} @endif value="{{$item->user_id}}">
+                    @foreach($agents as $item)
+                        <option @if($row->recommend_user_id == $item->user_id) {{'selected'}} @endif value="{{$item->user_id}}">
                             {{$item['login']}}
                         </option>
                     @endforeach
@@ -45,8 +41,8 @@
             <input id="confirm-password" required type="password" value="{{$row->confirm_password}}"
                    name="confirm_password" class="form-control input"
                    placeholder="Повторите пароль"/>
-            <input id="company-address" type="text" name="company-address" value="{{$row->company_address}}"
-                   class="form-control input" placeholder="Адрес компании"/>
+            <input type="hidden" name="role_id" value="{{\App\Models\Role::ENTREPRENEUR}}">
+            <input type="hidden" name="is_activated" value="1">
         </div>
     </div>
     <div class="form-group row">
@@ -61,7 +57,9 @@
     </div>
     <br>
     <div class="" style="width: 100%; display: flex">
-        <button type="submit" class="btn btn-danger font-weight-600" style="background: red !important; border-radius: 20px; margin: 0 auto; font-size: 22px !important; padding: 5px 20px">Зарегистрироваться
+        <button type="submit" class="btn btn-danger font-weight-600"
+                style="background: red !important; border-radius: 20px; margin: 0 auto; font-size: 22px !important; padding: 5px 20px">
+            Зарегистрироваться
         </button>
     </div>
 
