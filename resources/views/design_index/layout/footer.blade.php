@@ -65,7 +65,7 @@
                     <!-- F Widget About of the Page -->
                     <div class="f-widget-about" style="color: white;">
                         <div class="logo">
-                            <a href="index.html"><img src="/new_design/images/logo/logo-white.png" alt="Qpartners"></a>
+                            <a href="/" style="font-weight: 600; color: white; font-family: adineuePROKZ-bold; font-size: 24px">GAP</a>
                         </div>
                         <p>Компания по продвижению товаров и услуг
                             через сеть независимых партнеров</p>
@@ -157,7 +157,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
-                    <p>© <a href="index.html">Q|Partners</a> - Все права защищены</p>
+                    <p>© <a href="index.html">GAP</a> - Все права защищены</p>
                 </div>
                 <div class="col-xs-12 col-sm-6 text-right">
                 </div>
@@ -166,3 +166,11 @@
     </div>
     <!-- Footer Area of the Page end -->
 </footer>
+
+
+<style>
+    @font-face {
+        src: url("/fonts/adineuePROKZ-Bold.ttf");
+        font-family: adineuePROKZ-bold;
+    }
+</style>

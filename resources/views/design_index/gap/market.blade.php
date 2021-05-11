@@ -45,8 +45,9 @@
                         <div class="bestseller-slider">
                             <div class="slide">
                                 <div style="
-                                        width: 100%;
+                                        width: 84%;
                                         height: 100%;
+                                        margin-left: 8%;
                                         background-image: url('{{asset('/new_design/images/products/running_shoes_banner.jpg')}}');
                                         background-size: contain;
                                         background-position: center;
@@ -57,8 +58,9 @@
                             </div>
                             <div class="slide">
                                 <div style="
-                                        width: 100%;
+                                        width: 84%;
                                         height: 100%;
+                                        margin-left: 8%;
                                         background-image: url('{{asset('/new_design/images/products/fashion_sale_banner.jpg')}}');
                                         background-size: contain;
                                         background-position: center;
@@ -69,8 +71,9 @@
                             </div>
                             <div class="slide">
                                 <div style="
-                                        width: 100%;
+                                        width: 84%;
                                         height: 100%;
+                                        margin-left: 8%;
                                         background-image: url('{{asset('/new_design/images/products/pizza_banner.jpg')}}');
                                         background-size: contain;
                                         background-position: center;
