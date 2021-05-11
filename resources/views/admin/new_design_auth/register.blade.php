@@ -131,7 +131,11 @@
         </div>
     </div>
     <main id="mt-main">
-        <div class="register-image w-100 text-uppercase"><span class="programs-image-text" >регистрация</span></div>
+        <div class="register-image text-uppercase">
+            <p class="programs-image-text" style="margin:0; position: absolute; text-align: center; width: 100%; padding: 55px 0 0 10px">регистрация</p>
+
+            <img src="/new_design/images/banners/montazhnaya1.png" alt="img not found" style="width: 100%; height: 100%">
+        </div>
         <div class="container">
             <nav class="breadcrumbs text-center fs-11" style="margin-top: 30px">
                 <ul class="list-unstyled d-flex-row font-weight-lighter text-uppercase">
@@ -243,8 +247,8 @@
         color: red !important;
     }
     .register-image {
-        background-image:url('/new_design/images/banners/montazhnaya1.png');
-        height: 172px;
+        /*background-image:url('/new_design/images/banners/montazhnaya1.png');*/
+        height: 230px;
         font-size: 4rem;
         color: white;
         text-align: center;
@@ -376,7 +380,6 @@
     }
     .programs-image {
         background-image:url('/new_design/images/programs.png');
-        height: 172px;
         font-size: 4rem;
         color: white;
         text-align: center;
