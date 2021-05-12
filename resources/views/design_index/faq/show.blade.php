@@ -15,7 +15,9 @@
         <section class="mt-contact-banner"  style=" background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-             background-image: url('/new_design/images/NewResource/answer.jpg');">
+             background-image: url('/new_design/images/banners/montazhnaya11.jpg');">
+            <p style="color: white; font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">вопросы и ответы</p>
+
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
@@ -31,8 +33,14 @@
         </section>
         <!-- Mt Content Banner of the Page end -->
         <!-- Mt About Section of the Page -->
-        <section class="mt-about-sec" style="padding-bottom: 0;">
+        <section class="mt-about-sec" style="padding-bottom: 0; padding-top: 20px">
             <div class="container">
+                <nav class="breadcrumbs black-text-color text-center" >
+                    <ul class="list-unstyled d-flex-row font-weight-lighter" style="font-size: 1.5rem">
+                        <a href="/" class="" style="color: black; font-weight: 400">главная <i class="fa fa-angle-right ml-1" style="margin-left: 5px"></i></a>
+                        <span class="" style="font-weight: 400">председатель компании</span>
+                    </ul>
+                </nav>
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="txt wow fadeInUp" data-wow-delay="0.4s">

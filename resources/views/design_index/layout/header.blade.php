@@ -192,10 +192,12 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                                                      aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
-                                        <li><a href="/about_us/guide">Руководство компании</a></li>
-                                        <li><a href="/about_us/administration">Администрация компании</a></li>
-                                        <li><a href="/about_us/leaders">Лидеры компании</a></li>
-                                        <li><a href="{{route('faq.show')}}">часто задаваемые вопросы</a></li>
+{{--                                        <li><a href="/about_us/guide">Руководство компании</a></li>--}}
+{{--                                        <li><a href="/about_us/administration">Администрация компании</a></li>--}}
+{{--                                        <li><a href="/about_us/leaders">Лидеры компании</a></li>--}}
+                                        <li><a href="/about_us/guide">О Кооперативе</a></li>
+                                        <li><a href="/about_us/chairperson">Председатель Кооператива</a></li>
+                                        <li><a href="{{route('faq.show')}}">Часто задаваемые вопросы</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -365,7 +367,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     }
 
     .dropdown-content a:hover {
-        background-color: #fad749 !important;
+        background-color: red !important;
         color: white !important;
 
 

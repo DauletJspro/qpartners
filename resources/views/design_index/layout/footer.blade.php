@@ -143,8 +143,8 @@
                         <!-- Social Network of the Page -->
                         <ul class="list-unstyled social-network social-icon" style="color: white;">
                             <li><a href="https://www.facebook.com/gap24.kz/"><i class="fa fa-facebook" style="margin:auto"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube" style="margin:auto"></i></a></li>
-                            <li><a href="https://api.whatsapp.com/send?phone=77073691777&text=%D0%A1%D3%99%D0%BB%D0%B5%D0%BC%D0%B5%D1%82%D1%81%D1%96%D0%B7%D0%B1%D0%B5?%20%D0%A1%D1%96%D0%B7%D0%B4%D0%B5%D1%80%D0%B4%D1%96%D2%A3%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%D0%BB%D0%B0%D1%80%D1%8B%D2%A3%D1%8B%D0%B7%20%D0%BC%D0%B5%D0%BD%20%D2%AF%D1%88%D1%96%D0%BD%20%D3%A9%D1%82%D0%B5%20%D2%9B%D1%8B%D0%B7%D1%8B%D2%9B%D1%82%D1%8B.%20%D0%A2%D0%BE%D0%BB%D1%8B%D2%93%D1%8B%D1%80%D0%B0%D2%9B%20%D0%B0%D2%9B%D0%BF%D0%B0%D1%80%D0%B0%D1%82%20%D0%B1%D0%B5%D1%80%D0%B5%20%D0%B0%D0%BB%D0%B0%D1%81%D1%8B%D0%B7%20%D0%B1%D0%B0?%F0%9F%A4%97"><i class="fa fa-whatsapp" style="margin:auto"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCU8xT8iVct5wf_7sc6Kyrkw"><i class="fa fa-youtube" style="margin:auto"></i></a></li>
+                            <li><a href="https://goo.su/5GgJ"><i class="fa fa-whatsapp" style="margin:auto"></i></a></li>
                         </ul>
                         <!-- Social Network of the Page end -->
                     </div>

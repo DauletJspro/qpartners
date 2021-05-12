@@ -456,7 +456,7 @@ Route::group([
     Route::resource('review', 'ReviewController');
     Route::get('about_us/administration', 'AboutController@showCompanyAdministration');
     Route::get('about_us/guide', 'AboutController@showCompanyGuide');
-    Route::get('about_us/leaders', 'AboutController@showCompanyLeaders');
+    Route::get('about_us/chairperson', 'AboutController@showCompanyLeaders');
     Route::post('basket/is-ajax', 'BasketController@isAjax')->name('basket.isAjax');
     Route::post('favorite/is-ajax', 'FavoriteController@isAjax')->name('favorite.isAjax');
     Route::get('shop/{category_id}', 'ShopController@index')->name('shop.show.category');
