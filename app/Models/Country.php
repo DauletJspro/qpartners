@@ -13,5 +13,8 @@ class Country extends Model
     protected $primaryKey = 'country_id';
 
     use SoftDeletes;
+
     protected $dates = ['deleted_at'];
+
+    const Kazakhstan = 1;
 }

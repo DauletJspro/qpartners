@@ -27,13 +27,31 @@ class Users extends Model implements AuthenticatableContract
         'qamqor_id',
         'jastar_id',
         'jas_otau_id',
-        'personal_sv_balance'
+        'personal_sv_balance',
+
+        'name',
+        'last_name',
+        'recommend_user_id',
+        'inviter_user_id',
+        'agent_id',
+        'phone',
+        'speaker_id',
+        'office_director_id',
+        'role_id',
+        'is_activated',
+        'city_id'
+
+
     ];
 
     const ADMIN = 1;
     const CLIENT = 2;
     const MODERATOR = 3;
-    const Accountant = 100000;
+    const ACCOUNTANT = 100000; #TODO set 4 after rebuild
+    const ENTREPRENEUR = 5;
+    const CONSUMER = 6;
+    const SELLER = 7;
+    const  USER = 8;
 
 
     use SoftDeletes;
@@ -145,11 +163,13 @@ class Users extends Model implements AuthenticatableContract
         $sponsor = Users::where('user_id', '=', $id->recommend_user_id)->select('login')->first();
         return $sponsor->login;
     }
+
     public static function getInviterName($id)
     {
         $sponsor = Users::where('user_id', '=', $id->inviter_user_id)->select('login')->first();
         return $sponsor->login;
     }
+
     public function status()
     {
         return $this->hasOne(UserStatus::class, 'user_status_id', 'status_id');

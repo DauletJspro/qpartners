@@ -1,4 +1,3 @@
-
 <form method="post" action="">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="row">
@@ -12,7 +11,6 @@
             <input id="iin" type="text" name="iin" value="{{$row->iin}}"
                    class="form-control input" placeholder="ИИН"/>
             <div id="sponsors">
-{{--                {{Form::select('is_activated', $activate, 1, ['class' => 'form-control selectpicker input','placeholder' => 'Выберите название программы', 'data-live-search' => 'true'])}}--}}
                 <select name="recommend_user_id"
                         data-placeholder="Выберите спонсора (1 уровень)"
                         class="form-control selectpicker input"
@@ -87,6 +85,9 @@
                     @endforeach
                 </select>
             </div>
+
+            <input type="hidden" name="role_id" value="{{\App\Models\Role::CLIENT}}">
+            <input type="hidden" name="is_activated" value="1">
         </div>
     </div>
     <div class="form-group row">
@@ -101,7 +102,9 @@
     </div>
     <br>
     <div class="" style="width: 100%; display: flex">
-        <button type="submit" class="btn btn-danger font-weight-600" style="background: red !important; border-radius: 20px; margin: 0 auto; font-size: 22px !important; padding: 5px 20px">Зарегистрироваться
+        <button type="submit" class="btn btn-danger font-weight-600"
+                style="background: red !important; border-radius: 20px; margin: 0 auto; font-size: 22px !important; padding: 5px 20px">
+            Зарегистрироваться
         </button>
     </div>
 
