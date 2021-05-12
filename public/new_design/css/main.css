@@ -3690,6 +3690,11 @@ a:hover {
     display: inline-block;
     vertical-align: middle;
     margin: 0 6px 0 2px;
+    background: white;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    border-radius: 50%;
 }
 
 #mt-footer .f-widget-news .news-articles {
@@ -3759,6 +3764,10 @@ a:hover {
 #mt-footer .social-network a {
     -webkit-transition: all .25s linear;
     transition: all .25s linear;
+    display: flex;
+    width: 100%;
+    /* background: white; */
+    height: 100%;
 }
 
 #mt-footer .social-network a:hover {

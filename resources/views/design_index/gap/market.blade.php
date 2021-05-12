@@ -45,14 +45,14 @@
                         <div class="bestseller-slider">
                             <div class="slide">
                                 <div style="
-                                        width: 84%;
-                                        height: 100%;
-                                        margin-left: 8%;
-                                        background-image: url('{{asset('/new_design/images/products/running_shoes_banner.jpg')}}');
-                                        background-size: contain;
-                                        background-position: center;
-                                        background-repeat: no-repeat;
-                                        ">
+                                    width: 84%;
+                                    height: 100%;
+                                    margin-left: 8%;
+                                    background-image: url('{{asset('/new_design/images/products/running_shoes_banner.jpg')}}');
+                                    background-size: contain;
+                                    background-position: center;
+                                    background-repeat: no-repeat;
+                                    ">
 
                                 </div>
                             </div>

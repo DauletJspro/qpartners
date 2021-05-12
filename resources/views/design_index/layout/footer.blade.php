@@ -65,7 +65,7 @@
                     <!-- F Widget About of the Page -->
                     <div class="f-widget-about" style="color: white;">
                         <div class="logo">
-                            <a href="/" style="font-weight: 600; color: white; font-family: adineuePROKZ-bold; font-size: 24px">GAP</a>
+                            <a href="/" style="font-weight: 600; color: white; font-family: adineuePROKZ-bold; font-size: 28px">GAP</a>
                         </div>
                         <p>Компания по продвижению товаров и услуг
                             через сеть независимых партнеров</p>
@@ -78,7 +78,7 @@
                                     17 77</a>
                             </li>
                             <li><i class="fa fa-envelope-o"></i><a
-                                        href="mailto:qazaqmarketing.@gmail.com" style="color: white;">qpartners.club@mail.ru</a>
+                                        href="mailto:globalasarproject@gmail.com" style="color: white;">globalasarproject@gmail.com</a>
                             </li>
                         </ul>
                     </div>
@@ -86,36 +86,37 @@
                 </div>
                 <nav class="col-xs-12 col-sm-7 col-md-5 mt-paddingbottomxs">
                     <!-- Footer Nav of the Page -->
-                    <div class="nav-widget-1" style="color: white;">
-                        <h3 class="f-widget-heading" style="color: white;">Продукция</h3>
+                    <div class="nav-widget-1" style="color: white; font-weight: lighter; font-size: 16px; font-family: 'montserrat'">
+                        <h3 class="f-widget-heading" style="color: white;">Проекты</h3>
                         <ul class="list-unstyled f-widget-nav ">
-                            <li><a href="#">Эликсиры</a></li>
-                            <li><a href="#">Крема</a></li>
-                            <li><a href="#">Спреи</a></li>
-                            <li><a href="#">Гели</a></li>
-                            <li><a href="#">Чаи</a></li>
-                            <li><a href="#">Каши</a></li>
+                            <li><a href="#">GAP Market</a></li>
+                            <li><a href="#">GAP Academy</a></li>
+                            <li><a href="#">GAP Card</a></li>
+                            <li><a href="#">GAP Turism</a></li>
+                            <li><a href="#">GAP Media</a></li>
+                            <li><a href="#">GAP Activ</a></li>
                         </ul>
                     </div>
                     <!-- Footer Nav of the Page end -->
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading" style="color: white;">Программы</h3>
-                        <ul class="list-unstyled f-widget-nav">
-                            <li><a href="#">Жилье</a></li>
-                            <li><a href="#">Автомобиль</a></li>
-                            <li><a href="#">Бизнес</a></li>
-                            <li><a href="#">Путешествие</a></li>
-                            <li><a href="#">Инстаграм</a></li>
-                            <li><a href="#">Обучение</a></li>
-                            <li><a href="#">Скидки</a></li>
+                        <ul class="list-unstyled f-widget-nav" style="font-weight: lighter; font-size: 16px; font-family: 'montserrat'" >
+                            <li><a href="#">BASPANA PLUS</a></li>
+                            <li><a href="#">TULPAR PLUS</a></li>
+                            <li><a href="#">BASPANA</a></li>
+                            <li><a href="#">TULPAR</a></li>
+                            <li><a href="#">QAMQOR</a></li>
+                            <li><a href="#">QOLDAU</a></li>
+                            <li><a href="#">JASTAR</a></li>
+                            <li><a href="#">JAS OTAU</a></li>
                         </ul>
                     </div>
                     <!-- Footer Nav of the Page end -->
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading" style="color: white;">Информация</h3>
-                        <ul class="list-unstyled f-widget-nav">
+                        <ul class="list-unstyled f-widget-nav" style="font-size: 16px; font-family: 'montserrat'">
                             <li><a href="#">О нас</a></li>
                             <li><a href="#">Связаться с нами</a></li>
                             <li><a href="#">Правила и условия</a></li>
@@ -140,10 +141,10 @@
                         <!-- F Widget Newsletter of the Page end -->
                         <h4 class="f-widget-heading follow" style="color: white;">Следите за нами</h4>
                         <!-- Social Network of the Page -->
-                        <ul class="list-unstyled social-network social-icon">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                            <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
+                        <ul class="list-unstyled social-network social-icon" style="color: white;">
+                            <li><a href="#"><i class="fa fa-facebook" style="margin:auto"></i></a></li>
+                            <li><a href="#"><i class="fa fa-youtube" style="margin:auto"></i></a></li>
+                            <li><a href="#"><i class="fa fa-whatsapp" style="margin:auto"></i></a></li>
                         </ul>
                         <!-- Social Network of the Page end -->
                     </div>
