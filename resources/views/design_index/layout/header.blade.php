@@ -144,7 +144,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
         <div class="container">
             <div class="row">
                 <div class="col-xs-12" style="display: flex; align-items: center;">
-                    <div class="mt-logo fs-24" style="font-weight: 600; margin-left: 20px; font-family: adineuePROKZ-bold">
+                    <div class="mt-logo fs-24" style="font-weight: 600; height: 24px; font-family: adineuePROKZ-bold">
                         <a href="/"><span style="color: red; ">GAP</span></a>
                         @if($gapTypeActive === 2)
                             <a href="/gap/market/show"><span style="color: #646464">MARKET</span></a>
@@ -219,8 +219,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                                                                               aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
-                                        <li><a href="/news">Новости компании</a></li>
-                                        <li><a href="/news">Новости команды</a></li>
+                                        <li><a href="/news">Новости кооператива</a></li>
                                         <li><a href="{{route('gallery.show')}}">Фото и видео галерея</a></li>
                                     </ul>
                                 </div>

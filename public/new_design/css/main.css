@@ -2303,7 +2303,7 @@ a:hover {
 }
 
 #nav .s-drop ul > li:hover {
-    background-color: gold;
+    background-color: red;
 }
 
 #nav .s-drop ul > li > a:hover {
@@ -3646,7 +3646,7 @@ a:hover {
     height: 42px;
     padding: 0;
     width: 34%;
-    background: #696969;
+    background: black;
     color: #fff;
     border-radius: 0 25px 25px 0;
     -webkit-transition: all .25s linear;
@@ -5895,7 +5895,7 @@ article {
 .banner-8 .holder-inner {
     position: absolute;
     bottom: 18%;
-    right: 10%;
+    left: 10%;
 }
 .banner-8 .texts {
     position: absolute;
@@ -6312,7 +6312,7 @@ article {
 
 .banner-12 .btn-shop {
     position: absolute;
-    left: 10%;
+    left: 5%;
     bottom: 10%;
     color: #000;
     font-size: 18px;
@@ -6368,7 +6368,7 @@ article {
 
 .banner-13 .btn-shop {
     position: absolute;
-    right: 10%;
+    left: 5%;
     bottom: 10%;
     background: rgb(255, 0, 0);
     border-radius: 8px;

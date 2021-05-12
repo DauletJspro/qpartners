@@ -11,10 +11,10 @@
                 <div class="col-xs-12 col-sm-6 col-md-3">
                     <!-- F Widget Item of the Page -->
                     <div class="f-widget-item">
-                        <span class="widget-icon"><i class="fa fa-money"></i></span>
+                        <span class="widget-icon"><img src="/new_design/images/banners/wallet-filled-money-tool.svg" alt="img not found"></span>
                         <div class="txt-holder">
-                            <h1 class="f-promo-box-heading">Высокий и стабильный заработок</h1>
-                            <p>Заработок от 200$ в месяц</p>
+                            <h1 class="f-promo-box-heading">Рассрочка</h1>
+                            <p>На автомобиль и жилье</p>
                         </div>
                     </div>
                     <!-- F Widget Item of the Page -->
@@ -22,10 +22,10 @@
                 <div class="col-xs-12 col-sm-6 col-md-3 mt-paddingbottomsm">
                     <!-- F Widget Item of the Page -->
                     <div class="f-widget-item">
-                        <span class="widget-icon"><i class="fa fa-plane"></i></span>
+                        <span class="widget-icon"><img src="/new_design/images/banners/coin-stack.svg" alt="img not found"></span>
                         <div class="txt-holder">
-                            <h1 class="f-promo-box-heading">Авто и жильё в рассрочку</h1>
-                            <p>до 9 миллионов тенге</p>
+                            <h1 class="f-promo-box-heading">Без переплат</h1>
+                            <p>На весь срок рассрочки</p>
                         </div>
                     </div>
                     <!-- F Widget Item of the Page end -->
@@ -34,10 +34,10 @@
                 <div class="col-xs-12 col-sm-6 col-md-3 mt-paddingbottomxs">
                     <!-- F Widget Item of the Page -->
                     <div class="f-widget-item">
-                        <span class="widget-icon"><i class="fa fa-dropbox"></i></span>
+                        <span class="widget-icon"><img src="/new_design/images/banners/discount (1).svg" alt="img not found"></span>
                         <div class="txt-holder">
-                            <h1 class="f-promo-box-heading">Натуральная продукция</h1>
-                            <p>Из 100% натурального сырья</p>
+                            <h1 class="f-promo-box-heading">Без процентов</h1>
+                            <p>Рассрочка</p>
                         </div>
                     </div>
                     <!-- F Widget Item of the Page -->
@@ -45,10 +45,10 @@
                 <div class="col-xs-12 col-sm-6 col-md-3 mt-paddingbottomsm">
                     <!-- F Widget Item of the Page -->
                     <div class="f-widget-item">
-                        <span class="widget-icon"><i class="fa fa-life-ring"></i></span>
+                        <span class="widget-icon"><img src="/new_design/images/banners/calendar (1).svg" alt="img not found"></span>
                         <div class="txt-holder">
-                            <h1 class="f-promo-box-heading">Поддержка 24/7</h1>
-                            <p>Информационная и техническая поддержка</p>
+                            <h1 class="f-promo-box-heading">До 120 месяцев</h1>
+                            <p>Срок рассрочки</p>
                         </div>
                     </div>
                     <!-- F Widget Item of the Page -->
@@ -142,9 +142,9 @@
                         <h4 class="f-widget-heading follow" style="color: white;">Следите за нами</h4>
                         <!-- Social Network of the Page -->
                         <ul class="list-unstyled social-network social-icon" style="color: white;">
-                            <li><a href="#"><i class="fa fa-facebook" style="margin:auto"></i></a></li>
+                            <li><a href="https://www.facebook.com/gap24.kz/"><i class="fa fa-facebook" style="margin:auto"></i></a></li>
                             <li><a href="#"><i class="fa fa-youtube" style="margin:auto"></i></a></li>
-                            <li><a href="#"><i class="fa fa-whatsapp" style="margin:auto"></i></a></li>
+                            <li><a href="https://api.whatsapp.com/send?phone=77073691777&text=%D0%A1%D3%99%D0%BB%D0%B5%D0%BC%D0%B5%D1%82%D1%81%D1%96%D0%B7%D0%B1%D0%B5?%20%D0%A1%D1%96%D0%B7%D0%B4%D0%B5%D1%80%D0%B4%D1%96%D2%A3%20%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%D0%BB%D0%B0%D1%80%D1%8B%D2%A3%D1%8B%D0%B7%20%D0%BC%D0%B5%D0%BD%20%D2%AF%D1%88%D1%96%D0%BD%20%D3%A9%D1%82%D0%B5%20%D2%9B%D1%8B%D0%B7%D1%8B%D2%9B%D1%82%D1%8B.%20%D0%A2%D0%BE%D0%BB%D1%8B%D2%93%D1%8B%D1%80%D0%B0%D2%9B%20%D0%B0%D2%9B%D0%BF%D0%B0%D1%80%D0%B0%D1%82%20%D0%B1%D0%B5%D1%80%D0%B5%20%D0%B0%D0%BB%D0%B0%D1%81%D1%8B%D0%B7%20%D0%B1%D0%B0?%F0%9F%A4%97"><i class="fa fa-whatsapp" style="margin:auto"></i></a></li>
                         </ul>
                         <!-- Social Network of the Page end -->
                     </div>

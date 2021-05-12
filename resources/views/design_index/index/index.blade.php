@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Session;
                                     <span style="font-size: 19px;font-family:'Montserrat';" class="p-0">Рассрочка до 120 месяцев на </hr style="list-style:none;"> жилье</span>
                                 </div>
                                 <div class="holder-inner">
-                                    <a href="/baspana" class="btn-shop">
+                                    <a href="/programs/1" class="btn-shop">
                                         <span style="color: #fff !important;">ПОДРОБНЕЕ</span>
                                         <i class="fa fa-angle-right" style="background: #ffd700; color: #000;"></i>
                                     </a>
@@ -47,7 +47,7 @@ use Illuminate\Support\Facades\Session;
                                     <span style="font-size: 14px;font-family:'Montserrat';"  class="p-0">Получи авто через месяц</span>
                                 </div>
                                 <div class="holder-inner">
-                                    <a href="/tulpar" class="btn-shop">
+                                    <a href="/programs/2" class="btn-shop">
                                         <span style="color: #fff !important;">ЗАБРАТЬ</span>
                                         <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
                                     </a>
@@ -61,12 +61,13 @@ use Illuminate\Support\Facades\Session;
                                 <div style="background-image: url('/new_design/images/banners/banner3.svg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
                                 <div class="holder">
                                     <div class="texts" style="color:white;">
-                                        <span style="font-size:28px;font-weight:bold;">ЖИЛЬЕ ДЛЯ</span>
+                                        <p style="font-size:28px;font-weight:bold;">ЖИЛЬЕ ДЛЯ</p>
                                         <p style="font-size:28px;font-weight:bold;">МОЛОДЕЖИ</p>
                                         <span style="font-size: 14px;font-family:'Montserrat';color:white;float:left;" class="p-0">от 18 до 29 лет</span>
                                     </div>
                                     <div class="holder-inner">
-                                        <a href="product-detail.html" class="btn-shop">
+{{--                                        <a href="product-detail.html" class="btn-shop">--}}
+                                        <a href="/programs/5" class="btn-shop">
                                             <span style="color: white;">ПОДРОБНЕЕ</span>
                                             <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
                                         </a>
@@ -80,10 +81,11 @@ use Illuminate\Support\Facades\Session;
                                     <div class="texts" style="font-family: adineue PRO KZ Bold;color:white;">
                                         <span style="font-size:28px;font-weight:bold;">ДОМ ДЛЯ</span>
                                         <p style="font-size:28px;font-weight:bold;">ВСЕЙ СЕМЬИ</p>
-                                        <span style="font-size: 14px;width:150px;font-family:'Montserrat';color:white;position:absolute;left:55%;" class="p-0">Жилье для </hr> молодых семей</span>
+                                        <span style="font-size: 14px;width:150px;font-family:'Montserrat';color:white;position:absolute;" class="p-0">Жилье для </hr> молодых семей</span>
                                     </div>
                                     <div class="holder-inner">
-                                        <a href="product-detail.html" class="btn-shop">
+{{--                                        <a href="product-detail.html" class="btn-shop">--}}
+                                        <a href="/programs/6" class="btn-shop">
                                             <span style="color: white !important;font-weight:300;">Подробнее</span>
                                             <i class="fa fa-angle-right" style="background: #fff; color: black;"></i>
                                         </a>
@@ -119,9 +121,9 @@ use Illuminate\Support\Facades\Session;
                                      alt="image description"
                                      style="height: 277px;  width: 420px;">
                                 <div class="holder">
-                                    <div class="texts" style="font-family: adineue PRO KZ Bold;color:white;">
+                                    <div class="texts" style="font-family: adineue PRO KZ Bold;color:white; text-align: left">
                                         <span style="font-size:28px;font-weight:bold;">ВОПРОСЫ И ОТВЕТЫ</span>
-                                        <span style="font-size: 14px;width:200px;font-family:'Montserrat';color:white;float:right;" class="p-0">Ответы на часто задаваемые вопросы</span>
+                                        <span style="font-size: 14px;width:200px;font-family:'Montserrat';color:white;" class="p-0">Ответы на часто задаваемые вопросы</span>
                                     </div>
                                     <div class="holder-inner">
                                         <a href="/shop" class="btn-shop" style="background: none">
@@ -301,11 +303,11 @@ use Illuminate\Support\Facades\Session;
                             <div class="holder">
                                 <div class="texts" style="color:#fff; adineue PRO KZ Bold;">
                                     <p style="font-size:28px;font-weight:bold;">ПРЕИМУЩЕСТВО №1 </p>
-                                    <span style="font-size: 20px;font-family:'Montserrat';color:#fff;float:left;" class="p-0">Вступительный взнос от 60 000 тенге</span>
+                                    <span style="font-size: 1.5rem;font-family:'Montserrat';color:#fff;float:left;" class="p-0">Вступительный взнос от 60 000 тенге</span>
                                 </div>
                                 <div class="holder-inner">
                                     <a href="product-detail.html" class="btn-shop">
-                                        <span style="color: #fff!important;text-transform:lowercase;">подробнее</span>
+                                        <span style="color: #fff!important;text-transform:lowercase;font-size: 1.5rem">подробнее</span>
                                         <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
                                     </a>
                                 </div>
@@ -317,11 +319,11 @@ use Illuminate\Support\Facades\Session;
                             <div class="holder">
                                 <div class="texts" style="color:white;">
                                     <p style="font-size:28px;font-weight:bold;">ПРЕИМУЩЕСТВО №2</p>
-                                    <span style="font-size: 20px;font-family:'Montserrat';color:white;" class="p-0">Паевый взнос 10 000 тенге</span>
+                                    <span style="font-size: 1.5rem;font-family:'Montserrat';color:white;" class="p-0">Паевый взнос 10 000 тенге</span>
                                 </div>
                                 <div class="holder-inner">
                                     <a href="product-detail.html" class="btn-shop">
-                                        <span style="color: white !important;text-transform:lowercase;">подробнее</span>
+                                        <span style="color: white !important;text-transform:lowercase;font-size: 1.5rem">подробнее</span>
                                         <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
                                     </a>
                                 </div>
@@ -333,11 +335,11 @@ use Illuminate\Support\Facades\Session;
                             <div class="holder">
                                 <div class="texts" style="color:white;">
                                     <p style="font-size:28px;font-weight:bold;">ПРЕИМУЩЕСТВО №3</p>
-                                    <span style="font-size: 20px;font-family:'Montserrat';color:white;float:left;" class="p-0">Cрок получения рассрочки от 1 месяца</span>
+                                    <span style="font-size: 1.5rem;font-family:'Montserrat';color:white;float:left;" class="p-0">Cрок получения рассрочки от 1 месяца</span>
                                 </div>
                                 <div class="holder-inner" style="float:left;">
                                     <a href="product-detail.html" class="btn-shop">
-                                        <span style="color: white;text-transform:lowercase;">подробнее</span>
+                                        <span style="color: white;text-transform:lowercase;font-size: 1.5rem">подробнее</span>
                                         <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
                                     </a>
                                 </div>
