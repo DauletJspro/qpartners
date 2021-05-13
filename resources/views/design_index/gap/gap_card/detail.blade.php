@@ -1,7 +1,5 @@
 <script>
-    function rating(value) {
-        console.log('rating', value);
-    }
+
     function displayInfo(value) {
 
         let x = document.getElementById("infos");
@@ -48,19 +46,75 @@
         }
     }
 </script>
+
 @extends('design_index.layout.layout')
 
 @section('meta-tags')
     <title>Qpartners Shop</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
           content="«Qpartners» - это уникальный медиа проект с широким набором возожностей для взаймодествия с участниками виртуального рынка"/>
     <meta name="keywords" content="Qpartners"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.rating').click(function (){
+                var rating = $(this).data('rating');
+                var gcid = $(this).attr('gcid');
+
+                $.ajax({
+                    url: "{{ route('rating') }}",
+                    type:"POST",
+                    cache:false,
+                    data: {
+                        'rating' : rating,
+                        'gap_card_id' : gcid
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    dataType: 'json',
+                    success: (data) => {
+                        console.log('Success', data);
+                    },
+                });
+            });
+        });
+    </script>
 @endsection
 @section('content')
-
+    <!-- Modal -->
+    <div class="modal fade" id="ratingModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4>
+                        Поставьте рейтинг от 1 до 5 для данной картты, спасибо!
+                    </h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END -->
     <div class="container d-flex-row mb-7 ff flex-wrap">
         <div class="program-detail-img d-flex-column">
             <div class="d-flex-row">
@@ -75,7 +129,7 @@
             <!-- Breadcrumbs of the Page -->
             <nav class="breadcrumbs text-center fs-11">
                 <ul class="list-unstyled d-flex-row font-weight-lighter text-uppercase">
-                    <a href="/programs/the_initial" class="my-text font-weight-400">программы <i class="fa fa-angle-right ml-1"></i></a>
+                    <a href="/programs/the_initial" class="my-text font-weight-400">CARD <i class="fa fa-angle-right ml-1"></i></a>
                     @if($chosen_program["category_id"] == 1 )
                         <a href="{{$chosen_program['category_id'] == 1 ? '/programs/the_initial' : '/programs/the_shares'}}" class="my-text font-weight-400 ml-1">C первонач. взносом <i class="fa fa-angle-right ml-1"></i> </a>
                     @endif
@@ -88,16 +142,31 @@
             @if(\Illuminate\Support\Facades\Auth::check())
                 <div class="d-flex-row">
                     <div class="rate">
-                        <input type="radio" id="star5" name="rate" onclick="rating(5)" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" onclick="rating(4)" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" onclick="rating(3)" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" onclick="rating(2)" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" onclick="rating(1)" value="1" />
-                        <label for="star1" title="text">1 star</label>
+                        @for($i = 5; $i > 0; $i--)
+                            @if($rating->rating == $i)
+                                <input type="radio" id="star{{$i}}" name="rate" class="rating"  checked disabled data-rating="{{$i}}" value="{{$i}}"  gcid="{{$gap_card->id}}" />
+                                <label for="star{{$i}}" title="text">{{$i}} stars</label>
+                            @else
+                                @if(isset($rating->rating))
+                                    <input type="radio" id="star{{$i}}" name="rate" class="rating"  disabled  data-rating="{{$i}}" value="{{$i}}"  gcid="{{$gap_card->id}}" />
+                                    <label for="star{{$i}}" title="text">{{$i}} stars</label>
+                                @else
+                                    <input type="radio" id="star{{$i}}" name="rate" class="rating"   data-rating="{{$i}}" value="{{$i}}"  gcid="{{$gap_card->id}}" />
+                                    <label for="star{{$i}}" title="text">{{$i}} stars</label>
+                                @endif
+                            @endif
+                        @endfor
+                    </div>
+                    <span style="margin: 15px 0 0 10px">Отзывы (4)</span>
+                </div>
+            @else
+                <p>Вы должны пройти регистрация чтобы поставить оценку.</p>
+                <div class="d-flex-row">
+                    <div class="rate">
+                        @for($i = 5; $i > 0; $i--)
+                            <input type="radio" id="star{{$i}}" name="rate" class="rating" disabled  data-rating="{{$i}}" value="{{$i}}"  gcid="{{$gap_card->id}}" />
+                            <label for="star{{$i}}" title="text">{{$i}} stars</label>
+                        @endfor
                     </div>
                     <span style="margin: 15px 0 0 10px">Отзывы (4)</span>
                 </div>
@@ -121,7 +190,11 @@
             <div style="margin-top: 37px; height: 30px" class="d-flex-row flex-wrap">
                 <span class="text-silver" style="margin: auto 0">кол-во</span>
                 <input class="program-quantity ml-3" type="number" value="1">
-                <a href="/programs/{{$chosen_program['id']}}" class=" bg-green border-radius-30 px-15 ml-1 py-05 a-hover color-white">
+                <a href="#" data-toggle="modal"
+                   @if(!isset($rating->rating) && \Illuminate\Support\Facades\Auth::check())
+                        data-target="#ratingModal"
+                   @endif
+                   class="bg-green border-radius-30 px-15 ml-1 py-05 a-hover color-white">
                     Добавить в корзину
                 </a>
 {{--                <a href="/programs/{{$chosen_program['id']}}" class="more-btn bg-red border-radius-30 px-15 ml-1 py-05 a-hover d-flex-row color-white">--}}

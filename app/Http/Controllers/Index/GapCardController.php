@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Index;
 
 use App\Models\GapCardItem;
 use App\Models\Product;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class GapCardController extends Controller
@@ -19,7 +21,9 @@ class GapCardController extends Controller
     {
         $gap_card = GapCardItem::where('id', $id)->first();
         $similarCards = GapCardItem::where('gap_card_sub_category_id',$gap_card->gap_card_sub_category_id)->whereNotIn('id', [$gap_card->id])->limit(5)->get();
-        return view('design_index.gap.gap_card.detail', compact('gap_card','similarCards'));
+        $rating = Rating::where('user_id', Auth::user()->user_id)->where('gap_card_id', $id)->first();
+
+        return view('design_index.gap.gap_card.detail', compact('gap_card','similarCards', 'rating'));
     }
     public function FilterCards(Request $request)
     {
