@@ -16,8 +16,10 @@ class CreateRatingsTable extends Migration
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->tinyInteger('rating');
             $table->integer('gap_card_id');
+            $table->tinyInteger('rating');
+            $table->timestamps();
+            $table->index('created_at');
         });
     }
 
@@ -28,10 +30,6 @@ class CreateRatingsTable extends Migration
      */
     public function down()
     {
-        Schema::create('ratings', function (Blueprint $table) {
-            $table->dropColumn('user_id');
-            $table->dropColumn('rating');
-            $table->dropColumn('gap_card_id');
-        });
+        Schema::dropIfExists('ratings');
     }
 }

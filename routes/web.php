@@ -419,7 +419,11 @@ Route::group([
     'namespace' => 'Index',
 ], function () {
     Route::get('/', 'IndexController@index')->name('gap.index.show');
-    Route::post('/rating', 'RatingsController@rating')->name('rating');
+    Route::group([
+        'prefix' => 'programs'
+    ], function () {
+        Route::post('/rating', 'RatingsController@rating')->name('rating');
+    });
     Route::get('/programs/the_initial', 'ProgramController@initial')->name('program.initial');
     Route::get('/programs/the_shares', 'ProgramController@share')->name('program.share');
     Route::get('/programs/{id}', 'ProgramController@programsDetail')->name('program.programsDetail');
