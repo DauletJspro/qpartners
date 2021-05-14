@@ -86,12 +86,12 @@
                 </div>
                 <nav class="col-xs-12 col-sm-7 col-md-5 mt-paddingbottomxs">
                     <!-- Footer Nav of the Page -->
-                    <div class="nav-widget-1" style="color: white; font-weight: lighter; font-size: 16px; font-family: 'montserrat'">
+                    <div class="nav-widget-1" style="color: white; font-size: 14px; font-family: 'Source Sans Pro', sans-serif">
                         <h3 class="f-widget-heading" style="color: white;">Проекты</h3>
                         <ul class="list-unstyled f-widget-nav ">
-                            <li><a href="#">GAP Market</a></li>
+                            <li><a href="/gap/market/show">GAP Market</a></li>
                             <li><a href="#">GAP Academy</a></li>
-                            <li><a href="#">GAP Card</a></li>
+                            <li><a href="/gap/card/show">GAP Card</a></li>
                             <li><a href="#">GAP Turism</a></li>
                             <li><a href="#">GAP Media</a></li>
                             <li><a href="#">GAP Activ</a></li>
@@ -101,27 +101,27 @@
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading" style="color: white;">Программы</h3>
-                        <ul class="list-unstyled f-widget-nav" style="font-weight: lighter; font-size: 16px; font-family: 'montserrat'" >
-                            <li><a href="#">BASPANA PLUS</a></li>
-                            <li><a href="#">TULPAR PLUS</a></li>
-                            <li><a href="#">BASPANA</a></li>
-                            <li><a href="#">TULPAR</a></li>
-                            <li><a href="#">QAMQOR</a></li>
-                            <li><a href="#">QOLDAU</a></li>
-                            <li><a href="#">JASTAR</a></li>
-                            <li><a href="#">JAS OTAU</a></li>
+                        <ul class="list-unstyled f-widget-nav" style=" font-size: 14px; font-family: 'Source Sans Pro', sans-serif" >
+                            <li><a href="/programs/1">BASPANA PLUS</a></li>
+                            <li><a href="/programs/2">TULPAR PLUS</a></li>
+                            <li><a href="/programs/3">BASPANA</a></li>
+                            <li><a href="/programs/4">TULPAR</a></li>
+                            <li><a href="/programs/8">QAMQOR</a></li>
+                            <li><a href="/programs/7">QOLDAU</a></li>
+                            <li><a href="/programs/5">JASTAR</a></li>
+                            <li><a href="/programs/6">JAS OTAU</a></li>
                         </ul>
                     </div>
                     <!-- Footer Nav of the Page end -->
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading" style="color: white;">Информация</h3>
-                        <ul class="list-unstyled f-widget-nav" style="font-size: 16px; font-family: 'montserrat'">
-                            <li><a href="#">О нас</a></li>
+                        <ul class="list-unstyled f-widget-nav" style="font-size: 14px; font-family: 'Source Sans Pro', sans-serif">
+                            <li><a href="/about_us/chairperson">О нас</a></li>
                             <li><a href="#">Связаться с нами</a></li>
                             <li><a href="#">Правила и условия</a></li>
                             <li><a href="#">Конфиденциальность</a></li>
-                            <li><a href="#">Частые вопросы</a></li>
+                            <li><a href="/faq">Частые вопросы</a></li>
                         </ul>
                     </div>
                     <!-- Footer Nav of the Page end -->
