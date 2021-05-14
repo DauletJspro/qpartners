@@ -634,7 +634,7 @@ class PacketController extends Controller
             $this->implementOfficeBonus($userPacket, $packet, $user);
             $this->implementSpeakerBonus($userPacket, $packet, $user);
         }
-        $inviter = Users::where(['user_id' => $user->recommend_user_id])->where('is_activated', '=', true)->first();
+        $inviter = Users::where(['user_id' => $user->recommend_user_id])->first();
 
         while ($inviter && $give_bonus && $isNotGap) {
             if ($inviter->is_activated) {
