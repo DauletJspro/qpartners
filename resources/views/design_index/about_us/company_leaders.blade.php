@@ -42,10 +42,11 @@ use Illuminate\Support\Facades\DB;
 
         <section class="mt-about-sec wow fadeInUp" data-wow-delay="0.4s" style="padding-top: 20px">
             <!-- Breadcrumbs of the Page -->
-            <nav class="breadcrumbs black-text-color text-center" >
-                <ul class="list-unstyled d-flex-row font-weight-lighter" style="font-size: 1.5rem">
-                    <a href="/" class="" style="color: black; font-weight: 400">главная <i class="fa fa-angle-right ml-1" style="margin-left: 5px"></i></a>
-                    <span class="" style="font-weight: 400">председатель компании</span>
+            <nav class="breadcrumbs container" style="font-size: 1.5rem;font-family: Montserrat; height: 40px">
+                <ul class="list-unstyled d-flex-row font-weight-lighter text-uppercase">
+                    <a href="/" style="font-weight: 600; color: black" class="href-style">главная <i class="fa fa-angle-right ml-1"></i></a>
+                    <a style="font-weight: 400; color: black;">председатель кооператива</a>
+
                 </ul>
             </nav>
 
@@ -135,3 +136,8 @@ use Illuminate\Support\Facades\DB;
 
     </main>
 @endsection
+<style>
+    .href-style:hover {
+        color: silver !important;
+    }
+</style>

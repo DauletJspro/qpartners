@@ -13,12 +13,21 @@
 @section('content')
     <main id="mt-main">
         <!-- Mt Contact Banner of the Page -->
-        <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"
-                 style="background-color: lightgrey;">
+        <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"  style=" background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+             background-image: url('/new_design/images/banners/montazhnaya7.jpg');">
+            <p style="color: white;font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">галерея</p>
+
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
-                        <h1>Галерея</h1>
+                        <nav class="breadcrumbs">
+                            <ul class="list-unstyled">
+                                {{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
+                                {{--                                <li>About Us</li>--}}
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
