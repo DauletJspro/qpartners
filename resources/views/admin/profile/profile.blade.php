@@ -16,7 +16,12 @@
 
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
+                            @if(Auth::user()->role_id != 1)
                             <b>Активация</b> <a class="pull-right">@if(!\App\Models\Users::hasCountPackets($row->user_id)) <span style="color: red">Не пройдено</span>@else <span style="color: #009551">Пройдено</span> @endif</a>
+                            @else
+                                <b>Активация</b> <a class="pull-right"><span style="color: #009551">Пройдено</span></a>
+                            @endif
+
                         </li>
                         <li class="list-group-item">
                             <b>Верификация</b> <a class="pull-right" href="/admin/document"```>@if($row->is_valid_document == 0) <span style="color: red">Не пройдено</span>@else <span style="color: #009551">Пройдено</span> @endif</a>
@@ -58,6 +63,14 @@
                         </li>
                         <li class="list-group-item">
                             <b>Спонсор</b> <a class="pull-right" @if(Auth::user()->role_id == 1) href="/admin/profile/{{$row->recommend_user_id}}" target="_blank" @endif>{{$row->recommend_name}} {{$row->recommend_last_name}}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Пригласитель</b> <a class="pull-right" @if(Auth::user()->role_id == 1)
+                            href="/admin/profile/{{\App\Models\Users::getInviterName($row)->user_id}}"
+                                              target="_blank" @endif>
+                                {{\App\Models\Users::getInviterName($row)->name}}
+                                {{\App\Models\Users::getInviterName($row)->last_name}}
+                            </a>
                         </li>
                         <li class="list-group-item">
                             <b>Статус</b> <a class="pull-right">{{$row->user_status_name}}</a>

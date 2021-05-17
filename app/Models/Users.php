@@ -111,7 +111,7 @@ class Users extends Model implements AuthenticatableContract
     public static function hasCountPackets(int $user_id)
     {
         $user_packet_count = UserPacket::where(['user_id' => $user_id])
-            ->where('is_active', '=', true)
+            ->where('is_active', '  =', true)
             ->count();
 
         if ($user_packet_count) {
@@ -166,8 +166,9 @@ class Users extends Model implements AuthenticatableContract
 
     public static function getInviterName($id)
     {
-        $sponsor = Users::where('user_id', '=', $id->inviter_user_id)->select('login')->first();
-        return $sponsor->login;
+        $sponsor = Users::where('user_id', '=', $id->inviter_user_id)
+            ->select('login', 'name', 'last_name', 'user_id')->first();
+        return $sponsor;
     }
 
     public function status()

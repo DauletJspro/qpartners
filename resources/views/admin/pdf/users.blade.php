@@ -49,7 +49,7 @@
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{$gapUser->last_name}}</td>
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{$gapUser->login}}</td>
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{\App\Models\Users::getSponsorName($gapUser)}}</td>
-            <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{\App\Models\Users::getInviterName($gapUser)}}</td>
+            <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{\App\Models\Users::getInviterName($gapUser)->login}}</td>
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{$gapUser->activated_date}}</td>
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{$gapUser->phone}}</td>
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">@include('admin.pdf.include')

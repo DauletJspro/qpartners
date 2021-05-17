@@ -71,6 +71,7 @@ $statuses = \App\Models\UserStatus::where(['is_show' => true])->pluck('user_stat
                                         <th style="width: 15px">Аватар</th>
                                         <th>Пользователь</th>
                                         <th>Спонсор</th>
+                                        <th>Пригласитель</th>
                                         <th>Статус</th>
                                         <th>Email / Телефон</th>
                                         <th>Пакеты</th>
@@ -102,6 +103,12 @@ $statuses = \App\Models\UserStatus::where(['is_show' => true])->pluck('user_stat
                                         <td>
                                             <form>
                                                 <input value="{{$request->sponsor_name}}" type="text"
+                                                       class="form-control" name="sponsor_name" placeholder="Поиск">
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form>
+                                                <input value="{{$request->inviter_name}}" type="text"
                                                        class="form-control" name="sponsor_name" placeholder="Поиск">
                                             </form>
                                         </td>
@@ -166,6 +173,18 @@ $statuses = \App\Models\UserStatus::where(['is_show' => true])->pluck('user_stat
                                                    target="_blank"><p
                                                             class="login">{{$val->recommend_login}}</p>@if(Auth::user()->user_id == 1)
                                                         <p class="client-name">{{ $val->recommend_name }} {{ $val->recommend_last_name }} {{ $val->recommend_middle_name }}</p>@endif
+                                                </a>
+                                            </td>
+                                            <td class="arial-font">
+                                                <a class="main-label"
+                                                   href="/admin/profile/{{\App\Models\Users::getInviterName($val)->user_id}}"
+                                                   target="_blank"><p
+                                                            class="login">{{\App\Models\Users::getInviterName($val)->login}}</p>
+                                                    @if(Auth::user()->user_id == 1)
+                                                        <p class="client-name">
+                                                            {{ \App\Models\Users::getInviterName($val)->name }}
+                                                            {{ \App\Models\Users::getInviterName($val)->last_name }}
+                                                        </p>@endif
                                                 </a>
                                             </td>
                                             <td class="arial-font">
