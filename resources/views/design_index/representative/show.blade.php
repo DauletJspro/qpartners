@@ -12,15 +12,20 @@
 @section('content')
     <main id="mt-main">
         <!-- Mt Content Banner of the Page -->
-        <section class="mt-contact-banner"  style=" background-size: cover;
+        <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"  style=" background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-             background-image: url('/new_design/images/NewResource/list.jpg');">
+            background-image: url('/new_design/images/banners/montazhnaya3.jpg');
+            letter-spacing: 4px">
+            <p style="color: white;font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">список представителей</p>
+
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
+                                {{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
+                                {{--                                <li>About Us</li>--}}
                             </ul>
                         </nav>
                     </div>
@@ -29,25 +34,30 @@
         </section>
         <!-- Mt Content Banner of the Page end -->
         <!-- Mt About Section of the Page -->
-        <section class="mt-about-sec" style="padding-bottom: 0;">
+        <section class="mt-about-sec" style="padding: 20px 0 0 0">
             <div class="container">
+                <nav class="breadcrumbs" style="font-size: 1.5rem;font-family: Montserrat; height: 40px">
+                    <ul class="list-unstyled d-flex-row font-weight-lighter text-uppercase">
+                        <a href="/" style="font-weight: 600; color: black" class="href-style">главная <i class="fa fa-angle-right ml-1"></i></a>
+                        <a style="font-weight: 400; color: black;">представители</a>
+
+                    </ul>
+                </nav>
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="txt wow fadeInUp" data-wow-delay="0.4s">
-                            <h2>СПИСОК ПРЕДСТАВИТЕЛЕЙ С КОНТАКТАМИ</h2>
-                            <p>
-                                В нижеследующем списке Вы можете ознакомиться с представителями компании Qyran Partners
-                                Club
+                        <div class="txt wow fadeInUp" data-wow-delay="0.4s" >
+                            <h2 style="color: black">СПИСОК ПРЕДСТАВИТЕЛЕЙ С КОНТАКТАМИ</h2>
+                            <p style="color: black !important;">
+                                Здесь Вы можете ознакомиться с представителями потребительского кооператива «GAP».
                                 <br>
-                                Для каждого региона назначается свой представитель компании
+                                Представители кооператива работают в крупных городах, областных и районных центрах.
                                 <br>
-                                Если у вас есть вопросы то Вы можете обратиться в представителю в вашем регионе
+                                Если у вас есть вопросы, то Вы можете обратиться к представителю в вашем регионе.
                                 <br>
-                                Контактные данные представителя Вашего региона Вы можете найти в этом списке
+                                Контактные данные представителя Вашего региона Вы можете найти в этом списке.
                                 <br>
                                 <br>
-                                Если Вы в списке не нашли представителя своего региона, то Вы можете стать первым
-                                представителем компании в своем регионе
+                                Если Вы в списке не нашли представителя своего региона, то Вы можете стать первым представителем кооператива в своем регионе.
                             </p>
                         </div>
                     </div>
@@ -127,3 +137,9 @@
         </div>
     </main>
 @endsection
+<style>
+
+    .href-style:hover {
+        color: silver !important;
+    }
+</style>
