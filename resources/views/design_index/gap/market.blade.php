@@ -191,13 +191,15 @@
                                         <div class="b1">
                                             <div class="b2">
                                                 <div style="
-                                                        background-image: url({{asset($item->product_image)}});
+
                                                         background-repeat: no-repeat;
                                                         background-size: contain;
                                                         background-position: center;
                                                         width: 275px;
                                                         height: 290px;
-                                                        "></div>
+                                                        ">
+                                                    <img src="{{$item->product_image}}"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
