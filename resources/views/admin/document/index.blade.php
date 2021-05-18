@@ -28,7 +28,7 @@
                             @foreach($document_list as $key => $item)
 
                                 <div class="item-docs" id="document_item_{{$item->document_id}}">
-                                    <span class="document-name">{{$item->document_name_ru}}@if($item->is_required == 1)</br><span style="font-weight: bold; color: red">(обязательно)</span>@endif</span>
+                                    <span class="document-name">{{$item->document_name_ru}}@if($item->is_required == 1)</br><span style="font-weight: bold; color: red">(обязательно) (Изображение выберите из галереи)</span>@endif</span>
                                     <div class="input-box clearfix">
 
                                         <?php
