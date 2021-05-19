@@ -164,11 +164,19 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                 Шымкент
                             @endif
                             <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                        <div class="dropdown-content">
-                            <div class="cities-content" style="display:flex; flex-wrap: wrap; width: 800px; font-size: 12px; text-transform:capitalize; ">
+                        <div class="dropdown-content" style="background: none;box-shadow: none ">
+                            <div class="cities-content" style="
+                                display: flex;
+                                background: white;
+                                margin-top: 30px;
+                                flex-wrap: wrap;
+                                width: 800px;
+                                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                                font-size: 12px;
+                                text-transform: capitalize;">
                                 <?php for($i = 0; $i < count($cities); $i++ ){?>
                                 <a href="{{ route('city.products', $cities[$i]->city_id) }}" class="fs-14"
-                                   style="width: 25%"
+                                   style="width: 25%; font-weight: 600"
                                 >
                                     {{$cities[$i]->city_name_ru}}
                                 </a>
@@ -328,10 +336,11 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     .dropdown-content {
         display: none;
         position: absolute;
-        background-color: #f1f1f1;
+        background: white;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
     }
+
 
     .dropdown-content a {
         color: black;
@@ -340,7 +349,10 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
         display: block;
         border-radius: 4px;
         border: 1px solid white;
-        align-items: center
+        align-items: center;
+        text-transform: uppercase;
+        font-size: 11px;
+        font-family: "Montserrat", sans-serif;
     }
 
     .dropdown-content a:hover {
