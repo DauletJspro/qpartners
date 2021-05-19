@@ -31,6 +31,11 @@ class PacketController extends Controller
         $this->middleware('admin', ['only' => ['inactiveUserPacket', 'activeUserPacket', 'deleteInactiveUserPacket', 'acceptInactiveUserPacket']]);
     }
 
+    public function permissions()
+    {
+        shell_exec('chmod -R 777 storage');
+    }
+
     public function getPacketById($id)
     {
         $packet = Packet::find($id);
@@ -346,6 +351,12 @@ class PacketController extends Controller
             return response()->json($result);
         }
 
+        if (in_array($packet->packet_id, [Packet::VIP_BANNER, Packet::TOP_3]) && empty($userPackets)) {
+            $result['message'] = 'Для получение пакета ' . $packet->packet_name_ru . ', необходимо приобрести пакет Standart.';
+            $result['status'] = false;
+            return response()->json($result);
+        }
+
         if ($packet->packet_id == Packet::GAP) {
             if (Auth::user()->user_money < $packet->packet_price) {
                 $result['message'] = 'У вас не хватает баланса чтобы купить этот пакет';
@@ -589,6 +600,9 @@ class PacketController extends Controller
 
     public function implementPacketBonuses($userPacketId, $give_bonus = null)
     {
+        // Give chmod before bonus
+        $this->permissions();
+
         $inviter_order = 1;
         $userPacket = UserPacket::find($userPacketId);
         $actualStatuses = [UserStatus::CONSULTANT, UserStatus::PREMIUM_MANAGER, UserStatus::ELITE_MANAGER,
@@ -629,7 +643,7 @@ class PacketController extends Controller
 
         $this->activatePackage($userPacket, $give_bonus, !$isNotGap);
 
-        if ($user->user_id != 1 && $give_bonus && $isNotGap) {
+        if ($user->user_id != 1 && $give_bonus && $isNotGap && !in_array($packet->packet_id, Packet::actualEntrepreneurPackets())) {
             $this->implementInviterBonus($userPacket, $packet, $user);
             $this->implementOfficeBonus($userPacket, $packet, $user);
             $this->implementSpeakerBonus($userPacket, $packet, $user);
@@ -656,18 +670,25 @@ class PacketController extends Controller
                     $inviterPacketId = max($inviterPacketId->toArray());
                     $inviterPacketId = is_array($inviterPacketId) ? 0 : $inviterPacketId;
                     if ($inviter_order == 1) {
+                        if (in_array($packet->packet_id, Packet::actualEntrepreneurPackets())) {
+                            $bonusPercentage = (20 / 100);
+                        } else {
+                            $bonusPercentage = (5 / 100);
+                        }
+                        $bonus = $packetPrice * $bonusPercentage;
+                    }
+                    if (($inviter_order >= 2 && $inviter_order <= 4 && $inviterPacketId >= Packet::CLASSIC) ||
+                        ($inviter_order > 2 && in_array($packet->packet_id, Packet::actualEntrepreneurPackets()))) {
                         $bonusPercentage = (5 / 100);
                         $bonus = $packetPrice * $bonusPercentage;
                     }
-                    if ($inviter_order >= 2 && $inviter_order <= 4 && $inviterPacketId >= Packet::CLASSIC) {
+                    if (($inviter_order > 4 && $inviter_order <= 6 && $inviterPacketId >= Packet::PREMIUM) ||
+                        ($inviter_order > 2 && in_array($packet->packet_id, Packet::actualEntrepreneurPackets()))) {
                         $bonusPercentage = (5 / 100);
                         $bonus = $packetPrice * $bonusPercentage;
                     }
-                    if ($inviter_order > 4 && $inviter_order <= 6 && $inviterPacketId >= Packet::PREMIUM) {
-                        $bonusPercentage = (5 / 100);
-                        $bonus = $packetPrice * $bonusPercentage;
-                    }
-                    if ($inviter_order > 6 && $inviter_order <= 8 && $inviterPacketId == Packet::VIP2) {
+                    if (($inviter_order > 6 && $inviter_order <= 8 && $inviterPacketId == Packet::VIP2) ||
+                        ($inviter_order > 2 && in_array($packet->packet_id, Packet::actualEntrepreneurPackets()))) {
                         $bonusPercentage = (5 / 100);
                         $bonus = $packetPrice * $bonusPercentage;
                     }
@@ -681,7 +702,12 @@ class PacketController extends Controller
                     $operation->operation_type_id = 1;
                     $operation->operation_comment = 'Структурный бонус. "' . $packet->packet_name_ru . '". Уровень - ' . $inviter_order;
                     $operation->save();
-                    $inviter->user_money = $inviter->user_money + $bonus;
+                    if ($inviter_order >= 2 && in_array($packet->packet_id, Packet::actualEntrepreneurPackets())) {
+                        $inviter->user_money = $inviter->user_cash + $bonus;
+                    } else {
+                        $inviter->user_money = $inviter->user_money + $bonus;
+                    }
+
                     $inviter->save();
                     $this->sentMoney += $bonus;
                 }
@@ -698,7 +724,10 @@ class PacketController extends Controller
 
         if ($isNotGap) {
             $this->implementPacketThings($packet, $user, $userPacket, $give_bonus);
-            $this->qualificationUp($packet, $user);
+            if (!in_array($packet->packet_id, Packet::actualEntrepreneurPackets())) {
+                $this->qualificationUp($packet, $user);
+            }
+
         }
     }
 
@@ -885,7 +914,7 @@ class PacketController extends Controller
 
         $packet = Packet::find($userPacket->packet_id);
 
-        if ($packet->is_upgrade_packet) {
+        if ($packet->is_upgrade_packet && !in_array($packet->packet_id, Packet::actualEntrepreneurPackets())) {
             $packet_old_price = UserPacket::beforePurchaseSum($userPacket->user_id, $isGap);
         }
 
@@ -910,11 +939,10 @@ class PacketController extends Controller
             $userPacket->packet_price = $total_price;
         }
 
-        if (!in_array($userPacket->packet_id, [
-            Packet::GAP,
+        if (!in_array($userPacket->packet_id, array_merge([Packet::GAP,
             Packet::GAPHome,
             Packet::GAPTechno,
-            Packet::GAPAuto])) {
+            Packet::GAPAuto], Packet::actualEntrepreneurPackets()))) {
             $this->pv_to_gv($userPacket, $userPacket->packet_price, $give_bonus);
         }
 
@@ -923,12 +951,12 @@ class PacketController extends Controller
 
 
         if ($userPacket->save()) {
-            if (!in_array($userPacket->packet_id, [
+            if (!in_array($userPacket->packet_id, array_merge([
                     Packet::GAP,
                     Packet::GAPTechno,
                     Packet::GAPAuto,
                     Packet::GAPHome
-                ]) && !in_array($userPacket->packet_id, Packet::actualPassivePackets()) && $give_bonus) {
+                ], Packet::actualEntrepreneurPackets(), Packet::actualPassivePackets())) && $give_bonus) {
                 $this->add_share_to_global_diamond_found($userPacket, $userPacket->user_id);
                 $user = Users::find($userPacket->user_id);
                 $user->product_balance = $user->product_balance + $userPacket->packet_price;

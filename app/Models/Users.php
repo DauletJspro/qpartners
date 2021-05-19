@@ -6,6 +6,7 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Users extends Model implements AuthenticatableContract
 {
@@ -54,6 +55,17 @@ class Users extends Model implements AuthenticatableContract
     const  USER = 8;
 
 
+    const AdminTitle = 'admin';
+    const ActiveClientTitle = 'active_client';
+    const PassiveClientTitle = 'passive_client';
+    const ModeratorTitle = 'moderator';
+    const AccountantTitle = 'accountant';
+    const EntrepreneurTitle = 'entrepreneur';
+    const ConsumerTitle = 'consumer';
+    const SellerTitle = 'seller';
+    const UserTitle = 'user';
+
+
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
@@ -62,6 +74,41 @@ class Users extends Model implements AuthenticatableContract
     public static function parentFollowers($parent_id)
     {
         return Users::where(['recommend_user_id' => $parent_id])->get();
+    }
+
+    public static function getRoleIdFromTitle($role_title)
+    {
+        $roleId = null;
+        switch ($role_title) {
+            case self::AdminTitle:
+                $roleId = self::ADMIN;
+                break;
+            case self::ActiveClientTitle:
+                $roleId = self::CLIENT;
+                break;
+            case self::PassiveClientTitle:
+                $roleId = self::CLIENT;
+                break;
+            case self::ModeratorTitle:
+                $roleId = self::MODERATOR;
+                break;
+            case self::AccountantTitle:
+                $roleId = self::ACCOUNTANT;
+                break;
+            case self::EntrepreneurTitle:
+                $roleId = self::ENTREPRENEUR;
+                break;
+            case self::ConsumerTitle:
+                $roleId = self::CONSUMER;
+                break;
+            case self::SellerTitle:
+                $roleId = self::SELLER;
+                break;
+            case self::UserTitle:
+                $roleId = self::USER;
+                break;
+        }
+        return $roleId;
     }
 
     public static function isEnoughStatuses($parent_id, $status_id, $status_type)
@@ -179,6 +226,19 @@ class Users extends Model implements AuthenticatableContract
     public function childs()
     {
         return $this->hasMany(Users::class, 'recommend_user_id', 'user_id');
+    }
+
+    public static function hasRole($role)
+    {
+        $user = Auth::user();
+        $roleId = self::getRoleIdFromTitle($role);
+        if ($role == self::PassiveClientTitle && $user->role_id == $roleId && $user->is_activated == false) {
+            return true;
+        }
+        if ($user->role_id == $roleId && $user->is_activated == true) {
+            return true;
+        }
+        return false;
     }
 
 }
