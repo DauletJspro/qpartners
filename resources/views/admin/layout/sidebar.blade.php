@@ -276,13 +276,13 @@
                 </li>
             </ul>
         </li>
-        @if(Auth::user()->user_id != \App\Models\Users::ACCOUNTANT)
             <li class="treeview">
                 <a href="/admin/client">
                     <i class="fa fa-users"></i>
                     <span>Пользователи</span>
                 </a>
             </li>
+            @if(Auth::user()->user_id != \App\Models\Users::ACCOUNTANT)
             <li class="treeview">
                 <a href="/admin/client/share">
                     <i class="fa fa-users"></i>
