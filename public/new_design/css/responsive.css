@@ -35,12 +35,12 @@
 
     .mt-bestseller .slick-prev,
     .mt-bestseller .slick-next {
-        right: 0;
+        right: 30px;
     }
 
     .mt-bestseller .slick-prev {
         right: auto;
-        left: 0;
+        left: 30px;
     }
 }
 
@@ -471,6 +471,9 @@
 }
 
 @media only screen and (max-width: 991px) {
+    #vip-container {
+        margin-top: 80px;
+    }
     .mt-paddingsmzero {
         padding: 0 !important;
     }
@@ -1360,6 +1363,11 @@
 }
 
 @media only screen and (max-width: 767px) {
+    #vip-container .block{
+        width: 100% !important;
+        margin: 0 !important;
+        margin-top: 20px !important;
+    }
     #nav-icon1 {
         display: block !important;
     }

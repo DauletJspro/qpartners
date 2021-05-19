@@ -39,7 +39,7 @@
 @section('content')
     <main id="mt-main" style="margin-top: -50px !important;">
         <div class="row" style="margin-right: 0 !important; margin-left: 0 !important;">
-            <div class="mt-bestseller bg-grey text-center wow fadeInUp" data-wow-delay="0.4s">
+            <div class="mt-bestseller text-center wow fadeInUp" data-wow-delay="0.4s">
                 <div class="row" style="height: 260px;">
                     <div class="col-xs-12">
                         <div class="bestseller-slider">
@@ -186,7 +186,7 @@
                         @foreach($products as $item)
                             <li>
                                 <div class="mt-product1 large"
-                                     style="border: 1px solid lightgrey; padding: 0 2px 20px 2px">
+                                     style="border: 1px solid lightgrey; padding-bottom: 20px">
                                     <div class="box">
                                         <div class="b1">
                                             <div class="b2">
@@ -202,11 +202,11 @@
                                         </div>
                                     </div>
                                     <div class="txt">
-                                        <strong class="title"><a href="{{ route('product.detail', $item->product_id) }}">{{$item->product_name_ru}}</a></strong>
+                                        <strong class="title"><a href="{{ route('product.detail', $item->product_id) }}" style="color: black">{{$item->product_name_ru}}</a></strong>
                                         <p style=" width: 30ch;   overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
                                             {{$item->product_desc_ru}}
                                         </p>
-                                        <span class="price"> <span>{{$item->product_price}}</span> тг.</span>
+                                        <span class="price"><span>Цена:</span> <span style="font-weight: normal">&nbsp; ${{$item->product_price}} &nbsp; ({{$item->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span></span>
                                     </div>
                                 </div>
                             </li>
