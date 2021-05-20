@@ -154,6 +154,19 @@
                         <li @if(isset($_GET['tab']) && $_GET['tab'] == 'status') class="active" @endif>
                             <a style="font-size: 13px"  href="#status" data-toggle="tab">Изменить статус</a>
                         </li>
+                        <li @if(isset($_GET['tab']) && $_GET['tab'] == 'pv') class="active" @endif>
+                            <a style="font-size: 13px"  href="#pv" data-toggle="tab">ЛО</a>
+                        </li>
+
+                        <li @if(isset($_GET['tab']) && $_GET['tab'] == 'gv') class="active" @endif>
+                            <a style="font-size: 13px"  href="#gv" data-toggle="tab">ГО</a>
+                        </li>
+                        <li @if(isset($_GET['tab']) && $_GET['tab'] == 'lsv') class="active" @endif>
+                            <a style="font-size: 13px"  href="#lsv" data-toggle="tab">Л-SV</a>
+                        </li>
+                        <li @if(isset($_GET['tab']) && $_GET['tab'] == 'gsv') class="active" @endif>
+                            <a style="font-size: 13px"  href="#gsv" data-toggle="tab">Г-SV</a>
+                        </li>
                     @endif
                 </ul>
                 <div class="tab-content" style="min-height: 400px">
@@ -175,9 +188,20 @@
                         <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'status') active @endif tab-pane" id="status">
                             @include('admin.profile.status-edit')
                         </div>
-
-                        <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'profit') active @endif tab-pane" id="volume">
-                            @include('admin.profile.volume-edit')
+{{--                        <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'profit') active @endif tab-pane" id="volume">--}}
+{{--                            @include('admin.profile.volume-edit')--}}
+{{--                        </div>--}}
+                        <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'pv') active @endif tab-pane" id="pv">
+                            @include('admin.profile.pv-edit')
+                        </div>
+                        <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'gv') active @endif tab-pane" id="gv">
+                            @include('admin.profile.gv-edit')
+                        </div>
+                        <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'lsv') active @endif tab-pane" id="lsv">
+                            @include('admin.profile.l-sv-edit')
+                        </div>
+                        <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'gsv') active @endif tab-pane" id="gsv">
+                            @include('admin.profile.g-sv-edit')
                         </div>
                     @endif
 

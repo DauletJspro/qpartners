@@ -78,6 +78,10 @@ Route::group([
         Route::post('edit', 'ProfileController@update');
         Route::post('/password/edit', 'ProfileController@editPassword');
         Route::post('/money/edit', 'ProfileController@editMoney');
+        Route::post('/pv/edit', 'ProfileController@editPV');
+        Route::post('/gv/edit', 'ProfileController@editGV');
+        Route::post('/lsv/edit', 'ProfileController@editLSV');
+        Route::post('/gsv/edit', 'ProfileController@editGSV');
         Route::post('/status/edit', 'ProfileController@editStatus');
         Route::post('/activate', 'ProfileController@activateUser');
         Route::post('/profit/edit', 'ProfileController@editProfit');
