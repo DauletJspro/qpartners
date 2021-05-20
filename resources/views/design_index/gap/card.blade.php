@@ -109,9 +109,9 @@ if (isset($sub_category_id)) {
                         </button>
                     </div>
                 </div>
-                <div style="width: 48%;display: flex;">
+                <div style="width: 48%;display: flex; position: relative;">
                     <img class="" src="/new_design/images/banners/company-photo1.jpeg" alt="img not found">
-                    <div style=" position: absolute; margin-left: 14.85%; margin-top: 14%">
+                    <div style=" position: absolute; right: 0px; bottom: 10%">
                         <span style="background-color: #FFE200; padding: 5px 25px 5px 15px; margin-bottom: 15px; font-weight: 600; letter-spacing: 2px">VIP</span>
                     </div>
                 </div>
@@ -129,9 +129,9 @@ if (isset($sub_category_id)) {
                         </button>
                     </div>
                 </div>
-                <div style="width: 48%;display: flex;">
+                <div style="width: 48%;display: flex; position: relative;">
                     <img class="" src="/new_design/images/banners/company-photo2.jpeg" alt="img not found">
-                    <div style=" position: absolute; margin-left: 14.85%; margin-top: 14%">
+                    <div style=" position: absolute; right: 0px; bottom: 10%">
                         <span style="background-color: #FFE200; padding: 5px 25px 5px 15px; margin-bottom: 15px; font-weight: 600; letter-spacing: 2px">VIP</span>
                     </div>
                 </div>
