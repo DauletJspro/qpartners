@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Http\Helpers;
+use http\Client\Curl\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use DB;
@@ -109,6 +110,11 @@ class UserPacket extends Model
         }
         return array_sum($array);
 
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(Users::class, 'user_id', 'user_id');
     }
 
 
