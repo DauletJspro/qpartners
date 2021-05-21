@@ -9,7 +9,6 @@
 
 @endsection
 
-
 @section('content')
     <main id="mt-main">
         <!-- Mt Contact Banner of the Page -->

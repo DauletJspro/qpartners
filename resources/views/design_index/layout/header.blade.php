@@ -156,7 +156,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                             <a href="/gap/card/show"><span style="cursor:pointer;color: #646464">CARD</span></a>
                         @endif
                     </div>
-                    <div class="cities dropdown cursor-pointer" style="margin-left: 4rem;">
+                    <div class="cities dropdown cursor-pointer" style="margin-left: 4rem; margin-top: 0.5rem">
                         <a class="icl_lang_sel_current fs-18 icl_lang_sel_native font-weight-lighter text-black mt-1" style="">
                             @if(isset($city))
                                 {{$city->city_name_ru}}
@@ -204,10 +204,11 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                 <div class="s-drop">
                                     <ul>
 {{--                                        <li><a href="/about_us/guide">Руководство компании</a></li>--}}
-{{--                                        <li><a href="/about_us/administration">Администрация компании</a></li>--}}
-{{--                                        <li><a href="/about_us/leaders">Лидеры компании</a></li>--}}
+                                        <li><a href="/about_us/administration">Администрация компании</a></li>
+                                        <li><a href="/about_us/leaders">Лидерcкий совет</a></li>
                                         <li><a href="/about_us/guide">О Кооперативе</a></li>
                                         <li><a href="/about_us/chairperson">Председатель Кооператива</a></li>
+                                        <li><a href="/about_us/representatives">Представители</a></li>
                                         <li><a href="{{route('faq.show')}}">Часто задаваемые вопросы</a></li>
                                     </ul>
                                 </div>

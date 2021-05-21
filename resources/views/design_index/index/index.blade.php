@@ -57,7 +57,7 @@ use Illuminate\Support\Facades\Session;
                         <!-- banner box two start here -->
                         <div class="banner-box two">
                             <!-- banner 7 right start here -->
-                            <div class="banner-7 right wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="banner-7 left wow fadeInUp" data-wow-delay="0.4s">
                                 <div style="background-image: url('/new_design/images/banners/banner3.svg'); background-position: center; background-size: cover; height: 285px; max-width: 100%; "></div>
                                 <div class="holder">
                                     <div class="texts" style="color:white;">
@@ -673,8 +673,7 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <!-- box start here -->
                                                 <div class="box">
-                                                    <iframe width="250" height="250" src="https://www.youtube.com/embed/YXdlHaZtQxw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div><!-- box end here -->
+                                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/T_mnUMLTLiA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                                                </div><!-- box end here -->
                                             </div><!-- mt product1 end here -->
                                         </li>
                                         <li class="fil2">
@@ -682,8 +681,7 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <!-- box start here -->
                                                 <div class="box">
-                                                    <iframe width="250" height="250" src="https://www.youtube.com/embed/vrA0RLhLo-8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div><!-- box end here -->
+                                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/0AnHd8FRWoQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                                                </div><!-- box end here -->
 
                                             </div><!-- mt product1 end here -->
                                         </li>
@@ -692,8 +690,7 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <!-- box start here -->
                                                 <div class="box">
-                                                    <iframe width="250" height="250" src="https://www.youtube.com/embed/YXdlHaZtQxw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div><!-- box end here -->
+                                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ACv2qoo-2QI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                                                </div><!-- box end here -->
                                             </div><!-- mt product1 end here -->
                                         </li>
                                         <li class="fil1">
@@ -701,8 +698,7 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <!-- box start here -->
                                                 <div class="box">
-                                                    <iframe width="250" height="250" src="https://www.youtube.com/embed/vrA0RLhLo-8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div><!-- box end here -->
+                                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/5h-3wXYzS8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                                                </div><!-- box end here -->
                                             </div><!-- mt product1 end here -->
                                         </li>
                                     </ul>

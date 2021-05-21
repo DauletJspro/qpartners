@@ -101,15 +101,15 @@
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading" style="color: white;">Программы</h3>
-                        <ul class="list-unstyled f-widget-nav" style=" font-size: 14px; font-family: 'Source Sans Pro', sans-serif" >
-                            <li><a href="/programs/1">BASPANA PLUS</a></li>
-                            <li><a href="/programs/2">TULPAR PLUS</a></li>
-                            <li><a href="/programs/3">BASPANA</a></li>
-                            <li><a href="/programs/4">TULPAR</a></li>
-                            <li><a href="/programs/8">QAMQOR</a></li>
-                            <li><a href="/programs/7">QOLDAU</a></li>
-                            <li><a href="/programs/5">JASTAR</a></li>
-                            <li><a href="/programs/6">JAS OTAU</a></li>
+                        <ul class="list-unstyled f-widget-nav" style=" font-size: 14px; font-family: 'Source Sans Pro', sans-serif; text-transform: capitalize" >
+                            <li><a href="/programs/1">baspana plus</a></li>
+                            <li><a href="/programs/2">tulpar plus</a></li>
+                            <li><a href="/programs/3">baspana</a></li>
+                            <li><a href="/programs/4">tulpar</a></li>
+                            <li><a href="/programs/8">qamqor</a></li>
+                            <li><a href="/programs/7">qoldau</a></li>
+                            <li><a href="/programs/5">jastar</a></li>
+                            <li><a href="/programs/6">jas otau</a></li>
                         </ul>
                     </div>
                     <!-- Footer Nav of the Page end -->
