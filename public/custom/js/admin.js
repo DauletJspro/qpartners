@@ -419,12 +419,13 @@ function confirmBasket() {
     let discount_type = $('#discount_type').val();
     let address = $('#address').val();
     let delivery_id = $('#delivery').val();
+    let cashback = $('#cashback:checked').val();
     $.ajax({
         type: 'POST',
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        data: {type: discount_type, address: address, delivery_id: delivery_id},
+        data: {type: discount_type, address: address, delivery_id: delivery_id, cashback:cashback},
         url: "/admin/online/confirm",
         success: function (data) {
             if (data.status == true) {

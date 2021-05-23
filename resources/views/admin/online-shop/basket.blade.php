@@ -76,7 +76,13 @@
                         <option value="2">Курьером</option>
                         <option value="3">По почте</option>
                     </select>                                
-                </div>    
+                </div>
+                <div class="form-goup">
+                    @if(Auth::user()->role_id == App\Models\Role::CLIENT || Auth::user()->role_id == App\Models\Role::ADMIN)
+                        <input type="checkbox"  name="cashback" id="cashback" value="true" >
+                        <label for="cashback"> Потратить кэшбэк</label>
+                    @endif
+                </div>
                 @if ($row->is_packet)
                     <input type="hidden" name="type" id="discount_type" value="is_packet">
                 @elseif($row->is_partner)
@@ -109,7 +115,7 @@
                             style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
                             type="button" class="btn btn-default pull-left">Снять с super баланса
                         </button>
-                    @endif                    
+                    @endif
                 @endif                
             </div>
         </div>

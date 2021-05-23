@@ -31,7 +31,7 @@ Route::group([
     Route::get('/set-password', 'AuthController@showSetPassword')->name('show.password');
     Route::post('/reset-password', 'AuthController@resetPassword');
     Route::post('/set-password', 'AuthController@setNewPassword');
-    Route::post('/register', 'AuthController@register');
+    Route::post('/register', 'AuthController@register')->name('register');
     Route::get('/logout', 'AuthController@logout');
 });
 
@@ -234,10 +234,15 @@ Route::group([
     Route::resource('group', 'GroupController');
     Route::resource('user-group', 'UserGroupController');
 
+    Route::post('/buy/cashback/','PayCashbackController@create')->name('cashback.pay');
+
+
+    Route::get('/gap_card/orders/', 'GapCardOrderController@index')->name('gap.card.orders.index');
+    Route::get('/gap_card/ratings', 'ConsumerRatingController@index')->name('gap.card.ratings.index');
+
     Route::get('/orders', 'OrderController@index');
     Route::get('/orders/edit', 'OrderController@editUserOrder')->name('orders.edit');
     Route::post('/orders/edit/{id}', 'OrderController@updateOrder')->name('orders.update');
-
 
     Route::get('/pdf', 'PdfController@index')->name('pdf.index');
     Route::get('/pdf/baspana', 'PdfController@generateBaspana')->name('pdf.generate');
@@ -419,11 +424,20 @@ Route::group([
     'namespace' => 'Index',
 ], function () {
     Route::get('/', 'IndexController@index')->name('gap.index.show');
+
+    Route::group([
+        'prefix' => 'gap_card'
+    ], function () {
+        Route::post('/confirm/{id}', 'GapCardOrderController@confirm')->name('gap.card.order.confirm');
+        Route::post('/create/', 'GapCardOrderController@create')->name('gap.card.order.create');
+    });
+
     Route::group([
         'prefix' => 'programs'
     ], function () {
         Route::post('/rating', 'RatingsController@rating')->name('rating');
     });
+
     Route::get('/programs/the_initial', 'ProgramController@initial')->name('program.initial');
     Route::get('/programs/the_shares', 'ProgramController@share')->name('program.share');
     Route::get('/programs/{id}', 'ProgramController@programsDetail')->name('program.programsDetail');

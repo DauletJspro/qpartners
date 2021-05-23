@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Blog;
+use App\Models\CashbackShopping;
+use App\Models\Currency;
 use App\Models\Fond;
 use App\Models\Operation;
 use App\Models\Packet;
@@ -13,6 +15,7 @@ use App\Models\UserPacket;
 use App\Models\Users;
 use App\Models\Order;
 use App\Models\UserStatus;
+use Carbon\Carbon;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -84,13 +87,24 @@ class OnlineController extends Controller
 
     public function showBasket(Request $request)
     {
+        $shopping_table = CashbackShopping::where('user_id', Auth::user()->user_id)->first();
+        //Получаем первый день каждого месяца
+        $firstDayOfMonth = Carbon::now()->firstOfMonth()->toDateString();
+
         $request->basket = UserBasket::leftJoin('product', 'product.product_id', '=', 'user_basket.product_id')
-            ->where('user_id', Auth::user()->user_id)
+            ->where('user_basket.user_id', Auth::user()->user_id)
             ->where('user_basket.is_active', 0)
             ->select('product.*', 'user_basket.unit')
             ->get();
 
         $request->basket_count = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->count();
+
+        //Если последняя покупка было сделано в прошлом месяце делаем сброс счетчика, и новый счетчик для кэшбэк для этого месяца
+        //Если нет данных о покупку через кэшбэк то обычным образом работает
+        if($shopping_table->updated_at < $firstDayOfMonth){
+            CashbackShopping::where('user_id', Auth::user()->user_id)->delete();
+        }
+
         if ($request->is_partner) {
             $request->is_partner = UserPacket::where('user_id', Auth::user()->user_id)->where('is_active', 1)->exists();
         }
@@ -178,6 +192,13 @@ class OnlineController extends Controller
     {
         $result['error'] = 'Временно недоступно';
         $result['status'] = false;
+
+        $sum = 0;
+        $products_all = [];
+        $products_item = [];
+        $user = Auth::user();
+        $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
+
         $validator = Validator::make($request->all(), [
             'type' => 'required|string',
             'address' => 'required|string',
@@ -186,19 +207,13 @@ class OnlineController extends Controller
 
         if ($validator->fails()) {
             $messages = $validator->errors();
-            $error = $messages->all(); 
-            $result['message'] = $error[0];           
+            $error = $messages->all();
+            $result['message'] = $error[0];
             return response()->json($result);
         }
-
-        $sum = 0;        
-        $products_all = [];
-        $products_item = [];
-        $user = Auth::user();
-        $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
         foreach ($products as $item) {
             $product_price = Product::where('product_id', $item->product_id)->first();
-            $sum += $product_price->product_price * $item->unit;
+            $sum += ($product_price->product_price * $item->unit) * Currency::where('currency_id', 1)->first()->money;
             $products_item['product_id'] = $product_price->product_id;
             $products_item['product_name'] = $product_price->product_name_ru;
             $products_item['count'] = $item->unit;
@@ -206,11 +221,76 @@ class OnlineController extends Controller
             array_push($products_all, $products_item);
         }
 
+// cashback start
+
+      if($request->cashback == "true"){
+          $shopping_table = CashbackShopping::where('user_id', $user->user_id)->first();
+          $firstDayOfMonth = Carbon::now()->firstOfMonth()->toDateString();
+          $lastDayOfMonth = Carbon::now()->lastOfMonth()->toDateString();
+          $LIMIT = 100000;
+
+
+
+          if($sum <= $LIMIT){
+              if($user->user_cash >= $sum){
+                  if(($shopping_table->cash + $sum <= $LIMIT) || (($firstDayOfMonth < isset($shopping_table->updated_at)) && (isset($shopping_table->updated_at) < $lastDayOfMonth) && (isset($shopping_table->cash) <= $LIMIT))){
+                      $user_cash = $user->user_cash;
+                      $user_new_cash = $user_cash - $sum;
+                      $user->user_cash = $user_new_cash;
+                      Order::create([
+                          'order_code' => time(),
+                          'user_id' => $user->user_id,
+                          'username' => $user->name . $user->last_name,
+                          'email' => $user->email,
+                          'address' => $request->address,
+                          'contact' => $user->phone,
+                          'sum' => $sum,
+                          'products' => \json_encode($products_all),
+                          'packet_id' => null,
+                          'is_paid' => 1,
+                          'payment_id' => 0,
+                          'delivery_id' => $request->delivery_id,
+                      ]);
+                      foreach($products as $product){
+                          $product->is_active = 1;
+                          $product->save();
+                      }
+                      if($shopping_table) {
+                          $shopping_table->cash += $sum;
+                          $shopping_table->save();
+                      }else{
+                          $cashback = CashbackShopping::create([
+                              'user_id' => $user->user_id,
+                              'cash' => $sum,
+                          ]);
+                          $cashback->save();
+                      }
+                      $user->save();
+                      $result['status'] = true;
+                      return response()->json($result);
+                  }else{
+                      $result['error'] = 'Вы превысили лимит на покупку через кэшбэк!';
+                      $result['status'] = false;
+                      return response()->json($result);
+                  }
+              }else{
+                  $result['error'] = 'У вас недостаточно средств';
+                  $result['status'] = false;
+                  return response()->json($result);
+              }
+          }else{
+              $result['error'] = 'Вы превысили лимит на покупку через кэшбэк!';
+              $result['status'] = false;
+              return response()->json($result);
+          }
+      }
+// cashback end
+
         if ($request->type == 'is_packet') {
             $sum = $sum - ($sum * \App\Models\Currency::PacketDiscount);
             $sum = round($sum);
             if (Auth::user()->product_balance < $sum) {
-                $result['error'] = 'У вас недостаточно бонусов';                
+                $result['error'] = 'У вас недостаточно бонусов';
                 return response()->json($result);
             }
             $user->product_balance = $user->product_balance - $sum;
@@ -233,7 +313,7 @@ class OnlineController extends Controller
             $sum = $sum - ($sum * \App\Models\Currency::PartnerDiscount);
             $sum = round($sum);
             if (Auth::user()->super_balance < $sum) {
-                $result['error'] = 'У вас недостаточно super бонусов';                
+                $result['error'] = 'У вас недостаточно super бонусов';
                 return response()->json($result);
             }
             $user->super_balance = $user->super_balance - $sum;
@@ -245,7 +325,7 @@ class OnlineController extends Controller
                 $user_basket->product_price = $product->product_price;
                 $user_basket->is_active = 1;
                 $user_basket->save();
-            }            
+            }
             // $result['status'] = true;
             // return response()->json($result);
         }
@@ -257,7 +337,7 @@ class OnlineController extends Controller
                 return response()->json($result);
             }
             $sum = $sum - ($sum * \App\Models\Currency::PartnerDiscount);
-            $sum = round($sum);            
+            $sum = round($sum);
         }
         else {
             $sum = $sum - ($sum * \App\Models\Currency::ClientDiscount);
@@ -270,7 +350,7 @@ class OnlineController extends Controller
         }
 
         $this->implementCashback(Auth::user()->user_id);
-        
+
         $operation = new UserOperation();
         $operation->author_id = null;
         $operation->recipient_id = $user->user_id;
@@ -296,10 +376,11 @@ class OnlineController extends Controller
             'delivery_id' => $request->delivery_id,
             'is_paid' => 1
         ];
-        $order = Order::createOrder($data_order);  
-        
+        $order = Order::createOrder($data_order);
+
         $result['status'] = true;
         return response()->json($result);
+////        return $request->all();
     }
 
 
@@ -363,7 +444,7 @@ class OnlineController extends Controller
     public function showHistory(Request $request)
     {
         $request->basket = UserBasket::leftJoin('product', 'product.product_id', '=', 'user_basket.product_id')
-            ->where('user_id', Auth::user()->user_id)
+            ->where('user_basket.user_id', Auth::user()->user_id)
             ->where('user_basket.is_active', 1)
             ->orderBy('user_basket_id', 'desc')
             ->select('product.*',

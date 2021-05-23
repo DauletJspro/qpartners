@@ -1,4 +1,4 @@
-<form method="post" action="">
+<form method="post" action="{{ route('register') }}">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="row">
         <div class="col-xs-12 col-sm-6 form-group">

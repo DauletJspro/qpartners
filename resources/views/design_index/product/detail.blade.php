@@ -11,12 +11,18 @@ $tab = (explode('tab=', URL::current()));
 @section('meta-tags')
 
     <title>Qpartners Shop</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
           content="«Qpartners» - это уникальный медиа проект с широким набором возожностей для взаймодествия с участниками виртуального рынка"/>
     <meta name="keywords" content="Qpartners"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+    <script src="/custom/js/admin.js?v=11"></script
 @endsection
 @section('content')
     <i class="ajax-loader" id="ajax-loader"></i>
@@ -26,6 +32,20 @@ $tab = (explode('tab=', URL::current()));
             <div class="container">
 
                 <div class="row">
+                    <div class="modal-dialog" id="shop_modal" style="display: none;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" onclick="closeModal()"><span aria-hidden="true">×</span></button>
+                                <h2 class="modal-title" id="modal_title"></h2>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default pull-left" onclick="closeModal()">Закрыть</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div>
                     <div class="col-xs-12">
                         <!-- Slider of the Page -->
                         <div class="slider">
@@ -113,11 +133,13 @@ $tab = (explode('tab=', URL::current()));
                                         <input type="number" value="1" id="product_count">
                                     </div>
                                     <div class="row-val">
+{{--                                        <form action="{{ route('cashback.pay.confirm', $product->product_id) }}" method="POST" enctype="multipart/form-data">--}}
+
                                         <button id="choosing_role" style="background: #00a65a;">Купить</button>
                                     </div>
                                     <div class="row-val">
-                                        <button type="submit">Добавить в корзину</button>
-                                    </div>                                    
+                                        <button type="submit" onclick="addProductToBasket('{{$product->product_id}}')">Добавить в корзину</button>
+                                    </div>
                                 </fieldset>
                                 <div class="choose_role" >
                                     <h5> Для партнеров qpartners.club скидка 20% на все продукции. </h5>
@@ -330,17 +352,17 @@ $tab = (explode('tab=', URL::current()));
                                     aria-hidden="true">&times;</span></button>
                         <div class="title-group"
                              style="margin-left: 20px; font-size: 120%; color: black; font-weight: 400;">
-                            <h4 class="modal-title">Форма заявки</h4>                            
+                            <h4 class="modal-title">Форма заявки {{$product->product_id}}</h4>
                         </div>
                     </div>
                     <div class="modal-body">
-                        <form id="form_order" action="{{ route('smartpay_create_order_product') }}" method="POST">
+                        <form action="{{ route('cashback.pay') }}" method="POST">
                             {{ csrf_field() }}
                             <input type="hidden" name="product_id" id="product_id">
                             <div id="user_not_partner">
                                 <div class="form-group">
                                     <label for="username">ФИО</label>
-                                    <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="ФИО">                              
+                                    <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="ФИО">
                                 </div>
                                 <div class="form-group">
                                     <label for="contact">Контакт</label>
@@ -361,8 +383,8 @@ $tab = (explode('tab=', URL::current()));
                                     <option value="1" selected>Самовывоз</option>
                                     <option value="2">Курьером</option>
                                     <option value="3">По почте</option>
-                                </select>                                
-                            </div>                            
+                                </select>
+                            </div>
                             <button type="submit" class="btn btn-primary">Отправить</button>
                         </form>
                     </div>
@@ -468,3 +490,5 @@ $tab = (explode('tab=', URL::current()));
         </div>
     </main>
 @endsection
+
+

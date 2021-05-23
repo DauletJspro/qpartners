@@ -49,6 +49,8 @@ class AuthController extends Controller
         View::share('cities', $cities);
     }
 
+
+
     public function login(Request $request)
     {
         if (isset($request->login)) {
@@ -125,7 +127,7 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-
+        
         switch ($request->role_id) {
             case Role::CLIENT:
                 $validator = RegisterValidation::validateClient($request);
@@ -182,7 +184,9 @@ class AuthController extends Controller
             ]);
         }
 
-
+        if($request->role_id == Role::CONSUMER){
+            return $this->login($request);
+        }
         return view('admin.new_design_auth.login', [
             'success' => 'Поздравляю, Вы успешно зарегистрировались!',
             'ok' => true

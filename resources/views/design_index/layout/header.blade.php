@@ -102,13 +102,36 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         </li>
                         <li class="">
                             <div class="dropdown">
-                                <a class="" href="#">{{Lang::get('app.cabinet')}}</a>
+                                <a class="" href="#">
+                                    @if(Auth::user()->role_id == App\Models\Role::CONSUMER)
+                                        {{Auth::user()->name}} {{Auth::user()->last_name}}
+                                    @else
+                                        {{Lang::get('app.cabinet')}}
+                                    @endif
+                                </a>
                                 <div class="dropdown-content">
                                     @if(!Auth::check())
                                         <a href="/register">Регистрация</a>
                                         <a href="/login">Войти</a>
                                     @else
-                                        <a href="/admin/index">Личный кабинет</a>
+                                        @if(!(Auth::user()->role_id == App\Models\Role::CONSUMER))
+                                            <a href="/admin/index">Личный кабинет</a>
+                                        @endif
+                                        @if(Auth::user()->role_id == App\Models\Role::CONSUMER)
+                                            <a href="/admin/gap_card/orders">Личный кабинет</a>
+                                            <a href="#">Баланс:
+                                                {{Auth::user()->balance->user_balance}}
+                                            </a>
+                                            <a href="#">
+                                                Пополнить счет
+                                            </a>
+                                            <a href="/admin/profile/edit">
+                                                Настройки
+                                            </a>
+                                        @endif
+                                        <a href="/logout">
+                                            Выйти
+                                        </a>
                                     @endif
                                 </div>
                             </div>

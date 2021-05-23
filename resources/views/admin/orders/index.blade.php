@@ -29,7 +29,7 @@ use \App\Models\Currency;
                                             <th>Контакты</th>
                                             <th style="width: 150px">Адрес</th>
                                             <th style="width: 100px">Сумма</th>
-                                            <th>Номер заказа</th>                                            
+                                            <th>Номер заказа</th>
                                             <th>Оплачено</th>
                                             <th>Доставленно</th>
                                             <th>Дата</th>

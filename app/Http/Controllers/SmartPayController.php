@@ -268,8 +268,9 @@ class SmartPayController extends Controller
         }
         return response()->json(['RESULT' => 'RETRY', 'DESC' => 'invalid_signature']);        
     }
-    
+
     public function createOrderProduct(Request $request) {
+
         $result['message'] = 'Временно недоступно';
         $result['status'] = false;  
         $validator = Validator::make($request->all(), [

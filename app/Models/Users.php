@@ -39,7 +39,9 @@ class Users extends Model implements AuthenticatableContract
         'office_director_id',
         'role_id',
         'is_activated',
-        'city_id'
+        'city_id',
+        'user_cash',
+        'user_money',
 
 
     ];
@@ -180,4 +182,9 @@ class Users extends Model implements AuthenticatableContract
         return $this->hasMany(Users::class, 'recommend_user_id', 'user_id');
     }
 
+
+    public function balance()
+    {
+        return $this->hasOne(Balance::class, 'user_id','user_id');
+    }
 }

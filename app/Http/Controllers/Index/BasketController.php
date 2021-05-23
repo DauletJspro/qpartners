@@ -29,7 +29,7 @@ class BasketController extends Controller
 
     public function addToBasket($item_id = null, $user_id = null)
     {
-
+        dd(item_id);
         $isItemInBasket = UserBasket::where(['product_id' => $item_id, 'user_id' => $user_id])->first();
 //        -1 mean there is product in user
         if ($isItemInBasket) {
