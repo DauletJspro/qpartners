@@ -347,322 +347,322 @@ use Illuminate\Support\Facades\Session;
                         </div><!-- banner 11 end here -->
                     </div><!-- banner frame end here -->
 
-                    <div class="mt-producttabs style2 wow fadeInUp" data-wow-delay="0.4s">
-                        <!-- producttabs start here -->
-                        <ul class="producttabs">
-                            <li><a href="#tab1" class="active">Элексиры</a></li>
-                            <li><a href="#tab2">Спреи</a></li>
-                            <li><a href="#tab3">Гели</a></li>
-                            <li><a href="#tab4">Крема</a></li>
-                        </ul>
-                        <!-- producttabs end here -->
-                        <div class="tab-content">
-                            <div id="tab1">
-                                <div class="tabs-sliderlg">
-                                    @foreach($elixirs as $product)
-                                        <div class="slide">
-                                            <div class="mt-product1 large">
-                                                <div class="box">
-                                                    <div class="b1">
-                                                        <div class="b2">
-                                                            <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
-                                                                <div class="product_image"
-                                                                     style="background-image: url('{{$product->product_image}}');">
-                                                                </div>
-                                                            </a>
-                                                            <ul class="mt-stars">
-                                                                @for($i = 0; $i<5;$i++)
-                                                                    @if($i < \App\Models\Review::ratingCalculator($product->product_id, \App\Models\Review::PRODUCT_REVIEW))
-                                                                        <li><i class="fa fa-star"></i></li>
-                                                                    @else
-                                                                        <li><i class="fa fa-star-o"></i></li>
-                                                                    @endif
-                                                                @endfor
+{{--                    <div class="mt-producttabs style2 wow fadeInUp" data-wow-delay="0.4s">--}}
+{{--                        <!-- producttabs start here -->--}}
+{{--                        <ul class="producttabs">--}}
+{{--                            <li><a href="#tab1" class="active">Элексиры</a></li>--}}
+{{--                            <li><a href="#tab2">Спреи</a></li>--}}
+{{--                            <li><a href="#tab3">Гели</a></li>--}}
+{{--                            <li><a href="#tab4">Крема</a></li>--}}
+{{--                        </ul>--}}
+{{--                        <!-- producttabs end here -->--}}
+{{--                        <div class="tab-content">--}}
+{{--                            <div id="tab1">--}}
+{{--                                <div class="tabs-sliderlg">--}}
+{{--                                    @foreach($elixirs as $product)--}}
+{{--                                        <div class="slide">--}}
+{{--                                            <div class="mt-product1 large">--}}
+{{--                                                <div class="box">--}}
+{{--                                                    <div class="b1">--}}
+{{--                                                        <div class="b2">--}}
+{{--                                                            <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">--}}
+{{--                                                                <div class="product_image"--}}
+{{--                                                                     style="background-image: url('{{$product->product_image}}');">--}}
+{{--                                                                </div>--}}
+{{--                                                            </a>--}}
+{{--                                                            <ul class="mt-stars">--}}
+{{--                                                                @for($i = 0; $i<5;$i++)--}}
+{{--                                                                    @if($i < \App\Models\Review::ratingCalculator($product->product_id, \App\Models\Review::PRODUCT_REVIEW))--}}
+{{--                                                                        <li><i class="fa fa-star"></i></li>--}}
+{{--                                                                    @else--}}
+{{--                                                                        <li><i class="fa fa-star-o"></i></li>--}}
+{{--                                                                    @endif--}}
+{{--                                                                @endfor--}}
 
-                                                            </ul>
-                                                            <ul class="links">
-                                                                <li>
-                                                                    <a style="cursor: pointer;"
-                                                                       data-item-id="{{$product->product_id}}"
-                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
-                                                                       data-method="add"
-                                                                       data-route="{{route('basket.isAjax')}}"
-                                                                       onclick="addItemToBasket(this)"
-                                                                    ><i class="icon-handbag"></i><span>Добавить в корзину</span></a>
-                                                                </li>
-                                                                <li><a style="cursor: pointer;"
-                                                                       data-item-id="{{$product->product_id}}"
-                                                                       data-method="add"
-                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
-                                                                       data-session-id="{{ Session::getId()}}"
-                                                                       data-route="{{route('favorite.isAjax')}}"
-                                                                       onclick="addItemToFavorites(this)"
-                                                                    ><i
-                                                                                class="icomoon icon-heart-empty"></i></a>
-                                                                </li>
-                                                                <li><a href="#"><i
-                                                                                class="icomoon icon-exchange"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="txt">
-                                                    <strong class="title"><a
-                                                                href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name_ru}}</a></strong>
-                                                    <p>{{$product->product_desc_ru}}</p>
-                                                    <span class="price"><i
-                                                                class="fa fa-dollar"></i> <span>{{$product->product_price}}
-                                                               ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1 ])->first())->money}}   &#8376;) </span></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            <div id="tab2">
-                                <div class="tabs-sliderlg">
-                                    @foreach($sprays as $product)
-                                        <div class="slide">
-                                            <div class="mt-product1 large">
-                                                <div class="box">
-                                                    <div class="b1">
-                                                        <div class="b2">
-                                                            <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
-                                                                <div class="product_image"
-                                                                     style="background-image: url('{{$product->product_image}}');">
+{{--                                                            </ul>--}}
+{{--                                                            <ul class="links">--}}
+{{--                                                                <li>--}}
+{{--                                                                    <a style="cursor: pointer;"--}}
+{{--                                                                       data-item-id="{{$product->product_id}}"--}}
+{{--                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"--}}
+{{--                                                                       data-method="add"--}}
+{{--                                                                       data-route="{{route('basket.isAjax')}}"--}}
+{{--                                                                       onclick="addItemToBasket(this)"--}}
+{{--                                                                    ><i class="icon-handbag"></i><span>Добавить в корзину</span></a>--}}
+{{--                                                                </li>--}}
+{{--                                                                <li><a style="cursor: pointer;"--}}
+{{--                                                                       data-item-id="{{$product->product_id}}"--}}
+{{--                                                                       data-method="add"--}}
+{{--                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"--}}
+{{--                                                                       data-session-id="{{ Session::getId()}}"--}}
+{{--                                                                       data-route="{{route('favorite.isAjax')}}"--}}
+{{--                                                                       onclick="addItemToFavorites(this)"--}}
+{{--                                                                    ><i--}}
+{{--                                                                                class="icomoon icon-heart-empty"></i></a>--}}
+{{--                                                                </li>--}}
+{{--                                                                <li><a href="#"><i--}}
+{{--                                                                                class="icomoon icon-exchange"></i></a>--}}
+{{--                                                                </li>--}}
+{{--                                                            </ul>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="txt">--}}
+{{--                                                    <strong class="title"><a--}}
+{{--                                                                href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name_ru}}</a></strong>--}}
+{{--                                                    <p>{{$product->product_desc_ru}}</p>--}}
+{{--                                                    <span class="price"><i--}}
+{{--                                                                class="fa fa-dollar"></i> <span>{{$product->product_price}}--}}
+{{--                                                               ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1 ])->first())->money}}   &#8376;) </span></span>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    @endforeach--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div id="tab2">--}}
+{{--                                <div class="tabs-sliderlg">--}}
+{{--                                    @foreach($sprays as $product)--}}
+{{--                                        <div class="slide">--}}
+{{--                                            <div class="mt-product1 large">--}}
+{{--                                                <div class="box">--}}
+{{--                                                    <div class="b1">--}}
+{{--                                                        <div class="b2">--}}
+{{--                                                            <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">--}}
+{{--                                                                <div class="product_image"--}}
+{{--                                                                     style="background-image: url('{{$product->product_image}}');">--}}
 
-                                                                </div>
-                                                            </a>
-                                                            <ul class="mt-stars">
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                            </ul>
-                                                            <ul class="links">
-                                                                <li>
-                                                                    <a style="cursor: pointer;"
-                                                                       data-item-id="{{$product->product_id}}"
-                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
-                                                                       data-method="add"
-                                                                       data-route="{{route('basket.isAjax')}}"
-                                                                       onclick="addItemToBasket(this)"
-                                                                    ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
-                                                                </li>
-                                                                <li><a style="cursor: pointer;"
-                                                                       data-item-id="{{$product->product_id}}"
-                                                                       data-method="add"
-                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
-                                                                       data-session-id="{{ Session::getId()}}"
-                                                                       data-route="{{route('favorite.isAjax')}}"
-                                                                       onclick="addItemToFavorites(this)"
-                                                                    ><i
-                                                                                class="icomoon icon-heart-empty"></i></a>
-                                                                </li>
-                                                                <li><a href="#"><i
-                                                                                class="icomoon icon-exchange"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="txt">
-                                                    <strong class="title"><a
-                                                                href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name_ru}}</a></strong>
-                                                    <p>{{$product->product_desc_ru}}</p>
-                                                    <span class="price"><i
-                                                                class="fa fa-dollar"></i> <span>{{$product->product_price}}
-                                                               ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1 ])->first())->money}}   &#8376;) </span></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            <div id="tab3">
-                                <div class="tabs-sliderlg">
-                                    @foreach($gels as $product)
-                                        <div class="slide">
-                                            <div class="mt-product1 large">
-                                                <div class="box">
-                                                    <div class="b1">
-                                                        <div class="b2">
-                                                            <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
-                                                                <div class="product_image"
-                                                                     style="background-image: url('{{$product->product_image}}');">
-                                                                </div>
-                                                            </a>
-                                                            <ul class="mt-stars">
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                            </ul>
-                                                            <ul class="links">
-                                                                <li>
-                                                                    <a style="cursor: pointer;"
-                                                                       data-item-id="{{$product->product_id}}"
-                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
-                                                                       data-method="add"
-                                                                       data-route="{{route('basket.isAjax')}}"
-                                                                       onclick="addItemToBasket(this)"
-                                                                    ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
-                                                                </li>
-                                                                <li><a style="cursor: pointer;"
-                                                                       data-item-id="{{$product->product_id}}"
-                                                                       data-method="add"
-                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
-                                                                       data-session-id="{{ Session::getId()}}"
-                                                                       data-route="{{route('favorite.isAjax')}}"
-                                                                       onclick="addItemToFavorites(this)"><i
-                                                                                class="icomoon icon-heart-empty"></i></a>
-                                                                </li>
-                                                                <li><a href="#"><i
-                                                                                class="icomoon icon-exchange"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="txt">
-                                                    <strong class="title"><a
-                                                                href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name_ru}}</a></strong>
-                                                    <p>{{$product->product_desc_ru}}</p>
-                                                    <span class="price"><i
-                                                                class="fa fa-dollar"></i> <span>{{$product->product_price}}
-                                                               ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1 ])->first())->money}}   &#8376;) </span></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            <div id="tab4">
-                                <div class="tabs-sliderlg">
-                                    @foreach($creams as $product)
-                                        <div class="slide">
-                                            <div class="mt-product1 large">
-                                                <div class="box">
-                                                    <div class="b1">
-                                                        <div class="b2">
-                                                            <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">
-                                                                <div class="product_image"
-                                                                     style="background-image: url('{{$product->product_image}}');">
-                                                                </div>
-                                                            </a>
-                                                            <ul class="mt-stars">
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                            </ul>
-                                                            <ul class="links">
-                                                                <li>
-                                                                    <a style="cursor: pointer;"
-                                                                       data-item-id="{{$product->product_id}}"
-                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
-                                                                       data-method="add"
-                                                                       data-route="{{route('basket.isAjax')}}"
-                                                                       onclick="addItemToBasket(this)"
-                                                                    ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>
-                                                                </li>
-                                                                <li><a style="cursor: pointer;"
-                                                                       data-item-id="{{$product->product_id}}"
-                                                                       data-method="add"
-                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
-                                                                       data-session-id="{{ Session::getId()}}"
-                                                                       data-route="{{route('favorite.isAjax')}}"
-                                                                       onclick="addItemToFavorites(this)"><i
-                                                                                class="icomoon icon-heart-empty"></i></a>
-                                                                </li>
-                                                                <li><a href="#"><i
-                                                                                class="icomoon icon-exchange"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="txt">
-                                                    <strong class="title"><a
-                                                                href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name_ru}}</a></strong>
-                                                    <p>{{$product->product_desc_ru}}</p>
-                                                    <span class="price"><i
-                                                                class="fa fa-dollar"></i> <span>{{$product->product_price}}
-                                                               ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1 ])->first())->money}}   &#8376;) </span></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-producttabs style3 wow fadeInUp" data-wow-delay="0.4s">
-                        <h2 class="heading">Популярные</h2>
-                        <div class="tabs-slider">
-                            @foreach($popularProducts as $product)
-                                <div class="slide">
-                                    <div class="mt-product1">
-                                        <div class="box">
-                                            <div class="b1">
-                                                <div class="b2">
-                                                    <div class="product_new_image" style="background-image: url('{{$product->product_image}}')">
-                                                    </div>
-                                                    <span class="caption">
-                                                        @if($product->is_new)
-                                                            <span class="new">new</span>
-                                                        @endif
-														</span>
-                                                    <ul class="mt-stars">
-                                                        @for($i = 0; $i<5;$i++)
-                                                            @if($i < \App\Models\Review::ratingCalculator($product->product_id, \App\Models\Review::PRODUCT_REVIEW))
-                                                                <li><i class="fa fa-star"></i></li>
-                                                            @else
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                            @endif
-                                                        @endfor
-                                                    </ul>
-                                                    <ul class="links">
-                                                        <li>
-                                                            <a style="cursor: pointer;"
-                                                               data-item-id="{{$product->product_id}}"
-                                                               data-method="add"
-                                                               data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
-                                                               data-route="{{route('basket.isAjax')}}"
-                                                               onclick="addItemToBasket(this)"
-                                                            >
-                                                                <i class="icon-handbag"></i><span>Добавить</span></a>
-                                                        </li>
-                                                        <li><a style="cursor: pointer;"
-                                                               data-item-id="{{$product->product_id}}"
-                                                               data-method="add"
-                                                               data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"
-                                                               data-session-id="{{ Session::getId()}}"
-                                                               data-route="{{route('favorite.isAjax')}}"
-                                                               onclick="addItemToFavorites(this)"
-                                                            >
-                                                                <i class="fa fa-heart"></i></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="icomoon icon-exchange"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="txt">
-                                            <strong class="title"><a
-                                                        href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name}}</a></strong>
-                                            <span class="price"><i
-                                                        class="fa fa-dollar"></i> <span>{{$product->product_price}}</span> 	({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
+{{--                                                                </div>--}}
+{{--                                                            </a>--}}
+{{--                                                            <ul class="mt-stars">--}}
+{{--                                                                <li><i class="fa fa-star"></i></li>--}}
+{{--                                                                <li><i class="fa fa-star"></i></li>--}}
+{{--                                                                <li><i class="fa fa-star"></i></li>--}}
+{{--                                                                <li><i class="fa fa-star-o"></i></li>--}}
+{{--                                                            </ul>--}}
+{{--                                                            <ul class="links">--}}
+{{--                                                                <li>--}}
+{{--                                                                    <a style="cursor: pointer;"--}}
+{{--                                                                       data-item-id="{{$product->product_id}}"--}}
+{{--                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"--}}
+{{--                                                                       data-method="add"--}}
+{{--                                                                       data-route="{{route('basket.isAjax')}}"--}}
+{{--                                                                       onclick="addItemToBasket(this)"--}}
+{{--                                                                    ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>--}}
+{{--                                                                </li>--}}
+{{--                                                                <li><a style="cursor: pointer;"--}}
+{{--                                                                       data-item-id="{{$product->product_id}}"--}}
+{{--                                                                       data-method="add"--}}
+{{--                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"--}}
+{{--                                                                       data-session-id="{{ Session::getId()}}"--}}
+{{--                                                                       data-route="{{route('favorite.isAjax')}}"--}}
+{{--                                                                       onclick="addItemToFavorites(this)"--}}
+{{--                                                                    ><i--}}
+{{--                                                                                class="icomoon icon-heart-empty"></i></a>--}}
+{{--                                                                </li>--}}
+{{--                                                                <li><a href="#"><i--}}
+{{--                                                                                class="icomoon icon-exchange"></i></a>--}}
+{{--                                                                </li>--}}
+{{--                                                            </ul>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="txt">--}}
+{{--                                                    <strong class="title"><a--}}
+{{--                                                                href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name_ru}}</a></strong>--}}
+{{--                                                    <p>{{$product->product_desc_ru}}</p>--}}
+{{--                                                    <span class="price"><i--}}
+{{--                                                                class="fa fa-dollar"></i> <span>{{$product->product_price}}--}}
+{{--                                                               ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1 ])->first())->money}}   &#8376;) </span></span>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    @endforeach--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div id="tab3">--}}
+{{--                                <div class="tabs-sliderlg">--}}
+{{--                                    @foreach($gels as $product)--}}
+{{--                                        <div class="slide">--}}
+{{--                                            <div class="mt-product1 large">--}}
+{{--                                                <div class="box">--}}
+{{--                                                    <div class="b1">--}}
+{{--                                                        <div class="b2">--}}
+{{--                                                            <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">--}}
+{{--                                                                <div class="product_image"--}}
+{{--                                                                     style="background-image: url('{{$product->product_image}}');">--}}
+{{--                                                                </div>--}}
+{{--                                                            </a>--}}
+{{--                                                            <ul class="mt-stars">--}}
+{{--                                                                <li><i class="fa fa-star"></i></li>--}}
+{{--                                                                <li><i class="fa fa-star"></i></li>--}}
+{{--                                                                <li><i class="fa fa-star"></i></li>--}}
+{{--                                                                <li><i class="fa fa-star-o"></i></li>--}}
+{{--                                                            </ul>--}}
+{{--                                                            <ul class="links">--}}
+{{--                                                                <li>--}}
+{{--                                                                    <a style="cursor: pointer;"--}}
+{{--                                                                       data-item-id="{{$product->product_id}}"--}}
+{{--                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"--}}
+{{--                                                                       data-method="add"--}}
+{{--                                                                       data-route="{{route('basket.isAjax')}}"--}}
+{{--                                                                       onclick="addItemToBasket(this)"--}}
+{{--                                                                    ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>--}}
+{{--                                                                </li>--}}
+{{--                                                                <li><a style="cursor: pointer;"--}}
+{{--                                                                       data-item-id="{{$product->product_id}}"--}}
+{{--                                                                       data-method="add"--}}
+{{--                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"--}}
+{{--                                                                       data-session-id="{{ Session::getId()}}"--}}
+{{--                                                                       data-route="{{route('favorite.isAjax')}}"--}}
+{{--                                                                       onclick="addItemToFavorites(this)"><i--}}
+{{--                                                                                class="icomoon icon-heart-empty"></i></a>--}}
+{{--                                                                </li>--}}
+{{--                                                                <li><a href="#"><i--}}
+{{--                                                                                class="icomoon icon-exchange"></i></a>--}}
+{{--                                                                </li>--}}
+{{--                                                            </ul>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="txt">--}}
+{{--                                                    <strong class="title"><a--}}
+{{--                                                                href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name_ru}}</a></strong>--}}
+{{--                                                    <p>{{$product->product_desc_ru}}</p>--}}
+{{--                                                    <span class="price"><i--}}
+{{--                                                                class="fa fa-dollar"></i> <span>{{$product->product_price}}--}}
+{{--                                                               ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1 ])->first())->money}}   &#8376;) </span></span>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    @endforeach--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div id="tab4">--}}
+{{--                                <div class="tabs-sliderlg">--}}
+{{--                                    @foreach($creams as $product)--}}
+{{--                                        <div class="slide">--}}
+{{--                                            <div class="mt-product1 large">--}}
+{{--                                                <div class="box">--}}
+{{--                                                    <div class="b1">--}}
+{{--                                                        <div class="b2">--}}
+{{--                                                            <a href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">--}}
+{{--                                                                <div class="product_image"--}}
+{{--                                                                     style="background-image: url('{{$product->product_image}}');">--}}
+{{--                                                                </div>--}}
+{{--                                                            </a>--}}
+{{--                                                            <ul class="mt-stars">--}}
+{{--                                                                <li><i class="fa fa-star"></i></li>--}}
+{{--                                                                <li><i class="fa fa-star"></i></li>--}}
+{{--                                                                <li><i class="fa fa-star"></i></li>--}}
+{{--                                                                <li><i class="fa fa-star-o"></i></li>--}}
+{{--                                                            </ul>--}}
+{{--                                                            <ul class="links">--}}
+{{--                                                                <li>--}}
+{{--                                                                    <a style="cursor: pointer;"--}}
+{{--                                                                       data-item-id="{{$product->product_id}}"--}}
+{{--                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"--}}
+{{--                                                                       data-method="add"--}}
+{{--                                                                       data-route="{{route('basket.isAjax')}}"--}}
+{{--                                                                       onclick="addItemToBasket(this)"--}}
+{{--                                                                    ><i class="icon-handbag"></i><span>Добавить в карзину</span></a>--}}
+{{--                                                                </li>--}}
+{{--                                                                <li><a style="cursor: pointer;"--}}
+{{--                                                                       data-item-id="{{$product->product_id}}"--}}
+{{--                                                                       data-method="add"--}}
+{{--                                                                       data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"--}}
+{{--                                                                       data-session-id="{{ Session::getId()}}"--}}
+{{--                                                                       data-route="{{route('favorite.isAjax')}}"--}}
+{{--                                                                       onclick="addItemToFavorites(this)"><i--}}
+{{--                                                                                class="icomoon icon-heart-empty"></i></a>--}}
+{{--                                                                </li>--}}
+{{--                                                                <li><a href="#"><i--}}
+{{--                                                                                class="icomoon icon-exchange"></i></a>--}}
+{{--                                                                </li>--}}
+{{--                                                            </ul>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="txt">--}}
+{{--                                                    <strong class="title"><a--}}
+{{--                                                                href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name_ru}}</a></strong>--}}
+{{--                                                    <p>{{$product->product_desc_ru}}</p>--}}
+{{--                                                    <span class="price"><i--}}
+{{--                                                                class="fa fa-dollar"></i> <span>{{$product->product_price}}--}}
+{{--                                                               ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1 ])->first())->money}}   &#8376;) </span></span>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    @endforeach--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="mt-producttabs style3 wow fadeInUp" data-wow-delay="0.4s">--}}
+{{--                        <h2 class="heading">Популярные</h2>--}}
+{{--                        <div class="tabs-slider">--}}
+{{--                            @foreach($popularProducts as $product)--}}
+{{--                                <div class="slide">--}}
+{{--                                    <div class="mt-product1">--}}
+{{--                                        <div class="box">--}}
+{{--                                            <div class="b1">--}}
+{{--                                                <div class="b2">--}}
+{{--                                                    <div class="product_new_image" style="background-image: url('{{$product->product_image}}')">--}}
+{{--                                                    </div>--}}
+{{--                                                    <span class="caption">--}}
+{{--                                                        @if($product->is_new)--}}
+{{--                                                            <span class="new">new</span>--}}
+{{--                                                        @endif--}}
+{{--														</span>--}}
+{{--                                                    <ul class="mt-stars">--}}
+{{--                                                        @for($i = 0; $i<5;$i++)--}}
+{{--                                                            @if($i < \App\Models\Review::ratingCalculator($product->product_id, \App\Models\Review::PRODUCT_REVIEW))--}}
+{{--                                                                <li><i class="fa fa-star"></i></li>--}}
+{{--                                                            @else--}}
+{{--                                                                <li><i class="fa fa-star-o"></i></li>--}}
+{{--                                                            @endif--}}
+{{--                                                        @endfor--}}
+{{--                                                    </ul>--}}
+{{--                                                    <ul class="links">--}}
+{{--                                                        <li>--}}
+{{--                                                            <a style="cursor: pointer;"--}}
+{{--                                                               data-item-id="{{$product->product_id}}"--}}
+{{--                                                               data-method="add"--}}
+{{--                                                               data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"--}}
+{{--                                                               data-route="{{route('basket.isAjax')}}"--}}
+{{--                                                               onclick="addItemToBasket(this)"--}}
+{{--                                                            >--}}
+{{--                                                                <i class="icon-handbag"></i><span>Добавить</span></a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li><a style="cursor: pointer;"--}}
+{{--                                                               data-item-id="{{$product->product_id}}"--}}
+{{--                                                               data-method="add"--}}
+{{--                                                               data-user-id="{{Auth::user() ? Auth::user()->user_id : NULL}}"--}}
+{{--                                                               data-session-id="{{ Session::getId()}}"--}}
+{{--                                                               data-route="{{route('favorite.isAjax')}}"--}}
+{{--                                                               onclick="addItemToFavorites(this)"--}}
+{{--                                                            >--}}
+{{--                                                                <i class="fa fa-heart"></i></a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li><a href="#"><i class="icomoon icon-exchange"></i></a>--}}
+{{--                                                        </li>--}}
+{{--                                                    </ul>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="txt">--}}
+{{--                                            <strong class="title"><a--}}
+{{--                                                        href="{{ route('product.detail',$product->product_id, ['id' => $product->product_id]) }}">{{$product->product_name}}</a></strong>--}}
+{{--                                            <span class="price"><i--}}
+{{--                                                        class="fa fa-dollar"></i> <span>{{$product->product_price}}</span> 	({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            @endforeach--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div id="product-masonry">
+                    <div id="product-masonry" style="margin-top: 50px">
                         <div class="container">
                             <div class="row">
                                 <div class="col-xs-12">
@@ -673,7 +673,7 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <!-- box start here -->
                                                 <div class="box">
-                                                    <iframe width="235" height="315" src="https://www.youtube.com/embed/T_mnUMLTLiA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <iframe width="235" height="270" src="https://www.youtube.com/embed/T_mnUMLTLiA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                 </div><!-- box end here -->
                                             </div><!-- mt product1 end here -->
                                         </li>
@@ -682,7 +682,7 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <!-- box start here -->
                                                 <div class="box">
-                                                    <iframe width="235" height="315" src="https://www.youtube.com/embed/5h-3wXYzS8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <iframe width="235" height="270" src="https://www.youtube.com/embed/5h-3wXYzS8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                 </div>
                                             </div><!-- mt product1 end here -->
                                         </li>
@@ -691,7 +691,7 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <!-- box start here -->
                                                 <div class="box">
-                                                    <iframe width="235" height="315" src="https://www.youtube.com/embed/nd5kU_oQp1g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <iframe width="235" height="270" src="https://www.youtube.com/embed/nd5kU_oQp1g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                 </div><!-- mt product1 end here -->
                                             </div>
                                         </li>
@@ -700,7 +700,7 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <!-- box start here -->
                                                 <div class="box">
-                                                    <iframe width="235" height="315" src="https://www.youtube.com/embed/hDk8i4oZW_I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <iframe width="235" height="270" src="https://www.youtube.com/embed/hDk8i4oZW_I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                 </div><!-- mt product1 end here -->
                                             </div>
                                         </li>
@@ -712,18 +712,15 @@ use Illuminate\Support\Facades\Session;
 
                     <div class="mt-patners wow fadeInUp" data-wow-delay="0.4s">
                         <h2 class="heading">Наши бренды</h2>
-                        <div class="patner-slider">
-                            @foreach($brands as $brand)
-                                <div class="slide">
-                                    <div class="box1">
-                                        <div class="box2">
-                                            <a href="#">
-                                                <img src="{{$brand->image}}" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
+                        <div class="" style="width: 100%">
+                            <div style="display: flex; justify-content: space-between;font-weight: 600; height: 24px; width: 100%; font-family: adineuePROKZ-bold; font-size: 18px; padding: 30px 0">
+                                <a href="/gap/market/show" style="color: red; display: flex">GAP<span style="color: #646464;"> MARKET</span></a>
+                                <a href="/" style="color: red;display: flex">GAP <span style="color: #646464; margin-left: 6px"> TURISM</span></a>
+                                <a href="/gap/card/show" style="color: red; display: flex">GAP<span style="color: #646464;  margin-left: 6px"> CARD</span></a>
+                                <a href="/" style="color: red; display: flex">GAP <span style="color: #646464;  margin-left: 6px"> ACADEMY</span></a>
+                                <a href="/" style="color: red; display: flex">GAP <span style="color: #646464;  margin-left: 6px"> MEDIA</span></a>
+                                <img src="/new_design/images/banners/natural.svg" style="width: 71px !important;" height="41" alt="image not found"/>
+                            </div>
                         </div>
                     </div>
                     <!-- <div class="banner-frame nospace wow fadeInUp" data-wow-delay="0.4s">
