@@ -37,7 +37,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6" id="hidden-xs">
-                    <ul class="gap-ul mt-top-bar" style="float: left;" id="gap-ul">
+                    <ul class="gap-ul mt-top-bar" style="float: left; font-family: Montserrat" id="gap-ul">
                         <li style="{{$gapTypeActive == 1 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
                             <a style="{{$gapTypeActive == 1 ? 'background:white;color:red;' : ''}}"
                                href="{{route('gap.index.show')}}">

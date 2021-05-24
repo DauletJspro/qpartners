@@ -84,7 +84,9 @@
                                 <div id="collapse{{$faq->id}}" class="panel-collapse collapse" role="tabpanel"
                                      aria-labelledby="heading{{$faq->id}}">
                                     <div class="panel-body">
-                                        <p>{{$faq->answer}}</p>
+                                        @foreach(explode('/', $faq->answer) as $an)
+                                            <p>{{$an}}</p>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

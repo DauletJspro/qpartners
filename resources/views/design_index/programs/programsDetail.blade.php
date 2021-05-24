@@ -144,7 +144,7 @@
             <p> - Сумма рассрочки <span class="text-red font-weight-600">{{$chosen_program['installment_amount']}}</span></p>
             <p> - Срок рассрочки <span class="text-red font-weight-600">{{$chosen_program['installment_term']}}</span></p>
             <p> - Срок получения рассрочки <span class="text-red font-weight-600">{{$chosen_program['term_form_receiving_installments']}}</span></p>
-            <p> - В программе могут участвовать лица <span class="text-red font-weight-600">{{$chosen_program['age']}}</span></p>
+            <p> - В программе могут участвовать <span class="text-red font-weight-600">{{$chosen_program['age']}}</span></p>
         </div>
         <div class="conditions container mt-2" id="conditions">
             <p>Для получения жилья в рассрочку Вам необходимо выполнить следующие условия кооператива.</p>
