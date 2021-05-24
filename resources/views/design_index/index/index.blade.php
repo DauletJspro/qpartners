@@ -673,7 +673,8 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <!-- box start here -->
                                                 <div class="box">
-                                                    <iframe width="235" height="315" src="https://www.youtube.com/embed/T_mnUMLTLiA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                                                </div><!-- box end here -->
+                                                    <iframe width="235" height="315" src="https://www.youtube.com/embed/T_mnUMLTLiA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </div><!-- box end here -->
                                             </div><!-- mt product1 end here -->
                                         </li>
                                         <li class="fil2">
@@ -682,6 +683,7 @@ use Illuminate\Support\Facades\Session;
                                                 <!-- box start here -->
                                                 <div class="box">
                                                     <iframe width="235" height="315" src="https://www.youtube.com/embed/5h-3wXYzS8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </div>
                                             </div><!-- mt product1 end here -->
                                         </li>
                                         <li class="fil3">
@@ -689,14 +691,18 @@ use Illuminate\Support\Facades\Session;
                                             <div class="mt-product1 large">
                                                 <!-- box start here -->
                                                 <div class="box">
-                                                    <iframe width="235" height="315" src="https://www.youtube.com/embed/nd5kU_oQp1g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                                            </div><!-- mt product1 end here -->
+                                                    <iframe width="235" height="315" src="https://www.youtube.com/embed/nd5kU_oQp1g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </div><!-- mt product1 end here -->
+                                            </div>
                                         </li>
                                         <li class="fil1">
                                             <!-- mt product start here -->
                                             <div class="mt-product1 large">
                                                 <!-- box start here -->
                                                 <div class="box">
-                                                    <iframe width="235" height="315" src="https://www.youtube.com/embed/hDk8i4oZW_I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                                            </div><!-- mt product1 end here -->
+                                                    <iframe width="235" height="315" src="https://www.youtube.com/embed/hDk8i4oZW_I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </div><!-- mt product1 end here -->
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>

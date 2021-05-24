@@ -96,8 +96,8 @@ if (isset($sub_category_id)) {
 {{--            </div>--}}
 {{--        </div>--}}
         <div id="vip-container" class="container" style="flex-wrap:wrap; display: flex; min-height: 280px; margin-top: 50px; font-family: Montserrat; color: black">
-            <div class="block" style="width: 49.5%; border: 1px solid #C4C4C4; display: flex; height: 100%">
-                <div class="" style="width: 52%; display: flex; flex-direction: column; height: 100%; padding: 25px 20px; font-weight: 600; background: #F6F6F6">
+            <div class="block" style="width: 49.5%; border: 1px solid #C4C4C4; display: flex; height: 100%; flex-wrap: wrap">
+                <div id="first-block-info" style="width: 52%; display: flex; flex-direction: column; height: 100%; padding: 25px 20px; font-weight: 600; background: #F6F6F6;">
                     <p style="text-transform: uppercase;">наименование компании</p>
                     <p style="font-weight: 400">краткая информация, краткая информация,краткая информация</p>
                     <p style="margin-top: 20px">Скидка %</p>
@@ -109,15 +109,15 @@ if (isset($sub_category_id)) {
                         </button>
                     </div>
                 </div>
-                <div style="width: 48%;display: flex; position: relative;">
+                <div id="first-block-img" style="width: 48%;display: flex; position: relative;">
                     <img class="" src="/new_design/images/banners/company-photo1.jpeg" alt="img not found">
                     <div style=" position: absolute; right: 0px; bottom: 10%">
                         <span style="background-color: #FFE200; padding: 5px 25px 5px 15px; margin-bottom: 15px; font-weight: 600; letter-spacing: 2px">VIP</span>
                     </div>
                 </div>
             </div>
-            <div class="block" style="width: 49.5%; margin-left: 1%; border: 1px solid #C4C4C4; display: flex; height: 100%">
-                <div class="" style="width: 52%; display: flex; flex-direction: column; height: 100%; padding: 25px 20px; font-weight: 600; background: #F6F6F6">
+            <div class="block" style="width: 49.5%; margin-left: 1%; border: 1px solid #C4C4C4; display: flex; height: 100%; flex-wrap: wrap">
+                <div id="second-block-info" style="width: 52%; display: flex; flex-direction: column; height: 100%; padding: 25px 20px; font-weight: 600; background: #F6F6F6">
                     <p style="text-transform: uppercase;">наименование компании</p>
                     <p style="font-weight: 400">краткая информация, краткая информация,краткая информация</p>
                     <p style="margin-top: 20px">Скидка %</p>
@@ -129,7 +129,7 @@ if (isset($sub_category_id)) {
                         </button>
                     </div>
                 </div>
-                <div style="width: 48%;display: flex; position: relative;">
+                <div id="second-block-img" style="width: 48%;display: flex; position: relative;">
                     <img class="" src="/new_design/images/banners/company-photo2.jpeg" alt="img not found">
                     <div style=" position: absolute; right: 0px; bottom: 10%">
                         <span style="background-color: #FFE200; padding: 5px 25px 5px 15px; margin-bottom: 15px; font-weight: 600; letter-spacing: 2px">VIP</span>
