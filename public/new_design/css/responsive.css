@@ -2915,6 +2915,10 @@
 	}
 }
 @media only screen and (max-width: 424px) {
+    #youtube-reviews iframe {
+        width: 100% !important;
+        margin-top: 20px;
+    }
 
     #first-block-info {
         order: 2;

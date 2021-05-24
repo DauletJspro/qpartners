@@ -182,7 +182,7 @@
 
                 @foreach($programs as $program)
                     @if($program['id'] !== $chosen_program['id'])
-                        <div class="program-detail-block-width d-flex-column mt-1">
+                        <div class="program-detail-block-width d-flex-column mt-2">
                             <img src="/new_design/images/banners/{{$program["imgSrc"]}}" alt="programs img not found"/>
                             <p class="text-black mt-1 fs-11">{{$program["body"]}}</p>
                             <button class="button-hover mr-auto bg-red border-radius-30" onclick="" style="border: none; padding: 0 1rem">

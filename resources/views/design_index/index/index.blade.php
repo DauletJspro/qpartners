@@ -662,64 +662,28 @@ use Illuminate\Support\Facades\Session;
 {{--                        </div>--}}
 {{--                    </div>--}}
 
-                    <div id="product-masonry" style="margin-top: 50px">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <h2 class="heading" style="color: #3a3a3a;margin: 0 0 7px;text-transform: uppercase;padding-bottom:25px; font: 700 26px/30px 'Montserrat', sans-serif;">ОТЗЫВЫ</h2>
-                                    <ul class="masonry-list">
-                                        <li class="fil1">
-                                            <!-- mt product start here -->
-                                            <div class="mt-product1 large">
-                                                <!-- box start here -->
-                                                <div class="box">
-                                                    <iframe width="235" height="270" src="https://www.youtube.com/embed/T_mnUMLTLiA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div><!-- box end here -->
-                                            </div><!-- mt product1 end here -->
-                                        </li>
-                                        <li class="fil2">
-                                            <!-- mt product start here -->
-                                            <div class="mt-product1 large">
-                                                <!-- box start here -->
-                                                <div class="box">
-                                                    <iframe width="235" height="270" src="https://www.youtube.com/embed/5h-3wXYzS8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div>
-                                            </div><!-- mt product1 end here -->
-                                        </li>
-                                        <li class="fil3">
-                                            <!-- mt product start here -->
-                                            <div class="mt-product1 large">
-                                                <!-- box start here -->
-                                                <div class="box">
-                                                    <iframe width="235" height="270" src="https://www.youtube.com/embed/nd5kU_oQp1g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div><!-- mt product1 end here -->
-                                            </div>
-                                        </li>
-                                        <li class="fil1">
-                                            <!-- mt product start here -->
-                                            <div class="mt-product1 large">
-                                                <!-- box start here -->
-                                                <div class="box">
-                                                    <iframe width="235" height="270" src="https://www.youtube.com/embed/hDk8i4oZW_I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                </div><!-- mt product1 end here -->
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                    <div id="product-masonry" style="margin-top: 50px; padding-left: 0">
+                        <h3 class="" style="color: black;font-family: Montserrat; font-weight: 600; text-transform: uppercase">Отзывы</h3>
+                        <div class=" container" style="padding-top: 30px">
+                            <div class="row" id="youtube-reviews" style="display: flex; flex-wrap: wrap; justify-content: space-between; justify-items: center;">
+                                <iframe width="235" height="270" src="https://www.youtube.com/embed/T_mnUMLTLiA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe width="235" height="270" src="https://www.youtube.com/embed/5h-3wXYzS8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe width="235" height="270" src="https://www.youtube.com/embed/nd5kU_oQp1g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe width="235" height="270" src="https://www.youtube.com/embed/hDk8i4oZW_I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-patners wow fadeInUp" data-wow-delay="0.4s">
-                        <h2 class="heading">Наши бренды</h2>
-                        <div class="" style="width: 100%">
-                            <div style="display: flex; justify-content: space-between;font-weight: 600; height: 24px; width: 100%; font-family: adineuePROKZ-bold; font-size: 18px; padding: 30px 0">
-                                <a href="/gap/market/show" style="color: red; display: flex">GAP<span style="color: #646464;"> MARKET</span></a>
-                                <a href="/" style="color: red;display: flex">GAP <span style="color: #646464; margin-left: 6px"> TURISM</span></a>
-                                <a href="/gap/card/show" style="color: red; display: flex">GAP<span style="color: #646464;  margin-left: 6px"> CARD</span></a>
-                                <a href="/" style="color: red; display: flex">GAP <span style="color: #646464;  margin-left: 6px"> ACADEMY</span></a>
-                                <a href="/" style="color: red; display: flex">GAP <span style="color: #646464;  margin-left: 6px"> MEDIA</span></a>
-                                <img src="/new_design/images/banners/natural.svg" style="width: 71px !important;" height="41" alt="image not found"/>
+                    <div class="mt-patners wow fadeInUp" data-wow-delay="0.4s" style="margin-top: 50px">
+                        <h3 class="heading" style="color: black">Наши бренды</h3>
+                        <div class="" style="width: 100%; margin-bottom: 50px">
+                            <div style="display: flex; flex-wrap: wrap; justify-content: space-between;font-weight: 600; height: 24px; width: 100%; font-family: adineuePROKZ-bold; font-size: 18px; padding: 30px 0">
+                                <a href="/gap/market/show" style="color: red; display: flex; margin-bottom: 10px">GAP<span style="color: #646464; margin-left: 6px"> MARKET</span></a>
+                                <a href="/" style="color: red;display: flex; margin-bottom: 10px">GAP <span style="color: #646464; margin-left: 6px"> TURISM</span></a>
+                                <a href="/gap/card/show" style="color: red; display: flex; margin-bottom: 10px">GAP<span style="color: #646464;  margin-left: 6px"> CARD</span></a>
+                                <a href="/" style="color: red; display: flex; margin-bottom: 10px">GAP <span style="color: #646464;  margin-left: 6px"> ACADEMY</span></a>
+                                <a href="/" style="color: red; display: flex; margin-bottom: 10px">GAP <span style="color: #646464;  margin-left: 6px"> MEDIA</span></a>
+                                <img src="/new_design/images/banners/natural.svg" style="width: 71px !important; margin-bottom: 10px" height="41" alt="image not found"/>
                             </div>
                         </div>
                     </div>
