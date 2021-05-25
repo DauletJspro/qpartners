@@ -2915,6 +2915,11 @@
 	}
 }
 @media only screen and (max-width: 424px) {
+    #insta-posts .insta-post{
+        width: 315px !important;
+        max-height: 410px !important;
+        min-width: 314px !important;
+    }
     #youtube-reviews iframe {
         width: 100% !important;
         margin-top: 20px;

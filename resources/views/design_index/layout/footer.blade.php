@@ -86,9 +86,9 @@
                 </div>
                 <nav class="col-xs-12 col-sm-7 col-md-5 mt-paddingbottomxs">
                     <!-- Footer Nav of the Page -->
-                    <div class="nav-widget-1" style="color: white; font-size: 14px; font-family: 'Source Sans Pro', sans-serif">
+                    <div class="nav-widget-1" style="color: white; font-size: 14px;">
                         <h3 class="f-widget-heading" style="color: white;">Проекты</h3>
-                        <ul class="list-unstyled f-widget-nav ">
+                        <ul class="list-unstyled f-widget-nav" style="font-family: Montserrat">
                             <li><a href="/gap/market/show">GAP Market</a></li>
                             <li><a href="#">GAP Academy</a></li>
                             <li><a href="/gap/card/show">GAP Card</a></li>
@@ -101,7 +101,7 @@
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading" style="color: white;">Программы</h3>
-                        <ul class="list-unstyled f-widget-nav" style=" font-size: 14px; font-family: 'Source Sans Pro', sans-serif; text-transform: capitalize" >
+                        <ul class="list-unstyled f-widget-nav" style=" font-size: 14px; text-transform: capitalize; font-family: Montserrat" >
                             <li><a href="/programs/1">baspana plus</a></li>
                             <li><a href="/programs/2">tulpar plus</a></li>
                             <li><a href="/programs/3">baspana</a></li>
@@ -116,7 +116,7 @@
                     <!-- Footer Nav of the Page -->
                     <div class="nav-widget-1">
                         <h3 class="f-widget-heading" style="color: white;">Информация</h3>
-                        <ul class="list-unstyled f-widget-nav" style="font-size: 14px; font-family: 'Source Sans Pro', sans-serif">
+                        <ul class="list-unstyled f-widget-nav" style="font-size: 14px; font-family: Montserrat">
                             <li><a href="/about_us/chairperson">О нас</a></li>
                             <li><a href="#">Связаться с нами</a></li>
                             <li><a href="#">Правила и условия</a></li>
