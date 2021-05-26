@@ -352,7 +352,7 @@ $tab = (explode('tab=', URL::current()));
                                     aria-hidden="true">&times;</span></button>
                         <div class="title-group"
                              style="margin-left: 20px; font-size: 120%; color: black; font-weight: 400;">
-                            <h4 class="modal-title">Форма заявки {{$product->product_id}}</h4>
+                            <h4 class="modal-title">Форма заявки</h4>
                         </div>
                     </div>
                     <div class="modal-body">

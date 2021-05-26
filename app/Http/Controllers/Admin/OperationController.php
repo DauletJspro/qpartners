@@ -23,6 +23,7 @@ class OperationController extends Controller
 
     public function index(Request $request)
     {
+        $CASHBACK_ID = 22;
         $row = UserOperation::leftJoin('users','users.user_id','=','user_operation.author_id')
             ->leftJoin('users as recipient_user','recipient_user.user_id','=','user_operation.recipient_id')
             ->leftJoin('operation','operation.operation_id','=','user_operation.operation_id')
@@ -30,6 +31,7 @@ class OperationController extends Controller
             ->leftJoin('fond','fond.fond_id','=','user_operation.fond_id')
             ->where('operation.operation_name_ru','like','%' .$request->operation .'%')
             ->where('operation_type.operation_type_name_ru','like','%' .$request->operation_type .'%')
+            ->where('user_operation.operation_type_id', '!=', $CASHBACK_ID)
             ->orderBy('user_operation_id','desc')
             ->select('users.*',
                 'user_operation.money',
@@ -290,6 +292,64 @@ class OperationController extends Controller
         return  view('admin.operation.accounting',[
             'row' => $request,
             'title' => 'Жилищный бонус',
+            'request' => $request
+        ]);
+    }
+
+    public function cashbackOperation(Request $request)
+    {
+        $CASHBACK_ID = 22;
+        $operations = UserOperation::leftJoin('users','users.user_id','=','user_operation.author_id')
+            ->leftJoin('users as recipient_user','recipient_user.user_id','=','user_operation.recipient_id')
+            ->leftJoin('operation_type','operation_type.operation_type_id','=','user_operation.operation_type_id')
+            ->where('operation_type.operation_type_id', $CASHBACK_ID)
+            ->orderBy('user_operation.created_at','desc')
+            ->select(
+                'users.*',
+                'recipient_user.*',
+                'user_operation.*',
+                'operation_type.operation_type_name_ru',
+                DB::raw('DATE_FORMAT(user_operation.created_at,"%d.%m.%Y %H:%i") as date'));
+
+        //Поиск по получателям
+        if(isset($request->recipient_name) && $request->recipient_name != ''){
+            $operations->where(function($query) use ($request){
+                $query->where('recipient_user.name','like','%' .$request->recipient_name .'%')
+                    ->orWhere('recipient_user.last_name','like','%' .$request->recipient_name .'%')
+                    ->orWhere('recipient_user.login','like','%' .$request->recipient_name .'%')
+                    ->orWhere('recipient_user.email','like','%' .$request->recipient_name .'%');
+            });
+        }
+
+        //Поиск по отправителям
+        if(isset($request->user_name) && $request->user_name != ''){
+            $operations->where(function($query) use ($request){
+                $query->where('users.name','like','%' .$request->user_name .'%')
+                    ->orWhere('users.last_name','like','%' .$request->user_name .'%')
+                    ->orWhere('users.login','like','%' .$request->user_name .'%')
+                    ->orWhere('users.email','like','%' .$request->user_name .'%');
+            });
+        }
+
+
+        //Поиск по дате
+        if(isset($request->date_from) && $request->date_from != ''){
+            $timestamp = strtotime($request->date_from);
+            $operations->where(function($query) use ($timestamp){
+                $query->where('user_operation.created_at','>=',date("Y-m-d H:i", $timestamp));
+            });
+        }
+
+        if(isset($request->date_to) && $request->date_to != ''){
+            $timestamp = strtotime($request->date_to);
+            $operations->where(function($query) use ($timestamp){
+                $query->where('user_operation.created_at','<=',date("Y-m-d H:i", $timestamp));
+            });
+        }
+
+        $operations = $operations->paginate(20);
+        return view('admin.operation.cashback',[
+            'operations' => $operations,
             'request' => $request
         ]);
     }

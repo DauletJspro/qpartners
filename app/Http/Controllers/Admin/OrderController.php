@@ -25,17 +25,12 @@ class OrderController extends Controller
 
     public function index(Request $request)
     {
-        if(Auth::user()->role_id == 1){
-            $request = Order::select('*')
-                ->orderBy('created_at', 'desc')
-                ->paginate(20);
-            return view('admin.orders.index', [
-                'row' => $request
-            ]);
-        }else{
-            return redirect()->route('orders.edit')->with('danger', 'У вас нет прав Администратора!');
-
-        }
+        $request = Order::select('*')
+            ->orderBy('created_at', 'desc')
+            ->paginate(20);
+        return view('admin.orders.index', [
+            'row' => $request
+        ]);
     }
 
     public function editUserOrder(){

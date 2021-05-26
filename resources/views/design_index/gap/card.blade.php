@@ -208,7 +208,7 @@ if (isset($sub_category_id)) {
                                     </div>
                                     <div class="txt">
                                         <strong class="title"><a href="{{ route('gap_card.detail', $item->id) }}">{{$item->title_ru}}</a></strong>
-                                        <span class="price"> <span>{{$item->price}}</span>  тг.</span>
+                                        <span class="price"> <span>{{$item->price}}$ ({{round($item->price * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}})</span>  тг.</span>
                                     </div>
                                 </div>
                             </li>

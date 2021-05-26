@@ -21,9 +21,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use View;
-use DB;
 
 class OnlineController extends Controller
 {
@@ -87,9 +87,6 @@ class OnlineController extends Controller
 
     public function showBasket(Request $request)
     {
-        $shopping_table = CashbackShopping::where('user_id', Auth::user()->user_id)->first();
-        //Получаем первый день каждого месяца
-        $firstDayOfMonth = Carbon::now()->firstOfMonth()->toDateString();
 
         $request->basket = UserBasket::leftJoin('product', 'product.product_id', '=', 'user_basket.product_id')
             ->where('user_basket.user_id', Auth::user()->user_id)
@@ -99,11 +96,6 @@ class OnlineController extends Controller
 
         $request->basket_count = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->count();
 
-        //Если последняя покупка было сделано в прошлом месяце делаем сброс счетчика, и новый счетчик для кэшбэк для этого месяца
-        //Если нет данных о покупку через кэшбэк то обычным образом работает
-        if($shopping_table->updated_at < $firstDayOfMonth){
-            CashbackShopping::where('user_id', Auth::user()->user_id)->delete();
-        }
 
         if ($request->is_partner) {
             $request->is_partner = UserPacket::where('user_id', Auth::user()->user_id)->where('is_active', 1)->exists();
@@ -193,11 +185,24 @@ class OnlineController extends Controller
         $result['error'] = 'Временно недоступно';
         $result['status'] = false;
 
+        //Dates
+        $firstDayOfMonth = Carbon::now()->firstOfMonth()->toDateString();
+        $lastDayOfMonth = Carbon::now()->endOfMonth()->toDateString();
+
+
+        $user = Auth::user();
+        $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
+
+        $shopping_table = CashbackShopping::select('*', DB::raw('SUM(cash) as sum'))
+            ->where('user_id', $user->user_id)
+            ->where('created_at', '>=', $firstDayOfMonth)
+            ->where('created_at', '<=', $lastDayOfMonth)
+            ->groupBy(DB::raw('MONTH(created_at)'))->first();
+        $LIMIT = 100000;
+
         $sum = 0;
         $products_all = [];
         $products_item = [];
-        $user = Auth::user();
-        $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
 
         $validator = Validator::make($request->all(), [
             'type' => 'required|string',
@@ -213,7 +218,7 @@ class OnlineController extends Controller
         }
         foreach ($products as $item) {
             $product_price = Product::where('product_id', $item->product_id)->first();
-            $sum += ($product_price->product_price * $item->unit) * Currency::where('currency_id', 1)->first()->money;
+            $sum += $product_price->product_price * $item->unit;
             $products_item['product_id'] = $product_price->product_id;
             $products_item['product_name'] = $product_price->product_name_ru;
             $products_item['count'] = $item->unit;
@@ -224,62 +229,34 @@ class OnlineController extends Controller
 // cashback start
 
       if($request->cashback == "true"){
-          $shopping_table = CashbackShopping::where('user_id', $user->user_id)->first();
-          $firstDayOfMonth = Carbon::now()->firstOfMonth()->toDateString();
-          $lastDayOfMonth = Carbon::now()->lastOfMonth()->toDateString();
-          $LIMIT = 100000;
-
-
-
-          if($sum <= $LIMIT){
-              if($user->user_cash >= $sum){
-                  if(($shopping_table->cash + $sum <= $LIMIT) || (($firstDayOfMonth < isset($shopping_table->updated_at)) && (isset($shopping_table->updated_at) < $lastDayOfMonth) && (isset($shopping_table->cash) <= $LIMIT))){
-                      $user_cash = $user->user_cash;
-                      $user_new_cash = $user_cash - $sum;
-                      $user->user_cash = $user_new_cash;
-                      Order::create([
-                          'order_code' => time(),
-                          'user_id' => $user->user_id,
-                          'username' => $user->name . $user->last_name,
-                          'email' => $user->email,
-                          'address' => $request->address,
-                          'contact' => $user->phone,
-                          'sum' => $sum,
-                          'products' => \json_encode($products_all),
-                          'packet_id' => null,
-                          'is_paid' => 1,
-                          'payment_id' => 0,
-                          'delivery_id' => $request->delivery_id,
-                      ]);
-                      foreach($products as $product){
-                          $product->is_active = 1;
-                          $product->save();
-                      }
-                      if($shopping_table) {
-                          $shopping_table->cash += $sum;
-                          $shopping_table->save();
-                      }else{
-                          $cashback = CashbackShopping::create([
-                              'user_id' => $user->user_id,
-                              'cash' => $sum,
-                          ]);
-                          $cashback->save();
-                      }
-                      $user->save();
-                      $result['status'] = true;
-                      return response()->json($result);
-                  }else{
-                      $result['error'] = 'Вы превысили лимит на покупку через кэшбэк!';
-                      $result['status'] = false;
-                      return response()->json($result);
+          $sum = $sum * Currency::where('currency_id', 1)->first()->money;
+          $request['sum'] = $sum;
+          $request['products'] = \json_encode($products_all);
+          $request['is_paid'] = true;
+          $data = $request->all();
+          $user_cash = $user->user_cash * (Currency::where('currency_id', 1)->first()->money);
+          if($user_cash >= $sum){
+              if($shopping_table->sum + $sum <= $LIMIT){
+                  $user->user_cash  = ($user_cash - $sum) / Currency::where('currency_id', 1)->first()->money;
+                  Order::create($data);
+                  foreach($products as $product){
+                      $product->is_active = 1;
+                      $product->save();
                   }
+                  CashbackShopping::create([
+                      'user_id' => $user->user_id,
+                      'cash' => $sum,
+                  ]);
+                  $user->save();
+                  $result['status'] = true;
+                  return response()->json($result);
               }else{
-                  $result['error'] = 'У вас недостаточно средств';
+                  $result['error'] = 'Вы превысили лимит на покупку через кэшбэк!';
                   $result['status'] = false;
                   return response()->json($result);
               }
           }else{
-              $result['error'] = 'Вы превысили лимит на покупку через кэшбэк!';
+              $result['error'] = 'У вас недостаточно средств';
               $result['status'] = false;
               return response()->json($result);
           }

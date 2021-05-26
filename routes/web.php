@@ -237,8 +237,14 @@ Route::group([
     Route::post('/buy/cashback/','PayCashbackController@create')->name('cashback.pay');
 
 
-    Route::get('/gap_card/orders/', 'GapCardOrderController@index')->name('gap.card.orders.index');
-    Route::get('/gap_card/ratings', 'ConsumerRatingController@index')->name('gap.card.ratings.index');
+
+
+    Route::group([
+        'prefix' => 'gap_card'
+    ], function () {
+        Route::get('/orders/', 'GapCardOrderController@index')->name('gap.card.orders.index');
+        Route::get('/ratings', 'ConsumerRatingController@index')->name('gap.card.ratings.index');
+    });
 
     Route::get('/orders', 'OrderController@index');
     Route::get('/orders/edit', 'OrderController@editUserOrder')->name('orders.edit');
@@ -260,6 +266,7 @@ Route::group([
 
     Route::get('call-friend', 'IndexController@callFriend');
     Route::get('operation', 'OperationController@index');
+    Route::get('/cashback/operation', 'OperationController@cashbackOperation')->name('cashback.operation');
     Route::get('accounting', 'OperationController@accountingList');
     Route::get('accounting/autobonus', 'OperationController@AutoBonusList');
     Route::get('accounting/homebonus', 'OperationController@HomeBonusList');

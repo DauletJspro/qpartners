@@ -60,57 +60,59 @@
                                         </tr>
                                         @foreach($row as $key => $val)
 
-                                            <tr @if($val->operation_type_id == 10) style="background-color: #91ff91 !important;"
-                                                @elseif($val->operation_type_id == 33) style="background-color: yellow !important;"
-                                                @elseif($val->operation_type_id == 39) style="background-color: greenyellow !important;"
-                                                @elseif($val->operation_type_id == 41) style="background-color: greenyellow !important;" @endif>
-                                                <td> {{ $key + 1 }}</td>
-                                                <td class="arial-font">
-                                                    <a class="main-label"
-                                                       @if(Auth::user()->role_id == 1) href="/admin/profile/{{$val->recipient_id}}"
-                                                       target="_blank" @endif><p
-                                                                class="login">{{$val->recipient_login}}</p>
-                                                        <p class="client-name">{{ $val->recipient_name }} {{ $val->recipient_last_name }} {{ $val->recipient_middle_name }}</p>
-                                                    </a>
-                                                </td>
-                                                <td class="arial-font">
-                                                    <a class="main-label"
-                                                       @if(Auth::user()->role_id == 1) href="/admin/profile/{{$val->user_id}}"
-                                                       target="_blank" @endif><p class="login">{{$val->login}}</p>
-                                                        <p class="client-name">{{ $val->name }} {{ $val->last_name }} {{ $val->middle_name }}</p>
-                                                    </a>
-                                                </td>
-                                                <td class="arial-font">
-                                                    {{ $val->operation_type_name_ru }} @if($val->operation_type_id == 9)
-                                                        "{{$val->fond_name_ru}}" @endif
-                                                </td>
-                                                <td class="arial-font">
-                                                    {{ $val->operation_name_ru }}
-                                                </td>
-                                                <td class="arial-font">
-                                                    @if($val->operation_type_id == 2)
-                                                        {{ $val->money }} доля
-                                                    @elseif($val->operation_type_id == 11)
-                                                        {{$val->money}} GV
-                                                    @elseif($val->operation_type_id == 40)
-                                                        {{$val->money}} PV
-                                                    @elseif($val->operation_type_id == 38)
-                                                        {{$val->money}} SV
-                                                    @elseif($val->operation_type_id == 42)
-                                                        {{$val->money}} SV
-                                                    @else
-                                                        {{ round($val->money,2) }} $
-                                                        ({{round($val->money * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
-                                                        тг)
-                                                    @endif
-                                                </td>
-                                                <td class="arial-font">
-                                                    {{ $val->operation_comment }}
-                                                </td>
-                                                <td class="arial-font">
-                                                    {{ $val->date }}
-                                                </td>
-                                            </tr>
+                                                <tr @if($val->operation_type_id == 10) style="background-color: #91ff91 !important;"
+                                                    @elseif($val->operation_type_id == 33) style="background-color: yellow !important;"
+                                                    @elseif($val->operation_type_id == 39) style="background-color: greenyellow !important;"
+                                                    @elseif($val->operation_type_id == 41) style="background-color: greenyellow !important;" @endif>
+                                                    <td> {{ $key + 1 }}</td>
+                                                    <td class="arial-font">
+                                                        <a class="main-label"
+                                                           @if(Auth::user()->role_id == 1) href="/admin/profile/{{$val->recipient_id}}"
+                                                           target="_blank" @endif><p
+                                                                    class="login">{{$val->recipient_login}}</p>
+                                                            <p class="client-name">{{ $val->recipient_name }} {{ $val->recipient_last_name }} {{ $val->recipient_middle_name }}</p>
+                                                        </a>
+                                                    </td>
+                                                    <td class="arial-font">
+                                                        <a class="main-label"
+                                                           @if(Auth::user()->role_id == 1) href="/admin/profile/{{$val->user_id}}"
+                                                           target="_blank" @endif><p class="login">{{$val->login}}</p>
+                                                            <p class="client-name">{{ $val->name }} {{ $val->last_name }} {{ $val->middle_name }}</p>
+                                                        </a>
+                                                    </td>
+                                                    <td class="arial-font">
+                                                        {{ $val->operation_type_name_ru }} @if($val->operation_type_id == 9)
+                                                            "{{$val->fond_name_ru}}" @endif
+                                                    </td>
+                                                    <td class="arial-font">
+                                                        {{ $val->operation_name_ru }}
+                                                    </td>
+                                                    <td class="arial-font">
+                                                        @if($val->operation_type_id == 2)
+                                                            {{ $val->money }} доля
+                                                        @elseif($val->operation_type_id == 11)
+                                                            {{$val->money}} GV
+                                                        @elseif($val->operation_type_id == 40)
+                                                            {{$val->money}} PV
+                                                        @elseif($val->operation_type_id == 38)
+                                                            {{$val->money}} SV
+                                                        @elseif($val->operation_type_id == 42)
+                                                            {{$val->money}} SV
+                                                        @else
+                                                            {{ round($val->money,2) }} $
+                                                            ({{round($val->money * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
+                                                            тг)
+                                                        @endif
+
+
+                                                    </td>
+                                                    <td class="arial-font">
+                                                        {{ $val->operation_comment }}
+                                                    </td>
+                                                    <td class="arial-font">
+                                                        {{ $val->date }}
+                                                    </td>
+                                                </tr>
 
                                         @endforeach
 

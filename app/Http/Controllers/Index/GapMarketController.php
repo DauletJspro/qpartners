@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Index;
 
+use App\Models\CashbackShopping;
+use App\Models\Order;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class GapMarketController extends Controller

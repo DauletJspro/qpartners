@@ -51,8 +51,8 @@
             </li>
             @if(!(Auth::user()->role_id == App\Models\Role::CONSUMER))
                 <li class="header" style="padding:5px 25px 0px">
-                    <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Кэшбэк счет:
-                        {{Auth::user()->user_cash}} ₸
+                    <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Cash Back счет:
+                        {{Auth::user()->user_cash * \App\Models\Currency::where('currency_name','тенге')->first()->money}} ₸
                     </p>
                 </li>
             @endif
@@ -382,9 +382,15 @@
             <li class="treeview">
                 <a href="/admin/operation">
                     <i class="fa fa-list-ul"></i>
-                    <span>Счет</span>
+                    <span>Счет(Основной)</span>
                 </a>
             </li>
+                <li class="treeview">
+                    <a href="{{ route('cashback.operation') }}">
+                        <i class="fa fa-list-ul"></i>
+                        <span>Счет(Cash Back)</span>
+                    </a>
+                </li>
         @endif
         <li class="treeview">
             <a href="/admin/structure">

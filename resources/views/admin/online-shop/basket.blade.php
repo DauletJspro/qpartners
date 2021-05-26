@@ -66,6 +66,24 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
+                    <input type="hidden" id="user_id" name="user_id" value="{{Auth::user()->user_id}}">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="first_name" name="name" value="{{Auth::user()->name}}">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="last_name" name="last_name" value="{{Auth::user()->last_name}}">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="contact" name="contact" value="{{Auth::user()->phone}}">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="email" name="email" value="{{Auth::user()->email}}">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="order_code" name="order_code" value="{{time()}}">
+                </div>
+                <div class="form-group">
                     <label for="address">Адрес</label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="г.Алматы ул.Абая 187а кв 94">
                 </div>

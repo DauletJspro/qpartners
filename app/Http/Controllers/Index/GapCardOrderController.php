@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Index;
 
 use App\Models\CardOrder;
+use App\Models\Currency;
 use App\Models\Rating;
 use App\Models\Users;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class GapCardOrderController extends Controller
 
         $card = GapCardItem::find($request->gap_card_id);
         $rating = Rating::where('user_id', Auth::user()->user_id)->where('gap_card_id', $card->id)->first();
-        $price = Auth::user()->balance->user_balance - $card->price;
+        $price = Auth::user()->balance->user_balance - ($card->price * Currency::where('currency_name','тенге')->first()->money);
         $exist = CardOrder::where('user_id', Auth::user()->user_id)->where('gap_card_id', $card->id)->first();
 
         if (Auth::user()->balance->user_balance >= $card->price && !isset($exist)){
@@ -45,27 +46,8 @@ class GapCardOrderController extends Controller
         }
 
         //cashback and user_money для активных спонсоров
-        $recommend_user_id = Auth::user()->recommend_user_id;
         if($success) {
-            for ($i=0; $i<8; $i++){
-                $recommend_user = Users::where('user_id',$recommend_user_id)->where('is_activated', true)->first();
-                $user_cash = $recommend_user->user_cash;
-                $user_money = $recommend_user->user_money;
-                $BONUS_20 = $card->price * 0.2;
-                $BONUS_5 = $card->price * 0.05;
-                $recommend_user_id = $recommend_user->recommend_user_id;
-                if ($i == 0 ){
-                    $user_money = $user_money + $BONUS_20;
-                    $recommend_user->update([
-                        'user_money' => $user_money
-                    ]);
-                }else{
-                    $cashback = $user_cash + $BONUS_5;
-                    $recommend_user->update([
-                        'user_cash' => $cashback
-                    ]);
-                }
-            }
+            Users::cashbackBonus($card);
         }
 
         //Отправка сообщение при созданий данных
