@@ -5,13 +5,14 @@
             <input id="brand-name" required type="text" name="brand_name" value="{{$row->brand_name}}"
                    class="form-control input" placeholder="Названия бренда"/>
             <input id="last-name" type="text" name="organization_name" value="{{$row->organization_name}}"
-                   class="form-control input" placeholder="Название коипании"/>
+                   class="form-control input" placeholder="Название компании"/>
             <input id="login" type="text" name="login" value="{{$row->login}}"
                    class="form-control input" placeholder="Логин"/>
             <input id="bin" type="text" name="bin" value="{{$row->bin}}"
                    class="form-control input" placeholder="БИН"/>
             <div id="agents">
-                <select name="agent_id"
+                <select style="height: 100%;"
+                        name="agent_id"
                         data-placeholder="Выберите агента"
                         class="form-control selectpicker input"
                         data-live-search="true">

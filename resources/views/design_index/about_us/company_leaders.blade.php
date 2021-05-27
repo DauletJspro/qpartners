@@ -79,12 +79,12 @@ $gallery = Slider::where('is_show', 1)
                         <div style="position: relative">
                             <div id="slider-administration" style="display: flex; width: 100%; overflow:hidden;">
                                 @foreach($gallery as $item1)
-                                    <div style="width: 400px; margin-right: 10px; display: flex; flex-direction: column; text-align: center; font-size: 2rem">
-                                        <a href="{{route('gallery-detail.show', ['id' => $item1->slider_id])}}">
-                                            <img src="{{$item1->slider_image}}" style="width: 300px; height: 200px"/>
+                                    <div style="width: 300px; margin-right: 10px; display: flex; flex-direction: column; text-align: center; font-size: 2rem">
+                                        <a>
+                                            <img src="/new_design/images/banners/human-icon.png" style="width: 290px; height: 290px"/>
                                         </a>
-                                        <span style="font-weight: 400; color: black">Мухитдинов Шамшитдин</span>
-                                        <span style="text-transform: uppercase">Diamond Manager</span>
+                                        <span style="font-weight: 400; color: black">Имя Фамилия</span>
+                                        <span style="text-transform: uppercase">Долженность</span>
                                     </div>
                                 @endforeach
                             </div>

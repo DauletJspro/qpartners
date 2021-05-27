@@ -57,17 +57,17 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                             </a>
                         </li>
                         <li style="list-style-type: none;">
-                            <a href="">
+                            <a href="turism">
                                 TURISM
                             </a>
                         </li>
                         <li style="list-style-type: none;">
-                            <a href="">
+                            <a href="academy">
                                 ACADEMY
                             </a>
                         </li>
                         <li style="list-style-type: none;">
-                            <a href="" style="">
+                            <a href="media" style="">
                                 MEDIA
                             </a>
                         </li>

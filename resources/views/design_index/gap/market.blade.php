@@ -35,7 +35,17 @@
 
     </script>
 @endsection
-
+<script>
+    function showSubCategories(index) {
+        console.log('categoryID', index);
+        let length = document.getElementsByClassName('subcategories-body').length;
+        console.log('ln', length)
+        for(let i = 0; i < length; i++) {
+            document.getElementById(`collapse_${i}`).classList.remove('show');
+        }
+        document.getElementById(`collapse_${index}`).classList.add('show');
+    }
+</script>
 @section('content')
     <main id="mt-main" style="margin-top: -50px !important;">
         <div class="row" style="margin-right: 0 !important; margin-left: 0 !important;">
@@ -95,17 +105,17 @@
                         <h2>Категорий</h2>
 
                         <ul class="list-unstyled category-list">
-                            @foreach($categories as $category)
+                            @foreach($categories as $index => $category)
                                 <li>
-                                    <a role="button" data-toggle="collapse" href="#collapse{{$category->id}}"
+                                    <a role="button" onclick="showSubCategories({{$index}})" data-toggle="collapse" href="#collapse_{{$index}}"
                                        aria-expanded="false"
                                        aria-controls="collapseExample">
                                         <span class="name">{{$category->name}}</span>
                                         <span class="num">{{isset($category->sub_categories) ? count($category->sub_categories) : 0}}</span>
                                     </a>
                                     <ul style="font-size:90%; font-weight:bolder;margin-top: 1rem;margin-left: 10px;"
-                                        class="collapse col-sm-10 list-unstyled category-list"
-                                        id="collapse{{$category->id}}">
+                                        class="subcategories-body collapse col-sm-10 list-unstyled category-list"
+                                        id="collapse_{{$index}}">
                                         @foreach($category->sub_categories as $sub_category)
                                             <li>
                                                 <a href="" style="color:black;">

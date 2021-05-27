@@ -44,6 +44,17 @@ if (isset($sub_category_id)) {
 
     </script>
 @endsection
+<script>
+    function showSubcategories(index) {
+        console.log('subid', index)
+        let length = document.getElementsByClassName('subcategories-body').length;
+        for(let i = 0; i < length; i++) {
+            document.getElementById(`collapse_${i}`).classList.remove('show');
+            document.getElementById(`collapse_${i}`).classList.remove('in');
+        }
+
+    }
+</script>
 @section('content')
     <main id="mt-main" style="margin-top: -50px !important;">
 {{--        <div class="row" style="margin-right: 0 !important; margin-left: 0 !important;">--}}
@@ -145,17 +156,17 @@ if (isset($sub_category_id)) {
                         <h2>Категорий</h2>
 
                         <ul class="list-unstyled category-list">
-                            @foreach($categories as $category)
+                            @foreach($categories as $index => $category)
                                 <li>
-                                    <a role="button" data-toggle="collapse" href="#collapse{{$category->id}}"
+                                    <a role="button" onclick="showSubcategories({{$index}})" data-toggle="collapse" href="#collapse_{{$index}}"
                                        aria-expanded="false"
                                        aria-controls="collapseExample">
                                         <span class="name">{{$category->title_ru}}</span>
                                         <span class="num">{{isset($category->sub_categories) ? count($category->sub_categories) : 0}}</span>
                                     </a>
                                     <ul style="font-size:90%; font-weight:bolder;margin-top: 1rem;margin-left: 10px;"
-                                        class="collapse col-sm-10 list-unstyled category-list"
-                                        id="collapse{{$category->id}}">
+                                        class="subcategories-body collapse col-sm-10 list-unstyled category-list"
+                                        id="collapse_{{$index}}">
                                         @foreach($category->sub_categories as $sub_category)
                                             <li>
                                                 <a href="" style="color:black;">
