@@ -127,7 +127,7 @@ use Illuminate\Support\Facades\Session;
                                         <span style="font-size: 14px;width:200px;font-family:'Montserrat';color:white;" class="p-0">Ответы на часто задаваемые вопросы</span>
                                     </div>
                                     <div class="holder-inner">
-                                        <a href="/shop" class="btn-shop" style="background: none">
+                                        <a href="/faq" class="btn-shop" style="background: none">
                                             <span style="color: white !important;font-weight:300;">Подробнее</span>
                                             <i class="fa fa-angle-right" style="background: #fff; color: black;"></i>
                                         </a>
@@ -307,7 +307,8 @@ use Illuminate\Support\Facades\Session;
                                     <span style="font-size: 1.5rem;font-family:'Montserrat';color:#fff;float:left;" class="p-0">Вступительный взнос от 60 000 тенге</span>
                                 </div>
                                 <div class="holder-inner">
-                                    <a href="product-detail.html" class="btn-shop">
+{{--                                    <a href="product-detail.html" class="btn-shop">--}}
+                                    <a href="/faq" class="btn-shop">
                                         <span style="color: #fff!important;text-transform:lowercase;font-size: 1.5rem">подробнее</span>
                                         <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
                                     </a>
@@ -323,7 +324,8 @@ use Illuminate\Support\Facades\Session;
                                     <span style="font-size: 1.5rem;font-family:'Montserrat';color:white;" class="p-0">Паевый взнос 10 000 тенге</span>
                                 </div>
                                 <div class="holder-inner">
-                                    <a href="product-detail.html" class="btn-shop">
+{{--                                    <a href="product-detail.html" class="btn-shop">--}}
+                                    <a href="/faq" class="btn-shop">
                                         <span style="color: white !important;text-transform:lowercase;font-size: 1.5rem">подробнее</span>
                                         <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
                                     </a>
@@ -339,7 +341,8 @@ use Illuminate\Support\Facades\Session;
                                     <span style="font-size: 1.5rem;font-family:'Montserrat';color:white;float:left;" class="p-0">Cрок получения рассрочки от 1 месяца</span>
                                 </div>
                                 <div class="holder-inner" style="float:left;">
-                                    <a href="product-detail.html" class="btn-shop">
+{{--                                    <a href="product-detail.html" class="btn-shop">--}}
+                                    <a href="/faq" class="btn-shop">
                                         <span style="color: white;text-transform:lowercase;font-size: 1.5rem">подробнее</span>
                                         <i class="fa fa-angle-right" style="background: #fff; color: #000;"></i>
                                     </a>

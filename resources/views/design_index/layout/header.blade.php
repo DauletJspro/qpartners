@@ -67,7 +67,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                             </a>
                         </li>
                         <li style="list-style-type: none;">
-                            <a href="media" style="">
+                            <a href="gap-media" style="">
                                 MEDIA
                             </a>
                         </li>

@@ -51,7 +51,10 @@ if (isset($sub_category_id)) {
         for(let i = 0; i < length; i++) {
             document.getElementById(`collapse_${i}`).classList.remove('show');
             document.getElementById(`collapse_${i}`).classList.remove('in');
+            document.getElementById(`category_${i}`).style.color = '#494949';
+
         }
+        document.getElementById(`category_${index}`).style.color = 'red';
 
     }
 </script>
@@ -158,7 +161,7 @@ if (isset($sub_category_id)) {
                         <ul class="list-unstyled category-list">
                             @foreach($categories as $index => $category)
                                 <li>
-                                    <a role="button" onclick="showSubcategories({{$index}})" data-toggle="collapse" href="#collapse_{{$index}}"
+                                    <a id="category_{{$index}}" style="color: #494949" role="button" onclick="showSubcategories({{$index}})" data-toggle="collapse" href="#collapse_{{$index}}"
                                        aria-expanded="false"
                                        aria-controls="collapseExample">
                                         <span class="name">{{$category->title_ru}}</span>
