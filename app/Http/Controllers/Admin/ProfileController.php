@@ -348,10 +348,52 @@ class ProfileController extends Controller
 
             $operation->save();
         }
-        
+
         $url = '/admin/profile/'.$request->user_id.'?tab=money';
         return redirect($url);
     }
+
+    public function editPV(Request $request){
+        $user = Users::find($request->user_id);
+        if ($user){
+            $user->pv_balance = $user->pv_balance + $request->pv_balance;
+            $user->save();
+        }
+        $url = '/admin/profile/'.$request->user_id.'?tab=pv';
+        return redirect($url);
+
+    }
+    public function editGV(Request $request){
+        $user = Users::find($request->user_id);
+        if ($user){
+            $user->gv_balance = $user->gv_balance + $request->gv_balance;
+            $user->save();
+        }
+        $url = '/admin/profile/'.$request->user_id.'?tab=gv';
+        return redirect($url);
+
+    }
+    public function editLSV(Request $request){
+        $user = Users::find($request->user_id);
+        if ($user){
+            $user->personal_sv_balance = $user->personal_sv_balance + $request->personal_sv_balance;
+            $user->save();
+        }
+        $url = '/admin/profile/'.$request->user_id.'?tab=lsv';
+        return redirect($url);
+
+    }
+    public function editGSV(Request $request){
+        $user = Users::find($request->user_id);
+        if ($user){
+            $user->group_sv_balance = $user->group_sv_balance + $request->group_sv_balance;
+            $user->save();
+        }
+        $url = '/admin/profile/'.$request->user_id.'?tab=gsv';
+        return redirect($url);
+
+    }
+
 
     public function editStatus(Request $request){
         $user = Users::find($request->user_id);

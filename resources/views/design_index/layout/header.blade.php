@@ -37,7 +37,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6" id="hidden-xs">
-                    <ul class="gap-ul mt-top-bar" style="float: left;" id="gap-ul">
+                    <ul class="gap-ul mt-top-bar" style="float: left; font-family: Montserrat" id="gap-ul">
                         <li style="{{$gapTypeActive == 1 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
                             <a style="{{$gapTypeActive == 1 ? 'background:white;color:red;' : ''}}"
                                href="{{route('gap.index.show')}}">
@@ -57,17 +57,17 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                             </a>
                         </li>
                         <li style="list-style-type: none;">
-                            <a href="">
+                            <a href="turism">
                                 TURISM
                             </a>
                         </li>
                         <li style="list-style-type: none;">
-                            <a href="">
+                            <a href="academy">
                                 ACADEMY
                             </a>
                         </li>
                         <li style="list-style-type: none;">
-                            <a href="" style="">
+                            <a href="gap-media" style="">
                                 MEDIA
                             </a>
                         </li>
@@ -102,13 +102,36 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         </li>
                         <li class="">
                             <div class="dropdown">
-                                <a class="" href="#">{{Lang::get('app.cabinet')}}</a>
+                                <a class="" href="#">
+                                    @if(Auth::user()->role_id == App\Models\Role::CONSUMER)
+                                        {{Auth::user()->name}} {{Auth::user()->last_name}}
+                                    @else
+                                        {{Lang::get('app.cabinet')}}
+                                    @endif
+                                </a>
                                 <div class="dropdown-content">
                                     @if(!Auth::check())
                                         <a href="/register">Регистрация</a>
                                         <a href="/login">Войти</a>
                                     @else
-                                        <a href="/admin/index">Личный кабинет</a>
+                                        @if(!(Auth::user()->role_id == App\Models\Role::CONSUMER))
+                                            <a href="/admin/index">Личный кабинет</a>
+                                        @endif
+                                        @if(Auth::user()->role_id == App\Models\Role::CONSUMER)
+                                            <a href="/admin/gap_card/orders">Личный кабинет</a>
+                                            <a href="#">Баланс:
+                                                {{Auth::user()->balance->user_balance}}
+                                            </a>
+                                            <a href="#">
+                                                Пополнить счет
+                                            </a>
+                                            <a href="/admin/profile/edit">
+                                                Настройки
+                                            </a>
+                                        @endif
+                                        <a href="/logout">
+                                            Выйти
+                                        </a>
                                     @endif
                                 </div>
                             </div>
@@ -156,7 +179,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                             <a href="/gap/card/show"><span style="cursor:pointer;color: #646464">CARD</span></a>
                         @endif
                     </div>
-                    <div class="cities dropdown cursor-pointer" style="margin-left: 4rem;">
+                    <div class="cities dropdown cursor-pointer" style="margin-left: 4rem; margin-top: 0.5rem">
                         <a class="icl_lang_sel_current fs-18 icl_lang_sel_native font-weight-lighter text-black mt-1" style="">
                             @if(isset($city))
                                 {{$city->city_name_ru}}
@@ -204,10 +227,11 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                 <div class="s-drop">
                                     <ul>
 {{--                                        <li><a href="/about_us/guide">Руководство компании</a></li>--}}
-{{--                                        <li><a href="/about_us/administration">Администрация компании</a></li>--}}
-{{--                                        <li><a href="/about_us/leaders">Лидеры компании</a></li>--}}
+                                        <li><a href="/about_us/administration">Администрация компании</a></li>
+                                        <li><a href="/about_us/leaders">Лидерcкий совет</a></li>
                                         <li><a href="/about_us/guide">О Кооперативе</a></li>
                                         <li><a href="/about_us/chairperson">Председатель Кооператива</a></li>
+                                        <li><a href="/about_us/representatives">Представители</a></li>
                                         <li><a href="{{route('faq.show')}}">Часто задаваемые вопросы</a></li>
                                     </ul>
                                 </div>

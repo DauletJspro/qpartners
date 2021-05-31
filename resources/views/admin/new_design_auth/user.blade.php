@@ -10,7 +10,8 @@
                    class="form-control input" placeholder="Логин"/>
 
             <div id="cities">
-                <select name="city_id"
+                <select style="height: 100%"
+                        name="city_id"
                         data-placeholder="Выберите город"
                         class="form-control selectpicker input"
                         data-live-search="true">

@@ -92,7 +92,6 @@
     </script>
 @endsection
 @section('content')
-    @include('design_index.gap.includes.modal')
     <div class="container d-flex-row mb-7 ff flex-wrap">
         <div class="program-detail-img d-flex-column">
             <div class="d-flex-row">
@@ -166,15 +165,19 @@
             <div style="margin-top:60px; font-weight: 300; width: 90%" class="text-black fs-18">{{ $gap_card->description_ru }}</div>
             <div style="margin-top: 100px; font-weight: 300; width: 90%" class="text-black fs-18">Цена: {{$gap_card->price}} тг</div>
             <div style="margin-top: 37px; height: 30px" class="d-flex-row flex-wrap">
-                <span class="text-silver" style="margin: auto 0">кол-во</span>
-                <input class="program-quantity ml-3" type="number" value="1">
-                <a href="#" data-toggle="modal"
-                   @if(!isset($rating->rating) && \Illuminate\Support\Facades\Auth::check())
-                        data-target="#ratingModal"
-                   @endif
-                   class="bg-green border-radius-30 px-15 ml-1 py-05 a-hover color-white">
-                    Добавить в корзину
-                </a>
+{{--                <span class="text-silver" style="margin: auto 0">кол-во</span>--}}
+{{--                <input class="program-quantity ml-3" type="number" value="1">--}}
+                <form action="{{ route('gap.card.order.confirm', $gap_card) }}" method="POST" >
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                        <button type="submit" data-toggle="modal"
+                            @if(!isset($rating->rating) && \Illuminate\Support\Facades\Auth::check())
+                                    data-target="#ratingModal"
+                            @endif
+                            class="bg-green border-radius-30 px-15 ml-1 py-05 a-hover color-white" style="border:none; padding: 10px 15px;">
+                                Купить
+                        </button>
+                </form>
 {{--                <a href="/programs/{{$chosen_program['id']}}" class="more-btn bg-red border-radius-30 px-15 ml-1 py-05 a-hover d-flex-row color-white">--}}
 {{--                    Подробнее--}}
 {{--                    <img style="width: 10px; height: 10px; margin-top: 6px; margin-left: 5px"--}}

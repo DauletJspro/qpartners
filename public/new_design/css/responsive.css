@@ -471,6 +471,15 @@
 }
 
 @media only screen and (max-width: 991px) {
+
+    #left-arrow-administration  {
+        left: 0 !important;
+        color: white;
+    }
+    #right-arrow-administration {
+        right: 0 !important;
+        color: white;
+    }
     #vip-container {
         margin-top: 80px;
     }
@@ -1363,11 +1372,17 @@
 }
 
 @media only screen and (max-width: 767px) {
+    #cooperative-chairman div {
+        width: 48% !important;
+    }
     #vip-container .block{
         width: 100% !important;
         margin: 0 !important;
         margin-top: 20px !important;
     }
+
+
+
     #nav-icon1 {
         display: block !important;
     }
@@ -2746,6 +2761,20 @@
 }
 
 @media only screen and (max-width: 550px) {
+
+    #cooperative-chairman div{
+        width: 100% !important;
+    }
+    #cooperative-chairman span{
+        left: 140px !important;
+        top: 230px !important;
+    }
+    #cooperative-chairman div:first-child{
+        margin-bottom: 30px;
+        height: 455px !important;
+
+    }
+
     .advantages-block {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -2886,6 +2915,32 @@
 	}
 }
 @media only screen and (max-width: 424px) {
+    #insta-posts .insta-post{
+        width: 315px !important;
+        max-height: 410px !important;
+        min-width: 314px !important;
+    }
+    #youtube-reviews iframe {
+        width: 100% !important;
+        margin-top: 20px;
+    }
+
+    #first-block-info {
+        order: 2;
+        width: 100% !important;
+    }
+
+    #first-block-img {
+        width: 100% !important;
+    }
+    #second-block-info {
+        order: 2;
+        width: 100% !important;
+    }
+
+    #second-block-img {
+        width: 100% !important;
+    }
     .advantages-block {
         grid-template-columns: 1fr;
     }

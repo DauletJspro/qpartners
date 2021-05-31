@@ -41,4 +41,16 @@ class AboutController extends Controller
         ]);
     }
 
+    public function showCompanyChairpersons()
+    {
+
+        return view('design_index.about_us.company_chairpersons');
+    }
+
+    public function showCompanyRepresentatives()
+    {
+
+        return view('design_index.about_us.company_representatives');
+    }
+
 }

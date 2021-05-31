@@ -9,14 +9,13 @@
 
 @endsection
 
-
 @section('content')
     <main id="mt-main">
         <!-- Mt Contact Banner of the Page -->
-        <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"  style=" background-size: cover;
+        <section class="container mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"  style=" background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-             background-image: url('/new_design/images/banners/montazhnaya7.jpg');">
+             background: red;">
             <p style="color: white;font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">галерея</p>
 
             <div class="container">

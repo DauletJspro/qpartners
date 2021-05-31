@@ -44,6 +44,20 @@ if (isset($sub_category_id)) {
 
     </script>
 @endsection
+<script>
+    function showSubcategories(index) {
+        console.log('subid', index)
+        let length = document.getElementsByClassName('subcategories-body').length;
+        for(let i = 0; i < length; i++) {
+            document.getElementById(`collapse_${i}`).classList.remove('show');
+            document.getElementById(`collapse_${i}`).classList.remove('in');
+            document.getElementById(`category_${i}`).style.color = '#494949';
+
+        }
+        document.getElementById(`category_${index}`).style.color = 'red';
+
+    }
+</script>
 @section('content')
     <main id="mt-main" style="margin-top: -50px !important;">
 {{--        <div class="row" style="margin-right: 0 !important; margin-left: 0 !important;">--}}
@@ -96,8 +110,8 @@ if (isset($sub_category_id)) {
 {{--            </div>--}}
 {{--        </div>--}}
         <div id="vip-container" class="container" style="flex-wrap:wrap; display: flex; min-height: 280px; margin-top: 50px; font-family: Montserrat; color: black">
-            <div class="block" style="width: 49.5%; border: 1px solid #C4C4C4; display: flex; height: 100%">
-                <div class="" style="width: 52%; display: flex; flex-direction: column; height: 100%; padding: 25px 20px; font-weight: 600; background: #F6F6F6">
+            <div class="block" style="width: 49.5%; border: 1px solid #C4C4C4; display: flex; height: 100%; flex-wrap: wrap">
+                <div id="first-block-info" style="width: 52%; display: flex; flex-direction: column; height: 100%; padding: 25px 20px; font-weight: 600; background: #F6F6F6;">
                     <p style="text-transform: uppercase;">наименование компании</p>
                     <p style="font-weight: 400">краткая информация, краткая информация,краткая информация</p>
                     <p style="margin-top: 20px">Скидка %</p>
@@ -109,15 +123,15 @@ if (isset($sub_category_id)) {
                         </button>
                     </div>
                 </div>
-                <div style="width: 48%;display: flex;">
+                <div id="first-block-img" style="width: 48%;display: flex; position: relative;">
                     <img class="" src="/new_design/images/banners/company-photo1.jpeg" alt="img not found">
-                    <div style=" position: absolute; margin-left: 14.85%; margin-top: 14%">
+                    <div style=" position: absolute; right: 0px; bottom: 10%">
                         <span style="background-color: #FFE200; padding: 5px 25px 5px 15px; margin-bottom: 15px; font-weight: 600; letter-spacing: 2px">VIP</span>
                     </div>
                 </div>
             </div>
-            <div class="block" style="width: 49.5%; margin-left: 1%; border: 1px solid #C4C4C4; display: flex; height: 100%">
-                <div class="" style="width: 52%; display: flex; flex-direction: column; height: 100%; padding: 25px 20px; font-weight: 600; background: #F6F6F6">
+            <div class="block" style="width: 49.5%; margin-left: 1%; border: 1px solid #C4C4C4; display: flex; height: 100%; flex-wrap: wrap">
+                <div id="second-block-info" style="width: 52%; display: flex; flex-direction: column; height: 100%; padding: 25px 20px; font-weight: 600; background: #F6F6F6">
                     <p style="text-transform: uppercase;">наименование компании</p>
                     <p style="font-weight: 400">краткая информация, краткая информация,краткая информация</p>
                     <p style="margin-top: 20px">Скидка %</p>
@@ -129,9 +143,9 @@ if (isset($sub_category_id)) {
                         </button>
                     </div>
                 </div>
-                <div style="width: 48%;display: flex;">
+                <div id="second-block-img" style="width: 48%;display: flex; position: relative;">
                     <img class="" src="/new_design/images/banners/company-photo2.jpeg" alt="img not found">
-                    <div style=" position: absolute; margin-left: 14.85%; margin-top: 14%">
+                    <div style=" position: absolute; right: 0px; bottom: 10%">
                         <span style="background-color: #FFE200; padding: 5px 25px 5px 15px; margin-bottom: 15px; font-weight: 600; letter-spacing: 2px">VIP</span>
                     </div>
                 </div>
@@ -145,17 +159,17 @@ if (isset($sub_category_id)) {
                         <h2>Категорий</h2>
 
                         <ul class="list-unstyled category-list">
-                            @foreach($categories as $category)
+                            @foreach($categories as $index => $category)
                                 <li>
-                                    <a role="button" data-toggle="collapse" href="#collapse{{$category->id}}"
+                                    <a id="category_{{$index}}" style="color: #494949" role="button" onclick="showSubcategories({{$index}})" data-toggle="collapse" href="#collapse_{{$index}}"
                                        aria-expanded="false"
                                        aria-controls="collapseExample">
                                         <span class="name">{{$category->title_ru}}</span>
                                         <span class="num">{{isset($category->sub_categories) ? count($category->sub_categories) : 0}}</span>
                                     </a>
                                     <ul style="font-size:90%; font-weight:bolder;margin-top: 1rem;margin-left: 10px;"
-                                        class="collapse col-sm-10 list-unstyled category-list"
-                                        id="collapse{{$category->id}}">
+                                        class="subcategories-body collapse col-sm-10 list-unstyled category-list"
+                                        id="collapse_{{$index}}">
                                         @foreach($category->sub_categories as $sub_category)
                                             <li>
                                                 <a href="" style="color:black;">
@@ -249,8 +263,8 @@ if (isset($sub_category_id)) {
                                         </div>
                                     </div>
                                     <div class="txt">
-                                        <strong class="title"><a href="{{ route('gap_card.detail', $item->id) }}" style="color: black">{{$item->title_ru}}</a></strong>
-                                        <span class="price"><span>Цена:</span> <span style="font-weight: normal">&nbsp; ${{$item->price}} &nbsp; ({{$item->price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span></span>
+                                        <strong class="title"><a href="{{ route('gap_card.detail', $item->id) }}">{{$item->title_ru}}</a></strong>
+                                        <span class="price"> <span>{{$item->price}}$ ({{round($item->price * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}})</span>  тг.</span>
                                     </div>
                                 </div>
                             </li>

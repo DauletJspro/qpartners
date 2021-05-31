@@ -109,7 +109,7 @@ $statuses = \App\Models\UserStatus::where(['is_show' => true])->pluck('user_stat
                                         <td>
                                             <form>
                                                 <input value="{{$request->inviter_name}}" type="text"
-                                                       class="form-control" name="sponsor_name" placeholder="Поиск">
+                                                       class="form-control" name="inviter_name" placeholder="Поиск">
                                             </form>
                                         </td>
                                         <td>
@@ -122,6 +122,9 @@ $statuses = \App\Models\UserStatus::where(['is_show' => true])->pluck('user_stat
                                                     @endforeach
                                                 </select>
                                             </form>
+                                        </td>
+                                        <td>
+
                                         </td>
                                         <td>
                                             <form>

@@ -144,7 +144,7 @@
             <p> - Сумма рассрочки <span class="text-red font-weight-600">{{$chosen_program['installment_amount']}}</span></p>
             <p> - Срок рассрочки <span class="text-red font-weight-600">{{$chosen_program['installment_term']}}</span></p>
             <p> - Срок получения рассрочки <span class="text-red font-weight-600">{{$chosen_program['term_form_receiving_installments']}}</span></p>
-            <p> - В программе могут участвовать лица <span class="text-red font-weight-600">{{$chosen_program['age']}}</span></p>
+            <p> - В программе могут участвовать <span class="text-red font-weight-600">{{$chosen_program['age']}}</span></p>
         </div>
         <div class="conditions container mt-2" id="conditions">
             <p>Для получения жилья в рассрочку Вам необходимо выполнить следующие условия кооператива.</p>
@@ -182,7 +182,7 @@
 
                 @foreach($programs as $program)
                     @if($program['id'] !== $chosen_program['id'])
-                        <div class="program-detail-block-width d-flex-column mt-1">
+                        <div class="program-detail-block-width d-flex-column mt-2">
                             <img src="/new_design/images/banners/{{$program["imgSrc"]}}" alt="programs img not found"/>
                             <p class="text-black mt-1 fs-11">{{$program["body"]}}</p>
                             <button class="button-hover mr-auto bg-red border-radius-30" onclick="" style="border: none; padding: 0 1rem">

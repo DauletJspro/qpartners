@@ -15,7 +15,7 @@
         <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"  style=" background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-image: url('/new_design/images/banners/montazhnaya3.jpg');
+            background: red;
             letter-spacing: 4px">
             <p style="color: white;font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">список представителей</p>
 

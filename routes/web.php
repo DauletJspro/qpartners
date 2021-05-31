@@ -31,7 +31,7 @@ Route::group([
     Route::get('/set-password', 'AuthController@showSetPassword')->name('show.password');
     Route::post('/reset-password', 'AuthController@resetPassword');
     Route::post('/set-password', 'AuthController@setNewPassword');
-    Route::post('/register', 'AuthController@register');
+    Route::post('/register', 'AuthController@register')->name('register');
     Route::get('/logout', 'AuthController@logout');
 });
 
@@ -78,6 +78,10 @@ Route::group([
         Route::post('edit', 'ProfileController@update');
         Route::post('/password/edit', 'ProfileController@editPassword');
         Route::post('/money/edit', 'ProfileController@editMoney');
+        Route::post('/pv/edit', 'ProfileController@editPV');
+        Route::post('/gv/edit', 'ProfileController@editGV');
+        Route::post('/lsv/edit', 'ProfileController@editLSV');
+        Route::post('/gsv/edit', 'ProfileController@editGSV');
         Route::post('/status/edit', 'ProfileController@editStatus');
         Route::post('/activate', 'ProfileController@activateUser');
         Route::post('/profit/edit', 'ProfileController@editProfit');
@@ -234,10 +238,21 @@ Route::group([
     Route::resource('group', 'GroupController');
     Route::resource('user-group', 'UserGroupController');
 
+    Route::post('/buy/cashback/','PayCashbackController@create')->name('cashback.pay');
+
+
+
+
+    Route::group([
+        'prefix' => 'gap_card'
+    ], function () {
+        Route::get('/orders/', 'GapCardOrderController@index')->name('gap.card.orders.index');
+        Route::get('/ratings', 'ConsumerRatingController@index')->name('gap.card.ratings.index');
+    });
+
     Route::get('/orders', 'OrderController@index');
     Route::get('/orders/edit', 'OrderController@editUserOrder')->name('orders.edit');
     Route::post('/orders/edit/{id}', 'OrderController@updateOrder')->name('orders.update');
-
 
     Route::get('/pdf', 'PdfController@index')->name('pdf.index');
     Route::get('/pdf/baspana', 'PdfController@generateBaspana')->name('pdf.generate');
@@ -255,6 +270,7 @@ Route::group([
 
     Route::get('call-friend', 'IndexController@callFriend');
     Route::get('operation', 'OperationController@index');
+    Route::get('/cashback/operation', 'OperationController@cashbackOperation')->name('cashback.operation');
     Route::get('accounting', 'OperationController@accountingList');
     Route::get('accounting/autobonus', 'OperationController@AutoBonusList');
     Route::get('accounting/homebonus', 'OperationController@HomeBonusList');
@@ -419,11 +435,20 @@ Route::group([
     'namespace' => 'Index',
 ], function () {
     Route::get('/', 'IndexController@index')->name('gap.index.show');
+
+    Route::group([
+        'prefix' => 'gap_card'
+    ], function () {
+        Route::post('/confirm/{id}', 'GapCardOrderController@confirm')->name('gap.card.order.confirm');
+        Route::post('/create/', 'GapCardOrderController@create')->name('gap.card.order.create');
+    });
+
     Route::group([
         'prefix' => 'programs'
     ], function () {
         Route::post('/rating', 'RatingsController@rating')->name('rating');
     });
+
     Route::get('/programs/the_initial', 'ProgramController@initial')->name('program.initial');
     Route::get('/programs/the_shares', 'ProgramController@share')->name('program.share');
     Route::get('/programs/{id}', 'ProgramController@programsDetail')->name('program.programsDetail');
@@ -461,7 +486,9 @@ Route::group([
     Route::resource('review', 'ReviewController');
     Route::get('about_us/administration', 'AboutController@showCompanyAdministration');
     Route::get('about_us/guide', 'AboutController@showCompanyGuide');
-    Route::get('about_us/chairperson', 'AboutController@showCompanyLeaders');
+    Route::get('about_us/chairperson', 'AboutController@showCompanyChairpersons');
+    Route::get('about_us/leaders', 'AboutController@showCompanyLeaders');
+    Route::get('about_us/representatives', 'AboutController@showCompanyRepresentatives');
     Route::post('basket/is-ajax', 'BasketController@isAjax')->name('basket.isAjax');
     Route::post('favorite/is-ajax', 'FavoriteController@isAjax')->name('favorite.isAjax');
     Route::get('shop/{category_id}', 'ShopController@index')->name('shop.show.category');
