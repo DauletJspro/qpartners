@@ -11,7 +11,8 @@
 @php
     use Illuminate\Support\Facades\DB;
 
-    $gapUsers = DB::table('users')->where('deleted_at', '=', null)->get();
+    $gapUsers = DB::table('users')->where('deleted_at', '=', null)->select(['user_id', 'name', 'last_name','login',
+    'recommend_user_id', 'inviter_user_id', 'phone', 'activated_date','phone'])->get();
 @endphp
 
 <table class="row" width="100%" bgcolor="#ffffff" align="center" cellpadding="0" cellspacing="0" border="0"
