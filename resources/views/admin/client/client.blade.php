@@ -124,6 +124,9 @@ $statuses = \App\Models\UserStatus::where(['is_show' => true])->pluck('user_stat
                                             </form>
                                         </td>
                                         <td>
+
+                                        </td>
+                                        <td>
                                             <form>
                                                 <input value="{{$request->packet_name}}" type="text"
                                                        class="form-control" name="packet_name" placeholder="Поиск">
