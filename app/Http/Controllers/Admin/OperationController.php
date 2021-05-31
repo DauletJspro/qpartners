@@ -7,10 +7,10 @@ use App\Models\UserOperation;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use View;
 use DB;
-use Auth;
 use App\Models\Users;
 
 class OperationController extends Controller
@@ -303,14 +303,13 @@ class OperationController extends Controller
             ->leftJoin('users as recipient_user','recipient_user.user_id','=','user_operation.recipient_id')
             ->leftJoin('operation_type','operation_type.operation_type_id','=','user_operation.operation_type_id')
             ->where('operation_type.operation_type_id', $CASHBACK_ID)
-            ->orderBy('user_operation.created_at','desc')
+            ->orderBy('user_operation.user_operation_id','desc')
             ->select(
                 'users.*',
                 'recipient_user.*',
                 'user_operation.*',
                 'operation_type.operation_type_name_ru',
                 DB::raw('DATE_FORMAT(user_operation.created_at,"%d.%m.%Y %H:%i") as date'));
-
         //Поиск по получателям
         if(isset($request->recipient_name) && $request->recipient_name != ''){
             $operations->where(function($query) use ($request){
@@ -347,6 +346,7 @@ class OperationController extends Controller
             });
         }
 
+        if(Auth::user()->role_id > 1) $operations->where('user_operation.recipient_id',Auth::user()->user_id);
         $operations = $operations->paginate(20);
         return view('admin.operation.cashback',[
             'operations' => $operations,

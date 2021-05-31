@@ -41,7 +41,7 @@
                         @if(isset($item->product_price))
                             {{$item->product_price}}
                         @else
-                            {{$item->price}}
+                            {{$item->price}}$ ({{round($item->price * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}})
                         @endif
                     </span> тг.</span>
             </div>

@@ -39,6 +39,16 @@ class GapCardController extends Controller
             }
         }
 
+        if(isset($request->orderBy)){
+            if($request->orderBy == "popular"){
+                $products = DB::table('ratings')
+                    ->join('gap_card_items', 'ratings.gap_card_id', '=', 'gap_card_items.id')
+                    ->select(DB::raw('avg(rating) as average, gap_card_items.*'))
+                    ->groupBy('gap_card_id')
+                    ->orderBy('average', 'desc')
+                    ->get();
+            }
+        }
         if($request->ajax())
         {
             return view('design_index.gap.product_card.product_card',compact('products'))->render();
