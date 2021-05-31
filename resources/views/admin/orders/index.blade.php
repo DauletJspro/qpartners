@@ -4,7 +4,7 @@ use \App\Models\Currency;
 @extends('admin.layout.layout')
 
 @section('content')
-
+@if(Auth::user()->role_id == App\Models\Role::ADMIN)
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
@@ -29,7 +29,7 @@ use \App\Models\Currency;
                                             <th>Контакты</th>
                                             <th style="width: 150px">Адрес</th>
                                             <th style="width: 100px">Сумма</th>
-                                            <th>Номер заказа</th>                                            
+                                            <th>Номер заказа</th>
                                             <th>Оплачено</th>
                                             <th>Доставленно</th>
                                             <th>Дата</th>
@@ -158,5 +158,13 @@ use \App\Models\Currency;
             </div>
         </div>
     </div>
-
+@else
+    <div class="container">
+        <div class="row" style="display: flex; height: calc(100vh - 100px)">
+                <div class="alert alert-danger" role="alert" style="margin:auto; width:100%; text-align: center; font-size: 2rem;">
+                   У вас нет прав Администратора!
+                </div>
+        </div>
+    </div>
+@endif
 @endsection 

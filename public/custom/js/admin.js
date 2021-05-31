@@ -416,15 +416,41 @@ function setBasketUnit(ob, id) {
 }
 
 function confirmBasket() {
+
     let discount_type = $('#discount_type').val();
     let address = $('#address').val();
     let delivery_id = $('#delivery').val();
+
+    let cashback = $('#cashback:checked').val();
+
+    // User info
+    let user_id = $('#user_id').val();
+    let first_name = $('#first_name').val();
+    let last_name = $('#last_name').val();
+    let email = $('#email').val();
+    let contact = $('#contact').val();
+
+    //Order code
+    let order_code = $('#order_code').val();
+
     $.ajax({
         type: 'POST',
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        data: {type: discount_type, address: address, delivery_id: delivery_id},
+        data: {
+            type: discount_type,
+            address: address,
+            delivery_id: delivery_id,
+            cashback:cashback,
+            user_id: user_id,
+            username: first_name + " " + last_name,
+            email: email,
+            contact: contact,
+            order_code:order_code,
+            sum: "",
+            products: ""
+        },
         url: "/admin/online/confirm",
         success: function (data) {
             if (data.status == true) {

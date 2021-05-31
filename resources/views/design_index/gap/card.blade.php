@@ -263,8 +263,8 @@ if (isset($sub_category_id)) {
                                         </div>
                                     </div>
                                     <div class="txt">
-                                        <strong class="title"><a href="{{ route('gap_card.detail', $item->id) }}" style="color: black">{{$item->title_ru}}</a></strong>
-                                        <span class="price"><span>Цена:</span> <span style="font-weight: normal">&nbsp; ${{$item->price}} &nbsp; ({{$item->price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span></span>
+                                        <strong class="title"><a href="{{ route('gap_card.detail', $item->id) }}">{{$item->title_ru}}</a></strong>
+                                        <span class="price"> <span>{{$item->price}}$ ({{round($item->price * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}})</span>  тг.</span>
                                     </div>
                                 </div>
                             </li>
