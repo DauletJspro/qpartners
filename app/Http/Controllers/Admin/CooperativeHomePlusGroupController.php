@@ -64,7 +64,7 @@ class CooperativeHomePlusGroupController extends Controller
 
     public function getAllHomePlusShareholder(Request $request){
         $request->row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
-            ->where('packet.packet_id','=', 27)
+            ->where('packet.packet_id','=', 44)
             ->where('users.home_plus_id', '=' , 0)
             ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
             ->leftJoin('user_packet', 'user_packet.user_id', '=', 'users.user_id')

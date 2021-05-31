@@ -102,7 +102,9 @@ class ClientController extends Controller
     public function getAllGapShareholder(Request $request)
     {
         $request->row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
-            ->where('packet.packet_id', '=', Packet::GAP)
+            ->whereIN('packet.packet_id', [Packet::JASTAR,
+                Packet::QAMQOR, Packet::JAS_OTAU, Packet::QOLDAU, Packet::BASPANA_PLUS, Packet::TULPAR_PLUS,
+                Packet::TULPAR])
             ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
             ->leftJoin('user_packet', 'user_packet.user_id', '=', 'users.user_id')
             ->leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
@@ -170,7 +172,7 @@ class ClientController extends Controller
     public function getAllAutoShareholder(Request $request)
     {
         $request->row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
-            ->where('packet.packet_id', '=', 27)
+            ->where('packet.packet_id', '=', 47)
             ->where('users.group_id', '=', 0)
             ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
             ->leftJoin('user_packet', 'user_packet.user_id', '=', 'users.user_id')
@@ -224,7 +226,7 @@ class ClientController extends Controller
     public function getAllHomeShareholder(Request $request)
     {
         $request->row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
-            ->where('packet.packet_id', '=', 27)
+            ->where('packet.packet_id', '=', 45)
             ->where('users.home_group_id', '=', 0)
             ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
             ->leftJoin('user_packet', 'user_packet.user_id', '=', 'users.user_id')
@@ -278,7 +280,7 @@ class ClientController extends Controller
     public function getAllPlusShareholder(Request $request)
     {
         $request->row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
-            ->where('packet.packet_id', '=', 27)
+            ->where('packet.packet_id', '=', 46)
             ->where('users.group_plus_id', '=', 0)
             ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
             ->leftJoin('user_packet', 'user_packet.user_id', '=', 'users.user_id')
