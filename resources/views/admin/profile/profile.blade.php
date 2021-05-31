@@ -16,7 +16,12 @@
 
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
+                            @if(Auth::user()->role_id != 1)
                             <b>Активация</b> <a class="pull-right">@if(!\App\Models\Users::hasCountPackets($row->user_id)) <span style="color: red">Не пройдено</span>@else <span style="color: #009551">Пройдено</span> @endif</a>
+                            @else
+                                <b>Активация</b> <a class="pull-right"><span style="color: #009551">Пройдено</span></a>
+                            @endif
+
                         </li>
                         <li class="list-group-item">
                             <b>Верификация</b> <a class="pull-right" href="/admin/document"```>@if($row->is_valid_document == 0) <span style="color: red">Не пройдено</span>@else <span style="color: #009551">Пройдено</span> @endif</a>
@@ -58,6 +63,14 @@
                         </li>
                         <li class="list-group-item">
                             <b>Спонсор</b> <a class="pull-right" @if(Auth::user()->role_id == 1) href="/admin/profile/{{$row->recommend_user_id}}" target="_blank" @endif>{{$row->recommend_name}} {{$row->recommend_last_name}}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Пригласитель</b> <a class="pull-right" @if(Auth::user()->role_id == 1)
+                            href="/admin/profile/{{\App\Models\Users::getInviterName($row)->user_id}}"
+                                              target="_blank" @endif>
+                                {{\App\Models\Users::getInviterName($row)->name}}
+                                {{\App\Models\Users::getInviterName($row)->last_name}}
+                            </a>
                         </li>
                         <li class="list-group-item">
                             <b>Статус</b> <a class="pull-right">{{$row->user_status_name}}</a>
@@ -141,6 +154,19 @@
                         <li @if(isset($_GET['tab']) && $_GET['tab'] == 'status') class="active" @endif>
                             <a style="font-size: 13px"  href="#status" data-toggle="tab">Изменить статус</a>
                         </li>
+                        <li @if(isset($_GET['tab']) && $_GET['tab'] == 'pv') class="active" @endif>
+                            <a style="font-size: 13px"  href="#pv" data-toggle="tab">ЛО</a>
+                        </li>
+
+                        <li @if(isset($_GET['tab']) && $_GET['tab'] == 'gv') class="active" @endif>
+                            <a style="font-size: 13px"  href="#gv" data-toggle="tab">ГО</a>
+                        </li>
+                        <li @if(isset($_GET['tab']) && $_GET['tab'] == 'lsv') class="active" @endif>
+                            <a style="font-size: 13px"  href="#lsv" data-toggle="tab">Л-SV</a>
+                        </li>
+                        <li @if(isset($_GET['tab']) && $_GET['tab'] == 'gsv') class="active" @endif>
+                            <a style="font-size: 13px"  href="#gsv" data-toggle="tab">Г-SV</a>
+                        </li>
                     @endif
                 </ul>
                 <div class="tab-content" style="min-height: 400px">
@@ -162,9 +188,20 @@
                         <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'status') active @endif tab-pane" id="status">
                             @include('admin.profile.status-edit')
                         </div>
-
-                        <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'profit') active @endif tab-pane" id="volume">
-                            @include('admin.profile.volume-edit')
+{{--                        <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'profit') active @endif tab-pane" id="volume">--}}
+{{--                            @include('admin.profile.volume-edit')--}}
+{{--                        </div>--}}
+                        <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'pv') active @endif tab-pane" id="pv">
+                            @include('admin.profile.pv-edit')
+                        </div>
+                        <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'gv') active @endif tab-pane" id="gv">
+                            @include('admin.profile.gv-edit')
+                        </div>
+                        <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'lsv') active @endif tab-pane" id="lsv">
+                            @include('admin.profile.l-sv-edit')
+                        </div>
+                        <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'gsv') active @endif tab-pane" id="gsv">
+                            @include('admin.profile.g-sv-edit')
                         </div>
                     @endif
 

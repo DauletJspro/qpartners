@@ -40,7 +40,6 @@ class Packet extends Model
         return [
             self::CLASSIC,
             self::PREMIUM,
-            self::ELITE,
             self::GAPTechno,
             self::GAPAuto,
             self::GAPHome,
@@ -81,8 +80,9 @@ class Packet extends Model
         ];
     }
 
-    public static function actualAllPackets(){
-        return[
+    public static function actualAllPackets()
+    {
+        return [
             self::CLASSIC,
             self::PREMIUM,
             self::ELITE,
@@ -212,46 +212,46 @@ class Packet extends Model
                     $success = false;
                 }
                 break;
-	        case  UserStatus::BRONZE_MANAGER:
-		        if ($incomeForMonth >= 2000){
-			        $success = false;
-		        }
-		        break;
-	        case  UserStatus::SILVER_MANAGER:
-		        if ($incomeForMonth >= 3000){
-			        $success = false;
-		        }
-		        break;
-	        case  UserStatus::GOLD_MANAGER:
-		        if ($incomeForMonth >= 4000){
-			        $success = false;
-		        }
-		        break;
-	        case  UserStatus::PLATINUM_MANAGER:
-		        if ($incomeForMonth >= 5000){
-			        $success = false;
-		        }
-		        break;
-	        case  UserStatus::RUBIN_DIRECTOR:
-		        if ($incomeForMonth >= 10000){
-			        $success = false;
-		        }
-		        break;
-	        case  UserStatus::SAPPHIRE_DIRECTOR:
-		        if ($incomeForMonth >= 12500){
-			        $success = false;
-		        }
-		        break;
-	        case  UserStatus::EMERALD_DIRECTOR:
-		        if ($incomeForMonth >= 15000){
-			        $success = false;
-		        }
-		        break;
-	        case  UserStatus::DIAMOND_DIRECTOR:
-		        if ($incomeForMonth >= 20000){
-			        $success = false;
-		        }
-		        break;
+            case  UserStatus::BRONZE_MANAGER:
+                if ($incomeForMonth >= 2000) {
+                    $success = false;
+                }
+                break;
+            case  UserStatus::SILVER_MANAGER:
+                if ($incomeForMonth >= 3000) {
+                    $success = false;
+                }
+                break;
+            case  UserStatus::GOLD_MANAGER:
+                if ($incomeForMonth >= 4000) {
+                    $success = false;
+                }
+                break;
+            case  UserStatus::PLATINUM_MANAGER:
+                if ($incomeForMonth >= 5000) {
+                    $success = false;
+                }
+                break;
+            case  UserStatus::RUBIN_DIRECTOR:
+                if ($incomeForMonth >= 10000) {
+                    $success = false;
+                }
+                break;
+            case  UserStatus::SAPPHIRE_DIRECTOR:
+                if ($incomeForMonth >= 12500) {
+                    $success = false;
+                }
+                break;
+            case  UserStatus::EMERALD_DIRECTOR:
+                if ($incomeForMonth >= 15000) {
+                    $success = false;
+                }
+                break;
+            case  UserStatus::DIAMOND_DIRECTOR:
+                if ($incomeForMonth >= 20000) {
+                    $success = false;
+                }
+                break;
         }
         return $success;
     }

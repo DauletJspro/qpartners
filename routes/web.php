@@ -78,6 +78,10 @@ Route::group([
         Route::post('edit', 'ProfileController@update');
         Route::post('/password/edit', 'ProfileController@editPassword');
         Route::post('/money/edit', 'ProfileController@editMoney');
+        Route::post('/pv/edit', 'ProfileController@editPV');
+        Route::post('/gv/edit', 'ProfileController@editGV');
+        Route::post('/lsv/edit', 'ProfileController@editLSV');
+        Route::post('/gsv/edit', 'ProfileController@editGSV');
         Route::post('/status/edit', 'ProfileController@editStatus');
         Route::post('/activate', 'ProfileController@activateUser');
         Route::post('/profit/edit', 'ProfileController@editProfit');
@@ -482,7 +486,9 @@ Route::group([
     Route::resource('review', 'ReviewController');
     Route::get('about_us/administration', 'AboutController@showCompanyAdministration');
     Route::get('about_us/guide', 'AboutController@showCompanyGuide');
-    Route::get('about_us/chairperson', 'AboutController@showCompanyLeaders');
+    Route::get('about_us/chairperson', 'AboutController@showCompanyChairpersons');
+    Route::get('about_us/leaders', 'AboutController@showCompanyLeaders');
+    Route::get('about_us/representatives', 'AboutController@showCompanyRepresentatives');
     Route::post('basket/is-ajax', 'BasketController@isAjax')->name('basket.isAjax');
     Route::post('favorite/is-ajax', 'FavoriteController@isAjax')->name('favorite.isAjax');
     Route::get('shop/{category_id}', 'ShopController@index')->name('shop.show.category');

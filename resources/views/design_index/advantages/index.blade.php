@@ -10,22 +10,39 @@
 
 @section('content')
     <main id="mt-main" class="mb-100">
-            <div class="border-bottom pb-2">
-                <div class="container black-text-color text-center font-weight-bold">
-                    <h1 class="font-weight-bold" style="text-transform:uppercase">преимущества</h1>
-                </div>
+            <div class="">
+                <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"  style=" background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-image: url('/new_design/images/banners/montazhnaya5.png');">
+                    <p style="color: white;font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black; ">преимущества</p>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <nav class="breadcrumbs">
+                                    <ul class="list-unstyled">
+                                        {{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
+                                        {{--                                <li>About Us</li>--}}
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <!-- Breadcrumbs of the Page -->
-                <nav class="breadcrumbs black-text-color text-center">
-                    <ul class="list-unstyled d-flex font-weight-lighter black-text-color">
-                        <a href="/">Главная <i class="fa fa-angle-right"></i></a>
-                        Преимущества
+                <nav class="breadcrumbs container" style="font-size: 1.5rem;font-family: Montserrat; height: 40px; margin-top: 20px">
+                    <ul class="list-unstyled d-flex-row font-weight-lighter text-uppercase">
+                        <a href="/" style="font-weight: 600; color: black" class="href-style">главная <i class="fa fa-angle-right ml-1"></i></a>
+                        <a style="font-weight: 400; color: black;">преимущества</a>
+
                     </ul>
                 </nav>
                 <!-- Breadcrumbs of the Page end -->
             </div>
-            <div class="container pt-2 fs-18">
+            <div class="container fs-18">
                 <div class="black-text-color font-weight-bold">
-                    <h3 class="font-weight-bold" style="text-transform:uppercase">возможности от пк «GAP»</h3>
+                    <h3 class="font-weight-bold" style="text-transform:uppercase; font-family: Montserrat;">возможности от пк «GAP»</h3>
                 </div>
                 <p class="black-text-color font-weight-lighter pt-2">Потребительский кооператив «GAP» предлагает Вам приобрести жилье или автомобиль на самых лучших условиях.</p>
                 <div class="advantages-block">
@@ -98,5 +115,10 @@
     .mb-100 {
         margin-bottom: 100px;
     }
+
+    .href-style:hover {
+        color: silver !important;
+    }
+
 
 </style>

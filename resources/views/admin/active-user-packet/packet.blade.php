@@ -57,7 +57,7 @@
                              <div class="clear-float"></div>
                          </td>
                          <td class="arial-font">
-                             <a class="main-label" href="/admin/profile/{{$val->user_id}}" target="_blank"><p class="login">{{$val->login}}</p>@if(Auth::user()->user_id == 1)<p class="client-name">{{ $val->name }} {{ $val->last_name }} {{ $val->middle_name }}</p>@endif</a>
+                             <a class="main-label" href="/admin/profile/{{$val->user_id}}" target="_blank"><p class="login">{{$val->login}}</p>@if(Auth::user()->user_id == 1 && Auth::user()->user_id == \App\Models\Users::ACCOUNTANT )<p class="client-name">{{ $val->name }} {{ $val->last_name }} {{ $val->middle_name }}</p>@endif</a>
                              <b style="color: #00A0D1">{{$val->country_name_ru}},{{$val->city_name_ru}}</b>
                          </td>
                          <td class="arial-font">

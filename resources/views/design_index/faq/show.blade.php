@@ -12,10 +12,10 @@
 @section('content')
     <main id="mt-main">
         <!-- Mt Content Banner of the Page -->
-        <section class="mt-contact-banner"  style=" background-size: cover;
+        <section class="container mt-contact-banner"  style=" background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-             background-image: url('/new_design/images/banners/montazhnaya11.jpg');">
+             background: red;">
             <p style="color: white; font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">вопросы и ответы</p>
 
             <div class="container">
@@ -35,10 +35,11 @@
         <!-- Mt About Section of the Page -->
         <section class="mt-about-sec" style="padding-bottom: 0; padding-top: 20px">
             <div class="container">
-                <nav class="breadcrumbs black-text-color text-center" >
-                    <ul class="list-unstyled d-flex-row font-weight-lighter" style="font-size: 1.5rem">
-                        <a href="/" class="" style="color: black; font-weight: 400">главная <i class="fa fa-angle-right ml-1" style="margin-left: 5px"></i></a>
-                        <span class="" style="font-weight: 400">председатель компании</span>
+                <nav class="breadcrumbs" style="font-size: 1.5rem;font-family: Montserrat; height: 40px">
+                    <ul class="list-unstyled d-flex-row font-weight-lighter text-uppercase">
+                        <a href="/" style="font-weight: 600; color: black" class="href-style">главная <i class="fa fa-angle-right ml-1"></i></a>
+                        <a style="font-weight: 400; color: black;">вопросы и ответы</a>
+
                     </ul>
                 </nav>
                 <div class="row">
@@ -83,7 +84,9 @@
                                 <div id="collapse{{$faq->id}}" class="panel-collapse collapse" role="tabpanel"
                                      aria-labelledby="heading{{$faq->id}}">
                                     <div class="panel-body">
-                                        <p>{{$faq->answer}}</p>
+                                        @foreach(explode('/', $faq->answer) as $an)
+                                            <p>{{$an}}</p>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -94,3 +97,8 @@
         </div>
     </main>
 @endsection
+<style>
+    .href-style:hover {
+        color: silver !important;
+    }
+</style>

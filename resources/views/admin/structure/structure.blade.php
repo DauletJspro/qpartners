@@ -64,7 +64,7 @@
                                                 </p>
                                                 <div>
                                                     <p style="font-weight: 900; margin: 0px">
-                                                        ЛО: {{ $LOProfit + $gaps }} $
+                                                        ЛП : {{ $LOProfit + $gaps }} $
                                                         ({{round(($LOProfit+$gaps) * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
                                                         тг)</p>
                                                     @if(isset($user->pv_balance ))
@@ -130,7 +130,7 @@
                                                     GAP: {{isset($user->gap_status) ? \App\Models\UserStatus::getGapStatusName($user->gap_status)  : ' нету'}}
                                                 </p>
                                                 <div>
-                                                    <p style="font-weight: 900; margin: 0px">ЛО: {{ $LOProfit }} $
+                                                    <p style="font-weight: 900; margin: 0px">ЛП: {{ $LOProfit }} $
                                                         ({{round($LOProfit * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
                                                         тг)</p>
                                                     @if(isset($user->pv_balance ))

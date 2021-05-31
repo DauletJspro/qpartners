@@ -62,15 +62,14 @@ $tab = (explode('tab=', URL::current()));
                                 <div class="slide">
                                     <div style="
                                             background-image: url('{{$product->product_image}}');
-                                            background-size: contain;
                                             background-position: center;
                                             background-repeat: no-repeat;
                                             width: 610px;
                                             height: 490px;
                                             border: 1px solid lightgrey;
                                             border-radius: 5px;
+                                            background-size: 100% 100%;
                                             ">
-
                                     </div>
                                 </div>
                             </div>
@@ -273,7 +272,7 @@ $tab = (explode('tab=', URL::current()));
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h2>ПОХОЖАЯ ПРДУКЦИЯ</h2>
+                        <h2>ПОХОЖАЯ ПРОДУКЦИЯ</h2>
                         <div class="row">
                             <div class="col-xs-12">
                                 @foreach($relatedProducts as $product)

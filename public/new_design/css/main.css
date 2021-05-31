@@ -2974,20 +2974,20 @@ a:hover {
     outline: none;
     color: #fff;
     padding: 9px 20px;
-    background: #000;
+    background: red;
     border-radius: 21px;
     vertical-align: top;
     display: inline-block;
-    border: 1px solid #000;
+    border: 1px solid white;
     text-transform: uppercase;
     font: 300 14px/20px "Source Sans Pro", sans-serif;
 }
 
 .btn-type3:focus,
 .btn-type3:hover {
-    color: #000;
+    color: red;
     background: transparent;
-    border: 1px solid #000;
+    border: 1px solid red;
 }
 
 .btn-type4 {
@@ -3570,7 +3570,6 @@ a:hover {
 #mt-footer .nav-widget-1 .f-widget-nav li {
     overflow: hidden;
     display: block;
-    margin: 0 0 13px;
 }
 
 #mt-footer .nav-widget-1 .f-widget-nav li a {

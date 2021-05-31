@@ -141,37 +141,48 @@
     <div class="mb-7 fs-18 text-black" style="border-top: 3px solid #C4C4C4; font-weight: 300; padding-left: 5%">
         <div class="infos container mt-2" id="infos">
             <p>Вместе с нами Вы можете приобрести собственное жилье в рассрочку с самыми лучшими условиями.</p>
-            <p> - Сумма рассрочки <span class="text-red font-weight-600">до 9 000 000 тенге</span></p>
-            <p> - Срок рассрочки <span class="text-red font-weight-600">до 120 месяцев</span></p>
-            <p> - Срок получения рассрочки <span class="text-red font-weight-600">от 1 до 6 месяцев</span></p>
-            <p> - В программе могут участвовать лица <span class="text-red font-weight-600">старше 18 лет</span></p>
-            <p> - Тип жилья в рассрочку: <span class="text-red font-weight-600">квартира или частный дом</span></p>
+            <p> - Сумма рассрочки <span class="text-red font-weight-600">{{$chosen_program['installment_amount']}}</span></p>
+            <p> - Срок рассрочки <span class="text-red font-weight-600">{{$chosen_program['installment_term']}}</span></p>
+            <p> - Срок получения рассрочки <span class="text-red font-weight-600">{{$chosen_program['term_form_receiving_installments']}}</span></p>
+            <p> - В программе могут участвовать <span class="text-red font-weight-600">{{$chosen_program['age']}}</span></p>
         </div>
         <div class="conditions container mt-2" id="conditions">
             <p>Для получения жилья в рассрочку Вам необходимо выполнить следующие условия кооператива.</p>
-            <p> 1. Внести <span class="text-red font-weight-600">вступительный взнос</span> в размере <span class="text-red font-weight-600">240 000 тенге</span> и стать участником кооператива</p>
-            <p> 2. Внести <span class="text-red font-weight-600">30%, 50% или 70%</span> от суммы на которую вы хотите приобрести жилье в виде <span class="text-red font-weight-600">первоначального взноса</span></p>
-            <p> 3. После получения жилья в рассрочку <span class="text-red font-weight-600">ежемесячно</span> совершать <span class="text-red font-weight-600">погашение рассрочки</span> согласно Вашему графику</p>
+            <p> 1. Внести <span class="text-red font-weight-600">вступительный взнос</span> в размере <span class="text-red font-weight-600">{{$chosen_program['entrance_fee']}}</span> и стать участником кооператива</p>
+            <p> 2. {{$chosen_program['deposit']}} <span class="text-red font-weight-600">{{$chosen_program['initial_fee']}}</span> от суммы на которую вы хотите приобрести <span class="text-red font-weight-600">{{$chosen_program['program_type']}}</span></p>
+            <p> 3. После получения {{$chosen_program['ex']}} в рассрочку <span class="text-red font-weight-600">ежемесячно</span> совершать <span class="text-red font-weight-600">погашение рассрочки</span> согласно Вашему графику</p>
         </div>
         <div class="example container mt-2" id="example">
-            <p>Давайте рассмотрим пример для того чтобы все условия программы стали более понятными для Вас. Например, Вы хотите приобрести <span class="text-red font-weight-600">жилье на сумму 9 000 000 тенге</span>
-                и готовый внести <span class="text-red font-weight-600">50% первоначального взноса.</span></p>
-            <p>1. Вы вносите <span class="text-red font-weight-600">вступительный взнос</span> в размере <span class="text-red font-weight-600">240 000 тенге</span> и становитесь
-                полноценным участником кооператива.</p>
-            <p>2. Вносите <span class="text-red font-weight-600">4 500 000 тенге (50%)</span> в виде первоначального взноса.</p>
-            <p>3. Кооператива добавляет <span class="text-red font-weight-600">недостающую сумму 4 500 000 тенге</span> на
-                жилье в виде <span class="text-red font-weight-600">рассрочки.</span></p>
-            <p>4. Вы получаете жилье в собственность с оформлением на Ваше имя.</p>
-            <p>5. <span class="text-red font-weight-600">Погашаете</span> рассрочку по <span class="text-red font-weight-600">75 000 тенге ежемесячно</span> на протяжении <span class="text-red font-weight-600">60 месяцев.</span>
-                (75 000 х 60 = 4 500 000)</p>
+            <p>Давайте рассмотрим пример для того чтобы все условия программы стали более понятными для Вас. Например, Вы хотите приобрести <span class="text-red font-weight-600">жилье на сумму {{$chosen_program['example1']}}.</span></p>
+
+
+            @if($chosen_program["category_id"] == 1 )
+                <p>И готовый внести <span class="text-red font-weight-600">{{$chosen_program['example2']}} первоначального взноса.</span></p>
+            @endif
+
+            @if($chosen_program["category_id"] == 2 )
+                <p>В течении <span class="text-red font-weight-600">{{$chosen_program['example2']}}</span> ежемесячно вносите <span class="text-red font-weight-600">{{$chosen_program['example3']}}, </span>таким образом накапливаете <span class="text-red font-weight-600">{{$chosen_program['example4']}}</span> в виде накопительно-паевого взноса.</p>
+            @endif
+
+
+
+            <p>1. Вы вносите <span class="text-red font-weight-600">вступительный взнос</span> в размере <span class="text-red font-weight-600">{{$chosen_program['entrance_fee']}}</span> и становитесь
+            полноценным участником кооператива.</p>
+            <p>2. Вносите <span class="text-red font-weight-600">{{$chosen_program['example4']}}</span> в виде первоначального взноса.</p>
+            <p>3. Кооператива добавляет <span class="text-red font-weight-600">недостающую сумму {{$chosen_program['example5']}}</span> на
+                {{$chosen_program['installment_type']}} в виде <span class="text-red font-weight-600">рассрочки.</span></p>
+            <p>4. Вы получаете {{$chosen_program['installment_type']}} в собственность с оформлением на Ваше имя.</p>
+            <p>5. <span class="text-red font-weight-600">Погашаете</span> рассрочку по <span class="text-red font-weight-600">{{$chosen_program['example6']}} ежемесячно</span> на протяжении <span class="text-red font-weight-600">{{$chosen_program['example7']}}.</span>
+                {{$chosen_program['example8']}}</p>
         </div>
+        <p class="container mt-2" style="text-decoration: underline">Для получения подробной информации Вы можете ознакомиться с презентацией всех программ кооператива. Или свяжитесь с представителем вашего города. Номера и адреса представителей указаны в разделе «Контакты».</p>
         <div class="container" style="margin-top: 100px">
             <span class="my-text fs-18 text-uppercase ml-2">другие программы</span>
             <div class="d-flex-row flex-wrap pt-2">
 
                 @foreach($programs as $program)
                     @if($program['id'] !== $chosen_program['id'])
-                        <div class="program-detail-block-width d-flex-column mt-1">
+                        <div class="program-detail-block-width d-flex-column mt-2">
                             <img src="/new_design/images/banners/{{$program["imgSrc"]}}" alt="programs img not found"/>
                             <p class="text-black mt-1 fs-11">{{$program["body"]}}</p>
                             <button class="button-hover mr-auto bg-red border-radius-30" onclick="" style="border: none; padding: 0 1rem">

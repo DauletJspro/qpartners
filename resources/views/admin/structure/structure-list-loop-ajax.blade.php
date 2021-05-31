@@ -48,7 +48,7 @@ $user_list = \App\Models\Users::where('recommend_user_id', $user_id)->take(500)-
                             GAP: {{isset($user->gap_status) ? \App\Models\UserStatus::getStatusName($user->gap_status) : ' нету'}}
                         </p>
                         <div>
-                            <p style="font-weight: 900; margin: 0px">ЛО: {{ $LOProfit + $gaps }} $
+                            <p style="font-weight: 900; margin: 0px">ЛП: {{ $LOProfit + $gaps }} $
                                 ({{round(($LOProfit + $gaps) * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
                                 тг)</p>
 
@@ -112,7 +112,7 @@ $user_list = \App\Models\Users::where('recommend_user_id', $user_id)->take(500)-
                             GAP: {{isset($user->gap_status) ?  \App\Models\UserStatus::getStatusName($user->gap_status)  : ' нету'}}
                         </p>
                         <div>
-                            <p style="font-weight: 900; margin: 0px">ЛО: {{ $LOProfit + $gaps }} $
+                            <p style="font-weight: 900; margin: 0px">ЛП: {{ $LOProfit + $gaps }} $
                                 ({{round(($LOProfit+$gaps) * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}
                                 тг)</p>
 

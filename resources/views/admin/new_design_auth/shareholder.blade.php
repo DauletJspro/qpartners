@@ -31,11 +31,12 @@
             </div>
 
             <div id="inviters">
-                <select name="inviter_user_id"
+                <select style="height: 100% !important;"
+                        name="inviter_user_id"
                         data-placeholder="Выберите пригласителя"
                         class="form-control selectpicker input"
                         data-live-search="true">
-                    <option value="">Выберите пригласителя</option>
+                    <option value="" style="height: 100% !important;">Выберите пригласителя</option>
                     @if( isset($row->recommend_user_id) || (isset($_GET['id']) && $_GET['id']))
                         <?php  $item = \App\Models\Users::where(['user_id' => (isset($_GET['id']) ? $_GET['id'] : $row->recommend_user_id)])->first(); ?>
                         <option selected
@@ -43,7 +44,7 @@
                         </option>
                     @endif
                     @foreach($recommend_row as $item)
-                        <option @if($row->recommend_user_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id) ) {{'selected'}} @endif value="{{$item->user_id}}">
+                        <option @if($row->recommend_user_id == $item->user_id || (isset($_GET['id']) && $_GET['id'] == $item->user_id) ) {{'selected'}} @endif value="{{$item->user_id}}" style="height: 100%">
                             {{$item['login']}}
                         </option>
                     @endforeach
@@ -63,7 +64,8 @@
                    placeholder="Повторите пароль"/>
 
             <div id="speakers">
-                <select name="speaker_id"
+                <select style="height: 100%"
+                        name="speaker_id"
                         data-placeholder="Выберите спикера"
                         class="form-control selectpicker input"
                         data-live-search="true">

@@ -155,23 +155,26 @@ if ($role_id == \App\Models\Role::CLIENT && $is_activated == true) {
         </div>
     </div>
     <main id="mt-main">
-        <div class="register-image text-uppercase">
-            <p class="programs-image-text"
-               style="margin:0; position: absolute; text-align: center; width: 100%; padding: 55px 0 0 10px">
-                регистрация</p>
+        <section class="container mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"  style=" background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background: red;
+            letter-spacing: 4px">
+            <p style="color: white;font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">регистрация</p>
 
-            <img src="/new_design/images/banners/montazhnaya1.png" alt="img not found"
-                 style="width: 100%; height: 100%">
-        </div>
-        <div class="container">
-            <nav class="breadcrumbs text-center fs-11" style="margin-top: 30px">
-                <ul class="list-unstyled d-flex-row font-weight-lighter text-uppercase">
-                    <a href="/" class="my-text font-weight-400">главная <i class="fa fa-angle-right ml-1"></i></a>
-                    <a class="my-text font-weight-400 ml-1">регистрация</a>
-                </ul>
-            </nav>
-        </div>
-
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <nav class="breadcrumbs">
+                            <ul class="list-unstyled">
+                                {{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
+                                {{--                                <li>About Us</li>--}}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
         <br>
         <div class="text-uppercase fs-27 black-text-color text-center font-weight-600" style="letter-spacing: 3px">
             выберите форму регистрации

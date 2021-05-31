@@ -37,7 +37,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6" id="hidden-xs">
-                    <ul class="gap-ul mt-top-bar" style="float: left;">
+                    <ul class="gap-ul mt-top-bar" style="float: left; font-family: Montserrat" id="gap-ul">
                         <li style="{{$gapTypeActive == 1 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
                             <a style="{{$gapTypeActive == 1 ? 'background:white;color:red;' : ''}}"
                                href="{{route('gap.index.show')}}">
@@ -57,17 +57,17 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                             </a>
                         </li>
                         <li style="list-style-type: none;">
-                            <a href="">
+                            <a href="turism">
                                 TURISM
                             </a>
                         </li>
                         <li style="list-style-type: none;">
-                            <a href="">
+                            <a href="academy">
                                 ACADEMY
                             </a>
                         </li>
                         <li style="list-style-type: none;">
-                            <a href="" style="">
+                            <a href="gap-media" style="">
                                 MEDIA
                             </a>
                         </li>
@@ -139,16 +139,19 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         <li>
                             <div id="nav-icon1" onclick="{
                                 let a = document.getElementById('hidden-nav');
-                                console.log('', a.style.display)
-                                if(a.length !== 0) {
-                                    if(a.style.display === '' || a.style.display === 'none') {
-                                        a.style.cssText = 'display: block !important'
-                                    }
-                                    else {
-                                        a.style.cssText = 'display: none'
-                                    }
+                                if(a.style.display === '' || a.style.display === 'none') {
+                                    a.style.cssText = 'display: block !important';
+                                    // let b = document.getElementById('gap-ul')
+                                    // b.style.cssText = 'color: white;';
+                                    // a.appendChild(b);
+                                    a.appendChild(document.getElementById('nav-ul'));
                                 }
-                                console.log('ha:', a)
+                                else {
+                                    a.style.cssText = 'display: none !important';
+                                }
+
+
+                                // console.log('ha:', a)
                                 $(this).toggleClass('open');
                             }">
                                 <span></span>
@@ -176,7 +179,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                             <a href="/gap/card/show"><span style="cursor:pointer;color: #646464">CARD</span></a>
                         @endif
                     </div>
-                    <div class="cities dropdown cursor-pointer" style="margin-left: 4rem;">
+                    <div class="cities dropdown cursor-pointer" style="margin-left: 4rem; margin-top: 0.5rem">
                         <a class="icl_lang_sel_current fs-18 icl_lang_sel_native font-weight-lighter text-black mt-1" style="">
                             @if(isset($city))
                                 {{$city->city_name_ru}}
@@ -184,11 +187,19 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                 Шымкент
                             @endif
                             <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                        <div class="dropdown-content">
-                            <div class="cities-content" style="display:flex; flex-wrap: wrap; width: 800px; font-size: 12px; text-transform:capitalize; ">
+                        <div class="dropdown-content" style="background: none;box-shadow: none ">
+                            <div class="cities-content" style="
+                                display: flex;
+                                background: white;
+                                margin-top: 30px;
+                                flex-wrap: wrap;
+                                width: 800px;
+                                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                                font-size: 12px;
+                                text-transform: capitalize;">
                                 <?php for($i = 0; $i < count($cities); $i++ ){?>
                                 <a href="{{ route('city.products', $cities[$i]->city_id) }}" class="fs-14"
-                                   style="width: 25%"
+                                   style="width: 25%; font-weight: 600"
                                 >
                                     {{$cities[$i]->city_name_ru}}
                                 </a>
@@ -208,24 +219,25 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                     <?php endforeach ?>
                     @endif
                     <nav id="nav" style="float:none; margin-left: auto; font-weight: bold;">
-                        <ul class="">
+                        <ul id="nav-ul">
 
                             <li>
-                                <a class="drop-link" href="">О НАС<i class="fa fa-angle-down"
+                                <a class="drop-link" href="">О НАС <i class="fa fa-angle-down"
                                                                      aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
 {{--                                        <li><a href="/about_us/guide">Руководство компании</a></li>--}}
-{{--                                        <li><a href="/about_us/administration">Администрация компании</a></li>--}}
-{{--                                        <li><a href="/about_us/leaders">Лидеры компании</a></li>--}}
+                                        <li><a href="/about_us/administration">Администрация компании</a></li>
+                                        <li><a href="/about_us/leaders">Лидерcкий совет</a></li>
                                         <li><a href="/about_us/guide">О Кооперативе</a></li>
                                         <li><a href="/about_us/chairperson">Председатель Кооператива</a></li>
+                                        <li><a href="/about_us/representatives">Представители</a></li>
                                         <li><a href="{{route('faq.show')}}">Часто задаваемые вопросы</a></li>
                                     </ul>
                                 </div>
                             </li>
                             <li>
-                                <a class="drop-link" href="blog-right-sidebar.html">Программы<i class="fa fa-angle-down"
+                                <a class="drop-link" href="blog-right-sidebar.html">Программы <i class="fa fa-angle-down"
                                                                                                 aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
@@ -240,7 +252,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                 </a>
                             </li>
                             <li>
-                                <a class="drop-link" href="blog-right-sidebar.html">НОВОСТИ<i class="fa fa-angle-down"
+                                <a class="drop-link" href="blog-right-sidebar.html">НОВОСТИ <i class="fa fa-angle-down"
                                                                                               aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
@@ -251,7 +263,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                             </li>
 
                             <li>
-                                <a class="drop-link" href="homepage1.html">КОНТАКТЫ<i class="fa fa-angle-down"
+                                <a class="drop-link" href="homepage1.html">КОНТАКТЫ <i class="fa fa-angle-down"
                                                                                       aria-hidden="true"></i></a>
                                 <div class="s-drop">
                                     <ul>
@@ -290,8 +302,9 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
         </div>
     </div>
     <span class="mt-side-over"></span>
-    <div style="display: flex; background: white;">
-        <ul class="" id="hidden-nav">
+    <div id="hidden-nav">
+        <ul>
+            <li><a href=""></a></li>
             <li style="{{$gapTypeActive == 1 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
                 <a style="{{$gapTypeActive == 1 ? 'background:white;color:red;' : ''}}"
                    href="{{route('gap.index.show')}}">
@@ -299,56 +312,29 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                 </a>
             </li>
             <li style="{{$gapTypeActive == 2 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
-                <a style="{{$gapTypeActive == 2 ? 'background:white;color:red;' : ''}}"
-                   href="{{route('gap.market.show')}}">
+                <a style="{{$gapTypeActive == 2 ? 'background:white;color:red;' : ''}}" href="{{route('gap.market.show')}}">
                     MARKET
                 </a>
             </li>
             <li style="{{$gapTypeActive == 3 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
-                <a style="{{$gapTypeActive == 3 ? 'background:white;color:red;' : '' }}"
-                   href="{{route('gap.card.show')}}">
+                <a style="{{$gapTypeActive == 3 ? 'background:white;color:red;' : ''}}" href="{{route('gap.card.show')}}">
                     CARD
                 </a>
             </li>
-            <li style="list-style-type: none;">
+            <li>
                 <a href="">
                     TURISM
                 </a>
             </li>
-            <li style="list-style-type: none;">
+            <li>
                 <a href="">
                     ACADEMY
                 </a>
             </li>
-            <li style="list-style-type: none;">
-                <a href="" style="">
+            <li>
+                <a href="">
                     MEDIA
                 </a>
-            </li>
-            <li id="">
-                <a href="" style="
-                                font-weight: bold;
-                                font-size: 1.5rem;
-                            ">
-                    + 7 707 369 17 77
-                </a>
-            </li>
-            <li id="">
-                <div class="dropdown cursor-pointer">
-                    <a class="icl_lang_sel_current icl_lang_sel_native">RU <i class="fa fa-angle-down"
-                                                                              aria-hidden="true"></i> </a>
-                    <div class="dropdown-content">
-                        <a href="{{\App\Http\Helpers::setSessionLang('kz',$request)}}">
-                            RU
-                        </a>
-                        <a href="{{\App\Http\Helpers::setSessionLang('ru',$request)}}">
-                            KZ
-                        </a>
-                        <a href="{{\App\Http\Helpers::setSessionLang('en',$request)}}">
-                            EN
-                        </a>
-                    </div>
-                </div>
             </li>
         </ul>
     </div>
@@ -374,10 +360,11 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     .dropdown-content {
         display: none;
         position: absolute;
-        background-color: #f1f1f1;
+        background: white;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
     }
+
 
     .dropdown-content a {
         color: black;
@@ -386,7 +373,10 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
         display: block;
         border-radius: 4px;
         border: 1px solid white;
-        align-items: center
+        align-items: center;
+        text-transform: uppercase;
+        font-size: 11px;
+        font-family: "Montserrat", sans-serif;
     }
 
     .dropdown-content a:hover {
@@ -408,9 +398,40 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     .fs-14 {
         font-size: 14px;
     }
+    #hidden-nav ul {
+        list-style-type: none;
+        padding: 0
 
+    }
+    #hidden-nav ul a {
+        list-style-type: none;
+
+    }
+    #hidden-nav #nav-ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    #hidden-nav #nav-ul li {
+        border-bottom: 1px solid silver;
+        width: 90%;
+        margin-left: 5%;
+        list-style-type: none;
+        text-align: left;
+        padding: 10px 0;
+    }
+    #hidden-nav #nav-ul li a:hover {
+        color: red !important;
+    }
+    #hidden-nav #nav-ul li a {
+        margin-left: 5%;
+
+    }
+    .border-bottom {
+        border-bottom: 1px solid silver;
+
+    }
     #hidden-nav {
-        display: none !important;
+        display: none;
         padding: 0;
         text-align: center;
         margin: 0 auto;
@@ -419,6 +440,64 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
         background-color: white;
         width: 100vw;
     }
+    #hidden-nav .s-drop {
+        padding: 0;
+        opacity: 1;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        position: static;
+        visibility: visible;
+    }
+    #hidden-nav .s-drop.open {
+        max-height: 999px;
+    }
+    #hidden-nav .s-drop ul {
+        border: 0 !important;
+        padding: 0 !important;
+    }
+
+    #hidden-nav .s-drop ul li {
+        border: 0 !important;
+    }
+
+    #hidden-nav .s-drop ul li:hover .s-drop {
+        max-height: 999px;
+    }
+
+    #hidden-nav .s-drop a {
+        vertical-align: top;
+        display: inline-block;
+    }
+
+    #hidden-nav .s-drop ul > li.drop:before {
+        display: none;
+    }
+
+    #hidden-nav .s-drop ul > li.drop > a {
+        position: relative;
+    }
+
+    #hidden-nav .s-drop ul > li.drop > a:before {
+        top: -1px;
+        right: -20px;
+        color: #2e2e2e;
+        font-size: 14px;
+        content: "\f105";
+        position: absolute;
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        font-family: "FontAwesome";
+    }
+
+    #hidden-nav .s-drop .s-drop {
+        opacity: 1 !important;
+        position: static !important;
+        visibility: visible !important;
+    }
+
 
     #mt-header.style3 .mt-top-bar {
         background-color: #FF0000 !important;

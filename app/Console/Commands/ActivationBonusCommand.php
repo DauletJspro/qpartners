@@ -50,11 +50,13 @@ class ActivationBonusCommand extends Command
                     $this->bonus_for_invitation($user);
                     $this->activation_bonus($user);
                     $user->is_activated = true;
+                    $user->activated_date = date('Y-m-d');
 
                 } elseif ($user->user_money < 12) {
                     $user->is_activated = false;
+                    $user->activated_date = date('Y-m-d');
                 }
-                $user->activated_date = date('Y-m-d');
+
                 $user->save();
             }
         } catch (\Exception $exception) {
@@ -130,7 +132,8 @@ class ActivationBonusCommand extends Command
         }
     }
 
-    public function getAvailableLevel($parent, $counter = null){
+    public function getAvailableLevel($parent, $counter = null)
+    {
         $parentPacket = UserPacket::where('user_id', '=', $parent->user_id)->where(['is_active' => true])
             ->whereIn('packet_id', [Packet::CLASSIC, Packet::PREMIUM, Packet::VIP2])
             ->get()
@@ -138,15 +141,15 @@ class ActivationBonusCommand extends Command
         $parentPacket = $parentPacket->toArray();
         $parentPacket = max($parentPacket);
         $check = false;
-         if ($counter <= 4 && $parentPacket >= Packet::CLASSIC){
-             $check = true;
-         }
-         if ($counter >= 5 && $counter <= 6 && $parentPacket >= Packet::PREMIUM){
-             $check = true;
-         }
-         if ($counter >= 7 && $counter <= 8 && $parentPacket == Packet::VIP2){
-             $check = true;
-         }
-         return $check;
+        if ($counter <= 4 && $parentPacket >= Packet::CLASSIC) {
+            $check = true;
+        }
+        if ($counter >= 5 && $counter <= 6 && $parentPacket >= Packet::PREMIUM) {
+            $check = true;
+        }
+        if ($counter >= 7 && $counter <= 8 && $parentPacket == Packet::VIP2) {
+            $check = true;
+        }
+        return $check;
     }
 }

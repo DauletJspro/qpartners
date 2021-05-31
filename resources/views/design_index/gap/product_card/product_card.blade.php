@@ -1,7 +1,7 @@
 @foreach($products as $item)
     <li>
         <div class="mt-product1 large"
-             style="border: 1px solid lightgrey; padding: 0 2px 20px 2px">
+             style="border: 1px solid lightgrey; padding: 0 0 20px 0">
             <div class="box">
                 <div class="b1">
                     <div class="b2">

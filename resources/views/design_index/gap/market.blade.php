@@ -35,11 +35,23 @@
 
     </script>
 @endsection
+<script>
+    function showSubCategories(index) {
+        console.log('subid', index)
+        let length = document.getElementsByClassName('subcategories-body').length;
+        for(let i = 0; i < length; i++) {
+            document.getElementById(`collapse_${i}`).classList.remove('show');
+            document.getElementById(`collapse_${i}`).classList.remove('in');
+            document.getElementById(`category_${i}`).style.color = '#494949';
+        }
+        document.getElementById(`category_${index}`).style.color = 'red';
 
+    }
+</script>
 @section('content')
     <main id="mt-main" style="margin-top: -50px !important;">
         <div class="row" style="margin-right: 0 !important; margin-left: 0 !important;">
-            <div class="mt-bestseller bg-grey text-center wow fadeInUp" data-wow-delay="0.4s">
+            <div class="mt-bestseller text-center wow fadeInUp" data-wow-delay="0.4s">
                 <div class="row" style="height: 260px;">
                     <div class="col-xs-12">
                         <div class="bestseller-slider">
@@ -95,17 +107,17 @@
                         <h2>Категорий</h2>
 
                         <ul class="list-unstyled category-list">
-                            @foreach($categories as $category)
+                            @foreach($categories as $index => $category)
                                 <li>
-                                    <a role="button" data-toggle="collapse" href="#collapse{{$category->id}}"
+                                    <a id="category_{{$index}}" style="color: #494949" role="button" onclick="showSubCategories({{$index}})" data-toggle="collapse" href="#collapse_{{$index}}"
                                        aria-expanded="false"
                                        aria-controls="collapseExample">
                                         <span class="name">{{$category->name}}</span>
                                         <span class="num">{{isset($category->sub_categories) ? count($category->sub_categories) : 0}}</span>
                                     </a>
                                     <ul style="font-size:90%; font-weight:bolder;margin-top: 1rem;margin-left: 10px;"
-                                        class="collapse col-sm-10 list-unstyled category-list"
-                                        id="collapse{{$category->id}}">
+                                        class="subcategories-body collapse col-sm-10 list-unstyled category-list"
+                                        id="collapse_{{$index}}">
                                         @foreach($category->sub_categories as $sub_category)
                                             <li>
                                                 <a href="" style="color:black;">
@@ -186,27 +198,29 @@
                         @foreach($products as $item)
                             <li>
                                 <div class="mt-product1 large"
-                                     style="border: 1px solid lightgrey; padding: 0 2px 20px 2px">
+                                     style="border: 1px solid lightgrey; padding-bottom: 20px">
                                     <div class="box">
                                         <div class="b1">
                                             <div class="b2">
                                                 <div style="
-                                                        background-image: url({{asset($item->product_image)}});
+
                                                         background-repeat: no-repeat;
                                                         background-size: contain;
                                                         background-position: center;
                                                         width: 275px;
                                                         height: 290px;
-                                                        "></div>
+                                                        ">
+                                                    <img src="{{$item->product_image}}"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="txt">
-                                        <strong class="title"><a href="{{ route('product.detail', $item->product_id) }}">{{$item->product_name_ru}}</a></strong>
+                                        <strong class="title"><a href="{{ route('product.detail', $item->product_id) }}" style="color: black">{{$item->product_name_ru}}</a></strong>
                                         <p style=" width: 30ch;   overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
                                             {{$item->product_desc_ru}}
                                         </p>
-                                        <span class="price"> <span>{{$item->product_price}}</span> тг.</span>
+                                        <span class="price"><span>Цена:</span> <span style="font-weight: normal">&nbsp; ${{$item->product_price}} &nbsp; ({{$item->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span></span>
                                     </div>
                                 </div>
                             </li>

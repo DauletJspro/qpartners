@@ -41,13 +41,17 @@ class BackupCommand extends Command
                 unlink('storage/backups/backup.sql');
             }
 
-            $this->process = new Process(sprintf(
+            $result = $this->process = new Process(sprintf(
                 'mysqldump -u%s -p%s %s > %s',
-                config('database.connections.mysql.username'),
-                config('database.connections.mysql.password'),
-                config('database.connections.mysql.database'),
-                storage_path('/backups/backup.sql')
+                $DB_USERNAME = 'amin',
+                $DB_PASSWORD = '351_087_star_coffee',
+                $DB_DATABASE = 'qpartners',
+                $path = '/var/www/dumps/backup.sql'
             ));
+            if ($result){
+                //chmod('storage', 0777);
+                shell_exec('chmod -R 777 storage');
+            }
         }
     }
         /**
