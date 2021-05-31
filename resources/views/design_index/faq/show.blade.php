@@ -12,10 +12,10 @@
 @section('content')
     <main id="mt-main">
         <!-- Mt Content Banner of the Page -->
-        <section class="mt-contact-banner"  style=" background-size: cover;
+        <section class="container mt-contact-banner"  style=" background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-             background-image: url('/new_design/images/banners/montazhnaya11.jpg');">
+             background: red;">
             <p style="color: white; font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">вопросы и ответы</p>
 
             <div class="container">
@@ -84,7 +84,9 @@
                                 <div id="collapse{{$faq->id}}" class="panel-collapse collapse" role="tabpanel"
                                      aria-labelledby="heading{{$faq->id}}">
                                     <div class="panel-body">
-                                        <p>{{$faq->answer}}</p>
+                                        @foreach(explode('/', $faq->answer) as $an)
+                                            <p>{{$an}}</p>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

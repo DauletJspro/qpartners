@@ -41,7 +41,7 @@ $gallery = Slider::where('is_show', 1)
             background: red"
 
         >
-            <p style="color: white; font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">лидерский совет</p>
+            <p style="color: white; font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">Представители</p>
 
             <div class="container">
                 <div class="row">
@@ -64,17 +64,17 @@ $gallery = Slider::where('is_show', 1)
                 <nav class="breadcrumbs" style="font-size: 1.5rem;font-family: Montserrat; height: 40px">
                     <ul class="list-unstyled d-flex-row font-weight-lighter text-uppercase">
                         <a href="/" style="font-weight: 600; color: black" class="href-style">главная <i class="fa fa-angle-right ml-1"></i></a>
-                        <a style="font-weight: 400; color: black;">лидерский совет</a>
+                        <a style="font-weight: 400; color: black;">представители</a>
 
                     </ul>
                 </nav>
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="rep-txt">
-                            <h2 >ЛИДЕРЫ ПК “GAP”</h2>
-                            <p>Лидер – это руковдитель нового поколения определяющее будущее. У каждого человека или команды есть свой прототип Лидера, который мотивирует его действовать.</p>
-                            <p>Для потребительского кооператива GAP такими Лидерами являются люди входящие в особый Лидерский Совет.</p>
-                            <p>С составом Лидерского совета Вы можете ознакомится ниже.</p>
+                            <h2 >РЕГИОНАЛЬНЫЕ ПРЕДСТАВИТЕЛИ</h2>
+                            <p>Потребительский кооператив GAP предоставляет жилье, автомобиль и потребительскую продукцию в рассрочку по всему Казахстану.</p>
+                            <p>На сегодняшний день на территории Казахстана фунционируют более 15 представительских офисов ПК GAP.</p>
+                            <p>Здесь Вы можете ознакомиться с лицами которые представляют потребительский кооператив GAP по всему Казахстану.</p>
                         </div>
                         <div style="position: relative">
                             <div id="slider-administration" style="display: flex; width: 100%; overflow:hidden;">

@@ -250,7 +250,7 @@ $tab = (explode('tab=', URL::current()));
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h2>ПОХОЖАЯ ПРДУКЦИЯ</h2>
+                        <h2>ПОХОЖАЯ ПРОДУКЦИЯ</h2>
                         <div class="row">
                             <div class="col-xs-12">
                                 @foreach($relatedProducts as $product)

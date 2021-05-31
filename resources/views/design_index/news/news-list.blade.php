@@ -11,8 +11,8 @@
 
 @section('content')
     <main id="mt-main">
-        <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"
-                 style="background-image:url('/new_design/images/banners/montazhnaya6.jpg');">
+        <section class=" container mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"
+                 style="background: red;">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">

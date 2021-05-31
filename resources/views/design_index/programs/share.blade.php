@@ -86,7 +86,7 @@
                 <div class="d-flex-row flex-wrap pt-2">
 
                     @foreach($programs as $program)
-                        <div class="d-flex-column program-block-width ml-2 mt-1">
+                        <div class="d-flex-column program-block-width ml-2 mt-2">
                             <img src="/new_design/images/banners/{{$program["imgSrc"]}}" alt="programs img not found"/>
                             <p class="text-black mt-1 w-75 font-weight-600">{{$program["body"]}}</p>
                             <button class="button-hover mr-auto bg-red border-radius-30 px-15 py-05" onclick="" style="border: none;">

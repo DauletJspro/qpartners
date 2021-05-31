@@ -1,17 +1,12 @@
-<div class="mkd-container" style="text-align: center">
-    <div class="mkd-container-inner mkd-404-page">
-        <div class="mkd-page-not-found">
-            <h2>
-                404
-            </h2>
-            <h3>К сожалению, по Вашему запросу ничего не найдено</h3>
-            <a href="/" target="_self" class="mkd-btn mkd-btn-medium mkd-btn-solid mkd-btn-icon mkd-404-btn">
-                <span class="mkd-btn-text">Перейти на главную страницу</span>
-                            <span class="mkd-btn-icon-holder">
-                                <span aria-hidden="true" class="mkd-icon-font-elegant arrow_carrot-right mkd-btn-icon-elem"></span>
-                                <span aria-hidden="true" class="mkd-icon-font-elegant arrow_carrot-right mkd-btn-icon-elem"></span>
-                            </span>
-            </a>
-        </div>
+<div style="display: flex; height: 100vh; font-family: Montserrat; background-size: 100% 100%">
+    <div style="margin: auto; display: flex; flex-direction: column; text-align: center; text-transform: uppercase">
+        <span style="font-size: 15rem; color: red;  font-weight: bolder"><span style="text-shadow: 10px 10px #dcd1d1">404</span></span>
+        <span style="font-size: 2rem; background: white;border-radius: 3rem; padding: 0 20px;">Страница находится в разработке</span>
+        <a href="/" style="font-size: 2rem; color: black;  border: 0; cursor: pointer">← вернуться назад</a>
     </div>
+
 </div>
+
+<style>
+    @import url('https://css.gg/arrow-left.css');
+</style>
