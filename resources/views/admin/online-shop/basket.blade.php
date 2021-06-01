@@ -66,6 +66,24 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
+                    <input type="hidden" id="user_id" name="user_id" value="{{Auth::user()->user_id}}">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="first_name" name="name" value="{{Auth::user()->name}}">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="last_name" name="last_name" value="{{Auth::user()->last_name}}">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="contact" name="contact" value="{{Auth::user()->phone}}">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="email" name="email" value="{{Auth::user()->email}}">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="order_code" name="order_code" value="{{time()}}">
+                </div>
+                <div class="form-group">
                     <label for="address">Адрес</label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="г.Алматы ул.Абая 187а кв 94">
                 </div>
@@ -76,7 +94,13 @@
                         <option value="2">Курьером</option>
                         <option value="3">По почте</option>
                     </select>                                
-                </div>    
+                </div>
+                <div class="form-goup">
+                    @if(Auth::user()->role_id == App\Models\Role::CLIENT || Auth::user()->role_id == App\Models\Role::ADMIN)
+                        <input type="checkbox"  name="cashback" id="cashback" value="true" >
+                        <label for="cashback"> Потратить кэшбэк</label>
+                    @endif
+                </div>
                 @if ($row->is_packet)
                     <input type="hidden" name="type" id="discount_type" value="is_packet">
                 @elseif($row->is_partner)
@@ -109,7 +133,7 @@
                             style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
                             type="button" class="btn btn-default pull-left">Снять с super баланса
                         </button>
-                    @endif                    
+                    @endif
                 @endif                
             </div>
         </div>

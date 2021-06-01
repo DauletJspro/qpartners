@@ -7,6 +7,7 @@ use App\Models\UserOperation;
 use App\Models\UserPacket;
 use App\Models\UserRequest;
 use App\Models\Users;
+use App\Models\Role;
 use App\Models\UserStatus;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -168,7 +169,9 @@ class IndexController extends Controller
 
         $request->send_money = UserOperation::where('operation_type_id', 28)->where('recipient_id', Auth::user()->user_id)->sum('money');
 
-        return view('admin.index.index', ['row' => $request]);
+
+            return view('admin.index.index', ['row' => $request]);
+        
     }
 
     public function callFriend(Request $request)

@@ -24,4 +24,9 @@ class GapCardItem extends Model
     {
         return $this->belongsTo(GapCardSubCategory::class);
     }
+
+    public function order()
+    {
+        return $this->belongsTo(\App\Models\CardOrder::class, 'gap_card_id', 'id');
+    }
 }

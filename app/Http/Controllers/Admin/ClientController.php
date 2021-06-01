@@ -56,6 +56,14 @@ class ClientController extends Controller
                     ->orWhere('recommend.email', 'like', '%' . $request->sponsor_name . '%')
                     ->orWhere('recommend.middle_name', 'like', '%' . $request->sponsor_name . '%');
             });
+        if (isset($request->inviter_name) && $request->inviter_name != '')
+            $request->row->where(function ($query) use ($request) {
+                $query->where('recommend.name', 'like', '%' . $request->inviter_name . '%')
+                    ->orWhere('recommend.last_name', 'like', '%' . $request->inviter_name . '%')
+                    ->orWhere('recommend.login', 'like', '%' . $request->inviter_name . '%')
+                    ->orWhere('recommend.email', 'like', '%' . $request->inviter_name . '%')
+                    ->orWhere('recommend.middle_name', 'like', '%' . $request->inviter_name . '%');
+            });
 
         if (isset($request->city_name) && $request->city_name != '')
             $request->row->where(function ($query) use ($request) {
