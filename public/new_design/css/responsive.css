@@ -21,6 +21,29 @@
 }
 
 @media (max-width: 1499px) {
+    .mt-leave-comment h2 {
+        font-size: 24px;
+        line-height: 26px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin: 0 0 23px;
+        padding: 0 0 16px;
+        position: relative;
+        color: #494949;
+    }
+    .mt-leave-comment h2:before {
+        position: absolute;
+        content: "";
+        z-index: -1;
+        left: 2px;
+        top: auto;
+        bottom: 0;
+        right: auto;
+        width: 81px;
+        height: 4px;
+        background: #494949;
+    }
     .mt-workspace-sec .work-slider .img-holder:first-child {
         width: 45%;
     }
@@ -318,7 +341,7 @@
     }
 
     .mt-blog-detail.style1 .blog-post.detail .blog-txt {
-        width: 79%;
+        width: 100%;
     }
 
     .mt-blog-detail.style1 .blog-post.style2 .blog-txt {
@@ -335,11 +358,11 @@
     }
 
     .blog-post.detail .blog-txt {
-        width: 86%;
+        width: 100%;
     }
 
     .blog-post .blog-txt {
-        width: 79%;
+        width: 100%;
     }
 
     .blog-post .img-block.fullwidth .form-control {
@@ -1105,11 +1128,11 @@
     }
 
     .blog-post.detail .blog-txt {
-        width: 81%;
+        width: 100%;
     }
 
     .blog-post .blog-txt {
-        width: 73%;
+        width: 100%;
     }
 
     .blog-post.style3 .blog-txt {
@@ -1372,6 +1395,9 @@
 }
 
 @media only screen and (max-width: 767px) {
+    #my-brands a{
+        width: 30% !important;
+    }
     #cooperative-chairman div {
         width: 48% !important;
     }
@@ -2909,12 +2935,39 @@
     }
 }
 @media only screen and (max-width: 576px) {
-
+     #my-brands a{
+        width: 40% !important;
+     }
 	#mt-main > div > div > div > ul > li {
 		width: 48%;
 	}
+    #insta-posts div {
+        justify-content: center !important;
+    }
+    #insta-posts .insta-post{
+        width: 100% !important;
+        max-height: 410px !important;
+        min-width: 314px !important;
+    }
 }
 @media only screen and (max-width: 424px) {
+    .comment-photo {
+        background-size: initial !important;
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 50% !important;
+    }
+    #gap-card {
+        width: 100% !important;
+    }
+    #gap-card-photo {
+        width: 100% !important;
+        height: 100% !important;
+        background-size: 100% 100% !important;
+    }
+    #my-brands a{
+        width: 46% !important;
+    }
     #insta-posts .insta-post{
         width: 315px !important;
         max-height: 410px !important;

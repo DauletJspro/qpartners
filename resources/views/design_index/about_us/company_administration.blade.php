@@ -41,7 +41,7 @@ $gallery = Slider::where('is_show', 1)
             background: red"
 
         >
-            <p style="color: white; font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">Администрация</p>
+            <p style="font-family: Montserrat; color: white; font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">Администрация</p>
 
             <div class="container">
                 <div class="row">

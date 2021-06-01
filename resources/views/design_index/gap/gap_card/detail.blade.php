@@ -101,7 +101,7 @@
                 <img src="/new_design/images/svg/comment.svg" style="width: 20px; height: 23px" alt="img not found"/>
                 <span style="margin: 0 1.5rem 0 0.5rem">{{$chosen_program["comment"]}}</span>
             </div>
-            <img src="/admin/image/gap_item/{{$gap_card->image}}" class="mt-1" alt="img not found"/>
+            <img src="/admin/image/gap_item/{{$gap_card->image}}" style="width: 100%; height: 100%" class="mt-1" alt="img not found"/>
         </div>
         <div class="program-detail-about d-flex-column mt-2" >
             <!-- Breadcrumbs of the Page -->
@@ -138,7 +138,7 @@
                     <span style="margin: 15px 0 0 10px">Отзывы (4)</span>
                 </div>
             @else
-                <p>Вы должны пройти регистрация чтобы поставить оценку.</p>
+                <p>Вы должны пройти регистрацию чтобы поставить оценку.</p>
                 <div class="d-flex-row">
                     <div class="rate">
                         @for($i = 5; $i > 0; $i--)

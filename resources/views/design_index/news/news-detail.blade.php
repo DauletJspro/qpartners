@@ -11,26 +11,26 @@
 
 @section('content')
     <main id="mt-main">
-        <!-- Mt Contact Banner of the Page -->
-        <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"
-                 style="background-image:url('/new_design/images/banners/montazhnaya6.jpg');">
+        <!-- Mt Content Banner of the Page -->
+        <section class="container mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"
+                 style="
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background: red"
+
+        >
+            <p style="color: white; font-family: Montserrat; font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">Новости</p>
+
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
-                        <h1 style="color: white !important;">Новости {{isset($category) ?  ' / '.$category->name : ''}}</h1>
-                        <h1>{{$news->news_name}}</h1>
-                        {{--                        <nav class="breadcrumbs">--}}
-                        {{--                            <ul class="list-unstyled">--}}
-                        {{--                                <li><a href="index.html">Home <i class="fa fa-angle-right"></i></a></li>--}}
-                        {{--                                <li><a href="#">Blog <i class="fa fa-angle-right"></i></a></li>--}}
-                        {{--                                <li>Category</li>--}}
-                        {{--                            </ul>--}}
-                        {{--                        </nav>--}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <a href="#" class="search">Search <i class="fa fa-search"></i></a>
+                        <nav class="breadcrumbs">
+                            <ul class="list-unstyled">
+                                {{--                                <li><a href="index.html">home <i class="fa fa-angle-right"></i></a></li>--}}
+                                {{--                                <li>About Us</li>--}}
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -39,16 +39,17 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-8 wow fadeInUp" data-wow-delay="0.4s">
-                        <article class="blog-post detail">
+                        <article class="blog-post detail" style="border-radius: 0; margin-bottom: 50px; padding: 30px">
                             <div class="img-holder img-post">
                                 <a href="{{$news->news_image}}" class="lightbox">
                                     <div style="
-                                            background-image: url('{{$news->news_image}}') ;
-                                            background-size: contain;
+                                            background-image: url({{$news->news_image === '' ? $news->news_image : 'https://loopnewslive.blob.core.windows.net/liveimage/sites/default/files/2018-12/CkF8PLI3Ay.jpg'}}) ;
+                                            background-size: 100% 100%;
                                             background-position: center;
                                             background-repeat: no-repeat;
-                                            width: 790px;
+                                            width: 100%;
                                             min-height: 365px;
+                                            margin-bottom: 10px
                                             ">
                                     </div>
                                 </a>
@@ -72,7 +73,7 @@
                                 <p>
                                     <strong>{{$news->full_description_ru}}</strong>
                                 </p>
-                                <div id="blog-isotop" class="img-block">
+                                <div id="blog-isotop" style="display: none" class="img-block">
                                     @foreach($images  as $image)
                                         <div class="img">
                                             <a href="{{$image->path}}" class="lightbox">
@@ -93,22 +94,23 @@
                                 </div>
                             </div>
                         </article>
-                        <article class="mt-author-box">
-                            <div class="author-img">
+                        <article class="mt-author-box" style="display: flex; border-radius: 0; margin-bottom: 50px; padding: 5px 15px">
+                            <div class="">
                                 <a href="#">
-                                    <div style="
-                                            background-size: contain;
+                                    <div class="comment-photo" style="
                                             background-position: center;
                                             background-repeat: no-repeat;
+                                            background-size: 100% 100%;
                                             width: 150px;
                                             height: 150px;
-                                            background-image: url('{{$author ? $author->avatar : '/media/default.png'}}');
+                                            background-image: url('{{$author ? $author->avatar : '/new_design/images/banners/news-detail.svg'}}');
                                             "></div>
                                 </a>
                             </div>
-                            <div class="author-txt">
-                                <h3><a href="#">{{$author ? $author->name : 'Не указано'}}</a></h3>
-                                <p>{{$author ? \App\Models\UserStatus::getStatusName($author->user_id) : 'Не указано'}}</p>
+                            <div class="author-txt" style="margin-left: 15px;">
+                                <h3><a href="#" style="font-weight: 600">{{$author ? $author->name : 'Автор цитаты'}}</a></h3>
+                                <p>{{$author ? \App\Models\UserStatus::getStatusName($author->user_id) : ''}}</p>
+                                <p>sh@mail.ru</p>
                                 <ul class="list-unstyled social-network">
                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -122,25 +124,86 @@
                             <div class="mt-comments-heading">
                                 <h2>Комментарий</h2>
                             </div>
-                            <ul class="list-unstyled">
-                                @foreach($comments as $comment)
-                                    <li>
-                                        <div class="img-box">
-                                            <strong style="color: black;">{{$comment->user ? $comment->user->name : 'Не указано' }}</strong>
-                                            <img src="{{$comment->user ? $comment->user->avatar : '/media/default.png'}}"
-                                                 alt="" style="border-radius: 50%;border: 1px solid lightgrey;">
-                                        </div>
-                                        <div class="txt">
-                                            <h3><a href="#"></a></h3>
-                                            <time class="mt-time"
-                                                  datetime="2016-02-03 20:00">{{$comment->created_at}}</time>
-                                            <strong style="color: black;">{{$comment->review_text}}</strong>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
+                            <article class="mt-author-box" style="display: flex; font-family: Montserrat; border-radius: 0; margin-bottom: 50px; padding: 5px 15px">
+                                <div class="">
+                                    <a href="#">
+                                        <div class="comment-photo" style="
+                                                background-size: contain;
+                                                background-position: center;
+                                                background-repeat: no-repeat;
+                                                width: 150px;
+                                                height: 150px;
+                                                background-image: url('{{$author ? $author->avatar : '/new_design/images/banners/news-detail.svg'}}');
+                                                "></div>
+                                    </a>
+                                </div>
+                                <div class="author-txt" style="margin-left: 15px; display: flex;">
+                                    <div>
+                                        <h3><a href="#" style="font-weight: 600">{{$author ? $author->name : 'Автор цитаты'}}</a></h3>
+                                        <p>{{$author ? \App\Models\UserStatus::getStatusName($author->user_id) : ''}}</p>
+                                        <p>sh@mail.ru</p>
+                                        <p>22.05.20</p>
+
+                                    </div>
+                                    <div style="border-left: 1px solid #C4C4C4; padding-left: 10px;  color: black !important; margin-left: 10px">
+                                        <p>Хорошие новости!</p>
+                                        <p>Великолепно!</p>
+                                        <p>Мы долго ждали этого дня!</p>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="mt-author-box" style="display: flex; font-family: Montserrat; border-radius: 0; margin-bottom: 50px; padding: 5px 15px">
+                                <div class="">
+                                    <a href="#">
+                                        <div class="comment-photo" style="
+                                                background-size: contain;
+                                                background-position: center;
+                                                background-repeat: no-repeat;
+                                                width: 150px;
+                                                height: 150px;
+                                                background-image: url('{{$author ? $author->avatar : '/new_design/images/banners/news-detail.svg'}}');
+                                                "></div>
+                                    </a>
+                                </div>
+                                <div class="author-txt" style="margin-left: 15px; display: flex;">
+                                    <div>
+                                        <h3><a href="#" style="font-weight: 600">{{$author ? $author->name : 'Автор цитаты'}}</a></h3>
+                                        <p>{{$author ? \App\Models\UserStatus::getStatusName($author->user_id) : ''}}</p>
+                                        <p>sh@mail.ru</p>
+                                        <p>22.05.20</p>
+
+                                    </div>
+                                    <div style="border-left: 1px solid #C4C4C4; padding-left: 10px;  color: black !important; margin-left: 10px">
+                                        <p>Хорошие новости!</p>
+                                        <p>Великолепно!</p>
+                                        <p>Мы долго ждали этого дня!</p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            @if($comments->user)
+                                <ul class="list-unstyled">
+                                    @foreach($comments as $comment)
+                                        <li>
+                                            <div class="img-box">
+                                                <strong style="color: black;">{{$comment->user ? $comment->user->name : 'Не указано' }}</strong>
+                                                <img src="{{$comment->user ? $comment->user->avatar : '/media/default.png'}}"
+                                                     alt="" style="border-radius: 50%;border: 1px solid lightgrey;">
+                                            </div>
+                                            <div class="txt">
+                                                <h3><a href="#"></a></h3>
+                                                <time class="mt-time"
+                                                      datetime="2016-02-03 20:00">{{$comment->created_at}}</time>
+                                                <strong style="color: black;">{{$comment->review_text}}</strong>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
                             <div class="mt-leave-comment">
-                                <h2>Оставить комментарий</h2>
+                                <div class="mt-comments-heading">
+                                    <h2>Оставить комментарий</h2>
+                                </div>
                                 {{ Form::open(['action' => ['Index\ReviewController@store'], 'method' => 'POST', 'class' => 'comment-form']) }}
                                 {{ Form::token() }}
                                 {{ Form::hidden('item_id', $news->news_id) }}
@@ -162,7 +225,7 @@
                                     <div class="form-group">
                                         {{Form::textarea('review_text',null, ['placeholder' => 'Комментарий....'])}}
                                     </div>
-                                    {{Form::submit('Оставить',['class' => 'btn btn-warning', 'style' => 'padding:1rem 2rem;'])}}
+                                    {{Form::submit('Оставить',['class' => 'btn', 'style' => 'background: red; color: white; padding:1rem 2rem;'])}}
                                 </fieldset>
                                 {{Form::close()}}
                             </div>
