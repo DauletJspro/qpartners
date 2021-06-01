@@ -18,28 +18,28 @@
                             пользователи</a>
                     </h3>
                     <h3 class="box-title box-title-first ">
-                        <a href="/admin/cooperative">Тулпар</a>
+                        <a href="/admin/client/share/holder">Тулпар</a>
                     </h3>
                     <h3 class="box-title box-title-first ">
-                        <a href="/admin/pluses">Тулпар +</a>
+                        <a href="/admin/client/share/holder/plus">Тулпар +</a>
                     </h3>
                     <h3 class="box-title box-title-third">
-                        <a href="/admin/home">Баспана</a>
+                        <a href="/admin/client/share/holder/home">Баспана</a>
                     </h3>
                     <h3 class="box-title box-title-fourth" style="margin-left: 30px" >
-                        <a href="/admin/homes">Баспана +</a>
+                        <a href="/admin/homes/clients">Баспана +</a>
                     </h3>
                     <h3 class="box-title box-title-fourth" style="margin-left: 30px" >
-                        <a href="/admin/qoldau">Qoldau</a>
+                        <a href="/admin/qoldau/clients">Qoldau</a>
                     </h3>
                     <h3 class="box-title box-title-fourth" style="margin-left: 30px" >
-                        <a href="/admin/qamqor">Qamqor</a>
+                        <a href="/admin/qamqor/clients">Qamqor</a>
                     </h3>
                     <h3 class="box-title box-title-fourth" style="margin-left: 30px" >
-                        <a href="/admin/jastar">Jastar</a>
+                        <a href="/admin/jastar/clients">Jastar</a>
                     </h3>
                     <h3 class="box-title box-title-fourth" style="margin-left: 30px" >
-                        <a href="/admin/jasotau">JasOtau</a>
+                        <a href="/admin/jasotau/clients">JasOtau</a>
                     </h3>
                     <div class="clear-float"></div>
                 </div>
@@ -83,6 +83,7 @@
                                         <th style="width: 15px">Аватар</th>
                                         <th>ИИН</th>
                                         <th>Спонсор</th>
+                                        <th>Пригласитель</th>
                                         <th>Email / Телефон</th>
                                         <th>Пакеты</th>
                                         <th>Дата регист.</th>
@@ -113,6 +114,12 @@
                                         <td>
                                             <form>
                                                 <input value="{{$request->sponsor_name}}" type="text"
+                                                       class="form-control" name="sponsor_name" placeholder="Поиск">
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form>
+                                                <input value="{{$request->inviter_name}}" type="text"
                                                        class="form-control" name="sponsor_name" placeholder="Поиск">
                                             </form>
                                         </td>
@@ -160,13 +167,25 @@
                                                    target="_blank"><p
                                                             class="login">{{$val->iin}}</p>@if(Auth::user()->user_id == 1)
                                                         <p class="client-name">{{ $val->name }} {{ $val->last_name }} {{ $val->middle_name }}</p> @if($val->is_activated == 0)
-                                                            <p style="color: red">Не активирован</p> @endif @endif</a>
+                                                            <p style="color: red">Пайщик</p> @endif @endif</a>
                                             </td>
                                             <td class="arial-font">
                                                 <a class="main-label" href="/admin/profile/{{$val->recommend_id}}"
                                                    target="_blank"><p
                                                             class="login">{{$val->recommend_login}}</p>@if(Auth::user()->user_id == 1)
                                                         <p class="client-name">{{ $val->recommend_name }} {{ $val->recommend_last_name }} {{ $val->recommend_middle_name }}</p>@endif
+                                                </a>
+                                            </td>
+                                            <td class="arial-font">
+                                                <a class="main-label"
+                                                   href="/admin/profile/{{\App\Models\Users::getInviterName($val)->user_id}}"
+                                                   target="_blank"><p
+                                                            class="login">{{\App\Models\Users::getInviterName($val)->login}}</p>
+                                                    @if(Auth::user()->user_id == 1)
+                                                        <p class="client-name">
+                                                            {{ \App\Models\Users::getInviterName($val)->name }}
+                                                            {{ \App\Models\Users::getInviterName($val)->last_name }}
+                                                        </p>@endif
                                                 </a>
                                             </td>
                                             <td class="arial-font">
