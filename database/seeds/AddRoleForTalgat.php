@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class AddRoleForTalgat extends Seeder
 {
@@ -13,7 +14,7 @@ class AddRoleForTalgat extends Seeder
     {
         DB::table('role')->insert([
             'name' => 'talgat',
-            'role_name_ru' => 'marketing',
+            'role_name_ru' => 'market',
             'updated_at' => date('Y-m-d H:i:s'),
             'created_at' => date('Y-m-d H:i:s')
         ]);
