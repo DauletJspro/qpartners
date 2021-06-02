@@ -13,21 +13,12 @@ use DB;
 
 class NewsController extends Controller
 {
-    public function newsList(Request $request)
+    public function newsList()
     {
-
-        $category_id = $request->input('category_id');
-
         $news = News::where('is_show', 1);
-        if ($category_id) {
-            $news = $news->where(['category_id' => $category_id]);
-        }
         $news = $news->orderBy('news_date', 'desc')
             ->paginate(6);
-
         $categories = NewsCategory::where(['is_active' => true])->get();
-
-
         return view('design_index.news.news-list',
             [
                 'menu' => 'news',
@@ -66,5 +57,12 @@ class NewsController extends Controller
                 'meta_description' => $row->news_name_ru . '. QazaqTurizm'
             ]
         );
+    }
+
+    public function getNewsCategory($id){
+        $news = News::where('is_show', 1)->where(['category_id' => $id]);
+        $news = $news->orderBy('news_date', 'desc')->paginate(6);
+        $categories = NewsCategory::where(['is_active' => true])->get();
+        return view('design_index.news.news-list', compact('news', 'categories'));
     }
 }

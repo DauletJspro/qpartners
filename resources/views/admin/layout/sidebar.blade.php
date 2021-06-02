@@ -1,4 +1,5 @@
 <ul class="sidebar-menu">
+    @if(Auth::user()->role_id != 9)
     @if(Auth::user()->user_id != \App\Models\Users::ACCOUNTANT)
         @if(Auth::user()->status_id > 0)
             <li class="header"
@@ -482,6 +483,17 @@
             </a>
         </li>
     @endif
+    @endif
+        @if(Auth::user()->role_id == 9)
+        <li class="treeview">
+            <a href="{{route('news.index')}}">
+                <i class="fa fa-newspaper-o"></i>
+                <span>
+                    Добавить новость
+                </span>
+            </a>
+        </li>
+        @endif
     <li class="treeview">
         <a href="/logout">
             <i class="fa fa-sign-out"></i>
