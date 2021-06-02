@@ -105,12 +105,12 @@
                                         <td>
 
                                         </td>
-                                        <td>
-                                            <form>
-                                                <input value="{{$request->user_name}}" type="text" class="form-control"
-                                                       name="user_name" placeholder="Поиск">
-                                            </form>
-                                        </td>
+                                            <td>
+                                                <form>
+                                                    <input value="{{$request->iin}}" type="text" class="form-control"
+                                                           name="iin" placeholder="Поиск">
+                                                </form>
+                                            </td>
                                         <td>
                                             <form>
                                                 <input value="{{$request->sponsor_name}}" type="text"

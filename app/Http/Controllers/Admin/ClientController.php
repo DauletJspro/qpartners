@@ -121,14 +121,14 @@ class ClientController extends Controller
             )
             ->groupBy('users.user_id');
 
-        if (isset($request->user_name) && $request->user_name != '')
+        if (isset($request->iin) && $request->iin != '')
             $request->row->where(function ($query) use ($request) {
-                $query->where('users.name', 'like', '%' . $request->user_name . '%')
+                $query->where('users.name', 'like', '%' . $request->iin . '%')
                     ->orWhere('users.iin', 'like', '%' . $request->iin . '%')
-                    ->orWhere('users.last_name', 'like', '%' . $request->user_name . '%')
-                    ->orWhere('users.login', 'like', '%' . $request->user_name . '%')
-                    ->orWhere('users.email', 'like', '%' . $request->user_name . '%')
-                    ->orWhere('users.middle_name', 'like', '%' . $request->user_name . '%');
+                    ->orWhere('users.last_name', 'like', '%' . $request->iin . '%')
+                    ->orWhere('users.login', 'like', '%' . $request->iin . '%')
+                    ->orWhere('users.email', 'like', '%' . $request->iin . '%')
+                    ->orWhere('users.middle_name', 'like', '%' . $request->iin . '%');
             });
 
         if (isset($request->sponsor_name) && $request->sponsor_name != '')
