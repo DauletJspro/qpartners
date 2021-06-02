@@ -11,10 +11,10 @@
 @section('content')
     <main id="mt-main" class="mb-100">
             <div class="">
-                <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"  style=" background-size: cover;
+                <section class="container mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"  style=" background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;
-                    background-image: url('/new_design/images/banners/montazhnaya5.png');">
+                    background: red;">
                     <p style="color: white;font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black; ">преимущества</p>
 
                     <div class="container">

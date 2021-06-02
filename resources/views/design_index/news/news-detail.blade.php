@@ -43,7 +43,7 @@
                             <div class="img-holder img-post">
                                 <a href="{{$news->news_image}}" class="lightbox">
                                     <div style="
-                                            background-image: url({{$news->news_image === '' ? $news->news_image : 'https://loopnewslive.blob.core.windows.net/liveimage/sites/default/files/2018-12/CkF8PLI3Ay.jpg'}}) ;
+                                            background-image: url({{$news->news_image}}) ;
                                             background-size: 100% 100%;
                                             background-position: center;
                                             background-repeat: no-repeat;
@@ -93,6 +93,7 @@
                                     @endforeach
                                 </div>
                             </div>
+                            <button onclick="() => {console.log({{$news->news_image}}, 'as;dlfkas;kj')}"> che</button>
                         </article>
                         <article class="mt-author-box" style="display: flex; border-radius: 0; margin-bottom: 50px; padding: 5px 15px">
                             <div class="">
