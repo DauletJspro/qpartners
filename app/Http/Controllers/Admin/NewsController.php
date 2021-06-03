@@ -14,10 +14,7 @@ use DB;
 
 class NewsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('adminWebsite');
-    }
+
 
     public function index(Request $request)
     {
