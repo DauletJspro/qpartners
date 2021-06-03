@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AddRoleForTalgat extends Seeder
+class AddRoleForTalgatSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,10 +13,10 @@ class AddRoleForTalgat extends Seeder
     public function run()
     {
         DB::table('role')->insert([
-            'name' => 'talgat',
-            'role_name_ru' => 'market',
-            'updated_at' => date('Y-m-d H:i:s'),
-            'created_at' => date('Y-m-d H:i:s')
+            'name' => 'Marketing',
+            'role_name_ru' => 'Маркетолог',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now()
         ]);
     }
 }
