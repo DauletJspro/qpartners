@@ -14,15 +14,10 @@ class GAP extends Model
 
         $userMaxGapPacket = max(UserPacket::where(['user_id' => $user->user_id])
             ->whereIn('packet_id', [Packet::GAPTechno, Packet::GAPAuto, Packet::GAPHome])
+            ->where(['is_active' => true])
             ->get()
             ->pluck('packet_id')
             ->toArray());
-
-
-        $user_packet = UserPacket::where(['user_id' => $user->user_id])
-            ->whereIn('packet_id', [Packet::GAPTechno, Packet::GAPAuto, Packet::GAPHome])
-            ->where(['is_active' => true])
-            ->first();
 
 
         //to get  GAP 1
@@ -36,7 +31,8 @@ class GAP extends Model
         $enough_sv_balance = 20;
         $result = (new GAP)->check_child_sv($user->user_id, $enough_sv_balance);
         // date not increased now date
-        $check_date = date("Y-m-d", strtotime("+1 month", $user_packet->activated_at)) <= date("Y-m-d");
+//        $check_date = date("Y-m-d", strtotime("+1 month", $user_packet->activated_at)) <= date("Y-m-d");
+        $check_date = true;
         if ($result && $check_date) {
             $GAP_status = UserStatus::GAP2;
             $premium_bonus = 180;
@@ -46,7 +42,7 @@ class GAP extends Model
         $enough_sv_balance = 65;
         $result = (new GAP)->check_child_sv($user->user_id, $enough_sv_balance);
         // date not increased now date
-        $check_date = date("Y-m-d", strtotime("+3 month", $user_packet->activated_at)) <= date("Y-m-d");
+//        $check_date = date("Y-m-d", strtotime("+3 month", $user_packet->activated_at)) <= date("Y-m-d");
         if ($result && $check_date) {
             $GAP_status = UserStatus::GAP3;
             $premium_bonus = 2000;
@@ -56,7 +52,7 @@ class GAP extends Model
         $enough_sv_balance = 200;
         $result = (new GAP)->check_child_sv($user->user_id, $enough_sv_balance);
         // date not increased now date
-        $check_date = date("Y-m-d", strtotime("+6 month", $user_packet->activated_at)) <= date("Y-m-d");
+//        $check_date = date("Y-m-d", strtotime("+6 month", $user_packet->activated_at)) <= date("Y-m-d");
         if ($result && $check_date && in_array($userMaxGapPacket, [Packet::GAPAuto, Packet::GAPHome])) {
             $GAP_status = UserStatus::GAP4;
             $premium_bonus = 6000;
@@ -66,14 +62,14 @@ class GAP extends Model
         $enough_sv_balance = 605;
         $result = (new GAP)->check_child_sv($user->user_id, $enough_sv_balance);
         // date not increased now date
-        $check_date = date("Y-m-d", strtotime("+12 month", $user_packet->activated_at)) <= date("Y-m-d");
+//        $check_date = date("Y-m-d", strtotime("+12 month", $user_packet->activated_at)) <= date("Y-m-d");
         if ($result && $check_date && in_array($userMaxGapPacket, [Packet::GAPHome])) {
             $GAP_status = UserStatus::GAP5;
             $premium_bonus = 18000;
         }
 
 
-        if ($user->gap_status < $GAP_status) {
+        if (isset($GAP_status) && $user->gap_status < $GAP_status) {
             $user->user_money = $user->user_money + $premium_bonus;
             $user->gap_status = $GAP_status;
             $status_name = UserStatus::where(['user_status_id' => $GAP_status])->first()->user_status_name;
