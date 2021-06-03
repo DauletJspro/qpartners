@@ -52,6 +52,16 @@
                         <a href="{{ route('gap_market_product.create') }}">
                             <button class="btn btn-primary box-add-btn">Добавить товар</button>
                         </a>
+                        <a href="/admin/category/create">
+                            <button class="btn btn-success box-add-btn">Добавить категорию</button>
+                        </a>
+                        <br>
+                        <a href="/admin/sub_category/create">
+                            <button class="btn btn-success box-add-btn">Добавить под категорию</button>
+                        </a>
+                        <a href="/admin/brand/create">
+                            <button class="btn btn-warning box-add-btn">Добавить бренд</button>
+                        </a>
                     </div>
                     <div class="clear-float"></div>
                 </div>

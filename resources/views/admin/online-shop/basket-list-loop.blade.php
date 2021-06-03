@@ -12,11 +12,7 @@
         </tr>
         </thead>
         <tbody>
-        <?php $sum = 0; ?>
-        <?php $ballSum = 0; ?>
-
         @foreach($row->basket as $key => $val)
-
             <tr>
                 <td> {{ $key + 1 }}</td>
                 <td>
@@ -37,23 +33,22 @@
                            value="{{ $val->unit }}"/>
                 </td>
                 <td>
-                    @php
-                        if($row->is_packet) {
-                            $price_ball = $val->product_price - ($val->product_price * \App\Models\Currency::PacketDiscount);
-                        }
-                        else if ($row->is_partner) {
-                            $price_ball = $val->product_price - ($val->product_price * \App\Models\Currency::PartnerDiscount);
-                        }
-                        else {
-                            $price_ball = $val->product_price - ($val->product_price * \App\Models\Currency::ClientDiscount);
-                        }
-                    @endphp
-                    {{ round($price_ball, 2) }}$
-                    ({{round($price_ball * \App\Models\Currency::pvToKzt(),0)}}
-                    тг)
+                    @if(Auth::user()->role_id == 2 && Auth::user()->is_activated == 1)
+                        {{$val->price_shareholder}} $({{$val->price_shareholder * \App\Models\Currency::where('currency_id',1)->first()->money}})
+                    @elseif(Auth::user()->role_id == 2 && Auth::user()->is_activated == 0)
+                        {{$val->price_partner}} $({{$val->price_partner * \App\Models\Currency::where('currency_id',1)->first()->money}})
+                    @else
+                        {{$val->price_client}} $({{$val->price_client * \App\Models\Currency::where('currency_id',1)->first()->money}})
+                    @endif
                 </td>
                 <td>
-                    {{ $val['ball'] }}
+                    @if(Auth::user()->role_id == 2 && Auth::user()->is_activated == 1)
+                        {{$val->ball_shareholder}}
+                    @elseif(Auth::user()->role_id == 2 && Auth::user()->is_activated == 0)
+                        {{$val->ball_partner}}
+                    @else
+                        {{$val->ball_client}}
+                    @endif
                 </td>
                 <td style="text-align: center">
                     <a href="javascript:void(0)" onclick="delProductFromBasket(this,'{{ $val->product_id }}')">
@@ -61,18 +56,19 @@
                     </a>
                 </td>
             </tr>
-
-            <?php $sum += round($price_ball, 2); ?>
-            <?php $ballSum += $val->ball ?>
-
         @endforeach
-
         <tr>
             <td colspan="4" style="text-align: right"><b>Общая сумма:</b></td>
-            <td colspan="1"><b id="sum">{{$sum}} $
-                    ({{round($sum * \App\Models\Currency::pvToKzt(),0)}}тг)</b>
+            <td colspan="1">
+                <b id="sum">
+                    {{ $total_sum }} $
+                    ({{round($total_sum * \App\Models\Currency::pvToKzt(),0)}}тг)
+                </b>
             </td>
-            <td colspan="1"><b id="ballSum">+ {{ $ballSum }}</b>
+            <td colspan="1">
+                <b id="ballSum">
+                    + {{ $total_ball }}
+                </b>
             </td>
             <td></td>
         <tr>
@@ -81,9 +77,7 @@
                    style="background-color: rgb(253, 58, 53) !important; width: 200px"><b>Подтвердить заказ</b></a>
             </td>
         </tr>
-
         </tbody>
-
     </table>
 
 

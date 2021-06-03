@@ -54,7 +54,7 @@ class Users extends Model implements AuthenticatableContract
     const ENTREPRENEUR = 5;
     const CONSUMER = 6;
     const SELLER = 7;
-    const  USER = 8;
+    const USER = 8;
 
 
     use SoftDeletes;
@@ -124,7 +124,7 @@ class Users extends Model implements AuthenticatableContract
 
     }
 
-    public static function cashbackBonus($card){
+    public static function cashbackBonusConsumer($card){
         $recommend_user_id = Auth::user()->recommend_user_id;
         for ($i=1; $i<=8; $i++){
             $recommend_user = Users::where('user_id',$recommend_user_id)->where('is_activated', true)->first();
