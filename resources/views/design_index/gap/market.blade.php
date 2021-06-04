@@ -203,7 +203,9 @@
                                     <div class="box">
                                         <div class="b1">
                                             <div class="b2">
-                                                <div style="
+                                                <div
+                                                        id="gap-market-product"
+                                                        style="
 
                                                         background-repeat: no-repeat;
                                                         background-size: contain;

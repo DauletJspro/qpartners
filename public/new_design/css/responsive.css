@@ -2951,6 +2951,22 @@
     }
 }
 @media only screen and (max-width: 424px) {
+    #gap-market-product {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    #mt-main > div > div > div > ul > li {
+        width: 97%;
+    }
+    .register-types-btn {
+        min-width: 100%;
+    }
+    .program-block-width {
+        width: 100%;
+    }
+    .more-btn {
+        margin: 2rem auto 0 auto;
+    }
     .comment-photo {
         background-size: initial !important;
         width: 50px !important;
