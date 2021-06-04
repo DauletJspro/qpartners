@@ -2956,7 +2956,8 @@
         height: 100% !important;
     }
     #mt-main > div > div > div > ul > li {
-        width: 97%;
+        width: 80%;
+        margin-left: 10%;
     }
     .register-types-btn {
         min-width: 100%;
