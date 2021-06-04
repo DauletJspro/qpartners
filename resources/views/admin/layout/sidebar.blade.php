@@ -39,15 +39,10 @@
         @if(Auth::user()->is_activated)
             <li class="header" style="padding:5px 25px 0px">
                 <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">
-                    @if(Auth::user()->role_id == App\Models\Role::CONSUMER)
-                    Баланс:  {{Auth::user()->balance->user_balance}} ₸
-                    @else
                     Баланс: {{Auth::user()->user_money}}
                     PV
                     ( {{Auth::user()->user_money * \App\Models\Currency::pvToKzt()}}тг)
                 </p>
-                    @endif
-
             </li>
             @if(!(Auth::user()->role_id == App\Models\Role::CONSUMER))
                 <li class="header" style="padding:5px 25px 0px">
@@ -231,13 +226,13 @@
             </li>
         @endif
     @endif
+        <li class="treeview">
+            <a href="{{ route('gap.card.orders.index') }}">
+                <i class="fa fa-paper-plane-o"></i>
+                <span>Мои заказы(Card)</span>
+            </a>
+        </li>
     @if(Auth::user()->role_id == App\Models\Role::CONSUMER)
-            <li class="treeview">
-                <a href="{{ route('gap.card.orders.index') }}">
-                    <i class="fa fa-paper-plane-o"></i>
-                    <span>Мои заказы</span>
-                </a>
-            </li>
             <li class="treeview">
                 <a href="{{ route('gap.card.ratings.index') }}">
                     <i class="fa fa-star"></i>
@@ -456,7 +451,7 @@
         </a>
     </li>
 
-    @if(Auth::user()->user_id== 1)
+    @if(Auth::user()->user_id == 1)
         <li class="treeview">
             <a href="{{route('gap_category.index')}}">
                 <i class="fa fa-list-ul"></i>

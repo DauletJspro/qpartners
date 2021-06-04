@@ -10,7 +10,7 @@ if (isset($sub_category_id)) {
 @extends('design_index.layout.layout')
 
 @section('meta-tags')
-    <title>Qpartners Shop</title>
+    <title>Qpartners Shop</title>z
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
           content="«Qpartners» - это уникальный медиа проект с широким набором возожностей для взаймодествия с участниками виртуального рынка"/>
