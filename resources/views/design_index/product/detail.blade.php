@@ -24,6 +24,26 @@ $tab = (explode('tab=', URL::current()));
 
     <script src="/custom/js/admin.js?v=11"></script
 @endsection
+<?php
+    $client = 20;
+    $consumer = 16;
+    $shareholderOrPartner = 10;
+?>
+<script>
+    function chooseProductVolume() {
+        if(document.getElementById('volume').value === '275'){
+            document.getElementById('price1').innerText = '$20 (10000 ₸)'
+            document.getElementById('price2').innerText = '$16 (8000 ₸)'
+            document.getElementById('price3').innerText = '$10 (5000 ₸)'
+        }
+        if(document.getElementById('volume').value === '125'){
+            document.getElementById('price1').innerText = '$10 (5000 ₸)'
+            document.getElementById('price2').innerText = '$8 (4000 ₸)'
+            document.getElementById('price3').innerText = '$5 (2500 ₸)'
+        }
+
+    }
+</script>
 @section('content')
     <i class="ajax-loader" id="ajax-loader"></i>
     <main id="mt-main">
@@ -64,11 +84,12 @@ $tab = (explode('tab=', URL::current()));
                                             background-image: url('{{$product->product_image}}');
                                             background-position: center;
                                             background-repeat: no-repeat;
-                                            width: 610px;
+                                            width: 490px;
                                             height: 490px;
                                             border: 1px solid lightgrey;
                                             border-radius: 5px;
                                             background-size: 100% 100%;
+                                            margin-top: 10px;
                                             ">
                                     </div>
                                 </div>
@@ -121,9 +142,55 @@ $tab = (explode('tab=', URL::current()));
                             <div class="txt-wrap">
                                 <p>{{$product->product_desc_ru}}</p>
                             </div>
-                            <div class="text-holder">
-                                <span class="price">Цена: &nbsp; ${{$product->product_price}} &nbsp; ({{$product->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span>
+                            <div class="radio-toolbar">
+{{--                                <input type="radio" id="radio1" name="radios" value="all" checked>--}}
+{{--                                <label for="radio1">All</label>--}}
+
+{{--                                <input type="radio" id="radio2" name="radios" value="false">--}}
+{{--                                <label for="radio2">Open</label>--}}
+
+{{--                                <input type="radio" id="radio3" name="radios" value="true">--}}
+{{--                                <label for="radio3">Archived</label>--}}
+                                <label for="volume" style="padding-left: 0 !important;" >Выберите объем :</label>
+
+                                <select onchange="chooseProductVolume({{$this}})" name="volume" id="volume">
+                                    <option value="275">275мл</option>
+                                    <option value="125">125мл</option>
+                                </select>
+                                <table id="price-table" style="text-align: left; width:65%; color: black; font-family: Montserrat; margin-bottom: 40px">
+                                    {{--                                <tr>--}}
+                                    {{--                                    <th>Firstname</th>--}}
+                                    {{--                                    <th>цена</th>--}}
+                                    {{--                                    <th></th>--}}
+                                    {{--                                </tr>--}}
+                                    <tr>
+                                        <td>В розницу</td>
+                                        <td id="price1">${{$client}} ({{ $client * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</td>
+                                        <td>
+                                            <input type="radio" id="radio1" name="radios" value="all" checked>
+                                            <label for="radio1"><i class="gg-shape-square" style="background: #C4C4C4; color: #C4C4C4;"></i></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Потребитель</td>
+                                        <td id="price2">${{$consumer}} ({{ $consumer * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</td>
+                                        <td>
+                                            <input type="radio" id="radio2" name="radios" value="all" >
+                                            <label for="radio2"><i class="gg-shape-square" style="background: #C4C4C4; color: #C4C4C4;"></i></label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Пайщик/Партнер</td>
+                                        <td id="price3">${{$shareholderOrPartner}} ({{ $shareholderOrPartner * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</td>
+                                        <td>
+                                            <input type="radio" id="radio3" name="radios" value="all" >
+                                            <label for="radio3"><i class="gg-shape-square" style="background: #C4C4C4; color: #C4C4C4"></i></label>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
+
+
                             <!-- Product Form of the Page -->
                             <div action="#" class="product-form">
                                 <fieldset>
@@ -489,5 +556,24 @@ $tab = (explode('tab=', URL::current()));
         </div>
     </main>
 @endsection
+<style>
+    @import url('https://css.gg/shape-square.css');
 
+    .radio-toolbar input[type="radio"] {
+        display: none;
+    }
+
+    .radio-toolbar label {
+        display: inline-block;
+        padding: 4px 11px;
+        font-family: Arial;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .radio-toolbar input[type="radio"]:checked+label i{
+        background-color: red !important;
+        color: red !important;
+    }
+</style>
 

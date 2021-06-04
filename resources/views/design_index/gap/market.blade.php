@@ -198,11 +198,14 @@
                         @foreach($products as $item)
                             <li>
                                 <div class="mt-product1 large"
+                                     onclick="window.location='{{ route('product.detail', $item->product_id) }}'"
                                      style="border: 1px solid lightgrey; padding-bottom: 20px">
                                     <div class="box">
                                         <div class="b1">
                                             <div class="b2">
-                                                <div style="
+                                                <div
+                                                        id="gap-market-product"
+                                                        style="
 
                                                         background-repeat: no-repeat;
                                                         background-size: contain;
@@ -216,11 +219,13 @@
                                         </div>
                                     </div>
                                     <div class="txt">
-                                        <strong class="title"><a href="{{ route('product.detail', $item->product_id) }}" style="color: black">{{$item->product_name_ru}}</a></strong>
-                                        <p style=" width: 30ch;   overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
-                                            {{$item->product_desc_ru}}
-                                        </p>
-                                        <span class="price"><span>Цена:</span> <span style="font-weight: normal">&nbsp; ${{$item->product_price}} &nbsp; ({{$item->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span></span>
+                                        <strong class="title"><a style="color: black">{{$item->product_name_ru}}</a></strong>
+{{--                                        <p style=" width: 30ch; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">--}}
+{{--                                            {{$item->product_desc_ru}}--}}
+{{--                                        </p>--}}
+                                        <p class="cut-text" style="">{{$item->product_desc_ru}}</p>
+
+                                        <span class="price"><span>Цена:</span> <span style="font-weight: normal"> ${{$item->product_price}} ({{$item->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span></span>
                                     </div>
                                 </div>
                             </li>
@@ -235,6 +240,19 @@
     </main>
 @endsection
 <style>
+    .mt-product1:hover {
+        cursor: pointer;
+    }
+    .cut-text {
+        display: -webkit-box;
+        max-width: 250px;
+        height: 40px;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.625;
+    }
     .mt-bestseller {
         padding: 0 0 0 0 !important;
     }
