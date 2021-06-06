@@ -5,12 +5,7 @@
 </div>
 <div class="mb-7 fs-18 text-black" style="border-top: 3px solid #C4C4C4; font-weight: 300; padding-left: 5%">
     <div class="infos container mt-2" id="infos">
-        <p>Вместе с нами Вы можете приобрести собственное жилье в рассрочку с самыми лучшими условиями.</p>
-        <p> - Сумма рассрочки <span class="text-red font-weight-600">до 9 000 000 тенге</span></p>
-        <p> - Срок рассрочки <span class="text-red font-weight-600">до 120 месяцев</span></p>
-        <p> - Срок получения рассрочки <span class="text-red font-weight-600">от 1 до 6 месяцев</span></p>
-        <p> - В программе могут участвовать лица <span class="text-red font-weight-600">старше 18 лет</span></p>
-        <p> - Тип жилья в рассрочку: <span class="text-red font-weight-600">квартира или частный дом</span></p>
+        <p></p>
     </div>
     <div class="conditions container mt-2" id="conditions">
         <p>Для получения жилья в рассрочку Вам необходимо выполнить следующие условия кооператива.</p>

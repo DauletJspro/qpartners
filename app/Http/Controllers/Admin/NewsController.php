@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\News;
+use App\Models\NewsCategory;
 use App\Models\NewsImage;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -13,10 +14,7 @@ use DB;
 
 class NewsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('adminWebsite');
-    }
+
 
     public function index(Request $request)
     {
@@ -49,9 +47,11 @@ class NewsController extends Controller
         $row->news_image = '/media/default.png';
         $row->images = '/media/default_images.jpg';
         $row->news_date = date("d.m.Y H:i");
+        $categories = NewsCategory::all()->pluck('name', 'id')->toArray();
         return view('admin.news.news-edit', [
             'title' => 'Добавить новость',
-            'row' => $row
+            'row' => $row,
+            'categories' => $categories
         ]);
     }
 
@@ -84,6 +84,7 @@ class NewsController extends Controller
         $news->news_desc_en = $request->news_desc_en;
         $news->news_image = $request->news_image;
         $news->news_redirect = $request->news_redirect;
+        $news->category_id = $request->category_id;
         $news->full_description_ru = $request->full_description_ru;
         $news->full_description_kz = $request->full_description_kz;
 
@@ -125,10 +126,13 @@ class NewsController extends Controller
             ->first();
 
         $row->images = '/media/default_images.jpg';
+        $categories = NewsCategory::all()->pluck('name', 'id')->toArray();
+
 
         return view('admin.news.news-edit', [
             'title' => 'Изменить новость',
-            'row' => $row
+            'row' => $row,
+            'categories' => $categories
         ]);
     }
 
@@ -165,6 +169,7 @@ class NewsController extends Controller
         $news->news_desc_en = $request->news_desc_en;
         $news->full_description_ru = $request->full_description_ru;
         $news->full_description_kz = $request->full_description_kz;
+        $news->category_id = $request->category_id;
         $news->news_image = $request->news_image;
         $news->news_redirect = $request->news_redirect;
         $timestamp = strtotime($request->news_date);

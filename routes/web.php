@@ -476,6 +476,7 @@ Route::group([
     Route::post('contact', 'IndexController@sendMessage');
     Route::get('coming-soon', 'IndexController@comingSoon')->name('coming-soon');
     Route::get('news', 'NewsController@newsList');
+    Route::get('news/{id}', 'NewsController@getNewsCategory');
     Route::post('review/store', 'ReviewController@store');
     Route::get('shop', 'ShopController@index')->name('shop.show');
     Route::get('basket', 'BasketController@show')->name('basket.show');

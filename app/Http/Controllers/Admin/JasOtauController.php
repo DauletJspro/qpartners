@@ -46,7 +46,7 @@ class JasOtauController extends Controller
 
     public function getUsers(Request $request){
         $request->row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
-            ->where('packet.packet_id','=', 27)
+            ->where('packet.packet_id','=', 42)
             ->where('users.jas_otau_id', '=' , 0)
             ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
             ->leftJoin('user_packet', 'user_packet.user_id', '=', 'users.user_id')

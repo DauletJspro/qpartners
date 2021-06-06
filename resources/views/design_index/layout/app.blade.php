@@ -15,6 +15,10 @@
 
     <link rel="stylesheet" href="/new_design/css/main.css">
     <link rel="stylesheet" href="/new_design/css/responsive.css">
+    <link href="{{ asset('/new_design/css/main.css') }}" rel="stylesheet" type="text/css" >
+    <link href="{{ asset('/new_design/css/responsive.css') }}" rel="stylesheet" type="text/css" >
+
+
 
 
 
