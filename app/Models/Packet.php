@@ -30,16 +30,31 @@ class Packet extends Model
     const TULPAR_PLUS = 46;
     const TULPAR = 47;
 
+    const STANDART = 50;
+    const TOP_3 = 51;
+    const VIP_BANNER = 52;
+
 
 //    use SoftDeletes;
 
 //    protected $dates = ['deleted_at'];
+
+
+    public static function actualEntrepreneurPackets()
+    {
+        return [
+            self::STANDART,
+            self::TOP_3,
+            self::VIP_BANNER,
+        ];
+    }
 
     public static function actualPacket()
     {
         return [
             self::CLASSIC,
             self::PREMIUM,
+            self::ELITE,
             self::GAPTechno,
             self::GAPAuto,
             self::GAPHome,
