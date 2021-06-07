@@ -406,8 +406,8 @@ function setBasketUnit(ob, id) {
         },
         success: function (data) {
             if (data.status == true) {
-                $('#sum').html(data.sum);
-                $('#ballSum').html(data.ballSum);
+                $('#sum').html(data.sum + " $" + " (" + data.sum * 500 + "тг" + ")");
+                $('#ballSum').html("+ " + data.ballSum);
             } else {
                 showError(data.error);
             }

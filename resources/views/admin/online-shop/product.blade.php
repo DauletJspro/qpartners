@@ -21,20 +21,6 @@
         </div>
 
         <div style="display: flex; justify-content: space-evenly; text-align: center;">
-            <div>
-                <form action="/admin/online" method="GET">
-                    <input type="hidden" name="is_client" value="1">
-                    <h4>Для клиентов 10% скидка</h4>
-                    <button> Я клиент </button>
-                </form>
-            </div>
-            <div>
-                <form action="/admin/online" method="GET">
-                    <input type="hidden" name="is_partner" value="1">
-                    <h4>Для партнеров 20% скидка</h4>
-                    <button> Я партнер </button>
-                </form>
-            </div>
             @if (Auth::user()->product_balance > 0)
                 <div>
                     <form action="/admin/online" method="GET">
@@ -81,5 +67,3 @@
     </div>
 
 @endsection
-
-

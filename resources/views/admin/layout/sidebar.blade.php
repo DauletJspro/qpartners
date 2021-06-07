@@ -39,20 +39,15 @@
         @if(Auth::user()->is_activated)
             <li class="header" style="padding:5px 25px 0px">
                 <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">
-                    @if(Auth::user()->role_id == App\Models\Role::CONSUMER)
-                    Баланс:  {{Auth::user()->balance->user_balance}} ₸
-                    @else
                     Баланс: {{Auth::user()->user_money}}
                     PV
                     ( {{Auth::user()->user_money * \App\Models\Currency::pvToKzt()}}тг)
                 </p>
-                    @endif
-
             </li>
             @if(!(Auth::user()->role_id == App\Models\Role::CONSUMER))
                 <li class="header" style="padding:5px 25px 0px">
-                    <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Cash Back счет:
-                        {{Auth::user()->user_cash * \App\Models\Currency::where('currency_name','тенге')->first()->money}} ₸
+                    <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Cash Back счет: {{Auth::user()->user_cash}} PV
+                        ({{Auth::user()->user_cash * \App\Models\Currency::where('currency_name','тенге')->first()->money}}) ₸
                     </p>
                 </li>
             @endif
@@ -231,17 +226,23 @@
             </li>
         @endif
     @endif
+        <li class="treeview">
+            <a href="{{ route('gap.card.orders.index') }}">
+                <i class="fa fa-paper-plane-o"></i>
+                <span>Мои заказы(Card)</span>
+            </a>
+        </li>
     @if(Auth::user()->role_id == App\Models\Role::CONSUMER)
-            <li class="treeview">
-                <a href="{{ route('gap.card.orders.index') }}">
-                    <i class="fa fa-paper-plane-o"></i>
-                    <span>Мои заказы</span>
-                </a>
-            </li>
             <li class="treeview">
                 <a href="{{ route('gap.card.ratings.index') }}">
                     <i class="fa fa-star"></i>
                     <span>Мои рейтинги</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="/admin/online">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span>Магазин (товары)</span>
                 </a>
             </li>
     @endif
@@ -344,8 +345,8 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="/admin/product">
-                    <i class="fa fa-list"></i>
+                <a href="{{route('gap_market_product.index')}}">
+                    <i class="fa fa-shopping-cart"></i>
                     <span>Товары</span>
                 </a>
             </li>
@@ -450,7 +451,7 @@
         </a>
     </li>
 
-    @if(Auth::user()->user_id== 1)
+    @if(Auth::user()->user_id == 1)
         <li class="treeview">
             <a href="{{route('gap_category.index')}}">
                 <i class="fa fa-list-ul"></i>
@@ -473,14 +474,6 @@
             </a>
         </li>
 
-        <li class="treeview">
-            <a href="{{route('gap_market_product.index')}}">
-                <i class="fa fa-shopping-cart"></i>
-                <span>
-                    Добавить <br> GAP market товар
-                </span>
-            </a>
-        </li>
     @endif
     <li class="treeview">
         <a href="/logout">

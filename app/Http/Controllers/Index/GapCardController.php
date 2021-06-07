@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Index;
 
+use App\Models\GapCardCategory;
 use App\Models\GapCardItem;
+use App\Models\GapCardSubCategory;
 use App\Models\Product;
 use App\Models\Rating;
 use Illuminate\Http\Request;
@@ -14,7 +16,13 @@ class GapCardController extends Controller
 {
     public function show()
     {
-        return view('design_index.gap.card');
+        $categories = DB::table('gap_card_categories as categories')
+                ->Leftjoin('gap_card_sub_categories as sub_categories', 'sub_categories.gap_card_category_id', '=', 'categories.id')
+                ->Leftjoin('gap_card_items as items', 'items.gap_card_sub_category_id','=','sub_categories.id')
+                ->selectRaw('count(items.id) as total, categories.*')
+                ->groupBy('categories.id')
+                ->get();
+        return view('design_index.gap.card', compact('categories'));
     }
 
     public function detail($id)

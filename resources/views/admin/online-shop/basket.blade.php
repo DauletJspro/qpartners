@@ -17,20 +17,6 @@
         </div>
 
         <div style="display: flex; justify-content: space-evenly; text-align: center;">
-            <div>
-                <form action="/admin/basket" method="GET">
-                    <input type="hidden" name="is_client" value="1">
-                    <h4>Для клиентов 10% скидка</h4>
-                    <button> Я клиент </button>
-                </form>
-            </div>
-            <div>
-                <form action="/admin/basket" method="GET">
-                    <input type="hidden" name="is_partner" value="1">
-                    <h4>Для партнеров 20% скидка</h4>
-                    <button> Я партнер </button>
-                </form>
-            </div>
             @if (Auth::user()->product_balance > 0)
                 <div>
                     <form action="/admin/basket" method="GET">
@@ -39,7 +25,7 @@
                         <button> У меня есть бонус </button>
                     </form>
                 </div>
-            @endif                    
+            @endif
         </div>
     </section>
 
@@ -93,7 +79,7 @@
                         <option value="1" selected>Самовывоз</option>
                         <option value="2">Курьером</option>
                         <option value="3">По почте</option>
-                    </select>                                
+                    </select>
                 </div>
                 <div class="form-goup">
                     @if(Auth::user()->role_id == App\Models\Role::CLIENT || Auth::user()->role_id == App\Models\Role::ADMIN)
@@ -107,21 +93,21 @@
                     <input type="hidden" name="type" id="discount_type" value="is_partner">
                 @else
                     <input type="hidden" name="type" id="discount_type" value="is_client">
-                @endif                 
+                @endif
                 <p><span>Общая сумма: </span><span id="modal_desc"></span></p>
             </div>
             <div class="modal-footer">
                 @if ($row->is_packet)
                     <button onclick="confirmBasket()"
-                        id="confirmBasketBtn"
-                        style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
-                        type="button" class="btn btn-default pull-left">Снять с Пакетного бонуса
+                            id="confirmBasketBtn"
+                            style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
+                            type="button" class="btn btn-default pull-left">Снять с Пакетного бонуса
                     </button>
                 @else
                     <button onclick="confirmBasket()"
-                        id="confirmBasketBtn"
-                        style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
-                        type="button" class="btn btn-default pull-left">Снять с баланса
+                            id="confirmBasketBtn"
+                            style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
+                            type="button" class="btn btn-default pull-left">Снять с баланса
                     </button>
                     <button onclick="buyProductOnline()"
                             style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
@@ -129,12 +115,12 @@
                     </button>
                     @if ($pay_from_cash_balanse)
                         <button onclick="setSuperBalance()"
-                            id="setSuperBalanceBtn"
-                            style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
-                            type="button" class="btn btn-default pull-left">Снять с super баланса
+                                id="setSuperBalanceBtn"
+                                style="margin-left:0px; background-color: #6cba5b; width: 100%; margin-bottom: 20px"
+                                type="button" class="btn btn-default pull-left">Снять с super баланса
                         </button>
                     @endif
-                @endif                
+                @endif
             </div>
         </div>
     </div>

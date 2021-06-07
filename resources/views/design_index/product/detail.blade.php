@@ -355,7 +355,7 @@ $tab = (explode('tab=', URL::current()));
                         </div>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('cashback.pay') }}" method="POST">
+                        <form action="" method="POST">
                             {{ csrf_field() }}
                             <input type="hidden" name="product_id" id="product_id">
                             <div id="user_not_partner">
