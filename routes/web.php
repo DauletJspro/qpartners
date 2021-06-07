@@ -238,10 +238,6 @@ Route::group([
     Route::resource('group', 'GroupController');
     Route::resource('user-group', 'UserGroupController');
 
-    Route::post('/buy/cashback/','PayCashbackController@create')->name('cashback.pay');
-
-
-
 
     Route::group([
         'prefix' => 'gap_card'

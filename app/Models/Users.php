@@ -54,7 +54,7 @@ class Users extends Model implements AuthenticatableContract
     const ENTREPRENEUR = 5;
     const CONSUMER = 6;
     const SELLER = 7;
-    const  USER = 8;
+    const USER = 8;
 
 
     const AdminTitle = 'admin';
@@ -170,16 +170,18 @@ class Users extends Model implements AuthenticatableContract
 
     }
 
-    public static function cashbackBonus($card){
+    public static function cashbackBonusConsumer($card){
         $recommend_user_id = Auth::user()->recommend_user_id;
-        for ($i=1; $i<=8; $i++){
+        $counter = 0;
+        while($recommend_user_id != null && $counter < 8){
             $recommend_user = Users::where('user_id',$recommend_user_id)->where('is_activated', true)->first();
             $user_cash = $recommend_user->user_cash;
             $user_money = $recommend_user->user_money;
             $BONUS_20 = $card->price * 0.2;
             $BONUS_5 = $card->price * 0.05;
             $recommend_user_id = $recommend_user->recommend_user_id;
-            if ($i == 1 ){
+            $counter++;
+            if ($counter == 1 ){
                 $user_money = $user_money + $BONUS_20;
                 $recommend_user->update([
                     'user_money' => $user_money
@@ -190,7 +192,7 @@ class Users extends Model implements AuthenticatableContract
                     'author_id' => Auth::user()->user_id,
                     'recipient_id' => $recommend_user->user_id,
                     'operation_type_id' => 1,
-                    'operation_comment' => 'Структурный бонус "GAP Card" ' . $i . ' уровень.'
+                    'operation_comment' => 'Структурный бонус "GAP Card" ' . $counter . ' уровень.'
                 ]);
             }else{
                 $cashback = $user_cash + $BONUS_5;
@@ -203,10 +205,11 @@ class Users extends Model implements AuthenticatableContract
                     'author_id' => Auth::user()->user_id,
                     'recipient_id' => $recommend_user->user_id,
                     'operation_type_id' => 22,
-                    'operation_comment' => 'CashBack от покупки Gap Card ' . $i . ' уровень.'
+                    'operation_comment' => 'CashBack от покупки Gap Card ' . $counter . ' уровень.'
                 ]);
             }
         }
+        return true;
     }
 
     public function tickets()
@@ -267,12 +270,6 @@ class Users extends Model implements AuthenticatableContract
     public function childs()
     {
         return $this->hasMany(Users::class, 'recommend_user_id', 'user_id');
-    }
-
-
-    public function balance()
-    {
-        return $this->hasOne(Balance::class, 'user_id','user_id');
     }
     public static function hasRole($role)
     {

@@ -120,7 +120,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                         @if(Auth::user()->role_id == App\Models\Role::CONSUMER)
                                             <a href="/admin/gap_card/orders">Личный кабинет</a>
                                             <a href="#">Баланс:
-                                                {{Auth::user()->balance->user_balance}}
+                                                {{Auth::user()->user_money}} PV
                                             </a>
                                             <a href="#">
                                                 Пополнить счет
