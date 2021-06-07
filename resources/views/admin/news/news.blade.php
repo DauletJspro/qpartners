@@ -32,7 +32,7 @@ $controllerName = $matches[1];
                     </a>
 
                     <a style="float: right;margin-right: 10px;" class="btn btn-primary"
-                       href="/admin/news-category/create">Добавить ктегорию новостей</a>
+                       href="/admin/news-category/create">Добавить категорию новостей</a>
 
                     <div class="clear-float"></div>
                     <div class="form-group col-md-3">

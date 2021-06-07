@@ -1,4 +1,4 @@
-@extends('design_index.layout.layout')
+    @extends('design_index.layout.layout')
 
 @section('meta-tags')
 
@@ -103,7 +103,7 @@
                             <ul class="list-unstyled widget-nav">
                                 <li><a href="/news">Все</a></li>
                                 @foreach($categories as $category)
-                                    <li><a href="/news?category_id={{$category->id}}">{{$category->name}}</a></li>
+                                    <li><a href="/news/{{$category->id}}">{{$category->name}}</a></li>
                                 @endforeach
                             </ul>
                         </section>

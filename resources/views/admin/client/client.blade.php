@@ -169,7 +169,7 @@ $statuses = \App\Models\UserStatus::where(['is_show' => true])->pluck('user_stat
                                                    target="_blank"><p
                                                             class="login">{{$val->login}}</p>@if(Auth::user()->user_id == 1)
                                                         <p class="client-name">{{ $val->name }} {{ $val->last_name }} {{ $val->middle_name }}</p> @if($val->is_activated == 0)
-                                                            <p style="color: red">Не активирован</p> @endif @endif</a>
+                                                            <p style="color: red">Пайщик</p> @endif @endif</a>
                                             </td>
                                             <td class="arial-font">
                                                 <a class="main-label" href="/admin/profile/{{$val->recommend_id}}"

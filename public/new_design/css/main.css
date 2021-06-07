@@ -8228,7 +8228,7 @@ article {
 }
 
 .mt-product-detial .detial-holder {
-    width: 40%;
+    width: 43%;
     float: left;
     padding: 50px 0;
     position: relative;
@@ -10185,8 +10185,8 @@ article {
 }
 
 .mt-blog-detail.style1 .blog-post .blog-txt {
-    width: 83%;
-    padding: 0 70px 0 0;
+    width: 100%;
+    /*padding: 0 70px 0 0;*/
 }
 
 .mt-blog-detail.style1 .blog-post .blog-nav {
@@ -10541,7 +10541,7 @@ article {
 .blog-post .blog-txt {
     float: left;
     overflow: hidden;
-    width: 84%;
+    width: 100%;
 }
 
 .blog-post .blog-txt p {
@@ -10988,7 +10988,7 @@ article {
 .mt-author-box .author-txt {
     float: left;
     overflow: hidden;
-    width: 72%;
+    width: 73%;
     padding: 15px 0 0;
 }
 

@@ -40,6 +40,11 @@
                                                        name="news_name_ru" placeholder="Введите">
                                             </div>
                                             <div class="form-group">
+                                                <label>Название программы</label>
+                                                    {{Form::select('category_id', $categories, \App\Models\News::getCategoryName($row->category_id)
+                                                , ['class' => 'form-control','placeholder' => 'Выберите название'])}}
+                                            </div>
+                                            <div class="form-group">
                                                 <label>Краткий текст (Рус)</label>
                                                 <textarea name="news_desc_ru" class="form-control">{!! $row->news_desc_ru  !!}
                                            </textarea>
