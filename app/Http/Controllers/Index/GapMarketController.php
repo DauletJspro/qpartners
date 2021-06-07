@@ -15,7 +15,13 @@ class GapMarketController extends Controller
 {
     public function show()
     {
-        $categories = \App\Models\Category::all();
+
+        $categories = DB::table('categories')
+            ->Leftjoin('sub_categories', 'sub_categories.category_id','=', 'categories.id')
+            ->Leftjoin('product', 'product.sub_category_id', '=', 'sub_categories.id')
+            ->selectRaw('count(product.product_id) as total, categories.*')
+            ->groupBy('categories.id')
+            ->get();
         $sub_category_id = request()->input('sub_category_id');
         if (isset($sub_category_id)) {
             $products = \App\Models\Product::where(['sub_category_id' => $sub_category_id])->paginate(9);
