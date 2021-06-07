@@ -523,23 +523,38 @@ class OnlineController extends Controller
         //Cashback до восьмого уровня 5%
         while ($recommend_user_id != null && $counter < 8){
             $recommend_user = Users::where('user_id',$recommend_user_id)->where('is_activated', true)->first();
-            $recommend_user_cash = $recommend_user->user_cash;
+            $user_cash = $recommend_user->user_cash;
+            $user_money = $recommend_user->user_money;
             $BONUS_5 = $total_ball * 0.05;
             $recommend_user_id = $recommend_user->recommend_user_id;
-            $cashback = $recommend_user_cash + $BONUS_5;
             $counter++;
-            $recommend_user->update([
-                'user_cash' => $cashback
-            ]);
-            UserOperation::create([
-                'operation_id' => 1,
-                'money' => $BONUS_5,
-                'author_id' => Auth::user()->user_id,
-                'recipient_id' => $recommend_user->user_id,
-                'operation_type_id' => 22,
-                'operation_comment' => 'CashBack от покупки товара Gap Market ' . $counter . ' - уровень.'
-            ]);
-
+            if ($counter == 1 ){
+                $user_money = $user_money + $BONUS_5;
+                $recommend_user->update([
+                    'user_money' => $user_money
+                ]);
+                UserOperation::create([
+                    'operation_id' => 1,
+                    'money' => $BONUS_5,
+                    'author_id' => Auth::user()->user_id,
+                    'recipient_id' => $recommend_user->user_id,
+                    'operation_type_id' => 1,
+                    'operation_comment' => 'Структурный бонус "GAP Market" ' . $counter . ' уровень.'
+                ]);
+            }else{
+                $cashback = $user_cash + $BONUS_5;
+                $recommend_user->update([
+                    'user_cash' => $cashback
+                ]);
+                UserOperation::create([
+                    'operation_id' => 1,
+                    'money' => $BONUS_5,
+                    'author_id' => Auth::user()->user_id,
+                    'recipient_id' => $recommend_user->user_id,
+                    'operation_type_id' => 22,
+                    'operation_comment' => 'CashBack от покупки GAP Market ' . $counter . ' уровень.'
+                ]);
+            }
         }
     }
 }
