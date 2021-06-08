@@ -37,13 +37,13 @@ class GapCardController extends Controller
     {
         if(isset($request->orderBy)){
             if($request->orderBy == "price-low-high"){
-                $products = GapCardItem::orderBy('price','asc')->paginate(9);
+                $products = GapCardItem::where('city_id', $request->city_id)->orderBy('price','asc')->paginate(9);
             }
         }
 
         if(isset($request->orderBy)){
             if($request->orderBy == "price-high-low"){
-                $products = GapCardItem::orderBy('price','desc')->paginate(9);
+                $products = GapCardItem::where('city_id', $request->city_id)->orderBy('price','desc')->paginate(9);
             }
         }
 

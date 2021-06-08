@@ -1,9 +1,10 @@
 <?php
 $sub_category_id = request()->input('sub_category_id');
+$city = request()->input('city_id');
 if (isset($sub_category_id)) {
     $gapItems = \App\Models\GapCardItem::where(['gap_card_sub_category_id' => $sub_category_id])->get();
-} else {
-    $gapItems = \App\Models\GapCardItem::all();
+}elseif(isset($city)) {
+    $gapItems = \App\Models\GapCardItem::where('city_id', $city)->get();
 }
 ?>
 @extends('design_index.layout.layout')
@@ -25,11 +26,13 @@ if (isset($sub_category_id)) {
         $(document).ready(function(){
             $('.card_sorting_btn').click(function (){
                 var orderBy = $(this).data('order');
+                var city_id = $(this).data('city');
                 $.ajax({
                     url: "{{route('filter.cards')}}",
                     type:"GET",
                     data:{
-                        orderBy: orderBy
+                        orderBy: orderBy,
+                        city_id: city_id
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -45,7 +48,6 @@ if (isset($sub_category_id)) {
 @endsection
 <script>
     function showSubcategories(index) {
-        console.log('subid', index)
         let length = document.getElementsByClassName('subcategories-body').length;
         for(let i = 0; i < length; i++) {
             document.getElementById(`collapse_${i}`).classList.remove('show');
@@ -220,10 +222,10 @@ if (isset($sub_category_id)) {
                                     <div class="drop">
                                         <ul class="list-unstyled">
                                             <li><a href="#" class="card_sorting_btn" id="sort-price"
-                                                   data-order="price-low-high">По цене возрастанию</a></li>
+                                                   data-order="price-low-high" data-city="{{request()->input('city_id')}}">По цене возрастанию</a></li>
                                             <li><a href="#" class="card_sorting_btn" id="sort-price"
-                                                   data-order="price-high-low">По цене убыванию</a></li>
-                                            <li><a href="#" class="card_sorting_btn" data-order="popular">По популярности</a></li>
+                                                   data-order="price-high-low" data-city="{{request()->input('city_id')}}">По цене убыванию</a></li>
+                                            <li><a href="#" class="card_sorting_btn" data-order="popular" data-city="{{request()->input('city_id')}}">По популярности</a></li>
                                         </ul>
                                     </div>
                                 </li>
