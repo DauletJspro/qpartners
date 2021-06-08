@@ -11,6 +11,7 @@ class News extends Model
 {
     protected $table = 'news';
     protected $primaryKey = 'news_id';
+    protected $fillable = ['category_id'];
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];
@@ -29,5 +30,9 @@ class News extends Model
     public function comment()
     {
         return $this->hasMany('App\Models\Review', 'item_id', 'news_id')->where(['review_type_id' => Review::NEWS_REVIEW]);
+    }
+    public static function getCategoryName($id){
+        $category = NewsCategory::where('id', '=', $id)->first();
+        return $category->name;
     }
 }

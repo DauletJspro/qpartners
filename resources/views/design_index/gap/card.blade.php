@@ -110,7 +110,7 @@ if (isset($sub_category_id)) {
 {{--                </div>--}}
 {{--            </div>--}}
 {{--        </div>--}}
-        <div id="vip-container" class="container" style="flex-wrap:wrap; display: flex; min-height: 280px; margin-top: 50px; font-family: Montserrat; color: black">
+        <div id="vip-container" class="container" style="flex-wrap:wrap; height: 275px; display: flex; min-height: 280px; margin-top: 50px; font-family: Montserrat; color: black">
             <div class="block" style="width: 49.5%; border: 1px solid #C4C4C4; display: flex; height: 100%; flex-wrap: wrap">
                 <div id="first-block-info" style="width: 52%; display: flex; flex-direction: column; height: 100%; padding: 25px 20px; font-weight: 600; background: #F6F6F6;">
                     <p style="text-transform: uppercase;">наименование компании</p>
@@ -124,8 +124,8 @@ if (isset($sub_category_id)) {
                         </button>
                     </div>
                 </div>
-                <div id="first-block-img" style="width: 48%;display: flex; position: relative;">
-                    <img class="" src="/new_design/images/banners/company-photo1.jpeg" alt="img not found">
+                <div id="first-block-img" style="width: 48%;height: 100%; display: flex; position: relative;">
+                    <img class="" src="/new_design/images/banners/company-photo1.jpeg" style="height: 100%" alt="img not found">
                     <div style=" position: absolute; right: 0px; bottom: 10%">
                         <span style="background-color: #FFE200; padding: 5px 25px 5px 15px; margin-bottom: 15px; font-weight: 600; letter-spacing: 2px">VIP</span>
                     </div>
@@ -244,28 +244,36 @@ if (isset($sub_category_id)) {
                             </p>
                         </div>
                     </header>
-                    <ul class="mt-productlisthold list-inline">
+                    <ul class="mt-productlisthold list-inline" id="gap-cards">
                         @foreach($gapItems as $item)
                             <li>
-                                <div class="mt-product1 large"
-                                     style="border: 1px solid lightgrey; padding: 0 0 20px 0">
+                                <div id="gap-card" class="mt-product1 large"
+                                     style="padding: 0 0 20px 0">
                                     <div class="box">
                                         <div class="b1">
                                             <div class="b2">
-                                                <div style="
+                                                <div
+                                                        id="gap-card-photo"
+                                                        style="
                                                         background-image: url({{asset('/admin/image/gap_item/' . $item->image)}});
                                                         background-repeat: no-repeat;
-                                                        background-size: contain;
+                                                        background-size: 100% 100%;
                                                         background-position: center;
+                                                        border: 4px solid red;
                                                         width: 275px;
-                                                        height: 290px;
-                                                        "></div>
+                                                        height: 275px;
+                                                        position: relative;
+                                                        ">
+                                                    <span style="font-family: Montserrat;position: absolute; left: 0; background: red; color: white; padding: 2px 10px; top: 18px">
+                                                        Скидка 50%
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="txt">
-                                        <strong class="title"><a href="{{ route('gap_card.detail', $item->id) }}">{{$item->title_ru}}</a></strong>
-                                        <span class="price"> <span>{{$item->price}}$ ({{round($item->price * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}})</span>  тг.</span>
+                                    <div>
+                                        <strong class="title"><a href="{{ route('gap_card.detail', $item->id) }}" style="color: black">Super Elixir For Woman</a></strong>
+                                        <span class="cut-text" style="">Крем обладает рассасывающим, выравнивающим эффектом и также убирает складки и морщины на коже. Очень полезен как средство профилактики целлюлита.</span>
                                     </div>
                                 </div>
                             </li>
@@ -285,6 +293,16 @@ if (isset($sub_category_id)) {
     </main>
 @endsection
 <style>
+    .cut-text {
+        display: -webkit-box;
+        max-width: 250px;
+        height: 40px;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.625;
+    }
     .mt-bestseller {
         padding: 0 0 0 0 !important;
     }

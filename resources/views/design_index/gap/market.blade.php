@@ -220,17 +220,7 @@
                                         <p style=" width: 30ch;   overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
                                             {{$item->product_desc_ru}}
                                         </p>
-                                        <span class="price"><span>Цена:</span>
-                                            <span style="font-weight: normal">&nbsp;
-                                                @if(Auth::user()->role_id == 2 && Auth::user()->is_activated == 1)
-                                                    ${{$item->price_shareholder}} &nbsp; ({{$item->price_shareholder * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)
-                                                @elseif(Auth::user()->role_id == 2 && Auth::user()->is_activated == 0)
-                                                    ${{$item->price_partner}} &nbsp; ({{$item->price_partner * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)
-                                                @else
-                                                    ${{$item->price_client}} &nbsp; ({{$item->price_client * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)
-                                                @endif
-                                            </span>
-                                        </span>
+                                        <span class="price"><span>Цена:</span> <span style="font-weight: normal">&nbsp; ${{$item->product_price}} &nbsp; ({{$item->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span></span>
                                     </div>
                                 </div>
                             </li>
@@ -245,6 +235,19 @@
     </main>
 @endsection
 <style>
+    .mt-product1:hover {
+        cursor: pointer;
+    }
+    .cut-text {
+        display: -webkit-box;
+        max-width: 250px;
+        height: 40px;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.625;
+    }
     .mt-bestseller {
         padding: 0 0 0 0 !important;
     }

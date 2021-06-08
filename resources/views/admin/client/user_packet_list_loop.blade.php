@@ -5,7 +5,7 @@
                             ->get()?>
 
 @foreach($packet_list as $key => $item)
-    @if($item->packet_id > 1)
+    @if(isset($item->packet_id))
         <span class="label user-packet-span" style="background-color: #{{$item['packet_css_color']}}">{{$item['packet_name_ru']}}</span>
     @endif
 @endforeach

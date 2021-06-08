@@ -24,6 +24,7 @@
                 </div>
                 <div>
                     <div class="box-body">
+
                         <div class="nav-tabs-custom">
 
                             <div class="tab-content">
@@ -33,60 +34,161 @@
 
                                         <tr>
                                             <th style="width: 30px">№</th>
-                                            <th>Имя пользователя</th>
-                                            <th>ИИН пользователя</th>
-                                            <th>Номер телефона</th>
+                                            <th style="width: 15px">Аватар</th>
+                                            <th>ИИН</th>
+                                            <th>Спонсор</th>
+                                            <th>Пригласитель</th>
+                                            <th>Email / Телефон</th>
+                                            <th>Пакеты</th>
+                                            <th>Дата регист.</th>
+                                            <th>Город</th>
+                                            <th>Дольщик</th>
                                             <th></th>
+                                            <th class="no-sort"
+                                                style="width: 0px; text-align: center; padding-right: 16px; padding-left: 14px;">
+                                                <input onclick="selectAllCheckbox(this)" style="font-size: 15px"
+                                                       type="checkbox" value="1"/>
+                                            </th>
                                         </tr>
                                         </thead>
 
                                         <tbody>
 
                                         <tr>
+                                            <td></td>
                                             <td>
+
                                             </td>
                                             <td>
                                                 <form>
-                                                    <input value="{{$request->login}}" type="text"
-                                                           class="form-control" name="login" placeholder="Поиск">
+                                                    <input value="{{$request->iin}}" type="text" class="form-control"
+                                                           name="user_name" placeholder="Поиск">
                                                 </form>
                                             </td>
                                             <td>
                                                 <form>
-                                                    <input value="{{$request->iin}}" type="text"
-                                                           class="form-control" name="iin" placeholder="Поиск">
+                                                    <input value="{{$request->sponsor_name}}" type="text"
+                                                           class="form-control" name="sponsor_name" placeholder="Поиск">
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <form>
+                                                    <input value="{{$request->inviter_name}}" type="text"
+                                                           class="form-control" name="sponsor_name" placeholder="Поиск">
+                                                </form>
+                                            </td>
+                                            <td></td>
+                                            <td>
+                                                <form>
+                                                    <input value="{{$request->packet_name}}" type="text"
+                                                           class="form-control" name="packet_name" placeholder="Поиск">
+                                                </form>
+                                            </td>
+                                            <td></td>
+                                            <td>
+                                                <form>
+                                                    <input value="{{$request->city_name}}" type="text" class="form-control"
+                                                           name="city_name" placeholder="Поиск">
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <form>
+                                                    <select value="{{$request->is_interest_holder}}" type="text"
+                                                            class="form-control" name="is_interest_holder">
+                                                        <option value="1">Да</option>
+                                                        <option value="0">Нет</option>
+                                                    </select>
                                                 </form>
                                             </td>
                                             <td></td>
                                             <td></td>
                                         </tr>
 
-                                        @foreach( $request->row as $key => $val)
+                                        @foreach($row->row as $key => $val)
 
-                                                <form action="{{route('qamqor.clients.edit', $val->user_id )}}" method="POST">
-                                                    <input type="hidden" name="_method" value="GET">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <tr>
-                                                        <td> {{ $key + 1 }}</td>
-                                                        <td class="arial-font">
-                                                            <a class="main-label"  target=><p  class="login">{{$val->login}}</p></a>
-                                                            <p class="client-name">{{ $val->name }} {{ $val->last_name }} {{ $val->middle_name }}</p>
-
-                                                        </td>
-                                                        <td>
-                                                            {{$val->iin}}
-                                                        </td>
-                                                        <td class="arial-font">
-                                                            <a class="main-label"
-                                                               target=""><p
-                                                                        class="login">{{$val->phone}}</p></a>
-                                                        </td>
-                                                        <td>
-                                                            <button type="submit" class="btn btn-primary">Добавить в группу
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                </form>
+                                            <tr>
+                                                <td> {{ $key + 1 }}</td>
+                                                <td>
+                                                    <div class="object-image client-image">
+                                                        <a href="/admin/profile/{{$val->user_id}}" target="_blank">
+                                                            <img src="{{$val->avatar}}">
+                                                        </a>
+                                                    </div>
+                                                    <div class="clear-float"></div>
+                                                </td>
+                                                <td class="arial-font">
+                                                    <a class="main-label" href="/admin/profile/{{$val->user_id}}"
+                                                       target="_blank"><p
+                                                                class="login">{{$val->iin}}</p>@if(Auth::user()->user_id == 1)
+                                                            <p class="client-name">{{ $val->name }} {{ $val->last_name }} {{ $val->middle_name }}</p> @if($val->is_activated == 0)
+                                                                <p style="color: red">Пайщик</p> @endif @endif</a>
+                                                </td>
+                                                <td class="arial-font">
+                                                    <a class="main-label" href="/admin/profile/{{$val->recommend_id}}"
+                                                       target="_blank"><p
+                                                                class="login">{{$val->recommend_login}}</p>@if(Auth::user()->user_id == 1)
+                                                            <p class="client-name">{{ $val->recommend_name }} {{ $val->recommend_last_name }} {{ $val->recommend_middle_name }}</p>@endif
+                                                    </a>
+                                                <td class="arial-font">
+                                                    <a class="main-label"
+                                                       href="/admin/profile/{{\App\Models\Users::getInviterName($val)->user_id}}"
+                                                       target="_blank"><p
+                                                                class="login">{{\App\Models\Users::getInviterName($val)->login}}</p>
+                                                        @if(Auth::user()->user_id == 1)
+                                                            <p class="client-name">
+                                                                {{ \App\Models\Users::getInviterName($val)->name }}
+                                                                {{ \App\Models\Users::getInviterName($val)->last_name }}
+                                                            </p>@endif
+                                                    </a>
+                                                </td>
+                                                <td class="arial-font">
+                                                    <div>
+                                                        {{ $val->email }} </br>
+                                                        {{ $val->phone }}
+                                                    </div>
+                                                </td>
+                                                <td class="arial-font" style="text-align: center">
+                                                    @include('admin.client.user_packet_list_loop')
+                                                </td>
+                                                <td class="arial-font">
+                                                    <div>
+                                                        {{ $val->date }}
+                                                    </div>
+                                                </td>
+                                                <td class="arial-font">
+                                                    <div>
+                                                        {{ $val->country_name_ru }}</br>
+                                                        {{ $val->city_name_ru }}
+                                                    </div>
+                                                </td>
+                                                <td class="arial-font">
+                                                    <div>
+                                                    <span class="badge badge"
+                                                          style="background-color: {{$val->is_interest_holder ? 'green' : 'red'}};">
+                                                        {{$val->is_interest_holder ? 'Да' : 'Нет'}}
+                                                    </span>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align: center">
+                                                    <a href="javascript:void(0)"
+                                                       onclick="delItem(this,'{{ $val->user_id }}','user')">
+                                                        <li class="fa fa-trash-o" style="font-size: 20px; color: red;"></li>
+                                                    </a>
+                                                    <a data-user-id="{{$val->user_id}}"
+                                                       data-user-full_name="{{sprintf('%s', $val->email)}}"
+                                                       data-share="{{$val->share}}"
+                                                       data-is_holder="{{$val->is_interest_holder}}"
+                                                       onclick="share(this)">
+                                                        <li class="fa fa-user"
+                                                            style="cursor:pointer;font-size: 20px; color: blue;">
+                                                        </li>
+                                                    </a>
+                                                </td>
+                                                <td style="text-align: center;">
+                                                    <input class="select-all" style="font-size: 15px" type="checkbox"
+                                                           value="{{$val->user_id}}"/>
+                                                </td>
+                                            </tr>
 
                                         @endforeach
 
@@ -99,9 +201,12 @@
                             </div>
 
                         </div>
+
+
                         <div style="text-align: center">
                             {{ $row->row->appends(\Illuminate\Support\Facades\Input::except('page'))->links() }}
                         </div>
+
                     </div>
                 </div>
             </div>
