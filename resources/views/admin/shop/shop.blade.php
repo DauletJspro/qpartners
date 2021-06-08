@@ -62,10 +62,10 @@ use \App\Models\Users;
                     <button style="margin-left:0px; background-color: #38b9ea; width: 100%; margin-bottom: 20px"
                             type="button" id="send_request_btn" class="btn btn-default pull-left">Отправить запрос
                     </button>
-                    {{--                    <button style="margin-left:0px; background-color: #38b9ea; width: 100%; margin-bottom: 20px"--}}
-                    {{--                            type="button" id="buy_packet_from_balance_btn" class="btn btn-default pull-left">Снять с--}}
-                    {{--                        баланса--}}
-                    {{--                    </button>--}}
+                                        <button style="margin-left:0px; background-color: #38b9ea; width: 100%; margin-bottom: 20px"
+                                                type="button" id="buy_packet_from_balance_btn" class="btn btn-default pull-left">Снять с
+                                            баланса
+                                        </button>
                 </div>
             </div><!-- /.modal-content -->
         </div>
