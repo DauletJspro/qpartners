@@ -17,21 +17,22 @@ $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
 $cities_table = new City();
 $cities = City::where('country_id',1)->get();
 $city_id = request()->input('city_id');
-$shymkent_id = 8;
-if(isset($city_id)){
+
+if(isset($city_id))
+{
     $city = City::findOrFail($city_id);
 }
 
 $logo_image_name = 'market.png';
 $controllerName = request()->route()->getAction()['controller'];
 $gapTypeActive = 0;
-if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
+if($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     $logo_image_name = 'gap.svg';
     $gapTypeActive = 1;
-} elseif ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
+}elseif ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
     $logo_image_name = 'market.png';
     $gapTypeActive = 2;
-} elseif ($controllerName == 'App\Http\Controllers\Index\GapCardController@show') {
+}elseif ($controllerName == 'App\Http\Controllers\Index\GapCardController@show') {
     $logo_image_name = 'card.png';
     $gapTypeActive = 3;
 }
