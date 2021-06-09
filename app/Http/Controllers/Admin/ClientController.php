@@ -102,7 +102,9 @@ class ClientController extends Controller
     public function getAllGapShareholder(Request $request)
     {
         $request->row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
-            ->where('packet.packet_id', '=', Packet::GAP)
+            ->whereIN('packet.packet_id', [Packet::JASTAR,
+                Packet::QAMQOR, Packet::JAS_OTAU, Packet::QOLDAU, Packet::BASPANA_PLUS, Packet::TULPAR_PLUS,
+                Packet::TULPAR])
             ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
             ->leftJoin('user_packet', 'user_packet.user_id', '=', 'users.user_id')
             ->leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
@@ -119,14 +121,14 @@ class ClientController extends Controller
             )
             ->groupBy('users.user_id');
 
-        if (isset($request->user_name) && $request->user_name != '')
+        if (isset($request->iin) && $request->iin != '')
             $request->row->where(function ($query) use ($request) {
-                $query->where('users.name', 'like', '%' . $request->user_name . '%')
+                $query->where('users.name', 'like', '%' . $request->iin . '%')
                     ->orWhere('users.iin', 'like', '%' . $request->iin . '%')
-                    ->orWhere('users.last_name', 'like', '%' . $request->user_name . '%')
-                    ->orWhere('users.login', 'like', '%' . $request->user_name . '%')
-                    ->orWhere('users.email', 'like', '%' . $request->user_name . '%')
-                    ->orWhere('users.middle_name', 'like', '%' . $request->user_name . '%');
+                    ->orWhere('users.last_name', 'like', '%' . $request->iin . '%')
+                    ->orWhere('users.login', 'like', '%' . $request->iin . '%')
+                    ->orWhere('users.email', 'like', '%' . $request->iin . '%')
+                    ->orWhere('users.middle_name', 'like', '%' . $request->iin . '%');
             });
 
         if (isset($request->sponsor_name) && $request->sponsor_name != '')
@@ -170,7 +172,7 @@ class ClientController extends Controller
     public function getAllAutoShareholder(Request $request)
     {
         $request->row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
-            ->where('packet.packet_id', '=', 27)
+            ->where('packet.packet_id', '=', 47)
             ->where('users.group_id', '=', 0)
             ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
             ->leftJoin('user_packet', 'user_packet.user_id', '=', 'users.user_id')
@@ -224,7 +226,7 @@ class ClientController extends Controller
     public function getAllHomeShareholder(Request $request)
     {
         $request->row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
-            ->where('packet.packet_id', '=', 27)
+            ->where('packet.packet_id', '=', 45)
             ->where('users.home_group_id', '=', 0)
             ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
             ->leftJoin('user_packet', 'user_packet.user_id', '=', 'users.user_id')
@@ -278,7 +280,7 @@ class ClientController extends Controller
     public function getAllPlusShareholder(Request $request)
     {
         $request->row = Users::leftJoin('city', 'city.city_id', '=', 'users.city_id')
-            ->where('packet.packet_id', '=', 27)
+            ->where('packet.packet_id', '=', 46)
             ->where('users.group_plus_id', '=', 0)
             ->leftJoin('country', 'country.country_id', '=', 'city.country_id')
             ->leftJoin('user_packet', 'user_packet.user_id', '=', 'users.user_id')

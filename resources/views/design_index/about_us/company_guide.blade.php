@@ -22,7 +22,7 @@ $gallery = Slider::where('is_show', 1)
             background-position: center;
             background-repeat: no-repeat;
              background: red;">
-            <p style="color: white;font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">о кооперативе</p>
+            <p style="font-family: Montserrat;color: white;font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">о кооперативе</p>
 
             <div class="container">
                 <div class="row">

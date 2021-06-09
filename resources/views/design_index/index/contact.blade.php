@@ -12,7 +12,7 @@
 @section('content')
     <main id="mt-main">
         <!-- Mt Contact Banner of the Page -->
-        <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"  style=" background-size: cover;
+        <section class="container mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"  style=" background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background: red;

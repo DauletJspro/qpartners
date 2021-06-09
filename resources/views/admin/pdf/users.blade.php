@@ -5,13 +5,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Баспана</title>
+    <title>Список</title>
 </head>
 <body>
 @php
     use Illuminate\Support\Facades\DB;
 
-    $gapUsers = DB::table('users')->where('deleted_at', '=', null)->get();
+    $gapUsers = DB::table('users')->where('deleted_at', '=', null)->select(['user_id', 'name', 'last_name','login',
+    'recommend_user_id', 'inviter_user_id', 'phone', 'phone'])->get();
 @endphp
 
 <table class="row" width="100%" bgcolor="#ffffff" align="center" cellpadding="0" cellspacing="0" border="0"
@@ -37,7 +38,6 @@
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Логин</th>
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Спонсор</th>
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Пригласитель</th>
-        <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Дата активаций</th>
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Номер телефона</th>
         <th style='border-bottom: 1px solid #4E4E5B; border-right: 1px solid #4E4E5B; border-top:0; border-left:0;background:#306EBA;color:#fff; width:100%;'>Пакеты</th>
 
@@ -50,7 +50,6 @@
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{$gapUser->login}}</td>
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{\App\Models\Users::getSponsorName($gapUser)}}</td>
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{\App\Models\Users::getInviterName($gapUser)->login}}</td>
-            <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{$gapUser->activated_date}}</td>
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">{{$gapUser->phone}}</td>
             <td style="font-size:12px; text-align:center; border-right: 1px solid #4E4E5B; border-bottom: 1px solid #4E4E5B; word-wrap: break-word;">@include('admin.pdf.include')
             </td>

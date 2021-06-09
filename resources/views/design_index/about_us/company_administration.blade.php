@@ -41,7 +41,7 @@ $gallery = Slider::where('is_show', 1)
             background: red"
 
         >
-            <p style="color: white; font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">Администрация</p>
+            <p style="font-family: Montserrat; color: white; font-weight: 600; font-size: 40px; text-align: center; text-transform: uppercase;text-shadow: 1px 1px 1px black;">Администрация</p>
 
             <div class="container">
                 <div class="row">
@@ -80,15 +80,15 @@ $gallery = Slider::where('is_show', 1)
                                 @foreach($gallery as $item1)
                                     <div style="width: 300px; margin-right: 10px; display: flex; flex-direction: column; text-align: center; font-size: 2rem">
                                         <a>
-                                            <img src="/new_design/images/banners/shamshitdin.svg" style="width: 290px; height: 290px"/>
+                                            <img src="/new_design/images/banners/human-icon.png" style="width: 290px; height: 290px"/>
                                         </a>
-                                        <span style="font-weight: 400; color: black; margin-top: 20px">Имя Фамилия</span>
+                                        <span style="font-weight: 400; color: black">Имя Фамилия</span>
                                         <span style="text-transform: uppercase">Долженность</span>
                                     </div>
                                 @endforeach
                             </div>
-                            <div id="left-arrow-administration" style="position: absolute; left: -60px; top: 125px; cursor:pointer" onclick="move('left', 300)"><i class="gg-chevron-left" style="width:30px; height:40px"></i></div>
-                            <div id="right-arrow-administration" style="position: absolute; right: -60px; top: 125px; cursor:pointer" onclick="move('right', 300)"><i class="gg-chevron-right" style="width:30px; height:40px"></i></div>
+                            <div id="left-arrow-administration" style="position: absolute; left: -60px; top: 80px; cursor:pointer" onclick="move('left', 300)"><i class="gg-chevron-left" style="width:30px; height:40px"></i></div>
+                            <div id="right-arrow-administration" style="position: absolute; right: -60px; top: 80px; cursor:pointer" onclick="move('right', 300)"><i class="gg-chevron-right" style="width:30px; height:40px"></i></div>
                         </div>
 
                         <div style="margin-top: 50px">

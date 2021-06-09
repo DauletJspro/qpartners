@@ -15,13 +15,15 @@ $needSubsidiaryIds = [5, 7, 8];
 $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
 
 $cities_table = new City();
-$cities = City::where('country_id',1)->get();
+
+$cities = City::where('country_id',1)->where('is_show', 1)->get();
 $city_id = request()->input('city_id');
 
 if(isset($city_id))
 {
     $city = City::findOrFail($city_id);
 }
+
 
 $logo_image_name = 'market.png';
 $controllerName = request()->route()->getAction()['controller'];
