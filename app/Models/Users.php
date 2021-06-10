@@ -66,7 +66,7 @@ class Users extends Model implements AuthenticatableContract
     const ConsumerTitle = 'consumer';
     const SellerTitle = 'seller';
     const UserTitle = 'user';
-
+    const PARTNER = 'partner';
 
     use SoftDeletes;
 
@@ -78,6 +78,16 @@ class Users extends Model implements AuthenticatableContract
         return Users::where(['recommend_user_id' => $parent_id])->get();
     }
 
+    public static function getRole()
+    {
+        if(Auth::user()->role_id == Users::CLIENT && Auth::user()->is_activated == 0){
+            return self::PARTNER;
+        }elseif(Auth::user()->role_id == Users::CLIENT && Auth::user()->is_activated == 1){
+            return self::ActiveClientTitle;
+        }else{
+            return self::UserTitle;
+        }
+    }
     public static function getRoleIdFromTitle($role_title)
     {
         $roleId = null;
