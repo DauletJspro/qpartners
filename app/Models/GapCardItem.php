@@ -8,15 +8,10 @@ class GapCardItem extends Model
 {
     protected $table = 'gap_card_items';
     protected $fillable = [
-        'title_kz',
-        'title_ru',
-        'description_kz',
-        'description_ru',
-        'image',
-        'discount_percentage',
-        'price',
-        'gap_card_sub_category_id',
-        'user_id'
+        'title_kz', 'title_ru', 'description_kz', 'description_ru', 'image', 'discount_percentage', 'price',
+        'gap_card_sub_category_id', 'user_id', 'brand_name', 'company_name', 'city_id', 'office',
+        'phone', 'instagram', 'site', 'full_description_ru',  'house', 'street', 'district', 'image',
+        'discount_percentage', 'is_checked'
     ];
 
 

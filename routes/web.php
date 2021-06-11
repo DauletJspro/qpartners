@@ -86,6 +86,14 @@ Route::group([
         Route::post('/activate', 'ProfileController@activateUser');
         Route::post('/profit/edit', 'ProfileController@editProfit');
     });
+    // Маршруты для предпринимателя
+    Route::group([
+        'middleware' => 'entrepreneur'
+    ], function (){
+        Route::get('/banner/create', 'EntrepreneurController@createBanner' )->name('banner.create');
+        Route::post('/banner', 'EntrepreneurController@storeBanner' )->name('banner.store');
+
+    });
 
     Route::group([
         'prefix' => 'packet'
