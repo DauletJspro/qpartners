@@ -450,8 +450,10 @@
             <span>Сменить пароль</span>
         </a>
     </li>
+    @endif
 
-    @if(Auth::user()->user_id== 1)
+
+@if(Auth::user()->user_id == 1 || Auth::user()->role_id == 9 )
         <li class="treeview">
             <a href="{{route('gap_category.index')}}">
                 <i class="fa fa-list-ul"></i>
@@ -482,7 +484,6 @@
                 </span>
             </a>
         </li>
-    @endif
     @endif
         @if(Auth::user()->role_id == 9)
         <li class="treeview">
