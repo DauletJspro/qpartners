@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Index;
 use App\Models\CashbackShopping;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Users;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -35,13 +36,25 @@ class GapMarketController extends Controller
     {
         if(isset($request->orderBy)){
             if($request->orderBy == "price-low-high"){
-                $products = Product::orderBy('product_price','asc')->paginate(9);
+                if(Users::getRole() == Users::PARTNER){
+                    $products = Product::orderBy('price_partner','asc')->paginate(9);
+                }elseif (Users::getRole() == Users::ActiveClientTitle){
+                    $products = Product::orderBy('price_shareholder','asc')->paginate(9);
+                }else{
+                    $products = Product::orderBy('price_client','asc')->paginate(9);
+                }
             }
         }
 
         if(isset($request->orderBy)){
             if($request->orderBy == "price-high-low"){
-                $products = Product::orderBy('product_price','desc')->paginate(9);
+                if(Users::getRole() == Users::PARTNER){
+                    $products = Product::orderBy('price_partner','desc')->paginate(9);
+                }elseif (Users::getRole() == Users::ActiveClientTitle){
+                    $products = Product::orderBy('price_shareholder','desc')->paginate(9);
+                }else{
+                    $products = Product::orderBy('price_client','desc')->paginate(9);
+                }
             }
         }
 
@@ -57,7 +70,7 @@ class GapMarketController extends Controller
         }
         if($request->ajax())
         {
-            return view('design_index.gap.product_card.product_card',compact('products'))->render();
+            return view('design_index.gap.renders.product_card.product_card',compact('products'))->render();
         }
 
     }

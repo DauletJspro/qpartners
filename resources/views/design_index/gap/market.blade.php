@@ -195,36 +195,7 @@
                         </div>
                     </header>
                     <ul class="mt-productlisthold list-inline">
-                        @foreach($products as $item)
-                            <li>
-                                <div class="mt-product1 large"
-                                     style="border: 1px solid lightgrey; padding-bottom: 20px">
-                                    <div class="box">
-                                        <div class="b1">
-                                            <div class="b2">
-                                                <div style="
-
-                                                        background-repeat: no-repeat;
-                                                        background-size: contain;
-                                                        background-position: center;
-                                                        width: 275px;
-                                                        height: 290px;
-                                                        ">
-                                                    <img src="{{$item->product_image}}"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="txt">
-                                        <strong class="title"><a href="{{ route('product.detail', $item->product_id) }}" style="color: black">{{$item->product_name_ru}}</a></strong>
-                                        <p style=" width: 30ch;   overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
-                                            {{$item->product_desc_ru}}
-                                        </p>
-                                        <span class="price"><span>Цена:</span> <span style="font-weight: normal">&nbsp; ${{$item->product_price}} &nbsp; ({{$item->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span></span>
-                                    </div>
-                                </div>
-                            </li>
-                        @endforeach
+                        @include('design_index.gap.renders.product_card.product_card')
                     </ul>
                     <nav class="mt-pagination">
                         {{ $products->links() }}
