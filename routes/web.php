@@ -465,6 +465,7 @@ Route::group([
     Route::get('video', 'IndexController@video');
     Route::get('contact', 'IndexController@contact')->name('contact.show');
     Route::get('gap/card/show', 'GapCardController@show')->name('gap.card.show');
+    Route::get('gap/card/show/sub_category_id/{id}', 'GapCardController@gapCardsubCategories')->name('gap.card.sub_categories');
     Route::get('gap/market/show', 'GapMarketController@show')->name('gap.market.show');
     Route::get('product/filter','GapMarketController@FilterProduct')->name('filter.products');
     Route::get('card/filter','GapCardController@FilterCards')->name('filter.cards');

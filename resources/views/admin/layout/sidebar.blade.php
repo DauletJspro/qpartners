@@ -476,6 +476,15 @@
         </li>
 
     @endif
+    @if(Auth::user()->role_id == \App\Models\Role::ADMIN || Auth::user()->role_id == \App\Models\Role::ENTREPRENEUR)
+        <li class="treeview">
+            <a href="{{route('gap_item.index')}}">
+                <i class="fa fa-building"></i>
+                &nbsp;
+                Добавить <br> GAP  под центры
+            </a>
+        </li>
+    @endif
     @endif
         @if(Auth::user()->role_id == 9)
         <li class="treeview">

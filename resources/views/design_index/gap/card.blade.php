@@ -1,10 +1,35 @@
 <?php
-$sub_category_id = request()->input('sub_category_id');
+//Находим сколько товаров имеется в одной категорий
+$categories = DB::table('gap_card_categories as categories')
+    ->Leftjoin('gap_card_sub_categories as sub_categories', 'sub_categories.gap_card_category_id', '=', 'categories.id')
+    ->Leftjoin('gap_card_items as items', 'items.gap_card_sub_category_id','=','sub_categories.id')
+    ->selectRaw('count(items.id) as total, categories.*')
+    ->groupBy('categories.id')
+    ->get();
+
+//$_GET находим city_id = ? и получаем из кантроллера sub_category_id
 $city = request()->input('city_id');
-if (isset($sub_category_id)) {
-    $gapItems = \App\Models\GapCardItem::where(['gap_card_sub_category_id' => $sub_category_id])->get();
-}elseif(isset($city)) {
-    $gapItems = \App\Models\GapCardItem::where('city_id', $city)->get();
+$sub_category_id = request()['sub_category_id'];
+if(isset($city)) {
+    $gapItems = \App\Models\GapCardItem::where('city_id', $city);
+
+    //VIP BANNERS
+    $user_packet = \App\Models\UserPacket::where('packet_id', \App\Models\Packet::VIP_BANNER)->pluck('user_id')->all();
+    $VIP_banners =  \App\Models\GapCardItem::whereIn('user_id', $user_packet)->where('city_id', $city)->get()->random(2);
+
+    //TOP BANNERS
+    $user_packet = \App\Models\UserPacket::where('packet_id', \App\Models\Packet::TOP_3)->pluck('user_id')->all();
+    $TOP_banners =  \App\Models\GapCardItem::whereIn('user_id', $user_packet)->where('city_id', $city)->limit(3)->get()->shuffle();
+    //Получаем данные с БД
+    if($sub_category_id != null){
+        $gapItems = $gapItems->where('gap_card_sub_category_id', $sub_category_id);
+    }
+    $gapItems = $gapItems->get();
+}else{
+    $gapItems = \App\Models\GapCardItem::all();
+    //VIP BANNERS
+    $user_packet = \App\Models\UserPacket::where('packet_id', \App\Models\Packet::VIP_BANNER)->pluck('user_id')->all();
+    $vip_banners =  \App\Models\GapCardItem::whereIn('user_id', $user_packet)->limit(2)->get()->shuffle();
 }
 ?>
 @extends('design_index.layout.layout')
@@ -111,46 +136,28 @@ if (isset($sub_category_id)) {
 {{--            </div>--}}
 {{--        </div>--}}
         <div id="vip-container" class="container" style="flex-wrap:wrap; height: 275px; display: flex; min-height: 280px; margin-top: 50px; font-family: Montserrat; color: black">
-            <div class="block" style="width: 49.5%; border: 1px solid #C4C4C4; display: flex; height: 100%; flex-wrap: wrap">
-                <div id="first-block-info" style="width: 52%; display: flex; flex-direction: column; height: 100%; padding: 25px 20px; font-weight: 600; background: #F6F6F6;">
-                    <p style="text-transform: uppercase;">наименование компании</p>
-                    <p style="font-weight: 400">краткая информация, краткая информация,краткая информация</p>
-                    <p style="margin-top: 20px">Скидка %</p>
-                    <p style="margin-top: 12px">Cashback %</p>
-                    <div style="display: flex">
-                        <button style="display: flex;margin-left:auto; background: red; color: white; border-radius: 30px; border: none; padding: 5px 20px">
-                            <span style="font-weight: lighter">Подробнее</span>
-                            <img style="width: 10px; height: 10px; margin-top: 6px; margin-left: 5px" src="/new_design/images/right-navigation.svg" alt="right navigation img not found">
-                        </button>
+            @foreach($VIP_banners as $vip_banner)
+                <div class="block" style="width: 49.5%; border: 1px solid #C4C4C4; display: flex; height: 100%; flex-wrap: wrap">
+                    <div id="first-block-info" style="width: 52%; display: flex; flex-direction: column; height: 100%; padding: 25px 20px; font-weight: 600; background: #F6F6F6;">
+                        <p style="text-transform: uppercase;">{{ $vip_banner->title_ru  }}</p>
+                        <span class="cut-text" style="font-weight: lighter">{{ $vip_banner->description_ru  }}</span>
+                        <p style="margin-top: 20px">Скидка {{ $vip_banner->discount_percentage  }} %</p>
+                        <p style="margin-top: 12px">Cashback %</p>
+                        <div style="display: flex">
+                            <button style="display: flex;margin-left:auto; background: red; color: white; border-radius: 30px; border: none; padding: 5px 20px">
+                                <span style="font-weight: lighter"><a href="{{ route('gap_card.detail', $vip_banner->id) }}" style="color: white">Подробнее</a></span>
+                                <img style="width: 10px; height: 10px; margin-top: 6px; margin-left: 5px" src="/new_design/images/right-navigation.svg" alt="right navigation img not found">
+                            </button>
+                        </div>
+                    </div>
+                    <div id="first-block-img" style="width: 48%;height: 100%; display: flex; position: relative;">
+                        <img class="" src="{{ asset('/admin/image/gap_item/' . $vip_banner->image)}}" style="height: 100%" alt="img not found">
+                        <div style=" position: absolute; right: 0px; bottom: 10%">
+                            <span style="background-color: #FFE200; padding: 5px 25px 5px 15px; margin-bottom: 15px; font-weight: 600; letter-spacing: 2px">VIP</span>
+                        </div>
                     </div>
                 </div>
-                <div id="first-block-img" style="width: 48%;height: 100%; display: flex; position: relative;">
-                    <img class="" src="/new_design/images/banners/company-photo1.jpeg" style="height: 100%" alt="img not found">
-                    <div style=" position: absolute; right: 0px; bottom: 10%">
-                        <span style="background-color: #FFE200; padding: 5px 25px 5px 15px; margin-bottom: 15px; font-weight: 600; letter-spacing: 2px">VIP</span>
-                    </div>
-                </div>
-            </div>
-            <div class="block" style="width: 49.5%; margin-left: 1%; border: 1px solid #C4C4C4; display: flex; height: 100%; flex-wrap: wrap">
-                <div id="second-block-info" style="width: 52%; display: flex; flex-direction: column; height: 100%; padding: 25px 20px; font-weight: 600; background: #F6F6F6">
-                    <p style="text-transform: uppercase;">наименование компании</p>
-                    <p style="font-weight: 400">краткая информация, краткая информация,краткая информация</p>
-                    <p style="margin-top: 20px">Скидка %</p>
-                    <p style="margin-top: 12px">Cashback %</p>
-                    <div style="display: flex">
-                        <button style="display: flex;margin-left:auto; background: red; color: white; border-radius: 30px; border: none; padding: 5px 20px">
-                            <span style="font-weight: lighter">Подробнее</span>
-                            <img style="width: 10px; height: 10px; margin-top: 6px; margin-left: 5px" src="/new_design/images/right-navigation.svg" alt="right navigation img not found">
-                        </button>
-                    </div>
-                </div>
-                <div id="second-block-img" style="width: 48%;display: flex; position: relative;">
-                    <img class="" src="/new_design/images/banners/company-photo2.jpeg" alt="img not found">
-                    <div style=" position: absolute; right: 0px; bottom: 10%">
-                        <span style="background-color: #FFE200; padding: 5px 25px 5px 15px; margin-bottom: 15px; font-weight: 600; letter-spacing: 2px">VIP</span>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
 
         <div class="container" style="">
@@ -174,7 +181,7 @@ if (isset($sub_category_id)) {
                                         @foreach(\App\Models\GapCardSubCategory::where('gap_card_category_id', $category->id)->get() as $sub_category)
                                             <li>
                                                 <a href="" style="color:black;">
-                                                    <span><a href="/gap/card/show/?sub_category_id={{$sub_category->id}}">{{$sub_category->title_ru}}</a></span>
+                                                    <span><a href="{{route('gap.card.sub_categories', $sub_category->id)}}/?city_id={{$city}}">{{$sub_category->title_ru}}</a></span>
                                                     <span class="num">{{isset($sub_category->items) ? count($sub_category->items) : 0}}</span>
                                                 </a>
                                             </li>
@@ -244,6 +251,48 @@ if (isset($sub_category_id)) {
                             </p>
                         </div>
                     </header>
+{{--                    Top list--}}
+
+                    <ul class="list-inline" >
+                        @foreach($TOP_banners as $TOP_banner)
+                            <li>
+                                <div id="gap-card" class="mt-product1 large"
+                                     style="padding: 0 0 20px 0">
+                                    <div class="box">
+                                        <div class="b1">
+                                            <div class="b2">
+                                                <div
+                                                        id="gap-card-photo"
+                                                        style="
+                                                                background-image: url({{asset('/admin/image/gap_item/' . $TOP_banner->image)}});
+                                                                background-repeat: no-repeat;
+                                                                background-size: 100% 100%;
+                                                                background-position: center;
+                                                                border: 4px solid red;
+                                                                width: 275px;
+                                                                height: 275px;
+                                                                position: relative;
+                                                                ">
+                                        <span style="font-family: Montserrat;position: absolute; left: 0; background: red; color: white; padding: 2px 10px; top: 18px">
+                                           Скидка {{$TOP_banner->discount_percentage}} %
+                                        </span>
+                                                </div>
+                                            </div>
+                                            <div style=" position: absolute; right: 0px; bottom: 10%">
+                                                <span style="background-color: #FFE200; color: black; padding: 5px 25px 5px 15px; margin-bottom: 15px; font-weight: bold; letter-spacing: 2px">TOP</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div>
+                                        <strong class="title"><a href="/?city_id={{request()->input('city_id')}}" style="color: black">{{$TOP_banner->title_ru}}</a></strong>
+                                        <span class="cut-text" style="">{{$TOP_banner->description_ru}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+{{--                    end top list--}}
                     <ul class="mt-productlisthold list-inline" id="gap-cards">
                         @include('design_index.gap.renders.gap_card.gap_card')
                     </ul>

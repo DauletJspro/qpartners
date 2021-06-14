@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\GapCardItemRequest;
 use App\Models\GapCardCategory;
 use App\Models\GapCardItem;
+use App\Models\Packet;
 use App\Models\Product;
+use App\Models\UserPacket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -23,7 +25,15 @@ class GapCardItemController extends Controller
 
     public function create()
     {
-        return view('admin.gap.card.item.create');
+        $STANDARD_LIMIT = 1;
+        $packet = UserPacket::where('user_id', Auth::user()->user_id)->pluck('packet_id')->all();
+        $card = GapCardItem::where('user_id', Auth::user()->user_id)->get()->count();
+        if(in_array(Packet::STANDART, $packet) && $STANDARD_LIMIT > $card) {
+            return view('admin.gap.card.item.create');
+        }else{
+            return redirect()->route('gap_item.index')->with('danger', 'Для того чтоб продолжить вы должны купить STANDARD пакет!');
+        }
+
     }
 
     public function store(GapCardItemRequest $request)

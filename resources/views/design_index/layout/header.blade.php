@@ -22,6 +22,9 @@ $city_id = request()->input('city_id');
 if(isset($city_id))
 {
     $city = City::findOrFail($city_id);
+
+}elseif($city_id == null){
+    $city = City::findOrFail(8);
 }
 
 

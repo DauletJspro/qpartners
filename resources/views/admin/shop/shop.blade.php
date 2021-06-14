@@ -20,7 +20,9 @@ use \App\Models\Users;
             {!! view('admin.shop.packet-list-loop',[
                         'row' => $row,
                         'packet_type' => 'item',
-                        ]) !!}
+                        ])
+
+            !!}
 
         </div>
         <div class="modal-dialog" id="shop_modal" style="display: none">

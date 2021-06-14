@@ -336,7 +336,7 @@ class PacketController extends Controller
             return response()->json($result);
         }
 
-        $userPackets = UserPacket::whereIn('packet_id', [Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2])
+        $userPackets = UserPacket::whereIn('packet_id', [Packet::STANDART,Packet::CLASSIC, Packet::PREMIUM, Packet::ELITE, Packet::VIP2])
             ->where(['user_id' => Auth::user()->user_id])
             ->pluck('packet_id')->toArray();
         if ($packet->packet_id == Packet::GAP && !in_array(Packet::VIP2, $userPackets)) {
