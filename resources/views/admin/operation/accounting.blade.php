@@ -91,10 +91,6 @@
                                                 <div>
                                                     <span style="font-weight: 900">ЛО: {{ $lo_profit }} $ ({{round($lo_profit * \App\Models\Currency::where('currency_name','тенге')->first()->money,2)}}тг)</span>
                                                 </div>
-                                                <div>
-                                                    <span style="font-weight: 900">ЛКО: {{ $val->left_child_profit }} PV </span>
-                                                    <span style="font-weight: 900">ПКО: {{ $val->right_child_profit }} PV</span>
-                                                </div>
                                             </td>
                                             <td class="arial-font">
                                                 <div>

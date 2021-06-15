@@ -58,12 +58,6 @@
                 </li>
             @endif
         @endif
-        {{--        <li class="header" style="padding:5px 25px 0px">--}}
-        {{--            <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Super--}}
-        {{--                Баланс: {{Auth::user()->super_balance}}PV--}}
-        {{--                ( {{Auth::user()->super_balance * \App\Models\Currency::pvToKzt()}}тг)</p>--}}
-        {{--        </li>--}}
-
 
         <li class="header" style="padding:5px 25px 0px">
             @if(Auth::user()->is_activated)

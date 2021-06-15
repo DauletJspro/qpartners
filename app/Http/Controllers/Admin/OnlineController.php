@@ -287,14 +287,6 @@ class OnlineController extends Controller
             // return response()->json($result);
         }
         elseif ($request->type == 'is_super') {
-            $sum = $sum - ($sum * \App\Models\Currency::PartnerDiscount);
-            $sum = round($sum);
-            if (Auth::user()->super_balance < $sum) {
-                $result['error'] = 'У вас недостаточно super бонусов';
-                return response()->json($result);
-            }
-            $user->super_balance = $user->super_balance - $sum;
-            $user->save();
             $products = UserBasket::where('user_id', $user->user_id)->where('is_active', 0)->get();
             foreach ($products as $item) {
                 $product = Product::where('product_id', $item->product_id)->first();
@@ -303,8 +295,6 @@ class OnlineController extends Controller
                 $user_basket->is_active = 1;
                 $user_basket->save();
             }
-            // $result['status'] = true;
-            // return response()->json($result);
         }
         elseif ($request->type == 'is_partner') {
             $is_partner = UserPacket::where('user_id', Auth::user()->user_id)->where('is_active', 1)->exists();

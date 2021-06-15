@@ -40,7 +40,6 @@ class SmartPayController extends Controller
             $is_check = UserPacket::where('user_id', Auth::user()->user_id)
                 ->where('is_active', '=', '0')
                 ->where('user_packet.packet_id', '!=', 9)
-                ->where('is_portfolio', '=', $packet->is_portfolio)
                 ->count();
 
             if ($is_check > 0) {
@@ -52,7 +51,6 @@ class SmartPayController extends Controller
             if ($request->packet_id > 2) {
                 $is_check = UserPacket::where('user_id', Auth::user()->user_id)
                     ->where('packet_id', '>=', $request->packet_id)
-                    ->where('is_portfolio', '=', $packet->is_portfolio)
                     ->where('user_packet.packet_id', '!=', 9)
                     ->where('is_active', 1)
                     ->count();
@@ -132,8 +130,6 @@ class SmartPayController extends Controller
                         $user_packet->user_packet_type = 'item';
                         $user_packet->packet_price = $packet->packet_price;
                         $user_packet->is_active = 0;
-                        $user_packet->is_epay = 0;
-                        $user_packet->is_portfolio = $packet->is_portfolio;
                         $user_packet->save();                    
                         app(\App\Http\Controllers\Admin\PacketController::class)->implementPacketBonuses($user_packet->user_packet_id);
                         Order::changeIsPaid($input_data['PAYMENT_ORDER_ID']);

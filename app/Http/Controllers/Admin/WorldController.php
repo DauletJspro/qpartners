@@ -40,7 +40,6 @@ class WorldController extends Controller
                          ->where('user_packet.packet_id',$packet->packet_id)
                          ->where('user_packet.level',1)
                          ->where('user_packet.is_active',1)
-                         ->where('user_packet.is_used',0)
                          ->where('users.deleted_at',null)
                          ->orderBy('user_packet.queue_start_position','asc')
                          ->take(10)
@@ -62,7 +61,6 @@ class WorldController extends Controller
                         ->where('user_packet.packet_id',$packet->packet_id)
                         ->where('user_packet.level',2)
                         ->where('user_packet.is_active',1)
-                        ->where('user_packet.is_used',0)
                         ->where('users.deleted_at',null)
                         ->orderBy('user_packet.queue_start_position','asc')
                         ->take(10)
@@ -85,7 +83,6 @@ class WorldController extends Controller
                         ->where('user_packet.packet_id',$packet->packet_id)
                         ->where('user_packet.level',3)
                         ->where('user_packet.is_active',1)
-                        ->where('user_packet.is_used',0)
                         ->where('users.deleted_at',null)
                         ->orderBy('user_packet.queue_start_position','asc')
                         ->take(10)
@@ -107,7 +104,6 @@ class WorldController extends Controller
                             ->where('user_packet.packet_id',$packet->packet_id)
                             ->where('user_packet.level',4)
                             ->where('user_packet.is_active',1)
-                            ->where('user_packet.is_used',0)
                             ->where('users.deleted_at',null)
                             ->orderBy('user_packet.queue_start_position','asc')
                             ->take(10)
@@ -132,7 +128,6 @@ class WorldController extends Controller
                         ->where('user_packet.packet_id',$packet->packet_id)
                         ->where('user_packet.level',1)
                         ->where('user_packet.is_active',1)
-                        ->where('user_packet.recommend_user_count','>',4)
                         ->where('users.deleted_at',null)
                         ->orderBy('order_count','desc')
                         ->orderBy('user_packet.queue_now_position','asc')
@@ -148,7 +143,6 @@ class WorldController extends Controller
                         );
         
         $request->is_exist_current_user_in_first_level = UserPacket::where('user_id',Auth::user()->user_id)
-                                                            ->where('user_packet.recommend_user_count','>',4)
                                                             ->where('user_packet.level',1)
                                                             ->where('user_packet.packet_id',$packet->packet_id)
                                                             ->where('queue_now_position','>',0)
@@ -192,7 +186,6 @@ class WorldController extends Controller
                                             ->where('user_packet.packet_id',$packet->packet_id)
                                             ->where('user_packet.level',2)
                                             ->where('user_packet.is_active',1)
-                                            ->where('user_packet.recommend_user_count','>',0)
                                             ->where('users.deleted_at',null)
                                             ->orderBy('order_count','desc')
                                             ->orderBy('user_packet.queue_now_position','asc')
@@ -208,7 +201,6 @@ class WorldController extends Controller
                                             );
 
         $request->is_exist_current_user_in_second_level = UserPacket::where('user_id',Auth::user()->user_id)
-            ->where('user_packet.recommend_user_count','>',0)
             ->where('user_packet.level',2)
             ->where('user_packet.packet_id',$packet->packet_id)
             ->where('queue_now_position','>',0)
@@ -252,7 +244,6 @@ class WorldController extends Controller
                                             ->where('user_packet.packet_id',$packet->packet_id)
                                             ->where('user_packet.level',3)
                                             ->where('user_packet.is_active',1)
-                                            ->where('user_packet.recommend_user_count','>',0)
                                             ->where('users.deleted_at',null)
                                             ->orderBy('order_count','desc')
                                             ->orderBy('user_packet.queue_now_position','asc')
@@ -268,7 +259,6 @@ class WorldController extends Controller
                                             );
 
         $request->is_exist_current_user_in_third_level = UserPacket::where('user_id',Auth::user()->user_id)
-                    ->where('user_packet.recommend_user_count','>',0)
                     ->where('user_packet.level',3)
                     ->where('user_packet.packet_id',$packet->packet_id)
                     ->where('queue_now_position','>',0)
@@ -311,7 +301,6 @@ class WorldController extends Controller
                                             ->where('user_packet.packet_id',$packet->packet_id)
                                             ->where('user_packet.level',3)
                                             ->where('user_packet.is_active',1)
-                                            ->where('user_packet.recommend_user_count','>',0)
                                             ->where('users.deleted_at',null)
                                             ->orderBy('order_count','desc')
                                             ->orderBy('user_packet.queue_now_position','asc')
@@ -327,7 +316,6 @@ class WorldController extends Controller
                                             );
 
         $request->is_exist_current_user_in_fourth_level = UserPacket::where('user_id',Auth::user()->user_id)
-                    ->where('user_packet.recommend_user_count','>',0)
                     ->where('user_packet.level',4)
                     ->where('user_packet.packet_id',$packet->packet_id)
                     ->where('queue_now_position','>',0)

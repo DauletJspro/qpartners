@@ -18,8 +18,8 @@ class Users extends Model implements AuthenticatableContract
         'password',
         'login',
         'user_id',
-        'group_id',
         'iin',
+        'group_id',
         'home_group_id',
         'group_plus_id',
         'home_plus_id',
@@ -29,7 +29,6 @@ class Users extends Model implements AuthenticatableContract
         'jastar_id',
         'jas_otau_id',
         'personal_sv_balance',
-
         'name',
         'last_name',
         'recommend_user_id',
@@ -43,8 +42,6 @@ class Users extends Model implements AuthenticatableContract
         'city_id',
         'user_cash',
         'user_money',
-
-
     ];
 
     const ADMIN = 1;
@@ -127,10 +124,6 @@ class Users extends Model implements AuthenticatableContract
                 if ($follower->soc_status_id >= $status_id) {
                     array_push($followerStatusIds, $follower->soc_status_id);
                 }
-            } elseif ($status_type == 3) {
-                if ($follower->super_status_id >= $status_id) {
-                    array_push($followerStatusIds, $follower->super_status_id);
-                }
             }
         }
         $followerStatusIds = array_filter($followerStatusIds);
@@ -170,16 +163,17 @@ class Users extends Model implements AuthenticatableContract
 
     }
 
-    public static function cashbackBonus($card){
+    public static function cashbackBonus($card)
+    {
         $recommend_user_id = Auth::user()->recommend_user_id;
-        for ($i=1; $i<=8; $i++){
-            $recommend_user = Users::where('user_id',$recommend_user_id)->where('is_activated', true)->first();
+        for ($i = 1; $i <= 8; $i++) {
+            $recommend_user = Users::where('user_id', $recommend_user_id)->where('is_activated', true)->first();
             $user_cash = $recommend_user->user_cash;
             $user_money = $recommend_user->user_money;
             $BONUS_20 = $card->price * 0.2;
             $BONUS_5 = $card->price * 0.05;
             $recommend_user_id = $recommend_user->recommend_user_id;
-            if ($i == 1 ){
+            if ($i == 1) {
                 $user_money = $user_money + $BONUS_20;
                 $recommend_user->update([
                     'user_money' => $user_money
@@ -192,7 +186,7 @@ class Users extends Model implements AuthenticatableContract
                     'operation_type_id' => 1,
                     'operation_comment' => 'Структурный бонус "GAP Card" ' . $i . ' уровень.'
                 ]);
-            }else{
+            } else {
                 $cashback = $user_cash + $BONUS_5;
                 $recommend_user->update([
                     'user_cash' => $cashback
@@ -272,8 +266,9 @@ class Users extends Model implements AuthenticatableContract
 
     public function balance()
     {
-        return $this->hasOne(Balance::class, 'user_id','user_id');
+        return $this->hasOne(Balance::class, 'user_id', 'user_id');
     }
+
     public static function hasRole($role)
     {
         $user = Auth::user();

@@ -91,7 +91,8 @@
                                     {{ $val->date }}
                                 </td>
                                 <td style="text-align: center">
-                                    @if($val->is_epay == 0)
+{{--                                    @if($val->is_epay == 0)--}}
+                                    @if(true)
                                         <button class="btn btn-block btn-success btn-sm"
                                                 onclick="acceptUserPacket(this,'{{ $val->user_packet_id }}', 1)">
                                             Принять

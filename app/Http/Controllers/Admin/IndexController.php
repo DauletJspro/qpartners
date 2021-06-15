@@ -297,7 +297,7 @@ class IndexController extends Controller
     {
         $users = Users::where('user_id', $user_id)
             ->where('status_id', '>=', 2)
-            ->where('qualification_profit', '>=', 500)
+//            ->where('qualification_profit', '>=', 500)
             ->get();
 
         foreach ($users as $key => $item) {
@@ -310,9 +310,10 @@ class IndexController extends Controller
             $status_list = UserStatus::where('sort_num', '>', $user_status->sort_num)->orderBy('sort_num', 'asc')->get();
 
             foreach ($status_list as $status_item) {
-                if ($status_item->user_status_minimum_money <= $user->qualification_profit
-                    && $status_item->user_status_binar_limit_money_in_week <= $user->week_qualification_profit
-                    && $status_item->condition_minumum_status_id <= $user->status_id
+                if (
+//                    $status_item->user_status_minimum_money <= $user->qualification_profit &&
+//                    $status_item->user_status_binar_limit_money_in_week <= $user->week_qualification_profit &&
+                    $status_item->condition_minumum_status_id <= $user->status_id
                 ) {
                     $user->status_id = $status_item->user_status_id;
                     $user->user_money = $user->user_money + $status_item->user_status_money;
@@ -350,129 +351,6 @@ class IndexController extends Controller
                     $company->user_money = $company->user_money - $status_item->user_status_money;
                     $company->save();
                 }
-            }
-        }
-    }
-
-    public function robotBinarProfit()
-    {
-        ini_set('memory_limit', '-1');
-
-        $users = Users::where('left_child_profit', '>', 0)
-            ->where('right_child_profit', '>', 0)
-            ->select('user_id')
-            ->get();
-
-        foreach ($users as $key => $item) {
-            $user = Users::where('user_id', $item->user_id)->first();
-
-            $left_child_count = Users::where('recommend_user_id', $item->user_id)->where('is_left_part', 0)->count();
-            $right_child_count = Users::where('recommend_user_id', $item->user_id)->where('is_left_part', 1)->count();
-
-            if ($left_child_count == 0 || $right_child_count == 0) continue;
-
-            if ($user->left_child_profit >= $user->right_child_profit)
-                $minus_profit = $user->right_child_profit;
-            else $minus_profit = $user->left_child_profit;
-
-            $user->left_child_profit = $user->left_child_profit - $minus_profit;
-            $user->right_child_profit = $user->right_child_profit - $minus_profit;
-            $user->qualification_profit = $user->qualification_profit + $minus_profit;
-            $user->week_qualification_profit = $minus_profit;
-
-
-            $user->save();
-
-
-            $this->setUserStatus($user->user_id);
-
-            $user = Users::where('user_id', $item->user_id)->first();
-            $user_status = UserStatus::where('user_status_id', $user->status_id)->first();
-
-            if ($user_status == null) {
-                continue;
-            }
-
-            $procent_profit = 0;
-            if ($user_status->user_status_binar_procent > 0) {
-                $procent_profit = $minus_profit * $user_status->user_status_binar_procent / 100;
-            } else {
-                continue;
-            }
-
-            if ($procent_profit > $user_status->user_status_binar_limit_money)
-                $procent_profit = $user_status->user_status_binar_limit_money;
-
-            $operation = new UserOperation();
-            $operation->author_id = null;
-            $operation->recipient_id = $user->user_id;
-            $operation->money = $procent_profit;
-            $operation->operation_id = 1;
-            $operation->operation_type_id = 17;
-            $operation->operation_comment = $minus_profit . 'PV';
-            $operation->save();
-
-            $user->user_money = $user->user_money + $procent_profit;
-            $user->save();
-
-            $operation = new UserOperation();
-            $operation->author_id = $user->user_id;
-            $operation->recipient_id = 1;
-            $operation->money = $procent_profit * -1;
-            $operation->operation_id = 2;
-            $operation->operation_type_id = 12;
-            $operation->operation_comment = 'Бинарный доход';
-            $operation->save();
-
-            $company = Users::where('user_id', 1)->first();
-            $company->user_money = $company->user_money - $procent_profit;
-            $company->save();
-
-            $user_id = $user->recommend_user_id;
-            $counter = 0;
-
-            while ($user_id != null) {
-                $counter++;
-                $parent = Users::where('user_id', $user_id)->first();
-                if ($parent == null) break;
-                $user_id = $parent->recommend_user_id;
-
-                if ($parent->is_activated == 0 || $parent->status_id < 1) continue;
-
-                $parent_status = UserStatus::where('user_status_id', $parent->status_id)->first();
-
-                if ($parent_status == null) continue;
-
-                if ($parent_status->user_status_available_level < $counter) continue;
-
-                $money = $procent_profit / 10;
-
-                $operation = new UserOperation();
-                $operation->author_id = $user->user_id;
-                $operation->recipient_id = $parent->user_id;
-                $operation->money = $money;
-                $operation->operation_id = 1;
-                $operation->operation_type_id = 18;
-                $operation->operation_comment = 'Чек от чека. Уровень - ' . $counter;
-                $operation->save();
-
-                $parent->user_money = $parent->user_money + $money;
-                $parent->save();
-
-                $operation = new UserOperation();
-                $operation->author_id = $user->user_id;
-                $operation->recipient_id = 1;
-                $operation->money = $money * -1;
-                $operation->operation_id = 2;
-                $operation->operation_type_id = 12;
-                $operation->operation_comment = 'Чек от чека. Уровень - ' . $counter;
-                $operation->save();
-
-                $company = Users::where('user_id', 1)->first();
-                $company->user_money = $company->user_money - $procent_profit;
-                $company->save();
-
-                if ($counter >= 5) break;
             }
         }
     }

@@ -94,7 +94,6 @@ class PrepareDataBaseForTestingSeeder extends Seeder
             $userPacket->is_active = 0;
             $userPacket->is_paid = 0;
             $userPacket->is_portfolio = 0;
-            $userPacket->is_epay = 0;
             $userPacket->user_packet_type = 'item';
             $userPacket->packet_type = 1;
             $userPacket->save();
