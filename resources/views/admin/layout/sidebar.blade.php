@@ -459,8 +459,17 @@
             <span>Сменить пароль</span>
         </a>
     </li>
-
-    @if(Auth::user()->user_id== 1)
+    @endif
+    @if(Auth::user()->user_id == 1 || Auth::user()->role_id == 9)
+            <li class="treeview">
+                <a href="{{route('banner.list')}}">
+                    <i class="fa fa-list-ul"></i>
+                    <span>Запросы на баннер</span>
+                    <?php $countBanner = \App\Models\GapCardItem::where('is_checked', '0')->count();?>
+                    <span class="label label-primary pull-right"
+                          style="@if($user_packet_notice == 0) display: none; @endif background-color: rgb(253, 58, 53) ! important;">{{$countBanner}}</span>
+                </a>
+            </li>
         <li class="treeview">
             <a href="{{route('gap_category.index')}}">
                 <i class="fa fa-list-ul"></i>
@@ -491,9 +500,6 @@
                 </span>
             </a>
         </li>
-    @endif
-    @endif
-        @if(Auth::user()->role_id == 9)
         <li class="treeview">
             <a href="{{route('news.index')}}">
                 <i class="fa fa-newspaper-o"></i>

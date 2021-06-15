@@ -24,4 +24,8 @@ class GapCardItem extends Model
     {
         return $this->belongsTo(\App\Models\CardOrder::class, 'gap_card_id', 'id');
     }
+
+    public static function getCity($id){
+        return City::where('city_id', $id)->first()->city_name_ru;
+    }
 }

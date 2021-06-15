@@ -14,10 +14,10 @@ class AddColumnsToGapCardItems extends Migration
     public function up()
     {
         Schema::table('gap_card_items', function (Blueprint $table) {
-//            $table->dropColumn('title_kz');
-//            $table->dropColumn('title_ru');
-//            $table->dropColumn('description_kz');
-//            $table->dropColumn('price');
+            $table->dropColumn('title_kz');
+            $table->dropColumn('title_ru');
+            $table->dropColumn('description_kz');
+            $table->dropColumn('price');
             $table->integer('user_id')->after('id');
             $table->string('brand_name')->after('user_id');
             $table->string('company_name')->after('brand_name');
@@ -29,7 +29,7 @@ class AddColumnsToGapCardItems extends Migration
             $table->string('house')->after('site');
             $table->string('street')->after('house');
             $table->string('district')->after('street')->nullable();
-            $table->boolean('is_checked')->nullable();
+            $table->integer('is_checked')->default(0);
             $table->longText('full_description_ru');
             $table->index('user_id');
             $table->index('city_id');

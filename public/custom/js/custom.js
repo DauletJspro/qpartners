@@ -125,6 +125,47 @@ function buyPacketFromBalance(ob, packet_id, user_packet_type) {
     }
 }
 
+function acceptBanner(ob, id, is_checked){
+    if (confirm('Действительно хотите принять запрос?')) {
+        document.getElementById('ajax-loader').style.display = 'block';
+        $.ajax({
+            url: '/admin/banner/accept',
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                id : id,
+                is_checked: is_checked,
+            },
+            success: function (data) {
+                document.getElementById('ajax-loader').style.display = 'none';
+                if (data.status == false) {
+                    showError(data.message);
+                    return;
+                } else if(is_checked == 2){
+                    $(ob).html('Переотправленно');
+                    $(ob).removeClass('btn-success');
+                    $(ob).addClass('btn-info');
+                    $(ob).attr('onclick', '');
+                    closeModal();
+                    showMessage(data.message);
+                }
+                else {
+                    $(ob).html('Принято');
+                    $(ob).removeClass('btn-success');
+                    $(ob).addClass('btn-info');
+                    $(ob).attr('onclick', '');
+                    closeModal();
+                    showMessage(data.message);
+                }
+            }
+        });
+    }
+
+}
+
+
 function acceptUserPacket(ob, packet_id, give_bonus) {
     if (confirm('Действительно хотите принять запрос?')) {
         document.getElementById('ajax-loader').style.display = 'block';

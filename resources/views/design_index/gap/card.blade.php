@@ -2,9 +2,9 @@
 <?php
 $sub_category_id = request()->input('sub_category_id');
 if (isset($sub_category_id)) {
-    $gapItems = \App\Models\GapCardItem::where(['gap_card_sub_category_id' => $sub_category_id])->get();
+    $gapItems = \App\Models\GapCardItem::where(['gap_card_sub_category_id' => $sub_category_id])->where('is_checked', true)->get();
 } else {
-    $gapItems = \App\Models\GapCardItem::all();
+    $gapItems = \App\Models\GapCardItem::where('is_checked', true)->get();
 }
 ?>
 @extends('design_index.layout.layout')

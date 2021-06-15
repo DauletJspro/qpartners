@@ -28,7 +28,8 @@ class PacketController extends Controller
     public function __construct()
     {
         $this->middleware('profile', ['except' => ['AcceptUserPacketPayBox', 'implementPacketBonuses']]);
-        $this->middleware('admin', ['only' => ['inactiveUserPacket', 'activeUserPacket', 'deleteInactiveUserPacket', 'acceptInactiveUserPacket']]);
+        $this->middleware('admin', ['only' => ['inactiveUserPacket', 'activeUserPacket',
+            'deleteInactiveUserPacket', 'acceptInactiveUserPacket']]);
     }
 
     public function permissions()

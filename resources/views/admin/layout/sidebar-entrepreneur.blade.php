@@ -18,6 +18,19 @@
 {{--            Проверка:  0{{Auth::user()->balance->user_balance}} ₸--}}
 {{--        </p>--}}
 {{--    </li>--}}
+
+    <li class="treeview">
+        <a href="/admin/index">
+            <i class="fa fa-user"></i>
+            <span>Главная</span>
+        </a>
+    </li>
+    <li class="treeview">
+        <a href="/admin/shop">
+            <i class="fa fa-shopping-cart"></i>
+            <span>Магазин (пакеты)</span>
+        </a>
+    </li>
     <li class="treeview">
         <a href="/admin/banner/create">
             <i class="fa fa-creative-commons"></i>

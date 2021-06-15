@@ -43,4 +43,11 @@ class Entrepreneur extends Model
             'updated_at'               => Carbon::now()
         ];
     }
+    // is_checked может принять три разный значени.[0 => 'not checked' , 1 = 'success checked', 2 => 'redirect to edit']
+    public static function setIsChecked($request){
+        $gapCard = GapCardItem::where('id', $request->id)->first();
+            $gapCard->update([
+                'is_checked' => $request->is_checked
+            ]);
+    }
 }
