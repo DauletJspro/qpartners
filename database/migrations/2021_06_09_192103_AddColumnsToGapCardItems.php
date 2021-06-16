@@ -18,6 +18,7 @@ class AddColumnsToGapCardItems extends Migration
             $table->dropColumn('title_ru');
             $table->dropColumn('description_kz');
             $table->dropColumn('price');
+            $table->dropColumn('user_id');
             $table->integer('user_id')->after('id');
             $table->string('brand_name')->after('user_id');
             $table->string('company_name')->after('brand_name');
@@ -31,8 +32,6 @@ class AddColumnsToGapCardItems extends Migration
             $table->string('district')->after('street')->nullable();
             $table->integer('is_checked')->default(0);
             $table->longText('full_description_ru');
-            $table->index('user_id');
-            $table->index('city_id');
 
 
 
