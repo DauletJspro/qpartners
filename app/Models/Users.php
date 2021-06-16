@@ -29,7 +29,6 @@ class Users extends Model implements AuthenticatableContract
         'jastar_id',
         'jas_otau_id',
         'personal_sv_balance',
-
         'name',
         'last_name',
         'recommend_user_id',
@@ -43,8 +42,6 @@ class Users extends Model implements AuthenticatableContract
         'city_id',
         'user_cash',
         'user_money',
-
-
     ];
 
     const ADMIN = 1;
@@ -280,6 +277,12 @@ class Users extends Model implements AuthenticatableContract
     public function childs()
     {
         return $this->hasMany(Users::class, 'recommend_user_id', 'user_id');
+    }
+
+
+    public function balance()
+    {
+        return $this->hasOne(Balance::class, 'user_id','user_id');
     }
     public static function hasRole($role)
     {

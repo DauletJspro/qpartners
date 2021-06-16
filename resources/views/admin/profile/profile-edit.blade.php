@@ -37,8 +37,6 @@
                                                </select>
                                            </div>
                                         @endif
-
-
                                        <div class="form-group">
                                            <label>Имя</label>
                                            <input value="{{ $row->name }}" type="text" class="form-control" name="name" placeholder="Введите">
@@ -107,10 +105,6 @@
                                        <div class="form-group">
                                            <input required type="text" name="address" value="{{$row->address}}" class="form-control" placeholder="Район"/>
                                        </div>
-                                       {{--<div class="form-group">
-                                           <label>Размер кольца</label>
-                                           <input value="{{ $row->size_ring }}" type="text" class="form-control" name="size_ring" placeholder="Введите">
-                                       </div>--}}
                                        <div class="form-group">
                                            <label>Пол</label>
                                            <select required name="is_male" data-placeholder="Выберите пол" class="form-control" data-live-search="true">
@@ -118,20 +112,6 @@
                                                <option @if($row->is_male == 1) {{'selected'}} @endif value="1">Мужской</option>
                                            </select>
                                        </div>
-                                      {{-- <div class="form-group">
-                                           <label>Страховка </label>
-                                           <select required name="is_insurance" data-placeholder="Выберите пол" class="form-control" data-live-search="true">
-                                               <option @if($row->is_insurance == 0) {{'selected'}} @endif value="0">Нет</option>
-                                               <option @if($row->is_insurance == 1) {{'selected'}} @endif value="1">Да</option>
-                                           </select>
-                                       </div>
-                                       <div class="form-group">
-                                           <label>Юридическая карта </label>
-                                           <select required name="is_legal_map" data-placeholder="Выберите пол" class="form-control" data-live-search="true">
-                                               <option @if($row->is_legal_map == 0) {{'selected'}} @endif value="0">Нет</option>
-                                               <option @if($row->is_legal_map == 1) {{'selected'}} @endif value="1">Да</option>
-                                           </select>
-                                       </div>--}}
                                        <div class="form-group">
                                            <label>Обучение </label>
                                            <select required name="is_education" data-placeholder="Выберите пол" class="form-control" data-live-search="true">

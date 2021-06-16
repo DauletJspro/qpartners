@@ -1,3 +1,12 @@
+<div class="user-panel">
+    <div class="pull-left image">
+        <img src="{{Auth::user()->avatar}}" class="img-circle" alt="User Image">
+    </div>
+    <div class="pull-left info">
+        <p>{{Auth::user()->name}}</p>
+        <a href="#"><i class="fa fa-circle text-success"></i> Онлайн</a>
+    </div>
+</div>
 <ul class="sidebar-menu">
     @if(Auth::user()->role_id != 9)
     @if(Auth::user()->user_id != \App\Models\Users::ACCOUNTANT)
@@ -58,12 +67,6 @@
                 </li>
             @endif
         @endif
-        {{--        <li class="header" style="padding:5px 25px 0px">--}}
-        {{--            <p style="color:#009551;margin:0px;font-weight: bold; font-size: 14px;">Super--}}
-        {{--                Баланс: {{Auth::user()->super_balance}}PV--}}
-        {{--                ( {{Auth::user()->super_balance * \App\Models\Currency::pvToKzt()}}тг)</p>--}}
-        {{--        </li>--}}
-
 
         <li class="header" style="padding:5px 25px 0px">
             @if(Auth::user()->is_activated)
@@ -451,9 +454,16 @@
         </a>
     </li>
     @endif
-
-
-@if(Auth::user()->user_id == 1 || Auth::user()->role_id == 9 )
+    @if(Auth::user()->user_id == 1 || Auth::user()->role_id == 9)
+            <li class="treeview">
+                <a href="{{route('banner.list')}}">
+                    <i class="fa fa-list-ul"></i>
+                    <span>Запросы на баннер</span>
+                    <?php $countBanner = \App\Models\GapCardItem::where('is_checked', '0')->count();?>
+                    <span class="label label-primary pull-right"
+                          style="@if($user_packet_notice == 0) display: none; @endif background-color: rgb(253, 58, 53) ! important;">{{$countBanner}}</span>
+                </a>
+            </li>
         <li class="treeview">
             <a href="{{route('gap_category.index')}}">
                 <i class="fa fa-list-ul"></i>
@@ -484,8 +494,6 @@
                 </span>
             </a>
         </li>
-    @endif
-        @if(Auth::user()->role_id == 9)
         <li class="treeview">
             <a href="{{route('news.index')}}">
                 <i class="fa fa-newspaper-o"></i>

@@ -150,7 +150,7 @@ class OfficeController extends Controller
 
             if($months > 0){
                 $user->office_register_date = date("Y-m-d");
-                $user->office_month_profit = 0;
+//                $user->office_month_profit = 0;
                 $user->save();
             }
         }

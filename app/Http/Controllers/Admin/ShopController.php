@@ -26,7 +26,6 @@ class ShopController extends Controller
     public function index(Request $request)
     {
         $request->packet = Packet::where('is_show', 1)
-            ->where('is_old', 0)
             ->whereIn('packet_id', array_merge([Packet::CLASSIC, Packet::PREMIUM, Packet::VIP2, Packet::GAPTechno, Packet::GAPAuto, Packet::GAPHome], Packet::actualPassivePackets(), Packet::actualEntrepreneurPackets()))
             ->orderBy('packet_id', 'asc')
             ->select('*',
@@ -39,7 +38,6 @@ class ShopController extends Controller
             ->paginate(30);
 
         $request->packet_old = Packet::where('is_show', 1)
-            ->where('is_old', 1)
             ->orderBy('sort_num', 'asc')
             ->select('*',
                 DB::raw('(select count(user_packet.packet_id)

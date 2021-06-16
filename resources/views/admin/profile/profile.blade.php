@@ -188,9 +188,6 @@
                         <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'status') active @endif tab-pane" id="status">
                             @include('admin.profile.status-edit')
                         </div>
-{{--                        <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'profit') active @endif tab-pane" id="volume">--}}
-{{--                            @include('admin.profile.volume-edit')--}}
-{{--                        </div>--}}
                         <div class="@if(isset($_GET['tab']) && $_GET['tab'] == 'pv') active @endif tab-pane" id="pv">
                             @include('admin.profile.pv-edit')
                         </div>

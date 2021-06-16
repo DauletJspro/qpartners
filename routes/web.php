@@ -86,6 +86,22 @@ Route::group([
         Route::post('/activate', 'ProfileController@activateUser');
         Route::post('/profit/edit', 'ProfileController@editProfit');
     });
+    // Маршруты для предпринимателя
+    Route::group([
+        'middleware' => 'entrepreneur'
+    ], function (){
+        Route::get('/banner/create', 'EntrepreneurController@createBanner' )->name('banner.create');
+        Route::post('/banner', 'EntrepreneurController@storeBanner' )->name('banner.store');
+    });
+
+    Route::group([
+        'middleware' => 'adminAndMarket',
+    ], function (){
+        Route::get('/banner/list', 'EntrepreneurController@listBanner' )->name('banner.list');
+        Route::post('/banner/accept', 'EntrepreneurController@acceptBanner' )->name('banner.accept');
+    });
+
+
 
     Route::group([
         'prefix' => 'packet'

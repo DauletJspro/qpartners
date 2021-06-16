@@ -76,9 +76,6 @@ class PartnerController extends Controller
         $partner->partner_text_ru = $request->partner_text_ru;
         $partner->partner_text_kz = $request->partner_text_kz;
         $partner->partner_text_en = $request->partner_text_en;
-        $partner->partner_desc_ru = $request->partner_desc_ru;
-        $partner->partner_desc_kz = $request->partner_desc_kz;
-        $partner->partner_desc_en = $request->partner_desc_en;
         $partner->partner_image = $request->partner_image;
         $partner->sort_num = is_numeric($request->sort_num)?$request->sort_num:1000;
         $partner->partner_redirect = $request->partner_redirect;
@@ -134,9 +131,6 @@ class PartnerController extends Controller
         $partner->partner_text_ru = $request->partner_text_ru;
         $partner->partner_text_kz = $request->partner_text_kz;
         $partner->partner_text_en = $request->partner_text_en;
-        $partner->partner_desc_ru = $request->partner_desc_ru;
-        $partner->partner_desc_kz = $request->partner_desc_kz;
-        $partner->partner_desc_en = $request->partner_desc_en;
         $partner->partner_image = $request->partner_image;
         $partner->sort_num = is_numeric($request->sort_num)?$request->sort_num:1000;
         $partner->partner_redirect = $request->partner_redirect;

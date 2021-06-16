@@ -28,7 +28,6 @@ class OperationController extends Controller
             ->leftJoin('users as recipient_user','recipient_user.user_id','=','user_operation.recipient_id')
             ->leftJoin('operation','operation.operation_id','=','user_operation.operation_id')
             ->leftJoin('operation_type','operation_type.operation_type_id','=','user_operation.operation_type_id')
-            ->leftJoin('fond','fond.fond_id','=','user_operation.fond_id')
             ->where('operation.operation_name_ru','like','%' .$request->operation .'%')
             ->where('operation_type.operation_type_name_ru','like','%' .$request->operation_type .'%')
             ->where('user_operation.operation_type_id', '!=', $CASHBACK_ID)
@@ -178,7 +177,7 @@ class OperationController extends Controller
             ->leftJoin('user_packet','user_packet.user_id','=','users.user_id')
             ->leftJoin('packet','packet.packet_id','=','user_packet.packet_id')
             ->leftJoin('users as recommend','recommend.user_id','=','users.recommend_user_id')
-            ->where('users.auto_bonus','>',0)
+//            ->where('users.auto_bonus','>',0)
             ->orderBy('users.user_money','desc')
             ->select('users.*','city.*','country.*',
                 DB::raw('DATE_FORMAT(users.created_at,"%d.%m.%Y %H:%i") as date'),
@@ -187,8 +186,8 @@ class OperationController extends Controller
                 'recommend.user_id as recommend_id',
                 'recommend.last_name as recommend_last_name',
                 'recommend.middle_name as recommend_middle_name',
-                'recommend.user_id as recommend_user_id',
-                'users.auto_bonus as user_money'
+                'recommend.user_id as recommend_user_id'
+//                'users.auto_bonus as user_money'
             )
             ->groupBy('users.user_id');
 
@@ -240,7 +239,7 @@ class OperationController extends Controller
             ->leftJoin('user_packet','user_packet.user_id','=','users.user_id')
             ->leftJoin('packet','packet.packet_id','=','user_packet.packet_id')
             ->leftJoin('users as recommend','recommend.user_id','=','users.recommend_user_id')
-            ->where('users.home_bonus','>',0)
+//            ->where('users.home_bonus','>',0)
             ->orderBy('users.user_money','desc')
             ->select('users.*','city.*','country.*',
                 DB::raw('DATE_FORMAT(users.created_at,"%d.%m.%Y %H:%i") as date'),
@@ -249,8 +248,8 @@ class OperationController extends Controller
                 'recommend.user_id as recommend_id',
                 'recommend.last_name as recommend_last_name',
                 'recommend.middle_name as recommend_middle_name',
-                'recommend.user_id as recommend_user_id',
-                'users.auto_bonus as user_money'
+                'recommend.user_id as recommend_user_id'
+//                'users.auto_bonus as user_money'
             )
             ->groupBy('users.user_id');
 

@@ -76,7 +76,6 @@ class ShareHolderController extends Controller
             ->leftJoin('users as recipient_user','recipient_user.user_id','=','user_operation.recipient_id')
             ->leftJoin('operation','operation.operation_id','=','user_operation.operation_id')
             ->leftJoin('operation_type','operation_type.operation_type_id','=','user_operation.operation_type_id')
-            ->leftJoin('fond','fond.fond_id','=','user_operation.fond_id')
             ->where('operation.operation_name_ru','like','%' .$request->operation .'%')
             ->where('user_operation.operation_type_id',5)
             ->where('operation_type.operation_type_name_ru','like','%' .$request->operation_type .'%')

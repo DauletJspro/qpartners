@@ -79,7 +79,8 @@
                             {{ $val->date }}
                         </td>
                          <td style="text-align: center">
-                             @if($val->is_epay == 1)
+{{--                             @if($val->is_epay == 1)--}}
+                             @if(false)
                                  Онлайн оплата
                              @endif
                          </td>
