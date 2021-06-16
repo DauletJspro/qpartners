@@ -235,17 +235,23 @@
             </li>
         @endif
     @endif
+        <li class="treeview">
+            <a href="{{ route('gap.card.orders.index') }}">
+                <i class="fa fa-paper-plane-o"></i>
+                <span>Мои заказы(Card)</span>
+            </a>
+        </li>
     @if(Auth::user()->role_id == App\Models\Role::CONSUMER)
-            <li class="treeview">
-                <a href="{{ route('gap.card.orders.index') }}">
-                    <i class="fa fa-paper-plane-o"></i>
-                    <span>Мои заказы</span>
-                </a>
-            </li>
             <li class="treeview">
                 <a href="{{ route('gap.card.ratings.index') }}">
                     <i class="fa fa-star"></i>
                     <span>Мои рейтинги</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="/admin/online">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span>Магазин (товары)</span>
                 </a>
             </li>
     @endif
@@ -348,8 +354,8 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="/admin/product">
-                    <i class="fa fa-list"></i>
+                <a href="{{route('gap_market_product.index')}}">
+                    <i class="fa fa-shopping-cart"></i>
                     <span>Товары</span>
                 </a>
             </li>

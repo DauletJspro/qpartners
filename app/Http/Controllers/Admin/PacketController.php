@@ -37,6 +37,11 @@ class PacketController extends Controller
         shell_exec('chmod -R 777 storage');
     }
 
+    public function permissions()
+    {
+        shell_exec('chmod -R 777 storage');
+    }
+
     public function getPacketById($id)
     {
         $packet = Packet::find($id);

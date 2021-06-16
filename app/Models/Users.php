@@ -18,8 +18,8 @@ class Users extends Model implements AuthenticatableContract
         'password',
         'login',
         'user_id',
-        'group_id',
         'iin',
+        'group_id',
         'home_group_id',
         'group_plus_id',
         'home_plus_id',
@@ -177,6 +177,7 @@ class Users extends Model implements AuthenticatableContract
 
     }
 
+
     public static function cashbackBonusConsumer($card){
         $recommend_user_id = Auth::user()->recommend_user_id;
         $counter = 0;
@@ -201,7 +202,7 @@ class Users extends Model implements AuthenticatableContract
                     'operation_type_id' => 1,
                     'operation_comment' => 'Структурный бонус "GAP Card" ' . $counter . ' уровень.'
                 ]);
-            }else{
+            } else {
                 $cashback = $user_cash + $BONUS_5;
                 $recommend_user->update([
                     'user_cash' => $cashback
