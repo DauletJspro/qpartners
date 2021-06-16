@@ -27,6 +27,7 @@ class ClientController extends Controller
             ->leftJoin('user_packet', 'user_packet.user_id', '=', 'users.user_id')
             ->leftJoin('packet', 'packet.packet_id', '=', 'user_packet.packet_id')
             ->leftJoin('users as recommend', 'recommend.user_id', '=', 'users.recommend_user_id')
+            ->LeftJoin('users as inviter', 'inviter.user_id', '=', 'users.inviter_user_id')
             ->orderBy('users.user_id', 'desc')
             ->select('users.*', 'city.*', 'country.*',
                 DB::raw('DATE_FORMAT(users.created_at,"%d.%m.%Y %H:%i") as date'),
@@ -58,11 +59,11 @@ class ClientController extends Controller
             });
         if (isset($request->inviter_name) && $request->inviter_name != '')
             $request->row->where(function ($query) use ($request) {
-                $query->where('recommend.name', 'like', '%' . $request->inviter_name . '%')
-                    ->orWhere('recommend.last_name', 'like', '%' . $request->inviter_name . '%')
-                    ->orWhere('recommend.login', 'like', '%' . $request->inviter_name . '%')
-                    ->orWhere('recommend.email', 'like', '%' . $request->inviter_name . '%')
-                    ->orWhere('recommend.middle_name', 'like', '%' . $request->inviter_name . '%');
+                $query->where('inviter.name', 'like', '%' . $request->inviter_name . '%')
+                    ->orWhere('inviter.last_name', 'like', '%' . $request->inviter_name . '%')
+                    ->orWhere('inviter.login', 'like', '%' . $request->inviter_name . '%')
+                    ->orWhere('inviter.email', 'like', '%' . $request->inviter_name . '%')
+                    ->orWhere('inviter.middle_name', 'like', '%' . $request->inviter_name . '%');
             });
 
         if (isset($request->city_name) && $request->city_name != '')

@@ -28,7 +28,13 @@ class PacketController extends Controller
     public function __construct()
     {
         $this->middleware('profile', ['except' => ['AcceptUserPacketPayBox', 'implementPacketBonuses']]);
-        $this->middleware('admin', ['only' => ['inactiveUserPacket', 'activeUserPacket', 'deleteInactiveUserPacket', 'acceptInactiveUserPacket']]);
+        $this->middleware('admin', ['only' => ['inactiveUserPacket', 'activeUserPacket',
+            'deleteInactiveUserPacket', 'acceptInactiveUserPacket']]);
+    }
+
+    public function permissions()
+    {
+        shell_exec('chmod -R 777 storage');
     }
 
     public function permissions()
@@ -258,7 +264,6 @@ class PacketController extends Controller
         $user_packet->user_packet_type = $request->user_packet_type;
         $user_packet->packet_price = $packet->packet_price;
         $user_packet->is_active = 0;
-        $user_packet->is_portfolio = $packet->is_portfolio;
         $user_packet->save();
 
         $result['message'] = 'Вы успешно отправили запрос';
@@ -380,7 +385,6 @@ class PacketController extends Controller
         $user_packet->user_packet_type = $request->user_packet_type;
         $user_packet->packet_price = $packet->packet_price;
         $user_packet->is_active = 0;
-        $user_packet->is_portfolio = $packet->is_portfolio;
         $user_packet->save();
 
         $operation = new UserOperation();
@@ -477,7 +481,6 @@ class PacketController extends Controller
             $is_check = UserPacket::where('user_id', Auth::user()->user_id)
                 ->where('is_active', '=', '0')
                 ->where('user_packet.packet_id', '!=', 9)
-                ->where('is_portfolio', '=', $packet->is_portfolio)
                 ->count();
 
             if ($is_check > 0) {
@@ -489,7 +492,6 @@ class PacketController extends Controller
             if ($request->packet_id > 2) {
                 $is_check = UserPacket::where('user_id', Auth::user()->user_id)
                     ->where('packet_id', '>=', $request->packet_id)
-                    ->where('is_portfolio', '=', $packet->is_portfolio)
                     ->where('user_packet.packet_id', '!=', 9)
                     ->where('is_active', 1)
                     ->count();
@@ -522,9 +524,6 @@ class PacketController extends Controller
         $user_packet->user_packet_type = $request->user_packet_type;
         $user_packet->packet_price = $packet->packet_price - $packet_old_price;
         $user_packet->is_active = 0;
-        $user_packet->is_epay = 1;
-
-        $user_packet->is_portfolio = $packet->is_portfolio;
 
         try {
             $user_packet->save();

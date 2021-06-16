@@ -1,13 +1,11 @@
 @extends('admin.layout.layout')
-
 @section('content')
-
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title box-title-first">
-                        <a class="menu-tab active-page">Запросы на пакет</a>
+                        <a class="menu-tab active-page">Запросы на баннер</a>
                     </h3>
                     <div class="clear-float"></div>
                 </div>
@@ -19,12 +17,12 @@
                         <tr style="border: 1px">
                             <th style="width: 30px">№</th>
                             <th style="width: 100px">Аватар</th>
-                            <th>Партнер</th>
-                            <th>Спонсор</th>
-                            <th>Пакет</th>
-                            <th>Подарок</th>
+                            <th>Название бренда</th>
+                            <th>Название компаний</th>
+                            <th>Город</th>
+                            <th>Телефон</th>
                             <th style="width: 120px">Дата</th>
-                            <th style="width: 120px">Дата</th>
+                            <th style="width: 120px"></th>
                         </tr>
                         </thead>
 
@@ -34,7 +32,7 @@
                             <td></td>
                             <td></td>
                             <td>
-                                <form><input value="{{$request->user_name}}" type="text" class="form-control"
+                                <form><input value="{{$request->brand_name}}" type="text" class="form-control"
                                              name="user_name" placeholder="Поиск"></form>
                             </td>
                             <td>
@@ -50,63 +48,45 @@
                             <td></td>
                         </tr>
 
-                        @foreach($row as $key => $val)
+                        @foreach($cardList as $key => $val)
 
                             <tr>
                                 <td> {{ $key + 1 }}</td>
                                 <td>
                                     <div class="object-image client-image">
                                         <a href="/admin/profile/{{$val->user_id}}" target="_blank">
-                                            <img src="{{$val->avatar}}">
+                                            <img src="{{$val->image}}">
                                         </a>
                                     </div>
                                     <div class="clear-float"></div>
                                 </td>
                                 <td class="arial-font">
                                     <a class="main-label" href="/admin/profile/{{$val->user_id}}" target="_blank"><p
-                                                class="login">{{$val->login}}</p>@if(Auth::user()->user_id == 1)<p
-                                                class="client-name">{{ $val->name }} {{ $val->last_name }} {{ $val->middle_name }}</p>@endif
+                                                class="brand_name">{{$val->brand_name}}</p>
                                     </a>
                                 </td>
                                 <td class="arial-font">
                                     <a class="main-label" href="/admin/profile/{{$val->recommend_id}}" target="_blank">
-                                        <p class="login">{{$val->recommend_login}}</p>@if(Auth::user()->user_id == 1)<p
-                                                class="client-name">{{ $val->recommend_name }} {{ $val->recommend_last_name }} {{ $val->recommend_middle_name }}</p>@endif
+                                        <p class="company_name">{{$val->company_name}}</p>
                                     </a>
                                 </td>
                                 <td>
-                                    <span class="label"
-                                          style="font-size:15px; padding:2px 10px; background-color: #{{$val['packet_css_color']}}">{{$val['packet_name_ru']}}</span>
+                                    <p class="city_id">{{\App\Models\GapCardItem::getCity($val->city_id)}}</p>
                                 </td>
                                 <td>
-                                    @if($val->user_packet_type == 'share')
-                                        Доля
-                                    @elseif($val->user_packet_type == 'item')
-                                        {{$val->packet_item}}
-                                    @elseif($val->user_packet_type == 'service')
-                                        {{$val->packet_service}}
-                                    @endif
+                                    <p class="city_id">{{$val->phone}}</p>
                                 </td>
                                 <td>
-                                    {{ $val->date }}
+                                    {{ $val->created_at }}
                                 </td>
                                 <td style="text-align: center">
-{{--                                    @if($val->is_epay == 0)--}}
-                                    @if(true)
                                         <button class="btn btn-block btn-success btn-sm"
-                                                onclick="acceptUserPacket(this,'{{ $val->user_packet_id }}', 1)">
+                                                onclick="acceptBanner(this,'{{ $val->id }}', 1)">
                                             Принять
                                         </button>
-                                        <button class="btn btn-block btn-warning btn-sm"
-                                                onclick="acceptUserPacket(this,'{{ $val->user_packet_id }}', 0)">
-                                            Promo
-                                        </button>
-                                    @else
-                                        <button class="btn btn-block btn-success btn-sm">PayBox</button>
-                                    @endif
                                     <button class="btn btn-block btn-error btn-sm"
-                                            onclick="deleteUserPacket(this,'{{ $val->user_packet_id }}')"
-                                            style="background-color: rgb(255, 88, 83);">Удалить
+                                            onclick="acceptBanner(this,'{{ $val->id }}', 2)"
+                                            style="background-color: rgb(255, 88, 83);">Переотправить
                                     </button>
                                 </td>
                             </tr>
@@ -118,12 +98,11 @@
                     </table>
 
                     <div style="text-align: center">
-                        {{ $row->appends(\Illuminate\Support\Facades\Input::except('page'))->links() }}
+                        {{ $cardList->appends(\Illuminate\Support\Facades\Input::except('page'))->links() }}
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
-
 @endsection

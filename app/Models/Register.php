@@ -33,8 +33,6 @@ class Register extends Model
             $user->brand_name = $request->brand_name;
             $user->organization_name = $request->organization_name;
         }
-        
-        
 
         $user->save();
 

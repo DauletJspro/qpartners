@@ -18,8 +18,8 @@ class Users extends Model implements AuthenticatableContract
         'password',
         'login',
         'user_id',
-        'group_id',
         'iin',
+        'group_id',
         'home_group_id',
         'group_plus_id',
         'home_plus_id',
@@ -29,7 +29,6 @@ class Users extends Model implements AuthenticatableContract
         'jastar_id',
         'jas_otau_id',
         'personal_sv_balance',
-
         'name',
         'last_name',
         'recommend_user_id',
@@ -43,8 +42,6 @@ class Users extends Model implements AuthenticatableContract
         'city_id',
         'user_cash',
         'user_money',
-
-
     ];
 
     const ADMIN = 1;
@@ -66,7 +63,9 @@ class Users extends Model implements AuthenticatableContract
     const ConsumerTitle = 'consumer';
     const SellerTitle = 'seller';
     const UserTitle = 'user';
+
     const PARTNER = 'partner';
+
 
     use SoftDeletes;
 
@@ -78,6 +77,7 @@ class Users extends Model implements AuthenticatableContract
         return Users::where(['recommend_user_id' => $parent_id])->get();
     }
 
+
     public static function getRole()
     {
         if(Auth::user()->role_id == Users::CLIENT && Auth::user()->is_activated == 0){
@@ -88,6 +88,7 @@ class Users extends Model implements AuthenticatableContract
             return self::UserTitle;
         }
     }
+
     public static function getRoleIdFromTitle($role_title)
     {
         $roleId = null;
@@ -137,10 +138,6 @@ class Users extends Model implements AuthenticatableContract
                 if ($follower->soc_status_id >= $status_id) {
                     array_push($followerStatusIds, $follower->soc_status_id);
                 }
-            } elseif ($status_type == 3) {
-                if ($follower->super_status_id >= $status_id) {
-                    array_push($followerStatusIds, $follower->super_status_id);
-                }
             }
         }
         $followerStatusIds = array_filter($followerStatusIds);
@@ -180,6 +177,7 @@ class Users extends Model implements AuthenticatableContract
 
     }
 
+
     public static function cashbackBonusConsumer($card){
         $recommend_user_id = Auth::user()->recommend_user_id;
         $counter = 0;
@@ -204,7 +202,7 @@ class Users extends Model implements AuthenticatableContract
                     'operation_type_id' => 1,
                     'operation_comment' => 'Структурный бонус "GAP Card" ' . $counter . ' уровень.'
                 ]);
-            }else{
+            } else {
                 $cashback = $user_cash + $BONUS_5;
                 $recommend_user->update([
                     'user_cash' => $cashback
@@ -293,5 +291,4 @@ class Users extends Model implements AuthenticatableContract
         }
         return false;
     }
-
 }

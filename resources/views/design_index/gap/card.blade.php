@@ -2,9 +2,9 @@
 $sub_category_id = request()->input('sub_category_id');
 $city = request()->input('city_id');
 if (isset($sub_category_id)) {
-    $gapItems = \App\Models\GapCardItem::where(['gap_card_sub_category_id' => $sub_category_id])->get();
-}elseif(isset($city)) {
-    $gapItems = \App\Models\GapCardItem::where('city_id', $city)->get();
+    $gapItems = \App\Models\GapCardItem::where(['gap_card_sub_category_id' => $sub_category_id])->where('is_checked', true)->get();
+} else {
+    $gapItems = \App\Models\GapCardItem::where('is_checked', true)->get();
 }
 ?>
 @extends('design_index.layout.layout')
@@ -245,7 +245,39 @@ if (isset($sub_category_id)) {
                         </div>
                     </header>
                     <ul class="mt-productlisthold list-inline" id="gap-cards">
-                        @include('design_index.gap.renders.gap_card.gap_card')
+                        @foreach($gapItems as $item)
+                            <li>
+                                <div id="gap-card" class="mt-product1 large"
+                                     style="padding: 0 0 20px 0">
+                                    <div class="box">
+                                        <div class="b1">
+                                            <div class="b2">
+                                                <div
+                                                        id="gap-card-photo"
+                                                        style="
+                                                        background-image: url({{asset($item->image)}});
+                                                        background-repeat: no-repeat;
+                                                        background-size: 100% 100%;
+                                                        background-position: center;
+                                                        border: 4px solid red;
+                                                        width: 275px;
+                                                        height: 275px;
+                                                        position: relative;
+                                                        ">
+                                                    <span style="font-family: Montserrat;position: absolute; left: 0; background: red; color: white; padding: 2px 10px; top: 18px">
+                                                        Скидка {{$item->discount_percentage}}%
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <strong class="title"><a href="{{ route('gap_card.detail', $item->id) }}" style="color: black">{{$item->brand_name}}</a></strong>
+                                        <span class="cut-text" style="">{{$item->full_description_ru}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
                     </ul>
                     <nav class="mt-pagination">
                         <ul class="list-inline">

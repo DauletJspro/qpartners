@@ -20,7 +20,7 @@
                 <i class="ion ion-bag" style="font-size: 40px"></i>
             </div>
 
-            @if(($item->has_packet > 0 && $item->is_active > 0) || $max_packet_user_number[$item->is_portfolio] == null || $max_packet_user_number[$item->is_portfolio]->packet_id <= $item->packet_id)
+            @if(($item->has_packet > 0 && $item->is_active > 0))
 
                 @if($item->has_packet > 0)
                     @if($item->is_active > 0)

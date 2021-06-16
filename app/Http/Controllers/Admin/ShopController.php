@@ -39,7 +39,6 @@ class ShopController extends Controller
             ->paginate(30);
 
         $request->packet_old = Packet::where('is_show', 1)
-            ->where('is_old', 1)
             ->orderBy('sort_num', 'asc')
             ->select('*',
                 DB::raw('(select count(user_packet.packet_id)

@@ -2,6 +2,8 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Entrepreneur;
+use App\Http\Middleware\TalgatAndAdmin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -72,5 +74,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'error_reporting' => \App\Http\Middleware\ErrorReporting::class,
+        'entrepreneur' => Entrepreneur::class,
+        'adminAndMarket' => TalgatAndAdmin::class
     ];
 }
