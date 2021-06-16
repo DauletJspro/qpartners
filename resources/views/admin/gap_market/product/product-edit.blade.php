@@ -133,22 +133,22 @@ $items = \App\Models\Product::ITEM;
                                                        class="form-control" name="ball_client" placeholder="Введите" id="ball_client">
                                             </div>
                                             <div class="form-group">
-                                                <label>Цена для партнера</label>
+                                                <label>Цена для GAP Card</label>
                                                 <input value="@if(isset($product)){{ $product->price_partner }}@endif{{old('price_partner')}}" type="text"
                                                        class="form-control" name="price_partner" placeholder="Введите" id="price_partner">
                                             </div>
                                             <div class="form-group">
-                                                <label>Балл для партнера</label>
+                                                <label>Балл для GAP Card</label>
                                                 <input value="@if(isset($product)){{ $product->ball_partner }}@endif{{old('ball_partner')}}" type="text"
                                                        class="form-control" name="ball_partner" placeholder="Введите" id="ball_partner">
                                             </div>
                                             <div class="form-group">
-                                                <label>Цена для пайщика</label>
+                                                <label>Цена для Пайщика/Партнера</label>
                                                 <input value="@if(isset($product)){{ $product->price_shareholder }}@endif{{old('price_shareholder')}}" type="text"
                                                        class="form-control" name="price_shareholder" placeholder="Введите" id="price_shareholder">
                                             </div>
                                             <div class="form-group">
-                                                <label>Балл для пайщика</label>
+                                                <label>Балл для Пайщика/Партнера</label>
                                                 <input value="@if(isset($product)){{ $product->ball_shareholder }}@endif{{old('ball_shareholder')}}" type="text"
                                                        class="form-control" name="ball_shareholder" placeholder="Введите" id="ball_shareholder">
                                             </div>

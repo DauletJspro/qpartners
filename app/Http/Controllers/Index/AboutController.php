@@ -53,4 +53,10 @@ class AboutController extends Controller
         return view('design_index.about_us.company_representatives');
     }
 
+
+    public function aboutGapCard()
+    {
+        return view('design_index.about_us.gap_card');
+    }
+
 }

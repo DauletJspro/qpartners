@@ -481,6 +481,7 @@ Route::group([
     Route::get('representative', 'RepresentativeController@show')->name('representative.show');
     Route::get('favorite/show-user-item', 'FavoriteController@showUserItems')->name('favorite.showUserItem');
     Route::resource('review', 'ReviewController');
+    Route::get('gap/card/about', 'AboutController@aboutGapCard')->name('gap.card.about');
     Route::get('about_us/administration', 'AboutController@showCompanyAdministration');
     Route::get('about_us/guide', 'AboutController@showCompanyGuide');
     Route::get('about_us/chairperson', 'AboutController@showCompanyChairpersons');

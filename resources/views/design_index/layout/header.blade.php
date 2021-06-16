@@ -326,7 +326,7 @@ if($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                 </a>
             </li>
             <li style="{{$gapTypeActive == 3 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
-                <a style="{{$gapTypeActive == 3 ? 'background:white;color:red;' : ''}}" href="{{route('gap.card.show')}}">
+                <a style="{{$gapTypeActive == 3 ? 'background:white;color:red;' : ''}}" href="/gap/card/show/?city_id=8">
                     CARD
                 </a>
             </li>

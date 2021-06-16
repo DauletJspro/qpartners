@@ -294,4 +294,12 @@ class Users extends Model implements AuthenticatableContract
         return false;
     }
 
+    /**
+     * A Roles can have many users
+     */
+
+    public function roles()
+    {
+        return $this->belongsTo(\App\Models\Role::class,'role_id','role_id');
+    }
 }

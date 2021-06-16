@@ -26,12 +26,13 @@
                                   ->where('user_id',Auth::user()->user_id)
                                   ->count() > 0 || Auth::user()->role_id == 1)
 
-
-
     @endif
 
     @include('admin.index.packet')
 
+    @if(Auth::user()->role_id == 1 )
+        @include('admin.index.users', compact('users_count'))
+    @endif
 @endsection
 
 

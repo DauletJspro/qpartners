@@ -169,8 +169,11 @@ class IndexController extends Controller
 
         $request->send_money = UserOperation::where('operation_type_id', 28)->where('recipient_id', Auth::user()->user_id)->sum('money');
 
+        $users_count = Users::select('users.role_id',DB::raw('count(*) as total'))
+            ->groupBy('role_id')
+            ->get();
 
-            return view('admin.index.index', ['row' => $request]);
+        return view('admin.index.index', ['row' => $request, 'users_count' => $users_count]);
         
     }
 

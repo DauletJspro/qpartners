@@ -86,63 +86,14 @@ if(isset($city)) {
 </script>
 @section('content')
     <main id="mt-main" style="margin-top: -50px !important;">
-{{--        <div class="row" style="margin-right: 0 !important; margin-left: 0 !important;">--}}
-{{--            <div class="mt-bestseller text-center wow fadeInUp" data-wow-delay="0.4s">--}}
-{{--                <div class="row" style="height: 260px;">--}}
-{{--                    <div class="col-xs-12">--}}
-{{--                        <div class="bestseller-slider">--}}
-{{--                            <div class="slide">--}}
-{{--                                <div style="--}}
-{{--                                        width: 84%;--}}
-{{--                                        height: 100%;--}}
-{{--                                        margin-left: 8%;--}}
-{{--                                        background-image: url('{{asset('/new_design/images/products/running_shoes_banner.jpg')}}');--}}
-{{--                                        background-size: contain;--}}
-{{--                                        background-position: center;--}}
-{{--                                        background-repeat: no-repeat;--}}
-{{--                                        ">--}}
-
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="slide">--}}
-{{--                                <div style="--}}
-{{--                                        width: 84%;--}}
-{{--                                        height: 100%;--}}
-{{--                                        margin-left: 8%;--}}
-{{--                                        background-image: url('{{asset('/new_design/images/products/fashion_sale_banner.jpg')}}');--}}
-{{--                                        background-size: contain;--}}
-{{--                                        background-position: center;--}}
-{{--                                        background-repeat: no-repeat;--}}
-{{--                                        ">--}}
-
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="slide">--}}
-{{--                                <div style="--}}
-{{--                                        width: 84%;--}}
-{{--                                        height: 100%;--}}
-{{--                                        margin-left: 8%;--}}
-{{--                                        background-image: url('{{asset('/new_design/images/products/pizza_banner.jpg')}}');--}}
-{{--                                        background-size: contain;--}}
-{{--                                        background-position: center;--}}
-{{--                                        background-repeat: no-repeat;--}}
-{{--                                        ">--}}
-
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-        <div id="vip-container" class="container" style="flex-wrap:wrap; height: 275px; display: flex; min-height: 280px; margin-top: 50px; font-family: Montserrat; color: black">
+        <div id="vip-container" class="container" style="flex-wrap:wrap; height: 275px; display: flex; min-height: 280px; margin-top: 50px; font-family: Montserrat; color: black;">
             @foreach($VIP_banners as $vip_banner)
-                <div class="block" style="width: 49.5%; border: 1px solid #C4C4C4; display: flex; height: 100%; flex-wrap: wrap">
-                    <div id="first-block-info" style="width: 52%; display: flex; flex-direction: column; height: 100%; padding: 25px 20px; font-weight: 600; background: #F6F6F6;">
+                <div class="block" style="width: 49.5%; display: flex; height: 100%; flex-wrap: wrap; padding: 0 20px 0 0;">
+                    <div id="first-block-info" style="width: 52%; display: flex; flex-direction: column; height: 100%; padding: 25px 20px; font-weight: 600; background: #ececec;">
                         <p style="text-transform: uppercase;">{{ $vip_banner->title_ru  }}</p>
                         <span class="cut-text" style="font-weight: lighter">{{ $vip_banner->description_ru  }}</span>
                         <p style="margin-top: 20px">Скидка {{ $vip_banner->discount_percentage  }} %</p>
-                        <p style="margin-top: 12px">Cashback %</p>
+                        <p style="margin-top: 12px"></p>
                         <div style="display: flex">
                             <button style="display: flex;margin-left:auto; background: red; color: white; border-radius: 30px; border: none; padding: 5px 20px">
                                 <span style="font-weight: lighter"><a href="{{ route('gap_card.detail', $vip_banner->id) }}" style="color: white">Подробнее</a></span>
@@ -193,7 +144,7 @@ if(isset($city)) {
                         <div style="margin-top: 5rem;">
                             <h2>Компания</h2>
                             <div class="right_slide_items" style="margin-top: 3rem;">
-                                <h2 class="right_slide_item">О нас</h2>
+                                <h2 class="right_slide_item"><a href="{{ route('gap.card.about') }}" style="color: black">О нас</a></h2>
                                 <h2 class="right_slide_item">Контакты</h2>
                             </div>
                         </div>
