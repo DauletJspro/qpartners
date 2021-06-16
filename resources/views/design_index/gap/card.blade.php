@@ -1,6 +1,6 @@
-@php($categories = \App\Models\GapCardCategory::all())
 <?php
 $sub_category_id = request()->input('sub_category_id');
+$city = request()->input('city_id');
 if (isset($sub_category_id)) {
     $gapItems = \App\Models\GapCardItem::where(['gap_card_sub_category_id' => $sub_category_id])->where('is_checked', true)->get();
 } else {
@@ -26,11 +26,13 @@ if (isset($sub_category_id)) {
         $(document).ready(function(){
             $('.card_sorting_btn').click(function (){
                 var orderBy = $(this).data('order');
+                var city_id = $(this).data('city');
                 $.ajax({
                     url: "{{route('filter.cards')}}",
                     type:"GET",
                     data:{
-                        orderBy: orderBy
+                        orderBy: orderBy,
+                        city_id: city_id
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -46,7 +48,6 @@ if (isset($sub_category_id)) {
 @endsection
 <script>
     function showSubcategories(index) {
-        console.log('subid', index)
         let length = document.getElementsByClassName('subcategories-body').length;
         for(let i = 0; i < length; i++) {
             document.getElementById(`collapse_${i}`).classList.remove('show');
@@ -165,12 +166,12 @@ if (isset($sub_category_id)) {
                                        aria-expanded="false"
                                        aria-controls="collapseExample">
                                         <span class="name">{{$category->title_ru}}</span>
-                                        <span class="num">{{isset($category->sub_categories) ? count($category->sub_categories) : 0}}</span>
+                                        <span class="num">{{isset($category) ? $category->total : 0}}</span>
                                     </a>
                                     <ul style="font-size:90%; font-weight:bolder;margin-top: 1rem;margin-left: 10px;"
                                         class="subcategories-body collapse col-sm-10 list-unstyled category-list"
                                         id="collapse_{{$index}}">
-                                        @foreach($category->sub_categories as $sub_category)
+                                        @foreach(\App\Models\GapCardSubCategory::where('gap_card_category_id', $category->id)->get() as $sub_category)
                                             <li>
                                                 <a href="" style="color:black;">
                                                     <span><a href="/gap/card/show/?sub_category_id={{$sub_category->id}}">{{$sub_category->title_ru}}</a></span>
@@ -221,10 +222,10 @@ if (isset($sub_category_id)) {
                                     <div class="drop">
                                         <ul class="list-unstyled">
                                             <li><a href="#" class="card_sorting_btn" id="sort-price"
-                                                   data-order="price-low-high">По цене возрастанию</a></li>
+                                                   data-order="price-low-high" data-city="{{request()->input('city_id')}}">По цене возрастанию</a></li>
                                             <li><a href="#" class="card_sorting_btn" id="sort-price"
-                                                   data-order="price-high-low">По цене убыванию</a></li>
-                                            <li><a href="#" class="card_sorting_btn" data-order="popular">По популярности</a></li>
+                                                   data-order="price-high-low" data-city="{{request()->input('city_id')}}">По цене убыванию</a></li>
+                                            <li><a href="#" class="card_sorting_btn" data-order="popular" data-city="{{request()->input('city_id')}}">По популярности</a></li>
                                         </ul>
                                     </div>
                                 </li>

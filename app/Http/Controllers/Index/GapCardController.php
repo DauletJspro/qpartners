@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Index;
 
+use App\Models\GapCardCategory;
 use App\Models\GapCardItem;
+use App\Models\GapCardSubCategory;
 use App\Models\Product;
 use App\Models\Rating;
 use Illuminate\Http\Request;
@@ -14,7 +16,13 @@ class GapCardController extends Controller
 {
     public function show()
     {
-        return view('design_index.gap.card');
+        $categories = DB::table('gap_card_categories as categories')
+                ->Leftjoin('gap_card_sub_categories as sub_categories', 'sub_categories.gap_card_category_id', '=', 'categories.id')
+                ->Leftjoin('gap_card_items as items', 'items.gap_card_sub_category_id','=','sub_categories.id')
+                ->selectRaw('count(items.id) as total, categories.*')
+                ->groupBy('categories.id')
+                ->get();
+        return view('design_index.gap.card', compact('categories'));
     }
 
     public function detail($id)
@@ -29,19 +37,19 @@ class GapCardController extends Controller
     {
         if(isset($request->orderBy)){
             if($request->orderBy == "price-low-high"){
-                $products = GapCardItem::orderBy('price','asc')->paginate(9);
+                $gapItems = GapCardItem::where('city_id', $request->city_id)->orderBy('price','asc')->paginate(9);
             }
         }
 
         if(isset($request->orderBy)){
             if($request->orderBy == "price-high-low"){
-                $products = GapCardItem::orderBy('price','desc')->paginate(9);
+                $gapItems = GapCardItem::where('city_id', $request->city_id)->orderBy('price','desc')->paginate(9);
             }
         }
 
         if(isset($request->orderBy)){
             if($request->orderBy == "popular"){
-                $products = DB::table('ratings')
+                $gapItems = DB::table('ratings')
                     ->join('gap_card_items', 'ratings.gap_card_id', '=', 'gap_card_items.id')
                     ->select(DB::raw('avg(rating) as average, gap_card_items.*'))
                     ->groupBy('gap_card_id')
@@ -51,7 +59,7 @@ class GapCardController extends Controller
         }
         if($request->ajax())
         {
-            return view('design_index.gap.product_card.product_card',compact('products'))->render();
+            return view('design_index.gap.renders.gap_card.gap_card',compact('gapItems'))->render();
         }
     }
 }

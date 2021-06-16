@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBalancesTable extends Migration
+class AddCityIdToGapCardItems extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateBalancesTable extends Migration
      */
     public function up()
     {
-        Schema::create('balances', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('user_balance');
-            $table->timestamps();
-            $table->index('created_at');
+        Schema::table('gap_card_items', function (Blueprint $table) {
+            $table->integer('city_id');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateBalancesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('balances');
+        Schema::table('gap_card_items', function (Blueprint $table) {
+            $table->dropColumn('city_id');
+        });
     }
 }

@@ -113,12 +113,12 @@
                                        aria-expanded="false"
                                        aria-controls="collapseExample">
                                         <span class="name">{{$category->name}}</span>
-                                        <span class="num">{{isset($category->sub_categories) ? count($category->sub_categories) : 0}}</span>
+                                        <span class="num">{{isset($category) ? $category->total : 0}}</span>
                                     </a>
                                     <ul style="font-size:90%; font-weight:bolder;margin-top: 1rem;margin-left: 10px;"
                                         class="subcategories-body collapse col-sm-10 list-unstyled category-list"
                                         id="collapse_{{$index}}">
-                                        @foreach($category->sub_categories as $sub_category)
+                                        @foreach(\App\Models\SubCategory::where('category_id', $category->id)->get() as $sub_category)
                                             <li>
                                                 <a href="" style="color:black;">
                                                     <span><a href="/gap/market/show/?sub_category_id={{$sub_category->id}}">{{$sub_category->title_ru}}</a></span>
@@ -195,41 +195,7 @@
                         </div>
                     </header>
                     <ul class="mt-productlisthold list-inline">
-                        @foreach($products as $item)
-                            <li>
-                                <div class="mt-product1 large"
-                                     onclick="window.location='{{ route('product.detail', $item->product_id) }}'"
-                                     style="border: 1px solid lightgrey; padding-bottom: 20px">
-                                    <div class="box">
-                                        <div class="b1">
-                                            <div class="b2">
-                                                <div
-                                                        id="gap-market-product"
-                                                        style="
-
-                                                        background-repeat: no-repeat;
-                                                        background-size: contain;
-                                                        background-position: center;
-                                                        width: 275px;
-                                                        height: 290px;
-                                                        ">
-                                                    <img src="{{$item->product_image}}"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="txt">
-                                        <strong class="title"><a style="color: black">{{$item->product_name_ru}}</a></strong>
-{{--                                        <p style=" width: 30ch; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">--}}
-{{--                                            {{$item->product_desc_ru}}--}}
-{{--                                        </p>--}}
-                                        <p class="cut-text" style="">{{$item->product_desc_ru}}</p>
-
-                                        <span class="price"><span>Цена:</span> <span style="font-weight: normal"> ${{$item->product_price}} ({{$item->product_price * (\App\Models\Currency::where(['currency_id' => 1])->first())->money}} &#8376;)</span></span>
-                                    </div>
-                                </div>
-                            </li>
-                        @endforeach
+                        @include('design_index.gap.renders.product_card.product_card')
                     </ul>
                     <nav class="mt-pagination">
                         {{ $products->links() }}

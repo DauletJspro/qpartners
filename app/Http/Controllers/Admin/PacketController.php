@@ -37,6 +37,11 @@ class PacketController extends Controller
         shell_exec('chmod -R 777 storage');
     }
 
+    public function permissions()
+    {
+        shell_exec('chmod -R 777 storage');
+    }
+
     public function getPacketById($id)
     {
         $packet = Packet::find($id);
@@ -697,7 +702,7 @@ class PacketController extends Controller
                     $operation->operation_comment = 'Структурный бонус. "' . $packet->packet_name_ru . '". Уровень - ' . $inviter_order;
                     $operation->save();
                     if ($inviter_order >= 2 && in_array($packet->packet_id, Packet::actualEntrepreneurPackets())) {
-                        $inviter->user_money = $inviter->user_cash + $bonus;
+                        $inviter->user_cash = $inviter->user_cash + $bonus;
                     } else {
                         $inviter->user_money = $inviter->user_money + $bonus;
                     }

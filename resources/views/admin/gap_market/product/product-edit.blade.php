@@ -9,6 +9,70 @@ $items = \App\Models\Product::ITEM;
 ?>
 @extends('admin.layout.layout')
 
+@section('meta-tags')
+    <title>Qpartners Shop</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description"
+          content="«Qpartners» - это уникальный медиа проект с широким набором возожностей для взаймодествия с участниками виртуального рынка"/>
+    <meta name="keywords" content="Qpartners"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            //Рассчет балл продукта с помощью себестоимость и цена для клиента
+            var product_price = $("#product_price");
+            var price_client = $("#price_client");
+            var price_partner = $("#price_partner");
+            var price_shareholder = $("#price_shareholder");
+
+            (product_price && price_client).change(function(){
+                var product_price = document.getElementById("product_price").value;
+                var price_client = document.getElementById("price_client").value;
+                var ball_client = price_client - product_price;
+
+                document.getElementById('ball_client').value = ball_client ;
+            });
+
+            (product_price && price_partner).change(function(){
+                var product_price = document.getElementById("product_price").value;
+                var price_partner = document.getElementById("price_partner").value;
+                var ball_partner = price_partner - product_price;
+
+                document.getElementById('ball_partner').value = ball_partner ;
+            });
+
+            (product_price && price_shareholder).change(function(){
+                var product_price = document.getElementById("product_price").value;
+                var price_shareholder = document.getElementById("price_shareholder").value;
+                var ball_shareholder = price_shareholder - product_price;
+                console.log(ball_shareholder);
+                document.getElementById('ball_shareholder').value = ball_shareholder ;
+            });
+
+            (product_price).change(function(){
+                var product_price = document.getElementById("product_price").value;
+                var price_client = document.getElementById("price_client").value;
+                var price_shareholder = document.getElementById("price_shareholder").value;
+                var price_partner = document.getElementById("price_partner").value;
+
+
+                var ball_partner = price_partner - product_price;
+                var ball_shareholder = price_shareholder - product_price;
+                var ball_client = price_client - product_price;
+
+                document.getElementById('ball_shareholder').value = ball_shareholder ;
+                document.getElementById('ball_partner').value = ball_partner ;
+                document.getElementById('ball_client').value = ball_client ;
+            });
+        });
+
+    </script>
+@endsection
 @section('content')
     <section class="content-header">
         <h1>
@@ -37,7 +101,6 @@ $items = \App\Models\Product::ITEM;
 
                         @if($product->product_id > 0)
                             <form action="{{ route('gap_market_product.update', $product->product_id) }}" method="POST">
-
                                 <input type="hidden" name="_method" value="PUT">
                                 @else
                                     <form action="{{ route('gap_market_product.store') }}" method="POST">
@@ -52,23 +115,46 @@ $items = \App\Models\Product::ITEM;
                                             <div class="form-group">
                                                 <label>Название (Рус)</label>
                                                 <input value="@if(isset($product)){{ $product->product_name_ru }}@endif {{old('product_name_ru')}}" type="text"
-                                                       class="form-control" name="product_name_ru"
-                                                       placeholder="Введите">
+                                                       class="form-control" name="product_name_ru" placeholder="Название">
                                             </div>
                                             <div class="form-group">
-                                                <label>Цена</label>
+                                                <label>Себестоимость продукта</label>
                                                 <input value="@if(isset($product)){{ $product->product_price }}@endif{{old('product_price')}}" type="text"
-                                                       class="form-control" name="product_price" placeholder="Введите">
+                                                       class="form-control" name="product_price" placeholder="Введите" id="product_price">
                                             </div>
                                             <div class="form-group">
-                                                <label>Балл проукта</label>
-                                                <input type="number" value="@if(isset($product)){{ $product->ball }}@endif{{old('ball')}}"
-                                                       class="form-control" name="ball"
-                                                       placeholder="Введите балл продукта">
+                                                <label>Цена для клиент</label>
+                                                <input value="@if(isset($product)){{ $product->price_client }}@endif{{old('price_client')}}" type="text"
+                                                       class="form-control" name="price_client" placeholder="Введите" id="price_client">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Балл для клиента</label>
+                                                <input value="@if(isset($product)){{ $product->ball_client }}@endif{{old('ball_client')}}" type="text"
+                                                       class="form-control" name="ball_client" placeholder="Введите" id="ball_client">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Цена для партнера</label>
+                                                <input value="@if(isset($product)){{ $product->price_partner }}@endif{{old('price_partner')}}" type="text"
+                                                       class="form-control" name="price_partner" placeholder="Введите" id="price_partner">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Балл для партнера</label>
+                                                <input value="@if(isset($product)){{ $product->ball_partner }}@endif{{old('ball_partner')}}" type="text"
+                                                       class="form-control" name="ball_partner" placeholder="Введите" id="ball_partner">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Цена для пайщика</label>
+                                                <input value="@if(isset($product)){{ $product->price_shareholder }}@endif{{old('price_shareholder')}}" type="text"
+                                                       class="form-control" name="price_shareholder" placeholder="Введите" id="price_shareholder">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Балл для пайщика</label>
+                                                <input value="@if(isset($product)){{ $product->ball_shareholder }}@endif{{old('ball_shareholder')}}" type="text"
+                                                       class="form-control" name="ball_shareholder" placeholder="Введите" id="ball_shareholder">
                                             </div>
                                             <div class="form-group">
                                                 <label>Cach Back (%)</label>
-                                                <input min="0" max="100" value="@if(isset($product)) {{ $product->product_cash }}@endif{{old('product_cash')}}" type="number"
+                                                <input min="0" max="100" value="@if(isset($product)){{ $product->product_cash }}@endif{{old('product_cash')}}" type="number"
                                                        class="form-control" name="product_cash" placeholder="Введите">
                                             </div>
                                             <div class="form-group">

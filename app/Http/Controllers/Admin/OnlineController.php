@@ -20,7 +20,7 @@ use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use View;
@@ -74,7 +74,16 @@ class OnlineController extends Controller
 
         $user_basket = new UserBasket();
         $user_basket->user_id = Auth::user()->user_id;
-        $user_basket->product_price = $product->product_price;
+
+        //Проверка роля пользователя и добавляем цену в user_basket
+        if(Auth::user()->role_id == 2 && Auth::user()->is_activated == 1){
+            $user_basket->product_price = $product->price_shareholder;
+        }elseif(Auth::user()->role_id == 2 && Auth::user()->is_activated == 0){
+            $user_basket->product_price = $product->price_partner;
+        }else{
+            $user_basket->product_price = $product->price_client;
+        }
+
         $user_basket->product_id = $product->product_id;
         $user_basket->is_active = 0;
         $user_basket->save();
@@ -84,18 +93,29 @@ class OnlineController extends Controller
         $result['status'] = true;
         return response()->json($result);
     }
-
+//Показать корзину
     public function showBasket(Request $request)
     {
-
         $request->basket = UserBasket::leftJoin('product', 'product.product_id', '=', 'user_basket.product_id')
             ->where('user_basket.user_id', Auth::user()->user_id)
             ->where('user_basket.is_active', 0)
             ->select('product.*', 'user_basket.unit')
             ->get();
-
         $request->basket_count = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->count();
-
+        foreach ($request->basket as $item) {
+            //Проверка роль пользователя и через это делаем тотал
+            $product_price = Product::where('product_id', $item->product_id)->first();
+            if(Auth::user()->role_id == 2 && Auth::user()->is_activated == 1){
+                $sum += $product_price->price_shareholder * $item->unit;
+                $ballSum += $product_price->ball_shareholder * $item->unit;
+            }elseif(Auth::user()->role_id == 2 && Auth::user()->is_activated == 0){
+                $sum += $product_price->price_partner * $item->unit;
+                $ballSum += $product_price->ball_partner * $item->unit;
+            }else{
+                $sum += $product_price->price_client * $item->unit;
+                $ballSum += $product_price->ball_client * $item->unit;
+            }
+        }
 
         if ($request->is_partner) {
             $request->is_partner = UserPacket::where('user_id', Auth::user()->user_id)->where('is_active', 1)->exists();
@@ -112,7 +132,10 @@ class OnlineController extends Controller
         }
         return view('admin.online-shop.basket', [
             'row' => $request,
-            'pay_from_cash_balanse' => $pay_from_cash_balanse
+            'pay_from_cash_balanse' => $pay_from_cash_balanse,
+            'total_sum' => $sum,
+            'total_ball' => $ballSum
+
         ]);
     }
 
@@ -143,6 +166,7 @@ class OnlineController extends Controller
         return response()->json($result);
     }
 
+    //Ajax количество каждого товара
     public function setProductUnit(Request $request, $product_id)
     {
         $product = Product::where('product_id', $product_id)->first();
@@ -168,8 +192,18 @@ class OnlineController extends Controller
         $products = UserBasket::where('user_id', Auth::user()->user_id)->where('is_active', 0)->get();
         foreach ($products as $item) {
             $product_price = Product::where('product_id', $item->product_id)->first();
-            $sum += $product_price->product_price * $item->unit;
-            $ballSum += $product_price->ball * $item->unit;
+            //Проверка роль пользователя и через это делаем тотал
+            if(Auth::user()->role_id == 2 && Auth::user()->is_activated == 1){
+                $sum += $product_price->price_shareholder * $item->unit;
+                $ballSum += $product_price->ball_shareholder * $item->unit;
+            }elseif(Auth::user()->role_id == 2 && Auth::user()->is_activated == 0){
+                $sum += $product_price->price_partner * $item->unit;
+                $ballSum += $product_price->ball_partner * $item->unit;
+            }else{
+                $sum += $product_price->price_client * $item->unit;
+                $ballSum += $product_price->ball_client * $item->unit;
+            }
+
         }
 
         $result['message'] = 'Вы успешно отправили запрос';
@@ -179,7 +213,7 @@ class OnlineController extends Controller
         $result['ballSum'] = $ballSum;
         return response()->json($result);
     }
-
+    //Подверждение заказа
     public function confirmBasket(Request $request)
     {
         $result['error'] = 'Временно недоступно';
@@ -201,6 +235,7 @@ class OnlineController extends Controller
         $LIMIT = 100000;
 
         $sum = 0;
+        $total_price = 0;
         $products_all = [];
         $products_item = [];
 
@@ -218,14 +253,21 @@ class OnlineController extends Controller
         }
         foreach ($products as $item) {
             $product_price = Product::where('product_id', $item->product_id)->first();
-            $sum += $product_price->product_price * $item->unit;
+
+            if (Auth::user()->role_id == 2 && Auth::user()->is_activated == 1){
+                $sum += $product_price->price_shareholder * $item->unit;
+            }elseif (Auth::user()->role_id == 2 && Auth::user()->is_activated == 0){
+                $sum += $product_price->price_partner * $item->unit;
+            }else{
+                $sum += $product_price->price_client * $item->unit;
+            }
+
             $products_item['product_id'] = $product_price->product_id;
             $products_item['product_name'] = $product_price->product_name_ru;
             $products_item['count'] = $item->unit;
             $products_item['ball'] = $product_price->ball;
             array_push($products_all, $products_item);
         }
-
 // cashback start
 
       if($request->cashback == "true"){
@@ -310,24 +352,43 @@ class OnlineController extends Controller
             $sum = $sum - ($sum * \App\Models\Currency::ClientDiscount);
             $sum = round($sum);
         }
+        //Снять с баланса
         if (Auth::user()->user_money < $sum) {
             $result['error'] = 'У вас недостаточно средств';
             $result['status'] = false;
             return response()->json($result);
         }
+        //Берем тотал балл и прайс
+        foreach ($products as $item)
+        {
+            //Проверка роль юзера и делаем тотал для балл и цены
+            $product_price = Product::where('product_id', $item->product_id)->first();
+            if (Auth::user()->role_id == 2 && Auth::user()->is_activated == 1){
+                $total_price += $product_price->price_shareholder * $item->unit;
+                $total_ball += $product_price->ball_shareholder * $item->unit;
+            }elseif (Auth::user()->role_id == 2 && Auth::user()->is_activated == 0){
+                $total_price += $product_price->price_partner * $item->unit;
+                $total_ball += $product_price->ball_partner * $item->unit;
+            }else{
+                $total_price += $product_price->price_client * $item->unit;
+                $total_ball += $product_price->ball_client * $item->unit;
+            }
+        }
 
-        $this->implementCashback(Auth::user()->user_id);
+        //Cashback себе и 1-8 уровень
+        $this->NewCashbackImplement($total_ball);
+//        $this->implementCashback(Auth::user()->user_id);
 
         $operation = new UserOperation();
         $operation->author_id = null;
         $operation->recipient_id = $user->user_id;
-        $operation->money = $sum * -1;
+        $operation->money = $total_price * -1;
         $operation->operation_id = 2;
         $operation->operation_type_id = 21;
         $operation->operation_comment = '';
         $operation->save();
 
-        $user->user_money = $user->user_money - $sum;
+        $user->user_money = $user->user_money - $total_price;
         $user->save();
         $data_order = [
             'order_code' => time(),
@@ -336,7 +397,7 @@ class OnlineController extends Controller
             'email' => Auth::user()->email,
             'address' => $request->address,
             'contact' => Auth::user()->phone,
-            'sum' => $sum,
+            'sum' => $total_price,
             'products' => \json_encode($products_all),
             'packet_id' => null,
             'payment_id' => 0,
@@ -345,9 +406,13 @@ class OnlineController extends Controller
         ];
         $order = Order::createOrder($data_order);
 
+        //Ставляем 1 на is_active
+        foreach($products as $product){
+            $product->is_active = 1;
+            $product->save();
+        }
         $result['status'] = true;
         return response()->json($result);
-////        return $request->all();
     }
 
 
@@ -425,5 +490,61 @@ class OnlineController extends Controller
         return view('admin.online-shop.history', [
             'row' => $request
         ]);
+    }
+    public function NewCashbackImplement($total_ball){
+        //Самому покупателю Cashback 15%
+        $user = Auth::user();
+        $user_cash = Auth::user()->user_cash;
+        $BONUS_15 = $user_cash + $total_ball * 0.15;
+        $user->user_cash = $BONUS_15;
+
+        //Создаем юзер операцию ключ значение
+        UserOperation::create([
+            'operation_id' => 1,
+            'money' => $total_ball * 0.15,
+            'author_id' => $user->user_id,
+            'recipient_id' => $user->user_id,
+            'operation_type_id' => 22,
+            'operation_comment' => 'CashBack от покупки товара Gap Market'
+        ]);
+
+        $recommend_user_id = Auth::user()->recommend_user_id;
+        $counter = 0;
+        //Cashback до восьмого уровня 5%
+        while ($recommend_user_id != null && $counter < 8){
+            $recommend_user = Users::where('user_id',$recommend_user_id)->where('is_activated', true)->first();
+            $user_cash = $recommend_user->user_cash;
+            $user_money = $recommend_user->user_money;
+            $BONUS_5 = $total_ball * 0.05;
+            $recommend_user_id = $recommend_user->recommend_user_id;
+            $counter++;
+            if ($counter == 1 ){
+                $user_money = $user_money + $BONUS_5;
+                $recommend_user->update([
+                    'user_money' => $user_money
+                ]);
+                UserOperation::create([
+                    'operation_id' => 1,
+                    'money' => $BONUS_5,
+                    'author_id' => Auth::user()->user_id,
+                    'recipient_id' => $recommend_user->user_id,
+                    'operation_type_id' => 1,
+                    'operation_comment' => 'Структурный бонус "GAP Market" ' . $counter . ' уровень.'
+                ]);
+            }else{
+                $cashback = $user_cash + $BONUS_5;
+                $recommend_user->update([
+                    'user_cash' => $cashback
+                ]);
+                UserOperation::create([
+                    'operation_id' => 1,
+                    'money' => $BONUS_5,
+                    'author_id' => Auth::user()->user_id,
+                    'recipient_id' => $recommend_user->user_id,
+                    'operation_type_id' => 22,
+                    'operation_comment' => 'CashBack от покупки GAP Market ' . $counter . ' уровень.'
+                ]);
+            }
+        }
     }
 }

@@ -91,8 +91,9 @@ class AuthController extends Controller
                     'error' => $error
                 ]);
             }
-            if(Auth::user()->role_id == Role::CONSUMER){
-                return redirect('/admin/gap_card/orders');
+            if(Auth::user()->role_id == Role::CONSUMER)
+            {
+                return redirect('/admin/profile');
             }
 
             if (Auth::user()->is_activated && Auth::user()->role_id != Role::CONSUMER)

@@ -15,18 +15,26 @@ $needSubsidiaryIds = [5, 7, 8];
 $subsidiaries = \App\Models\Brand::whereIn('id', $needSubsidiaryIds)->get();
 
 $cities_table = new City();
+
 $cities = City::where('country_id',1)->where('is_show', 1)->get();
+$city_id = request()->input('city_id');
+
+if(isset($city_id))
+{
+    $city = City::findOrFail($city_id);
+}
+
 
 $logo_image_name = 'market.png';
 $controllerName = request()->route()->getAction()['controller'];
 $gapTypeActive = 0;
-if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
+if($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
     $logo_image_name = 'gap.svg';
     $gapTypeActive = 1;
-} elseif ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
+}elseif ($controllerName == 'App\Http\Controllers\Index\GapMarketController@show') {
     $logo_image_name = 'market.png';
     $gapTypeActive = 2;
-} elseif ($controllerName == 'App\Http\Controllers\Index\GapCardController@show') {
+}elseif ($controllerName == 'App\Http\Controllers\Index\GapCardController@show') {
     $logo_image_name = 'card.png';
     $gapTypeActive = 3;
 }
@@ -52,7 +60,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         </li>
                         <li style="{{$gapTypeActive == 3 ? 'list-style-type: none; background-color: white; margin:0; height: 38px; padding-top: 10px': 'list-style-type:none'}}">
                             <a style="{{$gapTypeActive == 3 ? 'background:white;color:red;' : '' }}"
-                               href="{{route('gap.card.show')}}">
+                               href="/gap/card/show/?city_id=8">
                                 CARD
                             </a>
                         </li>
@@ -120,7 +128,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                         @if(Auth::user()->role_id == App\Models\Role::CONSUMER)
                                             <a href="/admin/gap_card/orders">Личный кабинет</a>
                                             <a href="#">Баланс:
-                                                {{Auth::user()->balance->user_balance}}
+                                                {{Auth::user()->user_money}} PV
                                             </a>
                                             <a href="#">
                                                 Пополнить счет
@@ -183,8 +191,6 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                         <a class="icl_lang_sel_current fs-18 icl_lang_sel_native font-weight-lighter text-black mt-1" style="">
                             @if(isset($city))
                                 {{$city->city_name_ru}}
-                            @else
-                                Шымкент
                             @endif
                             <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                         <div class="dropdown-content" style="background: none;box-shadow: none ">
@@ -198,7 +204,7 @@ if ($controllerName == 'App\Http\Controllers\Index\IndexController@index') {
                                 font-size: 12px;
                                 text-transform: capitalize;">
                                 <?php for($i = 0; $i < count($cities); $i++ ){?>
-                                <a href="{{ route('city.products', $cities[$i]->city_id) }}" class="fs-14"
+                                <a href="{{url()->current()}}/?city_id={{ $cities[$i]->city_id }}" class="fs-14"
                                    style="width: 25%; font-weight: 600"
                                 >
                                     {{$cities[$i]->city_name_ru}}
