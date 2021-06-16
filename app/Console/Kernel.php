@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Console\Commands\ActivationBonusCommand;
 use App\Console\Commands\BackupCommand;
+use App\Console\Commands\CheckForSocialBonusCommand;
 use App\Console\Commands\CorrectPassiveToActiveCommand;
 use App\Console\Commands\UnitTestCommand;
 use App\Models\Fond;
@@ -27,7 +28,8 @@ class Kernel extends ConsoleKernel
         ActivationBonusCommand::class,
         UnitTestCommand::class,
         BackupCommand::class,
-        CorrectPassiveToActiveCommand::class
+        CorrectPassiveToActiveCommand::class,
+        CheckForSocialBonusCommand::class
     ];
 
     /**
